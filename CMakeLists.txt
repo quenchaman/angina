@@ -7,3 +7,6 @@ include(${DIR}/cmake_helpers/helpers.cmake)
 project(angina)
 
 add_executable(${PROJECT_NAME} ${DIR}/main.cpp)
+
+set_target_cpp_standard(${PROJECT_NAME} 17)
+enable_target_warnings(${PROJECT_NAME})
