@@ -20,3 +20,5 @@ find_package(SDL2 REQUIRED)
 #find_package(SDL2_mixer REQUIRED)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR})
+
+target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY})
