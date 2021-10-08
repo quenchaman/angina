@@ -5,7 +5,7 @@
 int32_t main(int32_t argc, char** argv) {
 
 	for (int32_t i = 0; i < argc; i++) {
-		std::cout << i << std::endl;
+		std::cout << "argv[" << i << "] = " << argv[i] << std::endl;
 	}
 
 	return EXIT_SUCCESS;
