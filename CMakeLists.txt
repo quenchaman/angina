@@ -4,7 +4,7 @@ set(DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 include(${DIR}/cmake_helpers/helpers.cmake)
 
-project(angina)
+project(angina LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME} ${DIR}/main.cpp)
 
