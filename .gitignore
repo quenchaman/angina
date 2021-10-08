@@ -1,0 +1,5 @@
+.autotools
+.cproject
+.settings
+build
+.project
