@@ -15,7 +15,7 @@ set_target_cpp_standard(${PROJECT_NAME} 17)
 enable_target_warnings(${PROJECT_NAME})
 
 find_package(SDL2 REQUIRED)
-#find_package(SDL2_image REQUIRED)
+find_package(SDL2_image REQUIRED)
 #find_package(SDL2_ttf REQUIRED)
 #find_package(SDL2_mixer REQUIRED)
 
