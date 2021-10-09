@@ -13,6 +13,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/main.cpp
 	${DIR}/sdl/resources/ImageResource.h 
 	${DIR}/sdl/resources/ImageResource.cpp
+	${DIR}/exceptions/ResourceLoadException.h
+	${DIR}/exceptions/ResourceLoadException.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

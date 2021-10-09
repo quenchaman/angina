@@ -5,6 +5,7 @@
 #include <SDL.h>
 
 #include "sdl/resources/ImageResource.h"
+#include "exceptions/ResourceLoadException.h"
 
 SDL_Window* window = nullptr;
 SDL_Surface* globalScreenSurface = nullptr;
@@ -39,8 +40,8 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	const std::string path = "hello.bmp";
 
 	try {
-		imageSurface = ImageResource::loadBMP(path);
-	} catch (const std::exception& e) {
+		imageSurface = ImageResource::load(path);
+	} catch (const ResourceLoadException& e) {
 		return EXIT_FAILURE;
 	}
 

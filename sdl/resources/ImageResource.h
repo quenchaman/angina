@@ -14,7 +14,7 @@
 #include <SDL.h>
 
 namespace ImageResource {
-	SDL_Surface* loadBMP(std::string path);
+	SDL_Surface* load(std::string path);
 }
 
 
