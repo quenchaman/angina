@@ -34,5 +34,20 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 		return EXIT_FAILURE;
 	}
 
+	const std::string path = "../assets/hello.bmp";
+
+	imageSurface = SDL_LoadBMP(path.c_str());
+
+	if (imageSurface == nullptr) {
+		std::cerr << "SDL_LoadBMP() failed with reason - " << SDL_GetError() << std::endl;
+
+		return EXIT_FAILURE;
+	}
+
+	SDL_BlitSurface(imageSurface, NULL, globalScreenSurface, NULL);
+	SDL_UpdateWindowSurface(window);
+	SDL_Delay(5000);
+
+
 	return EXIT_SUCCESS;
 }
