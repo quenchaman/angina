@@ -4,6 +4,8 @@
 
 #include <SDL.h>
 
+#include "sdl/resources/ImageResource.h"
+
 SDL_Window* window = nullptr;
 SDL_Surface* globalScreenSurface = nullptr;
 SDL_Surface* imageSurface = nullptr;
@@ -34,9 +36,13 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 		return EXIT_FAILURE;
 	}
 
-	const std::string path = "../assets/hello.bmp";
+	const std::string path = "hello.bmp";
 
-	imageSurface = SDL_LoadBMP(path.c_str());
+	try {
+		imageSurface = ImageResource::loadBMP(path);
+	} catch (const std::exception& e) {
+		return EXIT_FAILURE;
+	}
 
 	if (imageSurface == nullptr) {
 		std::cerr << "SDL_LoadBMP() failed with reason - " << SDL_GetError() << std::endl;
