@@ -8,4 +8,4 @@
 #include "ResourceLoadException.h"
 
 ResourceLoadException::ResourceLoadException(std::string msg):
-	BaseException(("Could not load resource. " + msg).c_str()) {}
+	BaseException("Could not load resource. " + msg) {}

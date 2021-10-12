@@ -21,6 +21,8 @@ public:
 	SDL_Surface* getWindowSurface();
 
 	void updateWindowSurface();
+
+	~Window();
 private:
 	SDL_Window* window;
 

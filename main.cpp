@@ -7,10 +7,12 @@
 #include "sdl/resources/ImageResource.h"
 #include "exceptions/ResourceLoadException.h"
 #include "exceptions/GraphicsInitException.h"
+#include "exceptions/WindowInitException.h"
 #include "resources/Resources.h"
 #include "sdl/graphics/Graphics.h"
+#include "sdl/components/Window.h"
 
-SDL_Window* window = nullptr;
+Window* window = nullptr;
 SDL_Surface* globalScreenSurface = nullptr;
 SDL_Surface* imageSurface = nullptr;
 
@@ -27,14 +29,15 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 		return EXIT_FAILURE;
 	}
 
-	window = SDL_CreateWindow("Hello, World!", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	try {
+		window = new Window("Hello, World!", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	} catch (const WindowInitException& ex) {
+		std::cerr << ex << std::endl;
 
-	if (window == nullptr) {
-		std::cerr << "SDL_CreateWindow() failed with reason - " << SDL_GetError() << std::endl;
 		return EXIT_FAILURE;
 	}
 
-	globalScreenSurface = SDL_GetWindowSurface(window);
+	globalScreenSurface = window->getWindowSurface();
 
 	if (globalScreenSurface == nullptr) {
 		std::cerr << "SDL_GetWindowSurface failed with reason - " << SDL_GetError() << std::endl;
@@ -51,9 +54,10 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	}
 
 	SDL_BlitSurface(imageSurface, NULL, globalScreenSurface, NULL);
-	SDL_UpdateWindowSurface(window);
+	window->updateWindowSurface();
 	SDL_Delay(5000);
 
+	delete window;
 
 	return EXIT_SUCCESS;
 }

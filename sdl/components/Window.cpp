@@ -8,12 +8,28 @@
 #include "SDL.h"
 
 #include "Window.h"
+#include "exceptions/WindowInitException.h"
 
 Window::Window(std::string title, int x, int y, int w, int h, SDL_WindowFlags flags) {
 	window = SDL_CreateWindow(title.c_str(), x, y, w, h, flags);
 
 	if (window == nullptr) {
-		std::cerr << "SDL_CreateWindow() failed with reason - " << SDL_GetError() << std::endl;
-		return EXIT_FAILURE;
+		throw WindowInitException(SDL_GetError());
 	}
+}
+
+SDL_Window* Window::getWindow() {
+	return this->window;
+}
+
+SDL_Surface* Window::getWindowSurface() {
+	return SDL_GetWindowSurface(this->window);
+}
+
+void Window::updateWindowSurface() {
+	SDL_UpdateWindowSurface(this->window);
+}
+
+Window::~Window() {
+	SDL_DestroyWindow(this->window);
 }
