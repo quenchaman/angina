@@ -8,9 +8,4 @@
 #include "GraphicsInitException.h"
 
 GraphicsInitException::GraphicsInitException(std::string msg):
-	std::runtime_error(("Could not initialize graphics - " + msg).c_str()) {}
-
-std::ostream& operator<<(std::ostream& os, const GraphicsInitException& ex) {
-	os << ex.what();
-	return os;
-}
+	BaseException(("Could not initialize graphics - " + msg).c_str()) {}

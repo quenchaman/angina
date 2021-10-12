@@ -17,6 +17,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/exceptions/ResourceLoadException.cpp
 	${DIR}/exceptions/GraphicsInitException.h
 	${DIR}/exceptions/GraphicsInitException.cpp
+	${DIR}/exceptions/BaseException.h
+	${DIR}/exceptions/BaseException.cpp
 	${DIR}/resources/Resources.h
 	${DIR}/sdl/graphics/Graphics.h
 	${DIR}/sdl/graphics/Graphics.cpp
