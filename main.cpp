@@ -6,6 +6,9 @@
 
 #include "sdl/resources/ImageResource.h"
 #include "exceptions/ResourceLoadException.h"
+#include "exceptions/GraphicsInitException.h"
+#include "resources/Resources.h"
+#include "sdl/graphics/Graphics.h"
 
 SDL_Window* window = nullptr;
 SDL_Surface* globalScreenSurface = nullptr;
@@ -16,8 +19,10 @@ const int SCREEN_HEIGHT = 480;
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 
-	if (SDL_Init(SDL_INIT_VIDEO) != EXIT_SUCCESS) {
-		std::cout << "Could not initialize graphics - " << SDL_GetError() << std::endl;
+	try {
+		Graphics::boot();
+	} catch (const GraphicsInitException& ex) {
+		std::cerr << ex << std::endl;
 
 		return EXIT_FAILURE;
 	}
@@ -37,16 +42,10 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 		return EXIT_FAILURE;
 	}
 
-	const std::string path = "hello.bmp";
-
 	try {
-		imageSurface = ImageResource::load(path);
+		imageSurface = ImageResource::load(Resources::helloImage);
 	} catch (const ResourceLoadException& e) {
-		return EXIT_FAILURE;
-	}
-
-	if (imageSurface == nullptr) {
-		std::cerr << "SDL_LoadBMP() failed with reason - " << SDL_GetError() << std::endl;
+		std::cerr << e << std::endl;
 
 		return EXIT_FAILURE;
 	}

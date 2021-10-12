@@ -15,6 +15,11 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/resources/ImageResource.cpp
 	${DIR}/exceptions/ResourceLoadException.h
 	${DIR}/exceptions/ResourceLoadException.cpp
+	${DIR}/exceptions/GraphicsInitException.h
+	${DIR}/exceptions/GraphicsInitException.cpp
+	${DIR}/resources/Resources.h
+	${DIR}/sdl/graphics/Graphics.h
+	${DIR}/sdl/graphics/Graphics.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

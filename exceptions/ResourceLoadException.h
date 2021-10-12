@@ -10,10 +10,13 @@
 
 #include <stdexcept>
 #include <string>
+#include <iostream>
 
 class ResourceLoadException : public std::runtime_error {
 public:
 	ResourceLoadException(std::string msg);
+
+	friend std::ostream& operator<<(std::ostream& os, const ResourceLoadException& ex);
 };
 
 
