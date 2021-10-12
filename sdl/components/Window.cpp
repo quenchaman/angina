@@ -23,7 +23,13 @@ SDL_Window* Window::getWindow() {
 }
 
 SDL_Surface* Window::getWindowSurface() {
-	return SDL_GetWindowSurface(this->window);
+	SDL_Surface* ws = SDL_GetWindowSurface(this->window);
+
+	if (ws == nullptr) {
+		throw WindowInitException(SDL_GetError());
+	}
+
+	return ws;
 }
 
 void Window::updateWindowSurface() {
