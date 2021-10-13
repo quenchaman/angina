@@ -7,13 +7,14 @@
 #include <stdexcept>
 #include <filesystem>
 
+#include "sdl/components/Surface.h"
 #include "ImageResource.h"
 #include "exceptions/ResourceLoadException.h"
 
 namespace ImageResource {
 	const std::string resourceFolderBasePath = "../resources/";
 
-	SDL_Surface* load(std::string path) {
+	Surface* load(std::string path) {
 		std::string fullPathToFile = resourceFolderBasePath + path;
 		std::string fileExtension = std::filesystem::path(fullPathToFile).extension();
 		SDL_Surface* image = nullptr;
@@ -26,6 +27,6 @@ namespace ImageResource {
 			throw ResourceLoadException(SDL_GetError());
 		}
 
-		return image;
+		return new Surface(image);
 	}
 }

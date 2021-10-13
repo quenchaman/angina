@@ -26,9 +26,9 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 			SDL_WINDOW_SHOWN
 		);
 
-		SDL_Surface* imageSurface = ImageResource::load(Resources::helloImage);
+		Surface& imageSurface = *ImageResource::load(Resources::helloImage);
 
-		window->getWindowSurface()->paint(imageSurface);
+		window->getWindowSurface().paint(imageSurface);
 		window->updateWindowSurface();
 
 		SDL_Delay(5000);

@@ -20,7 +20,7 @@ public:
 
 	SDL_Window* getWindow();
 
-	Surface* getWindowSurface();
+	Surface& getWindowSurface();
 
 	void updateWindowSurface();
 

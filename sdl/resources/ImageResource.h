@@ -11,11 +11,10 @@
 #include <cstdint>
 #include <string>
 
-#include <SDL.h>
+#include "sdl/components/Surface.h"
 
 namespace ImageResource {
-	SDL_Surface* load(std::string path);
+	Surface* load(std::string path);
 }
-
 
 #endif /* SDL_IMAGERESOURCE_H_ */

@@ -30,8 +30,8 @@ SDL_Window* Window::getWindow() {
 	return this->window;
 }
 
-Surface* Window::getWindowSurface() {
-	return this->surface;
+Surface& Window::getWindowSurface() {
+	return *this->surface;
 }
 
 void Window::updateWindowSurface() {
@@ -40,8 +40,4 @@ void Window::updateWindowSurface() {
 
 Window::~Window() {
 	SDL_DestroyWindow(this->window);
-
-	if (&this->surface != nullptr) {
-		delete &this->surface;
-	}
 }
