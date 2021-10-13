@@ -4,29 +4,31 @@
 
 #include <SDL.h>
 
-#include "sdl/resources/ImageResource.h"
 #include "exceptions/ResourceLoadException.h"
 #include "exceptions/GraphicsInitException.h"
 #include "exceptions/WindowInitException.h"
 #include "resources/Resources.h"
+#include "sdl/resources/ImageResource.h"
 #include "sdl/graphics/Graphics.h"
 #include "sdl/components/Window.h"
-
-Window* window = nullptr;
-SDL_Surface* globalScreenSurface = nullptr;
-SDL_Surface* imageSurface = nullptr;
-
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+#include "config/Config.h"
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	try {
 		Graphics::boot();
-		window = new Window("Hello, World!", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-		globalScreenSurface = window->getWindowSurface();
-		imageSurface = ImageResource::load(Resources::helloImage);
 
-		SDL_BlitSurface(imageSurface, NULL, globalScreenSurface, NULL);
+		Window* window = new Window(
+			"Hello, World!",
+			SDL_WINDOWPOS_UNDEFINED,
+			SDL_WINDOWPOS_UNDEFINED,
+			Config::SCREEN_WIDTH,
+			Config::SCREEN_HEIGHT,
+			SDL_WINDOW_SHOWN
+		);
+
+		SDL_Surface* imageSurface = ImageResource::load(Resources::helloImage);
+
+		window->getWindowSurface()->paint(imageSurface);
 		window->updateWindowSurface();
 
 		SDL_Delay(5000);

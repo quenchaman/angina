@@ -26,6 +26,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/graphics/Graphics.cpp
 	${DIR}/sdl/components/Window.h
 	${DIR}/sdl/components/Window.cpp
+	${DIR}/sdl/components/Surface.h
+	${DIR}/sdl/components/Surface.cpp
+	${DIR}/config/Config.h
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

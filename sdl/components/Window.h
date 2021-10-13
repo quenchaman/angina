@@ -12,19 +12,22 @@
 
 #include "SDL.h"
 
+#include "Surface.h"
+
 class Window {
 public:
 	Window(std::string title, int x, int y, int w, int h, SDL_WindowFlags flags);
 
 	SDL_Window* getWindow();
 
-	SDL_Surface* getWindowSurface();
+	Surface* getWindowSurface();
 
 	void updateWindowSurface();
 
 	~Window();
 private:
 	SDL_Window* window;
+	Surface* surface;
 
 	void init();
 };

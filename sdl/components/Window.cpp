@@ -16,20 +16,22 @@ Window::Window(std::string title, int x, int y, int w, int h, SDL_WindowFlags fl
 	if (window == nullptr) {
 		throw WindowInitException(SDL_GetError());
 	}
-}
 
-SDL_Window* Window::getWindow() {
-	return this->window;
-}
-
-SDL_Surface* Window::getWindowSurface() {
 	SDL_Surface* ws = SDL_GetWindowSurface(this->window);
 
 	if (ws == nullptr) {
 		throw WindowInitException(SDL_GetError());
 	}
 
-	return ws;
+	this->surface = new Surface(ws);
+}
+
+SDL_Window* Window::getWindow() {
+	return this->window;
+}
+
+Surface* Window::getWindowSurface() {
+	return this->surface;
 }
 
 void Window::updateWindowSurface() {
@@ -38,4 +40,8 @@ void Window::updateWindowSurface() {
 
 Window::~Window() {
 	SDL_DestroyWindow(this->window);
+
+	if (&this->surface != nullptr) {
+		delete &this->surface;
+	}
 }
