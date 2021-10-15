@@ -10,11 +10,14 @@
 
 #include <cstdint>
 #include <string>
+#include <vector>
 
 #include "sdl/components/Surface.h"
 
 namespace ImageResource {
 	Surface* load(std::string path);
+
+	std::vector<Surface*> loadBulk(std::vector<std::string> paths);
 }
 
 #endif /* SDL_IMAGERESOURCE_H_ */

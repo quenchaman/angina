@@ -29,4 +29,16 @@ namespace ImageResource {
 
 		return new Surface(image);
 	}
+
+	std::vector<Surface*> loadBulk(std::vector<std::string> paths) {
+		std::vector<Surface*> images;
+
+		for (std::string path : paths) {
+			images.push_back(ImageResource::load(path));
+		}
+
+		return images;
+	}
 }
+
+

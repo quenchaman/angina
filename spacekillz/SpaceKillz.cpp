@@ -10,23 +10,60 @@
 #include "sdl/resources/ImageResource.h"
 #include "resources/Resources.h"
 
+enum KeyPressSurfaces
+{
+    KEY_PRESS_SURFACE_DEFAULT,
+    KEY_PRESS_SURFACE_UP,
+    KEY_PRESS_SURFACE_DOWN,
+    KEY_PRESS_SURFACE_LEFT,
+    KEY_PRESS_SURFACE_RIGHT
+};
+
 SpaceKillz::SpaceKillz(): Engine() {
 	this->imageSurface = nullptr;
+	std::vector<std::string> paths = {
+			Resources::press,
+			Resources::up,
+			Resources::down,
+			Resources::left,
+			Resources::right
+	};
+	this->images = ImageResource::loadBulk(paths);
 }
 
 void SpaceKillz::draw() {
-
+	window->getWindowSurface().paint(*imageSurface);
+	SDL_Delay(50);
 }
 
 void SpaceKillz::executeGameLogic() {
-	SDL_Delay(5000);
+
 }
 
 void SpaceKillz::init() {
-	this->imageSurface = ImageResource::load(Resources::helloImage);
-	window->getWindowSurface().paint(*imageSurface);
+	this->imageSurface = this->images[KEY_PRESS_SURFACE_DEFAULT];
 }
 
 SpaceKillz::~SpaceKillz() {
 	this->imageSurface = nullptr;
+}
+
+void SpaceKillz::handleUpArrowKey() {
+	this->imageSurface = this->images[KEY_PRESS_SURFACE_UP];
+}
+
+void SpaceKillz::handleDownArrowKey() {
+	this->imageSurface = this->images[KEY_PRESS_SURFACE_DOWN];
+}
+
+void SpaceKillz::handleLeftArrowKey() {
+	this->imageSurface = this->images[KEY_PRESS_SURFACE_LEFT];
+}
+
+void SpaceKillz::handleRightArrowKey() {
+	this->imageSurface = this->images[KEY_PRESS_SURFACE_RIGHT];
+}
+
+void SpaceKillz::handleOtherKey() {
+	this->imageSurface = this->images[KEY_PRESS_SURFACE_DEFAULT];
 }

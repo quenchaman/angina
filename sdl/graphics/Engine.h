@@ -21,6 +21,12 @@ public:
 	virtual void init() = 0;
 	virtual void draw() = 0;
 	virtual void executeGameLogic() = 0;
+
+	virtual void handleUpArrowKey() = 0;
+	virtual void handleDownArrowKey() = 0;
+	virtual void handleLeftArrowKey() = 0;
+	virtual void handleRightArrowKey() = 0;
+	virtual void handleOtherKey() = 0;
 protected:
 	Window* window;
 	bool quit;

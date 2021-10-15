@@ -10,6 +10,8 @@
 
 #include "sdl/graphics/Engine.h"
 
+#include <vector>
+
 class SpaceKillz : public Engine {
 public:
 	SpaceKillz();
@@ -17,8 +19,15 @@ public:
 	void init();
 	void executeGameLogic();
 	void draw();
+
+	void handleUpArrowKey();
+	void handleDownArrowKey();
+	void handleLeftArrowKey();
+	void handleRightArrowKey();
+	void handleOtherKey();
 private:
 	Surface* imageSurface;
+	std::vector<Surface*> images;
 };
 
 

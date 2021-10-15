@@ -27,7 +27,26 @@ void Engine::start() {
 		while (SDL_PollEvent(&this->e) != 0) {
 			if (this->e.type == SDL_QUIT) {
 				this->quit = true;
-				break;
+			} else if (this->e.type == SDL_KEYDOWN) {
+				switch (this->e.key.keysym.sym) {
+					case SDLK_UP:
+						this->handleUpArrowKey();
+						break;
+					case SDLK_DOWN:
+						this->handleDownArrowKey();
+						break;
+					case SDLK_LEFT:
+						this->handleLeftArrowKey();
+						break;
+					case SDLK_RIGHT:
+						this->handleRightArrowKey();
+						break;
+					default:
+						handleOtherKey();
+						break;
+				}
+			} else {
+				handleOtherKey();
 			}
 		}
 

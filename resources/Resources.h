@@ -12,6 +12,11 @@
 
 namespace Resources {
 	const std::string helloImage = "hello.bmp";
+	const std::string down = "down.bmp";
+	const std::string up = "up.bmp";
+	const std::string left = "left.bmp";
+	const std::string right = "right.bmp";
+	const std::string press = "press.bmp";
 };
 
 
