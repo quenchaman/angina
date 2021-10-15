@@ -13,23 +13,15 @@
 #include "sdl/components/Window.h"
 #include "config/Config.h"
 
+#include "spacekillz/SpaceKillz.h"
+
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	try {
 		Graphics::boot();
 
-		Window* window = new Window(
-			"Hello, World!",
-			SDL_WINDOWPOS_UNDEFINED,
-			SDL_WINDOWPOS_UNDEFINED,
-			Config::SCREEN_WIDTH,
-			Config::SCREEN_HEIGHT,
-			SDL_WINDOW_SHOWN
-		);
+		Engine* engine = new SpaceKillz();
 
-		Surface& imageSurface = *ImageResource::load(Resources::helloImage);
-
-		window->getWindowSurface().paint(imageSurface);
-		window->updateWindowSurface();
+		engine->start();
 
 		SDL_Delay(5000);
 

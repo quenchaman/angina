@@ -24,11 +24,15 @@ add_executable(${PROJECT_NAME}
 	${DIR}/resources/Resources.h
 	${DIR}/sdl/graphics/Graphics.h
 	${DIR}/sdl/graphics/Graphics.cpp
+	${DIR}/sdl/graphics/Engine.h
+	${DIR}/sdl/graphics/Engine.cpp
 	${DIR}/sdl/components/Window.h
 	${DIR}/sdl/components/Window.cpp
 	${DIR}/sdl/components/Surface.h
 	${DIR}/sdl/components/Surface.cpp
 	${DIR}/config/Config.h
+	${DIR}/spacekillz/SpaceKillz.h
+	${DIR}/spacekillz/SpaceKillz.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
