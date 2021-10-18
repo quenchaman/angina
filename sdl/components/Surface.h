@@ -16,6 +16,7 @@ public:
 	~Surface();
 
 	void paint(const Surface& other);
+	SDL_PixelFormat* getFormat();
 private:
 	SDL_Surface* _surface;
 };

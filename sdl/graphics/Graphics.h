@@ -14,6 +14,7 @@
 
 namespace Graphics {
 	void boot();
+	void bootImageExtension();
 }
 
 

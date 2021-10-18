@@ -19,3 +19,6 @@ void Surface::paint(const Surface& other) {
 	SDL_BlitSurface(other._surface, NULL, this->_surface, NULL);
 }
 
+SDL_PixelFormat* Surface::getFormat() {
+	return this->_surface->format;
+}

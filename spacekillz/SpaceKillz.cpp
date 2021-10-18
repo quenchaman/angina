@@ -19,16 +19,16 @@ enum KeyPressSurfaces
     KEY_PRESS_SURFACE_RIGHT
 };
 
+std::vector<std::string> paths = {
+		Resources::press,
+		Resources::up,
+		Resources::down,
+		Resources::left,
+		Resources::right
+};
+
 SpaceKillz::SpaceKillz(): Engine() {
 	this->imageSurface = nullptr;
-	std::vector<std::string> paths = {
-			Resources::press,
-			Resources::up,
-			Resources::down,
-			Resources::left,
-			Resources::right
-	};
-	this->images = ImageResource::loadBulk(paths);
 }
 
 void SpaceKillz::draw() {
@@ -41,6 +41,8 @@ void SpaceKillz::executeGameLogic() {
 }
 
 void SpaceKillz::init() {
+	SDL_PixelFormat* format = window->getWindowSurface().getFormat();
+	this->images = ImageResource::loadBulk(paths, format);
 	this->imageSurface = this->images[KEY_PRESS_SURFACE_DEFAULT];
 }
 

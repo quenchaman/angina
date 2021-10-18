@@ -39,11 +39,19 @@ set_target_cpp_standard(${PROJECT_NAME} 17)
 enable_target_warnings(${PROJECT_NAME})
 
 find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
+
+if (WIN32)
+	find_package(SDL2_IMAGE REQUIRED)
+endif (WIN32)
+
+if (UNIX)
+	find_package(SDL2_image REQUIRED)
+endif (UNIX)
+
 #find_package(SDL2_ttf REQUIRED)
 #find_package(SDL2_mixer REQUIRED)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${DIR})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY})

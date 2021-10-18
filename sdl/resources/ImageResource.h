@@ -15,9 +15,9 @@
 #include "sdl/components/Surface.h"
 
 namespace ImageResource {
-	Surface* load(std::string path);
+	Surface* load(std::string path, SDL_PixelFormat* screenFormat);
 
-	std::vector<Surface*> loadBulk(std::vector<std::string> paths);
+	std::vector<Surface*> loadBulk(std::vector<std::string> paths, SDL_PixelFormat* screenFormat);
 }
 
 #endif /* SDL_IMAGERESOURCE_H_ */
