@@ -4,13 +4,8 @@
  *  Created on: Oct 12, 2021
  *      Author: valeri
  */
-#include <cstdint>
-
-#include "SDL.h"
-#include "SDL_image.h"
 
 #include "Graphics.h"
-#include "exceptions/GraphicsInitException.h"
 
 namespace Graphics {
 	const int32_t imgFlags = IMG_INIT_PNG;
@@ -25,5 +20,15 @@ namespace Graphics {
 		if (!(IMG_Init(imgFlags) & imgFlags)) {
 			throw GraphicsInitException(SDL_GetError());
 		}
+	}
+
+	SDL_Renderer* bootRenderer(SDL_Window* window) {
+		SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+		if (renderer == nullptr) {
+			throw GraphicsInitException(SDL_GetError());
+		}
+
+		return renderer;
 	}
 }

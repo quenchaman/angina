@@ -9,8 +9,11 @@
 #define SDL_GRAPHICS_ENGINE_H_
 
 #include "SDL.h"
+#include "SDL_image.h"
 
 #include "sdl/components/Window.h"
+#include "config/Config.h"
+#include "sdl/graphics/Graphics.h"
 
 class Engine {
 public:
@@ -31,6 +34,7 @@ protected:
 	Window* window;
 	bool quit;
 	SDL_Event e;
+	SDL_Renderer* renderer;
 };
 
 

@@ -41,8 +41,7 @@ void SpaceKillz::executeGameLogic() {
 }
 
 void SpaceKillz::init() {
-	SDL_PixelFormat* format = window->getWindowSurface().getFormat();
-	this->images = ImageResource::loadBulk(paths, format);
+	this->images = ImageResource::loadBulk(paths);
 	this->imageSurface = this->images[KEY_PRESS_SURFACE_DEFAULT];
 }
 

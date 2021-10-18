@@ -6,7 +6,6 @@
  */
 
 #include "sdl/graphics/Engine.h"
-#include "config/Config.h"
 
 Engine::Engine() {
 	this->window = (new Window(
@@ -18,9 +17,12 @@ Engine::Engine() {
 		SDL_WINDOW_SHOWN
 	));
 	this->quit = false;
+	this->renderer = Graphics::bootRenderer(this->window->getWindow());
 }
 
 void Engine::start() {
+	// TODO: wrap this renderer class
+	SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	this->init();
 
 	while (!this->quit) {
