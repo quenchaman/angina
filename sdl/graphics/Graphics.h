@@ -16,12 +16,14 @@
 
 #include <SDL.h>
 
+#include "sdl/graphics/Renderer.h"
+
 #include "exceptions/GraphicsInitException.h"
 
 namespace Graphics {
 	void boot();
 	void bootImageExtension();
-	SDL_Renderer* bootRenderer(SDL_Window* window);
+	Renderer& bootRenderer(SDL_Window* window);
 }
 
 

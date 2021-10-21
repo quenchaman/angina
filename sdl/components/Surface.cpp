@@ -22,3 +22,7 @@ void Surface::paint(const Surface& other) {
 SDL_PixelFormat* Surface::getFormat() {
 	return this->_surface->format;
 }
+
+SDL_Surface* Surface::getSurface() {
+	return this->_surface;
+}

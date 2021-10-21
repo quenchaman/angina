@@ -22,13 +22,13 @@ namespace Graphics {
 		}
 	}
 
-	SDL_Renderer* bootRenderer(SDL_Window* window) {
+	Renderer& bootRenderer(SDL_Window* window) {
 		SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 		if (renderer == nullptr) {
 			throw GraphicsInitException(SDL_GetError());
 		}
 
-		return renderer;
+		return *new Renderer(renderer);
 	}
 }

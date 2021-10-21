@@ -26,6 +26,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/graphics/Graphics.cpp
 	${DIR}/sdl/graphics/Engine.h
 	${DIR}/sdl/graphics/Engine.cpp
+	${DIR}/sdl/graphics/Renderer.h
+	${DIR}/sdl/graphics/Renderer.cpp
 	${DIR}/sdl/components/Window.h
 	${DIR}/sdl/components/Window.cpp
 	${DIR}/sdl/components/Surface.h

@@ -9,6 +9,7 @@
 #include "SpaceKillz.h"
 #include "sdl/resources/ImageResource.h"
 #include "resources/Resources.h"
+#include "sdl/graphics/Texture.h"
 
 enum KeyPressSurfaces
 {
@@ -28,11 +29,13 @@ std::vector<std::string> paths = {
 };
 
 SpaceKillz::SpaceKillz(): Engine() {
-	this->imageSurface = nullptr;
+	this->image = nullptr;
 }
 
 void SpaceKillz::draw() {
-	window->getWindowSurface().paint(*imageSurface);
+//	window->getWindowSurface().paint(*imageSurface);
+	this->renderer.clearRenderer();
+	this->renderer.updateScreen();
 	SDL_Delay(50);
 }
 
@@ -42,29 +45,32 @@ void SpaceKillz::executeGameLogic() {
 
 void SpaceKillz::init() {
 	this->images = ImageResource::loadBulk(paths);
-	this->imageSurface = this->images[KEY_PRESS_SURFACE_DEFAULT];
+	this->image = new Texture(
+			this->images[KEY_PRESS_SURFACE_DEFAULT],
+			this->renderer
+	 );
 }
 
 SpaceKillz::~SpaceKillz() {
-	this->imageSurface = nullptr;
+	this->image = nullptr;
 }
 
 void SpaceKillz::handleUpArrowKey() {
-	this->imageSurface = this->images[KEY_PRESS_SURFACE_UP];
+	this->image = this->images[KEY_PRESS_SURFACE_UP];
 }
 
 void SpaceKillz::handleDownArrowKey() {
-	this->imageSurface = this->images[KEY_PRESS_SURFACE_DOWN];
+	this->image = this->images[KEY_PRESS_SURFACE_DOWN];
 }
 
 void SpaceKillz::handleLeftArrowKey() {
-	this->imageSurface = this->images[KEY_PRESS_SURFACE_LEFT];
+	this->image = this->images[KEY_PRESS_SURFACE_LEFT];
 }
 
 void SpaceKillz::handleRightArrowKey() {
-	this->imageSurface = this->images[KEY_PRESS_SURFACE_RIGHT];
+	this->image = this->images[KEY_PRESS_SURFACE_RIGHT];
 }
 
 void SpaceKillz::handleOtherKey() {
-	this->imageSurface = this->images[KEY_PRESS_SURFACE_DEFAULT];
+	this->image = this->images[KEY_PRESS_SURFACE_DEFAULT];
 }

@@ -7,22 +7,17 @@
 
 #include "sdl/graphics/Engine.h"
 
-Engine::Engine() {
-	this->window = (new Window(
+Engine::Engine(): window(new Window(
 		"Hello, World!",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		Config::SCREEN_WIDTH,
 		Config::SCREEN_HEIGHT,
 		SDL_WINDOW_SHOWN
-	));
-	this->quit = false;
-	this->renderer = Graphics::bootRenderer(this->window->getWindow());
+	)), quit(false), renderer(Graphics::bootRenderer(this->window->getWindow())) {
 }
 
 void Engine::start() {
-	// TODO: wrap this renderer class
-	SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	this->init();
 
 	while (!this->quit) {

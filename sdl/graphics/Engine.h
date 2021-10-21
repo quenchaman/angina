@@ -14,6 +14,7 @@
 #include "sdl/components/Window.h"
 #include "config/Config.h"
 #include "sdl/graphics/Graphics.h"
+#include "sdl/graphics/Renderer.h"
 
 class Engine {
 public:
@@ -34,7 +35,7 @@ protected:
 	Window* window;
 	bool quit;
 	SDL_Event e;
-	SDL_Renderer* renderer;
+	Renderer& renderer;
 };
 
 
