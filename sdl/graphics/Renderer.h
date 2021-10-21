@@ -19,6 +19,7 @@ public:
 	SDL_Renderer* getRenderer();
 	void render(Texture& texture);
 	void updateScreen();
+	Texture& transformSurfaceToTexture(Surface& surface);
 private:
 	SDL_Renderer* renderer;
 };

@@ -4,7 +4,15 @@
  *  Created on: Oct 9, 2021
  *      Author: valeri
  */
+#include <stdexcept>
+#include <filesystem>
+
+#include "SDL.h"
+#include "SDL_image.h"
+
+#include "sdl/components/Surface.h"
 #include "ImageResource.h"
+#include "exceptions/ResourceLoadException.h"
 
 namespace ImageResource {
 	const std::string resourceFolderBasePath = "../resources/";
@@ -12,7 +20,9 @@ namespace ImageResource {
 	Surface* load(std::string path) {
 		std::string fullPathToFile = resourceFolderBasePath + path;
 		std::string fileExtension = std::filesystem::path(fullPathToFile).extension();
-		SDL_Surface* image = IMG_Load(fullPathToFile.c_str());
+		SDL_Surface* image = nullptr;
+
+		image = IMG_Load(fullPathToFile.c_str());
 
 		if (image == nullptr) {
 			throw ResourceLoadException(SDL_GetError());

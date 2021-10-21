@@ -26,7 +26,7 @@ public:
 	void handleRightArrowKey();
 	void handleOtherKey();
 private:
-	Texture& image;
+	Texture* image;
 	std::vector<Surface*> images;
 };
 

@@ -28,3 +28,16 @@ void Renderer::render(Texture& texture) {
 void Renderer::updateScreen() {
 	SDL_RenderPresent(this->renderer);
 }
+
+Texture& Renderer::transformSurfaceToTexture(Surface& surface) {
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(
+			this->renderer,
+			surface.getSurface()
+	);
+
+	if (texture == nullptr) {
+		throw GraphicsInitException(SDL_GetError());
+	}
+
+	return *(new Texture(texture));
+}

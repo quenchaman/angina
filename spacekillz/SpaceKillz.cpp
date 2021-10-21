@@ -33,8 +33,8 @@ SpaceKillz::SpaceKillz(): Engine() {
 }
 
 void SpaceKillz::draw() {
-//	window->getWindowSurface().paint(*imageSurface);
 	this->renderer.clearRenderer();
+	this->renderer.render(*this->image);
 	this->renderer.updateScreen();
 	SDL_Delay(50);
 }
@@ -45,9 +45,8 @@ void SpaceKillz::executeGameLogic() {
 
 void SpaceKillz::init() {
 	this->images = ImageResource::loadBulk(paths);
-	this->image = new Texture(
-			this->images[KEY_PRESS_SURFACE_DEFAULT],
-			this->renderer
+	this->image = &this->renderer.transformSurfaceToTexture(
+			*this->images[KEY_PRESS_SURFACE_DEFAULT]
 	 );
 }
 
@@ -56,21 +55,21 @@ SpaceKillz::~SpaceKillz() {
 }
 
 void SpaceKillz::handleUpArrowKey() {
-	this->image = this->images[KEY_PRESS_SURFACE_UP];
+	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_UP]);
 }
 
 void SpaceKillz::handleDownArrowKey() {
-	this->image = this->images[KEY_PRESS_SURFACE_DOWN];
+	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_DOWN]);
 }
 
 void SpaceKillz::handleLeftArrowKey() {
-	this->image = this->images[KEY_PRESS_SURFACE_LEFT];
+	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_LEFT]);;
 }
 
 void SpaceKillz::handleRightArrowKey() {
-	this->image = this->images[KEY_PRESS_SURFACE_RIGHT];
+	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_RIGHT]);
 }
 
 void SpaceKillz::handleOtherKey() {
-	this->image = this->images[KEY_PRESS_SURFACE_DEFAULT];
+	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_DEFAULT]);
 }

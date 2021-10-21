@@ -9,18 +9,16 @@
 #define SDL_GRAPHICS_TEXTURE_H_
 
 #include "sdl/components/Surface.h"
-#include "sdl/graphics/Renderer.h"
 #include "exceptions/GraphicsInitException.h"
+#include "SDL.h"
 
 class Texture {
 public:
-	Texture(Surface& surface, Renderer& renderer);
+	Texture(SDL_Texture* texture);
 
 	SDL_Texture* getTexture();
 private:
 	SDL_Texture* texture;
-
-	SDL_Texture* fromSurface(Surface& surface, Renderer& renderer);
 };
 
 
