@@ -34,6 +34,10 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/components/Window.cpp
 	${DIR}/sdl/components/Surface.h
 	${DIR}/sdl/components/Surface.cpp
+	${DIR}/sdl/primitives/Point.h
+	${DIR}/sdl/primitives/Point.cpp
+	${DIR}/sdl/primitives/Rect.h
+	${DIR}/sdl/primitives/Rect.h
 	${DIR}/config/Config.h
 	${DIR}/spacekillz/SpaceKillz.h
 	${DIR}/spacekillz/SpaceKillz.cpp
