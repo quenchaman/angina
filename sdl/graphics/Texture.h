@@ -10,9 +10,10 @@
 
 #include "sdl/components/Surface.h"
 #include "exceptions/GraphicsInitException.h"
+#include "sdl/graphics/Drawable.h"
 #include "SDL.h"
 
-class Texture {
+class Texture : public Drawable {
 public:
 	Texture(SDL_Texture* texture);
 

@@ -11,7 +11,6 @@ SDL_Texture* Texture::getTexture() {
 	return this->texture;
 }
 
-
 Texture::Texture(SDL_Texture* _texture) {
 	this->texture = _texture;
 }

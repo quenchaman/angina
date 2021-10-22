@@ -10,9 +10,11 @@
 
 #include <cstdint>
 
+#include "sdl/graphics/Drawable.h"
+
 #include "SDL.h"
 
-class Rect {
+class Rect : public Drawable {
 public:
 	Rect(int32_t x, int32_t y, int32_t w, int32_t h);
 
