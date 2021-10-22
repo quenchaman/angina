@@ -8,20 +8,22 @@
 #ifndef SDL_GRAPHICS_TEXTURE_H_
 #define SDL_GRAPHICS_TEXTURE_H_
 
+#include <iostream>
+
 #include "sdl/components/Surface.h"
 #include "exceptions/GraphicsInitException.h"
 #include "sdl/graphics/Drawable.h"
 #include "SDL.h"
-
 #include "sdl/graphics/Renderer.h"
 
 class Texture : public Drawable {
 public:
 	Texture();
+	~Texture();
 	Texture(SDL_Texture* texture);
 
 	SDL_Texture* getTexture();
-	void draw(Renderer& renderer);
+	virtual void draw(Renderer& renderer) override;
 private:
 	SDL_Texture* texture;
 };

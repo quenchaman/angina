@@ -31,6 +31,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/graphics/Renderer.h
 	${DIR}/sdl/graphics/Renderer.cpp
 	${DIR}/sdl/graphics/Drawable.h
+	${DIR}/sdl/graphics/Drawable.cpp
 	${DIR}/sdl/components/Window.h
 	${DIR}/sdl/components/Window.cpp
 	${DIR}/sdl/components/Surface.h

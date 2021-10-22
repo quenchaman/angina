@@ -12,9 +12,9 @@ struct Renderer;
 
 class Drawable {
 public:
-	virtual ~Drawable() {}
+	virtual ~Drawable() = 0;
 
-	virtual void render(Renderer& renderer);
+	virtual void draw(Renderer& renderer) = 0;
 };
 
 
