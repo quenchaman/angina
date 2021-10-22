@@ -5,14 +5,16 @@
  *      Author: ubuntu
  */
 
-#include "sdl/graphics/Engine.h"
+#include "Engine.h"
+
+static ConfigData config = ConfigLoader::load();
 
 Engine::Engine(): window(new Window(
 		"Hello, World!",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
-		Config::SCREEN_WIDTH,
-		Config::SCREEN_HEIGHT,
+		config.screenWidth,
+		config.screenHeight,
 		SDL_WINDOW_SHOWN
 	)), quit(false), renderer(Graphics::bootRenderer(this->window->getWindow())) {
 }

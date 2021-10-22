@@ -41,12 +41,16 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/primitives/Rect.h
 	${DIR}/sdl/primitives/Rect.h
 	${DIR}/config/Config.h
+	${DIR}/config/ConfigData.h
+	${DIR}/config/ConfigLoader.h
+	${DIR}/config/ConfigLoader.cpp
 	${DIR}/spacekillz/SpaceKillz.h
 	${DIR}/spacekillz/SpaceKillz.cpp
 	${DIR}/sdl/components/Transformer.h
 	${DIR}/sdl/components/Transformer.cpp
 )
 
+set(JSON_BuildTests OFF CACHE INTERNAL "")
 set_target_cpp_standard(${PROJECT_NAME} 17)
 enable_target_warnings(${PROJECT_NAME})
 
@@ -63,7 +67,9 @@ endif (UNIX)
 #find_package(SDL2_ttf REQUIRED)
 #find_package(SDL2_mixer REQUIRED)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR})
+add_subdirectory(${DIR}/libs/json/json-3.10.4)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${INTERFACE_INCLUDE_DIRECTORIES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${DIR})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} nlohmann_json::nlohmann_json)

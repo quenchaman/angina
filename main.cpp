@@ -12,8 +12,8 @@
 #include "sdl/graphics/Graphics.h"
 #include "sdl/components/Window.h"
 #include "config/Config.h"
-
 #include "spacekillz/SpaceKillz.h"
+#include <nlohmann/json.hpp>
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	try {
