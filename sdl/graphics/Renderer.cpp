@@ -26,5 +26,5 @@ void Renderer::updateScreen() {
 }
 
 void Renderer::render(Drawable& drawable) {
-	drawable.draw();
+	drawable.draw(*this);
 }

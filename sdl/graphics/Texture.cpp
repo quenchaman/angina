@@ -18,7 +18,7 @@ Texture::Texture(SDL_Texture* _texture) {
 }
 
 void Texture::draw(Renderer& renderer) {
-	std::cout << "Hello madafakaz" << std::endl;
+	SDL_RenderCopy(renderer.getRenderer(), this->getTexture(), NULL, NULL);
 }
 
 Texture::~Texture() {}
