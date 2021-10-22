@@ -9,6 +9,8 @@
 #define SPACEKILLZ_H_
 
 #include "sdl/graphics/Engine.h"
+#include "sdl/graphics/Texture.h"
+#include "sdl/components/Transformer.h"
 
 #include <vector>
 
@@ -28,6 +30,7 @@ public:
 private:
 	Texture* image;
 	std::vector<Surface*> images;
+	std::vector<Texture*> textures;
 };
 
 

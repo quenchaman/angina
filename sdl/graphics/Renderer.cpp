@@ -21,23 +21,10 @@ SDL_Renderer* Renderer::getRenderer() {
 	return this->renderer;
 }
 
-void Renderer::render(Texture& texture) {
-	SDL_RenderCopy(this->renderer, texture.getTexture(), NULL, NULL);
-}
-
 void Renderer::updateScreen() {
 	SDL_RenderPresent(this->renderer);
 }
 
-Texture& Renderer::transformSurfaceToTexture(Surface& surface) {
-	SDL_Texture* texture = SDL_CreateTextureFromSurface(
-			this->renderer,
-			surface.getSurface()
-	);
-
-	if (texture == nullptr) {
-		throw GraphicsInitException(SDL_GetError());
-	}
-
-	return *(new Texture(texture));
+void Renderer::render(Drawable& drawable) {
+	drawable.render(*this);
 }

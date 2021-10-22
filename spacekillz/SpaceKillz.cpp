@@ -44,10 +44,8 @@ void SpaceKillz::executeGameLogic() {
 }
 
 void SpaceKillz::init() {
-	this->images = ImageResource::loadBulk(paths);
-	this->image = &this->renderer.transformSurfaceToTexture(
-			*this->images[KEY_PRESS_SURFACE_DEFAULT]
-	 );
+	std::vector<Surface*> surfaces = ImageResource::loadBulk(paths);
+	this->textures = Transformer::transformSurfacesToTextures(this->renderer, surfaces);
 }
 
 SpaceKillz::~SpaceKillz() {
@@ -55,21 +53,21 @@ SpaceKillz::~SpaceKillz() {
 }
 
 void SpaceKillz::handleUpArrowKey() {
-	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_UP]);
+	this->image = this->textures[KEY_PRESS_SURFACE_UP];
 }
 
 void SpaceKillz::handleDownArrowKey() {
-	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_DOWN]);
+	this->image = this->textures[KEY_PRESS_SURFACE_DOWN];
 }
 
 void SpaceKillz::handleLeftArrowKey() {
-	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_LEFT]);;
+	this->image = this->textures[KEY_PRESS_SURFACE_LEFT];
 }
 
 void SpaceKillz::handleRightArrowKey() {
-	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_RIGHT]);
+	this->image = this->textures[KEY_PRESS_SURFACE_RIGHT];
 }
 
 void SpaceKillz::handleOtherKey() {
-	this->image = &this->renderer.transformSurfaceToTexture(*this->images[KEY_PRESS_SURFACE_DEFAULT]);
+	this->image = this->textures[KEY_PRESS_SURFACE_DEFAULT];
 }

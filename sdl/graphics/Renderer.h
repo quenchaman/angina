@@ -9,7 +9,8 @@
 #define SDL_GRAPHICS_RENDERER_H_
 
 #include "SDL.h"
-#include "sdl/graphics/Texture.h"
+
+#include "sdl/graphics/Drawable.h"
 
 class Renderer {
 public:
@@ -17,9 +18,8 @@ public:
 
 	void clearRenderer();
 	SDL_Renderer* getRenderer();
-	void render(Texture& texture);
+	void render(Drawable& drawable);
 	void updateScreen();
-	Texture& transformSurfaceToTexture(Surface& surface);
 private:
 	SDL_Renderer* renderer;
 };

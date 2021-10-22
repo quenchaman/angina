@@ -13,11 +13,15 @@
 #include "sdl/graphics/Drawable.h"
 #include "SDL.h"
 
+#include "sdl/graphics/Renderer.h"
+
 class Texture : public Drawable {
 public:
+	Texture();
 	Texture(SDL_Texture* texture);
 
 	SDL_Texture* getTexture();
+	void draw(Renderer& renderer);
 private:
 	SDL_Texture* texture;
 };

@@ -42,6 +42,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/config/Config.h
 	${DIR}/spacekillz/SpaceKillz.h
 	${DIR}/spacekillz/SpaceKillz.cpp
+	${DIR}/sdl/components/Transformer.h
+	${DIR}/sdl/components/Transformer.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

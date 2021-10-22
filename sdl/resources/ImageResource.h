@@ -19,7 +19,6 @@
 
 #include "sdl/components/Surface.h"
 #include "exceptions/ResourceLoadException.h"
-
 #include "sdl/components/Surface.h"
 
 namespace ImageResource {
