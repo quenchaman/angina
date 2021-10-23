@@ -21,4 +21,8 @@ void Texture::draw(Renderer& renderer) {
 	SDL_RenderCopy(renderer.getRenderer(), this->getTexture(), NULL, NULL);
 }
 
+void Texture::draw(Renderer& renderer, const SDL_Rect* destRect) {
+	SDL_RenderCopy(renderer.getRenderer(), this->getTexture(), NULL, destRect);
+}
+
 Texture::~Texture() {}

@@ -26,5 +26,5 @@ void Renderer::updateScreen() {
 }
 
 void Renderer::render(Drawable& drawable) {
-	drawable.draw(*this);
+	drawable.draw(*this, nullptr);
 }

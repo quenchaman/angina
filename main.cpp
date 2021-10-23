@@ -12,19 +12,17 @@
 #include "sdl/graphics/Graphics.h"
 #include "sdl/components/Window.h"
 #include "config/Config.h"
-#include "spacekillz/SpaceKillz.h"
 #include <nlohmann/json.hpp>
+#include "aota/Aota.h"
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	try {
 		Graphics::boot();
 		Graphics::bootImageExtension();
 
-		Engine* engine = new SpaceKillz();
+		Engine* engine = new Aota();
 
 		engine->start();
-
-		SDL_Delay(5000);
 
 		return EXIT_SUCCESS;
 	} catch (const BaseException& ex) {

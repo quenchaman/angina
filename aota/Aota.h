@@ -5,19 +5,22 @@
  *      Author: ubuntu
  */
 
-#ifndef SPACEKILLZ_H_
-#define SPACEKILLZ_H_
+#ifndef AOTA_H_
+#define AOTA_H_
 
 #include "sdl/graphics/Engine.h"
 #include "sdl/graphics/Texture.h"
 #include "sdl/components/Transformer.h"
 
-#include <vector>
+#include <SDL.h>
 
-class SpaceKillz : public Engine {
+#include <vector>
+#include <iostream>
+
+class Aota : public Engine {
 public:
-	SpaceKillz();
-	~SpaceKillz();
+	Aota();
+	~Aota();
 	void init();
 	void executeGameLogic();
 	void draw();
@@ -34,4 +37,4 @@ private:
 };
 
 
-#endif /* SPACEKILLZ_H_ */
+#endif /* AOTA_H_ */

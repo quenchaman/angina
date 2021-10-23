@@ -24,6 +24,7 @@ public:
 
 	SDL_Texture* getTexture();
 	virtual void draw(Renderer& renderer) override;
+	virtual void draw(Renderer& renderer, const SDL_Rect* destRect) override;
 private:
 	SDL_Texture* texture;
 };

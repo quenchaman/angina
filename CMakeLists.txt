@@ -44,8 +44,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/config/ConfigData.h
 	${DIR}/config/ConfigLoader.h
 	${DIR}/config/ConfigLoader.cpp
-	${DIR}/spacekillz/SpaceKillz.h
-	${DIR}/spacekillz/SpaceKillz.cpp
+	${DIR}/aota/Aota.h
+	${DIR}/aota/Aota.cpp
 	${DIR}/sdl/components/Transformer.h
 	${DIR}/sdl/components/Transformer.cpp
 )

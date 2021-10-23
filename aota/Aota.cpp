@@ -5,8 +5,9 @@
  *      Author: ubuntu
  */
 
+#include "Aota.h"
+
 #include "sdl/graphics/Engine.h"
-#include "SpaceKillz.h"
 #include "sdl/resources/ImageResource.h"
 #include "resources/Resources.h"
 #include "sdl/graphics/Texture.h"
@@ -21,53 +22,61 @@ enum KeyPressSurfaces
 };
 
 std::vector<std::string> paths = {
-		Resources::press,
+		Resources::map,
 		Resources::up,
 		Resources::down,
 		Resources::left,
 		Resources::right
 };
 
-SpaceKillz::SpaceKillz(): Engine() {
+const SDL_Rect mapRect = {
+		0, 0, 4096, 4096
+	};
+
+Aota::Aota(): Engine() {
 	this->image = nullptr;
 }
 
-void SpaceKillz::draw() {
+void Aota::draw() {
+
 	this->renderer.clearRenderer();
-	this->renderer.render(*this->image);
+//	this->renderer.render(*this->image);
+	this->image->draw(this->renderer, &mapRect);
+//	SDL_RenderCopy(this->renderer.getRenderer(), this->image->getTexture(), NULL, NULL);
 	this->renderer.updateScreen();
 	SDL_Delay(50);
 }
 
-void SpaceKillz::executeGameLogic() {
+void Aota::executeGameLogic() {
 
 }
 
-void SpaceKillz::init() {
+void Aota::init() {
 	std::vector<Surface*> surfaces = ImageResource::loadBulk(paths);
 	this->textures = Transformer::transformSurfacesToTextures(this->renderer, surfaces);
+	this->handleOtherKey();
 }
 
-SpaceKillz::~SpaceKillz() {
+Aota::~Aota() {
 	this->image = nullptr;
 }
 
-void SpaceKillz::handleUpArrowKey() {
+void Aota::handleUpArrowKey() {
 	this->image = this->textures[KEY_PRESS_SURFACE_UP];
 }
 
-void SpaceKillz::handleDownArrowKey() {
+void Aota::handleDownArrowKey() {
 	this->image = this->textures[KEY_PRESS_SURFACE_DOWN];
 }
 
-void SpaceKillz::handleLeftArrowKey() {
+void Aota::handleLeftArrowKey() {
 	this->image = this->textures[KEY_PRESS_SURFACE_LEFT];
 }
 
-void SpaceKillz::handleRightArrowKey() {
+void Aota::handleRightArrowKey() {
 	this->image = this->textures[KEY_PRESS_SURFACE_RIGHT];
 }
 
-void SpaceKillz::handleOtherKey() {
+void Aota::handleOtherKey() {
 	this->image = this->textures[KEY_PRESS_SURFACE_DEFAULT];
 }
