@@ -7,14 +7,12 @@
 
 #include "Engine.h"
 
-static ConfigData config = ConfigLoader::load();
-
 Engine::Engine(): window(new Window(
 		"Hello, World!",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
-		config.screenWidth,
-		config.screenHeight,
+		Globals::config.screenWidth,
+		Globals::config.screenHeight,
 		SDL_WINDOW_SHOWN
 	)), quit(false), renderer(Graphics::bootRenderer(this->window->getWindow())) {
 }

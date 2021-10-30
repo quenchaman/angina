@@ -11,6 +11,7 @@
 #include "sdl/graphics/Engine.h"
 #include "sdl/graphics/Texture.h"
 #include "sdl/components/Transformer.h"
+#include "sdl/graphics/Image.h"
 
 #include <SDL.h>
 
@@ -31,9 +32,9 @@ public:
 	void handleRightArrowKey();
 	void handleOtherKey();
 private:
-	Texture* image;
+	Image* gameImage;
 	std::vector<Surface*> images;
-	std::vector<Texture*> textures;
+	std::vector<Image*> gameImages;
 };
 
 

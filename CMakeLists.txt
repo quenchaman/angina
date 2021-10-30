@@ -32,6 +32,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/graphics/Renderer.cpp
 	${DIR}/sdl/graphics/Drawable.h
 	${DIR}/sdl/graphics/Drawable.cpp
+	${DIR}/sdl/graphics/Image.h
+	${DIR}/sdl/graphics/Image.cpp
 	${DIR}/sdl/components/Window.h
 	${DIR}/sdl/components/Window.cpp
 	${DIR}/sdl/components/Surface.h
@@ -43,6 +45,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/config/Config.h
 	${DIR}/config/ConfigData.h
 	${DIR}/config/ConfigLoader.h
+	${DIR}/config/Globals.h
 	${DIR}/config/ConfigLoader.cpp
 	${DIR}/aota/Aota.h
 	${DIR}/aota/Aota.cpp

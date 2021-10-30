@@ -22,27 +22,28 @@ enum KeyPressSurfaces
 };
 
 std::vector<std::string> paths = {
-		Resources::map,
-		Resources::up,
-		Resources::down,
-		Resources::left,
-		Resources::right
+		Resources::map
 };
 
 const SDL_Rect mapRect = {
-		0, 0, 4096, 4096
-	};
+	0, 0, 4096, 4096
+};
+
+int32_t mapMovementSpeed = 10;
 
 Aota::Aota(): Engine() {
-	this->image = nullptr;
+	this->gameImage = nullptr;
 }
 
+// TODO: I should have a data structure that will store images and their dementions and also
+// their position relative to the 0,0 point.
 void Aota::draw() {
 
 	this->renderer.clearRenderer();
 //	this->renderer.render(*this->image);
-	this->image->draw(this->renderer, &mapRect);
-//	SDL_RenderCopy(this->renderer.getRenderer(), this->image->getTexture(), NULL, NULL);
+
+	this->gameImage->draw(this->renderer);
+
 	this->renderer.updateScreen();
 	SDL_Delay(50);
 }
@@ -53,30 +54,35 @@ void Aota::executeGameLogic() {
 
 void Aota::init() {
 	std::vector<Surface*> surfaces = ImageResource::loadBulk(paths);
-	this->textures = Transformer::transformSurfacesToTextures(this->renderer, surfaces);
+	std::vector<Texture*> textures = Transformer::transformSurfacesToTextures(this->renderer, surfaces);
+
+	this->gameImages.push_back(new Image(*textures.at(0), mapRect));
+
+	this->gameImage = this->gameImages.at(0);
+
 	this->handleOtherKey();
 }
 
 Aota::~Aota() {
-	this->image = nullptr;
+	this->gameImage = nullptr;
 }
 
 void Aota::handleUpArrowKey() {
-	this->image = this->textures[KEY_PRESS_SURFACE_UP];
+	this->gameImage->moveDown(mapMovementSpeed);
 }
 
 void Aota::handleDownArrowKey() {
-	this->image = this->textures[KEY_PRESS_SURFACE_DOWN];
+	this->gameImage->moveUp(mapMovementSpeed);
 }
 
 void Aota::handleLeftArrowKey() {
-	this->image = this->textures[KEY_PRESS_SURFACE_LEFT];
+	this->gameImage = this->gameImages[KEY_PRESS_SURFACE_LEFT];
 }
 
 void Aota::handleRightArrowKey() {
-	this->image = this->textures[KEY_PRESS_SURFACE_RIGHT];
+	this->gameImage = this->gameImages[KEY_PRESS_SURFACE_RIGHT];
 }
 
 void Aota::handleOtherKey() {
-	this->image = this->textures[KEY_PRESS_SURFACE_DEFAULT];
+	this->gameImage = this->gameImages[KEY_PRESS_SURFACE_DEFAULT];
 }

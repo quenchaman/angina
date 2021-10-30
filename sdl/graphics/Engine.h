@@ -12,8 +12,7 @@
 #include "SDL_image.h"
 
 #include "sdl/components/Window.h"
-#include "config/ConfigData.h"
-#include "config/ConfigLoader.h"
+#include "config/Globals.h"
 #include "sdl/graphics/Graphics.h"
 #include "sdl/graphics/Renderer.h"
 

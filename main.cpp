@@ -4,14 +4,6 @@
 
 #include <SDL.h>
 
-#include "exceptions/ResourceLoadException.h"
-#include "exceptions/GraphicsInitException.h"
-#include "exceptions/WindowInitException.h"
-#include "resources/Resources.h"
-#include "sdl/resources/ImageResource.h"
-#include "sdl/graphics/Graphics.h"
-#include "sdl/components/Window.h"
-#include "config/Config.h"
 #include <nlohmann/json.hpp>
 #include "aota/Aota.h"
 
