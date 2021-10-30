@@ -41,5 +41,29 @@ void Image::moveDown(int32_t y) {
 
 	std::cout << "New position: x -> " << this->boundingBox.x << ", y -> " << this->boundingBox.y << std::endl;
 }
-//void Image::moveLeft(int32_t x);
-//void Image::moveRight(int32_t x);
+
+void Image::moveLeft(int32_t x) {
+	int32_t currentX = this->boundingBox.x;
+	int32_t newX = currentX;
+
+	if (-newX + Globals::config.screenWidth + x <= this->boundingBox.w) {
+		newX -= x;
+	}
+
+	this->boundingBox.x = newX;
+
+	std::cout << "New position: x -> " << this->boundingBox.x << ", y -> " << this->boundingBox.y << std::endl;
+}
+
+void Image::moveRight(int32_t x) {
+	int32_t currentX = this->boundingBox.x;
+	int32_t newX = currentX;
+
+	if (newX + x <= 0) {
+		newX += x;
+	}
+
+	this->boundingBox.x = newX;
+
+	std::cout << "New position: x -> " << this->boundingBox.x << ", y -> " << this->boundingBox.y << std::endl;
+}

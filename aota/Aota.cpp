@@ -76,11 +76,11 @@ void Aota::handleDownArrowKey() {
 }
 
 void Aota::handleLeftArrowKey() {
-	this->gameImage = this->gameImages[KEY_PRESS_SURFACE_LEFT];
+	this->gameImage->moveRight(mapMovementSpeed);
 }
 
 void Aota::handleRightArrowKey() {
-	this->gameImage = this->gameImages[KEY_PRESS_SURFACE_RIGHT];
+	this->gameImage->moveLeft(mapMovementSpeed);
 }
 
 void Aota::handleOtherKey() {

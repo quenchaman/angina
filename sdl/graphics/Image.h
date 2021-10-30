@@ -20,8 +20,8 @@ public:
 	void draw(Renderer& renderer);
 	void moveUp(int32_t y);
 	void moveDown(int32_t y);
-//	void moveLeft(int32_t x);
-//	void moveRight(int32_t x);
+	void moveLeft(int32_t x);
+	void moveRight(int32_t x);
 private:
 	Point& position;
 	Texture& texture;
