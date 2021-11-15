@@ -53,3 +53,10 @@ void Engine::start() {
 		this->window->updateWindowSurface();
 	}
 }
+
+std::vector<Texture*> Engine::loadGameTextures(std::vector<std::string> paths) {
+	std::vector<Surface*> surfaces = ImageResource::loadBulk(paths);
+	std::vector<Texture*> textures = Transformer::transformSurfacesToTextures(this->renderer, surfaces);
+
+	return textures;
+}
