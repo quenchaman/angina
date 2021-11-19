@@ -12,9 +12,6 @@ void Chess::init() {
 	SDL_Rect boardRect = {
 			0, 0, 640, 640
 	};
-	SDL_Rect pieceRect = {
-
-	};
 
 	this->boardImage = new Image(*textures.at(0), boardRect);
 
@@ -39,5 +36,12 @@ void Chess::executeGameLogic() {
 }
 
 Image* Chess::getImageFromPiece(Piece* piece) {
+	int32_t xOffset = Piece::PIECE_WIDTH * piece->getCol();
+	int32_t yOffset = Piece::PIECE_HEIGHT * piece->getRow();
 
+	SDL_Rect pieceRect = {
+			xOffset, yOffset, Piece::PIECE_WIDTH, Piece::PIECE_HEIGHT
+	};
+
+	Rank rank = Rank::Pawn;
 }

@@ -15,6 +15,9 @@
 
 class Piece {
 public:
+	static const int32_t PIECE_WIDTH = 80;
+	static const int32_t PIECE_HEIGHT = 80;
+
 	Piece(int32_t id, int32_t col, int32_t row, Rank rank, Side side);
 
 	int32_t getCol();

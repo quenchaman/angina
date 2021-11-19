@@ -51,6 +51,7 @@ private:
 	std::vector<Piece*> whitePieces;
 	std::vector<Piece*> blackPieces;
 	std::map<int32_t, Image*> pieceImages;
+	std::map<Side, std::map<Rank, Texture*>> pieceTextures;
 };
 
 
