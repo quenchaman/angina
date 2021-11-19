@@ -19,7 +19,7 @@ namespace Resources {
 	const std::string press = "press.bmp";
 	const std::string map = "map.jpeg";
 
-	const std::string board = "board.jpg";
+	const std::string board = "board.png";
 	const std::string blackBishop = "black-bishop.png";
 	const std::string blackKing = "black-king.png";
 	const std::string blackKnight = "black-knight.png";

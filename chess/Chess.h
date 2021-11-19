@@ -10,9 +10,12 @@
 
 #include "sdl/graphics/Engine.h"
 #include "resources/Resources.h"
+#include "Piece.h"
 
+#include <cstdint>
 #include <vector>
 #include <string>
+#include <map>
 
 class Chess : public Engine {
 public:
@@ -20,13 +23,15 @@ public:
 	void executeGameLogic();
 	void draw();
 
+	Image* getImageFromPiece(Piece* piece);
+
 	void handleUpArrowKey() {};
 	void handleDownArrowKey() {};
 	void handleLeftArrowKey() {};
 	void handleRightArrowKey() {};
 	void handleOtherKey() {};
 private:
-	Image* board;
+	Image* boardImage;
 	std::vector<std::string> paths = {
 		Resources::board,
 		Resources::blackBishop,
@@ -42,6 +47,10 @@ private:
 		Resources::whiteQueen,
 		Resources::whiteRook
 	};
+	uint32_t board[8][8];
+	std::vector<Piece*> whitePieces;
+	std::vector<Piece*> blackPieces;
+	std::map<int32_t, Image*> pieceImages;
 };
 
 
