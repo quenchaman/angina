@@ -44,6 +44,7 @@ void Chess::handleLeftMouseClick() {
 	int32_t x, y;
 	SDL_GetMouseState(&x, &y);
 	this->selectPiece(x, y);
+	this->findPossibleMoves(this->selectedPiece);
 }
 
 void Chess::drawFigures() {
@@ -70,8 +71,38 @@ void Chess::drawFigures() {
 }
 
 void Chess::selectPiece(int32_t x, int32_t y) {
-	uint32_t col = x / Piece::PIECE_WIDTH;
-	uint32_t row = y / Piece::PIECE_HEIGHT;
+	int32_t col = x / Piece::PIECE_WIDTH;
+	int32_t row = y / Piece::PIECE_HEIGHT;
 
-	std::cout << col << "; " << row << std::endl;
+	for (Piece* p : this->pieces) {
+		if (p->getCol() == col && p->getRow() == row) {
+			selectedPiece = p;
+			break;
+		}
+	}
+}
+
+void Chess::findPossibleMoves(Piece* piece) {
+	std::vector<Cell> moves;
+
+	if (piece->getSide() == Side::White) {
+		if (piece->getRank() == Rank::Pawn) {
+			moves.push_back({piece->getCol(), piece->getRow() - 1, true});
+			moves.push_back({piece->getCol(), piece->getRow() - 2, true});
+		}
+	}
+
+	for (uint32_t cellIdx = 0; cellIdx < moves.size(); cellIdx++) {
+		Cell move = moves.at(cellIdx);
+
+		for (Piece* p : this->pieces) {
+			if (move.col == p->getCol() && move.row == p->getRow()) {
+				move.isAllowed = false;
+			}
+		}
+	}
+
+	for (Cell m : moves) {
+		std::cout << "The allowed move is: " << m.col << "; " << m.row << std::endl;
+	}
 }

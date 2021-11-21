@@ -13,7 +13,7 @@
 #include "Piece.h"
 #include "sdl/graphics/Image.h"
 #include "sdl/graphics/Texture.h"
-
+#include "Cell.h"
 #include <cstdint>
 #include <vector>
 #include <string>
@@ -27,6 +27,7 @@ public:
 
 	void drawFigures();
 	void selectPiece(int32_t x, int32_t y);
+	void findPossibleMoves(Piece* piece);
 
 	void handleUpArrowKey() {};
 	void handleDownArrowKey() {};
@@ -56,6 +57,7 @@ private:
 	std::map<int32_t, Image*> pieceImages;
 	std::map<Side, std::map<Rank, Texture*>> pieceTextures;
 	Piece* selectedPiece;
+	std::vector<Cell> possibleMoves;
 };
 
 
