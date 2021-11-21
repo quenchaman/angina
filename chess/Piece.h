@@ -24,6 +24,10 @@ public:
 
 	int32_t getRow();
 
+	Rank getRank();
+
+	Side getSide();
+
 private:
 	int32_t id;
 	int32_t col;

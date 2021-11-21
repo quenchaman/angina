@@ -17,3 +17,11 @@ int32_t Piece::getCol() {
 int32_t Piece::getRow() {
 	return row;
 }
+
+Rank Piece::getRank() {
+	return rank;
+}
+
+Side Piece::getSide() {
+	return side;
+}

@@ -53,6 +53,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/components/Transformer.cpp
 	${DIR}/chess/Chess.h
 	${DIR}/chess/Chess.cpp
+	${DIR}/chess/Piece.h
+	${DIR}/chess/Piece.cpp
 )
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")

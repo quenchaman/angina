@@ -15,10 +15,13 @@ void Chess::init() {
 
 	this->boardImage = new Image(*textures.at(0), boardRect);
 
-	for (uint32_t pawnCounter = 0; pawnCounter < 8; pawnCounter++) {
-		this->whitePieces.push_back(new Piece(pawnCounter, pawnCounter, 1, Rank::Pawn, Side::White));
+	this->pieceTextures[Side::White][Rank::Pawn] = textures.at(10);
+	this->pieceTextures[Side::Black][Rank::Pawn] = textures.at(4);
 
-		this->blackPieces.push_back(new Piece(-pawnCounter, pawnCounter, 6, Rank::Pawn, Side::Black));
+	for (uint32_t pawnCounter = 0; pawnCounter < 8; pawnCounter++) {
+		this->pieces.push_back(new Piece(pawnCounter, pawnCounter, 6, Rank::Pawn, Side::White));
+
+		this->pieces.push_back(new Piece(-pawnCounter, pawnCounter, 1, Rank::Pawn, Side::Black));
 	}
 }
 
@@ -26,6 +29,8 @@ void Chess::draw() {
 	this->renderer.clearRenderer();
 
 	this->boardImage->draw(this->renderer);
+
+	this->drawFigures();
 
 	this->renderer.updateScreen();
 	SDL_Delay(50);
@@ -35,13 +40,25 @@ void Chess::executeGameLogic() {
 
 }
 
-Image* Chess::getImageFromPiece(Piece* piece) {
-	int32_t xOffset = Piece::PIECE_WIDTH * piece->getCol();
-	int32_t yOffset = Piece::PIECE_HEIGHT * piece->getRow();
+void Chess::drawFigures() {
+	for (Piece* piece : this->pieces) {
+		uint32_t xOffset = piece->getCol() * Piece::PIECE_WIDTH;
+		uint32_t yOffset = piece->getRow() * Piece::PIECE_HEIGHT;
 
-	SDL_Rect pieceRect = {
-			xOffset, yOffset, Piece::PIECE_WIDTH, Piece::PIECE_HEIGHT
-	};
+		SDL_Rect pieceRect = {
+				(int)xOffset, (int)yOffset, Piece::PIECE_WIDTH, Piece::PIECE_HEIGHT
+		};
 
-	Rank rank = Rank::Pawn;
+		if (piece->getSide() == Side::White) {
+			if (piece->getRank() == Rank::Pawn) {
+				Image whitePawnImg(*this->pieceTextures[Side::White][Rank::Pawn], pieceRect);
+
+				whitePawnImg.draw(this->renderer);
+			}
+		} else {
+			Image whitePawnImg(*this->pieceTextures[Side::Black][Rank::Pawn], pieceRect);
+
+			whitePawnImg.draw(this->renderer);
+		}
+	}
 }

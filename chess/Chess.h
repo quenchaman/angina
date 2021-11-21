@@ -11,6 +11,8 @@
 #include "sdl/graphics/Engine.h"
 #include "resources/Resources.h"
 #include "Piece.h"
+#include "sdl/graphics/Image.h"
+#include "sdl/graphics/Texture.h"
 
 #include <cstdint>
 #include <vector>
@@ -23,7 +25,7 @@ public:
 	void executeGameLogic();
 	void draw();
 
-	Image* getImageFromPiece(Piece* piece);
+	void drawFigures();
 
 	void handleUpArrowKey() {};
 	void handleDownArrowKey() {};
@@ -48,8 +50,7 @@ private:
 		Resources::whiteRook
 	};
 	uint32_t board[8][8];
-	std::vector<Piece*> whitePieces;
-	std::vector<Piece*> blackPieces;
+	std::vector<Piece*> pieces;
 	std::map<int32_t, Image*> pieceImages;
 	std::map<Side, std::map<Rank, Texture*>> pieceTextures;
 };
