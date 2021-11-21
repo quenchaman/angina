@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
 #include "SDL.h"
 #include "SDL_image.h"
@@ -38,6 +39,7 @@ public:
 	virtual void handleLeftArrowKey() = 0;
 	virtual void handleRightArrowKey() = 0;
 	virtual void handleOtherKey() = 0;
+	virtual void handleLeftMouseClick() = 0;
 protected:
 	Window* window;
 	bool quit;

@@ -42,6 +42,8 @@ void Engine::start() {
 						handleOtherKey();
 						break;
 				}
+			} else if (this->e.type == SDL_MOUSEBUTTONDOWN && this->e.button.button == SDL_BUTTON_LEFT) {
+				this->handleLeftMouseClick();
 			} else {
 				handleOtherKey();
 			}

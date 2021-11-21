@@ -26,12 +26,14 @@ public:
 	void draw();
 
 	void drawFigures();
+	void selectPiece(int32_t x, int32_t y);
 
 	void handleUpArrowKey() {};
 	void handleDownArrowKey() {};
 	void handleLeftArrowKey() {};
 	void handleRightArrowKey() {};
 	void handleOtherKey() {};
+	void handleLeftMouseClick();
 private:
 	Image* boardImage;
 	std::vector<std::string> paths = {
@@ -53,6 +55,7 @@ private:
 	std::vector<Piece*> pieces;
 	std::map<int32_t, Image*> pieceImages;
 	std::map<Side, std::map<Rank, Texture*>> pieceTextures;
+	Piece* selectedPiece;
 };
 
 

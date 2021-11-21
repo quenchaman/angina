@@ -40,6 +40,12 @@ void Chess::executeGameLogic() {
 
 }
 
+void Chess::handleLeftMouseClick() {
+	int32_t x, y;
+	SDL_GetMouseState(&x, &y);
+	this->selectPiece(x, y);
+}
+
 void Chess::drawFigures() {
 	for (Piece* piece : this->pieces) {
 		uint32_t xOffset = piece->getCol() * Piece::PIECE_WIDTH;
@@ -61,4 +67,11 @@ void Chess::drawFigures() {
 			whitePawnImg.draw(this->renderer);
 		}
 	}
+}
+
+void Chess::selectPiece(int32_t x, int32_t y) {
+	uint32_t col = x / Piece::PIECE_WIDTH;
+	uint32_t row = y / Piece::PIECE_HEIGHT;
+
+	std::cout << col << "; " << row << std::endl;
 }
