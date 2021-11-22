@@ -73,16 +73,35 @@ void Chess::drawFigures() {
 void Chess::selectPiece(int32_t x, int32_t y) {
 	int32_t col = x / Piece::PIECE_WIDTH;
 	int32_t row = y / Piece::PIECE_HEIGHT;
+	bool isAnyPieceSelected = false;
 
 	for (Piece* p : this->pieces) {
 		if (p->getCol() == col && p->getRow() == row) {
 			selectedPiece = p;
+			isAnyPieceSelected = true;
 			break;
 		}
+	}
+
+	bool isAValidMoveSelected = false;
+
+	for (Cell move : possibleMoves) {
+		if (move.col == col && move.row == row) {
+			isAValidMoveSelected = true;
+			break;
+		}
+	}
+
+	if (!isAnyPieceSelected && !isAValidMoveSelected) {
+		selectedPiece = nullptr;
 	}
 }
 
 void Chess::findPossibleMoves(Piece* piece) {
+	if (selectedPiece == nullptr) {
+		return;
+	}
+
 	std::vector<Cell> moves;
 
 	if (piece->getSide() == Side::White) {
@@ -105,4 +124,6 @@ void Chess::findPossibleMoves(Piece* piece) {
 	for (Cell m : moves) {
 		std::cout << "The allowed move is: " << m.col << "; " << m.row << std::endl;
 	}
+
+	possibleMoves = moves;
 }
