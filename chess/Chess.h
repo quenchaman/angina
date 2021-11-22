@@ -28,6 +28,7 @@ public:
 	void drawFigures();
 	void selectPiece(int32_t x, int32_t y);
 	void findPossibleMoves(Piece* piece);
+	void movePiece(Cell move);
 
 	void handleUpArrowKey() {};
 	void handleDownArrowKey() {};

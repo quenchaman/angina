@@ -25,3 +25,8 @@ Rank Piece::getRank() {
 Side Piece::getSide() {
 	return side;
 }
+
+void Piece::move(int32_t column, int32_t _row) {
+	this->col = column;
+	this->row = _row;
+}

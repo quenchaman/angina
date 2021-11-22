@@ -43,8 +43,17 @@ void Chess::executeGameLogic() {
 void Chess::handleLeftMouseClick() {
 	int32_t x, y;
 	SDL_GetMouseState(&x, &y);
-	this->selectPiece(x, y);
-	this->findPossibleMoves(this->selectedPiece);
+
+	if (selectedPiece == nullptr) {
+		this->selectPiece(x, y);
+		this->findPossibleMoves(this->selectedPiece);
+	} else {
+		int32_t col = x / Piece::PIECE_WIDTH;
+		int32_t row = y / Piece::PIECE_HEIGHT;
+
+		this->movePiece({col, row, true});
+	}
+
 }
 
 void Chess::drawFigures() {
@@ -83,16 +92,7 @@ void Chess::selectPiece(int32_t x, int32_t y) {
 		}
 	}
 
-	bool isAValidMoveSelected = false;
-
-	for (Cell move : possibleMoves) {
-		if (move.col == col && move.row == row) {
-			isAValidMoveSelected = true;
-			break;
-		}
-	}
-
-	if (!isAnyPieceSelected && !isAValidMoveSelected) {
+	if (!isAnyPieceSelected) {
 		selectedPiece = nullptr;
 	}
 }
@@ -116,14 +116,37 @@ void Chess::findPossibleMoves(Piece* piece) {
 
 		for (Piece* p : this->pieces) {
 			if (move.col == p->getCol() && move.row == p->getRow()) {
-				move.isAllowed = false;
+				std::cout << "hi" << std::endl;
+				moves.at(cellIdx).isAllowed = false;
 			}
 		}
 	}
 
 	for (Cell m : moves) {
-		std::cout << "The allowed move is: " << m.col << "; " << m.row << std::endl;
+		std::cout << "The " << m.isAllowed << " move is: " << m.col << "; " << m.row << std::endl;
 	}
 
-	possibleMoves = moves;
+	for (Cell m : moves) {
+		if (m.isAllowed) {
+			possibleMoves.push_back(m);
+		}
+	}
+}
+
+void Chess::movePiece(Cell move) {
+	bool isAValidMoveSelected = false;
+
+	for (Cell m : possibleMoves) {
+		if (m.col == move.col && m.row == move.row) {
+			isAValidMoveSelected = true;
+			break;
+		}
+	}
+
+	if (!isAValidMoveSelected) {
+		return;
+	}
+
+	selectedPiece->move(move.col, move.row);
+	selectedPiece = nullptr;
 }

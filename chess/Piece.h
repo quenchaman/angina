@@ -28,6 +28,8 @@ public:
 
 	Side getSide();
 
+	void move(int32_t col, int32_t row);
+
 private:
 	int32_t id;
 	int32_t col;
