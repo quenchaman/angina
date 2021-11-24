@@ -19,16 +19,13 @@
 #include <string>
 #include <map>
 
+#include "Pawn.h"
+
 class Chess : public Engine {
 public:
 	void init();
 	void executeGameLogic();
 	void draw();
-
-	void drawFigures();
-	void selectPiece(int32_t x, int32_t y);
-	void findPossibleMoves(Piece* piece);
-	void movePiece(Cell move);
 
 	void handleUpArrowKey() {};
 	void handleDownArrowKey() {};

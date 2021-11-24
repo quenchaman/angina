@@ -55,6 +55,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess/Chess.cpp
 	${DIR}/chess/Piece.h
 	${DIR}/chess/Piece.cpp
+	${DIR}/chess/Pawn.h
+	${DIR}/chess/Pawn.cpp
 )
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")

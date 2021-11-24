@@ -7,8 +7,11 @@
 
 #include "Piece.h"
 
-Piece::Piece(int32_t _id, int32_t _col, int32_t _row, Rank _rank, Side _side):
-	id(_id), col(_col), row(_row), rank(_rank), side(_side) {}
+Piece::Piece(int32_t _id, int32_t _col, int32_t _row, Rank _rank, Side _side, Texture* texture):
+	id(_id), col(_col), row(_row), rank(_rank), side(_side) {
+
+	image = new Image(*texture, { 0, 0, Piece::PIECE_WIDTH, Piece::PIECE_HEIGHT });
+}
 
 int32_t Piece::getCol() {
 	return col;
@@ -26,7 +29,10 @@ Side Piece::getSide() {
 	return side;
 }
 
-void Piece::move(int32_t column, int32_t _row) {
-	this->col = column;
-	this->row = _row;
+Image* Piece::getImage() {
+	return image;
+}
+
+void Piece::draw(Renderer& renderer) {
+	image->draw(renderer);
 }

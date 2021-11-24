@@ -4,7 +4,6 @@
 struct Cell {
 	int32_t col;
 	int32_t row;
-	bool isAllowed;
 };
 
 #endif
