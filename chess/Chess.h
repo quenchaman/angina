@@ -14,6 +14,7 @@
 #include "Pawn.h"
 #include "Knight.h"
 #include "Bishop.h"
+#include "Rook.h"
 #include "sdl/graphics/Image.h"
 #include "sdl/graphics/Texture.h"
 #include "Cell.h"

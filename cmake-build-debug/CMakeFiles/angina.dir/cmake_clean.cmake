@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/angina.dir/chess/Knight.cpp.o"
   "CMakeFiles/angina.dir/chess/Pawn.cpp.o"
   "CMakeFiles/angina.dir/chess/Piece.cpp.o"
+  "CMakeFiles/angina.dir/chess/Rook.cpp.o"
   "CMakeFiles/angina.dir/config/ConfigLoader.cpp.o"
   "CMakeFiles/angina.dir/exceptions/BaseException.cpp.o"
   "CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.o"

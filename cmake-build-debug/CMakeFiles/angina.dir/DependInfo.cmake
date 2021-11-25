@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ubuntu/Projects/angina/chess/Knight.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/Knight.cpp.o"
   "/home/ubuntu/Projects/angina/chess/Pawn.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/Pawn.cpp.o"
   "/home/ubuntu/Projects/angina/chess/Piece.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/Piece.cpp.o"
+  "/home/ubuntu/Projects/angina/chess/Rook.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/Rook.cpp.o"
   "/home/ubuntu/Projects/angina/config/ConfigLoader.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/config/ConfigLoader.cpp.o"
   "/home/ubuntu/Projects/angina/exceptions/BaseException.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/exceptions/BaseException.cpp.o"
   "/home/ubuntu/Projects/angina/exceptions/GraphicsInitException.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.o"

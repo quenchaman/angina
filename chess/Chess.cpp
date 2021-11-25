@@ -32,8 +32,14 @@ void Chess::init() {
     this->pieces.push_back(new Bishop(12, 5, 7, Side::White, textures.at(7)));
     this->pieces.push_back(new Bishop(13, 2, 7, Side::White, textures.at(7)));
 
-    this->pieces.push_back(new Bishop(12, 5, 0, Side::Black, textures.at(1)));
-    this->pieces.push_back(new Bishop(13, 2, 0, Side::Black, textures.at(1)));
+    this->pieces.push_back(new Bishop(14, 5, 0, Side::Black, textures.at(1)));
+    this->pieces.push_back(new Bishop(15, 2, 0, Side::Black, textures.at(1)));
+
+    this->pieces.push_back(new Rook(16, 0, 0, Side::Black, textures.at(6)));
+    this->pieces.push_back(new Rook(17, 7, 0, Side::Black, textures.at(6)));
+
+    this->pieces.push_back(new Rook(18, 0, 7, Side::White, textures.at(12)));
+    this->pieces.push_back(new Rook(19, 7, 7, Side::White, textures.at(12)));
 }
 
 void Chess::draw() {

@@ -12,7 +12,7 @@ enum Rank {
 	PAWN,
 	KNIGHT,
 	BISHOP,
-	Rook,
+	ROOK,
 	Queen,
 	King
 };

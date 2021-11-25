@@ -98,12 +98,12 @@ libs/json/json-3.10.4/clean:
 CMakeFiles/angina.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24 "Built target angina"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 "Built target angina"
 .PHONY : CMakeFiles/angina.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/angina.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/angina.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/angina.dir/rule
