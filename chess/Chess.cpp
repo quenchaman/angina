@@ -7,8 +7,6 @@
 
 #include "Chess.h"
 
-#include "Pawn.h"
-
 void Chess::init() {
 	std::vector<Texture*> textures = loadGameTextures(paths);
 	SDL_Rect boardRect = {
@@ -17,8 +15,24 @@ void Chess::init() {
 
 	this->boardImage = new Image(*textures.at(0), boardRect);
 
-    Pawn* pawn = new Pawn(1, 0, 0, Side::White, textures.at(10));
-	this->pieces.push_back(pawn);
+    for (int32_t pawnIdx = 0; pawnIdx < 8; pawnIdx++) {
+        Pawn* whitePawn = new Pawn(pawnIdx + 1, pawnIdx, 6, Side::White, textures.at(10));
+        this->pieces.push_back(whitePawn);
+
+        Pawn* blackPawn = new Pawn(-pawnIdx + 1, pawnIdx, 1, Side::Black, textures.at(4));
+        this->pieces.push_back(blackPawn);
+    }
+
+    this->pieces.push_back(new Knight(8, 1, 0, Side::Black, textures.at(3)));
+    this->pieces.push_back(new Knight(9, 6, 0, Side::Black, textures.at(3)));
+
+    this->pieces.push_back(new Knight(10, 1, 7, Side::White, textures.at(9)));
+    this->pieces.push_back(new Knight(11, 6, 7, Side::White, textures.at(9)));
+
+//    this->pieces.push_back(new Bishop(12, 6, 7, Side::White, textures.at(9)));
+//    this->pieces.push_back(new Bishop(13, 6, 7, Side::White, textures.at(9)));
+
+
 }
 
 void Chess::draw() {

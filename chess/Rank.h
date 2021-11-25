@@ -10,7 +10,7 @@
 
 enum Rank {
 	PAWN,
-	Knight,
+	KNIGHT,
 	Bishop,
 	Rook,
 	Queen,

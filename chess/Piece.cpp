@@ -10,7 +10,10 @@
 Piece::Piece(int32_t _id, int32_t _col, int32_t _row, Rank _rank, Side _side, Texture* texture):
 	id(_id), col(_col), row(_row), rank(_rank), side(_side) {
 
-	image = new Image(*texture, { 0, 0, Piece::PIECE_WIDTH, Piece::PIECE_HEIGHT });
+	image = new Image(*texture, { _col * Piece::PIECE_WIDTH,
+                                  _row * Piece::PIECE_HEIGHT,
+                                  Piece::PIECE_WIDTH,
+                                  Piece::PIECE_HEIGHT });
 }
 
 int32_t Piece::getCol() {

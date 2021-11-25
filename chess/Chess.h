@@ -11,6 +11,8 @@
 #include "sdl/graphics/Engine.h"
 #include "resources/Resources.h"
 #include "Piece.h"
+#include "Pawn.h"
+#include "Knight.h"
 #include "sdl/graphics/Image.h"
 #include "sdl/graphics/Texture.h"
 #include "Cell.h"
