@@ -19,8 +19,6 @@
 #include <string>
 #include <map>
 
-#include "Pawn.h"
-
 class Chess : public Engine {
 public:
 	void init();

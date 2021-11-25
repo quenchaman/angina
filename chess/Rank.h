@@ -9,7 +9,7 @@
 #define CHESS_RANK_H_
 
 enum Rank {
-	Pawn,
+	PAWN,
 	Knight,
 	Bishop,
 	Rook,

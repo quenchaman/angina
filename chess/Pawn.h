@@ -1,5 +1,5 @@
 /*
- * Pawn.h
+ * PAWN.h
  *
  *  Created on: Nov 24, 2021
  *      Author: ubuntu
@@ -20,8 +20,9 @@
 class Pawn : public Piece {
 public:
 	Pawn(int32_t id, int32_t col, int32_t row, Side side, Texture* texture);
+    ~Pawn();
 
 	std::vector<Cell> calculateMoves();
 };
 
-#endif
+#endif /* CHESS_PAWN_H_ */

@@ -23,8 +23,7 @@ public:
 	static const int32_t PIECE_HEIGHT = 80;
 
 	Piece(int32_t id, int32_t col, int32_t row, Rank rank, Side side, Texture* texture);
-
-	virtual ~Piece() = 0;
+    virtual ~Piece() {};
 
 	int32_t getCol();
 
