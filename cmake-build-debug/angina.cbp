@@ -110,6 +110,12 @@
 		<Unit filename="/home/ubuntu/Projects/angina/chess/Chess.h">
 			<Option target="angina"/>
 		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina/chess/King.cpp">
+			<Option target="angina"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina/chess/King.h">
+			<Option target="angina"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina/chess/Knight.cpp">
 			<Option target="angina"/>
 		</Unit>

@@ -14,7 +14,7 @@ enum Rank {
 	BISHOP,
 	ROOK,
 	QUEEN,
-	King
+	KING
 };
 
 #endif /* CHESS_RANK_H_ */

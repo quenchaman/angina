@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ubuntu/Projects/angina/aota/Aota.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/aota/Aota.cpp.o"
   "/home/ubuntu/Projects/angina/chess/Bishop.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/Bishop.cpp.o"
   "/home/ubuntu/Projects/angina/chess/Chess.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/Chess.cpp.o"
+  "/home/ubuntu/Projects/angina/chess/King.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/King.cpp.o"
   "/home/ubuntu/Projects/angina/chess/Knight.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/Knight.cpp.o"
   "/home/ubuntu/Projects/angina/chess/Pawn.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/Pawn.cpp.o"
   "/home/ubuntu/Projects/angina/chess/Piece.cpp" "/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir/chess/Piece.cpp.o"

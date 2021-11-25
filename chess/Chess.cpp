@@ -6,6 +6,7 @@
  */
 
 #include "Chess.h"
+#include "King.h"
 
 void Chess::init() {
 	std::vector<Texture*> textures = loadGameTextures(paths);
@@ -42,7 +43,10 @@ void Chess::init() {
     this->pieces.push_back(new Rook(19, 7, 7, Side::White, textures.at(12)));
 
     this->pieces.push_back(new Queen(20, 3, 0, Side::Black, textures.at(5)));
-    this->pieces.push_back(new Queen(20, 3, 7, Side::White, textures.at(11)));
+    this->pieces.push_back(new Queen(21, 3, 7, Side::White, textures.at(11)));
+
+    this->pieces.push_back(new King(22, 4, 0, Side::Black, textures.at(2)));
+    this->pieces.push_back(new King(23, 4, 7, Side::White, textures.at(8)));
 }
 
 void Chess::draw() {

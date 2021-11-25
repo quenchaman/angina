@@ -201,6 +201,30 @@ chess/Chess.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.s
 .PHONY : chess/Chess.cpp.s
 
+chess/King.o: chess/King.cpp.o
+.PHONY : chess/King.o
+
+# target to build an object file
+chess/King.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/King.cpp.o
+.PHONY : chess/King.cpp.o
+
+chess/King.i: chess/King.cpp.i
+.PHONY : chess/King.i
+
+# target to preprocess a source file
+chess/King.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/King.cpp.i
+.PHONY : chess/King.cpp.i
+
+chess/King.s: chess/King.cpp.s
+.PHONY : chess/King.s
+
+# target to generate assembly for a file
+chess/King.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/King.cpp.s
+.PHONY : chess/King.cpp.s
+
 chess/Knight.o: chess/Knight.cpp.o
 .PHONY : chess/Knight.o
 
@@ -747,6 +771,9 @@ help:
 	@echo "... chess/Chess.o"
 	@echo "... chess/Chess.i"
 	@echo "... chess/Chess.s"
+	@echo "... chess/King.o"
+	@echo "... chess/King.i"
+	@echo "... chess/King.s"
 	@echo "... chess/Knight.o"
 	@echo "... chess/Knight.i"
 	@echo "... chess/Knight.s"

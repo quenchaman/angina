@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/angina.dir/aota/Aota.cpp.o"
   "CMakeFiles/angina.dir/chess/Bishop.cpp.o"
   "CMakeFiles/angina.dir/chess/Chess.cpp.o"
+  "CMakeFiles/angina.dir/chess/King.cpp.o"
   "CMakeFiles/angina.dir/chess/Knight.cpp.o"
   "CMakeFiles/angina.dir/chess/Pawn.cpp.o"
   "CMakeFiles/angina.dir/chess/Piece.cpp.o"
