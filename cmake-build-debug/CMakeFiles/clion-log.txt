@@ -6,7 +6,7 @@ CMake Warning (dev) at /home/ubuntu/Downloads/clion-2021.2.3/bin/cmake/linux/sha
   (e.g., `_FOUND`) to follow a certain pattern.
 Call Stack (most recent call first):
   cmake_helpers/find_modules/FindSDL2_image.cmake:157 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
-  CMakeLists.txt:76 (find_package)
+  CMakeLists.txt:78 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 -- Using the single-header code from /home/ubuntu/Projects/angina/libs/json/json-3.10.4/single_include/

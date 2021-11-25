@@ -128,6 +128,12 @@
 		<Unit filename="/home/ubuntu/Projects/angina/chess/Piece.h">
 			<Option target="angina"/>
 		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina/chess/Queen.cpp">
+			<Option target="angina"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina/chess/Queen.h">
+			<Option target="angina"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina/chess/Rook.cpp">
 			<Option target="angina"/>
 		</Unit>
