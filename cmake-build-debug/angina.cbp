@@ -98,6 +98,12 @@
 		<Unit filename="/home/ubuntu/Projects/angina/aota/Aota.h">
 			<Option target="angina"/>
 		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina/chess/Bishop.cpp">
+			<Option target="angina"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina/chess/Bishop.h">
+			<Option target="angina"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina/chess/Chess.cpp">
 			<Option target="angina"/>
 		</Unit>

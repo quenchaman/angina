@@ -13,6 +13,7 @@
 #include "Piece.h"
 #include "Pawn.h"
 #include "Knight.h"
+#include "Bishop.h"
 #include "sdl/graphics/Image.h"
 #include "sdl/graphics/Texture.h"
 #include "Cell.h"

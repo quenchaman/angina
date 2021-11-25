@@ -153,6 +153,30 @@ aota/Aota.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/aota/Aota.cpp.s
 .PHONY : aota/Aota.cpp.s
 
+chess/Bishop.o: chess/Bishop.cpp.o
+.PHONY : chess/Bishop.o
+
+# target to build an object file
+chess/Bishop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Bishop.cpp.o
+.PHONY : chess/Bishop.cpp.o
+
+chess/Bishop.i: chess/Bishop.cpp.i
+.PHONY : chess/Bishop.i
+
+# target to preprocess a source file
+chess/Bishop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Bishop.cpp.i
+.PHONY : chess/Bishop.cpp.i
+
+chess/Bishop.s: chess/Bishop.cpp.s
+.PHONY : chess/Bishop.s
+
+# target to generate assembly for a file
+chess/Bishop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Bishop.cpp.s
+.PHONY : chess/Bishop.cpp.s
+
 chess/Chess.o: chess/Chess.cpp.o
 .PHONY : chess/Chess.o
 
@@ -669,6 +693,9 @@ help:
 	@echo "... aota/Aota.o"
 	@echo "... aota/Aota.i"
 	@echo "... aota/Aota.s"
+	@echo "... chess/Bishop.o"
+	@echo "... chess/Bishop.i"
+	@echo "... chess/Bishop.s"
 	@echo "... chess/Chess.o"
 	@echo "... chess/Chess.i"
 	@echo "... chess/Chess.s"

@@ -29,10 +29,11 @@ void Chess::init() {
     this->pieces.push_back(new Knight(10, 1, 7, Side::White, textures.at(9)));
     this->pieces.push_back(new Knight(11, 6, 7, Side::White, textures.at(9)));
 
-//    this->pieces.push_back(new Bishop(12, 6, 7, Side::White, textures.at(9)));
-//    this->pieces.push_back(new Bishop(13, 6, 7, Side::White, textures.at(9)));
+    this->pieces.push_back(new Bishop(12, 5, 7, Side::White, textures.at(7)));
+    this->pieces.push_back(new Bishop(13, 2, 7, Side::White, textures.at(7)));
 
-
+    this->pieces.push_back(new Bishop(12, 5, 0, Side::Black, textures.at(1)));
+    this->pieces.push_back(new Bishop(13, 2, 0, Side::Black, textures.at(1)));
 }
 
 void Chess::draw() {
