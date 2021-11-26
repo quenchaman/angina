@@ -64,6 +64,7 @@ private:
 
 	Piece* findPieceAtCell(Cell cell);
 	void move(Piece* piece, Cell cell);
+	bool isAllowedMove(std::vector<Cell> moves, Cell targetMove, Piece* piece);
 };
 
 

@@ -111,59 +111,95 @@ Piece* Chess::findPieceAtCell(Cell cell) {
 }
 
 void Chess::move(Piece* piece, Cell cell) {
-	std::vector<Cell> allowedMoves;
+	bool isAllowedMoveMade = false;
+	std::vector<Cell> moves;
+	moves.reserve(8);
+	Cell piecePos = { piece->getCol(), piece->getRow() };
 
 	if (piece->getRank() == Rank::KNIGHT) {
-		std::vector<Cell> moves;
-		moves.reserve(8);
+		moves.push_back({ piecePos.col - 2, piecePos.row - 1 });
+		moves.push_back({ piecePos.col - 1, piecePos.row - 2 });
+		moves.push_back({ piecePos.col + 1, piecePos.row - 2 });
+		moves.push_back({ piecePos.col + 2, piecePos.row - 1 });
+		moves.push_back({ piecePos.col + 2, piecePos.row + 1 });
+		moves.push_back({ piecePos.col + 1, piecePos.row + 2 });
+		moves.push_back({ piecePos.col - 1, piecePos.row + 2 });
+		moves.push_back({ piecePos.col - 2, piecePos.row + 1 });
 
-		Cell knightPosition = { piece->getCol(), piece->getRow() };
+		isAllowedMoveMade = this->isAllowedMove(moves, cell, piece);
+		moves.clear();
+	} else if (piece->getRank() == Rank::KING) {
+		moves.push_back({ piecePos.col, piecePos.row - 1 });
+		moves.push_back({ piecePos.col + 1, piecePos.row - 1 });
+		moves.push_back({ piecePos.col + 1, piecePos.row });
+		moves.push_back({ piecePos.col + 1, piecePos.row + 1 });
+		moves.push_back({ piecePos.col, piecePos.row + 1 });
+		moves.push_back({ piecePos.col - 1, piecePos.row + 1 });
+		moves.push_back({ piecePos.col - 1, piecePos.row });
+		moves.push_back({ piecePos.col - 1, piecePos.row - 1 });
 
-		moves.push_back({ knightPosition.col - 2, knightPosition.row - 1 });
-		moves.push_back({ knightPosition.col - 1, knightPosition.row - 2 });
-		moves.push_back({ knightPosition.col + 1, knightPosition.row - 2 });
-		moves.push_back({ knightPosition.col + 2, knightPosition.row - 1 });
-		moves.push_back({ knightPosition.col + 2, knightPosition.row + 1 });
-		moves.push_back({ knightPosition.col + 1, knightPosition.row + 2 });
-		moves.push_back({ knightPosition.col - 1, knightPosition.row + 2 });
-		moves.push_back({ knightPosition.col - 2, knightPosition.row + 1 });
+		isAllowedMoveMade = this->isAllowedMove(moves, cell, piece);
+		moves.clear();
+	} else if (piece->getRank() == Rank::ROOK) {
+		// Go north and add moves
+		for (int32_t rowIdx = piecePos.row - 1; rowIdx >= 0; rowIdx--) {
+			Cell currentCell = {piecePos.col, rowIdx};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
 
-		std::vector<Cell> movesInsideBoard;
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
 
-		for (Cell move : moves) {
-			if (move.col >=0 && move.col <= 7 && move.row >= 0 && move.row <= 7) {
-				movesInsideBoard.push_back(move);
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+	} else {
+		piece->move(cell);
+	}
+
+	if (isAllowedMoveMade) {
+		piece->move(cell);
+	}
+}
+
+bool Chess::isAllowedMove(std::vector<Cell> moves, Cell targetMove, Piece* piece) {
+	std::vector<Cell> allowedMoves;
+	std::vector<Cell> movesInsideBoard;
+
+	for (Cell move : moves) {
+		if (move.col >=0 && move.col <= 7 && move.row >= 0 && move.row <= 7) {
+			movesInsideBoard.push_back(move);
+		}
+	}
+
+	std::cout << "moves in board? " << movesInsideBoard.size() << std::endl;
+
+	for (Cell move : movesInsideBoard) {
+		bool isOnFriendlyPiece = false;
+
+		for (Piece* p : pieces) {
+			if (p->getSide() == piece->getSide() && p->getCol() == move.col && p->getRow() == move.row) {
+				isOnFriendlyPiece = true;
+				break;
 			}
 		}
 
-		std::cout << "moves in board? " << movesInsideBoard.size() << std::endl;
-
-		for (Cell move : movesInsideBoard) {
-			bool isOnFriendlyPiece = false;
-
-			for (Piece* p : pieces) {
-				if (p->getSide() == piece->getSide() && p->getCol() == move.col && p->getRow() == move.row) {
-					isOnFriendlyPiece = true;
-					break;
-				}
-			}
-
-			if (!isOnFriendlyPiece) {
-				allowedMoves.push_back(move);
-			}
+		if (!isOnFriendlyPiece) {
+			allowedMoves.push_back(move);
 		}
 	}
 
 	bool hasMadeAllowedMove = false;
 
 	for (Cell move : allowedMoves) {
-		if (move.col == cell.col && move.row == cell.row) {
+		if (move.col == targetMove.col && move.row == targetMove.row) {
 			hasMadeAllowedMove = true;
 			break;
 		}
 	}
 
-	if (hasMadeAllowedMove) {
-		piece->move(cell);
-	}
+	return hasMadeAllowedMove;
 }
