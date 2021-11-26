@@ -409,8 +409,52 @@ void Chess::move(Piece* piece, Cell cell) {
 
 			moves.push_back(currentCell);
 		}
-	} else {
-		piece->move(cell);
+	} else if (piece->getRank() == Rank::PAWN) {
+		if (piece->getSide() == Side::White) {
+			Cell oneForwardCell = { piecePos.col, piecePos.row - 1 };
+
+			if (findPieceAtCell(oneForwardCell) == nullptr) {
+				moves.push_back(oneForwardCell);
+			}
+
+			Cell twoForwardCell = { piecePos.col, piecePos.row - 2 };
+			if (piece->getRow() == 6 && findPieceAtCell(twoForwardCell) == nullptr) {
+				moves.push_back(twoForwardCell);
+			}
+
+			Cell attackCellLeft = { piecePos.col - 1, piecePos.row - 1 };
+			Cell attackCellRight = { piecePos.col + 1, piecePos.row - 1 };
+
+			if (findPieceAtCell(attackCellLeft) != nullptr) {
+				moves.push_back(attackCellLeft);
+			}
+
+			if (findPieceAtCell(attackCellRight) != nullptr) {
+				moves.push_back(attackCellRight);
+			}
+		} else {
+			Cell oneForwardCell = { piecePos.col, piecePos.row + 1 };
+
+			if (findPieceAtCell(oneForwardCell) == nullptr) {
+				moves.push_back(oneForwardCell);
+			}
+
+			Cell twoForwardCell = { piecePos.col, piecePos.row + 2 };
+			if (piece->getRow() == 1 && findPieceAtCell(twoForwardCell) == nullptr) {
+				moves.push_back(twoForwardCell);
+			}
+
+			Cell attackCellLeft = { piecePos.col - 1, piecePos.row + 1 };
+			Cell attackCellRight = { piecePos.col + 1, piecePos.row + 1 };
+
+			if (findPieceAtCell(attackCellLeft) != nullptr) {
+				moves.push_back(attackCellLeft);
+			}
+
+			if (findPieceAtCell(attackCellRight) != nullptr) {
+				moves.push_back(attackCellRight);
+			}
+		}
 	}
 
 	isAllowedMoveMade = this->isAllowedMove(moves, cell, piece);

@@ -8,4 +8,3 @@ std::vector<Cell> Pawn::calculateMoves() { return {}; }
 Pawn::~Pawn() {
 
 }
-
