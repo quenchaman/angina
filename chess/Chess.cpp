@@ -273,6 +273,142 @@ void Chess::move(Piece* piece, Cell cell) {
 
 			moves.push_back(currentCell);
 		}
+	} else if (piece->getRank() == Rank::QUEEN) {
+		// Go north and add moves
+		for (int32_t rowIdx = piecePos.row - 1; rowIdx >= 0; rowIdx--) {
+			Cell currentCell = {piecePos.col, rowIdx};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		// Go east and add moves
+		for (int32_t colIdx = piecePos.col + 1; colIdx < 8; colIdx++) {
+			Cell currentCell = {colIdx, piecePos.row};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		// Go south and add moves
+		for (int32_t rowIdx = piecePos.row + 1; rowIdx < 8; rowIdx++) {
+			Cell currentCell = {piecePos.col, rowIdx};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		// Go east and add moves
+		for (int32_t colIdx = piecePos.col - 1; colIdx >= 0; colIdx--) {
+			Cell currentCell = {colIdx, piecePos.row};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		// Let's go top right and check for moves
+		int32_t row = piecePos.row - 1;
+		int32_t col = piecePos.col + 1;
+		for (; col < 8 && row >= 0; col++, row--) {
+			Cell currentCell = {col, row};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		// Let's go bottom right
+		row = piecePos.row + 1;
+		col = piecePos.col + 1;
+		for (; col < 8 && row < 8; col++, row++) {
+			Cell currentCell = {col, row};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		// Let's go bottom left
+		row = piecePos.row + 1;
+		col = piecePos.col - 1;
+		for (; col >= 0 && row < 8; col--, row++) {
+			Cell currentCell = {col, row};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		// Let's go top left
+		row = piecePos.row - 1;
+		col = piecePos.col - 1;
+		for (; col >= 0 && row >= 0; col--, row--) {
+			Cell currentCell = {col, row};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
 	} else {
 		piece->move(cell);
 	}
