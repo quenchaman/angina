@@ -69,7 +69,30 @@ void Chess::draw() {
 }
 
 void Chess::executeGameLogic() {
+	if (this->state == State::CHECK_CAPTURES) {
+		//Piece* capturedPiece;
+		std::vector<Piece*> newPieces;
 
+		for (Piece* p : pieces) {
+			if (p->getSide() != selectedPiece->getSide() && p->getCol() == selectedPiece->getCol() && p->getRow() == selectedPiece->getRow()) {
+				//capturedPiece = p;
+				std::cout << "Captured piece is " << p->getRank() << std::endl;
+			} else {
+				newPieces.push_back(p);
+			}
+		}
+
+		this->pieces.clear();
+
+		for (Piece* p : newPieces) {
+			this->pieces.push_back(p);
+		}
+
+		this->selectedPiece = nullptr;
+
+
+		this->state = State::USER;
+	}
 }
 
 void Chess::handleLeftMouseClick() {
@@ -93,8 +116,6 @@ void Chess::handleLeftMouseClick() {
 		}
 	} else if (this->state == State::SELECTED) {
 		this->move(this->selectedPiece, cell);
-
-		this->state = State::USER;
 	}
 }
 
@@ -125,9 +146,6 @@ void Chess::move(Piece* piece, Cell cell) {
 		moves.push_back({ piecePos.col + 1, piecePos.row + 2 });
 		moves.push_back({ piecePos.col - 1, piecePos.row + 2 });
 		moves.push_back({ piecePos.col - 2, piecePos.row + 1 });
-
-		isAllowedMoveMade = this->isAllowedMove(moves, cell, piece);
-		moves.clear();
 	} else if (piece->getRank() == Rank::KING) {
 		moves.push_back({ piecePos.col, piecePos.row - 1 });
 		moves.push_back({ piecePos.col + 1, piecePos.row - 1 });
@@ -462,6 +480,7 @@ void Chess::move(Piece* piece, Cell cell) {
 
 	if (isAllowedMoveMade) {
 		piece->move(cell);
+		this->state = State::CHECK_CAPTURES;
 	}
 }
 

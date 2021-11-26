@@ -12,7 +12,7 @@ enum State {
 	INIT,
 	USER,
 	SELECTED,
-	CALCULATE_MOVE
+	CHECK_CAPTURES
 };
 
 
