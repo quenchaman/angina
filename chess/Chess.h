@@ -16,6 +16,7 @@
 #include "Bishop.h"
 #include "Rook.h"
 #include "Queen.h"
+#include "State.h"
 #include "sdl/graphics/Image.h"
 #include "sdl/graphics/Texture.h"
 #include "Cell.h"
@@ -59,6 +60,9 @@ private:
 	std::map<Side, std::map<Rank, Texture*>> pieceTextures;
 	Piece* selectedPiece;
 	std::vector<Cell> possibleMoves;
+	State state = State::INIT;
+
+	Piece* findPieceAtCell(Cell cell);
 };
 
 

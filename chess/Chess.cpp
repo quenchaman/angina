@@ -47,6 +47,10 @@ void Chess::init() {
 
     this->pieces.push_back(new King(22, 4, 0, Side::Black, textures.at(2)));
     this->pieces.push_back(new King(23, 4, 7, Side::White, textures.at(8)));
+
+    if (this->state == State::INIT) {
+    	this->state = State::USER;
+    }
 }
 
 void Chess::draw() {
@@ -70,5 +74,25 @@ void Chess::handleLeftMouseClick() {
 	int32_t x, y;
 	SDL_GetMouseState(&x, &y);
 
+	int32_t selectedCol = x / Piece::PIECE_WIDTH;
+	int32_t selectedRow = y / Piece::PIECE_HEIGHT;
+	Cell cell { selectedCol, selectedRow };
+
+
+	if (this->state == State::USER) {
+		this->selectedPiece = findPieceAtCell(cell);
+		std::cout << "The selected piece is " << this->selectedPiece->getRank() << std::endl;
+	}
 }
 
+Piece* Chess::findPieceAtCell(Cell cell) {
+	Piece* found = nullptr;
+
+	for (Piece* p : this->pieces) {
+		if (p->getCol() == cell.col && p->getRow() == cell.row) {
+			found = p;
+		}
+	}
+
+	return found;
+}
