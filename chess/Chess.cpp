@@ -156,6 +156,57 @@ void Chess::move(Piece* piece, Cell cell) {
 
 			moves.push_back(currentCell);
 		}
+
+		// Go east and add moves
+		for (int32_t colIdx = piecePos.col + 1; colIdx < 8; colIdx++) {
+			Cell currentCell = {colIdx, piecePos.row};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		// Go south and add moves
+		for (int32_t rowIdx = piecePos.row + 1; rowIdx < 8; rowIdx++) {
+			Cell currentCell = {piecePos.col, rowIdx};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		// Go east and add moves
+		for (int32_t colIdx = piecePos.col - 1; colIdx >= 0; colIdx--) {
+			Cell currentCell = {colIdx, piecePos.row};
+			Piece* currentCellPiece = findPieceAtCell(currentCell);
+
+			if (findPieceAtCell(currentCell) != nullptr) {
+				if (piece->getSide() != currentCellPiece->getSide()) {
+					moves.push_back(currentCell);
+				}
+
+				break;
+			}
+
+			moves.push_back(currentCell);
+		}
+
+		isAllowedMoveMade = this->isAllowedMove(moves, cell, piece);
+		moves.clear();
 	} else {
 		piece->move(cell);
 	}
