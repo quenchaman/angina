@@ -22,6 +22,9 @@ public:
 	void moveDown(int32_t y);
 	void moveLeft(int32_t x);
 	void moveRight(int32_t x);
+
+	void setX(int32_t x);
+	void setY(int32_t y);
 private:
 	Point& position;
 	Texture& texture;

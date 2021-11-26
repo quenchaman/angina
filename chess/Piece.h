@@ -25,6 +25,8 @@ public:
 	Piece(int32_t id, int32_t col, int32_t row, Rank rank, Side side, Texture* texture);
     virtual ~Piece() {};
 
+    void move(Cell cell);
+
 	int32_t getCol();
 
 	int32_t getRow();

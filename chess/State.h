@@ -11,7 +11,8 @@
 enum State {
 	INIT,
 	USER,
-	SELECTED
+	SELECTED,
+	CALCULATE_MOVE
 };
 
 

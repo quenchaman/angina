@@ -63,6 +63,7 @@ private:
 	State state = State::INIT;
 
 	Piece* findPieceAtCell(Cell cell);
+	void move(Piece* piece, Cell cell);
 };
 
 

@@ -16,6 +16,14 @@ Piece::Piece(int32_t _id, int32_t _col, int32_t _row, Rank _rank, Side _side, Te
                                   Piece::PIECE_HEIGHT });
 }
 
+void Piece::move(Cell cell) {
+	this->col = cell.col;
+	this->row = cell.row;
+
+	this->image->setX(col * Piece::PIECE_WIDTH);
+	this->image->setY(row * Piece::PIECE_HEIGHT);
+}
+
 int32_t Piece::getCol() {
 	return col;
 }

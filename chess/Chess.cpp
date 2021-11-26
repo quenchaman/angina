@@ -16,6 +16,8 @@ void Chess::init() {
 
 	this->boardImage = new Image(*textures.at(0), boardRect);
 
+	this->pieces.reserve(32);
+
     for (int32_t pawnIdx = 0; pawnIdx < 8; pawnIdx++) {
         Pawn* whitePawn = new Pawn(pawnIdx + 1, pawnIdx, 6, Side::White, textures.at(10));
         this->pieces.push_back(whitePawn);
@@ -80,8 +82,19 @@ void Chess::handleLeftMouseClick() {
 
 
 	if (this->state == State::USER) {
-		this->selectedPiece = findPieceAtCell(cell);
-		std::cout << "The selected piece is " << this->selectedPiece->getRank() << std::endl;
+		Piece* p = findPieceAtCell(cell);
+
+		if (p == nullptr) {
+			this->state = State::USER;
+		} else {
+			this->selectedPiece = p;
+
+			this->state = State::SELECTED;
+		}
+	} else if (this->state == State::SELECTED) {
+		this->move(this->selectedPiece, cell);
+
+		this->state = State::USER;
 	}
 }
 
@@ -95,4 +108,62 @@ Piece* Chess::findPieceAtCell(Cell cell) {
 	}
 
 	return found;
+}
+
+void Chess::move(Piece* piece, Cell cell) {
+	std::vector<Cell> allowedMoves;
+
+	if (piece->getRank() == Rank::KNIGHT) {
+		std::vector<Cell> moves;
+		moves.reserve(8);
+
+		Cell knightPosition = { piece->getCol(), piece->getRow() };
+
+		moves.push_back({ knightPosition.col - 2, knightPosition.row - 1 });
+		moves.push_back({ knightPosition.col - 1, knightPosition.row - 2 });
+		moves.push_back({ knightPosition.col + 1, knightPosition.row - 2 });
+		moves.push_back({ knightPosition.col + 2, knightPosition.row - 1 });
+		moves.push_back({ knightPosition.col + 2, knightPosition.row + 1 });
+		moves.push_back({ knightPosition.col + 1, knightPosition.row + 2 });
+		moves.push_back({ knightPosition.col - 1, knightPosition.row + 2 });
+		moves.push_back({ knightPosition.col - 2, knightPosition.row + 1 });
+
+		std::vector<Cell> movesInsideBoard;
+
+		for (Cell move : moves) {
+			if (move.col >=0 && move.col <= 7 && move.row >= 0 && move.row <= 7) {
+				movesInsideBoard.push_back(move);
+			}
+		}
+
+		std::cout << "moves in board? " << movesInsideBoard.size() << std::endl;
+
+		for (Cell move : movesInsideBoard) {
+			bool isOnFriendlyPiece = false;
+
+			for (Piece* p : pieces) {
+				if (p->getSide() == piece->getSide() && p->getCol() == move.col && p->getRow() == move.row) {
+					isOnFriendlyPiece = true;
+					break;
+				}
+			}
+
+			if (!isOnFriendlyPiece) {
+				allowedMoves.push_back(move);
+			}
+		}
+	}
+
+	bool hasMadeAllowedMove = false;
+
+	for (Cell move : allowedMoves) {
+		if (move.col == cell.col && move.row == cell.row) {
+			hasMadeAllowedMove = true;
+			break;
+		}
+	}
+
+	if (hasMadeAllowedMove) {
+		piece->move(cell);
+	}
 }
