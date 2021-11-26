@@ -35,12 +35,8 @@ Aota::Aota(): Engine() {
 	this->gameImage = nullptr;
 }
 
-// TODO: I should have a data structure that will store images and their dementions and also
-// their position relative to the 0,0 point.
 void Aota::draw() {
-
 	this->renderer.clearRenderer();
-//	this->renderer.render(*this->image);
 
 	this->gameImage->draw(this->renderer);
 
@@ -53,8 +49,7 @@ void Aota::executeGameLogic() {
 }
 
 void Aota::init() {
-	std::vector<Surface*> surfaces = ImageResource::loadBulk(paths);
-	std::vector<Texture*> textures = Transformer::transformSurfacesToTextures(this->renderer, surfaces);
+	std::vector<Texture*> textures = loadGameTextures(paths);
 
 	this->gameImages.push_back(new Image(*textures.at(0), mapRect));
 

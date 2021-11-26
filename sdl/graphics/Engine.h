@@ -8,6 +8,10 @@
 #ifndef SDL_GRAPHICS_ENGINE_H_
 #define SDL_GRAPHICS_ENGINE_H_
 
+#include <vector>
+#include <string>
+#include <iostream>
+
 #include "SDL.h"
 #include "SDL_image.h"
 
@@ -15,6 +19,9 @@
 #include "config/Globals.h"
 #include "sdl/graphics/Graphics.h"
 #include "sdl/graphics/Renderer.h"
+#include "sdl/graphics/Image.h"
+#include "sdl/resources/ImageResource.h"
+#include "sdl/components/Transformer.h"
 
 class Engine {
 public:
@@ -22,6 +29,7 @@ public:
 	virtual ~Engine() {};
 
 	void start();
+	std::vector<Texture*> loadGameTextures(std::vector<std::string> paths);
 	virtual void init() = 0;
 	virtual void draw() = 0;
 	virtual void executeGameLogic() = 0;
@@ -31,6 +39,7 @@ public:
 	virtual void handleLeftArrowKey() = 0;
 	virtual void handleRightArrowKey() = 0;
 	virtual void handleOtherKey() = 0;
+	virtual void handleLeftMouseClick() = 0;
 protected:
 	Window* window;
 	bool quit;

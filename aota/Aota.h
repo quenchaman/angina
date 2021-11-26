@@ -16,6 +16,7 @@
 #include <SDL.h>
 
 #include <vector>
+#include <string>
 #include <iostream>
 
 class Aota : public Engine {
@@ -33,7 +34,6 @@ public:
 	void handleOtherKey();
 private:
 	Image* gameImage;
-	std::vector<Surface*> images;
 	std::vector<Image*> gameImages;
 };
 

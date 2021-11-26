@@ -1,0 +1,5 @@
+/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles/angina.dir
+/home/ubuntu/Projects/angina/cmake-build-debug/libs/json/json-3.10.4/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/Projects/angina/cmake-build-debug/libs/json/json-3.10.4/CMakeFiles/edit_cache.dir

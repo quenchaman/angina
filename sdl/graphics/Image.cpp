@@ -67,3 +67,11 @@ void Image::moveRight(int32_t x) {
 
 	std::cout << "New position: x -> " << this->boundingBox.x << ", y -> " << this->boundingBox.y << std::endl;
 }
+
+void Image::setX(int32_t x) {
+	this->boundingBox.x = x;
+}
+
+void Image::setY(int32_t y) {
+	this->boundingBox.y = y;
+}

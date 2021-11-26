@@ -42,6 +42,8 @@ void Engine::start() {
 						handleOtherKey();
 						break;
 				}
+			} else if (this->e.type == SDL_MOUSEBUTTONDOWN && this->e.button.button == SDL_BUTTON_LEFT) {
+				this->handleLeftMouseClick();
 			} else {
 				handleOtherKey();
 			}
@@ -52,4 +54,11 @@ void Engine::start() {
 		this->draw();
 		this->window->updateWindowSurface();
 	}
+}
+
+std::vector<Texture*> Engine::loadGameTextures(std::vector<std::string> paths) {
+	std::vector<Surface*> surfaces = ImageResource::loadBulk(paths);
+	std::vector<Texture*> textures = Transformer::transformSurfacesToTextures(this->renderer, surfaces);
+
+	return textures;
 }
