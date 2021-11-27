@@ -91,7 +91,52 @@ void Chess::executeGameLogic() {
 		this->selectedPiece = nullptr;
 
 
-		this->state = State::USER;
+		if (turn == Side::White) {
+			this->turn = Side::Black;
+			this->state = State::COMPUTER;
+		} else {
+			this->turn = Side::White;
+			this->state = State::USER;
+		}
+	} else if (this->state == State::COMPUTER) {
+		makeComputerMove();
+		this->state = State::CHECK_CAPTURES;
+	}
+}
+
+void Chess::makeComputerMove() {
+	std::vector<Piece*> blackPieces;
+
+	for (Piece* p : pieces) {
+		if (p->getSide() == Side::Black) {
+			blackPieces.push_back(p);
+		}
+	}
+
+	std::shuffle(std::begin(blackPieces), std::end(blackPieces), randomEngine);
+
+	// select a piece among the pieces that can be moved
+	bool wasAbleToMove = false;
+
+	for (Piece* p : blackPieces) {
+		for (int32_t row = 0; row < 8; row++) {
+			for (int32_t col = 0; col < 8; col++) {
+				wasAbleToMove = move(p, {col, row});
+
+				if (wasAbleToMove) {
+					this->selectedPiece = p;
+					break;
+				}
+			}
+
+			if (wasAbleToMove) {
+				break;
+			}
+		}
+
+		if (wasAbleToMove) {
+			break;
+		}
 	}
 }
 
@@ -131,7 +176,7 @@ Piece* Chess::findPieceAtCell(Cell cell) {
 	return found;
 }
 
-void Chess::move(Piece* piece, Cell cell) {
+bool Chess::move(Piece* piece, Cell cell) {
 	bool isAllowedMoveMade = false;
 	std::vector<Cell> moves;
 	moves.reserve(8);
@@ -482,6 +527,8 @@ void Chess::move(Piece* piece, Cell cell) {
 		piece->move(cell);
 		this->state = State::CHECK_CAPTURES;
 	}
+
+	return isAllowedMoveMade;
 }
 
 bool Chess::isAllowedMove(std::vector<Cell> moves, Cell targetMove, Piece* piece) {

@@ -24,6 +24,9 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <stdlib.h>
+#include <algorithm>
+#include <random>
 
 class Chess : public Engine {
 public:
@@ -61,10 +64,13 @@ private:
 	Piece* selectedPiece;
 	std::vector<Cell> possibleMoves;
 	State state = State::INIT;
+	std::default_random_engine randomEngine = {};
+	Side turn = Side::White;
 
 	Piece* findPieceAtCell(Cell cell);
-	void move(Piece* piece, Cell cell);
+	bool move(Piece* piece, Cell cell);
 	bool isAllowedMove(std::vector<Cell> moves, Cell targetMove, Piece* piece);
+	void makeComputerMove();
 };
 
 
