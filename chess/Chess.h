@@ -66,6 +66,7 @@ private:
 	State state = State::INIT;
 	std::default_random_engine randomEngine = {};
 	Side turn = Side::White;
+	bool inCheck = false;
 
 	Piece* findPieceAtCell(Cell cell);
 	bool move(Piece* piece, Cell cell);

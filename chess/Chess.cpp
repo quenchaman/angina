@@ -88,8 +88,41 @@ void Chess::executeGameLogic() {
 			this->pieces.push_back(p);
 		}
 
-		this->selectedPiece = nullptr;
+		this->state = State::CHECK_CHECK;
+	} else if (this->state == State::COMPUTER) {
+		makeComputerMove();
+		this->state = State::CHECK_CAPTURES;
+	} else if (this->state == State::CHECK_CHECK) {
+		Piece* king;
 
+		for (Piece* p : pieces) {
+			if (this->selectedPiece->getSide() == Side::White && p->getSide() == Side::Black && p->getRank() == Rank::KING) {
+				king = p;
+			} else if (this->selectedPiece->getSide() == Side::Black && p->getSide() == Side::White && p->getRank() == Rank::KING) {
+				king = p;
+			}
+		}
+
+		bool canAttackKing = false;
+
+		for (Piece* p : pieces) {
+			if (p->getSide() == turn) {
+				Cell previousPos = {p->getCol(), p->getRow()};
+				canAttackKing = move(p, {king->getCol(), king->getRow()});
+
+				move(p, previousPos);
+				if (canAttackKing) {
+					break;
+				}
+			}
+		}
+
+		if (canAttackKing) {
+			std::cout << "We are at chess" << std::endl;
+			inCheck = true;
+		}
+
+		this->selectedPiece = nullptr;
 
 		if (turn == Side::White) {
 			this->turn = Side::Black;
@@ -98,9 +131,6 @@ void Chess::executeGameLogic() {
 			this->turn = Side::White;
 			this->state = State::USER;
 		}
-	} else if (this->state == State::COMPUTER) {
-		makeComputerMove();
-		this->state = State::CHECK_CAPTURES;
 	}
 }
 
@@ -119,11 +149,28 @@ void Chess::makeComputerMove() {
 	bool wasAbleToMove = false;
 
 	for (Piece* p : blackPieces) {
+		if (inCheck && p->getRank() != Rank::KING) {
+			continue;
+		}
 		for (int32_t row = 0; row < 8; row++) {
 			for (int32_t col = 0; col < 8; col++) {
 				wasAbleToMove = move(p, {col, row});
 
+				if (p->getRank() == Rank::KING) {
+					// go through all oponen pieces and check if an yof them attack the king
+					for (Piece* piece : pieces) {
+						if (piece->getSide() == Side::White) {
+							wasAbleToMove = !move(piece, {p->getCol(), p->getRow()});
+
+							if (!wasAbleToMove) {
+								break;
+							}
+						}
+					}
+				}
+
 				if (wasAbleToMove) {
+					p->move({col, row});
 					this->selectedPiece = p;
 					break;
 				}
@@ -152,7 +199,11 @@ void Chess::handleLeftMouseClick() {
 	if (this->state == State::USER) {
 		Piece* p = findPieceAtCell(cell);
 
-		if (p == nullptr) {
+		if (p->getSide() == Side::Black) {
+			return;
+		}
+
+		if (p == nullptr || (inCheck && p->getRank() != Rank::KING)) {
 			this->state = State::USER;
 		} else {
 			this->selectedPiece = p;
@@ -160,7 +211,12 @@ void Chess::handleLeftMouseClick() {
 			this->state = State::SELECTED;
 		}
 	} else if (this->state == State::SELECTED) {
-		this->move(this->selectedPiece, cell);
+		bool shouldMove = this->move(this->selectedPiece, cell);
+
+		if (shouldMove) {
+			this->selectedPiece->move(cell);
+			this->state = State::CHECK_CAPTURES;
+		}
 	}
 }
 
@@ -523,11 +579,6 @@ bool Chess::move(Piece* piece, Cell cell) {
 	isAllowedMoveMade = this->isAllowedMove(moves, cell, piece);
 	moves.clear();
 
-	if (isAllowedMoveMade) {
-		piece->move(cell);
-		this->state = State::CHECK_CAPTURES;
-	}
-
 	return isAllowedMoveMade;
 }
 
@@ -540,8 +591,6 @@ bool Chess::isAllowedMove(std::vector<Cell> moves, Cell targetMove, Piece* piece
 			movesInsideBoard.push_back(move);
 		}
 	}
-
-	std::cout << "moves in board? " << movesInsideBoard.size() << std::endl;
 
 	for (Cell move : movesInsideBoard) {
 		bool isOnFriendlyPiece = false;
