@@ -161,13 +161,14 @@ void Chess::makeComputerMove() {
 					for (Piece* piece : pieces) {
 						if (piece->getSide() == Side::White) {
 							wasAbleToMove = !move(piece, {p->getCol(), p->getRow()});
-
+							std::cout << "King is attacked by " << piece->getRank() << " = " << !wasAbleToMove << std::endl;
 							if (!wasAbleToMove) {
 								break;
 							}
 						}
 					}
 				}
+
 
 				if (wasAbleToMove) {
 					p->move({col, row});
