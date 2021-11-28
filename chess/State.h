@@ -9,6 +9,7 @@
 #define CHESS_STATE_H_
 
 enum State {
+    WELCOME_SCREEN,
 	INIT,
 	USER,
 	SELECTED,

@@ -19,6 +19,9 @@ namespace Resources {
 	const std::string press = "press.bmp";
 	const std::string map = "map.jpeg";
 
+    const std::string whiteWins = "white_wins.png";
+    const std::string blackWins = "black_wins.png";
+    const std::string startScreen = "start_screen.png";
 	const std::string board = "Chess-Board.png";
 	const std::string blackBishop = "Bishop_B.png";
 	const std::string blackKing = "King_B.png";

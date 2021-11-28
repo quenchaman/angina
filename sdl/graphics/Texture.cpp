@@ -26,3 +26,15 @@ void Texture::draw(Renderer& renderer, const SDL_Rect* destRect) {
 }
 
 Texture::~Texture() {}
+
+void
+Texture::draw(Renderer &renderer, const SDL_Rect *destRect, double angle, SDL_Point *center, SDL_RendererFlip flip) {
+    SDL_Rect renderQuad = {};
+
+    if (destRect != nullptr) {
+        renderQuad.w = destRect->w;
+        renderQuad.h = destRect->h;
+    }
+
+    SDL_RenderCopyEx(renderer.getRenderer(), texture, destRect, &renderQuad, angle, center, flip);
+}

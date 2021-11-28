@@ -42,6 +42,7 @@ public:
 	void handleLeftMouseClick();
 private:
 	Image* boardImage;
+    Image* startScreen;
 	std::vector<std::string> paths = {
 		Resources::board,
 		Resources::blackBishop,
@@ -55,23 +56,25 @@ private:
 		Resources::whiteKnight,
 		Resources::whitePawn,
 		Resources::whiteQueen,
-		Resources::whiteRook
+		Resources::whiteRook,
+        Resources::startScreen,
+        Resources::whiteWins,
+        Resources::blackWins
 	};
-	uint32_t board[8][8];
 	std::vector<Piece*> pieces;
 	std::map<int32_t, Image*> pieceImages;
-	std::map<Side, std::map<Rank, Texture*>> pieceTextures;
 	Piece* selectedPiece;
-	std::vector<Cell> possibleMoves;
 	State state = State::INIT;
 	std::default_random_engine randomEngine = {};
 	Side turn = Side::White;
 	bool inCheck = false;
+    Image* winnerBanner;
 
 	Piece* findPieceAtCell(Cell cell);
 	bool move(Piece* piece, Cell cell);
 	bool isAllowedMove(std::vector<Cell> moves, Cell targetMove, Piece* piece);
 	bool makeComputerMove();
+    void newGameSetup();
 };
 
 

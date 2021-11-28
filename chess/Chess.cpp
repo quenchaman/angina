@@ -9,14 +9,25 @@
 #include "King.h"
 
 void Chess::init() {
-	std::vector<Texture*> textures = loadGameTextures(paths);
-	SDL_Rect boardRect = {
-			0, 0, 640, 640
-	};
+	this->state = State::WELCOME_SCREEN;
 
-	this->boardImage = new Image(*textures.at(0), boardRect);
+    std::vector<Texture*> textures = loadGameTextures(paths);
+    SDL_Rect boardRect = {
+            0, 0, 640, 640
+    };
 
-	this->pieces.reserve(32);
+    this->startScreen = new Image(*textures.at(13), boardRect);
+}
+
+void Chess::newGameSetup() {
+    std::vector<Texture*> textures = loadGameTextures(paths);
+    SDL_Rect boardRect = {
+            0, 0, 640, 640
+    };
+
+    this->boardImage = new Image(*textures.at(0), boardRect);
+
+    this->pieces.reserve(32);
 
     for (int32_t pawnIdx = 0; pawnIdx < 8; pawnIdx++) {
         Pawn* whitePawn = new Pawn(pawnIdx + 1, pawnIdx, 6, Side::White, textures.at(10));
@@ -51,25 +62,36 @@ void Chess::init() {
     this->pieces.push_back(new King(23, 4, 7, Side::White, textures.at(8)));
 
     if (this->state == State::INIT) {
-    	this->state = State::USER;
+        this->state = State::USER;
     }
 }
 
 void Chess::draw() {
 	this->renderer.clearRenderer();
 
-	this->boardImage->draw(this->renderer);
+    if (this->state == State::WELCOME_SCREEN) {
+        this->startScreen->draw(this->renderer);
+    } else {
+        this->boardImage->draw(this->renderer);
 
-	for (Piece* p : pieces) {
-		p->draw(this->renderer);
-	}
+        for (Piece* p : pieces) {
+            p->draw(this->renderer);
+        }
+
+        if (this->state == State::CHECKMATE) {
+            this->winnerBanner->draw(renderer);
+        }
+    }
 
 	this->renderer.updateScreen();
 	SDL_Delay(50);
 }
 
 void Chess::executeGameLogic() {
-	if (this->state == State::CHECK_CAPTURES) {
+    if (this->state == State::INIT) {
+        newGameSetup();
+        this->state = State::USER;
+    } else if (this->state == State::CHECK_CAPTURES) {
 		//Piece* capturedPiece;
 		std::vector<Piece*> newPieces;
 
@@ -126,7 +148,6 @@ void Chess::executeGameLogic() {
 		}
 
 		if (canAttackKing) {
-			std::cout << "We are at chess" << std::endl;
 			inCheck = true;
 		}
 
@@ -141,6 +162,16 @@ void Chess::executeGameLogic() {
 		}
 	} else if (this->state == State::CHECKMATE) {
         std::cout << "Checkmate brah!" << std::endl;
+        SDL_Rect winnerBannerRect = {
+                0, 0, 320, 320
+        };
+        std::vector<Texture*> textures = loadGameTextures(paths);
+
+        if (this->turn == Side::White) {
+            winnerBanner = new Image(*textures.at(14), winnerBannerRect);
+        } else {
+            winnerBanner = new Image(*textures.at(15), winnerBannerRect);
+        }
     }
 }
 
@@ -209,7 +240,16 @@ void Chess::handleLeftMouseClick() {
 	Cell cell { selectedCol, selectedRow };
 
 
-	if (this->state == State::USER) {
+    if (this->state == State::WELCOME_SCREEN) {
+        int32_t startX = 200;
+        int32_t endX = 440;
+        int32_t startY = 300;
+        int32_t endY = 340;
+
+        if (x >= startX && x <= endX && y >= startY && y <= endY) {
+            this->state = State::INIT;
+        }
+    } else if (this->state == State::USER) {
 		Piece* p = findPieceAtCell(cell);
 
 		if (p->getSide() == Side::Black) {
