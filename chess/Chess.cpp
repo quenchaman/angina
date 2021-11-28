@@ -90,8 +90,16 @@ void Chess::executeGameLogic() {
 
 		this->state = State::CHECK_CHECK;
 	} else if (this->state == State::COMPUTER) {
-		makeComputerMove();
-		this->state = State::CHECK_CAPTURES;
+		bool wasAbleToMove = makeComputerMove();
+
+        if (inCheck && !wasAbleToMove) {
+            std::cout << "We are at checkmate" << std::endl;
+            this->state = State::CHECKMATE;
+        } else if (!inCheck && !wasAbleToMove) {
+            this->state = State::STALEMATE;
+        } else {
+            this->state = State::CHECK_CAPTURES;
+        }
 	} else if (this->state == State::CHECK_CHECK) {
 		Piece* king;
 
@@ -136,7 +144,7 @@ void Chess::executeGameLogic() {
     }
 }
 
-void Chess::makeComputerMove() {
+bool Chess::makeComputerMove() {
 	std::vector<Piece*> blackPieces;
 
 	for (Piece* p : pieces) {
@@ -154,16 +162,16 @@ void Chess::makeComputerMove() {
 		if (inCheck && p->getRank() != Rank::KING) {
 			continue;
 		}
+
 		for (int32_t row = 0; row < 8; row++) {
 			for (int32_t col = 0; col < 8; col++) {
                 std::cout << "The row is " << row << " and the col is " << col << std::endl;
 				wasAbleToMove = move(p, {col, row});
 
-                if (p->getRank() == Rank::KING && wasAbleToMove) {
+                if (wasAbleToMove) {
                     for (Piece* opponentPiece : pieces) {
                         if (opponentPiece->getSide() != p->getSide()) {
                             if (move(opponentPiece, {col, row})) {
-                                std::cout << "this move checks the king with piece " << opponentPiece->getRank() <<std::endl;
                                 wasAbleToMove = false;
                                 break;
                             }
@@ -189,9 +197,7 @@ void Chess::makeComputerMove() {
 		}
 	}
 
-    if (!wasAbleToMove) {
-        this->state = State::CHECKMATE;
-    }
+    return wasAbleToMove;
 }
 
 void Chess::handleLeftMouseClick() {
