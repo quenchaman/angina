@@ -54,10 +54,10 @@ RM = /home/ubuntu/Downloads/clion-2021.2.3/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/Projects/angina
+CMAKE_SOURCE_DIR = /home/ubuntu/Projects/angina2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/Projects/angina/cmake-build-debug
+CMAKE_BINARY_DIR = /home/ubuntu/Projects/angina2/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -98,14 +98,14 @@ libs/json/json-3.10.4/clean:
 CMakeFiles/angina.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 "Built target angina"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 "Built target angina"
 .PHONY : CMakeFiles/angina.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/angina.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles 27
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/angina.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/angina.dir/rule
 
 # Convenience name for target.

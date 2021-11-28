@@ -154,25 +154,25 @@ void Chess::makeComputerMove() {
 		}
 		for (int32_t row = 0; row < 8; row++) {
 			for (int32_t col = 0; col < 8; col++) {
+                std::cout << "The row is " << row << " and the col is " << col << std::endl;
 				wasAbleToMove = move(p, {col, row});
 
-				if (p->getRank() == Rank::KING) {
-					// go through all oponen pieces and check if an yof them attack the king
-					for (Piece* piece : pieces) {
-						if (piece->getSide() == Side::White) {
-							wasAbleToMove = !move(piece, {p->getCol(), p->getRow()});
-							std::cout << "King is attacked by " << piece->getRank() << " = " << !wasAbleToMove << std::endl;
-							if (!wasAbleToMove) {
-								break;
-							}
-						}
-					}
-				}
-
+                if (p->getRank() == Rank::KING && wasAbleToMove) {
+                    for (Piece* opponentPiece : pieces) {
+                        if (opponentPiece->getSide() != p->getSide()) {
+                            if (move(opponentPiece, {col, row})) {
+                                std::cout << "this move checks the king with piece " << opponentPiece->getRank() <<std::endl;
+                                wasAbleToMove = false;
+                                break;
+                            }
+                        }
+                    }
+                }
 
 				if (wasAbleToMove) {
 					p->move({col, row});
 					this->selectedPiece = p;
+                    inCheck = false;
 					break;
 				}
 			}

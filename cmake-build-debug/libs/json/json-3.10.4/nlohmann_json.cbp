@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;CMake Files\cmake_helpers\;CMake Files\cmake_helpers\find_modules\;CMake Files\libs\;CMake Files\libs\json\;CMake Files\libs\json\json-3.10.4\;CMake Files\libs\json\json-3.10.4\cmake\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/ubuntu/Projects/angina/cmake-build-debug/libs/json/json-3.10.4"/>
+				<Option working_dir="/home/ubuntu/Projects/angina2/cmake-build-debug/libs/json/json-3.10.4"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina/cmake-build-debug/libs/json/json-3.10.4/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina/cmake-build-debug/libs/json/json-3.10.4/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina/cmake-build-debug/libs/json/json-3.10.4/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina/cmake-build-debug/libs/json/json-3.10.4/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/libs/json/json-3.10.4/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/libs/json/json-3.10.4/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/libs/json/json-3.10.4/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/libs/json/json-3.10.4/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/ubuntu/Projects/angina/CMakeLists.txt">
+		<Unit filename="/home/ubuntu/Projects/angina2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina/cmake_helpers/helpers.cmake">
+		<Unit filename="/home/ubuntu/Projects/angina2/cmake_helpers/helpers.cmake">
 			<Option virtualFolder="CMake Files\cmake_helpers\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina/cmake_helpers/find_modules/FindSDL2.cmake">
+		<Unit filename="/home/ubuntu/Projects/angina2/cmake_helpers/find_modules/FindSDL2.cmake">
 			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina/cmake_helpers/find_modules/FindSDL2_image.cmake">
+		<Unit filename="/home/ubuntu/Projects/angina2/cmake_helpers/find_modules/FindSDL2_image.cmake">
 			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina/libs/json/json-3.10.4/CMakeLists.txt">
+		<Unit filename="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\libs\json\json-3.10.4\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina/libs/json/json-3.10.4/cmake/config.cmake.in">
+		<Unit filename="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/cmake/config.cmake.in">
 			<Option virtualFolder="CMake Files\libs\json\json-3.10.4\cmake\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina/libs/json/json-3.10.4/cmake/nlohmann_jsonConfigVersion.cmake.in">
+		<Unit filename="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/cmake/nlohmann_jsonConfigVersion.cmake.in">
 			<Option virtualFolder="CMake Files\libs\json\json-3.10.4\cmake\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina/libs/json/json-3.10.4/cmake/pkg-config.pc.in">
+		<Unit filename="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/cmake/pkg-config.pc.in">
 			<Option virtualFolder="CMake Files\libs\json\json-3.10.4\cmake\"/>
 		</Unit>
 	</Project>
