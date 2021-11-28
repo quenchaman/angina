@@ -263,6 +263,12 @@
 		<Unit filename="/home/ubuntu/Projects/angina2/sdl/resources/ImageResource.h">
 			<Option target="angina"/>
 		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina2/test/Test.cpp">
+			<Option target="angina"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina2/test/Test.h">
+			<Option target="angina"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

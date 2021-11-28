@@ -38,3 +38,10 @@ Texture::draw(Renderer &renderer, SDL_Rect destRect, double angle, SDL_Point cen
 
     SDL_RenderCopyEx(renderer.getRenderer(), texture, &destRect, &renderQuad, angle, &center, flip);
 }
+
+SDL_Point Texture::getSize() {
+    SDL_Point point;
+    SDL_QueryTexture(texture, NULL, NULL, &point.x, &point.y);
+    std::cout << "The rect is " << point.x << " ; " << point.y << std::endl;
+    return point;
+}

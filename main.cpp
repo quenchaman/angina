@@ -5,14 +5,14 @@
 #include <SDL.h>
 
 #include <nlohmann/json.hpp>
-#include "chess/Chess.h"
+#include "test/Test.h"
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	try {
 		Graphics::boot();
 		Graphics::bootImageExtension();
 
-		Engine* engine = new Chess();
+		Engine* engine = new Test();
 
 		engine->start();
 

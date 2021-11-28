@@ -753,6 +753,30 @@ sdl/resources/ImageResource.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.s
 .PHONY : sdl/resources/ImageResource.cpp.s
 
+test/Test.o: test/Test.cpp.o
+.PHONY : test/Test.o
+
+# target to build an object file
+test/Test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/test/Test.cpp.o
+.PHONY : test/Test.cpp.o
+
+test/Test.i: test/Test.cpp.i
+.PHONY : test/Test.i
+
+# target to preprocess a source file
+test/Test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/test/Test.cpp.i
+.PHONY : test/Test.cpp.i
+
+test/Test.s: test/Test.cpp.s
+.PHONY : test/Test.s
+
+# target to generate assembly for a file
+test/Test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/test/Test.cpp.s
+.PHONY : test/Test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -840,6 +864,9 @@ help:
 	@echo "... sdl/resources/ImageResource.o"
 	@echo "... sdl/resources/ImageResource.i"
 	@echo "... sdl/resources/ImageResource.s"
+	@echo "... test/Test.o"
+	@echo "... test/Test.i"
+	@echo "... test/Test.s"
 .PHONY : help
 
 

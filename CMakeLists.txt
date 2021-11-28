@@ -47,12 +47,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/config/ConfigLoader.h
 	${DIR}/config/Globals.h
 	${DIR}/config/ConfigLoader.cpp
-	${DIR}/aota/Aota.h
-	${DIR}/aota/Aota.cpp
 	${DIR}/sdl/components/Transformer.h
 	${DIR}/sdl/components/Transformer.cpp
-	${DIR}/chess/Chess.h
-	${DIR}/chess/Chess.cpp
 	${DIR}/chess/Piece.h
 	${DIR}/chess/Piece.cpp
 	${DIR}/chess/Pawn.h
@@ -67,7 +63,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess/Queen.h
 	${DIR}/chess/King.cpp
 	${DIR}/chess/King.h
-	${DIR}/chess/State.h)
+	${DIR}/chess/State.h test/Test.cpp test/Test.h)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 set_target_cpp_standard(${PROJECT_NAME} 17)

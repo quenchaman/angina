@@ -51,14 +51,33 @@ void Engine::start() {
 
 		this->executeGameLogic();
 
-		this->draw();
+		this->executeDraw();
 		this->window->updateWindowSurface();
 	}
 }
 
-std::vector<Texture*> Engine::loadGameTextures(std::vector<std::string> paths) {
+void Engine::loadGameResources(std::vector<std::string> paths) {
 	std::vector<Surface*> surfaces = ImageResource::loadBulk(paths);
 	std::vector<Texture*> textures = Transformer::transformSurfacesToTextures(this->renderer, surfaces);
 
-	return textures;
+    int32_t idx = 0;
+
+    for (Texture* texture : textures) {
+        SDL_Point size = texture->getSize();
+        SDL_Rect rect = {
+                0, 0,
+                size.x, size.y
+        };
+        resources[paths.at((size_t)idx)] = new Image(*texture, rect);
+        idx++;
+    }
+}
+
+void Engine::executeDraw() {
+    this->renderer.clearRenderer();
+
+    this->draw();
+
+    this->renderer.updateScreen();
+    SDL_Delay(50);
 }

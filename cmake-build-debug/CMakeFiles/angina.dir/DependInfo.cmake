@@ -34,6 +34,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ubuntu/Projects/angina2/sdl/graphics/Texture.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o"
   "/home/ubuntu/Projects/angina2/sdl/primitives/Point.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o"
   "/home/ubuntu/Projects/angina2/sdl/resources/ImageResource.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o"
+  "/home/ubuntu/Projects/angina2/test/Test.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/test/Test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

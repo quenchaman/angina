@@ -23,6 +23,7 @@ public:
 	Texture(SDL_Texture* texture);
 
 	SDL_Texture* getTexture();
+    SDL_Point getSize();
 	virtual void draw(Renderer& renderer) override;
 	virtual void draw(Renderer& renderer, const SDL_Rect* destRect) override;
     virtual void draw(Renderer& renderer, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip);

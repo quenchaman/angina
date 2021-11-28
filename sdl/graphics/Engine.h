@@ -29,7 +29,7 @@ public:
 	virtual ~Engine() {};
 
 	void start();
-	std::vector<Texture*> loadGameTextures(std::vector<std::string> paths);
+	void loadGameResources(std::vector<std::string> paths);
 	virtual void init() = 0;
 	virtual void draw() = 0;
 	virtual void executeGameLogic() = 0;
@@ -45,6 +45,9 @@ protected:
 	bool quit;
 	SDL_Event e;
 	Renderer& renderer;
+    std::map<std::string, Image*> resources;
+private:
+    void executeDraw();
 };
 
 

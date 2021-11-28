@@ -25,6 +25,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o"
   "CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o"
   "CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o"
+  "CMakeFiles/angina.dir/test/Test.cpp.o"
   "angina"
   "angina.pdb"
 )

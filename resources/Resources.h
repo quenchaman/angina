@@ -11,31 +11,24 @@
 #include <string>
 
 namespace Resources {
-	const std::string helloImage = "hello.bmp";
-	const std::string down = "down.bmp";
-	const std::string up = "up.bmp";
-	const std::string left = "left.bmp";
-	const std::string right = "right.bmp";
-	const std::string press = "press.bmp";
-	const std::string map = "map.jpeg";
 
-    const std::string whiteWins = "white_wins.png";
-    const std::string blackWins = "black_wins.png";
-    const std::string startScreen = "start_screen.png";
-	const std::string board = "Chess-Board.png";
-	const std::string blackBishop = "Bishop_B.png";
-	const std::string blackKing = "King_B.png";
-	const std::string blackKnight = "Knight_B.png";
-	const std::string blackPawn = "Pawn_B.png";
-	const std::string blackQueen = "Queen_B.png";
-	const std::string blackRook = "Rook_B.png";
+    const std::string whiteWins = "chess/white_wins.png";
+    const std::string blackWins = "chess/black_wins.png";
+    const std::string startScreen = "chess/start_screen.png";
+	const std::string board = "chess/Chess-Board.png";
+	const std::string blackBishop = "chess/Bishop_B.png";
+	const std::string blackKing = "chess/King_B.png";
+	const std::string blackKnight = "chess/Knight_B.png";
+	const std::string blackPawn = "chess/Pawn_B.png";
+	const std::string blackQueen = "chess/Queen_B.png";
+	const std::string blackRook = "chess/Rook_B.png";
 
-	const std::string whiteBishop = "Bishop_W.png";
-	const std::string whiteKing = "King_W.png";
-	const std::string whiteKnight = "Knight_W.png";
-	const std::string whitePawn = "Pawn_W.png";
-	const std::string whiteQueen = "Queen_W.png";
-	const std::string whiteRook = "Rook_W.png";
+	const std::string whiteBishop = "chess/Bishop_W.png";
+	const std::string whiteKing = "chess/King_W.png";
+	const std::string whiteKnight = "chess/Knight_W.png";
+	const std::string whitePawn = "chess/Pawn_W.png";
+	const std::string whiteQueen = "chess/Queen_W.png";
+	const std::string whiteRook = "chess/Rook_W.png";
 };
 
 
