@@ -131,7 +131,9 @@ void Chess::executeGameLogic() {
 			this->turn = Side::White;
 			this->state = State::USER;
 		}
-	}
+	} else if (this->state == State::CHECKMATE) {
+        std::cout << "Checkmate brah!" << std::endl;
+    }
 }
 
 void Chess::makeComputerMove() {
@@ -186,6 +188,10 @@ void Chess::makeComputerMove() {
 			break;
 		}
 	}
+
+    if (!wasAbleToMove) {
+        this->state = State::CHECKMATE;
+    }
 }
 
 void Chess::handleLeftMouseClick() {
@@ -212,6 +218,17 @@ void Chess::handleLeftMouseClick() {
 			this->state = State::SELECTED;
 		}
 	} else if (this->state == State::SELECTED) {
+        if (this->selectedPiece->getCol() == cell.col && this->selectedPiece->getRow() == cell.row) {
+            return;
+        }
+
+        Piece* p = findPieceAtCell(cell);
+
+        if (p != nullptr && p->getSide() == this->selectedPiece->getSide()) {
+            this->selectedPiece = p;
+            return;
+        }
+
 		bool shouldMove = this->move(this->selectedPiece, cell);
 
 		if (shouldMove) {
