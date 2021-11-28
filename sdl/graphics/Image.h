@@ -17,6 +17,7 @@
 class Image {
 public:
 	Image(Texture& texture, SDL_Rect _boundingBox);
+    ~Image();
 	void draw(Renderer& renderer);
 	void moveUp(int32_t y);
 	void moveDown(int32_t y);
@@ -25,10 +26,10 @@ public:
 
 	void setX(int32_t x);
 	void setY(int32_t y);
+    void put(int32_t x, int32_t y);
     Texture* getTexture();
     SDL_Rect getBoundingBox();
 private:
-	Point& position;
 	Texture& texture;
 	SDL_Rect boundingBox;
 };

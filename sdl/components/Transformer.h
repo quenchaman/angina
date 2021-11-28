@@ -17,7 +17,7 @@
 
 namespace Transformer {
 	Texture* transformSurfaceToTexture(Renderer& renderer, Surface& surface);
-	std::vector<Texture*> transformSurfacesToTextures(Renderer& renderer, std::vector<Surface*> surfaces);
+	std::vector<Texture*> transformSurfacesToTextures(Renderer* renderer, const std::vector<Surface*>& surfaces);
 }
 
 

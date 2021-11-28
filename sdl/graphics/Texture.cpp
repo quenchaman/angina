@@ -25,7 +25,10 @@ void Texture::draw(Renderer& renderer, const SDL_Rect* destRect) {
 	SDL_RenderCopy(renderer.getRenderer(), this->getTexture(), NULL, destRect);
 }
 
-Texture::~Texture() {}
+Texture::~Texture() {
+    std::cout << "Texture destroyed" << std::endl;
+    SDL_DestroyTexture(texture);
+}
 
 void
 Texture::draw(Renderer &renderer, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip) {

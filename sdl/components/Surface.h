@@ -8,6 +8,8 @@
 #ifndef SDL_COMPONENTS_SURFACE_H_
 #define SDL_COMPONENTS_SURFACE_H_
 
+#include <iostream>
+
 #include "SDL.h"
 
 class Surface {

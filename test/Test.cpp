@@ -15,7 +15,7 @@ void Test::init() {
 }
 
 void Test::draw() {
-    this->board->draw(renderer);
+    this->board->draw(*renderer);
 }
 
 void Test::executeGameLogic() {

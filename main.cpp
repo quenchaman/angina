@@ -9,13 +9,11 @@
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	try {
-		Graphics::boot();
-		Graphics::bootImageExtension();
+		Test* game = new Test();
 
-		Engine* engine = new Test();
+		game->start();
 
-		engine->start();
-
+        delete game;
 		return EXIT_SUCCESS;
 	} catch (const BaseException& ex) {
 		std::cerr << ex << std::endl;

@@ -26,7 +26,7 @@
 class Engine {
 public:
 	Engine(std::string appTitle);
-	virtual ~Engine() {};
+	virtual ~Engine();
 
 	void start();
 	void loadGameResources(std::vector<std::string> paths);
@@ -45,7 +45,7 @@ private:
 	bool quit;
 	SDL_Event e;
 protected:
-    Renderer& renderer;
+    Renderer* renderer;
     std::map<std::string, Image*> resources;
 private:
     void executeDraw();

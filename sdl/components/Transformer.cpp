@@ -18,14 +18,16 @@ namespace Transformer {
 			throw GraphicsInitException(SDL_GetError());
 		}
 
+        delete &surface;
+
 		return new Texture(texture);
 	}
 
-	std::vector<Texture*> transformSurfacesToTextures(Renderer& renderer, std::vector<Surface*> surfaces) {
+	std::vector<Texture*> transformSurfacesToTextures(Renderer* renderer, const std::vector<Surface*>& surfaces) {
 		std::vector<Texture*> textures;
 
 		for (Surface* surface : surfaces) {
-			Texture* t = Transformer::transformSurfaceToTexture(renderer, *surface);
+			Texture* t = Transformer::transformSurfaceToTexture(*renderer, *surface);
 			textures.push_back(t);
 		}
 

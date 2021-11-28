@@ -9,7 +9,7 @@
 #include "Image.h"
 
 Image::Image(Texture& _texture, SDL_Rect _boundingBox)
-	: position(*(new Point(0, 0))), texture(_texture), boundingBox(_boundingBox) {
+	: texture(_texture), boundingBox(_boundingBox) {
 }
 
 void Image::draw(Renderer& renderer) {
@@ -82,4 +82,13 @@ Texture *Image::getTexture() {
 
 SDL_Rect Image::getBoundingBox() {
     return this->boundingBox;
+}
+
+void Image::put(int32_t x, int32_t y) {
+    setX(x);
+    setY(y);
+}
+
+Image::~Image() {
+    delete &texture;
 }

@@ -7,14 +7,18 @@
 
 #include "Engine.h"
 
-Engine::Engine(std::string appTitle): window(new Window(
-		appTitle,
-		SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED,
-		Globals::config.screenWidth,
-		Globals::config.screenHeight,
-		SDL_WINDOW_SHOWN
-	)), quit(false), renderer(Graphics::bootRenderer(this->window->getWindow())) {
+Engine::Engine(std::string appTitle): quit(false) {
+    Graphics::boot();
+    Graphics::bootImageExtension();
+    window = new Window(
+            appTitle,
+            SDL_WINDOWPOS_UNDEFINED,
+            SDL_WINDOWPOS_UNDEFINED,
+            Globals::config.screenWidth,
+            Globals::config.screenHeight,
+            SDL_WINDOW_SHOWN
+    );
+    renderer = &Graphics::bootRenderer(this->window->getWindow());
 }
 
 void Engine::start() {
@@ -74,10 +78,22 @@ void Engine::loadGameResources(std::vector<std::string> paths) {
 }
 
 void Engine::executeDraw() {
-    this->renderer.clearRenderer();
+    this->renderer->clearRenderer();
 
     this->draw();
 
-    this->renderer.updateScreen();
+    this->renderer->updateScreen();
     SDL_Delay(50);
+}
+
+Engine::~Engine() {
+    // Clean-up resources
+    for (auto const& [key, val] : resources) {
+        delete val;
+    }
+
+    SDL_DestroyRenderer(renderer->getRenderer());
+    SDL_DestroyWindow(window->getWindow());
+    IMG_Quit();
+    SDL_Quit();
 }
