@@ -25,6 +25,8 @@ public:
 
 	void setX(int32_t x);
 	void setY(int32_t y);
+    Texture* getTexture();
+    SDL_Rect getBoundingBox();
 private:
 	Point& position;
 	Texture& texture;

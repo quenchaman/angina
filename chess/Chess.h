@@ -69,6 +69,9 @@ private:
 	Side turn = Side::White;
 	bool inCheck = false;
     Image* winnerBanner;
+    Piece* capturer;
+    int32_t rotationFrames = 5;
+    int32_t angle = 0;
 
 	Piece* findPieceAtCell(Cell cell);
 	bool move(Piece* piece, Cell cell);

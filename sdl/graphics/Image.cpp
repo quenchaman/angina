@@ -75,3 +75,11 @@ void Image::setX(int32_t x) {
 void Image::setY(int32_t y) {
 	this->boundingBox.y = y;
 }
+
+Texture *Image::getTexture() {
+    return &this->texture;
+}
+
+SDL_Rect Image::getBoundingBox() {
+    return this->boundingBox;
+}

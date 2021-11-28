@@ -17,7 +17,8 @@ enum State {
 	COMPUTER,
 	CHECK_CHECK,
     CHECKMATE,
-    STALEMATE
+    STALEMATE,
+    CAPTURER
 };
 
 

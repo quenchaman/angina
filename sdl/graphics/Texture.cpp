@@ -28,13 +28,13 @@ void Texture::draw(Renderer& renderer, const SDL_Rect* destRect) {
 Texture::~Texture() {}
 
 void
-Texture::draw(Renderer &renderer, const SDL_Rect *destRect, double angle, SDL_Point *center, SDL_RendererFlip flip) {
+Texture::draw(Renderer &renderer, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip) {
     SDL_Rect renderQuad = {};
 
-    if (destRect != nullptr) {
-        renderQuad.w = destRect->w;
-        renderQuad.h = destRect->h;
-    }
+    renderQuad.w = destRect.w;
+    renderQuad.h = destRect.h;
 
-    SDL_RenderCopyEx(renderer.getRenderer(), texture, destRect, &renderQuad, angle, center, flip);
+    std::cout << "The destination rect is " << destRect.x << " ; " << destRect.y << std::endl;
+
+    SDL_RenderCopyEx(renderer.getRenderer(), texture, &destRect, &renderQuad, angle, &center, flip);
 }

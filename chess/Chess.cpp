@@ -75,7 +75,21 @@ void Chess::draw() {
         this->boardImage->draw(this->renderer);
 
         for (Piece* p : pieces) {
-            p->draw(this->renderer);
+            if (p == capturer && state == State::CAPTURER) {
+                p->getImage()->getTexture()->draw(renderer, p->getImage()->getBoundingBox(), this->angle % 360, {p->getCol() * Piece::PIECE_WIDTH, p->getRow() * Piece::PIECE_HEIGHT}, SDL_FLIP_NONE);
+                this->angle++;
+                this->rotationFrames--;
+                std::cout << rotationFrames << std::endl;
+                if (this->rotationFrames == 0) {
+                    this->rotationFrames = 5;
+                    this->angle = 0;
+                    this->state = CHECK_CHECK;
+                    this->capturer = nullptr;
+                }
+            } else {
+                p->draw(this->renderer);
+            }
+
         }
 
         if (this->state == State::CHECKMATE) {
@@ -99,6 +113,8 @@ void Chess::executeGameLogic() {
 			if (p->getSide() != selectedPiece->getSide() && p->getCol() == selectedPiece->getCol() && p->getRow() == selectedPiece->getRow()) {
 				//capturedPiece = p;
 				std::cout << "Captured piece is " << p->getRank() << std::endl;
+                capturer = this->selectedPiece;
+                this->state = State::CAPTURER;
 			} else {
 				newPieces.push_back(p);
 			}
@@ -110,7 +126,9 @@ void Chess::executeGameLogic() {
 			this->pieces.push_back(p);
 		}
 
-		this->state = State::CHECK_CHECK;
+        if (!capturer) {
+            this->state = State::CHECK_CHECK;
+        }
 	} else if (this->state == State::COMPUTER) {
 		bool wasAbleToMove = makeComputerMove();
 
