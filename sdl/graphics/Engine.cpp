@@ -8,7 +8,7 @@
 #include "Engine.h"
 
 Engine::Engine(): window(new Window(
-		"Hello, World!",
+		"Chess",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		Globals::config.screenWidth,
