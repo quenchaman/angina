@@ -11,6 +11,7 @@
 
 class Test : public Engine {
 public:
+    Test();
     ~Test() override;
 
     void init() override;

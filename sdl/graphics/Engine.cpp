@@ -7,8 +7,8 @@
 
 #include "Engine.h"
 
-Engine::Engine(): window(new Window(
-		"Chess",
+Engine::Engine(std::string appTitle): window(new Window(
+		appTitle,
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		Globals::config.screenWidth,

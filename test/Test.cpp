@@ -45,3 +45,7 @@ void Test::handleOtherKey() {
 void Test::handleLeftMouseClick() {
 
 }
+
+Test::Test() : Engine("Test") {
+
+}

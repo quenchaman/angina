@@ -25,7 +25,7 @@
 
 class Engine {
 public:
-	Engine();
+	Engine(std::string appTitle);
 	virtual ~Engine() {};
 
 	void start();
@@ -40,11 +40,12 @@ public:
 	virtual void handleRightArrowKey() = 0;
 	virtual void handleOtherKey() = 0;
 	virtual void handleLeftMouseClick() = 0;
-protected:
+private:
 	Window* window;
 	bool quit;
 	SDL_Event e;
-	Renderer& renderer;
+protected:
+    Renderer& renderer;
     std::map<std::string, Image*> resources;
 private:
     void executeDraw();
