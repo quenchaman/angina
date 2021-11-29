@@ -31,15 +31,15 @@ Texture::~Texture() {
 }
 
 void
-Texture::draw(Renderer &renderer, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip) {
+Texture::draw(Renderer &renderer, SDL_Rect destRect, double angle, SDL_RendererFlip flip) {
     SDL_Rect renderQuad = {};
 
     renderQuad.w = destRect.w;
     renderQuad.h = destRect.h;
 
-    std::cout << "The destination rect is " << destRect.x << " ; " << destRect.y << std::endl;
+    SDL_Point point = { renderQuad.w / 2, renderQuad.h / 2 };
 
-    SDL_RenderCopyEx(renderer.getRenderer(), texture, &destRect, &renderQuad, angle, &center, flip);
+    SDL_RenderCopyEx(renderer.getRenderer(), texture, &destRect, &renderQuad, angle, &point, flip);
 }
 
 SDL_Point Texture::getSize() {

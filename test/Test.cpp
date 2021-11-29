@@ -12,6 +12,7 @@ void Test::init() {
     loadGameResources(assets);
 
     this->board = resources[Resources::board];
+    this->board->spin();
 }
 
 void Test::draw() {

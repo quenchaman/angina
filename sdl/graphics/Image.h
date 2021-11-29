@@ -18,7 +18,8 @@ class Image {
 public:
 	Image(Texture& texture, SDL_Rect _boundingBox);
     ~Image();
-	void draw(Renderer& renderer);
+	void draw(Renderer& renderer, double angle = 0.0, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void spin();
 	void moveUp(int32_t y);
 	void moveDown(int32_t y);
 	void moveLeft(int32_t x);
@@ -32,6 +33,9 @@ public:
 private:
 	Texture& texture;
 	SDL_Rect boundingBox;
+	int32_t maxSpinDegrees = 0.0;
+	double spinIncrement = 4;
+	double currentAngle = 0.0;
 };
 
 

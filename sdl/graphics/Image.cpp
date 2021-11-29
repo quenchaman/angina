@@ -12,8 +12,19 @@ Image::Image(Texture& _texture, SDL_Rect _boundingBox)
 	: texture(_texture), boundingBox(_boundingBox) {
 }
 
-void Image::draw(Renderer& renderer) {
-	this->texture.draw(renderer, &this->boundingBox);
+void Image::draw(Renderer& renderer, double angle, SDL_RendererFlip flip) {
+	if (this->maxSpinDegrees != 0) {
+		currentAngle += spinIncrement;
+		this->texture.draw(renderer, this->boundingBox, currentAngle, flip);
+
+		if (currentAngle >= maxSpinDegrees) {
+			maxSpinDegrees = 0.0;
+			this->currentAngle = 0.0;
+			this->spinIncrement = 0.0;
+		}
+	} else {
+		this->texture.draw(renderer, this->boundingBox, angle, flip);
+	}
 }
 
 void Image::moveUp(int32_t y) {
@@ -92,3 +103,10 @@ void Image::put(int32_t x, int32_t y) {
 Image::~Image() {
     delete &texture;
 }
+
+void Image::spin() {
+	if (this->maxSpinDegrees == 0.0) {
+		this->maxSpinDegrees = 360.0;
+	}
+}
+
