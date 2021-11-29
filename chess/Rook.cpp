@@ -4,7 +4,7 @@
 
 #include "Rook.h"
 
-Rook::Rook(int32_t _id, int32_t _col, int32_t _row, Side _side, Texture *_texture): Piece(_id, _col, _row, Rank::ROOK, _side, _texture) {
+Rook::Rook(int32_t _col, int32_t _row, Side _side, Image *_image): Piece(_col, _row, Rank::ROOK, _side, _image) {
 
 }
 

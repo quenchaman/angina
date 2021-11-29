@@ -63,7 +63,10 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess/Queen.h
 	${DIR}/chess/King.cpp
 	${DIR}/chess/King.h
-	${DIR}/chess/State.h test/Test.cpp test/Test.h)
+	${DIR}/chess/State.h
+		test/Test.cpp test/Test.h
+		${DIR}/chess/Chess.h
+		${DIR}/chess/Chess.cpp)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 set_target_cpp_standard(${PROJECT_NAME} 17)

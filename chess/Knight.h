@@ -9,7 +9,7 @@
 
 class Knight : public Piece {
 public:
-    Knight(int32_t _id, int32_t _col, int32_t _row, Side _side, Texture* _texture);
+    Knight(int32_t _col, int32_t _row, Side _side, Image* _image);
 
     ~Knight();
 

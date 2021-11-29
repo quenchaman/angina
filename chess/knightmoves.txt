@@ -1,0 +1,8 @@
+moves.push_back({ piecePos.col - 2, piecePos.row - 1 });
+		moves.push_back({ piecePos.col - 1, piecePos.row - 2 });
+		moves.push_back({ piecePos.col + 1, piecePos.row - 2 });
+		moves.push_back({ piecePos.col + 2, piecePos.row - 1 });
+		moves.push_back({ piecePos.col + 2, piecePos.row + 1 });
+		moves.push_back({ piecePos.col + 1, piecePos.row + 2 });
+		moves.push_back({ piecePos.col - 1, piecePos.row + 2 });
+		moves.push_back({ piecePos.col - 2, piecePos.row + 1 });

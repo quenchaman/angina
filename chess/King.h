@@ -10,7 +10,7 @@
 
 class King : public Piece {
 public:
-    King(int32_t _id, int32_t _col, int32_t _row, Side _side, Texture* _texture);
+    King(int32_t _col, int32_t _row, Side _side, Image* _image);
 
     ~King();
 

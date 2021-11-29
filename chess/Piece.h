@@ -22,7 +22,7 @@ public:
 	static const int32_t PIECE_WIDTH = 80;
 	static const int32_t PIECE_HEIGHT = 80;
 
-	Piece(int32_t id, int32_t col, int32_t row, Rank rank, Side side, Texture* texture);
+	Piece(int32_t col, int32_t row, Rank rank, Side side, Image* image);
     virtual ~Piece() {};
 
     void move(Cell cell);
@@ -41,7 +41,6 @@ public:
 	void draw(Renderer& renderer);
 
 private:
-	int32_t id;
 	int32_t col;
 	int32_t row;
 	Rank rank;

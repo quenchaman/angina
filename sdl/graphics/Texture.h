@@ -26,7 +26,7 @@ public:
     SDL_Point getSize();
 	virtual void draw(Renderer& renderer) override;
 	virtual void draw(Renderer& renderer, const SDL_Rect* destRect) override;
-    virtual void draw(Renderer& renderer, SDL_Rect destRect, double angle, SDL_RendererFlip flip);
+    //virtual void draw(Renderer& renderer, SDL_Rect destRect, double angle, SDL_RendererFlip flip);
 private:
 	SDL_Texture* texture;
 };

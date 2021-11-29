@@ -7,13 +7,9 @@
 
 #include "Piece.h"
 
-Piece::Piece(int32_t _id, int32_t _col, int32_t _row, Rank _rank, Side _side, Texture* texture):
-	id(_id), col(_col), row(_row), rank(_rank), side(_side) {
-
-	image = new Image(*texture, { _col * Piece::PIECE_WIDTH,
-                                  _row * Piece::PIECE_HEIGHT,
-                                  Piece::PIECE_WIDTH,
-                                  Piece::PIECE_HEIGHT });
+Piece::Piece(int32_t _col, int32_t _row, Rank _rank, Side _side, Image* _image):
+col(_col), row(_row), rank(_rank), side(_side), image(_image) {
+    move({_col, _row});
 }
 
 void Piece::move(Cell cell) {
@@ -22,6 +18,8 @@ void Piece::move(Cell cell) {
 
 	this->image->setX(col * Piece::PIECE_WIDTH);
 	this->image->setY(row * Piece::PIECE_HEIGHT);
+
+    std::cout << "x = " << this->image->getBoundingBox().x << "; y = " << this->image->getBoundingBox().y << std::endl;
 }
 
 int32_t Piece::getCol() {

@@ -87,7 +87,6 @@ void Engine::executeDraw() {
 }
 
 Engine::~Engine() {
-    // Clean-up resources
     for (auto const& [key, val] : resources) {
         delete val;
     }

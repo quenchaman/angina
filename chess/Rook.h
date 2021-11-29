@@ -10,7 +10,7 @@
 
 class Rook : public Piece {
 public:
-    Rook(int32_t _id, int32_t _col, int32_t _row, Side _side, Texture* _texture);
+    Rook(int32_t _col, int32_t _row, Side _side, Image* _image);
 
     ~Rook();
 

@@ -10,7 +10,7 @@
 
 class Bishop : public Piece {
 public:
-    Bishop(int32_t _id, int32_t _col, int32_t _row, Side _side, Texture* _texture);
+    Bishop(int32_t _col, int32_t _row, Side _side, Image* _image);
 
     ~Bishop();
 

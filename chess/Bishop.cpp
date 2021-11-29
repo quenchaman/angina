@@ -4,7 +4,7 @@
 
 #include "Bishop.h"
 
-Bishop::Bishop(int32_t _id, int32_t _col, int32_t _row, Side _side, Texture *_texture): Piece(_id, _col, _row, Rank::BISHOP, _side, _texture) {
+Bishop::Bishop(int32_t _col, int32_t _row, Side _side, Image* _image): Piece(_col, _row, Rank::BISHOP, _side, _image) {
 
 }
 

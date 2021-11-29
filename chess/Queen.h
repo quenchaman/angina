@@ -10,7 +10,7 @@
 
 class Queen : public Piece {
 public:
-    Queen(int32_t _id, int32_t _col, int32_t _row, Side _side, Texture* _texture);
+    Queen(int32_t _col, int32_t _row, Side _side, Image* _image);
 
     ~Queen();
 

@@ -30,17 +30,17 @@ Texture::~Texture() {
     SDL_DestroyTexture(texture);
 }
 
-void
-Texture::draw(Renderer &renderer, SDL_Rect destRect, double angle, SDL_RendererFlip flip) {
-    SDL_Rect renderQuad = {};
-
-    renderQuad.w = destRect.w;
-    renderQuad.h = destRect.h;
-
-    SDL_Point point = { renderQuad.w / 2, renderQuad.h / 2 };
-
-    SDL_RenderCopyEx(renderer.getRenderer(), texture, &destRect, &renderQuad, angle, &point, flip);
-}
+//void
+//Texture::draw(Renderer &renderer, SDL_Rect destRect, double angle, SDL_RendererFlip flip) {
+//    SDL_Rect renderQuad = {};
+//
+//    renderQuad.w = destRect.w;
+//    renderQuad.h = destRect.h;
+//
+//    SDL_Point point = { renderQuad.w / 2, renderQuad.h / 2 };
+//
+//    SDL_RenderCopyEx(renderer.getRenderer(), texture, &destRect, &renderQuad, angle, &point, flip);
+//}
 
 SDL_Point Texture::getSize() {
     SDL_Point point;

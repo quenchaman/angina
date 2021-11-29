@@ -19,7 +19,7 @@
 
 class Pawn : public Piece {
 public:
-	Pawn(int32_t id, int32_t col, int32_t row, Side side, Texture* texture);
+	Pawn(int32_t col, int32_t row, Side side, Image* image);
     ~Pawn();
 
 	std::vector<Cell> calculateMoves();

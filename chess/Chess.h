@@ -30,6 +30,7 @@
 
 class Chess : public Engine {
 public:
+    Chess();
 	void init();
 	void executeGameLogic();
 	void draw();
@@ -41,8 +42,17 @@ public:
 	void handleOtherKey() {};
 	void handleLeftMouseClick();
 private:
-	Image* boardImage;
-    Image* startScreen;
+    Image* board;
+    std::vector<Piece*> activePieces;
+    std::vector<Piece*> passivePieces;
+    Side currentSide;
+    State currentState;
+    bool inCheck;
+    Side winner;
+    bool isDraw;
+    bool isWhiteHuman;
+    bool isBlackHuman;
+
 	std::vector<std::string> paths = {
 		Resources::board,
 		Resources::blackBishop,
@@ -61,23 +71,8 @@ private:
         Resources::whiteWins,
         Resources::blackWins
 	};
-	std::vector<Piece*> pieces;
-	std::map<int32_t, Image*> pieceImages;
-	Piece* selectedPiece;
-	State state = State::INIT;
-	std::default_random_engine randomEngine = {};
-	Side turn = Side::White;
-	bool inCheck = false;
-    Image* winnerBanner;
-    Piece* capturer;
-    int32_t rotationFrames = 5;
-    int32_t angle = 0;
-
-	Piece* findPieceAtCell(Cell cell);
-	bool move(Piece* piece, Cell cell);
-	bool isAllowedMove(std::vector<Cell> moves, Cell targetMove, Piece* piece);
-	bool makeComputerMove();
-    void newGameSetup();
+private:
+    void setPiecesOnBoard();
 };
 
 

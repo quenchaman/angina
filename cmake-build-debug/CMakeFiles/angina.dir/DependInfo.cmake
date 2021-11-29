@@ -8,9 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ubuntu/Projects/angina2/aota/Aota.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/aota/Aota.cpp.o"
   "/home/ubuntu/Projects/angina2/chess/Bishop.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/chess/Bishop.cpp.o"
-  "/home/ubuntu/Projects/angina2/chess/Chess.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/chess/Chess.cpp.o"
   "/home/ubuntu/Projects/angina2/chess/King.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/chess/King.cpp.o"
   "/home/ubuntu/Projects/angina2/chess/Knight.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/chess/Knight.cpp.o"
   "/home/ubuntu/Projects/angina2/chess/Pawn.cpp" "/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/chess/Pawn.cpp.o"

@@ -129,30 +129,6 @@ angina/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/build
 .PHONY : angina/fast
 
-aota/Aota.o: aota/Aota.cpp.o
-.PHONY : aota/Aota.o
-
-# target to build an object file
-aota/Aota.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/aota/Aota.cpp.o
-.PHONY : aota/Aota.cpp.o
-
-aota/Aota.i: aota/Aota.cpp.i
-.PHONY : aota/Aota.i
-
-# target to preprocess a source file
-aota/Aota.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/aota/Aota.cpp.i
-.PHONY : aota/Aota.cpp.i
-
-aota/Aota.s: aota/Aota.cpp.s
-.PHONY : aota/Aota.s
-
-# target to generate assembly for a file
-aota/Aota.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/aota/Aota.cpp.s
-.PHONY : aota/Aota.cpp.s
-
 chess/Bishop.o: chess/Bishop.cpp.o
 .PHONY : chess/Bishop.o
 
@@ -176,30 +152,6 @@ chess/Bishop.s: chess/Bishop.cpp.s
 chess/Bishop.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Bishop.cpp.s
 .PHONY : chess/Bishop.cpp.s
-
-chess/Chess.o: chess/Chess.cpp.o
-.PHONY : chess/Chess.o
-
-# target to build an object file
-chess/Chess.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.o
-.PHONY : chess/Chess.cpp.o
-
-chess/Chess.i: chess/Chess.cpp.i
-.PHONY : chess/Chess.i
-
-# target to preprocess a source file
-chess/Chess.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.i
-.PHONY : chess/Chess.cpp.i
-
-chess/Chess.s: chess/Chess.cpp.s
-.PHONY : chess/Chess.s
-
-# target to generate assembly for a file
-chess/Chess.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.s
-.PHONY : chess/Chess.cpp.s
 
 chess/King.o: chess/King.cpp.o
 .PHONY : chess/King.o
@@ -786,15 +738,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... angina"
-	@echo "... aota/Aota.o"
-	@echo "... aota/Aota.i"
-	@echo "... aota/Aota.s"
 	@echo "... chess/Bishop.o"
 	@echo "... chess/Bishop.i"
 	@echo "... chess/Bishop.s"
-	@echo "... chess/Chess.o"
-	@echo "... chess/Chess.i"
-	@echo "... chess/Chess.s"
 	@echo "... chess/King.o"
 	@echo "... chess/King.i"
 	@echo "... chess/King.s"
