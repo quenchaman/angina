@@ -29,17 +29,31 @@ void Chess::executeGameLogic() {
     if (currentState == State::INITIALIZE_BOARD) {
         setPiecesOnBoard();
         currentState = State::WHITE;
+    } else if (currentState == State::WHITE) {
+        currentState = State::HUMAN;
+    } else if (currentState == State::BLACK) {
+        currentState = State::COMPUTER;
+    } else if (currentState == State::HUMAN) {
+        if (clickedCell.col != 0 && clickedCell.row != 0) {
+            std::cout << "Clicked cell is " << clickedCell.col << " and " << clickedCell.row << std::endl;
+
+            if (!isOwnPiece(getPieceOnCell(clickedCell))) {
+                currentState = State::SELECTED;
+            }
+        }
     }
 }
 
 void Chess::handleLeftMouseClick() {
 	int32_t x, y;
 	SDL_GetMouseState(&x, &y);
+
+    clickedCell = {x * Piece::PIECE_WIDTH, y * Piece::PIECE_HEIGHT};
 }
 
 Chess::Chess() : Engine("Chess") {
     currentState = State::INITIALIZE_BOARD;
-    isWhiteHuman = true; // Change this in the future.
+    isWhiteHuman = true;
     currentSide = Side::White;
 }
 
@@ -66,4 +80,24 @@ void Chess::setPiecesOnBoard() {
     passivePieces.push_back(new Bishop(5, 0, Side::Black, new Image(resources[Resources::blackBishop])));
     passivePieces.push_back(new Knight(6, 0, Side::Black, new Image(resources[Resources::blackKnight])));
     passivePieces.push_back(new Rook(7, 0, Side::Black, new Image(resources[Resources::blackRook])));
+}
+
+Piece *Chess::getPieceOnCell(Cell cell) {
+    for (Piece* piece : activePieces) {
+        if (piece->getCol() == cell.col && piece->getRow() == cell.row) {
+            return piece;
+        }
+    }
+
+    for (Piece* piece : passivePieces) {
+        if (piece->getCol() == cell.col && piece->getRow() == cell.row) {
+            return piece;
+        }
+    }
+
+    return nullptr;
+}
+
+bool Chess::isOwnPiece(Piece *piece) {
+    return piece != nullptr && piece->getSide() == currentSide;
 }

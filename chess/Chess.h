@@ -52,6 +52,7 @@ private:
     bool isDraw;
     bool isWhiteHuman;
     bool isBlackHuman;
+    Cell clickedCell;
 
 	std::vector<std::string> paths = {
 		Resources::board,
@@ -73,6 +74,8 @@ private:
 	};
 private:
     void setPiecesOnBoard();
+    Piece* getPieceOnCell(Cell cell);
+    bool isOwnPiece(Piece* piece);
 };
 
 
