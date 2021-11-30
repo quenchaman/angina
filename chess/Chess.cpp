@@ -189,14 +189,14 @@ void Chess::filterOutPawnAttackMoves() {
 			}
 		}
 
-		Cell attackLeftCell = {selectedPiece->getCol() + (selectedPiece->getSide() == Side::White ? -1 : 1), selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
+		Cell attackLeftCell = {selectedPiece->getCol() - 1, selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
 		Piece* attackLeftCellPiece = getPieceOnCell(attackLeftCell);
 
 		if (attackLeftCellPiece != nullptr) {
 			moves.push_back(attackLeftCell);
 		}
 
-		Cell attackRightCell = {selectedPiece->getCol() + (selectedPiece->getSide() == Side::White ? -1 : 1), selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
+		Cell attackRightCell = {selectedPiece->getCol() + 1, selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
 		Piece* attackRightCellPiece = getPieceOnCell(attackRightCell);
 
 		if (attackRightCellPiece != nullptr) {
