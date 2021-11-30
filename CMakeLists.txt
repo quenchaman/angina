@@ -64,7 +64,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess/King.cpp
 	${DIR}/chess/King.h
 	${DIR}/chess/State.h
-		test/Test.cpp test/Test.h
 		${DIR}/chess/Chess.h
 		${DIR}/chess/Chess.cpp)
 

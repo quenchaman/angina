@@ -17,6 +17,7 @@
 class Image {
 public:
 	Image(Texture& texture, SDL_Rect _boundingBox);
+    Image(Image*);
     ~Image();
 	void draw(Renderer& renderer);
 

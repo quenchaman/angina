@@ -40,3 +40,6 @@ void Image::put(int32_t x, int32_t y) {
 Image::~Image() {
     delete &texture;
 }
+
+Image::Image(Image * img): texture(img->texture), boundingBox(img->boundingBox) {
+}
