@@ -23,7 +23,6 @@ function(enable_target_warnings target)
           -Wundef
           -Wuninitialized
           -Wreorder
-          -Wshadow
           -Wpointer-arith
           -Wcast-align
           -Wcast-qual

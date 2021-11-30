@@ -43,12 +43,33 @@ void Chess::executeGameLogic() {
     	}
     } else if (currentState == State::AVAILABLE_MOVES) {
     	availableMoves = selectedPiece->calculateMoves(piecesMap);
+    	std::cout << "All the calculated moves for a piece are: " << availableMoves.size() << std::endl;
     	currentState = State::FILTER_OUTSIDE_OF_BOARD_MOVES;
     } else if (currentState == State::SELECTED) {
     	// We have to handle changing the piece
-
+    	std::cout << "We have this many moves " << availableMoves.size() << std::endl;
     } else if (currentState == State::FILTER_OUTSIDE_OF_BOARD_MOVES) {
-
+    	filterOutsideOfBoardMoves();
+    	std::cout << "All the inside board moves for a piece are: " << availableMoves.size() << std::endl;
+    	currentState = State::FILTER_PAWN_ATTACK_MOVES;
+    } else if (currentState == State::FILTER_PAWN_ATTACK_MOVES) {
+    	filterOutPawnAttackMoves();
+    	std::cout << "All the pawn attack moves for a piece are: " << availableMoves.size() << std::endl;
+    	currentState = State::FILTER_EXPOSE_KING_MOVES;
+    } else if (currentState == State::FILTER_EXPOSE_KING_MOVES) {
+    	filterOutExposeKingMoves();
+    	std::cout << "All the expose king moves for a piece are: " << availableMoves.size() << std::endl;
+    	currentState = State::FILTER_OCCUPIED_CELLS_MOVES;
+    } else if (currentState == State::PUT_PIECE) {
+    	if (putPiece()) {
+    		clearSelection();
+    		populatePiecesMap();
+			currentState = State::HUMAN;
+    	}
+    } else if (currentState == State::FILTER_OCCUPIED_CELLS_MOVES) {
+    	filterOutOccupiedCellsMoves();
+    	std::cout << "All the occupied cells moves for a piece are: " << availableMoves.size() << std::endl;
+    	currentState = State::PUT_PIECE;
     }
 }
 
@@ -59,7 +80,7 @@ void Chess::handleLeftMouseClick() {
 
 	if (currentState == State::HUMAN) {
 		selectedCell = clickedCell;
-	} else if (currentState == State::HUMAN_MOVE) {
+	} else if (currentState == State::PUT_PIECE) {
 		targetCell = clickedCell;
 	}
 
@@ -121,10 +142,145 @@ void Chess::calculateAllMoves() {
 }
 
 void Chess::populatePiecesMap() {
+	piecesMap.clear();
 	std::vector<Piece*> allPieces = activePieces;
 	allPieces.insert(std::end(allPieces), std::begin(passivePieces), std::end(passivePieces));
 	for (Piece* p : allPieces) {
 		Cell key = {p->getCol(), p->getRow()};
 		piecesMap[key] = p;
 	}
+}
+
+void Chess::filterOutsideOfBoardMoves() {
+	std::vector<Cell> insideBoardMoves;
+
+	for (Cell& c : availableMoves) {
+		if (c.col >= 0 && c.col <= 7 && c.row >= 0 && c.row <= 7) {
+			insideBoardMoves.push_back(c);
+		}
+	}
+
+	availableMoves = insideBoardMoves;
+}
+
+void Chess::filterOutPawnAttackMoves() {
+	if (selectedPiece->getRank() == Rank::PAWN) {
+		std::vector<Cell> moves;
+
+		Cell oneForwardMove = {selectedPiece->getCol(), selectedPiece->getRow() - 1};
+		Piece* oneForwardCellPiece = getPieceOnCell(oneForwardMove);
+
+		if (oneForwardCellPiece == nullptr) {
+			moves.push_back(oneForwardMove);
+
+			Cell twoForwardMove = {selectedPiece->getCol(), selectedPiece->getRow() - 2};
+			Piece* twoForwardCellPiece = getPieceOnCell(twoForwardMove);
+
+			if (twoForwardCellPiece == nullptr) {
+				moves.push_back(twoForwardMove);
+			}
+		}
+
+		Cell attackLeftCell = {selectedPiece->getCol() - 1, selectedPiece->getRow() - 1};
+		Piece* attackLeftCellPiece = getPieceOnCell(attackLeftCell);
+
+		if (attackLeftCellPiece != nullptr) {
+			moves.push_back(attackLeftCell);
+		}
+
+		Cell attackRightCell = {selectedPiece->getCol() - 1, selectedPiece->getRow() - 1};
+		Piece* attackRightCellPiece = getPieceOnCell(attackRightCell);
+
+		if (attackRightCellPiece != nullptr) {
+			moves.push_back(attackRightCell);
+		}
+
+		availableMoves = moves;
+	}
+}
+
+void Chess::filterOutExposeKingMoves() {
+	// for all the moves, check if we move them our king will be attacked from a piece of the enemy.
+	std::vector<Cell> moves;
+	Piece* kingPiece;
+	Cell previousPos = selectedPiece->getCell();
+
+	for (Piece* ownPieces : activePieces) {
+		if (ownPieces->getRank() == Rank::KING) {
+			kingPiece = ownPieces;
+			break;
+		}
+	}
+
+	for (Cell& move : availableMoves) {
+		bool isExposingTheKing = false;
+		// Let's move the piece and regenerate the map
+
+		selectedPiece->move(move);
+		populatePiecesMap();
+
+		// For each enemy piece, check if it can attack our king
+		// if it cannot, add the move
+		for (Piece* piece : passivePieces) {
+			std::vector<Cell> enemyPieceMoves = piece->calculateMoves(piecesMap);
+
+			for (Cell& enemyMove : enemyPieceMoves) {
+				if (enemyMove.col == kingPiece->getCol() && enemyMove.row == kingPiece->getRow()) {
+					isExposingTheKing = true;
+				}
+			}
+		}
+
+		if (!isExposingTheKing) {
+			moves.push_back(move);
+		}
+	}
+
+	availableMoves = moves;
+	this->selectedPiece->move(previousPos);
+	populatePiecesMap();
+}
+
+void Chess::filterOutOccupiedCellsMoves() {
+	std::vector<Cell> moves;
+
+	for (Cell& move : availableMoves) {
+		bool isOccupied = false;
+
+		for (Piece* friendlyPiece : activePieces) {
+			if (friendlyPiece->getCol() == move.col && friendlyPiece->getRow() == move.row) {
+				isOccupied = true;
+				break;
+			}
+		}
+
+		if (!isOccupied) {
+			moves.push_back(move);
+		}
+	}
+
+	availableMoves = moves;
+}
+
+bool Chess::putPiece() {
+	std::cout << "Number of available moves " << availableMoves.size() << std::endl;
+	if (!targetCell.isEmpty) {
+		// Check if the target cell is in the allowed moves
+		for (Cell& move : availableMoves) {
+			std::cout << "col: " << move.col << "; row: " << move.row << std::endl;
+			if (move.col == targetCell.col && move.row == targetCell.row) {
+				selectedPiece->move(targetCell);
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+void Chess::clearSelection() {
+	this->selectedCell = {0, 0, true};
+	this->selectedPiece = nullptr;
+	this->targetCell = {0, 0, true};
+	this->availableMoves.clear();
 }

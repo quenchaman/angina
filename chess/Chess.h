@@ -83,6 +83,11 @@ private:
     void calculateAllMoves();
     void populatePiecesMap();
     void filterOutsideOfBoardMoves();
+    void filterOutPawnAttackMoves();
+    void filterOutExposeKingMoves();
+    void filterOutOccupiedCellsMoves();
+    bool putPiece();
+    void clearSelection();
 };
 
 
