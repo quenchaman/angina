@@ -14,38 +14,72 @@ Rook::~Rook() {
 
 std::vector<Cell> Rook::calculateMoves(std::map<Cell, Piece*> boardPieces) {
 	moves.clear();
-    calculateMoves(boardPieces, {getCol(), getRow()});
+    _calculateMoves(boardPieces);
     return moves;
 }
 
-void Rook::calculateMoves(std::map<Cell, Piece*> boardPieces, Cell currentCell) {
-	// Check if we are outside of board's bounds
-	if (currentCell.col < 0 || currentCell.row < 0 || currentCell.col > 7 || currentCell.row > 7) {
-		return;
-	}
+void Rook::_calculateMoves(std::map<Cell, Piece*> boardPieces) {
+	// Go north and add moves
+	for (int32_t rowIdx = getRow() - 1; rowIdx >= 0; rowIdx--) {
+		Cell currentCell = {getCol(), rowIdx};
+		Piece* currentCellPiece = boardPieces[currentCell];
 
-	// Check if we are on a enemy piece, consume it and return
-	if (boardPieces[currentCell] != nullptr && boardPieces[currentCell]->getSide() != getSide()) {
+		if (currentCellPiece != nullptr) {
+			if (getSide() != currentCellPiece->getSide()) {
+				moves.push_back(currentCell);
+			}
+
+			break;
+		}
+
 		moves.push_back(currentCell);
-		return;
 	}
 
-	// Check if we are on friendly piece, do not  add this as a move
-	if (boardPieces[currentCell] != nullptr && boardPieces[currentCell]->getSide() == getSide()) {
-		return;
+	// Go east and add moves
+	for (int32_t colIdx = getCol() + 1; colIdx < 8; colIdx++) {
+		Cell currentCell = {colIdx, getRow()};
+		Piece* currentCellPiece = boardPieces[currentCell];
+
+		if (currentCellPiece != nullptr) {
+			if (getSide() != currentCellPiece->getSide()) {
+				moves.push_back(currentCell);
+			}
+
+			break;
+		}
+
+		moves.push_back(currentCell);
 	}
 
-	moves.push_back(currentCell);
+	// Go south and add moves
+	for (int32_t rowIdx = getRow() + 1; rowIdx < 8; rowIdx++) {
+		Cell currentCell = {getCol(), rowIdx};
+		Piece* currentCellPiece = boardPieces[currentCell];
 
-	Cell up = { currentCell.col, currentCell.row - 1 };
-	calculateMoves(boardPieces, up);
+		if (currentCellPiece != nullptr) {
+			if (getSide() != currentCellPiece->getSide()) {
+				moves.push_back(currentCell);
+			}
 
-	Cell right = { currentCell.col + 1, currentCell.row };
-	calculateMoves(boardPieces, right);
+			break;
+		}
 
-	Cell down = { currentCell.col, currentCell.row + 1 };
-	calculateMoves(boardPieces, down);
+		moves.push_back(currentCell);
+	}
 
-	Cell left = { currentCell.col - 1, currentCell.row };
-	calculateMoves(boardPieces, left);
+	// Go east and add moves
+	for (int32_t colIdx = getCol() - 1; colIdx >= 0; colIdx--) {
+		Cell currentCell = {colIdx, getRow()};
+		Piece* currentCellPiece = boardPieces[currentCell];
+
+		if (currentCellPiece != nullptr) {
+			if (getSide() != currentCellPiece->getSide()) {
+				moves.push_back(currentCell);
+			}
+
+			break;
+		}
+
+		moves.push_back(currentCell);
+	}
 }

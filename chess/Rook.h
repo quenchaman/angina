@@ -15,10 +15,9 @@ public:
     ~Rook();
 
     std::vector<Cell> calculateMoves(std::map<Cell, Piece*> boardPieces);
-
-    void calculateMoves(std::map<Cell, Piece*> boardPieces, Cell currentCell);
 private:
     std::vector<Cell> moves;
+    void _calculateMoves(std::map<Cell, Piece*> boardPieces);
 };
 
 

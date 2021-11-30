@@ -13,7 +13,7 @@ Queen::~Queen() {
 }
 
 std::vector<Cell> Queen::calculateMoves(std::map<Cell, Piece*> boardPieces) {
-	moves.reserve(boardPieces.size());
+	moves.clear();
 
 	Rook* rook = new Rook(getCol(), getRow(), getSide(), getImage());
 	Bishop* bishop = new Bishop(getCol(), getRow(), getSide(), getImage());
