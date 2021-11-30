@@ -22,7 +22,7 @@ public:
 	Pawn(int32_t col, int32_t row, Side side, Image* image);
     ~Pawn();
 
-	std::vector<Cell> calculateMoves();
+	std::vector<Cell> calculateMoves(std::vector<Piece*> boardPieces);
 };
 
 #endif /* CHESS_PAWN_H_ */

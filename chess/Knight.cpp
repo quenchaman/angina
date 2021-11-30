@@ -12,6 +12,17 @@ Knight::~Knight() {
 
 }
 
-std::vector<Cell> Knight::calculateMoves() {
-    return std::vector<Cell>();
+std::vector<Cell> Knight::calculateMoves(std::vector<Piece*> boardPieces) {
+    std::vector<Cell> moves;
+
+    moves.push_back({ piecePos.col - 2, piecePos.row - 1 });
+	moves.push_back({ piecePos.col - 1, piecePos.row - 2 });
+	moves.push_back({ piecePos.col + 1, piecePos.row - 2 });
+	moves.push_back({ piecePos.col + 2, piecePos.row - 1 });
+	moves.push_back({ piecePos.col + 2, piecePos.row + 1 });
+	moves.push_back({ piecePos.col + 1, piecePos.row + 2 });
+	moves.push_back({ piecePos.col - 1, piecePos.row + 2 });
+	moves.push_back({ piecePos.col - 2, piecePos.row + 1 });
+
+	return moves;
 }

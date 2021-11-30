@@ -14,7 +14,11 @@ public:
 
     ~Rook();
 
-    std::vector<Cell> calculateMoves();
+    std::vector<Cell> calculateMoves(std::vector<Piece*> boardPieces);
+private:
+    std::vector<Cell> moves;
+
+    void calculateMoves(Cell currentCell);
 };
 
 

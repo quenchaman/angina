@@ -14,7 +14,7 @@ public:
 
     ~Queen();
 
-    std::vector<Cell> calculateMoves();
+    std::vector<Cell> calculateMoves(std::vector<Piece*> boardPieces);
 };
 
 

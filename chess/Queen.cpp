@@ -12,6 +12,6 @@ Queen::~Queen() {
 
 }
 
-std::vector<Cell> Queen::calculateMoves() {
+std::vector<Cell> Queen::calculateMoves(std::vector<Piece*> boardPieces) {
     return std::vector<Cell>();
 }

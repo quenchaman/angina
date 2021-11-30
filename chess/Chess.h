@@ -45,6 +45,7 @@ private:
     Image* board;
     std::vector<Piece*> activePieces;
     std::vector<Piece*> passivePieces;
+    std::vector<Cell> availableMoves;
     Side currentSide;
     State currentState;
     bool inCheck;
@@ -52,7 +53,9 @@ private:
     bool isDraw;
     bool isWhiteHuman;
     bool isBlackHuman;
-    Cell clickedCell;
+    Cell selectedCell = {0, 0, true};
+    Cell targetCell = {0, 0, true};
+    Piece* selectedPiece;
 
 	std::vector<std::string> paths = {
 		Resources::board,
@@ -76,6 +79,7 @@ private:
     void setPiecesOnBoard();
     Piece* getPieceOnCell(Cell cell);
     bool isOwnPiece(Piece* piece);
+    void calculateAllMoves();
 };
 
 

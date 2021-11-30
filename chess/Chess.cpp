@@ -34,21 +34,31 @@ void Chess::executeGameLogic() {
     } else if (currentState == State::BLACK) {
         currentState = State::COMPUTER;
     } else if (currentState == State::HUMAN) {
-        if (clickedCell.col != 0 && clickedCell.row != 0) {
-            std::cout << "Clicked cell is " << clickedCell.col << " and " << clickedCell.row << std::endl;
+    	if (!selectedCell.isEmpty) {
+    		if (isOwnPiece(getPieceOnCell(selectedCell))) {
+    			selectedPiece = getPieceOnCell(selectedCell);
+    			currentState = State::AVAILABLE_MOVES;
+    		}
+    	}
+    } else if (currentState == State::AVAILABLE_MOVES) {
 
-            if (!isOwnPiece(getPieceOnCell(clickedCell))) {
-                currentState = State::SELECTED;
-            }
-        }
+    } else if (currentState == State::SELECTED) {
+    	// We have to handle changing the piece
+
     }
 }
 
 void Chess::handleLeftMouseClick() {
 	int32_t x, y;
 	SDL_GetMouseState(&x, &y);
+	Cell clickedCell = {x / Piece::PIECE_WIDTH, y / Piece::PIECE_HEIGHT, false};
 
-    clickedCell = {x * Piece::PIECE_WIDTH, y * Piece::PIECE_HEIGHT};
+	if (currentState == State::HUMAN) {
+		selectedCell = clickedCell;
+	} else if (currentState == State::HUMAN_MOVE) {
+		targetCell = clickedCell;
+	}
+
 }
 
 Chess::Chess() : Engine("Chess") {
@@ -101,3 +111,8 @@ Piece *Chess::getPieceOnCell(Cell cell) {
 bool Chess::isOwnPiece(Piece *piece) {
     return piece != nullptr && piece->getSide() == currentSide;
 }
+
+void Chess::calculateAllMoves() {
+
+}
+

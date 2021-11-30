@@ -12,6 +12,6 @@ Bishop::~Bishop() {
 
 }
 
-std::vector<Cell> Bishop::calculateMoves() {
+std::vector<Cell> Bishop::calculateMoves(std::vector<Piece*> boardPieces) {
     return std::vector<Cell>();
 }

@@ -37,7 +37,7 @@ public:
 
 	Image* getImage();
 
-	virtual std::vector<Cell> calculateMoves() = 0;
+	virtual std::vector<Cell> calculateMoves(std::vector<Piece*> boardPieces) = 0;
 	void draw(Renderer& renderer);
 
 private:

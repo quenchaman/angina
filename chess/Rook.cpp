@@ -12,6 +12,10 @@ Rook::~Rook() {
 
 }
 
-std::vector<Cell> Rook::calculateMoves() {
+std::vector<Cell> Rook::calculateMoves(std::vector<Piece*> boardPieces) {
     return std::vector<Cell>();
+}
+
+void Rook::calculateMoves(Cell currentCell) {
+	//if ()
 }
