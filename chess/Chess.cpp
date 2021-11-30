@@ -43,6 +43,7 @@ void Chess::executeGameLogic() {
     	}
     } else if (currentState == State::AVAILABLE_MOVES) {
     	availableMoves = selectedPiece->calculateMoves(piecesMap);
+
     	std::cout << "All the calculated moves for a piece are: " << availableMoves.size() << std::endl;
     	currentState = State::FILTER_OUTSIDE_OF_BOARD_MOVES;
     } else if (currentState == State::SELECTED) {
@@ -75,6 +76,8 @@ void Chess::executeGameLogic() {
     } else if (currentState == State::CALCULATE_CAPTURES) {
     	calculateCaptures();
     	currentState = State::SWITCH_PLAYER;
+    } else if (currentState == State::CHECKMATE) {
+    	std::cout << "Player " << (winner == Side::White ? "White" : "Black") << " wins by checkmate" << std::endl;
     }
 }
 
@@ -327,6 +330,8 @@ void Chess::makeComputerMove() {
 		}
 	}
 
+	currentState = State::CHECKMATE;
+	winner = Side::White;
 }
 
 void Chess::calculateCaptures() {
