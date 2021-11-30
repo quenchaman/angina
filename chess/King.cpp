@@ -14,15 +14,16 @@ King::~King() {
 
 std::vector<Cell> King::calculateMoves(std::map<Cell, Piece*> boardPieces) {
     std::vector<Cell> moves;
+    moves.reserve(boardPieces.size());
 
-    moves.push_back({ piecePos.col, piecePos.row - 1 });
-	moves.push_back({ piecePos.col + 1, piecePos.row - 1 });
-	moves.push_back({ piecePos.col + 1, piecePos.row });
-	moves.push_back({ piecePos.col + 1, piecePos.row + 1 });
-	moves.push_back({ piecePos.col, piecePos.row + 1 });
-	moves.push_back({ piecePos.col - 1, piecePos.row + 1 });
-	moves.push_back({ piecePos.col - 1, piecePos.row });
-	moves.push_back({ piecePos.col - 1, piecePos.row - 1 });
+    moves.push_back({ getCol(), getRow() - 1 });
+	moves.push_back({ getCol() + 1, getRow() - 1 });
+	moves.push_back({ getCol() + 1, getRow() });
+	moves.push_back({ getCol() + 1, getRow() + 1 });
+	moves.push_back({ getCol(), getRow() + 1 });
+	moves.push_back({ getCol() - 1, getRow() + 1 });
+	moves.push_back({ getCol() - 1, getRow() });
+	moves.push_back({ getCol() - 1, getRow() - 1 });
 
 	return moves;
 }

@@ -7,6 +7,8 @@
 
 
 #include "Piece.h"
+#include "Rook.h"
+#include "Bishop.h"
 
 class Queen : public Piece {
 public:
@@ -15,6 +17,8 @@ public:
     ~Queen();
 
     std::vector<Cell> calculateMoves(std::map<Cell, Piece*> boardPieces);
+private:
+    std::vector<Cell> moves;
 };
 
 

@@ -28,7 +28,6 @@ function(enable_target_warnings target)
           -Wcast-align
           -Wcast-qual
           -Wconversion
-          -Wunused-parameter
           -Wlogical-op
           -Wdouble-promotion
           -Wnon-virtual-dtor

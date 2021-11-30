@@ -13,7 +13,8 @@ Bishop::~Bishop() {
 }
 
 std::vector<Cell> Bishop::calculateMoves(std::map<Cell, Piece*> boardPieces) {
-    return std::vector<Cell>();
+	calculateMoves(boardPieces, getCell());
+    return moves;
 }
 
 void Bishop::calculateMoves(std::map<Cell, Piece*> boardPieces, Cell currentCell) {
@@ -23,13 +24,13 @@ void Bishop::calculateMoves(std::map<Cell, Piece*> boardPieces, Cell currentCell
 	}
 
 	// Check if we are on a enemy piece, consume it and return
-	if (boardPieces[currentCell] != nullptr && boardPieces[currentCell]->getSide() != getSide()) {
+	if (boardPieces[currentCell] != nullptr && boardPieces[currentCell]->getSide() != this->getSide()) {
 		moves.push_back(currentCell);
 		return;
 	}
 
 	// Check if we are on friendly piece, do not  add this as a move
-	if (boardPieces[currentCell] != nullptr && boardPieces[currentCell]->getSide() == getSide()) {
+	if (boardPieces[currentCell] != nullptr && boardPieces[currentCell]->getSide() == this->getSide()) {
 		return;
 	}
 

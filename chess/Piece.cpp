@@ -45,3 +45,7 @@ Image* Piece::getImage() {
 void Piece::draw(Renderer& renderer) {
 	image->draw(renderer);
 }
+
+Cell Piece::getCell() {
+	return {getCol(), getRow()};
+}

@@ -8,7 +8,7 @@ struct Cell {
 	int32_t row;
 	bool isEmpty = false;
 
-	bool operator < (const Cell& other)
+	bool operator < (const Cell& other) const
 	{
 	   return std::tie(col, row) < std::tie(other.col, other.row);
 	}

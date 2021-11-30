@@ -14,15 +14,16 @@ Knight::~Knight() {
 
 std::vector<Cell> Knight::calculateMoves(std::map<Cell, Piece*> boardPieces) {
     std::vector<Cell> moves;
+    moves.reserve(boardPieces.size());
 
-    moves.push_back({ piecePos.col - 2, piecePos.row - 1 });
-	moves.push_back({ piecePos.col - 1, piecePos.row - 2 });
-	moves.push_back({ piecePos.col + 1, piecePos.row - 2 });
-	moves.push_back({ piecePos.col + 2, piecePos.row - 1 });
-	moves.push_back({ piecePos.col + 2, piecePos.row + 1 });
-	moves.push_back({ piecePos.col + 1, piecePos.row + 2 });
-	moves.push_back({ piecePos.col - 1, piecePos.row + 2 });
-	moves.push_back({ piecePos.col - 2, piecePos.row + 1 });
+    moves.push_back({ getCol() - 2, getRow() - 1 });
+	moves.push_back({ getCol() - 1, getRow() - 2 });
+	moves.push_back({ getCol() + 1, getRow() - 2 });
+	moves.push_back({ getCol() + 2, getRow() - 1 });
+	moves.push_back({ getCol() + 2, getRow() + 1 });
+	moves.push_back({ getCol() + 1, getRow() + 2 });
+	moves.push_back({ getCol() - 1, getRow() + 2 });
+	moves.push_back({ getCol() - 2, getRow() + 1 });
 
 	return moves;
 }

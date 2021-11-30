@@ -42,9 +42,12 @@ void Chess::executeGameLogic() {
     		}
     	}
     } else if (currentState == State::AVAILABLE_MOVES) {
-
+    	availableMoves = selectedPiece->calculateMoves(piecesMap);
+    	currentState = State::FILTER_OUTSIDE_OF_BOARD_MOVES;
     } else if (currentState == State::SELECTED) {
     	// We have to handle changing the piece
+
+    } else if (currentState == State::FILTER_OUTSIDE_OF_BOARD_MOVES) {
 
     }
 }

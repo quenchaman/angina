@@ -26,6 +26,7 @@ enum State {
     COMPUTER_MOVE,
     HUMAN_MOVE,
     PUT_PIECE,
+	FILTER_OUTSIDE_OF_BOARD_MOVES
 };
 
 

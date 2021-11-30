@@ -82,6 +82,7 @@ private:
     bool isOwnPiece(Piece* piece);
     void calculateAllMoves();
     void populatePiecesMap();
+    void filterOutsideOfBoardMoves();
 };
 
 
