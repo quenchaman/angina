@@ -28,6 +28,7 @@ void Chess::draw() {
 void Chess::executeGameLogic() {
     if (currentState == State::INITIALIZE_BOARD) {
         setPiecesOnBoard();
+        populatePiecesMap();
         currentState = State::WHITE;
     } else if (currentState == State::WHITE) {
         currentState = State::HUMAN;
@@ -116,3 +117,11 @@ void Chess::calculateAllMoves() {
 
 }
 
+void Chess::populatePiecesMap() {
+	std::vector<Piece*> allPieces = activePieces;
+	allPieces.insert(std::end(allPieces), std::begin(passivePieces), std::end(passivePieces));
+	for (Piece* p : allPieces) {
+		Cell key = {p->getCol(), p->getRow()};
+		piecesMap[key] = p;
+	}
+}

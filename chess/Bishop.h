@@ -14,7 +14,11 @@ public:
 
     ~Bishop();
 
-    std::vector<Cell> calculateMoves(std::vector<Piece*> boardPieces);
+    std::vector<Cell> calculateMoves(std::map<Cell, Piece*> boardPieces);
+
+    static void calculateMoves(std::map<Cell, Piece*> boardPieces, Cell currentCell);
+private:
+    std::vector<Cell> moves;
 };
 
 

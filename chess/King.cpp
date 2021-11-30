@@ -12,7 +12,7 @@ King::~King() {
 
 }
 
-std::vector<Cell> King::calculateMoves(std::vector<Piece*> boardPieces) {
+std::vector<Cell> King::calculateMoves(std::map<Cell, Piece*> boardPieces) {
     std::vector<Cell> moves;
 
     moves.push_back({ piecePos.col, piecePos.row - 1 });

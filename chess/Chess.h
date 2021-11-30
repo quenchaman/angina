@@ -56,6 +56,7 @@ private:
     Cell selectedCell = {0, 0, true};
     Cell targetCell = {0, 0, true};
     Piece* selectedPiece;
+    std::map<Cell, Piece*> piecesMap;
 
 	std::vector<std::string> paths = {
 		Resources::board,
@@ -80,6 +81,7 @@ private:
     Piece* getPieceOnCell(Cell cell);
     bool isOwnPiece(Piece* piece);
     void calculateAllMoves();
+    void populatePiecesMap();
 };
 
 
