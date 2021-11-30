@@ -57,6 +57,7 @@ private:
     Cell targetCell = {0, 0, true};
     Piece* selectedPiece;
     std::map<Cell, Piece*> piecesMap;
+    std::default_random_engine rng = std::default_random_engine {};
 
 	std::vector<std::string> paths = {
 		Resources::board,
@@ -88,6 +89,9 @@ private:
     void filterOutOccupiedCellsMoves();
     bool putPiece();
     void clearSelection();
+    void switchPlayer();
+    void makeComputerMove();
+    void calculateCaptures();
 };
 
 

@@ -62,14 +62,19 @@ void Chess::executeGameLogic() {
     	currentState = State::FILTER_OCCUPIED_CELLS_MOVES;
     } else if (currentState == State::PUT_PIECE) {
     	if (putPiece()) {
-    		clearSelection();
-    		populatePiecesMap();
-			currentState = State::HUMAN;
+			currentState = State::CALCULATE_CAPTURES;
     	}
     } else if (currentState == State::FILTER_OCCUPIED_CELLS_MOVES) {
     	filterOutOccupiedCellsMoves();
     	std::cout << "All the occupied cells moves for a piece are: " << availableMoves.size() << std::endl;
     	currentState = State::PUT_PIECE;
+    } else if (currentState == State::SWITCH_PLAYER) {
+    	switchPlayer();
+    } else if (currentState == State::COMPUTER) {
+    	makeComputerMove();
+    } else if (currentState == State::CALCULATE_CAPTURES) {
+    	calculateCaptures();
+    	currentState = State::SWITCH_PLAYER;
     }
 }
 
@@ -167,13 +172,13 @@ void Chess::filterOutPawnAttackMoves() {
 	if (selectedPiece->getRank() == Rank::PAWN) {
 		std::vector<Cell> moves;
 
-		Cell oneForwardMove = {selectedPiece->getCol(), selectedPiece->getRow() - 1};
+		Cell oneForwardMove = {selectedPiece->getCol(), selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
 		Piece* oneForwardCellPiece = getPieceOnCell(oneForwardMove);
 
 		if (oneForwardCellPiece == nullptr) {
 			moves.push_back(oneForwardMove);
 
-			Cell twoForwardMove = {selectedPiece->getCol(), selectedPiece->getRow() - 2};
+			Cell twoForwardMove = {selectedPiece->getCol(), selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -2 : 2)};
 			Piece* twoForwardCellPiece = getPieceOnCell(twoForwardMove);
 
 			if (twoForwardCellPiece == nullptr) {
@@ -181,14 +186,14 @@ void Chess::filterOutPawnAttackMoves() {
 			}
 		}
 
-		Cell attackLeftCell = {selectedPiece->getCol() - 1, selectedPiece->getRow() - 1};
+		Cell attackLeftCell = {selectedPiece->getCol() + (selectedPiece->getSide() == Side::White ? -1 : 1), selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
 		Piece* attackLeftCellPiece = getPieceOnCell(attackLeftCell);
 
 		if (attackLeftCellPiece != nullptr) {
 			moves.push_back(attackLeftCell);
 		}
 
-		Cell attackRightCell = {selectedPiece->getCol() - 1, selectedPiece->getRow() - 1};
+		Cell attackRightCell = {selectedPiece->getCol() + (selectedPiece->getSide() == Side::White ? -1 : 1), selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
 		Piece* attackRightCellPiece = getPieceOnCell(attackRightCell);
 
 		if (attackRightCellPiece != nullptr) {
@@ -283,4 +288,57 @@ void Chess::clearSelection() {
 	this->selectedPiece = nullptr;
 	this->targetCell = {0, 0, true};
 	this->availableMoves.clear();
+}
+
+void Chess::switchPlayer() {
+	clearSelection();
+	populatePiecesMap();
+
+	if (currentSide == Side::White) {
+		currentSide = Side::Black;
+		currentState = State::BLACK;
+	} else {
+		currentSide = Side::White;
+		currentState = State::WHITE;
+	}
+
+	std::vector<Piece*> temp = activePieces;
+	activePieces = passivePieces;
+	passivePieces = temp;
+}
+
+void Chess::makeComputerMove() {
+	std::shuffle(std::begin(activePieces), std::end(activePieces), rng);
+
+	for (Piece* computerPiece : activePieces) {
+		this->selectedPiece = computerPiece;
+		availableMoves = computerPiece->calculateMoves(piecesMap);
+		filterOutPawnAttackMoves();
+		filterOutsideOfBoardMoves();
+		filterOutExposeKingMoves();
+		filterOutOccupiedCellsMoves();
+
+		if (availableMoves.size() > 0) {
+			size_t randomIdx = (rand() % availableMoves.size());
+
+			computerPiece->move(availableMoves.at(randomIdx));
+			currentState = State::CALCULATE_CAPTURES;
+			return;
+		}
+	}
+
+}
+
+void Chess::calculateCaptures() {
+	// Let's see if the selected piece is on a opponent piece square
+	std::vector<Piece*> newOpponentPieces;
+	//Piece* capturedPiece;
+
+	for (Piece* opponentPiece : passivePieces) {
+		if (opponentPiece->getCol() != selectedPiece->getCol() || opponentPiece->getRow() != selectedPiece->getRow()) {
+			newOpponentPieces.push_back(opponentPiece);
+		}
+	}
+
+	passivePieces = newOpponentPieces;
 }

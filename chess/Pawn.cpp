@@ -22,5 +22,4 @@ std::vector<Cell> Pawn::calculateMoves(std::map<Cell, Piece*> boardPieces) {
 }
 
 Pawn::~Pawn() {
-
 }

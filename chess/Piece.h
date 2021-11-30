@@ -47,6 +47,7 @@ private:
 	int32_t row;
 	Rank rank;
 	Side side;
+protected:
 	Image* image;
 };
 

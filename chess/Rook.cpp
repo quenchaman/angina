@@ -9,7 +9,6 @@ Rook::Rook(int32_t _col, int32_t _row, Side _side, Image *_image): Piece(_col, _
 }
 
 Rook::~Rook() {
-
 }
 
 std::vector<Cell> Rook::calculateMoves(std::map<Cell, Piece*> boardPieces) {

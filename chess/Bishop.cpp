@@ -9,7 +9,6 @@ Bishop::Bishop(int32_t _col, int32_t _row, Side _side, Image* _image): Piece(_co
 }
 
 Bishop::~Bishop() {
-
 }
 
 std::vector<Cell> Bishop::calculateMoves(std::map<Cell, Piece*> boardPieces) {

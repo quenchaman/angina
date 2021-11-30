@@ -9,7 +9,6 @@ King::King(int32_t _col, int32_t _row, Side _side, Image *_image): Piece(_col, _
 }
 
 King::~King() {
-
 }
 
 std::vector<Cell> King::calculateMoves(std::map<Cell, Piece*> boardPieces) {

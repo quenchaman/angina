@@ -9,7 +9,6 @@ Queen::Queen(int32_t _col, int32_t _row, Side _side, Image *_image): Piece(_col,
 }
 
 Queen::~Queen() {
-
 }
 
 std::vector<Cell> Queen::calculateMoves(std::map<Cell, Piece*> boardPieces) {
