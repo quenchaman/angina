@@ -153,6 +153,7 @@ void Chess::populatePiecesMap() {
 	piecesMap.clear();
 	std::vector<Piece*> allPieces = activePieces;
 	allPieces.insert(std::end(allPieces), std::begin(passivePieces), std::end(passivePieces));
+
 	for (Piece* p : allPieces) {
 		Cell key = {p->getCol(), p->getRow()};
 		piecesMap[key] = p;
@@ -335,9 +336,7 @@ void Chess::makeComputerMove() {
 }
 
 void Chess::calculateCaptures() {
-	// Let's see if the selected piece is on a opponent piece square
 	std::vector<Piece*> newOpponentPieces;
-	//Piece* capturedPiece;
 
 	for (Piece* opponentPiece : passivePieces) {
 		if (opponentPiece->getCol() != selectedPiece->getCol() || opponentPiece->getRow() != selectedPiece->getRow()) {
