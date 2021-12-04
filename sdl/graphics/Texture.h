@@ -14,6 +14,7 @@
 #include "exceptions/GraphicsInitException.h"
 #include "sdl/graphics/Drawable.h"
 #include "SDL.h"
+#include "SDL_ttf.h"
 #include "sdl/graphics/Renderer.h"
 
 class Texture : public Drawable {
@@ -21,6 +22,7 @@ public:
 	Texture();
 	~Texture();
 	Texture(SDL_Texture* texture);
+    Texture(Renderer& renderer, TTF_Font* font, std::string textureText, SDL_Color color);
 
 	SDL_Texture* getTexture();
     SDL_Point getSize();

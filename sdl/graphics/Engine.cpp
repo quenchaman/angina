@@ -10,6 +10,7 @@
 Engine::Engine(std::string appTitle): quit(false) {
     Graphics::boot();
     Graphics::bootImageExtension();
+    Graphics::bootTTFExtensions();
     window = new Window(
             appTitle,
             SDL_WINDOWPOS_UNDEFINED,

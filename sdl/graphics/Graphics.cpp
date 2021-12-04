@@ -31,4 +31,10 @@ namespace Graphics {
 
 		return *new Renderer(renderer);
 	}
+
+    void bootTTFExtensions() {
+        if (TTF_Init() == -1) {
+            throw GraphicsInitException(SDL_GetError());
+        }
+    }
 }

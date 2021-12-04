@@ -81,12 +81,12 @@ if (UNIX)
 	find_package(SDL2_image REQUIRED)
 endif (UNIX)
 
-#find_package(SDL2_ttf REQUIRED)
+find_package(SDL2_ttf REQUIRED)
 #find_package(SDL2_mixer REQUIRED)
 
 add_subdirectory(${DIR}/libs/json/json-3.10.4)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${INTERFACE_INCLUDE_DIRECTORIES})
+target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${INTERFACE_INCLUDE_DIRECTORIES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${DIR})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} nlohmann_json::nlohmann_json)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} nlohmann_json::nlohmann_json)

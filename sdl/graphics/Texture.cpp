@@ -45,6 +45,12 @@ Texture::~Texture() {
 SDL_Point Texture::getSize() {
     SDL_Point point;
     SDL_QueryTexture(texture, NULL, NULL, &point.x, &point.y);
-    std::cout << "The rect is " << point.x << " ; " << point.y << std::endl;
     return point;
+}
+
+Texture::Texture(Renderer& renderer, TTF_Font* font, std::string textureText, SDL_Color color) {
+    SDL_Surface* textSurface = TTF_RenderText_Solid(font, textureText.c_str(), color);
+    texture = SDL_CreateTextureFromSurface(renderer.getRenderer(), textSurface);
+
+    SDL_FreeSurface(textSurface);
 }

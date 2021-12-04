@@ -13,6 +13,7 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
 
 #include <SDL.h>
 
@@ -24,6 +25,7 @@ namespace Graphics {
 	void boot();
 	void bootImageExtension();
 	Renderer& bootRenderer(SDL_Window* window);
+    void bootTTFExtensions();
 }
 
 
