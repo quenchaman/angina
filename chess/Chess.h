@@ -66,6 +66,7 @@ private:
     Piece* selectedPiece;
     std::map<Cell, Piece*> piecesMap;
     std::default_random_engine rng = std::default_random_engine {};
+    Image* clock;
 
 	std::vector<std::string> paths = {
 		Resources::board,
@@ -103,6 +104,7 @@ private:
     void switchPlayer();
     void makeComputerMove();
     void calculateCaptures();
+    void createClock();
 };
 
 

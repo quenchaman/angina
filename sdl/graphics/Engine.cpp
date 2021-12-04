@@ -20,6 +20,7 @@ Engine::Engine(std::string appTitle): quit(false) {
             SDL_WINDOW_SHOWN
     );
     renderer = &Graphics::bootRenderer(this->window->getWindow());
+    font = TTF_OpenFont(("../" + Resources::montserratFont).c_str(), 28);
 }
 
 void Engine::start() {

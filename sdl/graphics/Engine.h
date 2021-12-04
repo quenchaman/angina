@@ -14,6 +14,7 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
 
 #include "sdl/components/Window.h"
 #include "config/Globals.h"
@@ -22,6 +23,7 @@
 #include "sdl/graphics/Image.h"
 #include "sdl/resources/ImageResource.h"
 #include "sdl/components/Transformer.h"
+#include "resources/Resources.h"
 
 class Engine {
 public:
@@ -47,6 +49,7 @@ protected:
     Renderer* renderer;
     bool quit;
     std::map<std::string, Image*> resources;
+    TTF_Font* font;
 private:
     void executeDraw();
 };

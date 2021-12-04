@@ -43,3 +43,7 @@ Image::~Image() {
 
 Image::Image(Image * img): texture(img->texture), boundingBox(img->boundingBox) {
 }
+
+Image::Image(Texture &texture): texture(texture) {
+    boundingBox = {0, 0, texture.getSize().x, texture.getSize().y};
+}

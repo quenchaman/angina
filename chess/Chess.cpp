@@ -17,6 +17,15 @@ void Chess::init() {
     continueGameBtn = new Button(340, 330, resources[Resources::continueGameButton]);
     quitGameButton = new Button(660, 50, resources[Resources::quitGameButton]);
     quitGameButtonOnStartPage = new Button(340, 400, new Image(resources[Resources::quitGameButton]));
+
+    SDL_Color fontColor = {
+            .r =  255,
+            .g =  255,
+            .b =  255,
+            .a = 1
+    };
+
+    createClock();
 }
 
 void Chess::draw() {
@@ -36,6 +45,7 @@ void Chess::draw() {
             piece->draw(*renderer);
         }
         quitGameButton->draw(*renderer);
+        clock->draw(*renderer);
     }
 }
 
@@ -387,4 +397,17 @@ void Chess::deinit() {
     winner = Side::NA;
     isDraw = false;
     piecesMap.clear();
+}
+
+void Chess::createClock() {
+    SDL_Color fontColor = {
+            .r =  255,
+            .g =  255,
+            .b =  255,
+            .a = 1
+    };
+
+    auto* clockTexture = new Texture(*renderer, font, "99", fontColor);
+    clock = new Image(*clockTexture);
+    clock->put(660, 150);
 }
