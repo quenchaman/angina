@@ -184,7 +184,7 @@ void Chess::filterOutPawnAttackMoves() {
 			Cell twoForwardMove = {selectedPiece->getCol(), selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -2 : 2)};
 			Piece* twoForwardCellPiece = getPieceOnCell(twoForwardMove);
 
-			if (twoForwardCellPiece == nullptr) {
+			if (twoForwardCellPiece == nullptr && ((Pawn*)selectedPiece)->isOnInitialPosition()) {
 				moves.push_back(twoForwardMove);
 			}
 		}
@@ -192,14 +192,14 @@ void Chess::filterOutPawnAttackMoves() {
 		Cell attackLeftCell = {selectedPiece->getCol() - 1, selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
 		Piece* attackLeftCellPiece = getPieceOnCell(attackLeftCell);
 
-		if (attackLeftCellPiece != nullptr) {
+		if (attackLeftCellPiece != nullptr && attackLeftCellPiece->getSide() != selectedPiece->getSide()) {
 			moves.push_back(attackLeftCell);
 		}
 
 		Cell attackRightCell = {selectedPiece->getCol() + 1, selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
 		Piece* attackRightCellPiece = getPieceOnCell(attackRightCell);
 
-		if (attackRightCellPiece != nullptr) {
+		if (attackRightCellPiece != nullptr && attackRightCellPiece->getSide() != selectedPiece->getSide()) {
 			moves.push_back(attackRightCell);
 		}
 

@@ -23,3 +23,7 @@ std::vector<Cell> Pawn::calculateMoves(std::map<Cell, Piece*> boardPieces) {
 
 Pawn::~Pawn() {
 }
+
+bool Pawn::isOnInitialPosition() {
+    return this->getSide() == Side::White ? (getRow() == 6) : (getRow() == 1);
+}

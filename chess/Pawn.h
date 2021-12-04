@@ -23,6 +23,7 @@ public:
     ~Pawn();
 
 	std::vector<Cell> calculateMoves(std::map<Cell, Piece*> boardPieces);
+    bool isOnInitialPosition();
 };
 
 #endif /* CHESS_PAWN_H_ */
