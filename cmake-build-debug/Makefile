@@ -57,10 +57,10 @@ RM = /home/ubuntu/Downloads/clion-2021.2.3/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/Projects/angina2
+CMAKE_SOURCE_DIR = /home/ubuntu/Projects/angina3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/Projects/angina2/cmake-build-debug
+CMAKE_BINARY_DIR = /home/ubuntu/Projects/angina3/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles /home/ubuntu/Projects/angina2/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles /home/ubuntu/Projects/angina3/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -152,6 +152,30 @@ chess/Bishop.s: chess/Bishop.cpp.s
 chess/Bishop.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Bishop.cpp.s
 .PHONY : chess/Bishop.cpp.s
+
+chess/Chess.o: chess/Chess.cpp.o
+.PHONY : chess/Chess.o
+
+# target to build an object file
+chess/Chess.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.o
+.PHONY : chess/Chess.cpp.o
+
+chess/Chess.i: chess/Chess.cpp.i
+.PHONY : chess/Chess.i
+
+# target to preprocess a source file
+chess/Chess.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.i
+.PHONY : chess/Chess.cpp.i
+
+chess/Chess.s: chess/Chess.cpp.s
+.PHONY : chess/Chess.s
+
+# target to generate assembly for a file
+chess/Chess.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.s
+.PHONY : chess/Chess.cpp.s
 
 chess/King.o: chess/King.cpp.o
 .PHONY : chess/King.o
@@ -705,30 +729,6 @@ sdl/resources/ImageResource.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.s
 .PHONY : sdl/resources/ImageResource.cpp.s
 
-test/Test.o: test/Test.cpp.o
-.PHONY : test/Test.o
-
-# target to build an object file
-test/Test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/test/Test.cpp.o
-.PHONY : test/Test.cpp.o
-
-test/Test.i: test/Test.cpp.i
-.PHONY : test/Test.i
-
-# target to preprocess a source file
-test/Test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/test/Test.cpp.i
-.PHONY : test/Test.cpp.i
-
-test/Test.s: test/Test.cpp.s
-.PHONY : test/Test.s
-
-# target to generate assembly for a file
-test/Test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/test/Test.cpp.s
-.PHONY : test/Test.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -741,6 +741,9 @@ help:
 	@echo "... chess/Bishop.o"
 	@echo "... chess/Bishop.i"
 	@echo "... chess/Bishop.s"
+	@echo "... chess/Chess.o"
+	@echo "... chess/Chess.i"
+	@echo "... chess/Chess.s"
 	@echo "... chess/King.o"
 	@echo "... chess/King.i"
 	@echo "... chess/King.s"
@@ -810,9 +813,6 @@ help:
 	@echo "... sdl/resources/ImageResource.o"
 	@echo "... sdl/resources/ImageResource.i"
 	@echo "... sdl/resources/ImageResource.s"
-	@echo "... test/Test.o"
-	@echo "... test/Test.i"
-	@echo "... test/Test.s"
 .PHONY : help
 
 

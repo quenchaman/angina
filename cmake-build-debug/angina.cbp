@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;CMake Files\cmake_helpers\;CMake Files\cmake_helpers\find_modules\;CMake Files\libs\;CMake Files\libs\json\;CMake Files\libs\json\json-3.10.4\;CMake Files\libs\json\json-3.10.4\cmake\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/ubuntu/Projects/angina2/cmake-build-debug"/>
+				<Option working_dir="/home/ubuntu/Projects/angina3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/ubuntu/Projects/angina2/cmake-build-debug"/>
+				<Option working_dir="/home/ubuntu/Projects/angina3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/ubuntu/Projects/angina2/cmake-build-debug"/>
+				<Option working_dir="/home/ubuntu/Projects/angina3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="angina">
-				<Option output="/home/ubuntu/Projects/angina2/cmake-build-debug/angina" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/ubuntu/Projects/angina2/cmake-build-debug"/>
+				<Option output="/home/ubuntu/Projects/angina3/cmake-build-debug/angina" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/Projects/angina3/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -47,8 +47,8 @@
 					<Add option="-DJSON_USE_IMPLICIT_CONVERSIONS=1"/>
 					<Add option="-DJSON_DIAGNOSTICS=0"/>
 					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/ubuntu/Projects/angina2"/>
-					<Add directory="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/single_include"/>
+					<Add directory="/home/ubuntu/Projects/angina3"/>
+					<Add directory="/home/ubuntu/Projects/angina3/libs/json/json-3.10.4/single_include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -58,15 +58,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 angina"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 angina"/>
+					<CompileFile command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="angina/fast">
-				<Option output="/home/ubuntu/Projects/angina2/cmake-build-debug/angina" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/ubuntu/Projects/angina2/cmake-build-debug"/>
+				<Option output="/home/ubuntu/Projects/angina3/cmake-build-debug/angina" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/Projects/angina3/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -74,8 +74,8 @@
 					<Add option="-DJSON_USE_IMPLICIT_CONVERSIONS=1"/>
 					<Add option="-DJSON_DIAGNOSTICS=0"/>
 					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/ubuntu/Projects/angina2"/>
-					<Add directory="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/single_include"/>
+					<Add directory="/home/ubuntu/Projects/angina3"/>
+					<Add directory="/home/ubuntu/Projects/angina3/libs/json/json-3.10.4/single_include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -85,200 +85,200 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 angina/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/ubuntu/Projects/angina2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 angina/fast"/>
+					<CompileFile command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j3 -f &quot;/home/ubuntu/Projects/angina3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Bishop.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Bishop.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Bishop.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Bishop.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/King.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Chess.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/King.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Chess.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Knight.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/King.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Knight.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/King.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Pawn.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Knight.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Pawn.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Knight.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Piece.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Pawn.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Piece.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Pawn.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Queen.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Piece.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Queen.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Piece.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Rook.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Queen.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/Rook.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Queen.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/chess/State.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Rook.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/config/Config.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Rook.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/config/ConfigData.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/State.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/config/ConfigLoader.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/config/Config.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/config/ConfigLoader.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/config/ConfigData.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/config/Globals.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/config/ConfigLoader.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/exceptions/BaseException.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/config/ConfigLoader.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/exceptions/BaseException.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/config/Globals.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/exceptions/GraphicsInitException.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/exceptions/BaseException.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/exceptions/GraphicsInitException.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/exceptions/BaseException.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/exceptions/ResourceLoadException.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/exceptions/GraphicsInitException.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/exceptions/ResourceLoadException.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/exceptions/GraphicsInitException.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/exceptions/WindowInitException.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/exceptions/ResourceLoadException.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/exceptions/WindowInitException.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/exceptions/ResourceLoadException.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/main.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/exceptions/WindowInitException.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/resources/Resources.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/exceptions/WindowInitException.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/components/Surface.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/main.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/components/Surface.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/resources/Resources.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/components/Transformer.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/components/Surface.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/components/Transformer.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/components/Surface.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/components/Window.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/components/Transformer.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/components/Window.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/components/Transformer.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Drawable.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/components/Window.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Drawable.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/components/Window.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Engine.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Drawable.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Engine.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Drawable.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Graphics.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Engine.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Graphics.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Engine.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Image.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Graphics.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Image.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Graphics.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Renderer.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Image.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Renderer.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Image.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Texture.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Renderer.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/graphics/Texture.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Renderer.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/primitives/Point.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Texture.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/primitives/Point.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/graphics/Texture.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/primitives/Rect.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/primitives/Point.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/resources/ImageResource.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/primitives/Point.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/sdl/resources/ImageResource.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/primitives/Rect.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/test/Test.cpp">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/resources/ImageResource.cpp">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/test/Test.h">
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/resources/ImageResource.h">
 			<Option target="angina"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/CMakeLists.txt">
+		<Unit filename="/home/ubuntu/Projects/angina3/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/cmake_helpers/helpers.cmake">
+		<Unit filename="/home/ubuntu/Projects/angina3/cmake_helpers/helpers.cmake">
 			<Option virtualFolder="CMake Files\cmake_helpers\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/cmake_helpers/find_modules/FindSDL2.cmake">
+		<Unit filename="/home/ubuntu/Projects/angina3/cmake_helpers/find_modules/FindSDL2.cmake">
 			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/cmake_helpers/find_modules/FindSDL2_image.cmake">
+		<Unit filename="/home/ubuntu/Projects/angina3/cmake_helpers/find_modules/FindSDL2_image.cmake">
 			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/CMakeLists.txt">
+		<Unit filename="/home/ubuntu/Projects/angina3/libs/json/json-3.10.4/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\libs\json\json-3.10.4\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/cmake/config.cmake.in">
+		<Unit filename="/home/ubuntu/Projects/angina3/libs/json/json-3.10.4/cmake/config.cmake.in">
 			<Option virtualFolder="CMake Files\libs\json\json-3.10.4\cmake\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/cmake/nlohmann_jsonConfigVersion.cmake.in">
+		<Unit filename="/home/ubuntu/Projects/angina3/libs/json/json-3.10.4/cmake/nlohmann_jsonConfigVersion.cmake.in">
 			<Option virtualFolder="CMake Files\libs\json\json-3.10.4\cmake\"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/Projects/angina2/libs/json/json-3.10.4/cmake/pkg-config.pc.in">
+		<Unit filename="/home/ubuntu/Projects/angina3/libs/json/json-3.10.4/cmake/pkg-config.pc.in">
 			<Option virtualFolder="CMake Files\libs\json\json-3.10.4\cmake\"/>
 		</Unit>
 	</Project>

@@ -1,4 +1,4 @@
-# Install script for directory: /home/ubuntu/Projects/angina2/libs/json/json-3.10.4
+# Install script for directory: /home/ubuntu/Projects/angina3/libs/json/json-3.10.4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -53,10 +53,10 @@ RM = /home/ubuntu/Downloads/clion-2021.2.3/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/Projects/angina2
+CMAKE_SOURCE_DIR = /home/ubuntu/Projects/angina3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/Projects/angina2/cmake-build-debug
+CMAKE_BINARY_DIR = /home/ubuntu/Projects/angina3/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/angina.dir/depend.make
@@ -68,328 +68,328 @@ include CMakeFiles/angina.dir/flags.make
 
 CMakeFiles/angina.dir/main.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/angina.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/main.cpp.o -c /home/ubuntu/Projects/angina2/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/angina.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/main.cpp.o -c /home/ubuntu/Projects/angina3/main.cpp
 
 CMakeFiles/angina.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/main.cpp > CMakeFiles/angina.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/main.cpp > CMakeFiles/angina.dir/main.cpp.i
 
 CMakeFiles/angina.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/main.cpp -o CMakeFiles/angina.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/main.cpp -o CMakeFiles/angina.dir/main.cpp.s
 
 CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o: ../sdl/resources/ImageResource.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o -c /home/ubuntu/Projects/angina2/sdl/resources/ImageResource.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o -c /home/ubuntu/Projects/angina3/sdl/resources/ImageResource.cpp
 
 CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/resources/ImageResource.cpp > CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/resources/ImageResource.cpp > CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.i
 
 CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/resources/ImageResource.cpp -o CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/resources/ImageResource.cpp -o CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.s
 
 CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.o: ../exceptions/ResourceLoadException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.o -c /home/ubuntu/Projects/angina2/exceptions/ResourceLoadException.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.o -c /home/ubuntu/Projects/angina3/exceptions/ResourceLoadException.cpp
 
 CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/exceptions/ResourceLoadException.cpp > CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/exceptions/ResourceLoadException.cpp > CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.i
 
 CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/exceptions/ResourceLoadException.cpp -o CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/exceptions/ResourceLoadException.cpp -o CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.s
 
 CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.o: ../exceptions/GraphicsInitException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.o -c /home/ubuntu/Projects/angina2/exceptions/GraphicsInitException.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.o -c /home/ubuntu/Projects/angina3/exceptions/GraphicsInitException.cpp
 
 CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/exceptions/GraphicsInitException.cpp > CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/exceptions/GraphicsInitException.cpp > CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.i
 
 CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/exceptions/GraphicsInitException.cpp -o CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/exceptions/GraphicsInitException.cpp -o CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.s
 
 CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.o: ../exceptions/WindowInitException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.o -c /home/ubuntu/Projects/angina2/exceptions/WindowInitException.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.o -c /home/ubuntu/Projects/angina3/exceptions/WindowInitException.cpp
 
 CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/exceptions/WindowInitException.cpp > CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/exceptions/WindowInitException.cpp > CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.i
 
 CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/exceptions/WindowInitException.cpp -o CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/exceptions/WindowInitException.cpp -o CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.s
 
 CMakeFiles/angina.dir/exceptions/BaseException.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/exceptions/BaseException.cpp.o: ../exceptions/BaseException.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/angina.dir/exceptions/BaseException.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/exceptions/BaseException.cpp.o -c /home/ubuntu/Projects/angina2/exceptions/BaseException.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/angina.dir/exceptions/BaseException.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/exceptions/BaseException.cpp.o -c /home/ubuntu/Projects/angina3/exceptions/BaseException.cpp
 
 CMakeFiles/angina.dir/exceptions/BaseException.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/exceptions/BaseException.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/exceptions/BaseException.cpp > CMakeFiles/angina.dir/exceptions/BaseException.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/exceptions/BaseException.cpp > CMakeFiles/angina.dir/exceptions/BaseException.cpp.i
 
 CMakeFiles/angina.dir/exceptions/BaseException.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/exceptions/BaseException.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/exceptions/BaseException.cpp -o CMakeFiles/angina.dir/exceptions/BaseException.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/exceptions/BaseException.cpp -o CMakeFiles/angina.dir/exceptions/BaseException.cpp.s
 
 CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.o: ../sdl/graphics/Graphics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.o -c /home/ubuntu/Projects/angina2/sdl/graphics/Graphics.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.o -c /home/ubuntu/Projects/angina3/sdl/graphics/Graphics.cpp
 
 CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/graphics/Graphics.cpp > CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/graphics/Graphics.cpp > CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.i
 
 CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/graphics/Graphics.cpp -o CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/graphics/Graphics.cpp -o CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.s
 
 CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.o: ../sdl/graphics/Engine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.o -c /home/ubuntu/Projects/angina2/sdl/graphics/Engine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.o -c /home/ubuntu/Projects/angina3/sdl/graphics/Engine.cpp
 
 CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/graphics/Engine.cpp > CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/graphics/Engine.cpp > CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.i
 
 CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/graphics/Engine.cpp -o CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/graphics/Engine.cpp -o CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.s
 
 CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o: ../sdl/graphics/Texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o -c /home/ubuntu/Projects/angina2/sdl/graphics/Texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o -c /home/ubuntu/Projects/angina3/sdl/graphics/Texture.cpp
 
 CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/graphics/Texture.cpp > CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/graphics/Texture.cpp > CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.i
 
 CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/graphics/Texture.cpp -o CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/graphics/Texture.cpp -o CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.s
 
 CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.o: ../sdl/graphics/Renderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.o -c /home/ubuntu/Projects/angina2/sdl/graphics/Renderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.o -c /home/ubuntu/Projects/angina3/sdl/graphics/Renderer.cpp
 
 CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/graphics/Renderer.cpp > CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/graphics/Renderer.cpp > CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.i
 
 CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/graphics/Renderer.cpp -o CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/graphics/Renderer.cpp -o CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.s
 
 CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.o: ../sdl/graphics/Drawable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.o -c /home/ubuntu/Projects/angina2/sdl/graphics/Drawable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.o -c /home/ubuntu/Projects/angina3/sdl/graphics/Drawable.cpp
 
 CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/graphics/Drawable.cpp > CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/graphics/Drawable.cpp > CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.i
 
 CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/graphics/Drawable.cpp -o CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/graphics/Drawable.cpp -o CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.s
 
 CMakeFiles/angina.dir/sdl/graphics/Image.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/graphics/Image.cpp.o: ../sdl/graphics/Image.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Image.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Image.cpp.o -c /home/ubuntu/Projects/angina2/sdl/graphics/Image.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/angina.dir/sdl/graphics/Image.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/graphics/Image.cpp.o -c /home/ubuntu/Projects/angina3/sdl/graphics/Image.cpp
 
 CMakeFiles/angina.dir/sdl/graphics/Image.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/graphics/Image.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/graphics/Image.cpp > CMakeFiles/angina.dir/sdl/graphics/Image.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/graphics/Image.cpp > CMakeFiles/angina.dir/sdl/graphics/Image.cpp.i
 
 CMakeFiles/angina.dir/sdl/graphics/Image.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/graphics/Image.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/graphics/Image.cpp -o CMakeFiles/angina.dir/sdl/graphics/Image.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/graphics/Image.cpp -o CMakeFiles/angina.dir/sdl/graphics/Image.cpp.s
 
 CMakeFiles/angina.dir/sdl/components/Window.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/components/Window.cpp.o: ../sdl/components/Window.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/angina.dir/sdl/components/Window.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/components/Window.cpp.o -c /home/ubuntu/Projects/angina2/sdl/components/Window.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/angina.dir/sdl/components/Window.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/components/Window.cpp.o -c /home/ubuntu/Projects/angina3/sdl/components/Window.cpp
 
 CMakeFiles/angina.dir/sdl/components/Window.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/components/Window.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/components/Window.cpp > CMakeFiles/angina.dir/sdl/components/Window.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/components/Window.cpp > CMakeFiles/angina.dir/sdl/components/Window.cpp.i
 
 CMakeFiles/angina.dir/sdl/components/Window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/components/Window.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/components/Window.cpp -o CMakeFiles/angina.dir/sdl/components/Window.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/components/Window.cpp -o CMakeFiles/angina.dir/sdl/components/Window.cpp.s
 
 CMakeFiles/angina.dir/sdl/components/Surface.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/components/Surface.cpp.o: ../sdl/components/Surface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/angina.dir/sdl/components/Surface.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/components/Surface.cpp.o -c /home/ubuntu/Projects/angina2/sdl/components/Surface.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/angina.dir/sdl/components/Surface.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/components/Surface.cpp.o -c /home/ubuntu/Projects/angina3/sdl/components/Surface.cpp
 
 CMakeFiles/angina.dir/sdl/components/Surface.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/components/Surface.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/components/Surface.cpp > CMakeFiles/angina.dir/sdl/components/Surface.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/components/Surface.cpp > CMakeFiles/angina.dir/sdl/components/Surface.cpp.i
 
 CMakeFiles/angina.dir/sdl/components/Surface.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/components/Surface.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/components/Surface.cpp -o CMakeFiles/angina.dir/sdl/components/Surface.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/components/Surface.cpp -o CMakeFiles/angina.dir/sdl/components/Surface.cpp.s
 
 CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o: ../sdl/primitives/Point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o -c /home/ubuntu/Projects/angina2/sdl/primitives/Point.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o -c /home/ubuntu/Projects/angina3/sdl/primitives/Point.cpp
 
 CMakeFiles/angina.dir/sdl/primitives/Point.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/primitives/Point.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/primitives/Point.cpp > CMakeFiles/angina.dir/sdl/primitives/Point.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/primitives/Point.cpp > CMakeFiles/angina.dir/sdl/primitives/Point.cpp.i
 
 CMakeFiles/angina.dir/sdl/primitives/Point.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/primitives/Point.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/primitives/Point.cpp -o CMakeFiles/angina.dir/sdl/primitives/Point.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/primitives/Point.cpp -o CMakeFiles/angina.dir/sdl/primitives/Point.cpp.s
 
 CMakeFiles/angina.dir/config/ConfigLoader.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/config/ConfigLoader.cpp.o: ../config/ConfigLoader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/angina.dir/config/ConfigLoader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/config/ConfigLoader.cpp.o -c /home/ubuntu/Projects/angina2/config/ConfigLoader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/angina.dir/config/ConfigLoader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/config/ConfigLoader.cpp.o -c /home/ubuntu/Projects/angina3/config/ConfigLoader.cpp
 
 CMakeFiles/angina.dir/config/ConfigLoader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/config/ConfigLoader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/config/ConfigLoader.cpp > CMakeFiles/angina.dir/config/ConfigLoader.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/config/ConfigLoader.cpp > CMakeFiles/angina.dir/config/ConfigLoader.cpp.i
 
 CMakeFiles/angina.dir/config/ConfigLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/config/ConfigLoader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/config/ConfigLoader.cpp -o CMakeFiles/angina.dir/config/ConfigLoader.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/config/ConfigLoader.cpp -o CMakeFiles/angina.dir/config/ConfigLoader.cpp.s
 
 CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o: ../sdl/components/Transformer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o -c /home/ubuntu/Projects/angina2/sdl/components/Transformer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o -c /home/ubuntu/Projects/angina3/sdl/components/Transformer.cpp
 
 CMakeFiles/angina.dir/sdl/components/Transformer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/components/Transformer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/sdl/components/Transformer.cpp > CMakeFiles/angina.dir/sdl/components/Transformer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/components/Transformer.cpp > CMakeFiles/angina.dir/sdl/components/Transformer.cpp.i
 
 CMakeFiles/angina.dir/sdl/components/Transformer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/components/Transformer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/sdl/components/Transformer.cpp -o CMakeFiles/angina.dir/sdl/components/Transformer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/components/Transformer.cpp -o CMakeFiles/angina.dir/sdl/components/Transformer.cpp.s
 
 CMakeFiles/angina.dir/chess/Piece.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Piece.cpp.o: ../chess/Piece.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/angina.dir/chess/Piece.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Piece.cpp.o -c /home/ubuntu/Projects/angina2/chess/Piece.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/angina.dir/chess/Piece.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Piece.cpp.o -c /home/ubuntu/Projects/angina3/chess/Piece.cpp
 
 CMakeFiles/angina.dir/chess/Piece.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/chess/Piece.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/chess/Piece.cpp > CMakeFiles/angina.dir/chess/Piece.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/chess/Piece.cpp > CMakeFiles/angina.dir/chess/Piece.cpp.i
 
 CMakeFiles/angina.dir/chess/Piece.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/chess/Piece.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/chess/Piece.cpp -o CMakeFiles/angina.dir/chess/Piece.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/chess/Piece.cpp -o CMakeFiles/angina.dir/chess/Piece.cpp.s
 
 CMakeFiles/angina.dir/chess/Pawn.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Pawn.cpp.o: ../chess/Pawn.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/angina.dir/chess/Pawn.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Pawn.cpp.o -c /home/ubuntu/Projects/angina2/chess/Pawn.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/angina.dir/chess/Pawn.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Pawn.cpp.o -c /home/ubuntu/Projects/angina3/chess/Pawn.cpp
 
 CMakeFiles/angina.dir/chess/Pawn.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/chess/Pawn.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/chess/Pawn.cpp > CMakeFiles/angina.dir/chess/Pawn.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/chess/Pawn.cpp > CMakeFiles/angina.dir/chess/Pawn.cpp.i
 
 CMakeFiles/angina.dir/chess/Pawn.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/chess/Pawn.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/chess/Pawn.cpp -o CMakeFiles/angina.dir/chess/Pawn.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/chess/Pawn.cpp -o CMakeFiles/angina.dir/chess/Pawn.cpp.s
 
 CMakeFiles/angina.dir/chess/Knight.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Knight.cpp.o: ../chess/Knight.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/angina.dir/chess/Knight.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Knight.cpp.o -c /home/ubuntu/Projects/angina2/chess/Knight.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/angina.dir/chess/Knight.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Knight.cpp.o -c /home/ubuntu/Projects/angina3/chess/Knight.cpp
 
 CMakeFiles/angina.dir/chess/Knight.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/chess/Knight.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/chess/Knight.cpp > CMakeFiles/angina.dir/chess/Knight.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/chess/Knight.cpp > CMakeFiles/angina.dir/chess/Knight.cpp.i
 
 CMakeFiles/angina.dir/chess/Knight.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/chess/Knight.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/chess/Knight.cpp -o CMakeFiles/angina.dir/chess/Knight.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/chess/Knight.cpp -o CMakeFiles/angina.dir/chess/Knight.cpp.s
 
 CMakeFiles/angina.dir/chess/Bishop.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Bishop.cpp.o: ../chess/Bishop.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/angina.dir/chess/Bishop.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Bishop.cpp.o -c /home/ubuntu/Projects/angina2/chess/Bishop.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/angina.dir/chess/Bishop.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Bishop.cpp.o -c /home/ubuntu/Projects/angina3/chess/Bishop.cpp
 
 CMakeFiles/angina.dir/chess/Bishop.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/chess/Bishop.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/chess/Bishop.cpp > CMakeFiles/angina.dir/chess/Bishop.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/chess/Bishop.cpp > CMakeFiles/angina.dir/chess/Bishop.cpp.i
 
 CMakeFiles/angina.dir/chess/Bishop.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/chess/Bishop.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/chess/Bishop.cpp -o CMakeFiles/angina.dir/chess/Bishop.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/chess/Bishop.cpp -o CMakeFiles/angina.dir/chess/Bishop.cpp.s
 
 CMakeFiles/angina.dir/chess/Rook.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Rook.cpp.o: ../chess/Rook.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/angina.dir/chess/Rook.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Rook.cpp.o -c /home/ubuntu/Projects/angina2/chess/Rook.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/angina.dir/chess/Rook.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Rook.cpp.o -c /home/ubuntu/Projects/angina3/chess/Rook.cpp
 
 CMakeFiles/angina.dir/chess/Rook.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/chess/Rook.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/chess/Rook.cpp > CMakeFiles/angina.dir/chess/Rook.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/chess/Rook.cpp > CMakeFiles/angina.dir/chess/Rook.cpp.i
 
 CMakeFiles/angina.dir/chess/Rook.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/chess/Rook.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/chess/Rook.cpp -o CMakeFiles/angina.dir/chess/Rook.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/chess/Rook.cpp -o CMakeFiles/angina.dir/chess/Rook.cpp.s
 
 CMakeFiles/angina.dir/chess/Queen.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Queen.cpp.o: ../chess/Queen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/angina.dir/chess/Queen.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Queen.cpp.o -c /home/ubuntu/Projects/angina2/chess/Queen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/angina.dir/chess/Queen.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Queen.cpp.o -c /home/ubuntu/Projects/angina3/chess/Queen.cpp
 
 CMakeFiles/angina.dir/chess/Queen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/chess/Queen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/chess/Queen.cpp > CMakeFiles/angina.dir/chess/Queen.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/chess/Queen.cpp > CMakeFiles/angina.dir/chess/Queen.cpp.i
 
 CMakeFiles/angina.dir/chess/Queen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/chess/Queen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/chess/Queen.cpp -o CMakeFiles/angina.dir/chess/Queen.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/chess/Queen.cpp -o CMakeFiles/angina.dir/chess/Queen.cpp.s
 
 CMakeFiles/angina.dir/chess/King.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/King.cpp.o: ../chess/King.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/angina.dir/chess/King.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/King.cpp.o -c /home/ubuntu/Projects/angina2/chess/King.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/angina.dir/chess/King.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/King.cpp.o -c /home/ubuntu/Projects/angina3/chess/King.cpp
 
 CMakeFiles/angina.dir/chess/King.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/chess/King.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/chess/King.cpp > CMakeFiles/angina.dir/chess/King.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/chess/King.cpp > CMakeFiles/angina.dir/chess/King.cpp.i
 
 CMakeFiles/angina.dir/chess/King.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/chess/King.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/chess/King.cpp -o CMakeFiles/angina.dir/chess/King.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/chess/King.cpp -o CMakeFiles/angina.dir/chess/King.cpp.s
 
-CMakeFiles/angina.dir/test/Test.cpp.o: CMakeFiles/angina.dir/flags.make
-CMakeFiles/angina.dir/test/Test.cpp.o: ../test/Test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/angina.dir/test/Test.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/test/Test.cpp.o -c /home/ubuntu/Projects/angina2/test/Test.cpp
+CMakeFiles/angina.dir/chess/Chess.cpp.o: CMakeFiles/angina.dir/flags.make
+CMakeFiles/angina.dir/chess/Chess.cpp.o: ../chess/Chess.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/angina.dir/chess/Chess.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Chess.cpp.o -c /home/ubuntu/Projects/angina3/chess/Chess.cpp
 
-CMakeFiles/angina.dir/test/Test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/test/Test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina2/test/Test.cpp > CMakeFiles/angina.dir/test/Test.cpp.i
+CMakeFiles/angina.dir/chess/Chess.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/chess/Chess.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/chess/Chess.cpp > CMakeFiles/angina.dir/chess/Chess.cpp.i
 
-CMakeFiles/angina.dir/test/Test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/test/Test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina2/test/Test.cpp -o CMakeFiles/angina.dir/test/Test.cpp.s
+CMakeFiles/angina.dir/chess/Chess.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/chess/Chess.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/chess/Chess.cpp -o CMakeFiles/angina.dir/chess/Chess.cpp.s
 
 # Object files for target angina
 angina_OBJECTS = \
@@ -417,7 +417,7 @@ angina_OBJECTS = \
 "CMakeFiles/angina.dir/chess/Rook.cpp.o" \
 "CMakeFiles/angina.dir/chess/Queen.cpp.o" \
 "CMakeFiles/angina.dir/chess/King.cpp.o" \
-"CMakeFiles/angina.dir/test/Test.cpp.o"
+"CMakeFiles/angina.dir/chess/Chess.cpp.o"
 
 # External object files for target angina
 angina_EXTERNAL_OBJECTS =
@@ -446,13 +446,13 @@ angina: CMakeFiles/angina.dir/chess/Bishop.cpp.o
 angina: CMakeFiles/angina.dir/chess/Rook.cpp.o
 angina: CMakeFiles/angina.dir/chess/Queen.cpp.o
 angina: CMakeFiles/angina.dir/chess/King.cpp.o
-angina: CMakeFiles/angina.dir/test/Test.cpp.o
+angina: CMakeFiles/angina.dir/chess/Chess.cpp.o
 angina: CMakeFiles/angina.dir/build.make
 angina: /usr/lib/x86_64-linux-gnu/libSDL2main.a
 angina: /usr/lib/x86_64-linux-gnu/libSDL2.so
 angina: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 angina: CMakeFiles/angina.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX executable angina"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX executable angina"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/angina.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -464,6 +464,6 @@ CMakeFiles/angina.dir/clean:
 .PHONY : CMakeFiles/angina.dir/clean
 
 CMakeFiles/angina.dir/depend:
-	cd /home/ubuntu/Projects/angina2/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/Projects/angina2 /home/ubuntu/Projects/angina2 /home/ubuntu/Projects/angina2/cmake-build-debug /home/ubuntu/Projects/angina2/cmake-build-debug /home/ubuntu/Projects/angina2/cmake-build-debug/CMakeFiles/angina.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/Projects/angina3/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/Projects/angina3 /home/ubuntu/Projects/angina3 /home/ubuntu/Projects/angina3/cmake-build-debug /home/ubuntu/Projects/angina3/cmake-build-debug /home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/angina.dir/depend
 

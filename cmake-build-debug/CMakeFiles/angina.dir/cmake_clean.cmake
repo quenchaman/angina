@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/angina.dir/chess/Bishop.cpp.o"
+  "CMakeFiles/angina.dir/chess/Chess.cpp.o"
   "CMakeFiles/angina.dir/chess/King.cpp.o"
   "CMakeFiles/angina.dir/chess/Knight.cpp.o"
   "CMakeFiles/angina.dir/chess/Pawn.cpp.o"
@@ -23,7 +24,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o"
   "CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o"
   "CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o"
-  "CMakeFiles/angina.dir/test/Test.cpp.o"
   "angina"
   "angina.pdb"
 )
