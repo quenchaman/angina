@@ -12,6 +12,7 @@
 class Button {
 public:
     Button(int32_t x, int32_t y, Image* image);
+    ~Button();
     void draw(Renderer& renderer);
     int32_t getX();
     int32_t getY();

@@ -42,10 +42,10 @@ public:
 	virtual void handleLeftMouseClick() = 0;
 private:
 	Window* window;
-	bool quit;
 	SDL_Event e;
 protected:
     Renderer* renderer;
+    bool quit;
     std::map<std::string, Image*> resources;
 private:
     void executeDraw();

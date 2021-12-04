@@ -26,3 +26,7 @@ int32_t Button::getY() {
 bool Button::isClicked(SDL_Point p) {
     return this->rect->isInRect(p);
 }
+
+Button::~Button() {
+    delete image;
+}

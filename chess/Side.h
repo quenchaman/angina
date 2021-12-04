@@ -11,7 +11,8 @@
 
 enum Side {
 	White,
-	Black
+	Black,
+    NA
 };
 
 

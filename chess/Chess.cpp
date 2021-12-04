@@ -15,6 +15,8 @@ void Chess::init() {
     startScreen = resources[Resources::startScreen2];
     newGameBtn = new Button(340, 260, resources[Resources::newGameButton]);
     continueGameBtn = new Button(340, 330, resources[Resources::continueGameButton]);
+    quitGameButton = new Button(660, 50, resources[Resources::quitGameButton]);
+    quitGameButtonOnStartPage = new Button(340, 400, new Image(resources[Resources::quitGameButton]));
 }
 
 void Chess::draw() {
@@ -23,6 +25,7 @@ void Chess::draw() {
 
         newGameBtn->draw(*renderer);
         continueGameBtn->draw(*renderer);
+        quitGameButtonOnStartPage->draw(*renderer);
     } else {
         board->draw(*renderer);
 
@@ -32,6 +35,7 @@ void Chess::draw() {
         for (Piece* piece : passivePieces) {
             piece->draw(*renderer);
         }
+        quitGameButton->draw(*renderer);
     }
 }
 
@@ -88,6 +92,9 @@ void Chess::executeGameLogic() {
     	currentState = State::SWITCH_PLAYER;
     } else if (currentState == State::CHECKMATE) {
     	std::cout << "Player " << (winner == Side::White ? "White" : "Black") << " wins by checkmate" << std::endl;
+    } else if (currentState == State::QUIT) {
+        clearSelection();
+        deinit();
     }
 }
 
@@ -95,12 +102,21 @@ void Chess::handleLeftMouseClick() {
 	int32_t x, y;
 	SDL_GetMouseState(&x, &y);
 	Cell clickedCell = {x / Piece::PIECE_WIDTH, y / Piece::PIECE_HEIGHT, false};
+    bool isQuitGameButtonClicked = quitGameButton->isClicked({x, y});
 
-	if (currentState == State::HUMAN) {
+    if (isQuitGameButtonClicked) {
+        currentState = State::QUIT;
+    } else if (currentState == State::HUMAN) {
 		selectedCell = clickedCell;
 	} else if (currentState == State::PUT_PIECE) {
 		targetCell = clickedCell;
 	} else if (currentState == State::WELCOME_SCREEN) {
+        bool isExitGameBtnClicked = quitGameButtonOnStartPage->isClicked({x, y});
+
+        if (isExitGameBtnClicked) {
+            quit = true;
+        }
+
         bool isNewGameBtnClicked = newGameBtn->isClicked({x, y});
 
         if (isNewGameBtnClicked) {
@@ -124,8 +140,8 @@ Chess::Chess() : Engine("Chess") {
 
 void Chess::setPiecesOnBoard() {
     for (uint32_t colIdx = 0; colIdx < (uint32_t)8; colIdx++) {
-        activePieces.push_back(new Pawn(colIdx, 6, Side::White, new Image(resources[Resources::whitePawn])));
-        passivePieces.push_back(new Pawn(colIdx, 1, Side::Black, new Image(resources[Resources::blackPawn])));
+        activePieces.push_back(new Pawn(static_cast<int32_t>(colIdx), 6, Side::White, new Image(resources[Resources::whitePawn])));
+        passivePieces.push_back(new Pawn(static_cast<int32_t>(colIdx), 1, Side::Black, new Image(resources[Resources::blackPawn])));
     }
 
     activePieces.push_back(new Rook(0, 7, Side::White, new Image(resources[Resources::whiteRook])));
@@ -242,7 +258,6 @@ void Chess::filterOutExposeKingMoves() {
 	for (Cell& move : availableMoves) {
 		bool isExposingTheKing = false;
 		// Let's move the piece and regenerate the map
-
 		selectedPiece->move(move);
 		populatePiecesMap();
 
@@ -290,11 +305,8 @@ void Chess::filterOutOccupiedCellsMoves() {
 }
 
 bool Chess::putPiece() {
-	std::cout << "Number of available moves " << availableMoves.size() << std::endl;
 	if (!targetCell.isEmpty) {
-		// Check if the target cell is in the allowed moves
 		for (Cell& move : availableMoves) {
-			std::cout << "col: " << move.col << "; row: " << move.row << std::endl;
 			if (move.col == targetCell.col && move.row == targetCell.row) {
 				selectedPiece->move(targetCell);
 				return true;
@@ -341,7 +353,7 @@ void Chess::makeComputerMove() {
 		filterOutOccupiedCellsMoves();
 
 		if (availableMoves.size() > 0) {
-			size_t randomIdx = (rand() % availableMoves.size());
+			size_t randomIdx = (static_cast<unsigned long>(rand()) % availableMoves.size());
 
 			computerPiece->move(availableMoves.at(randomIdx));
 			currentState = State::CALCULATE_CAPTURES;
@@ -363,4 +375,16 @@ void Chess::calculateCaptures() {
 	}
 
 	passivePieces = newOpponentPieces;
+}
+
+void Chess::deinit() {
+    activePieces.clear();
+    passivePieces.clear();
+    availableMoves.clear();
+    currentSide = Side::White;
+    currentState = State::WELCOME_SCREEN;
+    inCheck = false;
+    winner = Side::NA;
+    isDraw = false;
+    piecesMap.clear();
 }

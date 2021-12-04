@@ -36,6 +36,7 @@ public:
 	void init();
 	void executeGameLogic();
 	void draw();
+    void deinit();
 
 	void handleUpArrowKey() {};
 	void handleDownArrowKey() {};
@@ -48,6 +49,8 @@ private:
     Image* startScreen;
     Button* newGameBtn;
     Button* continueGameBtn;
+    Button* quitGameButton;
+    Button* quitGameButtonOnStartPage;
     std::vector<Piece*> activePieces;
     std::vector<Piece*> passivePieces;
     std::vector<Cell> availableMoves;
@@ -83,7 +86,8 @@ private:
         Resources::blackWins,
         Resources::startScreen2,
         Resources::newGameButton,
-        Resources::continueGameButton
+        Resources::continueGameButton,
+        Resources::quitGameButton
 	};
 private:
     void setPiecesOnBoard();
