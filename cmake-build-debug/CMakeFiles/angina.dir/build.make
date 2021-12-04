@@ -261,9 +261,22 @@ CMakeFiles/angina.dir/sdl/primitives/Point.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/primitives/Point.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/primitives/Point.cpp -o CMakeFiles/angina.dir/sdl/primitives/Point.cpp.s
 
+CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.o: CMakeFiles/angina.dir/flags.make
+CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.o: ../sdl/primitives/Rect.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.o -c /home/ubuntu/Projects/angina3/sdl/primitives/Rect.cpp
+
+CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/primitives/Rect.cpp > CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.i
+
+CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/primitives/Rect.cpp -o CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.s
+
 CMakeFiles/angina.dir/config/ConfigLoader.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/config/ConfigLoader.cpp.o: ../config/ConfigLoader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/angina.dir/config/ConfigLoader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/angina.dir/config/ConfigLoader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/config/ConfigLoader.cpp.o -c /home/ubuntu/Projects/angina3/config/ConfigLoader.cpp
 
 CMakeFiles/angina.dir/config/ConfigLoader.cpp.i: cmake_force
@@ -276,7 +289,7 @@ CMakeFiles/angina.dir/config/ConfigLoader.cpp.s: cmake_force
 
 CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o: ../sdl/components/Transformer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o -c /home/ubuntu/Projects/angina3/sdl/components/Transformer.cpp
 
 CMakeFiles/angina.dir/sdl/components/Transformer.cpp.i: cmake_force
@@ -289,7 +302,7 @@ CMakeFiles/angina.dir/sdl/components/Transformer.cpp.s: cmake_force
 
 CMakeFiles/angina.dir/chess/Piece.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Piece.cpp.o: ../chess/Piece.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/angina.dir/chess/Piece.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/angina.dir/chess/Piece.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Piece.cpp.o -c /home/ubuntu/Projects/angina3/chess/Piece.cpp
 
 CMakeFiles/angina.dir/chess/Piece.cpp.i: cmake_force
@@ -302,7 +315,7 @@ CMakeFiles/angina.dir/chess/Piece.cpp.s: cmake_force
 
 CMakeFiles/angina.dir/chess/Pawn.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Pawn.cpp.o: ../chess/Pawn.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/angina.dir/chess/Pawn.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/angina.dir/chess/Pawn.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Pawn.cpp.o -c /home/ubuntu/Projects/angina3/chess/Pawn.cpp
 
 CMakeFiles/angina.dir/chess/Pawn.cpp.i: cmake_force
@@ -315,7 +328,7 @@ CMakeFiles/angina.dir/chess/Pawn.cpp.s: cmake_force
 
 CMakeFiles/angina.dir/chess/Knight.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Knight.cpp.o: ../chess/Knight.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/angina.dir/chess/Knight.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/angina.dir/chess/Knight.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Knight.cpp.o -c /home/ubuntu/Projects/angina3/chess/Knight.cpp
 
 CMakeFiles/angina.dir/chess/Knight.cpp.i: cmake_force
@@ -328,7 +341,7 @@ CMakeFiles/angina.dir/chess/Knight.cpp.s: cmake_force
 
 CMakeFiles/angina.dir/chess/Bishop.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Bishop.cpp.o: ../chess/Bishop.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/angina.dir/chess/Bishop.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/angina.dir/chess/Bishop.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Bishop.cpp.o -c /home/ubuntu/Projects/angina3/chess/Bishop.cpp
 
 CMakeFiles/angina.dir/chess/Bishop.cpp.i: cmake_force
@@ -341,7 +354,7 @@ CMakeFiles/angina.dir/chess/Bishop.cpp.s: cmake_force
 
 CMakeFiles/angina.dir/chess/Rook.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Rook.cpp.o: ../chess/Rook.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/angina.dir/chess/Rook.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/angina.dir/chess/Rook.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Rook.cpp.o -c /home/ubuntu/Projects/angina3/chess/Rook.cpp
 
 CMakeFiles/angina.dir/chess/Rook.cpp.i: cmake_force
@@ -354,7 +367,7 @@ CMakeFiles/angina.dir/chess/Rook.cpp.s: cmake_force
 
 CMakeFiles/angina.dir/chess/Queen.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Queen.cpp.o: ../chess/Queen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/angina.dir/chess/Queen.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/angina.dir/chess/Queen.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Queen.cpp.o -c /home/ubuntu/Projects/angina3/chess/Queen.cpp
 
 CMakeFiles/angina.dir/chess/Queen.cpp.i: cmake_force
@@ -367,7 +380,7 @@ CMakeFiles/angina.dir/chess/Queen.cpp.s: cmake_force
 
 CMakeFiles/angina.dir/chess/King.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/King.cpp.o: ../chess/King.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/angina.dir/chess/King.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/angina.dir/chess/King.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/King.cpp.o -c /home/ubuntu/Projects/angina3/chess/King.cpp
 
 CMakeFiles/angina.dir/chess/King.cpp.i: cmake_force
@@ -380,7 +393,7 @@ CMakeFiles/angina.dir/chess/King.cpp.s: cmake_force
 
 CMakeFiles/angina.dir/chess/Chess.cpp.o: CMakeFiles/angina.dir/flags.make
 CMakeFiles/angina.dir/chess/Chess.cpp.o: ../chess/Chess.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/angina.dir/chess/Chess.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/angina.dir/chess/Chess.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/chess/Chess.cpp.o -c /home/ubuntu/Projects/angina3/chess/Chess.cpp
 
 CMakeFiles/angina.dir/chess/Chess.cpp.i: cmake_force
@@ -390,6 +403,19 @@ CMakeFiles/angina.dir/chess/Chess.cpp.i: cmake_force
 CMakeFiles/angina.dir/chess/Chess.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/chess/Chess.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/chess/Chess.cpp -o CMakeFiles/angina.dir/chess/Chess.cpp.s
+
+CMakeFiles/angina.dir/sdl/components/Button.cpp.o: CMakeFiles/angina.dir/flags.make
+CMakeFiles/angina.dir/sdl/components/Button.cpp.o: ../sdl/components/Button.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/angina.dir/sdl/components/Button.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/angina.dir/sdl/components/Button.cpp.o -c /home/ubuntu/Projects/angina3/sdl/components/Button.cpp
+
+CMakeFiles/angina.dir/sdl/components/Button.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/angina.dir/sdl/components/Button.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Projects/angina3/sdl/components/Button.cpp > CMakeFiles/angina.dir/sdl/components/Button.cpp.i
+
+CMakeFiles/angina.dir/sdl/components/Button.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/angina.dir/sdl/components/Button.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Projects/angina3/sdl/components/Button.cpp -o CMakeFiles/angina.dir/sdl/components/Button.cpp.s
 
 # Object files for target angina
 angina_OBJECTS = \
@@ -408,6 +434,7 @@ angina_OBJECTS = \
 "CMakeFiles/angina.dir/sdl/components/Window.cpp.o" \
 "CMakeFiles/angina.dir/sdl/components/Surface.cpp.o" \
 "CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o" \
+"CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.o" \
 "CMakeFiles/angina.dir/config/ConfigLoader.cpp.o" \
 "CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o" \
 "CMakeFiles/angina.dir/chess/Piece.cpp.o" \
@@ -417,7 +444,8 @@ angina_OBJECTS = \
 "CMakeFiles/angina.dir/chess/Rook.cpp.o" \
 "CMakeFiles/angina.dir/chess/Queen.cpp.o" \
 "CMakeFiles/angina.dir/chess/King.cpp.o" \
-"CMakeFiles/angina.dir/chess/Chess.cpp.o"
+"CMakeFiles/angina.dir/chess/Chess.cpp.o" \
+"CMakeFiles/angina.dir/sdl/components/Button.cpp.o"
 
 # External object files for target angina
 angina_EXTERNAL_OBJECTS =
@@ -437,6 +465,7 @@ angina: CMakeFiles/angina.dir/sdl/graphics/Image.cpp.o
 angina: CMakeFiles/angina.dir/sdl/components/Window.cpp.o
 angina: CMakeFiles/angina.dir/sdl/components/Surface.cpp.o
 angina: CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o
+angina: CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.o
 angina: CMakeFiles/angina.dir/config/ConfigLoader.cpp.o
 angina: CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o
 angina: CMakeFiles/angina.dir/chess/Piece.cpp.o
@@ -447,12 +476,13 @@ angina: CMakeFiles/angina.dir/chess/Rook.cpp.o
 angina: CMakeFiles/angina.dir/chess/Queen.cpp.o
 angina: CMakeFiles/angina.dir/chess/King.cpp.o
 angina: CMakeFiles/angina.dir/chess/Chess.cpp.o
+angina: CMakeFiles/angina.dir/sdl/components/Button.cpp.o
 angina: CMakeFiles/angina.dir/build.make
 angina: /usr/lib/x86_64-linux-gnu/libSDL2main.a
 angina: /usr/lib/x86_64-linux-gnu/libSDL2.so
 angina: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 angina: CMakeFiles/angina.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX executable angina"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking CXX executable angina"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/angina.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

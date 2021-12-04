@@ -188,6 +188,12 @@
 		<Unit filename="/home/ubuntu/Projects/angina3/resources/Resources.h">
 			<Option target="angina"/>
 		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/components/Button.cpp">
+			<Option target="angina"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/components/Button.h">
+			<Option target="angina"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina3/sdl/components/Surface.cpp">
 			<Option target="angina"/>
 		</Unit>
@@ -246,6 +252,9 @@
 			<Option target="angina"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina3/sdl/primitives/Point.h">
+			<Option target="angina"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina3/sdl/primitives/Rect.cpp">
 			<Option target="angina"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina3/sdl/primitives/Rect.h">

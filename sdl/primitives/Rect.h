@@ -17,8 +17,12 @@
 class Rect : public Drawable {
 public:
 	Rect(int32_t x, int32_t y, int32_t w, int32_t h);
+    Rect(SDL_Rect rect);
 
+    void draw(Renderer& renderer);
+    void draw(Renderer& renderer, const SDL_Rect* destRect);
 	SDL_Rect getRaw();
+    bool isInRect(SDL_Point point);
 private:
 	SDL_Rect _rect;
 };

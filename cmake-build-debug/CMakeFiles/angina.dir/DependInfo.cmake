@@ -22,6 +22,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ubuntu/Projects/angina3/exceptions/ResourceLoadException.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.o"
   "/home/ubuntu/Projects/angina3/exceptions/WindowInitException.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.o"
   "/home/ubuntu/Projects/angina3/main.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/main.cpp.o"
+  "/home/ubuntu/Projects/angina3/sdl/components/Button.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/sdl/components/Button.cpp.o"
   "/home/ubuntu/Projects/angina3/sdl/components/Surface.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/sdl/components/Surface.cpp.o"
   "/home/ubuntu/Projects/angina3/sdl/components/Transformer.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o"
   "/home/ubuntu/Projects/angina3/sdl/components/Window.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/sdl/components/Window.cpp.o"
@@ -32,6 +33,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ubuntu/Projects/angina3/sdl/graphics/Renderer.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.o"
   "/home/ubuntu/Projects/angina3/sdl/graphics/Texture.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o"
   "/home/ubuntu/Projects/angina3/sdl/primitives/Point.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o"
+  "/home/ubuntu/Projects/angina3/sdl/primitives/Rect.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.o"
   "/home/ubuntu/Projects/angina3/sdl/resources/ImageResource.cpp" "/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

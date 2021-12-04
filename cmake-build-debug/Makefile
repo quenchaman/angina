@@ -465,6 +465,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+sdl/components/Button.o: sdl/components/Button.cpp.o
+.PHONY : sdl/components/Button.o
+
+# target to build an object file
+sdl/components/Button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Button.cpp.o
+.PHONY : sdl/components/Button.cpp.o
+
+sdl/components/Button.i: sdl/components/Button.cpp.i
+.PHONY : sdl/components/Button.i
+
+# target to preprocess a source file
+sdl/components/Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Button.cpp.i
+.PHONY : sdl/components/Button.cpp.i
+
+sdl/components/Button.s: sdl/components/Button.cpp.s
+.PHONY : sdl/components/Button.s
+
+# target to generate assembly for a file
+sdl/components/Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Button.cpp.s
+.PHONY : sdl/components/Button.cpp.s
+
 sdl/components/Surface.o: sdl/components/Surface.cpp.o
 .PHONY : sdl/components/Surface.o
 
@@ -705,6 +729,30 @@ sdl/primitives/Point.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Point.cpp.s
 .PHONY : sdl/primitives/Point.cpp.s
 
+sdl/primitives/Rect.o: sdl/primitives/Rect.cpp.o
+.PHONY : sdl/primitives/Rect.o
+
+# target to build an object file
+sdl/primitives/Rect.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.o
+.PHONY : sdl/primitives/Rect.cpp.o
+
+sdl/primitives/Rect.i: sdl/primitives/Rect.cpp.i
+.PHONY : sdl/primitives/Rect.i
+
+# target to preprocess a source file
+sdl/primitives/Rect.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.i
+.PHONY : sdl/primitives/Rect.cpp.i
+
+sdl/primitives/Rect.s: sdl/primitives/Rect.cpp.s
+.PHONY : sdl/primitives/Rect.s
+
+# target to generate assembly for a file
+sdl/primitives/Rect.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.s
+.PHONY : sdl/primitives/Rect.cpp.s
+
 sdl/resources/ImageResource.o: sdl/resources/ImageResource.cpp.o
 .PHONY : sdl/resources/ImageResource.o
 
@@ -780,6 +828,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... sdl/components/Button.o"
+	@echo "... sdl/components/Button.i"
+	@echo "... sdl/components/Button.s"
 	@echo "... sdl/components/Surface.o"
 	@echo "... sdl/components/Surface.i"
 	@echo "... sdl/components/Surface.s"
@@ -810,6 +861,9 @@ help:
 	@echo "... sdl/primitives/Point.o"
 	@echo "... sdl/primitives/Point.i"
 	@echo "... sdl/primitives/Point.s"
+	@echo "... sdl/primitives/Rect.o"
+	@echo "... sdl/primitives/Rect.i"
+	@echo "... sdl/primitives/Rect.s"
 	@echo "... sdl/resources/ImageResource.o"
 	@echo "... sdl/resources/ImageResource.i"
 	@echo "... sdl/resources/ImageResource.s"

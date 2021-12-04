@@ -29,6 +29,9 @@ namespace Resources {
 	const std::string whitePawn = "chess/Pawn_W.png";
 	const std::string whiteQueen = "chess/Queen_W.png";
 	const std::string whiteRook = "chess/Rook_W.png";
+    const std::string startScreen2 = "chess/start_screen_2.png";
+    const std::string newGameButton = "chess/button_new_game.png";
+    const std::string continueGameButton = "chess/button_continue_game.png";
 };
 
 

@@ -9,6 +9,7 @@
 #define CHESS_CHESS_H_
 
 #include "sdl/graphics/Engine.h"
+#include "sdl/primitives/Rect.h"
 #include "resources/Resources.h"
 #include "Piece.h"
 #include "Pawn.h"
@@ -27,6 +28,7 @@
 #include <stdlib.h>
 #include <algorithm>
 #include <random>
+#include <sdl/components/Button.h>
 
 class Chess : public Engine {
 public:
@@ -43,6 +45,9 @@ public:
 	void handleLeftMouseClick();
 private:
     Image* board;
+    Image* startScreen;
+    Button* newGameBtn;
+    Button* continueGameBtn;
     std::vector<Piece*> activePieces;
     std::vector<Piece*> passivePieces;
     std::vector<Cell> availableMoves;
@@ -75,13 +80,15 @@ private:
 		Resources::whiteRook,
         Resources::startScreen,
         Resources::whiteWins,
-        Resources::blackWins
+        Resources::blackWins,
+        Resources::startScreen2,
+        Resources::newGameButton,
+        Resources::continueGameButton
 	};
 private:
     void setPiecesOnBoard();
     Piece* getPieceOnCell(Cell cell);
     bool isOwnPiece(Piece* piece);
-    void calculateAllMoves();
     void populatePiecesMap();
     void filterOutsideOfBoardMoves();
     void filterOutPawnAttackMoves();

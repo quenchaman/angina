@@ -12,16 +12,26 @@ void Chess::init() {
     loadGameResources(paths);
 
     board = resources[Resources::board];
+    startScreen = resources[Resources::startScreen2];
+    newGameBtn = new Button(340, 260, resources[Resources::newGameButton]);
+    continueGameBtn = new Button(340, 330, resources[Resources::continueGameButton]);
 }
 
 void Chess::draw() {
-	board->draw(*renderer);
+    if (currentState == State::WELCOME_SCREEN) {
+        startScreen->draw(*renderer);
 
-    for (Piece* piece : activePieces) {
-        piece->draw(*renderer);
-    }
-    for (Piece* piece : passivePieces) {
-        piece->draw(*renderer);
+        newGameBtn->draw(*renderer);
+        continueGameBtn->draw(*renderer);
+    } else {
+        board->draw(*renderer);
+
+        for (Piece* piece : activePieces) {
+            piece->draw(*renderer);
+        }
+        for (Piece* piece : passivePieces) {
+            piece->draw(*renderer);
+        }
     }
 }
 
@@ -90,12 +100,24 @@ void Chess::handleLeftMouseClick() {
 		selectedCell = clickedCell;
 	} else if (currentState == State::PUT_PIECE) {
 		targetCell = clickedCell;
-	}
+	} else if (currentState == State::WELCOME_SCREEN) {
+        bool isNewGameBtnClicked = newGameBtn->isClicked({x, y});
+
+        if (isNewGameBtnClicked) {
+            currentState = State::INITIALIZE_BOARD;
+        }
+
+        bool isContinueGameClicked = continueGameBtn->isClicked({x, y});
+
+        if (isContinueGameClicked) {
+            std::cout << "Continue game button is clicked, but it is not implemented" << std::endl;
+        }
+    }
 
 }
 
 Chess::Chess() : Engine("Chess") {
-    currentState = State::INITIALIZE_BOARD;
+    currentState = State::WELCOME_SCREEN;
     isWhiteHuman = true;
     currentSide = Side::White;
 }
@@ -143,10 +165,6 @@ Piece *Chess::getPieceOnCell(Cell cell) {
 
 bool Chess::isOwnPiece(Piece *piece) {
     return piece != nullptr && piece->getSide() == currentSide;
-}
-
-void Chess::calculateAllMoves() {
-
 }
 
 void Chess::populatePiecesMap() {

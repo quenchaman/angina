@@ -41,7 +41,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/primitives/Point.h
 	${DIR}/sdl/primitives/Point.cpp
 	${DIR}/sdl/primitives/Rect.h
-	${DIR}/sdl/primitives/Rect.h
+	${DIR}/sdl/primitives/Rect.cpp
 	${DIR}/config/Config.h
 	${DIR}/config/ConfigData.h
 	${DIR}/config/ConfigLoader.h
@@ -65,7 +65,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess/King.h
 	${DIR}/chess/State.h
 		${DIR}/chess/Chess.h
-		${DIR}/chess/Chess.cpp)
+		${DIR}/chess/Chess.cpp sdl/components/Button.cpp sdl/components/Button.h)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 set_target_cpp_standard(${PROJECT_NAME} 17)
