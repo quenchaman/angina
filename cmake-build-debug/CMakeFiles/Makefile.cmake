@@ -40,6 +40,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.20.2/CMakeSystem.cmake"
   "../cmake_helpers/find_modules/FindSDL2.cmake"
   "../cmake_helpers/find_modules/FindSDL2_image.cmake"
+  "../cmake_helpers/find_modules/FindSDL2_ttf.cmake"
   "../cmake_helpers/helpers.cmake"
   "../libs/json/json-3.10.4/CMakeLists.txt"
   "../libs/json/json-3.10.4/cmake/config.cmake.in"

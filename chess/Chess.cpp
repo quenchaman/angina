@@ -398,9 +398,9 @@ void Chess::deinit() {
 void Chess::createClock() {
     SDL_Color fontColor = {
             .r =  255,
-            .g =  255,
-            .b =  255,
-            .a = 1
+            .g =  0,
+            .b =  0,
+            .a = 255
     };
 
     std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();

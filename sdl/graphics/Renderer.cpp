@@ -13,8 +13,8 @@ Renderer::Renderer(SDL_Renderer* _renderer) {
 }
 
 void Renderer::clearRenderer() {
-	SDL_SetRenderDrawColor( this->renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-
+	//SDL_SetRenderDrawColor( this->renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+    SDL_RenderClear(this->renderer);
 }
 
 SDL_Renderer* Renderer::getRenderer() {

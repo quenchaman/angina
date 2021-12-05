@@ -299,6 +299,12 @@ SDL2_INCLUDE_DIR:PATH=/usr/include/SDL2
 //Where the SDL2 Library can be found
 SDL2_LIBRARY:STRING=/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread
 
+//Path to a file.
+SDL2_TTF_INCLUDE_DIR:PATH=/usr/include/SDL2
+
+//Where the SDL2_ttf Library can be found
+SDL2_TTF_LIBRARY:STRING=/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
+
 //Value Computed by CMake
 angina_BINARY_DIR:STATIC=/home/ubuntu/Projects/angina3/cmake-build-debug
 
@@ -491,6 +497,8 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_SDL2:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread][/usr/include/SDL2][v()]
 //Details about finding SDL2_IMAGE
 FIND_PACKAGE_MESSAGE_DETAILS_SDL2_IMAGE:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2_image.so][/usr/include/SDL2][v()]
+//Details about finding SDL2_TTF
+FIND_PACKAGE_MESSAGE_DETAILS_SDL2_TTF:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so][/usr/include/SDL2][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Build the unit tests when BUILD_TESTING is enabled.
@@ -501,7 +509,8 @@ ProcessorCount_cmd_nproc-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl
 ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
 SDL2_IMAGE_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2_image.so
-SDL2_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread;-lpthread;-lpthread
+SDL2_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread;-lpthread;-lpthread;-lpthread
+SDL2_TTF_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 

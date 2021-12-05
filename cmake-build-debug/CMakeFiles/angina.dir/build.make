@@ -481,6 +481,7 @@ angina: CMakeFiles/angina.dir/build.make
 angina: /usr/lib/x86_64-linux-gnu/libSDL2main.a
 angina: /usr/lib/x86_64-linux-gnu/libSDL2.so
 angina: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
+angina: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 angina: CMakeFiles/angina.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/Projects/angina3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking CXX executable angina"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/angina.dir/link.txt --verbose=$(VERBOSE)

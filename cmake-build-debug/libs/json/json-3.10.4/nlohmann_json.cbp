@@ -30,6 +30,9 @@
 		<Unit filename="/home/ubuntu/Projects/angina3/cmake_helpers/find_modules/FindSDL2_image.cmake">
 			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
 		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina3/cmake_helpers/find_modules/FindSDL2_ttf.cmake">
+			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina3/libs/json/json-3.10.4/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\libs\json\json-3.10.4\"/>
 		</Unit>
