@@ -24,6 +24,7 @@
 #include <cstdint>
 #include <vector>
 #include <string>
+#include <ctime>
 #include <map>
 #include <stdlib.h>
 #include <algorithm>
@@ -67,6 +68,8 @@ private:
     std::map<Cell, Piece*> piecesMap;
     std::default_random_engine rng = std::default_random_engine {};
     Image* clock;
+    std::chrono::time_point<std::chrono::steady_clock> clockStartTime;
+    int32_t turnDuration = 60;
 
 	std::vector<std::string> paths = {
 		Resources::board,

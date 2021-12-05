@@ -18,13 +18,6 @@ void Chess::init() {
     quitGameButton = new Button(660, 50, resources[Resources::quitGameButton]);
     quitGameButtonOnStartPage = new Button(340, 400, new Image(resources[Resources::quitGameButton]));
 
-    SDL_Color fontColor = {
-            .r =  255,
-            .g =  255,
-            .b =  255,
-            .a = 1
-    };
-
     createClock();
 }
 
@@ -55,8 +48,10 @@ void Chess::executeGameLogic() {
         populatePiecesMap();
         currentState = State::WHITE;
     } else if (currentState == State::WHITE) {
+        clockStartTime = std::chrono::steady_clock::now();
         currentState = State::HUMAN;
     } else if (currentState == State::BLACK) {
+        clockStartTime = std::chrono::steady_clock::now();
         currentState = State::COMPUTER;
     } else if (currentState == State::HUMAN) {
     	if (!selectedCell.isEmpty) {
@@ -106,6 +101,8 @@ void Chess::executeGameLogic() {
         clearSelection();
         deinit();
     }
+
+    createClock();
 }
 
 void Chess::handleLeftMouseClick() {
@@ -139,7 +136,6 @@ void Chess::handleLeftMouseClick() {
             std::cout << "Continue game button is clicked, but it is not implemented" << std::endl;
         }
     }
-
 }
 
 Chess::Chess() : Engine("Chess") {
@@ -407,7 +403,16 @@ void Chess::createClock() {
             .a = 1
     };
 
-    auto* clockTexture = new Texture(*renderer, font, "99", fontColor);
+    std::chrono::time_point<std::chrono::steady_clock> now = std::chrono::steady_clock::now();
+    std::chrono::seconds diff = std::chrono::duration_cast<std::chrono::seconds>(now - clockStartTime);
+    int64_t secondsLeft = turnDuration - diff.count();
+
+    if (secondsLeft == 0) {
+        switchPlayer();
+        return;
+    }
+
+    auto* clockTexture = new Texture(*renderer, font, std::to_string(secondsLeft), fontColor);
     clock = new Image(*clockTexture);
     clock->put(660, 150);
 }

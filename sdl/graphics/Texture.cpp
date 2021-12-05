@@ -49,7 +49,6 @@ SDL_Point Texture::getSize() {
 }
 
 Texture::Texture(Renderer& renderer, TTF_Font* font, std::string textureText, SDL_Color color) {
-    std::cout << "In the texture creation method" << " font is " << font << std::endl;
     SDL_Surface* textSurface = TTF_RenderText_Solid(font, textureText.c_str(), color);
     texture = SDL_CreateTextureFromSurface(renderer.getRenderer(), textSurface);
 
