@@ -116,6 +116,9 @@
 		<Unit filename="/home/ubuntu/Projects/angina3/chess/Knight.h">
 			<Option target="angina"/>
 		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Move.h">
+			<Option target="angina"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina3/chess/Pawn.cpp">
 			<Option target="angina"/>
 		</Unit>

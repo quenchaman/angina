@@ -18,6 +18,7 @@
 #include "Rook.h"
 #include "Queen.h"
 #include "State.h"
+#include "Move.h"
 #include "sdl/graphics/Image.h"
 #include "sdl/graphics/Texture.h"
 #include "Cell.h"
@@ -70,6 +71,7 @@ private:
     Image* clock;
     std::chrono::time_point<std::chrono::steady_clock> clockStartTime;
     int32_t turnDuration = 60;
+    Move lastMove;
 
 	std::vector<std::string> paths = {
 		Resources::board,

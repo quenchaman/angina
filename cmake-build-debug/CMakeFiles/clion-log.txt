@@ -19,7 +19,6 @@ Call Stack (most recent call first):
   CMakeLists.txt:84 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
--- Found SDL2_TTF: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so  
 -- Using the single-header code from /home/ubuntu/Projects/angina3/libs/json/json-3.10.4/single_include/
 -- Configuring done
 -- Generating done

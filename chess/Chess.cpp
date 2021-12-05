@@ -237,6 +237,20 @@ void Chess::filterOutPawnAttackMoves() {
 			moves.push_back(attackLeftCell);
 		}
 
+        // Hmmmmmm let's implement 'en passant'
+        // The cell to the left diagonal could be empty, but if the previous move was of a pawn that moved from it's original square to
+        // the one to the left of our pawn then we can capture it 'en passant' style! Yeah!
+        // There is one bitchy corner case of having two opponent pieces - one on left diagonal and one to the left of us? should it be captured enpassant ?
+        // I would say - yes! MUhahahahahahahahha
+//        Cell attackLeftNeighbour = { selectedPiece->getCol() - 1, selectedPiece->getRow() };
+//        Piece* leftNeighbourCell = getPieceOnCell(attackLeftNeighbour);
+
+        if (lastMove.rank == Rank::PAWN && lastMove.previous.row == (selectedPiece->getSide() == Side::White ? 1 : 6) &&
+            lastMove.current.row == (selectedPiece->getSide() == Side::White ? 3 : 4) &&
+            lastMove.current.col + 1 == selectedPiece->getCol()) {
+            moves.push_back(attackLeftCell);
+        }
+
 		Cell attackRightCell = {selectedPiece->getCol() + 1, selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? -1 : 1)};
 		Piece* attackRightCellPiece = getPieceOnCell(attackRightCell);
 
@@ -314,6 +328,11 @@ bool Chess::putPiece() {
 	if (!targetCell.isEmpty) {
 		for (Cell& move : availableMoves) {
 			if (move.col == targetCell.col && move.row == targetCell.row) {
+                lastMove.previous = selectedPiece->getCell();
+                lastMove.current = targetCell;
+                lastMove.rank = selectedPiece->getRank();
+                lastMove.side = selectedPiece->getSide();
+
 				selectedPiece->move(targetCell);
 				return true;
 			}
@@ -360,8 +379,15 @@ void Chess::makeComputerMove() {
 
 		if (availableMoves.size() > 0) {
 			size_t randomIdx = (static_cast<unsigned long>(rand()) % availableMoves.size());
+            Cell computerMove = availableMoves.at(randomIdx);
 
-			computerPiece->move(availableMoves.at(randomIdx));
+            lastMove.previous.row = computerPiece->getRow();
+            lastMove.previous.col = computerPiece->getCol();
+            lastMove.current = computerMove;
+            lastMove.rank = computerPiece->getRank();
+            lastMove.side = computerPiece->getSide();
+
+			computerPiece->move(computerMove);
 			currentState = State::CALCULATE_CAPTURES;
 			return;
 		}
