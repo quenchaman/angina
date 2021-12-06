@@ -457,3 +457,7 @@ void Chess::createClock() {
     clock = new Image(*clockTexture);
     clock->put(660, 150);
 }
+
+void Chess::isCastleMoveAvailable() {
+
+}

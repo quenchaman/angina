@@ -25,5 +25,5 @@ Pawn::~Pawn() {
 }
 
 bool Pawn::isOnInitialPosition() {
-    return this->getSide() == Side::White ? (getRow() == 6) : (getRow() == 1);
+    return !getHasMoved();
 }

@@ -8,7 +8,7 @@
 #include "Piece.h"
 
 Piece::Piece(int32_t _col, int32_t _row, Rank _rank, Side _side, Image* _image):
-col(_col), row(_row), rank(_rank), side(_side), image(_image) {
+col(_col), row(_row), rank(_rank), side(_side), initCol(_col), initRow(_row), image(_image) {
     move({_col, _row});
 }
 
@@ -48,4 +48,8 @@ void Piece::draw(Renderer& renderer) {
 
 Cell Piece::getCell() {
 	return {getCol(), getRow()};
+}
+
+bool Piece::getHasMoved() {
+	return getCol() != initCol || getRow() != initRow;
 }

@@ -110,6 +110,7 @@ private:
     void makeComputerMove();
     void calculateCaptures();
     void createClock();
+    void isCastleMoveAvailable();
 };
 
 

@@ -41,12 +41,16 @@ public:
 
 	virtual std::vector<Cell> calculateMoves(std::map<Cell, Piece*> boardPieces) = 0;
 	void draw(Renderer& renderer);
+	bool getHasMoved();
+
 
 private:
 	int32_t col;
 	int32_t row;
 	Rank rank;
 	Side side;
+	int32_t initCol;
+	int32_t initRow;
 protected:
 	Image* image;
 };
