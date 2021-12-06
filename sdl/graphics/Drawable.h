@@ -18,6 +18,7 @@ public:
 
 	virtual void draw(Renderer& renderer) = 0;
 	virtual void draw(Renderer& renderer, const SDL_Rect* destRect) = 0;
+    virtual void draw(Renderer& renderer, const SDL_Rect* destRect, double angle) = 0;
 };
 
 

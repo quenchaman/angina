@@ -35,10 +35,13 @@ void Chess::draw() {
             piece->draw(*renderer);
         }
         for (Piece* piece : passivePieces) {
-            piece->draw(*renderer);
+            piece->draw(*renderer, currentRotation);
         }
         quitGameButton->draw(*renderer);
         clock->draw(*renderer);
+        if (winnerText != nullptr) {
+            winnerText->draw(*renderer);
+        }
     }
 }
 
@@ -102,6 +105,23 @@ void Chess::executeGameLogic() {
     	currentState = State::SWITCH_PLAYER;
     } else if (currentState == State::CHECKMATE) {
     	std::cout << "Player " << (winner == Side::White ? "White" : "Black") << " wins by checkmate" << std::endl;
+
+        currentRotation += 3;
+
+        if (currentRotation > 360) {
+            currentState = State::QUIT;
+        }
+
+        SDL_Color fontColor = {
+                .r =  255,
+                .g =  0,
+                .b =  0,
+                .a = static_cast<Uint8>(currentRotation % 255)
+        };
+
+        auto* winnerTextTexture = new Texture(*renderer, font, winner == Side::White ? "White wins" : "Black wins", fontColor);
+        winnerText = new Image(*winnerTextTexture);
+        winnerText->put(100, 660);
     } else if (currentState == State::QUIT) {
         clearSelection();
         deinit();

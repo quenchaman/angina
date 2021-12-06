@@ -21,6 +21,7 @@ public:
 
     void draw(Renderer& renderer);
     void draw(Renderer& renderer, const SDL_Rect* destRect);
+    void draw(Renderer& renderer, const SDL_Rect* destRect, double angle);
 	SDL_Rect getRaw();
     bool isInRect(SDL_Point point);
 private:

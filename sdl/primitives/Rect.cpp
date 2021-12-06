@@ -29,3 +29,7 @@ void Rect::draw([[maybe_unused]]Renderer &renderer) {
 void Rect::draw([[maybe_unused]]Renderer &renderer, [[maybe_unused]]const SDL_Rect *destRect) {
 
 }
+
+void Rect::draw([[maybe_unused]]Renderer &renderer, [[maybe_unused]]const SDL_Rect *destRect, [[maybe_unused]]double angle) {
+
+}

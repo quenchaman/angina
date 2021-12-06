@@ -41,6 +41,7 @@ public:
 
 	virtual std::vector<Cell> calculateMoves(std::map<Cell, Piece*> boardPieces) = 0;
 	void draw(Renderer& renderer);
+    void draw(Renderer& renderer, double angle);
 	bool getHasMoved();
 
 

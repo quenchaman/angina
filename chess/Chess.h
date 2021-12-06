@@ -72,6 +72,9 @@ private:
     std::chrono::time_point<std::chrono::steady_clock> clockStartTime;
     int32_t turnDuration = 60;
     Move lastMove;
+    std::unordered_map<Piece*, int32_t> pieceRotations;
+    int32_t currentRotation = 0;
+    Image* winnerText;
 
 	std::vector<std::string> paths = {
 		Resources::board,

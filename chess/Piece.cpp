@@ -53,3 +53,7 @@ Cell Piece::getCell() {
 bool Piece::getHasMoved() {
 	return getCol() != initCol || getRow() != initRow;
 }
+
+void Piece::draw(Renderer &renderer, double angle) {
+    image->draw(renderer, angle);
+}

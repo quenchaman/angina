@@ -16,6 +16,10 @@ void Image::draw(Renderer& renderer) {
 	this->texture.draw(renderer, &this->boundingBox);
 }
 
+void Image::draw(Renderer &renderer, double angle) {
+    this->texture.draw(renderer, &this->boundingBox, angle);
+}
+
 void Image::setX(int32_t x) {
 	this->boundingBox.x = x;
 }
@@ -47,3 +51,5 @@ Image::Image(Image * img): texture(img->texture), boundingBox(img->boundingBox) 
 Image::Image(Texture &texture): texture(texture) {
     boundingBox = {0, 0, texture.getSize().x, texture.getSize().y};
 }
+
+

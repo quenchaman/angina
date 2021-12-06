@@ -22,25 +22,25 @@ void Texture::draw(Renderer& renderer) {
 }
 
 void Texture::draw(Renderer& renderer, const SDL_Rect* destRect) {
-	SDL_RenderCopy(renderer.getRenderer(), this->getTexture(), NULL, destRect);
+    draw(renderer, destRect, 0.0, SDL_RendererFlip::SDL_FLIP_NONE);
 }
+
+void Texture::draw(Renderer &renderer, const SDL_Rect *destRect, double angle) {
+    draw(renderer, destRect, angle, SDL_RendererFlip::SDL_FLIP_NONE);
+}
+
 
 Texture::~Texture() {
     std::cout << "Texture destroyed" << std::endl;
     SDL_DestroyTexture(texture);
 }
 
-//void
-//Texture::draw(Renderer &renderer, SDL_Rect destRect, double angle, SDL_RendererFlip flip) {
-//    SDL_Rect renderQuad = {};
-//
-//    renderQuad.w = destRect.w;
-//    renderQuad.h = destRect.h;
-//
-//    SDL_Point point = { renderQuad.w / 2, renderQuad.h / 2 };
-//
-//    SDL_RenderCopyEx(renderer.getRenderer(), texture, &destRect, &renderQuad, angle, &point, flip);
-//}
+void
+Texture::draw(Renderer &renderer, const SDL_Rect* destRect, double angle, SDL_RendererFlip flip) {
+    SDL_Point point = { destRect->w / 2, destRect->h / 2 };
+
+    SDL_RenderCopyEx(renderer.getRenderer(), texture, NULL, destRect, angle, &point, flip);
+}
 
 SDL_Point Texture::getSize() {
     SDL_Point point;
@@ -54,3 +54,4 @@ Texture::Texture(Renderer& renderer, TTF_Font* font, std::string textureText, SD
 
     SDL_FreeSurface(textSurface);
 }
+

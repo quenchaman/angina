@@ -21,6 +21,7 @@ public:
     Image(Image*);
     ~Image();
 	void draw(Renderer& renderer);
+    void draw(Renderer& renderer, double angle);
 
 	void setX(int32_t x);
 	void setY(int32_t y);
