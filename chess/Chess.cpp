@@ -47,9 +47,11 @@ void Chess::executeGameLogic() {
         setPiecesOnBoard();
         populatePiecesMap();
         currentState = State::WHITE;
+        createClock();
     } else if (currentState == State::WHITE) {
         clockStartTime = std::chrono::steady_clock::now();
         currentState = State::HUMAN;
+        createClock();
     } else if (currentState == State::BLACK) {
         clockStartTime = std::chrono::steady_clock::now();
         currentState = State::COMPUTER;
@@ -60,6 +62,7 @@ void Chess::executeGameLogic() {
     			currentState = State::AVAILABLE_MOVES;
     		}
     	}
+    	createClock();
     } else if (currentState == State::AVAILABLE_MOVES) {
     	availableMoves = selectedPiece->calculateMoves(piecesMap);
 
@@ -84,6 +87,7 @@ void Chess::executeGameLogic() {
     	if (putPiece()) {
 			currentState = State::CALCULATE_CAPTURES;
     	}
+    	createClock();
     } else if (currentState == State::FILTER_OCCUPIED_CELLS_MOVES) {
     	filterOutOccupiedCellsMoves();
     	std::cout << "All the occupied cells moves for a piece are: " << availableMoves.size() << std::endl;
@@ -92,6 +96,7 @@ void Chess::executeGameLogic() {
     	switchPlayer();
     } else if (currentState == State::COMPUTER) {
     	makeComputerMove();
+    	createClock();
     } else if (currentState == State::CALCULATE_CAPTURES) {
     	calculateCaptures();
     	currentState = State::SWITCH_PLAYER;
@@ -101,8 +106,6 @@ void Chess::executeGameLogic() {
         clearSelection();
         deinit();
     }
-
-    createClock();
 }
 
 void Chess::handleLeftMouseClick() {
