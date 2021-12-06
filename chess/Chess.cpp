@@ -42,6 +42,11 @@ void Chess::draw() {
         if (winnerText != nullptr) {
             winnerText->draw(*renderer);
         }
+
+        for (Image* logLine : logImages) {
+            logLine->draw(*renderer);
+        }
+        showLastTenMoves();
     }
 }
 
@@ -104,6 +109,7 @@ void Chess::executeGameLogic() {
     	calculateCaptures();
     	currentState = State::SWITCH_PLAYER;
     } else if (currentState == State::CHECKMATE) {
+        movesLog.clear();
     	std::cout << "Player " << (winner == Side::White ? "White" : "Black") << " wins by checkmate" << std::endl;
 
         currentRotation += 3;
@@ -378,7 +384,7 @@ bool Chess::putPiece() {
                 lastMove.current = targetCell;
                 lastMove.rank = selectedPiece->getRank();
                 lastMove.side = selectedPiece->getSide();
-
+                movesLog.push_back(lastMove);
 				selectedPiece->move(targetCell);
 				return true;
 			}
@@ -434,6 +440,7 @@ void Chess::makeComputerMove() {
             lastMove.side = computerPiece->getSide();
 
 			computerPiece->move(computerMove);
+            movesLog.push_back(lastMove);
 			currentState = State::CALCULATE_CAPTURES;
 			return;
 		}
@@ -468,6 +475,8 @@ void Chess::deinit() {
     winner = Side::NA;
     isDraw = false;
     piecesMap.clear();
+    movesLog.clear();
+    lastMove = {};
 }
 
 void Chess::createClock() {
@@ -525,4 +534,32 @@ bool Chess::performCastling(Piece* king, Piece* rook) {
     }
 
     return false;
+}
+
+void Chess::showLastTenMoves() {
+    for (Image* img : logImages) {
+        delete img;
+    }
+
+    logImages.clear();
+    int32_t yOffset = 0;
+    for (int64_t moveIdx = (int64_t)movesLog.size() - 1; moveIdx >= 0; moveIdx--) {
+        Move currentMove = movesLog.at((size_t)moveIdx);
+        std::string line = std::string(currentMove.side == Side::White ? "White" : "Black") + std::string(" moved piece ") + rankEnumToStringMap[currentMove.rank] +
+                std::string(" from ") + colToLetterMap[currentMove.previous.col] + " " + std::to_string(currentMove.previous.row + 1) +
+                std::string(" to ") + colToLetterMap[currentMove.current.col] + " " + std::to_string(currentMove.current.row + 1);
+
+        SDL_Color fontColor = {
+                .r =  0,
+                .g =  255,
+                .b =  0,
+                .a = 255
+        };
+
+        auto* logTexture = new Texture(*renderer, font, line, fontColor);
+        Image* texture = new Image(*logTexture);
+        texture->put(100, 660 + yOffset);
+        logImages.push_back(texture);
+        yOffset += 28;
+    }
 }
