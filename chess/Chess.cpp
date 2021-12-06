@@ -237,17 +237,11 @@ void Chess::filterOutPawnAttackMoves() {
 			moves.push_back(attackLeftCell);
 		}
 
-        // Hmmmmmm let's implement 'en passant'
-        // The cell to the left diagonal could be empty, but if the previous move was of a pawn that moved from it's original square to
-        // the one to the left of our pawn then we can capture it 'en passant' style! Yeah!
-        // There is one bitchy corner case of having two opponent pieces - one on left diagonal and one to the left of us? should it be captured enpassant ?
-        // I would say - yes! MUhahahahahahahahha
-//        Cell attackLeftNeighbour = { selectedPiece->getCol() - 1, selectedPiece->getRow() };
-//        Piece* leftNeighbourCell = getPieceOnCell(attackLeftNeighbour);
-
-        if (lastMove.rank == Rank::PAWN && lastMove.previous.row == (selectedPiece->getSide() == Side::White ? 1 : 6) &&
-            lastMove.current.row == (selectedPiece->getSide() == Side::White ? 3 : 4) &&
-            lastMove.current.col + 1 == selectedPiece->getCol()) {
+		// en passant
+        if (lastMove.rank == Rank::PAWN && lastMove.previous.row == (lastMove.side == Side::Black ? 1 : 6) &&
+            lastMove.current.row == (lastMove.side == Side::Black ? 3 : 4) &&
+            lastMove.current.col + 1 == selectedPiece->getCol() &&
+			lastMove.current.row == selectedPiece->getRow()) {
             moves.push_back(attackLeftCell);
         }
 
@@ -255,6 +249,13 @@ void Chess::filterOutPawnAttackMoves() {
 		Piece* attackRightCellPiece = getPieceOnCell(attackRightCell);
 
 		if (attackRightCellPiece != nullptr && attackRightCellPiece->getSide() != selectedPiece->getSide()) {
+			moves.push_back(attackRightCell);
+		}
+
+		if (lastMove.rank == Rank::PAWN && lastMove.previous.row == (lastMove.side == Side::Black ? 1 : 6) &&
+			lastMove.current.row == (lastMove.side == Side::Black ? 3 : 4) &&
+			lastMove.current.col - 1 == selectedPiece->getCol() &&
+			lastMove.current.row == selectedPiece->getRow()) {
 			moves.push_back(attackRightCell);
 		}
 
@@ -401,7 +402,10 @@ void Chess::calculateCaptures() {
 	std::vector<Piece*> newOpponentPieces;
 
 	for (Piece* opponentPiece : passivePieces) {
-		if (opponentPiece->getCol() != selectedPiece->getCol() || opponentPiece->getRow() != selectedPiece->getRow()) {
+		bool thereWasEnPassantMove = selectedPiece->getRank() == Rank::PAWN && opponentPiece->getRank() == Rank::PAWN &&
+				selectedPiece->getCol() == opponentPiece->getCol() &&
+				selectedPiece->getRow() + (selectedPiece->getSide() == Side::White ? 1 : -1) == opponentPiece->getRow();
+		if ((opponentPiece->getCol() != selectedPiece->getCol() || opponentPiece->getRow() != selectedPiece->getRow()) && !thereWasEnPassantMove) {
 			newOpponentPieces.push_back(opponentPiece);
 		}
 	}

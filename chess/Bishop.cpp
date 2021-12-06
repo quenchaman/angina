@@ -25,15 +25,15 @@ void Bishop::_calculateMoves(std::map<Cell, Piece*> boardPieces) {
 		Cell currentCell = {col, row};
 		Piece* currentCellPiece = boardPieces[currentCell];
 
-		if (currentCellPiece != nullptr) {
-			if (getSide() != currentCellPiece->getSide()) {
-				moves.push_back(currentCell);
-			}
-
+		if (currentCellPiece != nullptr && getSide() == currentCellPiece->getSide()) {
 			break;
 		}
 
 		moves.push_back(currentCell);
+
+		if (currentCellPiece != nullptr && currentCellPiece->getSide() != getSide()) {
+			break;
+		}
 	}
 
 	// Let's go bottom right
@@ -43,15 +43,15 @@ void Bishop::_calculateMoves(std::map<Cell, Piece*> boardPieces) {
 		Cell currentCell = {col, row};
 		Piece* currentCellPiece = boardPieces[currentCell];
 
-		if (currentCellPiece != nullptr) {
-			if (getSide() != currentCellPiece->getSide()) {
-				moves.push_back(currentCell);
-			}
-
+		if (currentCellPiece != nullptr && getSide() == currentCellPiece->getSide()) {
 			break;
 		}
 
 		moves.push_back(currentCell);
+
+		if (currentCellPiece != nullptr && currentCellPiece->getSide() != getSide()) {
+			break;
+		}
 	}
 
 	// Let's go bottom left
@@ -61,15 +61,15 @@ void Bishop::_calculateMoves(std::map<Cell, Piece*> boardPieces) {
 		Cell currentCell = {col, row};
 		Piece* currentCellPiece = boardPieces[currentCell];
 
-		if (currentCellPiece != nullptr) {
-			if (getSide() != currentCellPiece->getSide()) {
-				moves.push_back(currentCell);
-			}
-
+		if (currentCellPiece != nullptr && getSide() == currentCellPiece->getSide()) {
 			break;
 		}
 
 		moves.push_back(currentCell);
+
+		if (currentCellPiece != nullptr && currentCellPiece->getSide() != getSide()) {
+			break;
+		}
 	}
 
 	// Let's go top left
@@ -79,14 +79,14 @@ void Bishop::_calculateMoves(std::map<Cell, Piece*> boardPieces) {
 		Cell currentCell = {col, row};
 		Piece* currentCellPiece = boardPieces[currentCell];
 
-		if (boardPieces[currentCell] != nullptr) {
-			if (getSide() != currentCellPiece->getSide()) {
-				moves.push_back(currentCell);
-			}
-
+		if (currentCellPiece != nullptr && getSide() == currentCellPiece->getSide()) {
 			break;
 		}
 
 		moves.push_back(currentCell);
+
+		if (currentCellPiece != nullptr && currentCellPiece->getSide() != getSide()) {
+			break;
+		}
 	}
 }
