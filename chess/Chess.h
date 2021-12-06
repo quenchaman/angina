@@ -110,7 +110,7 @@ private:
     void makeComputerMove();
     void calculateCaptures();
     void createClock();
-    void isCastleMoveAvailable();
+    bool performCastling(Piece* king, Piece* rook);
 };
 
 

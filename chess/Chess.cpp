@@ -121,6 +121,20 @@ void Chess::handleLeftMouseClick() {
 	} else if (currentState == State::PUT_PIECE) {
 		Piece* targetCellPiece = getPieceOnCell(clickedCell);
 
+        if (targetCellPiece != nullptr && selectedPiece->getRank() == Rank::KING && targetCellPiece->getRank() == Rank::ROOK &&
+            selectedPiece->getSide() == targetCellPiece->getSide()) {
+            bool performedOk = performCastling(selectedPiece, targetCellPiece);
+
+            if (!performedOk) {
+                return;
+            }
+
+            clockStartTime = std::chrono::steady_clock::now();
+            createClock();
+            currentState = State::SWITCH_PLAYER;
+            return;
+        }
+
 		if (targetCellPiece != nullptr && targetCellPiece->getSide() == selectedPiece->getSide()) {
 			selectedCell = clickedCell;
 			currentState = State::HUMAN;
@@ -458,6 +472,37 @@ void Chess::createClock() {
     clock->put(660, 150);
 }
 
-void Chess::isCastleMoveAvailable() {
+// Works only for player move, not computer move
+bool Chess::performCastling(Piece* king, Piece* rook) {
+    if (!king->getHasMoved() && !rook->getHasMoved() && !inCheck && king->getSide() == Side::White) {
+        bool areTherePiecesBetweenKingAndRook = false;
+        bool isKingSide = false;
 
+        if (rook->getCol() > king->getCol()) {
+            areTherePiecesBetweenKingAndRook = getPieceOnCell({king->getCol() + 1, king->getRow()}) != nullptr ||
+                    getPieceOnCell({king->getCol() + 2, king->getRow()}) != nullptr;
+            isKingSide = true;
+        } else if (rook->getCol() < king->getCol()) {
+            areTherePiecesBetweenKingAndRook = getPieceOnCell({king->getCol() - 1, king->getRow()}) != nullptr ||
+                                               getPieceOnCell({king->getCol() - 2, king->getRow()}) != nullptr ||
+                                                getPieceOnCell({king->getCol() - 3, king->getRow()}) != nullptr;
+        }
+
+        if (areTherePiecesBetweenKingAndRook) {
+            return false;
+        }
+
+        // move the pieces
+        if (isKingSide) {
+            king->move({king->getCol() + 2, king->getRow()});
+            rook->move({rook->getCol() - 2, rook->getRow()});
+        } else {
+            king->move({king->getCol() - 2, king->getRow()});
+            rook->move({rook->getCol() + 3, rook->getRow()});
+        }
+
+        return true;
+    }
+
+    return false;
 }
