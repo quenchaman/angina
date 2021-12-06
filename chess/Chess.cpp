@@ -116,6 +116,14 @@ void Chess::handleLeftMouseClick() {
     } else if (currentState == State::HUMAN) {
 		selectedCell = clickedCell;
 	} else if (currentState == State::PUT_PIECE) {
+		Piece* targetCellPiece = getPieceOnCell(clickedCell);
+
+		if (targetCellPiece != nullptr && targetCellPiece->getSide() == selectedPiece->getSide()) {
+			selectedCell = clickedCell;
+			currentState = State::HUMAN;
+			return;
+		}
+
 		targetCell = clickedCell;
 	} else if (currentState == State::WELCOME_SCREEN) {
         bool isExitGameBtnClicked = quitGameButtonOnStartPage->isClicked({x, y});
