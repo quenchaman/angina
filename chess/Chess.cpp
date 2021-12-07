@@ -9,7 +9,7 @@
 #include "King.h"
 
 void Chess::init() {
-    loadGameResources(paths);
+    loadGameResources(Constants::paths);
 
     board = resources[Resources::board];
     startScreen = resources[Resources::startScreen2];
@@ -202,7 +202,6 @@ void Chess::handleLeftMouseClick() {
 
 Chess::Chess() : Engine("Chess") {
     currentState = State::WELCOME_SCREEN;
-    isWhiteHuman = true;
     currentSide = Side::White;
 }
 
@@ -484,7 +483,6 @@ void Chess::deinit() {
     currentState = State::WELCOME_SCREEN;
     inCheck = false;
     winner = Side::NA;
-    isDraw = false;
     piecesMap.clear();
     movesLog.clear();
     lastMove = {};
@@ -556,9 +554,9 @@ void Chess::showLastTenMoves() {
     int32_t yOffset = 0;
     for (int64_t moveIdx = (int64_t)movesLog.size() - 1; moveIdx >= 0; moveIdx--) {
         Move currentMove = movesLog.at((size_t)moveIdx);
-        std::string line = std::string(currentMove.side == Side::White ? "White" : "Black") + std::string(" moved piece ") + rankEnumToStringMap[currentMove.rank] +
-                std::string(" from ") + colToLetterMap[currentMove.previous.col] + " " + std::to_string(currentMove.previous.row + 1) +
-                std::string(" to ") + colToLetterMap[currentMove.current.col] + " " + std::to_string(currentMove.current.row + 1);
+        std::string line = std::string(currentMove.side == Side::White ? "White" : "Black") + std::string(" moved piece ") + Constants::rankEnumToStringMap[currentMove.rank] +
+                std::string(" from ") + Constants::colToLetterMap[currentMove.previous.col] + " " + std::to_string(currentMove.previous.row + 1) +
+                std::string(" to ") + Constants::colToLetterMap[currentMove.current.col] + " " + std::to_string(currentMove.current.row + 1);
 
         SDL_Color fontColor = {
                 .r =  0,
@@ -569,9 +567,9 @@ void Chess::showLastTenMoves() {
 
         auto* logTexture = new Texture(*renderer, font, line, fontColor);
         Image* texture = new Image(*logTexture);
-        texture->put(100, 660 + yOffset);
+        texture->put(Constants::logTextX, Constants::logTextY + yOffset);
         logImages.push_back(texture);
-        yOffset += 28;
+        yOffset += Constants::logFontSize;
     }
 }
 

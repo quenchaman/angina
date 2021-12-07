@@ -104,6 +104,9 @@
 		<Unit filename="/home/ubuntu/Projects/angina3/chess/Chess.h">
 			<Option target="chess"/>
 		</Unit>
+		<Unit filename="/home/ubuntu/Projects/angina3/chess/Constants.h">
+			<Option target="chess"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/Projects/angina3/chess/King.cpp">
 			<Option target="chess"/>
 		</Unit>

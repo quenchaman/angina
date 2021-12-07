@@ -65,7 +65,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess/King.h
 	${DIR}/chess/State.h
 		${DIR}/chess/Chess.h
-		${DIR}/chess/Chess.cpp sdl/components/Button.cpp sdl/components/Button.h chess/Move.h)
+		${DIR}/chess/Chess.cpp sdl/components/Button.cpp sdl/components/Button.h chess/Move.h chess/Constants.h)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 set_target_cpp_standard(${PROJECT_NAME} 17)

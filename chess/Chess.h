@@ -19,6 +19,7 @@
 #include "Queen.h"
 #include "State.h"
 #include "Move.h"
+#include "Constants.h"
 #include "sdl/graphics/Image.h"
 #include "sdl/graphics/Texture.h"
 #include "Cell.h"
@@ -61,9 +62,6 @@ private:
     State currentState;
     bool inCheck;
     Side winner;
-    bool isDraw;
-    bool isWhiteHuman;
-    bool isBlackHuman;
     Cell selectedCell = {0, 0, true};
     Cell targetCell = {0, 0, true};
     Piece* selectedPiece;
@@ -73,54 +71,11 @@ private:
     std::chrono::time_point<std::chrono::steady_clock> clockStartTime;
     int32_t turnDuration = 60;
     Move lastMove;
-    std::unordered_map<Piece*, int32_t> pieceRotations;
     int32_t currentRotation = 0;
     Image* winnerText;
     std::vector<Move> movesLog;
     std::vector<Image*> logImages;
     Button* saveGameBtn;
-
-	std::vector<std::string> paths = {
-		Resources::board,
-		Resources::blackBishop,
-		Resources::blackKing,
-		Resources::blackKnight,
-		Resources::blackPawn,
-		Resources::blackQueen,
-		Resources::blackRook,
-		Resources::whiteBishop,
-		Resources::whiteKing,
-		Resources::whiteKnight,
-		Resources::whitePawn,
-		Resources::whiteQueen,
-		Resources::whiteRook,
-        Resources::startScreen,
-        Resources::whiteWins,
-        Resources::blackWins,
-        Resources::startScreen2,
-        Resources::newGameButton,
-        Resources::continueGameButton,
-        Resources::quitGameButton,
-        Resources::saveGameButton
-	};
-    std::unordered_map<Rank, std::string> rankEnumToStringMap = {
-            {Rank::ROOK, "Rook"},
-            {Rank::KING, "King"},
-            {Rank::PAWN, "Pawn"},
-            {Rank::KNIGHT, "Knight"},
-            {Rank::QUEEN, "Queen"},
-            {Rank::BISHOP, "Bishop"}
-    };
-    std::unordered_map<int32_t, std::string> colToLetterMap = {
-            {0, "A"},
-            {1, "B"},
-            {2, "C"},
-            {3, "D"},
-            {4, "E"},
-            {5, "F"},
-            {6, "G"},
-            {7, "H"}
-    };
 private:
     void setPiecesOnBoard();
     Piece* getPieceOnCell(Cell cell);
