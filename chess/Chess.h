@@ -26,6 +26,7 @@
 #include <vector>
 #include <string>
 #include <ctime>
+#include <fstream>
 #include <map>
 #include <stdlib.h>
 #include <algorithm>
@@ -77,6 +78,7 @@ private:
     Image* winnerText;
     std::vector<Move> movesLog;
     std::vector<Image*> logImages;
+    Button* saveGameBtn;
 
 	std::vector<std::string> paths = {
 		Resources::board,
@@ -98,7 +100,8 @@ private:
         Resources::startScreen2,
         Resources::newGameButton,
         Resources::continueGameButton,
-        Resources::quitGameButton
+        Resources::quitGameButton,
+        Resources::saveGameButton
 	};
     std::unordered_map<Rank, std::string> rankEnumToStringMap = {
             {Rank::ROOK, "Rook"},
@@ -135,6 +138,8 @@ private:
     void createClock();
     bool performCastling(Piece* king, Piece* rook);
     void showLastTenMoves();
+    void saveGame();
+    void loadGame();
 };
 
 

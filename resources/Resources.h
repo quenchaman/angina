@@ -33,6 +33,7 @@ namespace Resources {
     const std::string newGameButton = "chess/button_new_game.png";
     const std::string continueGameButton = "chess/button_continue_game.png";
     const std::string quitGameButton = "chess/button_quit_game.png";
+    const std::string saveGameButton = "chess/button_save_game.png";
 
 
     const std::string montserratFont = "resources/chess/Montserrat-Bold.ttf";

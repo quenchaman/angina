@@ -17,6 +17,7 @@ void Chess::init() {
     continueGameBtn = new Button(340, 330, resources[Resources::continueGameButton]);
     quitGameButton = new Button(660, 50, resources[Resources::quitGameButton]);
     quitGameButtonOnStartPage = new Button(340, 400, new Image(resources[Resources::quitGameButton]));
+    saveGameBtn = new Button(660, 120, resources[Resources::saveGameButton]);
 
     createClock();
 }
@@ -38,6 +39,7 @@ void Chess::draw() {
             piece->draw(*renderer, currentRotation);
         }
         quitGameButton->draw(*renderer);
+        saveGameBtn->draw(*renderer);
         clock->draw(*renderer);
         if (winnerText != nullptr) {
             winnerText->draw(*renderer);
@@ -56,6 +58,8 @@ void Chess::executeGameLogic() {
         populatePiecesMap();
         currentState = State::WHITE;
         createClock();
+    } else if (currentState == State::LOAD_BOARD_FROM_FILE) {
+
     } else if (currentState == State::WHITE) {
         clockStartTime = std::chrono::steady_clock::now();
         currentState = State::HUMAN;
@@ -139,8 +143,12 @@ void Chess::handleLeftMouseClick() {
 	SDL_GetMouseState(&x, &y);
 	Cell clickedCell = {x / Piece::PIECE_WIDTH, y / Piece::PIECE_HEIGHT, false};
     bool isQuitGameButtonClicked = quitGameButton->isClicked({x, y});
+    bool isSaveGameButtonClicked = saveGameBtn->isClicked({x, y});
 
     if (isQuitGameButtonClicked) {
+        currentState = State::QUIT;
+    } else if (isSaveGameButtonClicked) {
+        saveGame();
         currentState = State::QUIT;
     } else if (currentState == State::HUMAN) {
 		selectedCell = clickedCell;
@@ -184,7 +192,7 @@ void Chess::handleLeftMouseClick() {
         bool isContinueGameClicked = continueGameBtn->isClicked({x, y});
 
         if (isContinueGameClicked) {
-            std::cout << "Continue game button is clicked, but it is not implemented" << std::endl;
+
         }
     }
 }
@@ -498,7 +506,7 @@ void Chess::createClock() {
 
     auto* clockTexture = new Texture(*renderer, font, std::to_string(secondsLeft), fontColor);
     clock = new Image(*clockTexture);
-    clock->put(660, 150);
+    clock->put(660, 200);
 }
 
 // Works only for player move, not computer move
@@ -561,5 +569,46 @@ void Chess::showLastTenMoves() {
         texture->put(100, 660 + yOffset);
         logImages.push_back(texture);
         yOffset += 28;
+    }
+}
+
+std::string pieceToString(Piece* p) {
+    return std::to_string(p->getSide()) + std::to_string(p->getRank()) + std::to_string(p->getCol()) + std::to_string(p->getRow());
+}
+
+void Chess::saveGame() {
+    std::string gameState;
+    std::vector<Piece*> allPieces = activePieces;
+
+    allPieces.insert(allPieces.end(), passivePieces.begin(), passivePieces.end());
+
+    for (Piece* p : allPieces) {
+        gameState += pieceToString(p);
+        gameState += "\n";
+    }
+
+    gameState += "-\n";
+
+    gameState += std::to_string(currentSide);
+    gameState += "\n";
+
+    std::ofstream out("saved-game.txt");
+    out << gameState;
+    out.close();
+}
+
+void Chess::loadGame() {
+    std::ifstream infile("saved-game.txt");
+    std::string line;
+
+    while (std::getline(infile, line) && line != "-") {
+        Side side = (Side)(int32_t)line[0];
+        Rank rank = (Rank)(int32_t)line[1];
+        int32_t col = (int32_t)line[2];
+        int32_t row = (int32_t)line[3];
+
+        if (side == Side::White) {
+            activePieces.push_back(new )
+        }
     }
 }
