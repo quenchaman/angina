@@ -231,19 +231,7 @@ void Chess::setPiecesOnBoard() {
 }
 
 Piece *Chess::getPieceOnCell(Cell cell) {
-    for (Piece* piece : activePieces) {
-        if (piece->getCol() == cell.col && piece->getRow() == cell.row) {
-            return piece;
-        }
-    }
-
-    for (Piece* piece : passivePieces) {
-        if (piece->getCol() == cell.col && piece->getRow() == cell.row) {
-            return piece;
-        }
-    }
-
-    return nullptr;
+    return piecesMap[cell];
 }
 
 bool Chess::isOwnPiece(Piece *piece) {
@@ -430,6 +418,9 @@ void Chess::switchPlayer() {
 
 void Chess::makeComputerMove() {
 	std::shuffle(std::begin(activePieces), std::end(activePieces), rng);
+    Cell highestScoreMove;
+    double maxScore = 0.0;
+    Piece* highestScorePiece;
 
 	for (Piece* computerPiece : activePieces) {
 		this->selectedPiece = computerPiece;
@@ -440,21 +431,32 @@ void Chess::makeComputerMove() {
 		filterOutOccupiedCellsMoves();
 
 		if (availableMoves.size() > 0) {
-			size_t randomIdx = (static_cast<unsigned long>(rand()) % availableMoves.size());
-            Cell computerMove = availableMoves.at(randomIdx);
+            for (Cell m : availableMoves) {
+                double score = scoreMove(m);
 
-            lastMove.previous.row = computerPiece->getRow();
-            lastMove.previous.col = computerPiece->getCol();
-            lastMove.current = computerMove;
-            lastMove.rank = computerPiece->getRank();
-            lastMove.side = computerPiece->getSide();
-
-			computerPiece->move(computerMove);
-            movesLog.push_back(lastMove);
-			currentState = State::CALCULATE_CAPTURES;
-			return;
+                if (score > maxScore) {
+                    maxScore = score;
+                    highestScoreMove = m;
+                    highestScorePiece = computerPiece;
+                }
+            }
 		}
 	}
+
+    lastMove.previous.row = highestScorePiece->getRow();
+    lastMove.previous.col = highestScorePiece->getCol();
+    lastMove.current = highestScoreMove;
+    lastMove.rank = highestScorePiece->getRank();
+    lastMove.side = highestScorePiece->getSide();
+
+    highestScorePiece->move(highestScoreMove);
+    movesLog.push_back(lastMove);
+    currentState = State::CALCULATE_CAPTURES;
+    this->selectedPiece = highestScorePiece;
+
+    if (highestScorePiece != nullptr) {
+        return;
+    }
 
 	currentState = State::CHECKMATE;
 	winner = Side::White;
@@ -570,6 +572,10 @@ void Chess::showLastTenMoves() {
         texture->put(Constants::logTextX, Constants::logTextY + yOffset);
         logImages.push_back(texture);
         yOffset += Constants::logFontSize;
+
+        if (logImages.size() == Constants::maxLogLines) {
+            break;
+        }
     }
 }
 
@@ -628,4 +634,14 @@ void Chess::loadGame() {
             passivePieces.push_back(piece);
         }
     }
+}
+
+double Chess::scoreMove(Cell move) {
+    Piece* pieceOnCell = piecesMap[move];
+
+    if (pieceOnCell != nullptr) {
+        return 2.0;
+    }
+
+    return 1.0;
 }

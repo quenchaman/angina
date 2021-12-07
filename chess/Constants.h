@@ -55,6 +55,8 @@ namespace Constants {
     static const int32_t logTextX = 100;
     static const int32_t logTextY = 660;
     static const int32_t logFontSize = 28;
+    static const int32_t turnDuration = 60;
+    static const int32_t maxLogLines = 5;
 }
 
 #endif //CHESS_CONSTANTS_H

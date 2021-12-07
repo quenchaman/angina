@@ -31,7 +31,6 @@ void Texture::draw(Renderer &renderer, const SDL_Rect *destRect, double angle) {
 
 
 Texture::~Texture() {
-    std::cout << "Texture destroyed" << std::endl;
     SDL_DestroyTexture(texture);
 }
 

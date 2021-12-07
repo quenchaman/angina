@@ -69,7 +69,7 @@ private:
     std::default_random_engine rng = std::default_random_engine {};
     Image* clock;
     std::chrono::time_point<std::chrono::steady_clock> clockStartTime;
-    int32_t turnDuration = 60;
+    int32_t turnDuration = Constants::turnDuration;
     Move lastMove;
     int32_t currentRotation = 0;
     Image* winnerText;
@@ -95,6 +95,7 @@ private:
     void showLastTenMoves();
     void saveGame();
     void loadGame();
+    double scoreMove(Cell move);
 };
 
 
