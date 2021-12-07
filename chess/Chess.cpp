@@ -59,7 +59,10 @@ void Chess::executeGameLogic() {
         currentState = State::WHITE;
         createClock();
     } else if (currentState == State::LOAD_BOARD_FROM_FILE) {
-
+        loadGame();
+        populatePiecesMap();
+        currentState = State::WHITE;
+        createClock();
     } else if (currentState == State::WHITE) {
         clockStartTime = std::chrono::steady_clock::now();
         currentState = State::HUMAN;
@@ -192,7 +195,7 @@ void Chess::handleLeftMouseClick() {
         bool isContinueGameClicked = continueGameBtn->isClicked({x, y});
 
         if (isContinueGameClicked) {
-
+            currentState = State::LOAD_BOARD_FROM_FILE;
         }
     }
 }
@@ -589,9 +592,6 @@ void Chess::saveGame() {
 
     gameState += "-\n";
 
-    gameState += std::to_string(currentSide);
-    gameState += "\n";
-
     std::ofstream out("saved-game.txt");
     out << gameState;
     out.close();
@@ -602,13 +602,32 @@ void Chess::loadGame() {
     std::string line;
 
     while (std::getline(infile, line) && line != "-") {
-        Side side = (Side)(int32_t)line[0];
-        Rank rank = (Rank)(int32_t)line[1];
-        int32_t col = (int32_t)line[2];
-        int32_t row = (int32_t)line[3];
+        Side side = (Side)(line[0] - '0');
+        Rank rank = (Rank)(line[1] - '0');
+        int32_t col = (int32_t)line[2] - '0';
+        int32_t row = (int32_t)line[3] - '0';
+        Piece* piece;
+
+        std::cout << side << rank << col << row << std::endl;
+
+        if (rank == Rank::PAWN) {
+            piece = new Pawn(col, row, side, new Image(resources[side == Side::White ? Resources::whitePawn : Resources::blackPawn]));
+        } else if (rank == Rank::KING) {
+            piece = new King(col, row, side, new Image(resources[side == Side::White ? Resources::whiteKing : Resources::blackKing]));
+        } else if (rank == Rank::BISHOP) {
+            piece = new Bishop(col, row, side, new Image(resources[side == Side::White ? Resources::whiteBishop : Resources::blackBishop]));
+        } else if (rank == Rank::KNIGHT) {
+            piece = new Knight(col, row, side, new Image(resources[side == Side::White ? Resources::whiteKnight : Resources::blackKnight]));
+        } else if (rank == Rank::QUEEN) {
+            piece = new Queen(col, row, side, new Image(resources[side == Side::White ? Resources::whiteQueen : Resources::blackQueen]));
+        } else if (rank == Rank::ROOK) {
+            piece = new Rook(col, row, side, new Image(resources[side == Side::White ? Resources::whiteRook : Resources::blackRook]));
+        }
 
         if (side == Side::White) {
-            activePieces.push_back(new )
+            activePieces.push_back(piece);
+        } else {
+            passivePieces.push_back(piece);
         }
     }
 }

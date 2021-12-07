@@ -7,7 +7,7 @@ set(CMAKE_MODULE_PATH
 ${CMAKE_MODULE_PATH}
 ${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/find_modules)
 
-project(angina LANGUAGES CXX)
+project(chess LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME} 
 	${DIR}/main.cpp

@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named angina
+# Target rules for targets named chess
 
 # Build rule for target.
-angina: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 angina
-.PHONY : angina
+chess: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 chess
+.PHONY : chess
 
 # fast build rule for target.
-angina/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/build
-.PHONY : angina/fast
+chess/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/build
+.PHONY : chess/fast
 
 chess/Bishop.o: chess/Bishop.cpp.o
 .PHONY : chess/Bishop.o
 
 # target to build an object file
 chess/Bishop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Bishop.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Bishop.cpp.o
 .PHONY : chess/Bishop.cpp.o
 
 chess/Bishop.i: chess/Bishop.cpp.i
@@ -142,7 +142,7 @@ chess/Bishop.i: chess/Bishop.cpp.i
 
 # target to preprocess a source file
 chess/Bishop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Bishop.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Bishop.cpp.i
 .PHONY : chess/Bishop.cpp.i
 
 chess/Bishop.s: chess/Bishop.cpp.s
@@ -150,7 +150,7 @@ chess/Bishop.s: chess/Bishop.cpp.s
 
 # target to generate assembly for a file
 chess/Bishop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Bishop.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Bishop.cpp.s
 .PHONY : chess/Bishop.cpp.s
 
 chess/Chess.o: chess/Chess.cpp.o
@@ -158,7 +158,7 @@ chess/Chess.o: chess/Chess.cpp.o
 
 # target to build an object file
 chess/Chess.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Chess.cpp.o
 .PHONY : chess/Chess.cpp.o
 
 chess/Chess.i: chess/Chess.cpp.i
@@ -166,7 +166,7 @@ chess/Chess.i: chess/Chess.cpp.i
 
 # target to preprocess a source file
 chess/Chess.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Chess.cpp.i
 .PHONY : chess/Chess.cpp.i
 
 chess/Chess.s: chess/Chess.cpp.s
@@ -174,7 +174,7 @@ chess/Chess.s: chess/Chess.cpp.s
 
 # target to generate assembly for a file
 chess/Chess.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Chess.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Chess.cpp.s
 .PHONY : chess/Chess.cpp.s
 
 chess/King.o: chess/King.cpp.o
@@ -182,7 +182,7 @@ chess/King.o: chess/King.cpp.o
 
 # target to build an object file
 chess/King.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/King.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/King.cpp.o
 .PHONY : chess/King.cpp.o
 
 chess/King.i: chess/King.cpp.i
@@ -190,7 +190,7 @@ chess/King.i: chess/King.cpp.i
 
 # target to preprocess a source file
 chess/King.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/King.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/King.cpp.i
 .PHONY : chess/King.cpp.i
 
 chess/King.s: chess/King.cpp.s
@@ -198,7 +198,7 @@ chess/King.s: chess/King.cpp.s
 
 # target to generate assembly for a file
 chess/King.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/King.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/King.cpp.s
 .PHONY : chess/King.cpp.s
 
 chess/Knight.o: chess/Knight.cpp.o
@@ -206,7 +206,7 @@ chess/Knight.o: chess/Knight.cpp.o
 
 # target to build an object file
 chess/Knight.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Knight.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Knight.cpp.o
 .PHONY : chess/Knight.cpp.o
 
 chess/Knight.i: chess/Knight.cpp.i
@@ -214,7 +214,7 @@ chess/Knight.i: chess/Knight.cpp.i
 
 # target to preprocess a source file
 chess/Knight.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Knight.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Knight.cpp.i
 .PHONY : chess/Knight.cpp.i
 
 chess/Knight.s: chess/Knight.cpp.s
@@ -222,7 +222,7 @@ chess/Knight.s: chess/Knight.cpp.s
 
 # target to generate assembly for a file
 chess/Knight.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Knight.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Knight.cpp.s
 .PHONY : chess/Knight.cpp.s
 
 chess/Pawn.o: chess/Pawn.cpp.o
@@ -230,7 +230,7 @@ chess/Pawn.o: chess/Pawn.cpp.o
 
 # target to build an object file
 chess/Pawn.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Pawn.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Pawn.cpp.o
 .PHONY : chess/Pawn.cpp.o
 
 chess/Pawn.i: chess/Pawn.cpp.i
@@ -238,7 +238,7 @@ chess/Pawn.i: chess/Pawn.cpp.i
 
 # target to preprocess a source file
 chess/Pawn.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Pawn.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Pawn.cpp.i
 .PHONY : chess/Pawn.cpp.i
 
 chess/Pawn.s: chess/Pawn.cpp.s
@@ -246,7 +246,7 @@ chess/Pawn.s: chess/Pawn.cpp.s
 
 # target to generate assembly for a file
 chess/Pawn.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Pawn.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Pawn.cpp.s
 .PHONY : chess/Pawn.cpp.s
 
 chess/Piece.o: chess/Piece.cpp.o
@@ -254,7 +254,7 @@ chess/Piece.o: chess/Piece.cpp.o
 
 # target to build an object file
 chess/Piece.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Piece.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Piece.cpp.o
 .PHONY : chess/Piece.cpp.o
 
 chess/Piece.i: chess/Piece.cpp.i
@@ -262,7 +262,7 @@ chess/Piece.i: chess/Piece.cpp.i
 
 # target to preprocess a source file
 chess/Piece.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Piece.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Piece.cpp.i
 .PHONY : chess/Piece.cpp.i
 
 chess/Piece.s: chess/Piece.cpp.s
@@ -270,7 +270,7 @@ chess/Piece.s: chess/Piece.cpp.s
 
 # target to generate assembly for a file
 chess/Piece.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Piece.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Piece.cpp.s
 .PHONY : chess/Piece.cpp.s
 
 chess/Queen.o: chess/Queen.cpp.o
@@ -278,7 +278,7 @@ chess/Queen.o: chess/Queen.cpp.o
 
 # target to build an object file
 chess/Queen.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Queen.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Queen.cpp.o
 .PHONY : chess/Queen.cpp.o
 
 chess/Queen.i: chess/Queen.cpp.i
@@ -286,7 +286,7 @@ chess/Queen.i: chess/Queen.cpp.i
 
 # target to preprocess a source file
 chess/Queen.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Queen.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Queen.cpp.i
 .PHONY : chess/Queen.cpp.i
 
 chess/Queen.s: chess/Queen.cpp.s
@@ -294,7 +294,7 @@ chess/Queen.s: chess/Queen.cpp.s
 
 # target to generate assembly for a file
 chess/Queen.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Queen.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Queen.cpp.s
 .PHONY : chess/Queen.cpp.s
 
 chess/Rook.o: chess/Rook.cpp.o
@@ -302,7 +302,7 @@ chess/Rook.o: chess/Rook.cpp.o
 
 # target to build an object file
 chess/Rook.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Rook.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Rook.cpp.o
 .PHONY : chess/Rook.cpp.o
 
 chess/Rook.i: chess/Rook.cpp.i
@@ -310,7 +310,7 @@ chess/Rook.i: chess/Rook.cpp.i
 
 # target to preprocess a source file
 chess/Rook.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Rook.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Rook.cpp.i
 .PHONY : chess/Rook.cpp.i
 
 chess/Rook.s: chess/Rook.cpp.s
@@ -318,7 +318,7 @@ chess/Rook.s: chess/Rook.cpp.s
 
 # target to generate assembly for a file
 chess/Rook.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/chess/Rook.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/chess/Rook.cpp.s
 .PHONY : chess/Rook.cpp.s
 
 config/ConfigLoader.o: config/ConfigLoader.cpp.o
@@ -326,7 +326,7 @@ config/ConfigLoader.o: config/ConfigLoader.cpp.o
 
 # target to build an object file
 config/ConfigLoader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/config/ConfigLoader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/config/ConfigLoader.cpp.o
 .PHONY : config/ConfigLoader.cpp.o
 
 config/ConfigLoader.i: config/ConfigLoader.cpp.i
@@ -334,7 +334,7 @@ config/ConfigLoader.i: config/ConfigLoader.cpp.i
 
 # target to preprocess a source file
 config/ConfigLoader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/config/ConfigLoader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/config/ConfigLoader.cpp.i
 .PHONY : config/ConfigLoader.cpp.i
 
 config/ConfigLoader.s: config/ConfigLoader.cpp.s
@@ -342,7 +342,7 @@ config/ConfigLoader.s: config/ConfigLoader.cpp.s
 
 # target to generate assembly for a file
 config/ConfigLoader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/config/ConfigLoader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/config/ConfigLoader.cpp.s
 .PHONY : config/ConfigLoader.cpp.s
 
 exceptions/BaseException.o: exceptions/BaseException.cpp.o
@@ -350,7 +350,7 @@ exceptions/BaseException.o: exceptions/BaseException.cpp.o
 
 # target to build an object file
 exceptions/BaseException.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/BaseException.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/BaseException.cpp.o
 .PHONY : exceptions/BaseException.cpp.o
 
 exceptions/BaseException.i: exceptions/BaseException.cpp.i
@@ -358,7 +358,7 @@ exceptions/BaseException.i: exceptions/BaseException.cpp.i
 
 # target to preprocess a source file
 exceptions/BaseException.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/BaseException.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/BaseException.cpp.i
 .PHONY : exceptions/BaseException.cpp.i
 
 exceptions/BaseException.s: exceptions/BaseException.cpp.s
@@ -366,7 +366,7 @@ exceptions/BaseException.s: exceptions/BaseException.cpp.s
 
 # target to generate assembly for a file
 exceptions/BaseException.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/BaseException.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/BaseException.cpp.s
 .PHONY : exceptions/BaseException.cpp.s
 
 exceptions/GraphicsInitException.o: exceptions/GraphicsInitException.cpp.o
@@ -374,7 +374,7 @@ exceptions/GraphicsInitException.o: exceptions/GraphicsInitException.cpp.o
 
 # target to build an object file
 exceptions/GraphicsInitException.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/GraphicsInitException.cpp.o
 .PHONY : exceptions/GraphicsInitException.cpp.o
 
 exceptions/GraphicsInitException.i: exceptions/GraphicsInitException.cpp.i
@@ -382,7 +382,7 @@ exceptions/GraphicsInitException.i: exceptions/GraphicsInitException.cpp.i
 
 # target to preprocess a source file
 exceptions/GraphicsInitException.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/GraphicsInitException.cpp.i
 .PHONY : exceptions/GraphicsInitException.cpp.i
 
 exceptions/GraphicsInitException.s: exceptions/GraphicsInitException.cpp.s
@@ -390,7 +390,7 @@ exceptions/GraphicsInitException.s: exceptions/GraphicsInitException.cpp.s
 
 # target to generate assembly for a file
 exceptions/GraphicsInitException.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/GraphicsInitException.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/GraphicsInitException.cpp.s
 .PHONY : exceptions/GraphicsInitException.cpp.s
 
 exceptions/ResourceLoadException.o: exceptions/ResourceLoadException.cpp.o
@@ -398,7 +398,7 @@ exceptions/ResourceLoadException.o: exceptions/ResourceLoadException.cpp.o
 
 # target to build an object file
 exceptions/ResourceLoadException.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/ResourceLoadException.cpp.o
 .PHONY : exceptions/ResourceLoadException.cpp.o
 
 exceptions/ResourceLoadException.i: exceptions/ResourceLoadException.cpp.i
@@ -406,7 +406,7 @@ exceptions/ResourceLoadException.i: exceptions/ResourceLoadException.cpp.i
 
 # target to preprocess a source file
 exceptions/ResourceLoadException.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/ResourceLoadException.cpp.i
 .PHONY : exceptions/ResourceLoadException.cpp.i
 
 exceptions/ResourceLoadException.s: exceptions/ResourceLoadException.cpp.s
@@ -414,7 +414,7 @@ exceptions/ResourceLoadException.s: exceptions/ResourceLoadException.cpp.s
 
 # target to generate assembly for a file
 exceptions/ResourceLoadException.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/ResourceLoadException.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/ResourceLoadException.cpp.s
 .PHONY : exceptions/ResourceLoadException.cpp.s
 
 exceptions/WindowInitException.o: exceptions/WindowInitException.cpp.o
@@ -422,7 +422,7 @@ exceptions/WindowInitException.o: exceptions/WindowInitException.cpp.o
 
 # target to build an object file
 exceptions/WindowInitException.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/WindowInitException.cpp.o
 .PHONY : exceptions/WindowInitException.cpp.o
 
 exceptions/WindowInitException.i: exceptions/WindowInitException.cpp.i
@@ -430,7 +430,7 @@ exceptions/WindowInitException.i: exceptions/WindowInitException.cpp.i
 
 # target to preprocess a source file
 exceptions/WindowInitException.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/WindowInitException.cpp.i
 .PHONY : exceptions/WindowInitException.cpp.i
 
 exceptions/WindowInitException.s: exceptions/WindowInitException.cpp.s
@@ -438,7 +438,7 @@ exceptions/WindowInitException.s: exceptions/WindowInitException.cpp.s
 
 # target to generate assembly for a file
 exceptions/WindowInitException.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/exceptions/WindowInitException.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/exceptions/WindowInitException.cpp.s
 .PHONY : exceptions/WindowInitException.cpp.s
 
 main.o: main.cpp.o
@@ -446,7 +446,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -454,7 +454,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -462,7 +462,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 sdl/components/Button.o: sdl/components/Button.cpp.o
@@ -470,7 +470,7 @@ sdl/components/Button.o: sdl/components/Button.cpp.o
 
 # target to build an object file
 sdl/components/Button.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Button.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Button.cpp.o
 .PHONY : sdl/components/Button.cpp.o
 
 sdl/components/Button.i: sdl/components/Button.cpp.i
@@ -478,7 +478,7 @@ sdl/components/Button.i: sdl/components/Button.cpp.i
 
 # target to preprocess a source file
 sdl/components/Button.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Button.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Button.cpp.i
 .PHONY : sdl/components/Button.cpp.i
 
 sdl/components/Button.s: sdl/components/Button.cpp.s
@@ -486,7 +486,7 @@ sdl/components/Button.s: sdl/components/Button.cpp.s
 
 # target to generate assembly for a file
 sdl/components/Button.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Button.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Button.cpp.s
 .PHONY : sdl/components/Button.cpp.s
 
 sdl/components/Surface.o: sdl/components/Surface.cpp.o
@@ -494,7 +494,7 @@ sdl/components/Surface.o: sdl/components/Surface.cpp.o
 
 # target to build an object file
 sdl/components/Surface.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Surface.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Surface.cpp.o
 .PHONY : sdl/components/Surface.cpp.o
 
 sdl/components/Surface.i: sdl/components/Surface.cpp.i
@@ -502,7 +502,7 @@ sdl/components/Surface.i: sdl/components/Surface.cpp.i
 
 # target to preprocess a source file
 sdl/components/Surface.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Surface.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Surface.cpp.i
 .PHONY : sdl/components/Surface.cpp.i
 
 sdl/components/Surface.s: sdl/components/Surface.cpp.s
@@ -510,7 +510,7 @@ sdl/components/Surface.s: sdl/components/Surface.cpp.s
 
 # target to generate assembly for a file
 sdl/components/Surface.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Surface.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Surface.cpp.s
 .PHONY : sdl/components/Surface.cpp.s
 
 sdl/components/Transformer.o: sdl/components/Transformer.cpp.o
@@ -518,7 +518,7 @@ sdl/components/Transformer.o: sdl/components/Transformer.cpp.o
 
 # target to build an object file
 sdl/components/Transformer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Transformer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Transformer.cpp.o
 .PHONY : sdl/components/Transformer.cpp.o
 
 sdl/components/Transformer.i: sdl/components/Transformer.cpp.i
@@ -526,7 +526,7 @@ sdl/components/Transformer.i: sdl/components/Transformer.cpp.i
 
 # target to preprocess a source file
 sdl/components/Transformer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Transformer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Transformer.cpp.i
 .PHONY : sdl/components/Transformer.cpp.i
 
 sdl/components/Transformer.s: sdl/components/Transformer.cpp.s
@@ -534,7 +534,7 @@ sdl/components/Transformer.s: sdl/components/Transformer.cpp.s
 
 # target to generate assembly for a file
 sdl/components/Transformer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Transformer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Transformer.cpp.s
 .PHONY : sdl/components/Transformer.cpp.s
 
 sdl/components/Window.o: sdl/components/Window.cpp.o
@@ -542,7 +542,7 @@ sdl/components/Window.o: sdl/components/Window.cpp.o
 
 # target to build an object file
 sdl/components/Window.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Window.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Window.cpp.o
 .PHONY : sdl/components/Window.cpp.o
 
 sdl/components/Window.i: sdl/components/Window.cpp.i
@@ -550,7 +550,7 @@ sdl/components/Window.i: sdl/components/Window.cpp.i
 
 # target to preprocess a source file
 sdl/components/Window.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Window.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Window.cpp.i
 .PHONY : sdl/components/Window.cpp.i
 
 sdl/components/Window.s: sdl/components/Window.cpp.s
@@ -558,7 +558,7 @@ sdl/components/Window.s: sdl/components/Window.cpp.s
 
 # target to generate assembly for a file
 sdl/components/Window.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/components/Window.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/components/Window.cpp.s
 .PHONY : sdl/components/Window.cpp.s
 
 sdl/graphics/Drawable.o: sdl/graphics/Drawable.cpp.o
@@ -566,7 +566,7 @@ sdl/graphics/Drawable.o: sdl/graphics/Drawable.cpp.o
 
 # target to build an object file
 sdl/graphics/Drawable.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Drawable.cpp.o
 .PHONY : sdl/graphics/Drawable.cpp.o
 
 sdl/graphics/Drawable.i: sdl/graphics/Drawable.cpp.i
@@ -574,7 +574,7 @@ sdl/graphics/Drawable.i: sdl/graphics/Drawable.cpp.i
 
 # target to preprocess a source file
 sdl/graphics/Drawable.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Drawable.cpp.i
 .PHONY : sdl/graphics/Drawable.cpp.i
 
 sdl/graphics/Drawable.s: sdl/graphics/Drawable.cpp.s
@@ -582,7 +582,7 @@ sdl/graphics/Drawable.s: sdl/graphics/Drawable.cpp.s
 
 # target to generate assembly for a file
 sdl/graphics/Drawable.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Drawable.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Drawable.cpp.s
 .PHONY : sdl/graphics/Drawable.cpp.s
 
 sdl/graphics/Engine.o: sdl/graphics/Engine.cpp.o
@@ -590,7 +590,7 @@ sdl/graphics/Engine.o: sdl/graphics/Engine.cpp.o
 
 # target to build an object file
 sdl/graphics/Engine.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Engine.cpp.o
 .PHONY : sdl/graphics/Engine.cpp.o
 
 sdl/graphics/Engine.i: sdl/graphics/Engine.cpp.i
@@ -598,7 +598,7 @@ sdl/graphics/Engine.i: sdl/graphics/Engine.cpp.i
 
 # target to preprocess a source file
 sdl/graphics/Engine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Engine.cpp.i
 .PHONY : sdl/graphics/Engine.cpp.i
 
 sdl/graphics/Engine.s: sdl/graphics/Engine.cpp.s
@@ -606,7 +606,7 @@ sdl/graphics/Engine.s: sdl/graphics/Engine.cpp.s
 
 # target to generate assembly for a file
 sdl/graphics/Engine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Engine.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Engine.cpp.s
 .PHONY : sdl/graphics/Engine.cpp.s
 
 sdl/graphics/Graphics.o: sdl/graphics/Graphics.cpp.o
@@ -614,7 +614,7 @@ sdl/graphics/Graphics.o: sdl/graphics/Graphics.cpp.o
 
 # target to build an object file
 sdl/graphics/Graphics.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Graphics.cpp.o
 .PHONY : sdl/graphics/Graphics.cpp.o
 
 sdl/graphics/Graphics.i: sdl/graphics/Graphics.cpp.i
@@ -622,7 +622,7 @@ sdl/graphics/Graphics.i: sdl/graphics/Graphics.cpp.i
 
 # target to preprocess a source file
 sdl/graphics/Graphics.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Graphics.cpp.i
 .PHONY : sdl/graphics/Graphics.cpp.i
 
 sdl/graphics/Graphics.s: sdl/graphics/Graphics.cpp.s
@@ -630,7 +630,7 @@ sdl/graphics/Graphics.s: sdl/graphics/Graphics.cpp.s
 
 # target to generate assembly for a file
 sdl/graphics/Graphics.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Graphics.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Graphics.cpp.s
 .PHONY : sdl/graphics/Graphics.cpp.s
 
 sdl/graphics/Image.o: sdl/graphics/Image.cpp.o
@@ -638,7 +638,7 @@ sdl/graphics/Image.o: sdl/graphics/Image.cpp.o
 
 # target to build an object file
 sdl/graphics/Image.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Image.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Image.cpp.o
 .PHONY : sdl/graphics/Image.cpp.o
 
 sdl/graphics/Image.i: sdl/graphics/Image.cpp.i
@@ -646,7 +646,7 @@ sdl/graphics/Image.i: sdl/graphics/Image.cpp.i
 
 # target to preprocess a source file
 sdl/graphics/Image.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Image.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Image.cpp.i
 .PHONY : sdl/graphics/Image.cpp.i
 
 sdl/graphics/Image.s: sdl/graphics/Image.cpp.s
@@ -654,7 +654,7 @@ sdl/graphics/Image.s: sdl/graphics/Image.cpp.s
 
 # target to generate assembly for a file
 sdl/graphics/Image.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Image.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Image.cpp.s
 .PHONY : sdl/graphics/Image.cpp.s
 
 sdl/graphics/Renderer.o: sdl/graphics/Renderer.cpp.o
@@ -662,7 +662,7 @@ sdl/graphics/Renderer.o: sdl/graphics/Renderer.cpp.o
 
 # target to build an object file
 sdl/graphics/Renderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Renderer.cpp.o
 .PHONY : sdl/graphics/Renderer.cpp.o
 
 sdl/graphics/Renderer.i: sdl/graphics/Renderer.cpp.i
@@ -670,7 +670,7 @@ sdl/graphics/Renderer.i: sdl/graphics/Renderer.cpp.i
 
 # target to preprocess a source file
 sdl/graphics/Renderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Renderer.cpp.i
 .PHONY : sdl/graphics/Renderer.cpp.i
 
 sdl/graphics/Renderer.s: sdl/graphics/Renderer.cpp.s
@@ -678,7 +678,7 @@ sdl/graphics/Renderer.s: sdl/graphics/Renderer.cpp.s
 
 # target to generate assembly for a file
 sdl/graphics/Renderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Renderer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Renderer.cpp.s
 .PHONY : sdl/graphics/Renderer.cpp.s
 
 sdl/graphics/Texture.o: sdl/graphics/Texture.cpp.o
@@ -686,7 +686,7 @@ sdl/graphics/Texture.o: sdl/graphics/Texture.cpp.o
 
 # target to build an object file
 sdl/graphics/Texture.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Texture.cpp.o
 .PHONY : sdl/graphics/Texture.cpp.o
 
 sdl/graphics/Texture.i: sdl/graphics/Texture.cpp.i
@@ -694,7 +694,7 @@ sdl/graphics/Texture.i: sdl/graphics/Texture.cpp.i
 
 # target to preprocess a source file
 sdl/graphics/Texture.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Texture.cpp.i
 .PHONY : sdl/graphics/Texture.cpp.i
 
 sdl/graphics/Texture.s: sdl/graphics/Texture.cpp.s
@@ -702,7 +702,7 @@ sdl/graphics/Texture.s: sdl/graphics/Texture.cpp.s
 
 # target to generate assembly for a file
 sdl/graphics/Texture.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/graphics/Texture.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/graphics/Texture.cpp.s
 .PHONY : sdl/graphics/Texture.cpp.s
 
 sdl/primitives/Point.o: sdl/primitives/Point.cpp.o
@@ -710,7 +710,7 @@ sdl/primitives/Point.o: sdl/primitives/Point.cpp.o
 
 # target to build an object file
 sdl/primitives/Point.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Point.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/primitives/Point.cpp.o
 .PHONY : sdl/primitives/Point.cpp.o
 
 sdl/primitives/Point.i: sdl/primitives/Point.cpp.i
@@ -718,7 +718,7 @@ sdl/primitives/Point.i: sdl/primitives/Point.cpp.i
 
 # target to preprocess a source file
 sdl/primitives/Point.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Point.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/primitives/Point.cpp.i
 .PHONY : sdl/primitives/Point.cpp.i
 
 sdl/primitives/Point.s: sdl/primitives/Point.cpp.s
@@ -726,7 +726,7 @@ sdl/primitives/Point.s: sdl/primitives/Point.cpp.s
 
 # target to generate assembly for a file
 sdl/primitives/Point.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Point.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/primitives/Point.cpp.s
 .PHONY : sdl/primitives/Point.cpp.s
 
 sdl/primitives/Rect.o: sdl/primitives/Rect.cpp.o
@@ -734,7 +734,7 @@ sdl/primitives/Rect.o: sdl/primitives/Rect.cpp.o
 
 # target to build an object file
 sdl/primitives/Rect.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/primitives/Rect.cpp.o
 .PHONY : sdl/primitives/Rect.cpp.o
 
 sdl/primitives/Rect.i: sdl/primitives/Rect.cpp.i
@@ -742,7 +742,7 @@ sdl/primitives/Rect.i: sdl/primitives/Rect.cpp.i
 
 # target to preprocess a source file
 sdl/primitives/Rect.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/primitives/Rect.cpp.i
 .PHONY : sdl/primitives/Rect.cpp.i
 
 sdl/primitives/Rect.s: sdl/primitives/Rect.cpp.s
@@ -750,7 +750,7 @@ sdl/primitives/Rect.s: sdl/primitives/Rect.cpp.s
 
 # target to generate assembly for a file
 sdl/primitives/Rect.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/primitives/Rect.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/primitives/Rect.cpp.s
 .PHONY : sdl/primitives/Rect.cpp.s
 
 sdl/resources/ImageResource.o: sdl/resources/ImageResource.cpp.o
@@ -758,7 +758,7 @@ sdl/resources/ImageResource.o: sdl/resources/ImageResource.cpp.o
 
 # target to build an object file
 sdl/resources/ImageResource.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/resources/ImageResource.cpp.o
 .PHONY : sdl/resources/ImageResource.cpp.o
 
 sdl/resources/ImageResource.i: sdl/resources/ImageResource.cpp.i
@@ -766,7 +766,7 @@ sdl/resources/ImageResource.i: sdl/resources/ImageResource.cpp.i
 
 # target to preprocess a source file
 sdl/resources/ImageResource.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/resources/ImageResource.cpp.i
 .PHONY : sdl/resources/ImageResource.cpp.i
 
 sdl/resources/ImageResource.s: sdl/resources/ImageResource.cpp.s
@@ -774,7 +774,7 @@ sdl/resources/ImageResource.s: sdl/resources/ImageResource.cpp.s
 
 # target to generate assembly for a file
 sdl/resources/ImageResource.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/angina.dir/build.make CMakeFiles/angina.dir/sdl/resources/ImageResource.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.dir/build.make CMakeFiles/chess.dir/sdl/resources/ImageResource.cpp.s
 .PHONY : sdl/resources/ImageResource.cpp.s
 
 # Help Target
@@ -785,7 +785,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... angina"
+	@echo "... chess"
 	@echo "... chess/Bishop.o"
 	@echo "... chess/Bishop.i"
 	@echo "... chess/Bishop.s"

@@ -181,7 +181,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=angina
+CMAKE_PROJECT_NAME:STATIC=chess
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=3.10.4
@@ -310,6 +310,12 @@ angina_BINARY_DIR:STATIC=/home/ubuntu/Projects/angina3/cmake-build-debug
 
 //Value Computed by CMake
 angina_SOURCE_DIR:STATIC=/home/ubuntu/Projects/angina3
+
+//Value Computed by CMake
+chess_BINARY_DIR:STATIC=/home/ubuntu/Projects/angina3/cmake-build-debug
+
+//Value Computed by CMake
+chess_SOURCE_DIR:STATIC=/home/ubuntu/Projects/angina3
 
 //Value Computed by CMake
 nlohmann_json_BINARY_DIR:STATIC=/home/ubuntu/Projects/angina3/cmake-build-debug/libs/json/json-3.10.4
@@ -509,7 +515,7 @@ ProcessorCount_cmd_nproc-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl
 ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
 SDL2_IMAGE_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2_image.so
-SDL2_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread
+SDL2_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread;-lpthread
 SDL2_TTF_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
