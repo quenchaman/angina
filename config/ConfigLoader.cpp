@@ -13,12 +13,6 @@ namespace ConfigLoader {
 		std::stringstream stringBuffer;
 		stringBuffer << fileStream.rdbuf();
 
-		nlohmann::json fileConfigAsJson = nlohmann::json::parse(stringBuffer.str());
-
-		ConfigData config;
-		config.screenWidth = fileConfigAsJson["screenWidth"];
-		config.screenHeight = fileConfigAsJson["screenHeight"];
-
-		return config;
+		return {800, 800};
 	}
 }

@@ -4,7 +4,6 @@
 
 #include <SDL.h>
 
-#include <nlohmann/json.hpp>
 #include <chess/Chess.h>
 #include "test/Test.h"
 

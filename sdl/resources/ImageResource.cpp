@@ -5,6 +5,9 @@
  *      Author: valeri
  */
 #include <stdexcept>
+#include <string>
+#include <cstdint>
+#include <vector>
 #include <filesystem>
 
 #include "SDL.h"
@@ -17,7 +20,7 @@
 namespace ImageResource {
 	const std::string resourceFolderBasePath = "../resources/";
 
-	Surface* load(std::string path) {
+	Surface* load(const std::string& path) {
 		std::string fullPathToFile = resourceFolderBasePath + path;
 		std::string fileExtension = std::filesystem::path(fullPathToFile).extension();
 		SDL_Surface* image = nullptr;

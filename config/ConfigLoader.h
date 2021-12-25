@@ -11,7 +11,6 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include "nlohmann/json.hpp"
 
 #include "ConfigData.h"
 
