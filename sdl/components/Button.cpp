@@ -6,14 +6,14 @@
 
 #include <utility>
 
-Button::Button(int32_t x, int32_t y, Image *image): x(x), y(y), image(image) {
-    this->image->put(x, y);
-    this->rect = new Rect(x, y, this->image->getBoundingBox().w, this->image->getBoundingBox().h);
+#include "SDL.h"
+
+#include "sdl/primitives/Point.h"
+
+Button::Button(int32_t x, int32_t y, const Texture& texture): x(x), y(y), texture(texture) {
+
 }
 
-void Button::draw(Renderer& renderer) {
-    this->image->draw(renderer);
-}
 
 int32_t Button::getX() {
     return this->x;
@@ -23,10 +23,10 @@ int32_t Button::getY() {
     return this->y;
 }
 
-bool Button::isClicked(SDL_Point p) {
-    return this->rect->isInRect(p);
+bool Button::isClicked(const Point& p) {
+    return true;
 }
 
 Button::~Button() {
-    delete image;
+    delete texture;
 }

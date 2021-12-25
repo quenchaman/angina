@@ -6,21 +6,21 @@
 #define ANGINA_BUTTON_H
 #include <cstdlib>
 
-#include "sdl/graphics/Image.h"
-#include "sdl/primitives/Rect.h"
+struct Texture;
+struct Point;
+struct Rect;
 
 class Button {
 public:
-    Button(int32_t x, int32_t y, Image* image);
+    Button(int32_t x, int32_t y, const Texture& texture);
     ~Button();
-    void draw(Renderer& renderer);
     int32_t getX();
     int32_t getY();
-    bool isClicked(SDL_Point p);
+    bool isClicked(const Point& p);
 private:
-    int32_t x{};
-    int32_t y{};
-    Image* image{};
+    int32_t x;
+    int32_t y;
+    Texture& texture;
     Rect* rect;
 };
 
