@@ -3,3 +3,4 @@
 .settings
 build
 .project
+cmake-build-debug/*
