@@ -12,7 +12,7 @@
 
 #include "sdl/graphics/Drawable.h"
 
-#include "SDL.h"
+struct SDL_Rect;
 
 class Rect : public Drawable {
 public:
