@@ -7,19 +7,34 @@
 
 #include "Engine.h"
 
+#include <vector>
+#include <string>
+#include <iostream>
+
+#include "SDL.h"
+#include "SDL_image.h"
+#include "SDL_ttf.h"
+
+#include "sdl/components/Window.h"
+#include "config/Globals.h"
+#include "sdl/graphics/Graphics.h"
+#include "sdl/graphics/Renderer.h"
+#include "sdl/resources/ImageResource.h"
+#include "sdl/components/Transformer.h"
+#include "resources/Resources.h"
+
 Engine::Engine(std::string appTitle): quit(false) {
     Graphics::boot();
     Graphics::bootImageExtension();
     Graphics::bootTTFExtensions();
     window = new Window(
             appTitle,
-            SDL_WINDOWPOS_UNDEFINED,
-            SDL_WINDOWPOS_UNDEFINED,
-            Globals::config.screenWidth,
-            Globals::config.screenHeight,
+            { SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED },
+            { Globals::config.screenWidth, Globals::config.screenHeight }
             SDL_WINDOW_SHOWN
     );
-    renderer = &Graphics::bootRenderer(this->window->getWindow());
+
+    renderer = new Renderer(*this->window);
     font = TTF_OpenFont(("../" + Resources::montserratFont).c_str(), 28);
 }
 
@@ -31,34 +46,16 @@ void Engine::start() {
 			if (this->e.type == SDL_QUIT) {
 				this->quit = true;
 			} else if (this->e.type == SDL_KEYDOWN) {
-				switch (this->e.key.keysym.sym) {
-					case SDLK_UP:
-						this->handleUpArrowKey();
-						break;
-					case SDLK_DOWN:
-						this->handleDownArrowKey();
-						break;
-					case SDLK_LEFT:
-						this->handleLeftArrowKey();
-						break;
-					case SDLK_RIGHT:
-						this->handleRightArrowKey();
-						break;
-					default:
-						handleOtherKey();
-						break;
-				}
 			} else if (this->e.type == SDL_MOUSEBUTTONDOWN && this->e.button.button == SDL_BUTTON_LEFT) {
 				this->handleLeftMouseClick();
 			} else {
-				handleOtherKey();
 			}
 		}
 
 		this->executeGameLogic();
 
 		this->executeDraw();
-		this->window->updateWindowSurface();
+		this->window->update();
 	}
 }
 

@@ -4,40 +4,46 @@
  *  Created on: Oct 12, 2021
  *      Author: valeri
  */
-
-#include "SDL.h"
-
 #include "Window.h"
+
+#include "SDL_video.h"
+#include "SDL_surface.h"
+
 #include "exceptions/WindowInitException.h"
 
-Window::Window(std::string title, int x, int y, int w, int h, SDL_WindowFlags flags) {
-	window = SDL_CreateWindow(title.c_str(), x, y, w, h, flags);
+Window::Window(std::string title, Point pos, Dimensions dimensions, int32_t flags) {
+	window = SDL_CreateWindow(title.c_str(), pos.x, pos.y, dimensions.w, dimensions.h, flags);
 
 	if (window == nullptr) {
 		throw WindowInitException(SDL_GetError());
 	}
 
-	SDL_Surface* ws = SDL_GetWindowSurface(this->window);
+	SDL_Surface* ws = SDL_GetWindowSurface(window);
 
 	if (ws == nullptr) {
 		throw WindowInitException(SDL_GetError());
 	}
 
-	this->surface = new Surface(ws);
+	surface = new Surface(ws);
 }
 
 SDL_Window* Window::getWindow() {
-	return this->window;
+	return window;
 }
 
-Surface& Window::getWindowSurface() {
-	return *this->surface;
+Surface& Window::getSurface() {
+	return *surface;
 }
 
-void Window::updateWindowSurface() {
-	SDL_UpdateWindowSurface(this->window);
+void Window::update() {
+	SDL_UpdateWindowSurface(window);
 }
 
 Window::~Window() {
-	SDL_DestroyWindow(this->window);
+	delete surface;
+
+	if (window != nullptr) {
+		SDL_DestroyWindow(window);
+		window = nullptr;
+	}
 }

@@ -8,31 +8,21 @@
 #ifndef SDL_GRAPHICS_TEXTURE_H_
 #define SDL_GRAPHICS_TEXTURE_H_
 
-#include <iostream>
+#include "sdl/primitives/Dimensions.h"
 
-#include "sdl/components/Surface.h"
-#include "exceptions/GraphicsInitException.h"
-#include "sdl/graphics/Drawable.h"
-#include "SDL.h"
-#include "SDL_ttf.h"
-#include "sdl/graphics/Renderer.h"
+struct SDL_Texture;
+struct SDL_Point;
+struct SDL_Texture;
 
-class Texture : public Drawable {
+class Texture {
 public:
-	Texture();
-	~Texture();
 	Texture(SDL_Texture* texture);
-    Texture(Renderer& renderer, TTF_Font* font, std::string textureText, SDL_Color color);
 
-	SDL_Texture* getTexture();
-    SDL_Point getSize();
-	void draw(Renderer& renderer) override;
-	void draw(Renderer& renderer, const SDL_Rect* destRect) override;
-    void draw(Renderer& renderer, const SDL_Rect* destRect, double angle, SDL_RendererFlip flip);
-    void draw(Renderer& renderer, const SDL_Rect* destRect, double angle) override;
+	SDL_Texture* getTexture() const;
+	Dimensions getDimensions() const;
 private:
 	SDL_Texture* texture;
+	Dimensions dimensions;
 };
-
 
 #endif /* SDL_GRAPHICS_TEXTURE_H_ */

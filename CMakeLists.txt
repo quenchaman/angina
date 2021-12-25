@@ -30,18 +30,14 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/graphics/Texture.cpp
 	${DIR}/sdl/graphics/Renderer.h
 	${DIR}/sdl/graphics/Renderer.cpp
-	${DIR}/sdl/graphics/Drawable.h
-	${DIR}/sdl/graphics/Drawable.cpp
-	${DIR}/sdl/graphics/Image.h
-	${DIR}/sdl/graphics/Image.cpp
 	${DIR}/sdl/components/Window.h
 	${DIR}/sdl/components/Window.cpp
 	${DIR}/sdl/components/Surface.h
 	${DIR}/sdl/components/Surface.cpp
 	${DIR}/sdl/primitives/Point.h
-	${DIR}/sdl/primitives/Point.cpp
 	${DIR}/sdl/primitives/Rect.h
 	${DIR}/sdl/primitives/Rect.cpp
+	${DIR}/sdl/primitives/Dimensions.h
 	${DIR}/config/Config.h
 	${DIR}/config/ConfigData.h
 	${DIR}/config/ConfigLoader.h

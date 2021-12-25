@@ -7,6 +7,13 @@
 
 #include "Transformer.h"
 
+#include "SDL.h"
+
+#include "sdl/graphics/Renderer.h"
+#include "sdl/components/Surface.h"
+
+#include "exceptions/GraphicsInitException.h"
+
 namespace Transformer {
 	Texture* transformSurfaceToTexture(Renderer& renderer, Surface& surface) {
 		SDL_Texture* texture = SDL_CreateTextureFromSurface(
@@ -17,8 +24,6 @@ namespace Transformer {
 		if (texture == nullptr) {
 			throw GraphicsInitException(SDL_GetError());
 		}
-
-        delete &surface;
 
 		return new Texture(texture);
 	}

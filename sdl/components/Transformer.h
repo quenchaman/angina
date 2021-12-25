@@ -9,11 +9,10 @@
 #define SDL_COMPONENTS_TRANSFORMER_H_
 
 #include <vector>
-#include "SDL.h"
 
-#include "sdl/graphics/Renderer.h"
-#include "sdl/graphics/Texture.h"
-#include "Surface.h"
+struct Texture;
+struct Renderer;
+struct Surface;
 
 namespace Transformer {
 	Texture* transformSurfaceToTexture(Renderer& renderer, Surface& surface);

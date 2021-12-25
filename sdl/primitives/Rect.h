@@ -8,24 +8,20 @@
 #ifndef SDL_PRIMITIVES_RECT_H_
 #define SDL_PRIMITIVES_RECT_H_
 
-#include <cstdint>
-
-#include "sdl/graphics/Drawable.h"
+#include "sdl/primitives/Point.h"
+#include "sdl/primitives/Dimensions.h"
 
 struct SDL_Rect;
 
-class Rect : public Drawable {
+class Rect {
 public:
-	Rect(int32_t x, int32_t y, int32_t w, int32_t h);
-    Rect(SDL_Rect rect);
+	Rect(const Point& position, const Dimensions& dim);
 
-    void draw(Renderer& renderer);
-    void draw(Renderer& renderer, const SDL_Rect* destRect);
-    void draw(Renderer& renderer, const SDL_Rect* destRect, double angle);
-	SDL_Rect getRaw();
-    bool isInRect(SDL_Point point);
-private:
-	SDL_Rect _rect;
+	Point pos;
+	Dimensions dimensions;
+	SDL_Rect* rect;
+
+	bool Rect::isInRect(const Point& point);
 };
 
 

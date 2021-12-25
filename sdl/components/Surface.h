@@ -8,9 +8,9 @@
 #ifndef SDL_COMPONENTS_SURFACE_H_
 #define SDL_COMPONENTS_SURFACE_H_
 
-#include <iostream>
-
-#include "SDL.h"
+struct SDL_Surface;
+struct SDL_PixelFormat;
+struct SDL_Surface;
 
 class Surface {
 public:

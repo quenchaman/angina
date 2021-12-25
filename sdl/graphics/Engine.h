@@ -10,20 +10,13 @@
 
 #include <vector>
 #include <string>
-#include <iostream>
+#include <map>
 
-#include "SDL.h"
-#include "SDL_image.h"
-#include "SDL_ttf.h"
-
-#include "sdl/components/Window.h"
-#include "config/Globals.h"
-#include "sdl/graphics/Graphics.h"
-#include "sdl/graphics/Renderer.h"
-#include "sdl/graphics/Image.h"
-#include "sdl/resources/ImageResource.h"
-#include "sdl/components/Transformer.h"
-#include "resources/Resources.h"
+struct Window;
+union SDL_Event;
+struct Renderer;
+struct TTF_Font;
+struct Texture;
 
 class Engine {
 public:
@@ -36,11 +29,6 @@ public:
 	virtual void draw() = 0;
 	virtual void executeGameLogic() = 0;
 
-	virtual void handleUpArrowKey() = 0;
-	virtual void handleDownArrowKey() = 0;
-	virtual void handleLeftArrowKey() = 0;
-	virtual void handleRightArrowKey() = 0;
-	virtual void handleOtherKey() = 0;
 	virtual void handleLeftMouseClick() = 0;
 private:
 	Window* window;
@@ -48,7 +36,7 @@ private:
 protected:
     Renderer* renderer;
     bool quit;
-    std::map<std::string, Image*> resources;
+    std::map<std::string, Texture*> resources;
     TTF_Font* font;
 private:
     void executeDraw();

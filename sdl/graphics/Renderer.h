@@ -8,19 +8,25 @@
 #ifndef SDL_GRAPHICS_RENDERER_H_
 #define SDL_GRAPHICS_RENDERER_H_
 
-#include "SDL.h"
+#include "sdl/graphics/Texture.h"
+#include "sdl/primitives/Rect.h"
+#include "sdl/components/Window.h"
 
-#include "sdl/graphics/Drawable.h"
+struct SDL_Renderer;
 
 class Renderer {
 public:
-	Renderer(SDL_Renderer* renderer);
+	Renderer(Window& window);
 
-	void clearRenderer();
 	SDL_Renderer* getRenderer();
-	void render(Drawable& drawable);
-	void updateScreen();
+	void clear();
+	void render(const Texture& texture);
+	void render(const Rect& rect);
+	void update();
 private:
+	void init(Window& window);
+	void deinit();
+
 	SDL_Renderer* renderer;
 };
 

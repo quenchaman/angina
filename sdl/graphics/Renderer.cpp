@@ -8,23 +8,38 @@
 
 #include "Renderer.h"
 
-Renderer::Renderer(SDL_Renderer* _renderer) {
-	this->renderer = _renderer;
+#include "SDL_render.h"
+
+#include "exceptions/GraphicsInitException.h"
+
+void Renderer::clear() {
+	SDL_RenderClear(renderer);
 }
 
-void Renderer::clearRenderer() {
-	//SDL_SetRenderDrawColor( this->renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-    SDL_RenderClear(this->renderer);
+void Renderer::render(const Texture& texture) {
+	SDL_RenderCopy(renderer, texture.getTexture(), nullptr, nullptr);
+}
+
+void Renderer::render(const Rect& rect) {
+	SDL_RenderDrawRect(renderer, rect.rect);
+}
+
+void Renderer::update() {
+	SDL_RenderPresent(renderer);
+}
+
+Renderer::Renderer(Window& window) {
+	init(window);
+}
+
+void Renderer::init(Window& window) {
+	renderer = SDL_CreateRenderer(window.getWindow(), -1, SDL_RENDERER_ACCELERATED);
+}
+
+void Renderer::deinit() {
+	SDL_DestroyRenderer(renderer);
 }
 
 SDL_Renderer* Renderer::getRenderer() {
-	return this->renderer;
-}
-
-void Renderer::updateScreen() {
-	SDL_RenderPresent(this->renderer);
-}
-
-void Renderer::render(Drawable& drawable) {
-	drawable.draw(*this, nullptr);
+	return renderer;
 }

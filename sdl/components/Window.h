@@ -10,21 +10,20 @@
 
 #include <string>
 
-#include "SDL.h"
+#include "sdl/primitives/Point.h"
+#include "sdl/primitives/Dimensions.h"
 
-#include "Surface.h"
+struct SDL_Window;
+struct Surface;
 
 class Window {
 public:
-	Window(std::string title, int x, int y, int w, int h, SDL_WindowFlags flags);
+	Window(std::string title, Point pos, Dimensions dimensions, int32_t flags);
+	~Window();
 
 	SDL_Window* getWindow();
-
-	Surface& getWindowSurface();
-
-	void updateWindowSurface();
-
-	~Window();
+	Surface& getSurface();
+	void update();
 private:
 	SDL_Window* window;
 	Surface* surface;
