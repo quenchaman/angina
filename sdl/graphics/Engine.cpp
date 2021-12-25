@@ -52,36 +52,28 @@ void Engine::start() {
 			}
 		}
 
-		this->executeGameLogic();
+		this->executeLogic();
 
 		this->executeDraw();
 		this->window->update();
 	}
 }
 
-void Engine::loadGameResources(std::vector<std::string> paths) {
-	std::vector<Surface*> surfaces = ImageResource::loadBulk(paths);
-	std::vector<Texture*> textures = Transformer::transformSurfacesToTextures(this->renderer, surfaces);
+void Engine::loadResources(const std::unordered_map<int32_t, std::string>& idToPaths) {
+	for (auto const& [id, path] : idToPaths) {
+		Surface* surface = ImageResource::load(path);
+		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
 
-    int32_t idx = 0;
-
-    for (Texture* texture : textures) {
-        SDL_Point size = texture->getSize();
-        SDL_Rect rect = {
-                0, 0,
-                size.x, size.y
-        };
-        resources[paths.at((size_t)idx)] = new Image(*texture, rect);
-        idx++;
-    }
+		resources[id] = texture;
+	}
 }
 
 void Engine::executeDraw() {
-    this->renderer->clearRenderer();
+    this->renderer->clear();
 
     this->draw();
 
-    this->renderer->updateScreen();
+    this->renderer->update();
     SDL_Delay(50);
 }
 
@@ -90,8 +82,9 @@ Engine::~Engine() {
         delete val;
     }
 
-    SDL_DestroyRenderer(renderer->getRenderer());
-    SDL_DestroyWindow(window->getWindow());
+    delete renderer;
+    delete window;
+
     IMG_Quit();
     SDL_Quit();
 }

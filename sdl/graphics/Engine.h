@@ -9,8 +9,9 @@
 #define SDL_GRAPHICS_ENGINE_H_
 
 #include <vector>
+#include <cstdint>
 #include <string>
-#include <map>
+#include <unordered_map>
 
 struct Window;
 union SDL_Event;
@@ -24,10 +25,10 @@ public:
 	virtual ~Engine();
 
 	void start();
-	void loadGameResources(std::vector<std::string> paths);
+	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
 	virtual void init() = 0;
 	virtual void draw() = 0;
-	virtual void executeGameLogic() = 0;
+	virtual void executeLogic() = 0;
 
 	virtual void handleLeftMouseClick() = 0;
 private:
@@ -36,7 +37,7 @@ private:
 protected:
     Renderer* renderer;
     bool quit;
-    std::map<std::string, Texture*> resources;
+    std::unordered_map<int32_t, Texture*> resources;
     TTF_Font* font;
 private:
     void executeDraw();
