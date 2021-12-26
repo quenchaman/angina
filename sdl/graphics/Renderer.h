@@ -17,6 +17,7 @@ struct SDL_Renderer;
 class Renderer {
 public:
 	Renderer(Window& window);
+	~Renderer();
 
 	SDL_Renderer* getRenderer();
 	void clear();

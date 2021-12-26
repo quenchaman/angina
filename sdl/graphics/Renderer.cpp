@@ -23,7 +23,7 @@ void Renderer::render(const Texture& texture) {
 }
 
 void Renderer::render(const Rect& rect) {
-	SDL_RenderDrawRect(renderer, rect.rect);
+	SDL_RenderDrawRect(renderer, &rect.rect);
 }
 
 void Renderer::update() {
@@ -34,6 +34,10 @@ Renderer::Renderer(Window& window) {
 	init(window);
 }
 
+Renderer::~Renderer() {
+	deinit();
+}
+
 void Renderer::init(Window& window) {
 	renderer = SDL_CreateRenderer(window.getWindow(), -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -42,6 +46,7 @@ void Renderer::init(Window& window) {
 
 void Renderer::deinit() {
 	SDL_DestroyRenderer(renderer);
+	std::cout << "Renderer deinitialised" << std::endl;
 }
 
 SDL_Renderer* Renderer::getRenderer() {

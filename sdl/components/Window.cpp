@@ -47,4 +47,6 @@ Window::~Window() {
 		SDL_DestroyWindow(window);
 		window = nullptr;
 	}
+
+	std::cout << "Window deinitialised" << std::endl;
 }

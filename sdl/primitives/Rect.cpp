@@ -7,15 +7,12 @@
 
 #include "Rect.h"
 
-#include "SDL_shape.h"
-
 #include "sdl/primitives/Point.h"
 
 Rect::Rect(const Point& positionIn, const Dimensions& dimensionsIn) {
 	pos = positionIn;
 	dimensions = dimensionsIn;
-	// TODO: Maybe this should not be an pointer.
-	rect = new SDL_Rect { positionIn.x, positionIn.y, dimensions.w, dimensions.h };
+	rect = { positionIn.x, positionIn.y, dimensions.w, dimensions.h };
 }
 
 bool Rect::isInRect(const Point& point) {

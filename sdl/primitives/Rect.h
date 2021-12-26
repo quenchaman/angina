@@ -11,7 +11,7 @@
 #include "sdl/primitives/Point.h"
 #include "sdl/primitives/Dimensions.h"
 
-struct SDL_Rect;
+#include "SDL_shape.h"
 
 class Rect {
 public:
@@ -19,7 +19,7 @@ public:
 
 	Point pos;
 	Dimensions dimensions;
-	SDL_Rect* rect;
+	SDL_Rect rect;
 
 	bool isInRect(const Point& point);
 };

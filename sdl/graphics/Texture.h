@@ -17,6 +17,7 @@ struct SDL_Texture;
 class Texture {
 public:
 	Texture(SDL_Texture* texture);
+	~Texture();
 
 	SDL_Texture* getTexture() const;
 	Dimensions getDimensions() const;

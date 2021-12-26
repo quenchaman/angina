@@ -93,4 +93,6 @@ Engine::~Engine() {
 
     IMG_Quit();
     SDL_Quit();
+
+    std::cout << "Engine deinitialised" << std::endl;
 }
