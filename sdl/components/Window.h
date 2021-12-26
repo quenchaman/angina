@@ -23,7 +23,6 @@ public:
 
 	SDL_Window* getWindow();
 	Surface& getSurface();
-	void update();
 private:
 	SDL_Window* window;
 	Surface* surface;

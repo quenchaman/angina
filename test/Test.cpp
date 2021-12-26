@@ -4,43 +4,25 @@
 
 #include "Test.h"
 
+#include <iostream>
+#include <unordered_map>
+#include <cstdint>
+#include <string>
+
 Test::~Test() {
 
 }
 
 void Test::init() {
-    loadGameResources(assets);
+	std::unordered_map<int32_t, std::string> idToPaths;
+	idToPaths[0] = "../resources/chess/black_wins.png";
+    loadResources(idToPaths);
 
-    this->board = resources[Resources::board];
-    this->board->spin();
+    std::cout << "Test game initialized" << std::endl;
 }
 
-void Test::draw() {
-    this->board->draw(*renderer);
-}
-
-void Test::executeGameLogic() {
-
-}
-
-void Test::handleUpArrowKey() {
-
-}
-
-void Test::handleDownArrowKey() {
-
-}
-
-void Test::handleLeftArrowKey() {
-
-}
-
-void Test::handleRightArrowKey() {
-
-}
-
-void Test::handleOtherKey() {
-
+void Test::update() {
+	std::cout << "Updating game state" << std::endl;
 }
 
 void Test::handleLeftMouseClick() {

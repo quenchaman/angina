@@ -6,9 +6,12 @@
  */
 #include "Window.h"
 
+#include <iostream>
+
 #include "SDL_video.h"
 #include "SDL_surface.h"
 
+#include "sdl/components/Surface.h"
 #include "exceptions/WindowInitException.h"
 
 Window::Window(std::string title, Point pos, Dimensions dimensions, int32_t flags) {
@@ -25,6 +28,8 @@ Window::Window(std::string title, Point pos, Dimensions dimensions, int32_t flag
 	}
 
 	surface = new Surface(ws);
+
+	std::cout << "Window initialised" << std::endl;
 }
 
 SDL_Window* Window::getWindow() {
@@ -33,10 +38,6 @@ SDL_Window* Window::getWindow() {
 
 Surface& Window::getSurface() {
 	return *surface;
-}
-
-void Window::update() {
-	SDL_UpdateWindowSurface(window);
 }
 
 Window::~Window() {

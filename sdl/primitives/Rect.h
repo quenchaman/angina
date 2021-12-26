@@ -21,7 +21,7 @@ public:
 	Dimensions dimensions;
 	SDL_Rect* rect;
 
-	bool Rect::isInRect(const Point& point);
+	bool isInRect(const Point& point);
 };
 
 

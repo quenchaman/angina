@@ -6,7 +6,7 @@
 #define ANGINA_TEST_H
 
 
-#include "sdl/graphics/Engine.h
+#include "sdl/graphics/Engine.h"
 
 class Test : public Engine {
 public:
@@ -15,7 +15,7 @@ public:
 
     void init() override;
 
-    void draw() override;
+    void update() override;
 
     void handleLeftMouseClick() override;
 };

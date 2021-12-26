@@ -45,27 +45,30 @@ add_executable(${PROJECT_NAME}
 	${DIR}/config/ConfigLoader.cpp
 	${DIR}/sdl/components/Transformer.h
 	${DIR}/sdl/components/Transformer.cpp
-	${DIR}/chess/Piece.h
-	${DIR}/chess/Piece.cpp
-	${DIR}/chess/Pawn.h
-	${DIR}/chess/Pawn.cpp
-	${DIR}/chess/Knight.cpp
-	${DIR}/chess/Knight.h
-	${DIR}/chess/Bishop.cpp
-	${DIR}/chess/Bishop.h
-	${DIR}/chess/Rook.cpp
-	${DIR}/chess/Rook.h
-	${DIR}/chess/Queen.cpp
-	${DIR}/chess/Queen.h
-	${DIR}/chess/King.cpp
-	${DIR}/chess/King.h
-	${DIR}/chess/State.h
-	${DIR}/chess/Chess.h
-	${DIR}/chess/Chess.cpp
-	${DIR}/sdl/components/Button.cpp
-	${DIR}/sdl/components/Button.h
-	${DIR}/chess/Move.h
-	${DIR}/chess/Constants.h)
+#	${DIR}/chess/Piece.h
+#	${DIR}/chess/Piece.cpp
+#	${DIR}/chess/Pawn.h
+#	${DIR}/chess/Pawn.cpp
+#	${DIR}/chess/Knight.cpp
+#	${DIR}/chess/Knight.h
+#	${DIR}/chess/Bishop.cpp
+#	${DIR}/chess/Bishop.h
+#	${DIR}/chess/Rook.cpp
+#	${DIR}/chess/Rook.h
+#	${DIR}/chess/Queen.cpp
+#	${DIR}/chess/Queen.h
+#	${DIR}/chess/King.cpp
+#	${DIR}/chess/King.h
+#	${DIR}/chess/State.h
+#	${DIR}/chess/Chess.h
+#	${DIR}/chess/Chess.cpp
+#	${DIR}/sdl/components/Button.cpp
+#	${DIR}/sdl/components/Button.h
+#	${DIR}/chess/Move.h
+#	${DIR}/chess/Constants.h)
+	${DIR}/test/Test.h
+	${DIR}/test/Test.cpp
+)
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
 enable_target_warnings(${PROJECT_NAME})

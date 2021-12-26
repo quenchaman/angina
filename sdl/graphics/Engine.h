@@ -13,10 +13,11 @@
 #include <string>
 #include <unordered_map>
 
+#include "SDL_ttf.h"
+#include "SDL_events.h"
+
 struct Window;
-union SDL_Event;
 struct Renderer;
-struct TTF_Font;
 struct Texture;
 
 class Engine {
@@ -25,22 +26,21 @@ public:
 	virtual ~Engine();
 
 	void start();
-	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
-	virtual void init() = 0;
-	virtual void draw() = 0;
-	virtual void executeLogic() = 0;
-
-	virtual void handleLeftMouseClick() = 0;
 private:
 	Window* window;
 	SDL_Event e;
 protected:
     Renderer* renderer;
-    bool quit;
+    bool quit = false;
     std::unordered_map<int32_t, Texture*> resources;
     TTF_Font* font;
-private:
-    void executeDraw();
+
+	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
+	virtual void init() = 0;
+	void draw();
+	virtual void update() = 0;
+
+	virtual void handleLeftMouseClick() = 0;
 };
 
 

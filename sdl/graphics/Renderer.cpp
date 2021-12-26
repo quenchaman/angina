@@ -8,6 +8,8 @@
 
 #include "Renderer.h"
 
+#include <iostream>
+
 #include "SDL_render.h"
 
 #include "exceptions/GraphicsInitException.h"
@@ -34,6 +36,8 @@ Renderer::Renderer(Window& window) {
 
 void Renderer::init(Window& window) {
 	renderer = SDL_CreateRenderer(window.getWindow(), -1, SDL_RENDERER_ACCELERATED);
+	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	std::cout << "Renderer initialised" << std::endl;
 }
 
 void Renderer::deinit() {

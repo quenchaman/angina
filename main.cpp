@@ -4,12 +4,13 @@
 
 #include <SDL.h>
 
-#include <chess/Chess.h>
 #include "test/Test.h"
+
+#include "exceptions/BaseException.h"
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	try {
-		Engine* game = new Chess();
+		Engine* game = new Test();
 
 		game->start();
 
