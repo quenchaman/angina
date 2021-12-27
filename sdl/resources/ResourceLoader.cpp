@@ -10,14 +10,13 @@
 #include <vector>
 #include <filesystem>
 
-#include "SDL.h"
 #include "SDL_image.h"
 
 #include "sdl/graphics/Surface.h"
-#include "ImageResource.h"
 #include "exceptions/ResourceLoadException.h"
+#include "ResourceLoader.h"
 
-namespace ImageResource {
+namespace ResourceLoader {
 	const std::string resourceFolderBasePath = "../resources/";
 
 	Surface* load(const std::string& path) {
@@ -38,10 +37,14 @@ namespace ImageResource {
 		std::vector<Surface*> images;
 
 		for (std::string path : paths) {
-			images.push_back(ImageResource::load(path));
+			images.push_back(ResourceLoader::load(path));
 		}
 
 		return images;
+	}
+
+	TTF_Font* loadFont(const std::string& path, int32_t pointSize) {
+		return TTF_OpenFont(path.c_str(), pointSize);
 	}
 }
 

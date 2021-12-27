@@ -13,8 +13,8 @@
 #include <string>
 #include <unordered_map>
 
-#include "SDL_ttf.h"
 #include "SDL_events.h"
+#include "SDL_ttf.h"
 
 struct Window;
 struct Renderer;

@@ -11,8 +11,8 @@ project(chess LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME} 
 	${DIR}/main.cpp
-	${DIR}/sdl/resources/ImageResource.h 
-	${DIR}/sdl/resources/ImageResource.cpp
+	${DIR}/sdl/resources/ResourceLoader.h 
+	${DIR}/sdl/resources/ResourceLoader.cpp
 	${DIR}/exceptions/ResourceLoadException.h
 	${DIR}/exceptions/ResourceLoadException.cpp
 	${DIR}/exceptions/GraphicsInitException.h

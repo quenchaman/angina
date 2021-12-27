@@ -13,11 +13,11 @@
 
 #include "SDL_image.h"
 
+#include "sdl/resources/ResourceLoader.h"
 #include "sdl/components/Window.h"
 #include "config/Globals.h"
 #include "sdl/graphics/Graphics.h"
 #include "sdl/graphics/Renderer.h"
-#include "sdl/resources/ImageResource.h"
 #include "sdl/graphics/Transformer.h"
 #include "resources/Resources.h"
 
@@ -31,10 +31,8 @@ Engine::Engine(std::string appTitle) {
             { Globals::config.screenWidth, Globals::config.screenHeight },
             SDL_WINDOW_SHOWN
     );
-
     renderer = new Renderer(*window);
-    font = TTF_OpenFont(("../" + Resources::montserratFont).c_str(), 28);
-    std::cout << "Font initialized" << std::endl;
+    font = ResourceLoader::loadFont(Resources::montserratFont, 28);
 }
 
 void Engine::start() {
@@ -61,7 +59,7 @@ void Engine::start() {
 
 void Engine::loadResources(const std::unordered_map<int32_t, std::string>& idToPaths) {
 	for (auto const& [id, path] : idToPaths) {
-		Surface* surface = ImageResource::load(path);
+		Surface* surface = ResourceLoader::load(path);
 		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
 
 		resources[id] = texture;
