@@ -10,19 +10,27 @@
 
 #include "sdl/primitives/Point.h"
 #include "sdl/primitives/Dimensions.h"
+#include "sdl/primitives/Color.h"
 
 #include "SDL_shape.h"
 
 class Rect {
 public:
-	Rect(const Point& position, const Dimensions& dim);
-	Rect(int32_t x, int32_t y, int32_t w, int32_t h);
+	Rect(const Point& position, const Dimensions& dim, const Color& color);
+	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color& color);
 
-	Point pos;
+	Point pos = Point::UNDEFINED;
 	Dimensions dimensions;
 	SDL_Rect rect;
+	Color color;
+
+	bool operator==(const Rect& other) const;
+	bool operator!=(const Rect& other) const;
 
 	bool isInRect(const Point& point);
+
+	static const Rect ZERO;
+	static const Rect UNDEFINED;
 };
 
 

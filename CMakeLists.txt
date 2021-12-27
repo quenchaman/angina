@@ -42,6 +42,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/primitives/Rect.h
 	${DIR}/sdl/primitives/Rect.cpp
 	${DIR}/sdl/primitives/Dimensions.h
+	${DIR}/sdl/primitives/Color.cpp
+	${DIR}/sdl/primitives/Color.h
 	${DIR}/config/Config.h
 	${DIR}/config/ConfigData.h
 	${DIR}/config/ConfigLoader.h
