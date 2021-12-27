@@ -43,6 +43,7 @@ void Engine::start() {
 
 	while (!quit) {
 		time.getElapsed();
+		renderer->clear();
 
 		while (SDL_PollEvent(&e) != 0) {
 			if (e.type == SDL_QUIT) {
@@ -57,6 +58,7 @@ void Engine::start() {
 		update();
 
 		draw();
+
 		renderer->update();
 
 		int64_t timePassed = time.getElapsed().toMicroseconds();
@@ -77,15 +79,15 @@ void Engine::loadResources(const std::unordered_map<int32_t, std::string>& idToP
 }
 
 void Engine::draw() {
-    renderer->clear();
-
-    std::cout << "Drawing textures start..." << std::endl;
-
     for (auto const& [id, texture] : resources) {
     	renderer->render(*texture);
     }
 
-    std::cout << "Drawing textures end..." << std::endl;
+
+    for (auto const& [id, rectangle] : rectangles) {
+    	std::cout << "rectangle dimensions: " << rectangle->dimensions.w << std::endl;
+    	renderer->render(*rectangle);
+    }
 }
 
 void Engine::limitFPS(int64_t elapsedTime) {
@@ -98,6 +100,10 @@ void Engine::limitFPS(int64_t elapsedTime) {
 	}
 
 	ThreadUtils::sleepFor(sleepTime);
+}
+
+void Engine::addRectangle(int32_t id, const Rect& rectangle) {
+	rectangles[id] = &rectangle;
 }
 
 Engine::~Engine() {

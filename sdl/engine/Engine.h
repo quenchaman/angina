@@ -19,6 +19,7 @@
 struct Window;
 struct Renderer;
 struct Texture;
+struct Rect;
 
 class Engine {
 public:
@@ -36,6 +37,7 @@ protected:
     Renderer* renderer;
     bool quit = false;
     std::unordered_map<int32_t, Texture*> resources;
+    std::unordered_map<int32_t, const Rect*> rectangles;
     TTF_Font* font;
 
 	virtual void init() = 0;
@@ -43,6 +45,7 @@ protected:
 	virtual void handleLeftMouseClick() = 0;
 
 	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
+	void addRectangle(int32_t id, const Rect& rectangle);
 };
 
 

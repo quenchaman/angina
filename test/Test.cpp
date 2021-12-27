@@ -9,6 +9,8 @@
 #include <cstdint>
 #include <string>
 
+#include "sdl/primitives/Rect.h"
+
 Test::~Test() {
 
 }
@@ -18,11 +20,12 @@ void Test::init() {
 	idToPaths[0] = "../resources/chess/black_wins.png";
     loadResources(idToPaths);
 
-    std::cout << "Test game initialized" << std::endl;
+    Rect* rectangle = new Rect(0, 0, 150, 150);
+
+    addRectangle(8, *rectangle);
 }
 
 void Test::update() {
-	std::cout << "Updating game state" << std::endl;
 }
 
 void Test::handleLeftMouseClick() {

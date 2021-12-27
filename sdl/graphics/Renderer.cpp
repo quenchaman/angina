@@ -15,6 +15,7 @@
 #include "exceptions/GraphicsInitException.h"
 
 void Renderer::clear() {
+	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(renderer);
 }
 
@@ -23,6 +24,7 @@ void Renderer::render(const Texture& texture) {
 }
 
 void Renderer::render(const Rect& rect) {
+	SDL_SetRenderDrawColor( renderer, 0xFF, 0x00, 0x00, 0xFF );
 	SDL_RenderDrawRect(renderer, &rect.rect);
 }
 
@@ -40,7 +42,7 @@ Renderer::~Renderer() {
 
 void Renderer::init(Window& window) {
 	renderer = SDL_CreateRenderer(window.getWindow(), -1, SDL_RENDERER_ACCELERATED);
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+
 	std::cout << "Renderer initialised" << std::endl;
 }
 
