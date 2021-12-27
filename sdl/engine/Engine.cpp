@@ -110,6 +110,10 @@ void Engine::addRectangle(int32_t id, const Rect& rectangle) {
 	rectangles[id] = &rectangle;
 }
 
+void Engine::addObject(int32_t id, const Object& object) {
+	objects[id] = &object;
+}
+
 Engine::~Engine() {
     for (auto const& [key, val] : resources) {
         delete val;

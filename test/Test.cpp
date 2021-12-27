@@ -25,7 +25,7 @@ void Test::init() {
     Rect* rectangle = new Rect(40, 40, 150, 150, Color::GREEN);
     Texture* king = resources[0];
     Object* obj = new Object(*king, *rectangle);
-    objects[0] = obj;
+    addObject(0, *obj);
 }
 
 void Test::update() {

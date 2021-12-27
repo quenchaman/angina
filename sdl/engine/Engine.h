@@ -48,6 +48,7 @@ protected:
 
 	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
 	void addRectangle(int32_t id, const Rect& rectangle);
+	void addObject(int32_t id, const Object& object);
 };
 
 
