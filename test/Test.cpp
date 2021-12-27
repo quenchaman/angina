@@ -10,6 +10,8 @@
 #include <string>
 
 #include "sdl/primitives/Rect.h"
+#include "sdl/engine/object/Object.h"
+#include "resources/Resources.h"
 
 Test::~Test() {
 
@@ -17,12 +19,13 @@ Test::~Test() {
 
 void Test::init() {
 	std::unordered_map<int32_t, std::string> idToPaths;
-	idToPaths[0] = "../resources/chess/black_wins.png";
+	idToPaths[0] = Resources::blackKing;
     loadResources(idToPaths);
 
-    Rect* rectangle = new Rect(0, 0, 150, 150, Color::GREEN);
-
-    addRectangle(8, *rectangle);
+    Rect* rectangle = new Rect(40, 40, 150, 150, Color::GREEN);
+    Texture* king = resources[0];
+    Object* obj = new Object(*king, *rectangle);
+    objects[0] = obj;
 }
 
 void Test::update() {

@@ -12,6 +12,11 @@
 
 #include "SDL_render.h"
 
+#include "sdl/graphics/Texture.h"
+#include "sdl/primitives/Rect.h"
+#include "sdl/components/Window.h"
+#include "sdl/engine/object/Object.h"
+
 #include "exceptions/GraphicsInitException.h"
 
 void Renderer::clear() {
@@ -26,6 +31,10 @@ void Renderer::render(const Texture& texture) {
 void Renderer::render(const Rect& rect) {
 	SDL_SetRenderDrawColor(renderer, rect.color.red, rect.color.green, rect.color.blue, rect.color.alpha);
 	SDL_RenderDrawRect(renderer, &rect.rect);
+}
+
+void Renderer::render(const Object& object) {
+	SDL_RenderCopy(renderer, object.texture.getTexture(), nullptr, &object.rectangle.rect);
 }
 
 void Renderer::update() {

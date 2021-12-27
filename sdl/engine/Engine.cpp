@@ -19,6 +19,7 @@
 #include "sdl/graphics/Graphics.h"
 #include "sdl/graphics/Renderer.h"
 #include "sdl/graphics/Transformer.h"
+#include "sdl/graphics/Texture.h"
 #include "resources/Resources.h"
 #include "sdl/engine/thread/ThreadUtils.h"
 #include "sdl/engine/time/Time.h"
@@ -87,6 +88,10 @@ void Engine::draw() {
     for (auto const& [id, rectangle] : rectangles) {
     	renderer->render(*rectangle);
     }
+
+    for (auto const& [id, object] : objects) {
+		renderer->render(*object);
+	}
 }
 
 void Engine::limitFPS(int64_t elapsedTime) {

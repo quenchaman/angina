@@ -11,7 +11,7 @@
 #include <string>
 
 namespace Resources {
-	const std::string prefix = "../chess/";
+	const std::string prefix = "../resources/chess/";
 
     const std::string whiteWins = prefix + "white_wins.png";
     const std::string blackWins = prefix + "black_wins.png";

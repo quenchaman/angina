@@ -11,6 +11,7 @@
 
 #include "sdl/graphics/Renderer.h"
 #include "sdl/graphics/Surface.h"
+#include "sdl/graphics/Texture.h"
 
 #include "exceptions/GraphicsInitException.h"
 

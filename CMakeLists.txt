@@ -30,6 +30,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/engine/time/Time.cpp
 	${DIR}/sdl/engine/thread/ThreadUtils.h
 	${DIR}/sdl/engine/thread/ThreadUtils.cpp
+	${DIR}/sdl/engine/object/Object.h
+	${DIR}/sdl/engine/object/Object.cpp
 	${DIR}/sdl/graphics/Texture.h
 	${DIR}/sdl/graphics/Texture.cpp
 	${DIR}/sdl/graphics/Renderer.h

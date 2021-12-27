@@ -8,11 +8,11 @@
 #ifndef SDL_GRAPHICS_RENDERER_H_
 #define SDL_GRAPHICS_RENDERER_H_
 
-#include "sdl/graphics/Texture.h"
-#include "sdl/primitives/Rect.h"
-#include "sdl/components/Window.h"
-
 struct SDL_Renderer;
+struct Texture;
+struct Rect;
+struct Window;
+struct Object;
 
 class Renderer {
 public:
@@ -23,6 +23,7 @@ public:
 	void clear();
 	void render(const Texture& texture);
 	void render(const Rect& rect);
+	void render(const Object& object);
 	void update();
 private:
 	void init(Window& window);

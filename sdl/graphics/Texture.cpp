@@ -17,10 +17,6 @@ SDL_Texture* Texture::getTexture() const {
 	return texture;
 }
 
-Dimensions Texture::getDimensions() const {
-	return dimensions;
-}
-
 Texture::~Texture() {
 	if (texture != nullptr) {
 		SDL_DestroyTexture(texture);

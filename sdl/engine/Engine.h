@@ -20,6 +20,7 @@ struct Window;
 struct Renderer;
 struct Texture;
 struct Rect;
+struct Object;
 
 class Engine {
 public:
@@ -38,6 +39,7 @@ protected:
     bool quit = false;
     std::unordered_map<int32_t, Texture*> resources;
     std::unordered_map<int32_t, const Rect*> rectangles;
+    std::unordered_map<int32_t, const Object*> objects;
     TTF_Font* font;
 
 	virtual void init() = 0;

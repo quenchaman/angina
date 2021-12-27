@@ -17,14 +17,11 @@
 #include "ResourceLoader.h"
 
 namespace ResourceLoader {
-	const std::string resourceFolderBasePath = "../resources/";
-
 	Surface* load(const std::string& path) {
-		std::string fullPathToFile = resourceFolderBasePath + path;
-		std::string fileExtension = std::filesystem::path(fullPathToFile).extension();
+		std::string fileExtension = std::filesystem::path(path).extension();
 		SDL_Surface* image = nullptr;
 
-		image = IMG_Load(fullPathToFile.c_str());
+		image = IMG_Load(path.c_str());
 
 		if (image == nullptr) {
 			throw ResourceLoadException(SDL_GetError());
