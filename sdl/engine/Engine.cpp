@@ -20,6 +20,8 @@
 #include "sdl/graphics/Renderer.h"
 #include "sdl/graphics/Transformer.h"
 #include "resources/Resources.h"
+#include "sdl/engine/thread/ThreadUtils.h"
+#include "sdl/engine/time/Time.h"
 
 Engine::Engine(std::string appTitle) {
     Graphics::boot();
@@ -37,8 +39,11 @@ Engine::Engine(std::string appTitle) {
 
 void Engine::start() {
 	init();
+	Time time;
 
 	while (!quit) {
+		time.getElapsed();
+
 		while (SDL_PollEvent(&e) != 0) {
 			if (e.type == SDL_QUIT) {
 				quit = true;
@@ -53,7 +58,10 @@ void Engine::start() {
 
 		draw();
 		renderer->update();
-		SDL_Delay(50);
+
+		int64_t timePassed = time.getElapsed().toMicroseconds();
+
+		ThreadUtils::sleepFor(timePassed);
 	}
 }
 
@@ -78,6 +86,18 @@ void Engine::draw() {
     }
 
     std::cout << "Drawing textures end..." << std::endl;
+}
+
+void Engine::limitFPS(int64_t elapsedTime) {
+	const int64_t maxFrames = Globals::config.frameRate;
+	const int64_t timeForFrameMicro = 1000000 / maxFrames;
+	const int64_t sleepTime = timeForFrameMicro - elapsedTime;
+
+	if (sleepTime <= 0) {
+		return;
+	}
+
+	ThreadUtils::sleepFor(sleepTime);
 }
 
 Engine::~Engine() {

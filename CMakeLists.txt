@@ -26,6 +26,10 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/graphics/Graphics.cpp
 	${DIR}/sdl/engine/Engine.h
 	${DIR}/sdl/engine/Engine.cpp
+	${DIR}/sdl/engine/time/Time.h
+	${DIR}/sdl/engine/time/Time.cpp
+	${DIR}/sdl/engine/thread/ThreadUtils.h
+	${DIR}/sdl/engine/thread/ThreadUtils.cpp
 	${DIR}/sdl/graphics/Texture.h
 	${DIR}/sdl/graphics/Texture.cpp
 	${DIR}/sdl/graphics/Renderer.h

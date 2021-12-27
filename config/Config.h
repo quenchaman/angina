@@ -8,10 +8,12 @@
 #ifndef CONFIG_CONFIG_H_
 #define CONFIG_CONFIG_H_
 
+#include <cstdint>
 
 namespace Config {
-	const int SCREEN_WIDTH = 640;
-	const int SCREEN_HEIGHT = 480;
+	const int32_t SCREEN_WIDTH = 640;
+	const int32_t SCREEN_HEIGHT = 480;
+	const int32_t FRAME_RATE = 30;
 }
 
 

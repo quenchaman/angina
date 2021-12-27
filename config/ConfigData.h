@@ -13,6 +13,7 @@
 struct ConfigData {
 	int32_t screenWidth;
 	int32_t screenHeight;
+	int32_t frameRate;
 };
 
 

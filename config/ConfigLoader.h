@@ -8,11 +8,8 @@
 #ifndef CONFIG_CONFIGLOADER_H_
 #define CONFIG_CONFIGLOADER_H_
 
-#include <iostream>
-#include <sstream>
-#include <fstream>
-
 #include "ConfigData.h"
+#include "Config.h"
 
 namespace ConfigLoader {
 	ConfigData load();

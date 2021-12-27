@@ -29,18 +29,20 @@ public:
 private:
 	Window* window;
 	SDL_Event e;
+
+	void limitFPS(int64_t microseconds);
+	void draw();
 protected:
     Renderer* renderer;
     bool quit = false;
     std::unordered_map<int32_t, Texture*> resources;
     TTF_Font* font;
 
-	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
 	virtual void init() = 0;
-	void draw();
 	virtual void update() = 0;
-
 	virtual void handleLeftMouseClick() = 0;
+
+	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
 };
 
 

@@ -9,10 +9,6 @@
 
 namespace ConfigLoader {
 	ConfigData load() {
-		std::ifstream fileStream("../config/config.json");
-		std::stringstream stringBuffer;
-		stringBuffer << fileStream.rdbuf();
-
-		return {800, 800};
+		return {Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT, Config::FRAME_RATE};
 	}
 }
