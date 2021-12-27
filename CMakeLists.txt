@@ -24,16 +24,16 @@ add_executable(${PROJECT_NAME}
 	${DIR}/resources/Resources.h
 	${DIR}/sdl/graphics/Graphics.h
 	${DIR}/sdl/graphics/Graphics.cpp
-	${DIR}/sdl/graphics/Engine.h
-	${DIR}/sdl/graphics/Engine.cpp
+	${DIR}/sdl/engine/Engine.h
+	${DIR}/sdl/engine/Engine.cpp
 	${DIR}/sdl/graphics/Texture.h
 	${DIR}/sdl/graphics/Texture.cpp
 	${DIR}/sdl/graphics/Renderer.h
 	${DIR}/sdl/graphics/Renderer.cpp
 	${DIR}/sdl/components/Window.h
 	${DIR}/sdl/components/Window.cpp
-	${DIR}/sdl/components/Surface.h
-	${DIR}/sdl/components/Surface.cpp
+	${DIR}/sdl/graphics/Surface.h
+	${DIR}/sdl/graphics/Surface.cpp
 	${DIR}/sdl/primitives/Point.h
 	${DIR}/sdl/primitives/Rect.h
 	${DIR}/sdl/primitives/Rect.cpp
@@ -43,8 +43,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/config/ConfigLoader.h
 	${DIR}/config/Globals.h
 	${DIR}/config/ConfigLoader.cpp
-	${DIR}/sdl/components/Transformer.h
-	${DIR}/sdl/components/Transformer.cpp
+	${DIR}/sdl/graphics/Transformer.h
+	${DIR}/sdl/graphics/Transformer.cpp
 #	${DIR}/chess/Piece.h
 #	${DIR}/chess/Piece.cpp
 #	${DIR}/chess/Pawn.h

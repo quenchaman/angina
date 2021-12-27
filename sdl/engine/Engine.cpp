@@ -13,13 +13,12 @@
 
 #include "SDL_image.h"
 
-
 #include "sdl/components/Window.h"
 #include "config/Globals.h"
 #include "sdl/graphics/Graphics.h"
 #include "sdl/graphics/Renderer.h"
 #include "sdl/resources/ImageResource.h"
-#include "sdl/components/Transformer.h"
+#include "sdl/graphics/Transformer.h"
 #include "resources/Resources.h"
 
 Engine::Engine(std::string appTitle) {

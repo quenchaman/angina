@@ -11,7 +11,7 @@
 #include "SDL_video.h"
 #include "SDL_surface.h"
 
-#include "sdl/components/Surface.h"
+#include "sdl/graphics/Surface.h"
 #include "exceptions/WindowInitException.h"
 
 Window::Window(std::string title, Point pos, Dimensions dimensions, int32_t flags) {

@@ -13,7 +13,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 
-#include "sdl/components/Surface.h"
+#include "sdl/graphics/Surface.h"
 #include "ImageResource.h"
 #include "exceptions/ResourceLoadException.h"
 

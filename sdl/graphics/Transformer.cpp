@@ -10,7 +10,7 @@
 #include "SDL.h"
 
 #include "sdl/graphics/Renderer.h"
-#include "sdl/components/Surface.h"
+#include "sdl/graphics/Surface.h"
 
 #include "exceptions/GraphicsInitException.h"
 

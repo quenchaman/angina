@@ -6,7 +6,7 @@
 #define ANGINA_TEST_H
 
 
-#include "sdl/graphics/Engine.h"
+#include "sdl/engine/Engine.h"
 
 class Test : public Engine {
 public:
