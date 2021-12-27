@@ -20,7 +20,7 @@ void Test::init() {
 	idToPaths[0] = "../resources/chess/black_wins.png";
     loadResources(idToPaths);
 
-    Rect* rectangle = new Rect(0, 0, 150, 150, Color::RED);
+    Rect* rectangle = new Rect(0, 0, 150, 150, Color::GREEN);
 
     addRectangle(8, *rectangle);
 }

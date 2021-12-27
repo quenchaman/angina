@@ -39,6 +39,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/graphics/Surface.h
 	${DIR}/sdl/graphics/Surface.cpp
 	${DIR}/sdl/primitives/Point.h
+	${DIR}/sdl/primitives/Point.cpp
 	${DIR}/sdl/primitives/Rect.h
 	${DIR}/sdl/primitives/Rect.cpp
 	${DIR}/sdl/primitives/Dimensions.h

@@ -85,7 +85,6 @@ void Engine::draw() {
 
 
     for (auto const& [id, rectangle] : rectangles) {
-    	std::cout << "rectangle dimensions: " << rectangle->dimensions.w << std::endl;
     	renderer->render(*rectangle);
     }
 }
