@@ -14,7 +14,10 @@
 
 #include "SDL_ttf.h"
 
+
 struct Surface;
+struct Texture;
+struct Color;
 
 namespace ResourceLoader {
 	Surface* load(const std::string& path);
@@ -22,6 +25,8 @@ namespace ResourceLoader {
 	std::vector<Surface*> loadBulk(const std::vector<std::string>& paths);
 
 	TTF_Font* loadFont(const std::string& path, int32_t pointSize);
+
+	Surface* loadText(TTF_Font* font, const std::string& text, Color color);
 }
 
 #endif /* SDL_IMAGERESOURCE_H_ */

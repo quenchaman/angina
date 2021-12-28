@@ -20,14 +20,6 @@ Surface::~Surface() {
 	}
 }
 
-void Surface::paint(const Surface& other) {
-	SDL_BlitSurface(other._surface, NULL, _surface, NULL);
-}
-
-SDL_PixelFormat* Surface::getFormat() {
-	return _surface->format;
-}
-
 SDL_Surface* Surface::getSurface() {
 	return _surface;
 }

@@ -11,16 +11,14 @@ const Rect Rect::ZERO(0, 0, 0, 0, Color::NONE);
 const Rect Rect::UNDEFINED(10000, 10000, 0, 0, Color::NONE);
 
 Rect::Rect(const Point& positionIn, const Dimensions& dimensionsIn, const Color& colorIn) {
-	pos = positionIn;
-	dimensions = dimensionsIn;
 	color = colorIn;
-	rect = { positionIn.x, positionIn.y, dimensions.w, dimensions.h };
+	rect = { positionIn.x, positionIn.y, dimensionsIn.w, dimensionsIn.h };
 }
 
 Rect::Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color& color): Rect::Rect({x, y}, {w, h}, color) {}
 
 bool Rect::operator==(const Rect& other) const {
-	return pos.x == other.pos.x && pos.y == other.pos.y && dimensions.w == other.dimensions.w && dimensions.h == other.dimensions.h;
+	return rect.x == other.rect.x && rect.y == other.rect.y && rect.w == other.rect.w && rect.h == other.rect.h;
 }
 
 bool Rect::operator!=(const Rect& other) const {
@@ -28,6 +26,6 @@ bool Rect::operator!=(const Rect& other) const {
 }
 
 bool Rect::isInRect(const Point& point) {
-    return point.x >= pos.x && point.x <= (pos.x + dimensions.w) &&
-    		point.y >= pos.y && point.y <= pos.y + dimensions.h;
+    return point.x >= rect.x && point.x <= (rect.x + rect.w) &&
+    		point.y >= rect.y && point.y <= rect.y + rect.h;
 }

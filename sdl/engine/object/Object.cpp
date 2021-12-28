@@ -16,3 +16,8 @@ Object::~Object() {
 	delete &texture;
 	delete &rectangle;
 }
+
+void Object::move(int32_t x, int32_t y) {
+	rectangle.rect.x = x;
+	rectangle.rect.y = y;
+}

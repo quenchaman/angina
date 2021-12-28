@@ -21,8 +21,11 @@
 #include "sdl/graphics/Transformer.h"
 #include "sdl/graphics/Texture.h"
 #include "resources/Resources.h"
+#include "sdl/primitives/Color.h"
+#include "sdl/primitives/Rect.h"
 #include "sdl/engine/thread/ThreadUtils.h"
 #include "sdl/engine/time/Time.h"
+#include "sdl/engine/object/Object.h"
 
 Engine::Engine(std::string appTitle) {
     Graphics::boot();
@@ -73,17 +76,29 @@ void Engine::loadResources(const std::unordered_map<int32_t, std::string>& idToP
 		Surface* surface = ResourceLoader::load(path);
 		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
 
-		resources[id] = texture;
+		textures[id] = texture;
 	}
 
 	std::cout << "Resources initialised" << std::endl;
 }
 
+void Engine::loadText(const std::unordered_map<int32_t, std::string>& idToTexts) {
+	for (auto const& [id, text] : idToTexts) {
+		Surface* surface = ResourceLoader::loadText(font, text, Color::RED);
+		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
+		Rect* rect = new Rect(0, 0, 500, 100, Color::BLUE);
+		Object* object = new Object(*texture, *rect);
+
+		objects[id] = object;
+	}
+
+	std::cout << "Texts initialised" << std::endl;
+}
+
 void Engine::draw() {
-    for (auto const& [id, texture] : resources) {
+    for (auto const& [id, texture] : textures) {
     	renderer->render(*texture);
     }
-
 
     for (auto const& [id, rectangle] : rectangles) {
     	renderer->render(*rectangle);
@@ -106,16 +121,16 @@ void Engine::limitFPS(int64_t elapsedTime) {
 	ThreadUtils::sleepFor(sleepTime);
 }
 
-void Engine::addRectangle(int32_t id, const Rect& rectangle) {
+void Engine::addRectangle(int32_t id, Rect& rectangle) {
 	rectangles[id] = &rectangle;
 }
 
-void Engine::addObject(int32_t id, const Object& object) {
+void Engine::addObject(int32_t id, Object& object) {
 	objects[id] = &object;
 }
 
 Engine::~Engine() {
-    for (auto const& [key, val] : resources) {
+    for (auto const& [key, val] : textures) {
         delete val;
     }
 

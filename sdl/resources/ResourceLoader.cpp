@@ -11,10 +11,12 @@
 #include <filesystem>
 
 #include "SDL_image.h"
+#include "SDL_ttf.h"
 
 #include "sdl/graphics/Surface.h"
 #include "exceptions/ResourceLoadException.h"
 #include "ResourceLoader.h"
+#include "sdl/primitives/Color.h"
 
 namespace ResourceLoader {
 	Surface* load(const std::string& path) {
@@ -42,6 +44,12 @@ namespace ResourceLoader {
 
 	TTF_Font* loadFont(const std::string& path, int32_t pointSize) {
 		return TTF_OpenFont(path.c_str(), pointSize);
+	}
+
+	Surface* loadText(TTF_Font* font, const std::string& text, Color color) {
+		SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), { color.red, color.green, color.blue, color.alpha });
+
+		return new Surface(surface);
 	}
 }
 

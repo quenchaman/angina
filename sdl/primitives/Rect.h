@@ -19,8 +19,6 @@ public:
 	Rect(const Point& position, const Dimensions& dim, const Color& color);
 	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color& color);
 
-	Point pos = Point::UNDEFINED;
-	Dimensions dimensions;
 	SDL_Rect rect;
 	Color color;
 
@@ -32,6 +30,5 @@ public:
 	static const Rect ZERO;
 	static const Rect UNDEFINED;
 };
-
 
 #endif /* SDL_PRIMITIVES_RECT_H_ */

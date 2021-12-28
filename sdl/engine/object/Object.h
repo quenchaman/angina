@@ -8,6 +8,8 @@
 #ifndef SDL_ENGINE_OBJECT_OBJECT_H_
 #define SDL_ENGINE_OBJECT_OBJECT_H_
 
+#include <cstdint>
+
 struct Texture;
 struct Rect;
 
@@ -15,6 +17,8 @@ class Object {
 public:
 	Object(Texture& t, Rect& rect);
 	~Object();
+
+	void move(int32_t x, int32_t y);
 
 	Texture& texture;
 	Rect& rectangle;

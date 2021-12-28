@@ -18,14 +18,10 @@ Test::~Test() {
 }
 
 void Test::init() {
-	std::unordered_map<int32_t, std::string> idToPaths;
-	idToPaths[0] = Resources::blackKing;
-    loadResources(idToPaths);
+	std::unordered_map<int32_t, std::string> idToTexts;
+	idToTexts[10] = "Zdraveite!";
 
-    Rect* rectangle = new Rect(40, 40, 150, 150, Color::GREEN);
-    Texture* king = resources[0];
-    Object* obj = new Object(*king, *rectangle);
-    addObject(0, *obj);
+	loadText(idToTexts);
 }
 
 void Test::update() {

@@ -37,9 +37,9 @@ private:
 protected:
     Renderer* renderer;
     bool quit = false;
-    std::unordered_map<int32_t, Texture*> resources;
-    std::unordered_map<int32_t, const Rect*> rectangles;
-    std::unordered_map<int32_t, const Object*> objects;
+    std::unordered_map<int32_t, Texture*> textures;
+    std::unordered_map<int32_t, Rect*> rectangles;
+    std::unordered_map<int32_t, Object*> objects;
     TTF_Font* font;
 
 	virtual void init() = 0;
@@ -47,8 +47,9 @@ protected:
 	virtual void handleLeftMouseClick() = 0;
 
 	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
-	void addRectangle(int32_t id, const Rect& rectangle);
-	void addObject(int32_t id, const Object& object);
+	void loadText(const std::unordered_map<int32_t, std::string>& idToTexts);
+	void addRectangle(int32_t id, Rect& rectangle);
+	void addObject(int32_t id, Object& object);
 };
 
 
