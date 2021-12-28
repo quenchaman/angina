@@ -22,6 +22,8 @@ void Test::init() {
 	idToTexts[10] = "Zdraveite!";
 
 	loadText(idToTexts);
+
+	objects[10]->move(0, 0);
 }
 
 void Test::update() {

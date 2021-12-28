@@ -7,11 +7,17 @@
 
 #include "Transformer.h"
 
+#include <cstdint>
+
 #include "SDL.h"
 
 #include "sdl/graphics/Renderer.h"
 #include "sdl/graphics/Surface.h"
 #include "sdl/graphics/Texture.h"
+#include "sdl/engine/object/Object.h"
+#include "sdl/primitives/Color.h"
+#include "sdl/primitives/Point.h"
+#include "sdl/primitives/Rect.h"
 
 #include "exceptions/GraphicsInitException.h"
 
@@ -26,7 +32,10 @@ namespace Transformer {
 			throw GraphicsInitException(SDL_GetError());
 		}
 
-		return new Texture(texture);
+		int32_t width = surface.getSurface()->w;
+		int32_t height = surface.getSurface()->h;
+
+		return new Texture(texture, width, height);
 	}
 
 	std::vector<Texture*> transformSurfacesToTextures(Renderer* renderer, const std::vector<Surface*>& surfaces) {
@@ -38,5 +47,12 @@ namespace Transformer {
 		}
 
 		return textures;
+	}
+
+	Object* transformTextureToObject(Texture& texture) {
+		Rect* rect = new Rect(Point::UNDEFINED, {texture.w, texture.h}, Color::NONE);
+		Object* object = new Object(texture, *rect);
+
+		return object;
 	}
 }
