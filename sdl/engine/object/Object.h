@@ -10,6 +10,9 @@
 
 #include <cstdint>
 
+#include "sdl/graphics/Flip.h"
+#include "sdl/primitives/Point.h"
+
 struct Texture;
 struct Rect;
 
@@ -22,6 +25,9 @@ public:
 
 	Texture& texture;
 	Rect& rectangle;
+	double rotation = 0.0;
+	Flip flip = Flip::NONE;
+	Point center = Point::ZERO;
 };
 
 #endif /* SDL_ENGINE_OBJECT_OBJECT_H_ */

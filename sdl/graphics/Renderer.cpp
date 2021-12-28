@@ -11,6 +11,7 @@
 #include <iostream>
 
 #include "SDL_render.h"
+#include "SDL_shape.h"
 
 #include "sdl/graphics/Texture.h"
 #include "sdl/primitives/Rect.h"
@@ -34,9 +35,9 @@ void Renderer::render(const Rect& rect) {
 }
 
 void Renderer::render(const Object& object) {
-	if (0 == SDL_RenderCopy(renderer, object.texture.getTexture(), nullptr, &object.rectangle.rect)) {
-		std::cerr << "Could not render text in rect: " << object.rectangle << std::endl;
-	}
+	const Point* center = &object.center;
+	SDL_Point centerPoint = { center->x, center->y };
+	SDL_RenderCopyEx(renderer, object.texture.getTexture(), nullptr, &object.rectangle.rect, object.rotation, &centerPoint, (SDL_RendererFlip) object.flip);
 }
 
 void Renderer::update() {

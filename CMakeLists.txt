@@ -54,6 +54,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/config/ConfigLoader.cpp
 	${DIR}/sdl/graphics/Transformer.h
 	${DIR}/sdl/graphics/Transformer.cpp
+	${DIR}/sdl/graphics/Flip.h
 #	${DIR}/chess/Piece.h
 #	${DIR}/chess/Piece.cpp
 #	${DIR}/chess/Pawn.h
