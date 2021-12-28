@@ -8,6 +8,8 @@
 #ifndef SDL_PRIMITIVES_RECT_H_
 #define SDL_PRIMITIVES_RECT_H_
 
+#include <iostream>
+
 #include "sdl/primitives/Point.h"
 #include "sdl/primitives/Dimensions.h"
 #include "sdl/primitives/Color.h"
@@ -29,6 +31,8 @@ public:
 
 	static const Rect ZERO;
 	static const Rect UNDEFINED;
+
+	friend std::ostream& operator<<(std::ostream& os, const Rect& rect);
 };
 
 #endif /* SDL_PRIMITIVES_RECT_H_ */

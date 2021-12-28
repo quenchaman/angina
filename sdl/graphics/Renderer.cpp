@@ -34,7 +34,9 @@ void Renderer::render(const Rect& rect) {
 }
 
 void Renderer::render(const Object& object) {
-	SDL_RenderCopy(renderer, object.texture.getTexture(), nullptr, &object.rectangle.rect);
+	if (0 == SDL_RenderCopy(renderer, object.texture.getTexture(), nullptr, &object.rectangle.rect)) {
+		std::cerr << "Could not render text in rect: " << object.rectangle << std::endl;
+	}
 }
 
 void Renderer::update() {

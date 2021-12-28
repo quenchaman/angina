@@ -48,7 +48,6 @@ namespace ResourceLoader {
 
 	Surface* loadText(TTF_Font* font, const std::string& text, Color color) {
 		SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), { color.red, color.green, color.blue, color.alpha });
-
 		return new Surface(surface);
 	}
 }

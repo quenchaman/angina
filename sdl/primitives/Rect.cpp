@@ -29,3 +29,7 @@ bool Rect::isInRect(const Point& point) {
     return point.x >= rect.x && point.x <= (rect.x + rect.w) &&
     		point.y >= rect.y && point.y <= rect.y + rect.h;
 }
+
+std::ostream& operator<<(std::ostream& os, const Rect& rect) {
+	return os << "X: " << rect.rect.x << "; Y: " << rect.rect.y << "; Width: " << rect.rect.w << "; Height: " << rect.rect.h << std::endl;
+}

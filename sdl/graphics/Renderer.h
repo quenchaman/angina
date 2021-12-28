@@ -32,5 +32,4 @@ private:
 	SDL_Renderer* renderer;
 };
 
-
 #endif /* SDL_GRAPHICS_RENDERER_H_ */

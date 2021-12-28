@@ -20,6 +20,7 @@
 #include "sdl/graphics/Renderer.h"
 #include "sdl/graphics/Transformer.h"
 #include "sdl/graphics/Texture.h"
+#include "sdl/graphics/Surface.h"
 #include "resources/Resources.h"
 #include "sdl/primitives/Color.h"
 #include "sdl/primitives/Rect.h"
@@ -86,7 +87,9 @@ void Engine::loadText(const std::unordered_map<int32_t, std::string>& idToTexts)
 	for (auto const& [id, text] : idToTexts) {
 		Surface* surface = ResourceLoader::loadText(font, text, Color::RED);
 		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
-		Rect* rect = new Rect(0, 0, 500, 100, Color::BLUE);
+		int32_t w = surface->getSurface()->w;
+		int32_t h = surface->getSurface()->h;
+		Rect* rect = new Rect(0, 0, w, h, Color::BLUE);
 		Object* object = new Object(*texture, *rect);
 
 		objects[id] = object;

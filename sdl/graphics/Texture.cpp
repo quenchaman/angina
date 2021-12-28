@@ -23,3 +23,7 @@ Texture::~Texture() {
 		texture = nullptr;
 	}
 }
+
+std::ostream& operator<<(std::ostream& os, const Texture& t) {
+	return os << t.texture;
+}

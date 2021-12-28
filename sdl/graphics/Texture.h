@@ -8,6 +8,8 @@
 #ifndef SDL_GRAPHICS_TEXTURE_H_
 #define SDL_GRAPHICS_TEXTURE_H_
 
+#include <iostream>
+
 struct SDL_Texture;
 struct SDL_Point;
 
@@ -17,6 +19,8 @@ public:
 	~Texture();
 
 	SDL_Texture* getTexture() const;
+
+	friend std::ostream& operator<<(std::ostream& os, const Texture& t);
 private:
 	SDL_Texture* texture;
 };
