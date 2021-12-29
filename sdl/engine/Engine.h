@@ -16,6 +16,9 @@
 #include "SDL_events.h"
 #include "SDL_ttf.h"
 
+#include "sdl/engine/buttons/ButtonManager.h"
+#include "sdl/events/InputEvent.h"
+
 struct Window;
 struct Renderer;
 struct Texture;
@@ -31,23 +34,27 @@ public:
 private:
 	Window* window;
 	SDL_Event e;
+	Renderer* renderer;
+	bool quit = false;
 
 	void limitFPS(int64_t microseconds);
 	void draw();
+	void handleEvent();
 protected:
-    Renderer* renderer;
-    bool quit = false;
-    std::unordered_map<int32_t, Texture*> textures;
     std::unordered_map<int32_t, Rect*> rectangles;
     std::unordered_map<int32_t, Object*> objects;
     TTF_Font* font;
+    ButtonManager buttonManager;
+    InputEvent event;
 
 	virtual void init() = 0;
 	virtual void update() = 0;
 	virtual void handleLeftMouseClick() = 0;
+	virtual void handleBtnClick(int32_t idx) = 0;
 
 	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
 	void loadText(const std::unordered_map<int32_t, std::string>& idToTexts);
+	void loadButtons(const std::unordered_map<int32_t, std::string>& idToPaths);
 	void addRectangle(int32_t id, Rect& rectangle);
 	void addObject(int32_t id, Object& object);
 };

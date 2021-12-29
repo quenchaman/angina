@@ -27,6 +27,7 @@
 #include "sdl/engine/thread/ThreadUtils.h"
 #include "sdl/engine/time/Time.h"
 #include "sdl/engine/object/Object.h"
+#include "sdl/engine/buttons/ButtonManager.h"
 
 Engine::Engine(std::string appTitle) {
     Graphics::boot();
@@ -40,6 +41,7 @@ Engine::Engine(std::string appTitle) {
     );
     renderer = new Renderer(*window);
     font = ResourceLoader::loadFont(Resources::montserratFont, 28);
+    event.init();
 }
 
 void Engine::start() {
@@ -50,14 +52,13 @@ void Engine::start() {
 		time.getElapsed();
 		renderer->clear();
 
-		while (SDL_PollEvent(&e) != 0) {
-			if (e.type == SDL_QUIT) {
+		while (event.poll()) {
+			if (event.hasExitEvent()) {
 				quit = true;
-			} else if (e.type == SDL_KEYDOWN) {
-			} else if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
-				handleLeftMouseClick();
-			} else {
+				break;
 			}
+
+			handleEvent();
 		}
 
 		update();
@@ -77,10 +78,19 @@ void Engine::loadResources(const std::unordered_map<int32_t, std::string>& idToP
 		Surface* surface = ResourceLoader::load(path);
 		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
 
-		textures[id] = texture;
+		objects[id] = Transformer::transformTextureToObject(*texture);
 	}
 
 	std::cout << "Resources initialised" << std::endl;
+}
+
+void Engine::loadButtons(const std::unordered_map<int32_t, std::string>& idToPaths) {
+	for (auto const& [id, path] : idToPaths) {
+		Surface* surface = ResourceLoader::load(path);
+		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
+
+		buttonManager.registerButton(id, Transformer::transformTextureToButton(*texture));
+	}
 }
 
 void Engine::loadText(const std::unordered_map<int32_t, std::string>& idToTexts) {
@@ -124,8 +134,16 @@ void Engine::addObject(int32_t id, Object& object) {
 	objects[id] = &object;
 }
 
+void Engine::handleEvent() {
+	int32_t buttonIdx = buttonManager.getClickedButtonIndex(event);
+
+	if (buttonIdx != -1) {
+		handleBtnClick(buttonIdx);
+	}
+}
+
 Engine::~Engine() {
-    for (auto const& [key, val] : textures) {
+    for (auto const& [key, val] : objects) {
         delete val;
     }
 

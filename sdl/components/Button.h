@@ -4,24 +4,20 @@
 
 #ifndef ANGINA_BUTTON_H
 #define ANGINA_BUTTON_H
+
 #include <cstdlib>
+
+#include "sdl/engine/object/Object.h"
 
 struct Texture;
 struct Point;
 struct Rect;
+struct InputEvent;
 
-class Button {
+class Button : public Object {
 public:
-    Button(int32_t x, int32_t y, const Texture& texture);
-    ~Button();
-    int32_t getX();
-    int32_t getY();
-    bool isClicked(const Point& p);
-private:
-    int32_t x;
-    int32_t y;
-    Texture& texture;
-    Rect* rect;
+    Button(Texture& texture, Rect& rect);
+    ~Button() = default;
 };
 
 

@@ -14,11 +14,13 @@ struct Texture;
 struct Renderer;
 struct Surface;
 struct Object;
+struct Button;
 
 namespace Transformer {
 	Texture* transformSurfaceToTexture(Renderer& renderer, Surface& surface);
 	std::vector<Texture*> transformSurfacesToTextures(Renderer* renderer, const std::vector<Surface*>& surfaces);
 	Object* transformTextureToObject(Texture& texture);
+	Button* transformTextureToButton(Texture& texture);
 }
 
 

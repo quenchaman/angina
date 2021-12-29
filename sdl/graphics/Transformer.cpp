@@ -18,6 +18,7 @@
 #include "sdl/primitives/Color.h"
 #include "sdl/primitives/Point.h"
 #include "sdl/primitives/Rect.h"
+#include "sdl/components/Button.h"
 
 #include "exceptions/GraphicsInitException.h"
 
@@ -54,5 +55,12 @@ namespace Transformer {
 		Object* object = new Object(texture, *rect);
 
 		return object;
+	}
+
+	Button* transformTextureToButton(Texture& texture) {
+		Rect* rect = new Rect(Point::UNDEFINED, {texture.w, texture.h}, Color::NONE);
+		Button* btn = new Button(texture, *rect);
+
+		return btn;
 	}
 }

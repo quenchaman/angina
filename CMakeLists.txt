@@ -28,10 +28,15 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/engine/Engine.cpp
 	${DIR}/sdl/engine/time/Time.h
 	${DIR}/sdl/engine/time/Time.cpp
+	${DIR}/sdl/events/InputEvent.h
+	${DIR}/sdl/events/InputEvent.cpp
+	${DIR}/sdl/events/EventDefines.h
 	${DIR}/sdl/engine/thread/ThreadUtils.h
 	${DIR}/sdl/engine/thread/ThreadUtils.cpp
 	${DIR}/sdl/engine/object/Object.h
 	${DIR}/sdl/engine/object/Object.cpp
+	${DIR}/sdl/engine/buttons/ButtonManager.h
+	${DIR}/sdl/engine/buttons/ButtonManager.cpp
 	${DIR}/sdl/graphics/Texture.h
 	${DIR}/sdl/graphics/Texture.cpp
 	${DIR}/sdl/graphics/Renderer.h
@@ -72,8 +77,8 @@ add_executable(${PROJECT_NAME}
 #	${DIR}/chess/State.h
 #	${DIR}/chess/Chess.h
 #	${DIR}/chess/Chess.cpp
-#	${DIR}/sdl/components/Button.cpp
-#	${DIR}/sdl/components/Button.h
+	${DIR}/sdl/components/Button.cpp
+	${DIR}/sdl/components/Button.h
 #	${DIR}/chess/Move.h
 #	${DIR}/chess/Constants.h)
 	${DIR}/test/Test.h

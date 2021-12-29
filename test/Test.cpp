@@ -18,12 +18,12 @@ Test::~Test() {
 }
 
 void Test::init() {
-	std::unordered_map<int32_t, std::string> idToTexts;
-	idToTexts[10] = "Zdraveite!";
+	std::unordered_map<int32_t, std::string> idToPaths;
+	idToPaths[0] = Resources::blackBishop;
 
-	loadText(idToTexts);
+	loadButtons(idToPaths);
 
-	objects[10]->move(0, 0);
+	objects[0]->move(0, 0);
 }
 
 void Test::update() {
@@ -31,6 +31,10 @@ void Test::update() {
 
 void Test::handleLeftMouseClick() {
 
+}
+
+void Test::handleBtnClick(int32_t idx) {
+	std::cout << "Button was clicked with index" << idx << std::endl;
 }
 
 Test::Test() : Engine("Test") {

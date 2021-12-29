@@ -18,6 +18,8 @@ public:
     void update() override;
 
     void handleLeftMouseClick() override;
+
+    void handleBtnClick(int32_t idx) override;
 };
 
 
