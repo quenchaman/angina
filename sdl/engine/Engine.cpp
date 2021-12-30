@@ -27,6 +27,7 @@
 #include "sdl/engine/thread/ThreadUtils.h"
 #include "sdl/engine/time/Time.h"
 #include "sdl/engine/object/Object.h"
+#include "sdl/components/Button.h"
 #include "sdl/engine/buttons/ButtonManager.h"
 
 Engine::Engine(std::string appTitle) {
@@ -111,6 +112,10 @@ void Engine::draw() {
 
     for (auto const& [id, object] : objects) {
 		renderer->render(*object);
+	}
+
+    for (auto const& [id, btn] : buttonManager.getButtons()) {
+		renderer->render(*btn);
 	}
 }
 

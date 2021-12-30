@@ -21,6 +21,8 @@ public:
 
 	void registerButton(int32_t id, Button* btn);
 	int32_t getClickedButtonIndex(const InputEvent& event);
+	Button& getButton(int32_t id);
+	std::unordered_map<int32_t, Button*>& getButtons();
 private:
 	std::unordered_map<int32_t, Button*> buttons;
 };

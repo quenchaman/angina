@@ -15,6 +15,7 @@ struct Renderer;
 struct Surface;
 struct Object;
 struct Button;
+struct Point;
 
 namespace Transformer {
 	Texture* transformSurfaceToTexture(Renderer& renderer, Surface& surface);

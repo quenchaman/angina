@@ -12,6 +12,7 @@
 #include "sdl/primitives/Rect.h"
 #include "sdl/engine/object/Object.h"
 #include "resources/Resources.h"
+#include "sdl/components/Button.h"
 
 Test::~Test() {
 
@@ -23,7 +24,7 @@ void Test::init() {
 
 	loadButtons(idToPaths);
 
-	objects[0]->move(0, 0);
+	buttonManager.getButton(0).move(0, 0);
 }
 
 void Test::update() {

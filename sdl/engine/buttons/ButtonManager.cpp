@@ -34,3 +34,11 @@ int32_t ButtonManager::getClickedButtonIndex(const InputEvent& event) {
 
 	return -1;
 }
+
+Button& ButtonManager::getButton(int32_t id) {
+	return *buttons[id];
+}
+
+std::unordered_map<int32_t, Button*>& ButtonManager::getButtons() {
+	return buttons;
+}
