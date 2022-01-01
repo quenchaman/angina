@@ -21,10 +21,15 @@ Test::~Test() {
 void Test::init() {
 	std::unordered_map<int32_t, std::string> idToPaths;
 	idToPaths[0] = Resources::blackBishop;
+	idToPaths[1] = Resources::whiteBishop;
+	std::unordered_map<int32_t, int32_t> idToPageIdx;
+	idToPageIdx[0] = 0;
+	idToPageIdx[1] = 1;
 
-	loadButtons(idToPaths);
+	loadButtons(idToPaths, idToPageIdx);
 
 	buttonManager.getButton(0).move(0, 0);
+	buttonManager.getButton(1).move(0, 0);
 }
 
 void Test::update() {
@@ -35,7 +40,12 @@ void Test::handleLeftMouseClick() {
 }
 
 void Test::handleBtnClick(int32_t idx) {
-	std::cout << "Button was clicked with index" << idx << std::endl;
+	std::cout << "The clicked index is " << idx << std::endl;
+	if (idx == 0) {
+		navigateTo(1);
+	} else if (idx == 1) {
+		navigateTo(0);
+	}
 }
 
 Test::Test() : Engine("Test") {

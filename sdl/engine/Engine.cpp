@@ -80,17 +80,20 @@ void Engine::loadResources(const std::unordered_map<int32_t, std::string>& idToP
 		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
 
 		objects[id] = Transformer::transformTextureToObject(*texture);
+		visualComponentToPageIdx[id] = 0;
 	}
 
 	std::cout << "Resources initialised" << std::endl;
 }
 
-void Engine::loadButtons(const std::unordered_map<int32_t, std::string>& idToPaths) {
+void Engine::loadButtons(const std::unordered_map<int32_t, std::string>& idToPaths, const std::unordered_map<int32_t, int32_t>& idToPageIdx) {
 	for (auto const& [id, path] : idToPaths) {
 		Surface* surface = ResourceLoader::load(path);
 		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
 
-		buttonManager.registerButton(id, Transformer::transformTextureToButton(*texture));
+		Button* btn = Transformer::transformTextureToButton(*texture);
+		buttonManager.registerButton(id, btn);
+		visualComponentToPageIdx[id] = idToPageIdx.at(id);
 	}
 }
 
@@ -100,6 +103,7 @@ void Engine::loadText(const std::unordered_map<int32_t, std::string>& idToTexts)
 		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
 
 		objects[id] = Transformer::transformTextureToObject(*texture);
+		visualComponentToPageIdx[id] = 0;
 	}
 
 	std::cout << "Texts initialised" << std::endl;
@@ -107,15 +111,21 @@ void Engine::loadText(const std::unordered_map<int32_t, std::string>& idToTexts)
 
 void Engine::draw() {
     for (auto const& [id, rectangle] : rectangles) {
-    	renderer->render(*rectangle);
+    	if (visualComponentToPageIdx[id] == page) {
+    		renderer->render(*rectangle);
+    	}
     }
 
     for (auto const& [id, object] : objects) {
-		renderer->render(*object);
+    	if (visualComponentToPageIdx[id] == page) {
+    		renderer->render(*object);
+    	}
 	}
 
     for (auto const& [id, btn] : buttonManager.getButtons()) {
-		renderer->render(*btn);
+    	if (visualComponentToPageIdx[id] == page) {
+    		renderer->render(*btn);
+    	}
 	}
 }
 
@@ -145,6 +155,10 @@ void Engine::handleEvent() {
 	if (buttonIdx != -1) {
 		handleBtnClick(buttonIdx);
 	}
+}
+
+void Engine::navigateTo(int32_t pageNum) {
+	page = pageNum;
 }
 
 Engine::~Engine() {
