@@ -20,6 +20,8 @@ Texture::~Texture() {
 		SDL_DestroyTexture(texture);
 		texture = nullptr;
 	}
+
+	std::cout << "Texture destroyed" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const Texture& t) {

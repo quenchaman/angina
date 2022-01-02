@@ -29,6 +29,7 @@
 #include "sdl/engine/object/Object.h"
 #include "sdl/components/Button.h"
 #include "sdl/engine/buttons/ButtonManager.h"
+#include "sdl/engine/page/Page.h"
 
 Engine::Engine(std::string appTitle) {
     Graphics::boot();
@@ -41,7 +42,7 @@ Engine::Engine(std::string appTitle) {
             SDL_WINDOW_SHOWN
     );
     renderer = new Renderer(*window);
-    font = ResourceLoader::loadFont(Resources::montserratFont, 28);
+
     event.init();
 }
 
@@ -74,59 +75,12 @@ void Engine::start() {
 	}
 }
 
-void Engine::loadResources(const std::unordered_map<int32_t, std::string>& idToPaths) {
-	for (auto const& [id, path] : idToPaths) {
-		Surface* surface = ResourceLoader::load(path);
-		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
-
-		objects[id] = Transformer::transformTextureToObject(*texture);
-		visualComponentToPageIdx[id] = 0;
-	}
-
-	std::cout << "Resources initialised" << std::endl;
-}
-
-void Engine::loadButtons(const std::unordered_map<int32_t, std::string>& idToPaths, const std::unordered_map<int32_t, int32_t>& idToPageIdx) {
-	for (auto const& [id, path] : idToPaths) {
-		Surface* surface = ResourceLoader::load(path);
-		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
-
-		Button* btn = Transformer::transformTextureToButton(*texture);
-		buttonManager.registerButton(id, btn);
-		visualComponentToPageIdx[id] = idToPageIdx.at(id);
-	}
-}
-
-void Engine::loadText(const std::unordered_map<int32_t, std::string>& idToTexts) {
-	for (auto const& [id, text] : idToTexts) {
-		Surface* surface = ResourceLoader::loadText(font, text, Color::RED);
-		Texture* texture = Transformer::transformSurfaceToTexture(*renderer, *surface);
-
-		objects[id] = Transformer::transformTextureToObject(*texture);
-		visualComponentToPageIdx[id] = 0;
-	}
-
-	std::cout << "Texts initialised" << std::endl;
+Page* Engine::createNewPage() {
+	return new Page(*renderer);
 }
 
 void Engine::draw() {
-    for (auto const& [id, rectangle] : rectangles) {
-    	if (visualComponentToPageIdx[id] == page) {
-    		renderer->render(*rectangle);
-    	}
-    }
-
-    for (auto const& [id, object] : objects) {
-    	if (visualComponentToPageIdx[id] == page) {
-    		renderer->render(*object);
-    	}
-	}
-
-    for (auto const& [id, btn] : buttonManager.getButtons()) {
-    	if (visualComponentToPageIdx[id] == page) {
-    		renderer->render(*btn);
-    	}
-	}
+	page->draw();
 }
 
 void Engine::limitFPS(int64_t elapsedTime) {
@@ -141,32 +95,40 @@ void Engine::limitFPS(int64_t elapsedTime) {
 	ThreadUtils::sleepFor(sleepTime);
 }
 
-void Engine::addRectangle(int32_t id, Rect& rectangle) {
-	rectangles[id] = &rectangle;
-}
-
-void Engine::addObject(int32_t id, Object& object) {
-	objects[id] = &object;
-}
-
 void Engine::handleEvent() {
-	int32_t buttonIdx = buttonManager.getClickedButtonIndex(event);
+	int32_t buttonIdx = page->buttonManager.getClickedButtonIndex(event);
 
 	if (buttonIdx != -1) {
 		handleBtnClick(buttonIdx);
 	}
 }
 
-void Engine::navigateTo(int32_t pageNum) {
-	page = pageNum;
+void Engine::navigateTo(Page* page) {
+	clearPage();
+	this->page = page;
+}
+
+void Engine::clearPage() {
+	if (page != nullptr) {
+		delete page;
+		page = nullptr;
+	}
 }
 
 Engine::~Engine() {
-    for (auto const& [key, val] : objects) {
-        delete val;
-    }
+	if (page != nullptr) {
+		delete page;
+		page = nullptr;
+	}
 
-    delete renderer;
+	if (renderer != nullptr) {
+		delete renderer;
+		renderer = nullptr;
+	}
+
+	if (window != nullptr) {
+
+	}
     delete window;
 
     IMG_Quit();

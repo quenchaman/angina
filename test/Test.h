@@ -20,6 +20,11 @@ public:
     void handleLeftMouseClick() override;
 
     void handleBtnClick(int32_t idx) override;
+
+private:
+
+    Page* initWelcomePage();
+    Page* initSecondPage();
 };
 
 

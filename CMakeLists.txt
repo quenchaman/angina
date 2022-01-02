@@ -37,6 +37,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/engine/object/Object.cpp
 	${DIR}/sdl/engine/buttons/ButtonManager.h
 	${DIR}/sdl/engine/buttons/ButtonManager.cpp
+	${DIR}/sdl/engine/page/Page.h
+	${DIR}/sdl/engine/page/Page.cpp
 	${DIR}/sdl/graphics/Texture.h
 	${DIR}/sdl/graphics/Texture.cpp
 	${DIR}/sdl/graphics/Renderer.h

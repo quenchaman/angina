@@ -4,6 +4,7 @@
  *  Created on: Oct 13, 2021
  *      Author: ubuntu
  */
+#include <iostream>
 
 #include "Surface.h"
 
@@ -18,6 +19,8 @@ Surface::~Surface() {
 		SDL_FreeSurface(_surface);
 		_surface = nullptr;
 	}
+
+	std::cout << "Surface destroyed" << std::endl;
 }
 
 SDL_Surface* Surface::getSurface() {
