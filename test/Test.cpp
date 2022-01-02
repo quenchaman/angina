@@ -46,7 +46,7 @@ Page* Test::initWelcomePage() {
 	idToPaths[0] = Resources::blackBishop;
 
 	welcomePage->loadButtons(idToPaths);
-	welcomePage->buttonManager.getButton(0).move(0, 0);
+	welcomePage->buttonManager.setPosition(0, 100, 100);
 
 	return welcomePage;
 }
@@ -58,7 +58,7 @@ Page* Test::initSecondPage() {
 	idToPaths[1] = Resources::whiteBishop;
 
 	welcomePage->loadButtons(idToPaths);
-	welcomePage->buttonManager.getButton(1).move(0, 0);
+	welcomePage->buttonManager.setPosition(1, 150, 150);
 
 	return welcomePage;
 }

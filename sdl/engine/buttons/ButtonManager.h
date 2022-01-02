@@ -23,6 +23,7 @@ public:
 	int32_t getClickedButtonIndex(const InputEvent& event);
 	Button& getButton(int32_t id);
 	std::unordered_map<int32_t, Button*>& getButtons();
+	void setPosition(int32_t btnIdx, int32_t x, int32_t y);
 private:
 	std::unordered_map<int32_t, Button*> buttons;
 };

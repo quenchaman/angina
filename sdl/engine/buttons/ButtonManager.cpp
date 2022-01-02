@@ -42,3 +42,7 @@ Button& ButtonManager::getButton(int32_t id) {
 std::unordered_map<int32_t, Button*>& ButtonManager::getButtons() {
 	return buttons;
 }
+
+void ButtonManager::setPosition(int32_t btnIdx, int32_t x, int32_t y) {
+	getButton(btnIdx).move(x, y);
+}
