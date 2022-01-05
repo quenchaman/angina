@@ -18,6 +18,7 @@ struct Texture;
 struct Rect;
 struct Object;
 struct Renderer;
+struct Point;
 
 class Page {
 public:
@@ -31,6 +32,9 @@ public:
 	void addObject(int32_t id, Object& object);
 	void setBackground(Texture& background);
 	void draw();
+
+	void addObject(int32_t id, const std::string& resourcePath, Point position);
+	void addButton(int32_t id, const std::string& resourcePath, Point position);
 
 	ButtonManager buttonManager;
 private:

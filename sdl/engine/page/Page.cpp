@@ -16,6 +16,7 @@
 #include "sdl/primitives/Rect.h"
 #include "sdl/engine/object/Object.h"
 #include "sdl/components/Button.h"
+#include "sdl/primitives/Point.h"
 
 Page::Page(Renderer& renderer): _renderer(renderer) {
 	font = ResourceLoader::loadFont(Resources::montserratFont, 28);
@@ -69,6 +70,23 @@ void Page::loadText(const std::unordered_map<int32_t, std::string>& idToTexts) {
 
 		objects[id] = Transformer::transformTextureToObject(*texture);
 	}
+}
+
+void Page::addObject(int32_t id, const std::string& resourcePath, Point position) {
+	Surface* surface = ResourceLoader::load(resourcePath);
+	Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
+
+	objects[id] = Transformer::transformTextureToObject(*texture);
+	objects[id]->move(position.x, position.y);
+}
+
+void Page::addButton(int32_t id, const std::string& resourcePath, Point position) {
+	Surface* surface = ResourceLoader::load(resourcePath);
+	Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
+
+	Button* btn = Transformer::transformTextureToButton(*texture);
+	buttonManager.registerButton(id, btn);
+	buttonManager.getButton(id).move(position.x, position.y);
 }
 
 void Page::setBackground(Texture& background) {

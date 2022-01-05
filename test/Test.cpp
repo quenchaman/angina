@@ -14,6 +14,7 @@
 #include "resources/Resources.h"
 #include "sdl/components/Button.h"
 #include "sdl/engine/page/Page.h"
+#include "sdl/primitives/Point.h"
 
 Test::~Test() {
 
@@ -30,39 +31,20 @@ void Test::handleLeftMouseClick() {
 
 }
 
-void Test::handleBtnClick(int32_t idx) {
-	std::cout << "The clicked index is " << idx << std::endl;
-	if (idx == 0) {
-		navigateTo(initSecondPage());
-	} else if (idx == 1) {
-		navigateTo(initWelcomePage());
-	}
+void Test::handleBtnClick([[maybe_unused]]int32_t idx) {
+
 }
 
 Page* Test::initWelcomePage() {
 	Page* welcomePage = createNewPage();
 
-	std::unordered_map<int32_t, std::string> idToPaths;
-	idToPaths[0] = Resources::blackBishop;
-
-	welcomePage->loadButtons(idToPaths);
-	welcomePage->buttonManager.setPosition(0, 100, 100);
+	welcomePage->addButton(0, Resources::gas, Point{0, 0});
+	welcomePage->addButton(1, Resources::brake, Point{150, 0});
 
 	return welcomePage;
 }
 
-Page* Test::initSecondPage() {
-	Page* welcomePage = createNewPage();
-
-	std::unordered_map<int32_t, std::string> idToPaths;
-	idToPaths[1] = Resources::whiteBishop;
-
-	welcomePage->loadButtons(idToPaths);
-	welcomePage->buttonManager.setPosition(1, 150, 150);
-
-	return welcomePage;
-}
-
+// TODO: We must have a way to specify how big the window should be
 Test::Test() : Engine("Test") {
 
 }
