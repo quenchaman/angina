@@ -31,14 +31,19 @@
 #include "sdl/engine/buttons/ButtonManager.h"
 #include "sdl/engine/page/Page.h"
 
-Engine::Engine(std::string appTitle) {
+Engine::Engine(std::string appTitle, Dimensions screenSize) {
     Graphics::boot();
     Graphics::bootImageExtension();
     Graphics::bootTTFExtensions();
+
+    if (screenSize.h == 0 || screenSize.w == 0) {
+    	screenSize = { Globals::config.screenWidth, Globals::config.screenHeight };
+    }
+
     window = new Window(
             appTitle,
             { SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED },
-            { Globals::config.screenWidth, Globals::config.screenHeight },
+            { screenSize.w, screenSize.h },
             SDL_WINDOW_SHOWN
     );
     renderer = new Renderer(*window);

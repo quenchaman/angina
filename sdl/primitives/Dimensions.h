@@ -11,8 +11,13 @@
 #include <cstdint>
 
 struct Dimensions {
-	int32_t w;
-	int32_t h;
+	Dimensions() = default;
+	Dimensions(int32_t w, int32_t h);
+
+	int32_t w = 0;
+	int32_t h = 0;
+
+	static const Dimensions UNDEFINED;
 };
 
 

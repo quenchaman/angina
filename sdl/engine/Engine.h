@@ -18,6 +18,7 @@
 
 #include "sdl/engine/buttons/ButtonManager.h"
 #include "sdl/events/InputEvent.h"
+#include "sdl/primitives/Dimensions.h"
 
 struct Window;
 struct Renderer;
@@ -28,7 +29,7 @@ struct Page;
 
 class Engine {
 public:
-	Engine(std::string appTitle);
+	Engine(std::string appTitle, Dimensions dimensions);
 	virtual ~Engine();
 
 	void start();
