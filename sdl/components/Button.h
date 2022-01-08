@@ -19,6 +19,8 @@ class Button : public Object {
 public:
     Button(Texture& texture, Rect& rect, Renderer& renderer);
     ~Button() = default;
+
+    void draw();
 };
 
 

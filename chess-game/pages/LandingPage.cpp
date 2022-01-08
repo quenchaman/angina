@@ -11,20 +11,21 @@
 #include "resources/Resources.h"
 #include "sdl/engine/object/Object.h"
 #include "sdl/primitives/Point.h"
+#include "sdl/components/Button.h"
 
 LandingPage::LandingPage(Renderer& renderer): Page(renderer) {
 	onPageLoad();
 }
 
 void LandingPage::onPageLoad() {
-	addButton(0, Resources::gas, Point{0, 0});
-	addButton(1, Resources::brake, Point{150, 0});
+	addButton(ChessAssets::NEW_GAME_BUTTON, Resources::newGameButton, Point{300, 350});
 
 	addObject(ChessAssets::START_SCREEN_BACKGROUND_IMAGE, Resources::startScreen2, Point{0, 0});
 }
 
 void LandingPage::draw() {
 	objects[ChessAssets::START_SCREEN_BACKGROUND_IMAGE]->draw();
+	buttonManager.getButton(ChessAssets::NEW_GAME_BUTTON).draw();
 }
 
 void LandingPage::onPageUnload() {

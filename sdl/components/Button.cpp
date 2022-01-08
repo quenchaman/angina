@@ -8,3 +8,7 @@
 
 Button::Button(Texture& texture, Rect& rect, Renderer& renderer): Object(texture, rect, renderer) {
 }
+
+void Button::draw() {
+	Object::draw();
+}
