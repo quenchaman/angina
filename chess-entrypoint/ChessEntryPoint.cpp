@@ -34,9 +34,11 @@ void ChessEntryPoint::handleLeftMouseClick() {
 
 }
 
-void ChessEntryPoint::handleBtnClick([[maybe_unused]]int32_t idx) {
-	if (idx == 1) {
+void ChessEntryPoint::handleBtnClick(int32_t buttonId) {
+	if (buttonId == ChessAssets::NEW_GAME_BUTTON) {
 		navigateTo(initChessPage());
+	} else if (buttonId == ChessAssets::QUIT_CHESS_GAME_BUTTON) {
+		navigateTo(initWelcomePage());
 	}
 }
 

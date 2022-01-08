@@ -20,7 +20,7 @@ struct Board;
 class ChessPage : public Page {
 public:
 	ChessPage(Renderer& renderer);
-	~ChessPage() = default;
+	~ChessPage();
 
 	void draw();
 	void onPageLoad();

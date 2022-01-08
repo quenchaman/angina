@@ -5,6 +5,7 @@
 #include "Button.h"
 
 #include "sdl/engine/object/Object.h"
+#include "sdl/graphics/Texture.h"
 
 Button::Button(Texture& texture, Rect& rect, Renderer& renderer): Object(texture, rect, renderer) {
 }

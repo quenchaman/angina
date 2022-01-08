@@ -36,6 +36,8 @@ namespace Transformer {
 		int32_t width = surface.getSurface()->w;
 		int32_t height = surface.getSurface()->h;
 
+		delete &surface;
+
 		return new Texture(texture, width, height);
 	}
 

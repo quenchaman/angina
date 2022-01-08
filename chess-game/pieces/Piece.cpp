@@ -7,4 +7,6 @@
 
 #include "Piece.h"
 
+#include "sdl/engine/object/Object.h"
+
 Piece::Piece(Object& _object, Cell _cell, Side _side, Rank _rank): object(_object), cell(_cell), side(_side), rank(_rank), hasMoved(false) {}

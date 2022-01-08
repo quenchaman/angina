@@ -16,6 +16,7 @@ struct Object;
 
 struct Piece {
 	Piece(Object& object, Cell cell, Side side, Rank rank);
+	~Piece() = default;
 
 	Object& object;
 	Cell cell;

@@ -22,6 +22,7 @@ void ChessPage::onPageLoad() {
 	addObject(ChessAssets::START_SCREEN_BACKGROUND_IMAGE, Resources::startScreen2, Point{0, 0});
 	addObject(ChessAssets::BOARD, Resources::board, Point{0, 0});
 	board = new Board(*objects[ChessAssets::BOARD], Dimensions{80, 80});
+	addButton(ChessAssets::QUIT_CHESS_GAME_BUTTON, Resources::quitGameButton, Point{645, 20});
 
 	createPiece(ChessAssets::WHITE_ROOK_ON_BLACK, Resources::whiteRook, Cell{7, 0}, Rank::ROOK, Side::White);
 	createPiece(ChessAssets::WHITE_KNIGHT_ON_WHITE, Resources::whiteKnight, Cell{7, 1}, Rank::KNIGHT, Side::White);
@@ -63,6 +64,7 @@ void ChessPage::onPageLoad() {
 void ChessPage::draw() {
 	objects[ChessAssets::START_SCREEN_BACKGROUND_IMAGE]->draw();
 	board->draw();
+	buttonManager.getButton(ChessAssets::QUIT_CHESS_GAME_BUTTON).draw();
 }
 
 void ChessPage::createPiece(ChessAssets asset, std::string resource, Cell cell, Rank rank, Side side) {
@@ -72,5 +74,12 @@ void ChessPage::createPiece(ChessAssets asset, std::string resource, Cell cell, 
 }
 
 void ChessPage::onPageUnload() {
+	if (board != nullptr) {
+		delete board;
+		board = nullptr;
+	}
+}
 
+ChessPage::~ChessPage() {
+	onPageUnload();
 }

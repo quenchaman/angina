@@ -34,3 +34,12 @@ Point Board::putPiece(Piece& piece) {
 
 	return piecePoint;
 }
+
+Board::~Board() {
+	for (auto const& [point, piece] : _piecePositions) {
+		delete piece;
+	}
+	_piecePositions.clear();
+
+	std::cout << "Board destroyed" << std::endl;
+}

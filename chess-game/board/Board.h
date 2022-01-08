@@ -26,6 +26,7 @@ struct PointHasher {
 class Board {
 public:
 	Board(Object& object, Dimensions cellDimensions);
+	~Board();
 
 	void draw();
 

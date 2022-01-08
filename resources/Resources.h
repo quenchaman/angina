@@ -33,7 +33,7 @@ namespace Resources {
     const std::string startScreen2 = prefix + "start_screen_2.png";
     const std::string newGameButton = prefix + "button_new-game.png";
     const std::string continueGameButton = prefix + "button_continue_game.png";
-    const std::string quitGameButton = prefix + "button_quit_game.png";
+    const std::string quitGameButton = prefix + "button_quit.png";
     const std::string saveGameButton = prefix + "button_save_game.png";
 
 

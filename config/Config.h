@@ -13,7 +13,7 @@
 namespace Config {
 	const int32_t SCREEN_WIDTH = 640;
 	const int32_t SCREEN_HEIGHT = 480;
-	const int32_t FRAME_RATE = 30;
+	const int32_t FRAME_RATE = 20;
 }
 
 
