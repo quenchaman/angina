@@ -17,6 +17,12 @@
 
 struct Object;
 
+struct PointHasher {
+	size_t operator() (const Point& point) const {
+		return (point.x * 10) + point.y;
+	}
+};
+
 class Board {
 public:
 	Board(Object& object, Dimensions cellDimensions);
@@ -27,7 +33,7 @@ public:
 private:
 	Object& _object;
 	Dimensions _cellDimensions;
-	std::unordered_map<Point, Piece*> _piecePositions;
+	std::unordered_map<Point, Piece*, PointHasher> _piecePositions;
 };
 
 #endif /* CHESS_GAME_BOARD_BOARD_H_ */

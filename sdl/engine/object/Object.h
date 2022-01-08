@@ -31,7 +31,6 @@ public:
 	double rotation = 0.0;
 	Flip flip = Flip::NONE;
 	Point center = Point::ZERO;
-	Point position = Point::UNDEFINED;
 private:
 	Renderer& _renderer;
 };

@@ -9,6 +9,10 @@
 #define CHESS_GAME_PAGES_CHESSPAGE_H_
 
 #include "sdl/engine/page/Page.h"
+#include "chess-game/pieces/Side.h"
+#include "chess-game/pieces/Rank.h"
+#include "chess-game/enums/ChessAssets.h"
+#include "chess-game/board/Cell.h"
 
 struct Renderer;
 struct Board;
@@ -21,6 +25,7 @@ public:
 	void draw();
 	void onPageLoad();
 	void onPageUnload();
+	void createPiece(ChessAssets asset, std::string resource, Cell cell, Rank rank, Side side);
 private:
 	Board* board;
 };

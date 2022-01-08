@@ -13,7 +13,7 @@
 #include "sdl/graphics/Texture.h"
 #include "sdl/graphics/Renderer.h"
 
-Object::Object(Texture& t, Rect& rect, Renderer& renderer): texture(t), rectangle(rect), position(Point {rect.rect.x, rect.rect.y}), _renderer(renderer) {}
+Object::Object(Texture& t, Rect& rect, Renderer& renderer): texture(t), rectangle(rect), _renderer(renderer) {}
 
 Object::~Object() {
 	delete &texture;
@@ -31,5 +31,5 @@ void Object::draw() {
 }
 
 Point Object::getPosition() const {
-	return position;
+	return {rectangle.rect.x, rectangle.rect.y};
 }

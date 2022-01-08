@@ -8,6 +8,7 @@
 #include "Board.h"
 
 #include <cstdint>
+#include <iostream>
 
 #include "sdl/engine/object/Object.h"
 
