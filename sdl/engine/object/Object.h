@@ -24,12 +24,14 @@ public:
 
 	void move(int32_t x, int32_t y);
 	void draw();
+	Point getPosition() const;
 
 	Texture& texture;
 	Rect& rectangle;
 	double rotation = 0.0;
 	Flip flip = Flip::NONE;
 	Point center = Point::ZERO;
+	Point position = Point::UNDEFINED;
 private:
 	Renderer& _renderer;
 };

@@ -68,10 +68,19 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/graphics/Flip.h
 	${DIR}/sdl/components/Button.cpp
 	${DIR}/sdl/components/Button.h
-	${DIR}/test/Test.h
-	${DIR}/test/Test.cpp
+	${DIR}/chess-entrypoint/ChessEntryPoint.h
+	${DIR}/chess-entrypoint/ChessEntryPoint.cpp
 	${DIR}/chess-game/pages/LandingPage.h
 	${DIR}/chess-game/pages/LandingPage.cpp
+	${DIR}/chess-game/pages/ChessPage.h
+	${DIR}/chess-game/pages/ChessPage.cpp
+	${DIR}/chess-game/board/Cell.h
+	${DIR}/chess-game/board/Board.h
+	${DIR}/chess-game/board/Board.cpp
+	${DIR}/chess-game/pieces/Piece.h
+	${DIR}/chess-game/pieces/Piece.cpp
+	${DIR}/chess-game/pieces/Rank.h
+	${DIR}/chess-game/pieces/Side.h
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

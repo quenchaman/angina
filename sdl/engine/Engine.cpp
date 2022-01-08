@@ -132,9 +132,9 @@ Engine::~Engine() {
 	}
 
 	if (window != nullptr) {
-
+		delete window;
+		window = nullptr;
 	}
-    delete window;
 
     IMG_Quit();
     SDL_Quit();

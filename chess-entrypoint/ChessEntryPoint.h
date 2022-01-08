@@ -8,10 +8,10 @@
 
 #include "sdl/engine/Engine.h"
 
-class Test : public Engine {
+class ChessEntryPoint : public Engine {
 public:
-    Test();
-    ~Test() override;
+	ChessEntryPoint();
+    ~ChessEntryPoint() override;
 
     void init() override;
 
@@ -24,7 +24,7 @@ public:
 private:
 
     Page* initWelcomePage();
-    Page* initSecondPage();
+    Page* initChessPage();
 };
 
 

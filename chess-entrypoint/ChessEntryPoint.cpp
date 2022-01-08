@@ -2,7 +2,7 @@
 // Created by ubuntu on 11/28/21.
 //
 
-#include "Test.h"
+#include "ChessEntryPoint.h"
 
 #include <iostream>
 #include <unordered_map>
@@ -17,33 +17,39 @@
 #include "sdl/primitives/Point.h"
 #include "sdl/primitives/Dimensions.h"
 #include "chess-game/pages/LandingPage.h"
+#include "chess-game/pages/ChessPage.h"
 
-Test::~Test() {
+ChessEntryPoint::~ChessEntryPoint() {
 
 }
 
-void Test::init() {
+void ChessEntryPoint::init() {
 	navigateTo(initWelcomePage());
 }
 
-void Test::update() {
+void ChessEntryPoint::update() {
 }
 
-void Test::handleLeftMouseClick() {
+void ChessEntryPoint::handleLeftMouseClick() {
 
 }
 
-void Test::handleBtnClick([[maybe_unused]]int32_t idx) {
-	std::cout << "Clicked button is " << idx << std::endl;
+void ChessEntryPoint::handleBtnClick([[maybe_unused]]int32_t idx) {
+	if (idx == 1) {
+		navigateTo(initChessPage());
+	}
 }
 
-Page* Test::initWelcomePage() {
+Page* ChessEntryPoint::initWelcomePage() {
 	LandingPage* landing = new LandingPage(*getRenderer());
 
 	return landing;
 }
 
-// TODO: We must have a way to specify how big the window should be
-Test::Test() : Engine("Test", { 800, 800 }) {
+Page* ChessEntryPoint::initChessPage() {
+	return new ChessPage(*getRenderer());
+}
+
+ChessEntryPoint::ChessEntryPoint() : Engine("Test", { 800, 800 }) {
 
 }
