@@ -50,16 +50,16 @@ namespace Transformer {
 		return textures;
 	}
 
-	Object* transformTextureToObject(Texture& texture) {
+	Object* transformTextureToObject(Renderer& renderer, Texture& texture) {
 		Rect* rect = new Rect(Point::UNDEFINED, {texture.w, texture.h}, Color::NONE);
-		Object* object = new Object(texture, *rect);
+		Object* object = new Object(texture, *rect, renderer);
 
 		return object;
 	}
 
-	Button* transformTextureToButton(Texture& texture) {
+	Button* transformTextureToButton(Renderer& renderer, Texture& texture) {
 		Rect* rect = new Rect(Point::UNDEFINED, {texture.w, texture.h}, Color::NONE);
-		Button* btn = new Button(texture, *rect);
+		Button* btn = new Button(texture, *rect, renderer);
 
 		return btn;
 	}

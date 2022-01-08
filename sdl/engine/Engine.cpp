@@ -80,10 +80,6 @@ void Engine::start() {
 	}
 }
 
-Page* Engine::createNewPage() {
-	return new Page(*renderer);
-}
-
 void Engine::draw() {
 	page->draw();
 }
@@ -118,6 +114,10 @@ void Engine::clearPage() {
 		delete page;
 		page = nullptr;
 	}
+}
+
+Renderer* Engine::getRenderer() const {
+	return renderer;
 }
 
 Engine::~Engine() {

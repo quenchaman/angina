@@ -13,10 +13,11 @@ struct Texture;
 struct Point;
 struct Rect;
 struct InputEvent;
+struct Renderer;
 
 class Button : public Object {
 public:
-    Button(Texture& texture, Rect& rect);
+    Button(Texture& texture, Rect& rect, Renderer& renderer);
     ~Button() = default;
 };
 

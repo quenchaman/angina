@@ -20,8 +20,8 @@ struct Point;
 namespace Transformer {
 	Texture* transformSurfaceToTexture(Renderer& renderer, Surface& surface);
 	std::vector<Texture*> transformSurfacesToTextures(Renderer* renderer, const std::vector<Surface*>& surfaces);
-	Object* transformTextureToObject(Texture& texture);
-	Button* transformTextureToButton(Texture& texture);
+	Object* transformTextureToObject(Renderer& renderer, Texture& texture);
+	Button* transformTextureToButton(Renderer& renderer, Texture& texture);
 }
 
 

@@ -15,19 +15,23 @@
 
 struct Texture;
 struct Rect;
+struct Renderer;
 
 class Object {
 public:
-	Object(Texture& t, Rect& rect);
+	Object(Texture& t, Rect& rect, Renderer& renderer);
 	~Object();
 
 	void move(int32_t x, int32_t y);
+	void draw();
 
 	Texture& texture;
 	Rect& rectangle;
 	double rotation = 0.0;
 	Flip flip = Flip::NONE;
 	Point center = Point::ZERO;
+private:
+	Renderer& _renderer;
 };
 
 #endif /* SDL_ENGINE_OBJECT_OBJECT_H_ */

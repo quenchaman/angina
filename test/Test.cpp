@@ -16,6 +16,7 @@
 #include "sdl/engine/page/Page.h"
 #include "sdl/primitives/Point.h"
 #include "sdl/primitives/Dimensions.h"
+#include "chess-game/pages/LandingPage.h"
 
 Test::~Test() {
 
@@ -37,14 +38,9 @@ void Test::handleBtnClick([[maybe_unused]]int32_t idx) {
 }
 
 Page* Test::initWelcomePage() {
-	Page* welcomePage = createNewPage();
+	LandingPage* landing = new LandingPage(*getRenderer());
 
-	welcomePage->addButton(0, Resources::gas, Point{0, 0});
-	welcomePage->addButton(1, Resources::brake, Point{150, 0});
-
-	welcomePage->addObject(0, Resources::wheel, Point{0, 100});
-
-	return welcomePage;
+	return landing;
 }
 
 // TODO: We must have a way to specify how big the window should be

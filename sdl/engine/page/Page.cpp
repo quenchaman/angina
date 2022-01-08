@@ -44,39 +44,11 @@ void Page::addObject(int32_t id, Object& object) {
 	objects[id] = &object;
 }
 
-void Page::loadResources(const std::unordered_map<int32_t, std::string>& idToPaths) {
-	for (auto const& [id, path] : idToPaths) {
-		Surface* surface = ResourceLoader::load(path);
-		Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
-
-		objects[id] = Transformer::transformTextureToObject(*texture);
-	}
-}
-
-void Page::loadButtons(const std::unordered_map<int32_t, std::string>& idToPaths) {
-	for (auto const& [id, path] : idToPaths) {
-		Surface* surface = ResourceLoader::load(path);
-		Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
-
-		Button* btn = Transformer::transformTextureToButton(*texture);
-		buttonManager.registerButton(id, btn);
-	}
-}
-
-void Page::loadText(const std::unordered_map<int32_t, std::string>& idToTexts) {
-	for (auto const& [id, text] : idToTexts) {
-		Surface* surface = ResourceLoader::loadText(font, text, Color::RED);
-		Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
-
-		objects[id] = Transformer::transformTextureToObject(*texture);
-	}
-}
-
 void Page::addObject(int32_t id, const std::string& resourcePath, Point position) {
 	Surface* surface = ResourceLoader::load(resourcePath);
 	Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
 
-	objects[id] = Transformer::transformTextureToObject(*texture);
+	objects[id] = Transformer::transformTextureToObject(_renderer, *texture);
 	objects[id]->move(position.x, position.y);
 }
 
@@ -84,25 +56,19 @@ void Page::addButton(int32_t id, const std::string& resourcePath, Point position
 	Surface* surface = ResourceLoader::load(resourcePath);
 	Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
 
-	Button* btn = Transformer::transformTextureToButton(*texture);
+	Button* btn = Transformer::transformTextureToButton(_renderer, *texture);
 	buttonManager.registerButton(id, btn);
 	buttonManager.getButton(id).move(position.x, position.y);
+}
+
+void Page::addText(int32_t id, std::string text) {
+	Surface* surface = ResourceLoader::loadText(font, text, Color::RED);
+	Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
+
+	objects[id] = Transformer::transformTextureToObject(_renderer, *texture);
 }
 
 void Page::setBackground(Texture& background) {
 	_background = &background;
 }
 
-void Page::draw() {
-    for (auto const& [id, rectangle] : rectangles) {
-    	_renderer.render(*rectangle);
-    }
-
-    for (auto const& [id, object] : objects) {
-    	_renderer.render(*object);
-	}
-
-    for (auto const& [id, btn] : buttonManager.getButtons()) {
-    	_renderer.render(*btn);
-	}
-}

@@ -6,5 +6,5 @@
 
 #include "sdl/engine/object/Object.h"
 
-Button::Button(Texture& texture, Rect& rect): Object(texture, rect) {
+Button::Button(Texture& texture, Rect& rect, Renderer& renderer): Object(texture, rect, renderer) {
 }

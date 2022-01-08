@@ -33,6 +33,7 @@ public:
 	virtual ~Engine();
 
 	void start();
+	Renderer* getRenderer() const;
 private:
 	Window* window;
 	SDL_Event e;
@@ -51,7 +52,6 @@ protected:
 	virtual void handleLeftMouseClick() = 0;
 	virtual void handleBtnClick(int32_t idx) = 0;
 
-	Page* createNewPage();
 	void navigateTo(Page* page);
 	void clearPage();
 };

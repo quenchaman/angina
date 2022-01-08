@@ -11,8 +11,9 @@
 
 #include "sdl/primitives/Rect.h"
 #include "sdl/graphics/Texture.h"
+#include "sdl/graphics/Renderer.h"
 
-Object::Object(Texture& t, Rect& rect): texture(t), rectangle(rect) {}
+Object::Object(Texture& t, Rect& rect, Renderer& renderer): texture(t), rectangle(rect), _renderer(renderer) {}
 
 Object::~Object() {
 	delete &texture;
@@ -24,4 +25,8 @@ Object::~Object() {
 void Object::move(int32_t x, int32_t y) {
 	rectangle.rect.x = x;
 	rectangle.rect.y = y;
+}
+
+void Object::draw() {
+	_renderer.render(*this);
 }

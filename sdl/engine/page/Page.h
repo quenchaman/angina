@@ -23,25 +23,25 @@ struct Point;
 class Page {
 public:
 	Page(Renderer& renderer);
-	~Page();
+	virtual ~Page();
 
-	void loadResources(const std::unordered_map<int32_t, std::string>& idToPaths);
-	void loadText(const std::unordered_map<int32_t, std::string>& idToTexts);
-	void loadButtons(const std::unordered_map<int32_t, std::string>& idToPaths);
+	virtual void draw() = 0;
+
+	void setBackground(Texture& background);
+
 	void addRectangle(int32_t id, Rect& rectangle);
 	void addObject(int32_t id, Object& object);
-	void setBackground(Texture& background);
-	void draw();
-
 	void addObject(int32_t id, const std::string& resourcePath, Point position);
 	void addButton(int32_t id, const std::string& resourcePath, Point position);
+	void addText(int32_t id, std::string text);
 
 	ButtonManager buttonManager;
-private:
+protected:
 	std::unordered_map<int32_t, Rect*> rectangles;
 	std::unordered_map<int32_t, Object*> objects;
-	Renderer& _renderer;
 	Texture* _background = nullptr;
+private:
+	Renderer& _renderer;
 	TTF_Font* font;
 };
 
