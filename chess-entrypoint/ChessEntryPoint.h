@@ -7,6 +7,10 @@
 
 
 #include "sdl/engine/Engine.h"
+#include "chess-game/states/ChessState.h"
+#include "sdl/primitives/Point.h"
+
+struct ChessPage;
 
 class ChessEntryPoint : public Engine {
 public:
@@ -17,14 +21,20 @@ public:
 
     void update() override;
 
-    void handleLeftMouseClick() override;
+    void handleLeftMouseClick(Point point) override;
 
     void handleBtnClick(int32_t idx) override;
 
-private:
+    void transitionState(ChessState newState);
 
+private:
     Page* initWelcomePage();
     Page* initChessPage();
+    ChessState state = ChessState::NO_OP;
+    Point clickedPoint = Point::UNDEFINED;
+    ChessPage* chessPage = nullptr;
+
+    void handleHumanSelectPieceState();
 };
 
 

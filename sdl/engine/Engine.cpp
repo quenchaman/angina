@@ -101,6 +101,8 @@ void Engine::handleEvent() {
 
 	if (buttonIdx != -1) {
 		handleBtnClick(buttonIdx);
+	} else if (event.type == EventType::MOUSE_RELEASE) {
+		handleLeftMouseClick(Point{event.pos.x, event.pos.y});
 	}
 }
 

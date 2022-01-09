@@ -81,6 +81,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess-game/pieces/Piece.cpp
 	${DIR}/chess-game/pieces/Rank.h
 	${DIR}/chess-game/pieces/Side.h
+	${DIR}/chess-game/states/ChessState.h
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

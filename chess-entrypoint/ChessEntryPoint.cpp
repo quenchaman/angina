@@ -18,6 +18,7 @@
 #include "sdl/primitives/Dimensions.h"
 #include "chess-game/pages/LandingPage.h"
 #include "chess-game/pages/ChessPage.h"
+#include "chess-game/board/Board.h"
 
 ChessEntryPoint::~ChessEntryPoint() {
 
@@ -28,17 +29,37 @@ void ChessEntryPoint::init() {
 }
 
 void ChessEntryPoint::update() {
+	switch (state) {
+		case ChessState::WHITE_PLAYER_HUMAN_MOVE:
+			// TODO: Here we can reset some timer
+			transitionState(ChessState::HUMAN_SELECT_PIECE);
+			break;
+		case ChessState::HUMAN_SELECT_PIECE:
+			handleHumanSelectPieceState();
+			break;
+		case ChessState::HUMAN_PIECE_SELECTED:
+			// TODO: Here we calculate the allowed moves
+			break;
+		default:
+			break;
+	}
 }
 
-void ChessEntryPoint::handleLeftMouseClick() {
+void ChessEntryPoint::handleLeftMouseClick(Point point) {
+	clickedPoint = point;
+}
 
+void ChessEntryPoint::transitionState(ChessState newState) {
+	state = newState;
 }
 
 void ChessEntryPoint::handleBtnClick(int32_t buttonId) {
 	if (buttonId == ChessAssets::NEW_GAME_BUTTON) {
 		navigateTo(initChessPage());
+		transitionState(ChessState::WHITE_PLAYER_HUMAN_MOVE);
 	} else if (buttonId == ChessAssets::QUIT_CHESS_GAME_BUTTON) {
 		navigateTo(initWelcomePage());
+		transitionState(ChessState::NO_OP);
 	}
 }
 
@@ -49,7 +70,15 @@ Page* ChessEntryPoint::initWelcomePage() {
 }
 
 Page* ChessEntryPoint::initChessPage() {
-	return new ChessPage(*getRenderer());
+	ChessPage* page = new ChessPage(*getRenderer());
+	chessPage = page;
+	return page;
+}
+
+void ChessEntryPoint::handleHumanSelectPieceState() {
+	if (clickedPoint != Point::UNDEFINED && chessPage->getBoard()->isBoardPosition(clickedPoint)) {
+		std::cout << "We clicked on the board!" << std::endl;
+	}
 }
 
 ChessEntryPoint::ChessEntryPoint() : Engine("Test", { 800, 800 }) {

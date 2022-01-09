@@ -31,6 +31,9 @@ public:
 	void draw();
 
 	Point putPiece(Piece& piece);
+
+	bool isBoardPosition(Point point);
+	Cell getCell(Point point);
 private:
 	Object& _object;
 	Dimensions _cellDimensions;

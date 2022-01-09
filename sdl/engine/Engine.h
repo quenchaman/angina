@@ -19,6 +19,7 @@
 #include "sdl/engine/buttons/ButtonManager.h"
 #include "sdl/events/InputEvent.h"
 #include "sdl/primitives/Dimensions.h"
+#include "sdl/primitives/Point.h"
 
 struct Window;
 struct Renderer;
@@ -49,7 +50,7 @@ protected:
 
 	virtual void init() = 0;
 	virtual void update() = 0;
-	virtual void handleLeftMouseClick() = 0;
+	virtual void handleLeftMouseClick(Point p) = 0;
 	virtual void handleBtnClick(int32_t idx) = 0;
 
 	void navigateTo(Page* page);

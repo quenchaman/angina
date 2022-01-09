@@ -73,6 +73,10 @@ void ChessPage::createPiece(ChessAssets asset, std::string resource, Cell cell, 
 	board->putPiece(*piece);
 }
 
+Board* ChessPage::getBoard() {
+	return board;
+}
+
 void ChessPage::onPageUnload() {
 	if (board != nullptr) {
 		delete board;

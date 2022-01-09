@@ -11,6 +11,7 @@
 #include <iostream>
 
 #include "sdl/engine/object/Object.h"
+#include "sdl/primitives/Rect.h"
 
 Board::Board(Object& object, Dimensions cellDimensions): _object(object), _cellDimensions(cellDimensions) {}
 
@@ -33,6 +34,10 @@ Point Board::putPiece(Piece& piece) {
 	_piecePositions[piecePoint] = &piece;
 
 	return piecePoint;
+}
+
+bool Board::isBoardPosition(Point point) {
+	return this->_object.rectangle.isInRect(point);
 }
 
 Board::~Board() {

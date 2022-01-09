@@ -26,6 +26,7 @@ public:
 	void onPageLoad();
 	void onPageUnload();
 	void createPiece(ChessAssets asset, std::string resource, Cell cell, Rank rank, Side side);
+	Board* getBoard();
 private:
 	Board* board;
 };
