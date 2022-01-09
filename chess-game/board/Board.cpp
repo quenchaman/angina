@@ -40,6 +40,14 @@ bool Board::isBoardPosition(Point point) {
 	return this->_object.rectangle.isInRect(point);
 }
 
+Cell Board::getCell(Point point) {
+	Point boardOrigin = _object.getPosition();
+	int32_t pieceX = (point.x - boardOrigin.x) / _cellDimensions.w;
+	int32_t pieceY = (point.y - boardOrigin.y) / _cellDimensions.h;
+
+	return {pieceX, pieceY};
+}
+
 Board::~Board() {
 	for (auto const& [point, piece] : _piecePositions) {
 		delete piece;

@@ -20,7 +20,7 @@ ChessPage::ChessPage(Renderer& renderer) : Page(renderer)  {
 
 void ChessPage::onPageLoad() {
 	addObject(ChessAssets::START_SCREEN_BACKGROUND_IMAGE, Resources::startScreen2, Point{0, 0});
-	addObject(ChessAssets::BOARD, Resources::board, Point{0, 0});
+	addObject(ChessAssets::BOARD, Resources::board, Point{0, 100});
 	board = new Board(*objects[ChessAssets::BOARD], Dimensions{80, 80});
 	addButton(ChessAssets::QUIT_CHESS_GAME_BUTTON, Resources::quitGameButton, Point{645, 20});
 
