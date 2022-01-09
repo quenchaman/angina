@@ -9,6 +9,7 @@
 #include "sdl/engine/Engine.h"
 #include "chess-game/states/ChessState.h"
 #include "sdl/primitives/Point.h"
+#include "chess-game/board/Cell.h"
 
 struct ChessPage;
 
@@ -32,6 +33,7 @@ private:
     Page* initChessPage();
     ChessState state = ChessState::NO_OP;
     Point clickedPoint = Point::UNDEFINED;
+    Cell clickedBoardCell = Cell::UNDEFINED;
     ChessPage* chessPage = nullptr;
 
     void handleHumanSelectPieceState();

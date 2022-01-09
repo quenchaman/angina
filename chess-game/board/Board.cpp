@@ -48,6 +48,10 @@ Cell Board::getCell(Point point) {
 	return {pieceX, pieceY};
 }
 
+bool Board::isEmptyCell(Point point) {
+	return _piecePositions.find(point) == _piecePositions.end();
+}
+
 Board::~Board() {
 	for (auto const& [point, piece] : _piecePositions) {
 		delete piece;

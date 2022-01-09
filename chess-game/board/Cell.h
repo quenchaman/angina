@@ -11,8 +11,12 @@
 #include <cstdint>
 
 struct Cell {
+	Cell(int32_t row, int32_t col);
+
 	int32_t row;
 	int32_t col;
+
+	static const Cell UNDEFINED;
 };
 
 

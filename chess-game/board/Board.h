@@ -34,6 +34,7 @@ public:
 
 	bool isBoardPosition(Point point);
 	Cell getCell(Point point);
+	bool isEmptyCell(Point cell);
 private:
 	Object& _object;
 	Dimensions _cellDimensions;

@@ -75,6 +75,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess-game/pages/ChessPage.h
 	${DIR}/chess-game/pages/ChessPage.cpp
 	${DIR}/chess-game/board/Cell.h
+	${DIR}/chess-game/board/Cell.cpp
 	${DIR}/chess-game/board/Board.h
 	${DIR}/chess-game/board/Board.cpp
 	${DIR}/chess-game/pieces/Piece.h

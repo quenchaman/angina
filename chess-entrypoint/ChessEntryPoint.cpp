@@ -19,11 +19,6 @@
 #include "chess-game/pages/LandingPage.h"
 #include "chess-game/pages/ChessPage.h"
 #include "chess-game/board/Board.h"
-#include "chess-game/board/Cell.h"
-
-ChessEntryPoint::~ChessEntryPoint() {
-
-}
 
 void ChessEntryPoint::init() {
 	navigateTo(initWelcomePage());
@@ -65,9 +60,7 @@ void ChessEntryPoint::handleBtnClick(int32_t buttonId) {
 }
 
 Page* ChessEntryPoint::initWelcomePage() {
-	LandingPage* landing = new LandingPage(*getRenderer());
-
-	return landing;
+	return new LandingPage(*getRenderer());
 }
 
 Page* ChessEntryPoint::initChessPage() {
@@ -78,11 +71,17 @@ Page* ChessEntryPoint::initChessPage() {
 
 void ChessEntryPoint::handleHumanSelectPieceState() {
 	if (clickedPoint != Point::UNDEFINED && chessPage->getBoard()->isBoardPosition(clickedPoint)) {
-		Cell cell = chessPage->getBoard()->getCell(clickedPoint);
-		std::cout << "We clicked on the board! And the position is " << cell.col << "; " << cell.row << std::endl;
+		clickedBoardCell = chessPage->getBoard()->getCell(clickedPoint);
+		bool isEmptyCell = chessPage->getBoard()->isEmptyCell(clickedPoint);
+
+		std::cout << "Is the cell empty " << isEmptyCell << std::endl;
 	}
 }
 
 ChessEntryPoint::ChessEntryPoint() : Engine("Test", { 800, 800 }) {
+
+}
+
+ChessEntryPoint::~ChessEntryPoint() {
 
 }
