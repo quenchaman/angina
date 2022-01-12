@@ -31,7 +31,8 @@ Point Board::putPiece(Piece& piece) {
 
 	Point piecePoint = { pieceX, pieceY };
 	piece.object.move(pieceX, pieceY);
-	_piecePositions[piecePoint] = &piece;
+	Cell c = getCell(piecePoint);
+	_piecePositions[c] = &piece;
 
 	return piecePoint;
 }
@@ -48,12 +49,12 @@ Cell Board::getCell(Point point) {
 	return {pieceX, pieceY};
 }
 
-bool Board::isEmptyCell(Point point) {
-	return _piecePositions.find(point) == _piecePositions.end();
+bool Board::isEmptyCell(Cell cell) {
+	return _piecePositions.find(cell) == _piecePositions.end();
 }
 
 Board::~Board() {
-	for (auto const& [point, piece] : _piecePositions) {
+	for (auto const& [cell, piece] : _piecePositions) {
 		delete piece;
 	}
 	_piecePositions.clear();

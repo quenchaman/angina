@@ -16,6 +16,9 @@ struct Cell {
 	int32_t row;
 	int32_t col;
 
+	bool operator==(const Cell& cell) const;
+	bool operator!=(const Cell& cell) const;
+
 	static const Cell UNDEFINED;
 };
 

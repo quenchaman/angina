@@ -17,9 +17,9 @@
 
 struct Object;
 
-struct PointHasher {
-	size_t operator() (const Point& point) const {
-		return (point.x * 10) + point.y;
+struct CellHasher {
+	size_t operator() (const Cell& point) const {
+		return (point.row * 10) + point.col;
 	}
 };
 
@@ -34,11 +34,11 @@ public:
 
 	bool isBoardPosition(Point point);
 	Cell getCell(Point point);
-	bool isEmptyCell(Point cell);
+	bool isEmptyCell(Cell cell);
 private:
 	Object& _object;
 	Dimensions _cellDimensions;
-	std::unordered_map<Point, Piece*, PointHasher> _piecePositions;
+	std::unordered_map<Cell, Piece*, CellHasher> _piecePositions;
 };
 
 #endif /* CHESS_GAME_BOARD_BOARD_H_ */

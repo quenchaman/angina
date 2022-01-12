@@ -72,9 +72,9 @@ Page* ChessEntryPoint::initChessPage() {
 void ChessEntryPoint::handleHumanSelectPieceState() {
 	if (clickedPoint != Point::UNDEFINED && chessPage->getBoard()->isBoardPosition(clickedPoint)) {
 		clickedBoardCell = chessPage->getBoard()->getCell(clickedPoint);
-		bool isEmptyCell = chessPage->getBoard()->isEmptyCell(clickedPoint);
+		bool isEmptyCell = chessPage->getBoard()->isEmptyCell(clickedBoardCell);
 
-		std::cout << "Is the cell empty " << isEmptyCell << std::endl;
+		std::cout << "Is the cell " << clickedBoardCell.row << ";" << clickedBoardCell.col << " empty " << isEmptyCell << std::endl;
 	}
 }
 
