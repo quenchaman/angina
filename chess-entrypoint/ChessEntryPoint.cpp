@@ -19,6 +19,7 @@
 #include "chess-game/pages/LandingPage.h"
 #include "chess-game/pages/ChessPage.h"
 #include "chess-game/board/Board.h"
+#include "chess-game/pieces/Piece.h"
 
 void ChessEntryPoint::init() {
 	navigateTo(initWelcomePage());
@@ -35,6 +36,7 @@ void ChessEntryPoint::update() {
 			break;
 		case ChessState::HUMAN_PIECE_SELECTED:
 			// TODO: Here we calculate the allowed moves
+			std::cout << "Selected piece is " << *selectedPiece << std::endl;
 			break;
 		default:
 			break;
@@ -77,7 +79,12 @@ void ChessEntryPoint::handleHumanSelectPieceState() {
 		if (!isEmptyCell) {
 			Piece* pieceOnCell = chessPage->getBoard()->getPieceOnPosition(clickedBoardCell);
 
-			std::cout << "Is the cell " << clickedBoardCell << " empty " << isEmptyCell << " and piece is " << *pieceOnCell << std::endl;
+			if (pieceOnCell->side == Side::White) {
+				std::cout << "Is the cell " << clickedBoardCell << " empty " << isEmptyCell << " and piece is " << *pieceOnCell << std::endl;
+
+				selectedPiece = pieceOnCell;
+				transitionState(ChessState::HUMAN_PIECE_SELECTED);
+			}
 		}
 	}
 }

@@ -12,6 +12,7 @@
 #include "chess-game/board/Cell.h"
 
 struct ChessPage;
+struct Piece;
 
 class ChessEntryPoint : public Engine {
 public:
@@ -28,12 +29,15 @@ public:
 
     void transitionState(ChessState newState);
 
+    void cleanState();
+
 private:
     Page* initWelcomePage();
     Page* initChessPage();
     ChessState state = ChessState::NO_OP;
     Point clickedPoint = Point::UNDEFINED;
     Cell clickedBoardCell = Cell::UNDEFINED;
+    Piece* selectedPiece = nullptr;
     ChessPage* chessPage = nullptr;
 
     void handleHumanSelectPieceState();
