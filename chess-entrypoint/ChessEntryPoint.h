@@ -10,6 +10,7 @@
 #include "chess-game/states/ChessState.h"
 #include "sdl/primitives/Point.h"
 #include "chess-game/board/Cell.h"
+#include "chess-game/board/PieceSelectionManager.h"
 
 struct ChessPage;
 struct Piece;
@@ -29,7 +30,7 @@ public:
 
     void transitionState(ChessState newState);
 
-    void cleanState();
+    void clearSelection();
 
 private:
     Page* initWelcomePage();
@@ -39,8 +40,10 @@ private:
     Cell clickedBoardCell = Cell::UNDEFINED;
     Piece* selectedPiece = nullptr;
     ChessPage* chessPage = nullptr;
+    PieceSelectionManager* pieceSelectionMng;
 
     void handleHumanSelectPieceState();
+    void handlePieceSelectedState();
 };
 
 

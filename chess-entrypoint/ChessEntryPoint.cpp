@@ -20,6 +20,7 @@
 #include "chess-game/pages/ChessPage.h"
 #include "chess-game/board/Board.h"
 #include "chess-game/pieces/Piece.h"
+#include "chess-game/board/PieceSelectionManager.h"
 
 void ChessEntryPoint::init() {
 	navigateTo(initWelcomePage());
@@ -35,8 +36,7 @@ void ChessEntryPoint::update() {
 			handleHumanSelectPieceState();
 			break;
 		case ChessState::HUMAN_PIECE_SELECTED:
-			// TODO: Here we calculate the allowed moves
-			std::cout << "Selected piece is " << *selectedPiece << std::endl;
+			handlePieceSelectedState();
 			break;
 		default:
 			break;
@@ -68,25 +68,49 @@ Page* ChessEntryPoint::initWelcomePage() {
 Page* ChessEntryPoint::initChessPage() {
 	ChessPage* page = new ChessPage(*getRenderer());
 	chessPage = page;
+	pieceSelectionMng = new PieceSelectionManager(*page->getBoard());
 	return page;
 }
 
 void ChessEntryPoint::handleHumanSelectPieceState() {
-	if (clickedPoint != Point::UNDEFINED && chessPage->getBoard()->isBoardPosition(clickedPoint)) {
-		clickedBoardCell = chessPage->getBoard()->getCell(clickedPoint);
-		bool isEmptyCell = chessPage->getBoard()->isEmptyCell(clickedBoardCell);
+	transitionState(pieceSelectionMng->selectPiece(clickedPoint));
+}
 
-		if (!isEmptyCell) {
-			Piece* pieceOnCell = chessPage->getBoard()->getPieceOnPosition(clickedBoardCell);
-
-			if (pieceOnCell->side == Side::White) {
-				std::cout << "Is the cell " << clickedBoardCell << " empty " << isEmptyCell << " and piece is " << *pieceOnCell << std::endl;
-
-				selectedPiece = pieceOnCell;
-				transitionState(ChessState::HUMAN_PIECE_SELECTED);
-			}
-		}
+void ChessEntryPoint::handlePieceSelectedState() {
+	if (pieceSelectionMng->isSidePieceSelected(clickedPoint, Side::Black)) {
+		std::cout << "Black piece is selected" << std::endl;
+	} else if (pieceSelectionMng->isSidePieceSelected(clickedPoint, Side::White)) {
+		transitionState(pieceSelectionMng->selectPiece(clickedPoint));
+	} else {
+		std::cout << "Empty cell is selected" << std::endl;
 	}
+
+//	Cell currentlyClickedCell = chessPage->getBoard()->getCell(clickedPoint);
+//
+//	if (currentlyClickedCell != clickedBoardCell) {
+//		Piece* pieceOnCell = chessPage->getBoard()->getPieceOnPosition(currentlyClickedCell);
+//
+//		if (pieceOnCell != nullptr) {
+//			if (pieceOnCell->side == Side::Black) {
+//				clearSelection();
+//				transitionState(ChessState::HUMAN_SELECT_PIECE);
+//				return;
+//			}
+//
+//			clickedBoardCell = currentlyClickedCell;
+//			selectedPiece = pieceOnCell;
+//
+//			return;
+//		}
+//
+//
+//	}
+}
+
+void ChessEntryPoint::clearSelection() {
+	clickedPoint = Point::UNDEFINED;
+	clickedBoardCell = Cell::UNDEFINED;
+	selectedPiece = nullptr;
 }
 
 ChessEntryPoint::ChessEntryPoint() : Engine("Test", { 800, 800 }) {
