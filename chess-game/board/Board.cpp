@@ -53,6 +53,10 @@ bool Board::isEmptyCell(Cell cell) {
 	return _piecePositions.find(cell) == _piecePositions.end();
 }
 
+Piece* Board::getPieceOnPosition(Cell cell) {
+	return _piecePositions[cell];
+}
+
 Board::~Board() {
 	for (auto const& [cell, piece] : _piecePositions) {
 		delete piece;

@@ -35,6 +35,7 @@ public:
 	bool isBoardPosition(Point point);
 	Cell getCell(Point point);
 	bool isEmptyCell(Cell cell);
+	Piece* getPieceOnPosition(Cell cell);
 private:
 	Object& _object;
 	Dimensions _cellDimensions;

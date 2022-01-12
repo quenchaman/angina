@@ -9,6 +9,7 @@
 #define CHESS_GAME_BOARD_CELL_H_
 
 #include <cstdint>
+#include <iostream>
 
 struct Cell {
 	Cell(int32_t row, int32_t col);
@@ -20,6 +21,8 @@ struct Cell {
 	bool operator!=(const Cell& cell) const;
 
 	static const Cell UNDEFINED;
+
+	friend std::ostream& operator<<(std::ostream& os, const Cell& cell);
 };
 
 

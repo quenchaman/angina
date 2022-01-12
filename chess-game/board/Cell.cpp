@@ -20,3 +20,7 @@ bool Cell::operator!=(const Cell& cell) const {
 }
 
 const Cell Cell::UNDEFINED(10000, 10000);
+
+std::ostream& operator<<(std::ostream& os, const Cell& cell) {
+	return os << "Row: " << cell.row << "; " << "Col: " << cell.col;
+}

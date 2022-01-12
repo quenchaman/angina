@@ -42,14 +42,14 @@ void ChessPage::onPageLoad() {
 	createPiece(ChessAssets::WHITE_PAWN_7, Resources::whitePawn, Cell{6, 6}, Rank::PAWN, Side::White);
 	createPiece(ChessAssets::WHITE_PAWN_8, Resources::whitePawn, Cell{6, 7}, Rank::PAWN, Side::White);
 
-	createPiece(ChessAssets::BLACK_ROOK_ON_WHITE, Resources::blackRook, Cell{0, 0}, Rank::ROOK, Side::White);
-	createPiece(ChessAssets::BLACK_KNIGHT_ON_BLACK, Resources::blackKnight, Cell{0, 1}, Rank::KNIGHT, Side::White);
-	createPiece(ChessAssets::BLACK_BISHOP_ON_WHITE, Resources::blackBishop, Cell{0, 2}, Rank::BISHOP, Side::White);
-	createPiece(ChessAssets::BLACK_QUEEN, Resources::blackQueen, Cell{0, 3}, Rank::QUEEN, Side::White);
-	createPiece(ChessAssets::BLACK_KING, Resources::blackKing, Cell{0, 4}, Rank::KING, Side::White);
-	createPiece(ChessAssets::BLACK_BISHOP_ON_BLACK, Resources::blackBishop, Cell{0, 5}, Rank::BISHOP, Side::White);
-	createPiece(ChessAssets::BLACK_KNIGHT_ON_WHITE, Resources::blackKnight, Cell{0, 6}, Rank::KNIGHT, Side::White);
-	createPiece(ChessAssets::BLACK_ROOK_ON_BLACK, Resources::blackRook, Cell{0, 7}, Rank::ROOK, Side::White);
+	createPiece(ChessAssets::BLACK_ROOK_ON_WHITE, Resources::blackRook, Cell{0, 0}, Rank::ROOK, Side::Black);
+	createPiece(ChessAssets::BLACK_KNIGHT_ON_BLACK, Resources::blackKnight, Cell{0, 1}, Rank::KNIGHT, Side::Black);
+	createPiece(ChessAssets::BLACK_BISHOP_ON_WHITE, Resources::blackBishop, Cell{0, 2}, Rank::BISHOP, Side::Black);
+	createPiece(ChessAssets::BLACK_QUEEN, Resources::blackQueen, Cell{0, 3}, Rank::QUEEN, Side::Black);
+	createPiece(ChessAssets::BLACK_KING, Resources::blackKing, Cell{0, 4}, Rank::KING, Side::Black);
+	createPiece(ChessAssets::BLACK_BISHOP_ON_BLACK, Resources::blackBishop, Cell{0, 5}, Rank::BISHOP, Side::Black);
+	createPiece(ChessAssets::BLACK_KNIGHT_ON_WHITE, Resources::blackKnight, Cell{0, 6}, Rank::KNIGHT, Side::Black);
+	createPiece(ChessAssets::BLACK_ROOK_ON_BLACK, Resources::blackRook, Cell{0, 7}, Rank::ROOK, Side::Black);
 
 	createPiece(ChessAssets::BLACK_PAWN_1, Resources::blackPawn, Cell{1, 0}, Rank::PAWN, Side::Black);
 	createPiece(ChessAssets::BLACK_PAWN_2, Resources::blackPawn, Cell{1, 1}, Rank::PAWN, Side::Black);
