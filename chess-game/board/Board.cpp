@@ -41,6 +41,10 @@ bool Board::isBoardPosition(Point point) {
 	return this->_object.rectangle.isInRect(point);
 }
 
+bool Board::isBoardPosition(Cell cell) {
+	return cell.row < 0 || cell.col < 0 || cell.row > 7 || cell.col > 7;
+}
+
 Cell Board::getCell(Point point) {
 	Point boardOrigin = _object.getPosition();
 	int32_t pieceX = (point.x - boardOrigin.x) / _cellDimensions.w;

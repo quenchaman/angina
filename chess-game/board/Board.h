@@ -33,6 +33,7 @@ public:
 	Point putPiece(Piece& piece);
 
 	bool isBoardPosition(Point point);
+	bool isBoardPosition(Cell cell);
 	Cell getCell(Point point);
 	bool isEmptyCell(Cell cell);
 	Piece* getPieceOnPosition(Cell cell);

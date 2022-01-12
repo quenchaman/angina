@@ -82,6 +82,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess-game/pieces/Piece.cpp
 	${DIR}/chess-game/pieces/Rank.h
 	${DIR}/chess-game/pieces/Side.h
+	${DIR}/chess-game/pieces/Move.h
+	${DIR}/chess-game/pieces/Move.cpp
 	${DIR}/chess-game/states/ChessState.h
 	${DIR}/chess-game/board/PieceSelectionManager.h
 	${DIR}/chess-game/board/PieceSelectionManager.cpp

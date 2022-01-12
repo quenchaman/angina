@@ -77,12 +77,10 @@ void ChessEntryPoint::handleHumanSelectPieceState() {
 }
 
 void ChessEntryPoint::handlePieceSelectedState() {
-	if (pieceSelectionMng->isSidePieceSelected(clickedPoint, Side::Black)) {
-		std::cout << "Black piece is selected" << std::endl;
-	} else if (pieceSelectionMng->isSidePieceSelected(clickedPoint, Side::White)) {
+	if (pieceSelectionMng->isSidePieceSelected(clickedPoint, Side::White)) {
 		transitionState(pieceSelectionMng->selectPiece(clickedPoint));
 	} else {
-		std::cout << "Empty cell is selected" << std::endl;
+		std::cout << "Possible attack cell selected!" << std::endl;
 	}
 
 //	Cell currentlyClickedCell = chessPage->getBoard()->getCell(clickedPoint);
