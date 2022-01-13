@@ -42,7 +42,7 @@ bool Board::isBoardPosition(Point point) {
 }
 
 bool Board::isBoardPosition(Cell cell) {
-	return cell.row < 0 || cell.col < 0 || cell.row > 7 || cell.col > 7;
+	return cell.row >= 0 && cell.col >= 0 && cell.row <= 7 && cell.col <= 7;
 }
 
 Cell Board::getCell(Point point) {
@@ -59,6 +59,22 @@ bool Board::isEmptyCell(Cell cell) {
 
 Piece* Board::getPieceOnPosition(Cell cell) {
 	return _piecePositions[cell];
+}
+
+bool Board::isSidePieceSelected(Point point, Side side) {
+	if (isBoardPosition(point)) {
+		Piece* selectedPiece = getPieceOnPosition(getCell(point));
+
+		if (selectedPiece == nullptr) {
+			return false;
+		}
+
+		if (selectedPiece->side == side) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 Board::~Board() {

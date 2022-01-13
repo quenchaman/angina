@@ -37,18 +37,10 @@ ChessState PieceSelectionManager::selectPiece(Point clickedPoint) {
 	return ChessState::HUMAN_SELECT_PIECE;
 }
 
+Piece* PieceSelectionManager::getSelectedPiece() {
+	return selectedPiece;
+}
+
 bool PieceSelectionManager::isSidePieceSelected(Point point, Side side) {
-	if (_board.isBoardPosition(point)) {
-		Piece* selectedPiece = _board.getPieceOnPosition(_board.getCell(point));
-
-		if (selectedPiece == nullptr) {
-			return false;
-		}
-
-		if (selectedPiece->side == side) {
-			return true;
-		}
-	}
-
-	return false;
+	return _board.isSidePieceSelected(point, side);
 }

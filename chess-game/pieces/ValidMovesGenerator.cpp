@@ -25,12 +25,21 @@ std::vector<Move> ValidMovesGenerator::generateValidMoves(Piece* piece) {
 			break;
 	}
 
+	return filterInvalidMoves(moves);
+}
+
+std::vector<Move> ValidMovesGenerator::filterInvalidMoves(std::vector<Move> moves) {
 	std::vector<Move> validMoves;
 
 	for (auto& move : moves) {
-		// TODO: check if this is a white piece. If it is then it is not a valid move.
-		if (_board.isBoardPosition(move.dst)) {
-
+		if (_board.isBoardPosition(move.dst) && (_board.isEmptyCell(move.dst) || _board.getPieceOnPosition(move.dst)->side == Side::Black)) {
+			std::cout << "Do we get until here?" << std::endl;
+			bool isEmpty = _board.isEmptyCell(move.dst);
+			bool isBlack = _board.getPieceOnPosition(move.dst)->side == Side::Black;
+			std::cout << "destination: " << move.dst << " source: " << move.src << " empty: " << isEmpty << " black: " << isBlack << std::endl;
+			validMoves.push_back(move);
 		}
 	}
+
+	return validMoves;
 }

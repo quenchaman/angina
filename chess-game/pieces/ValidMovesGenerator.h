@@ -22,6 +22,8 @@ public:
 	std::vector<Move> generateValidMoves(Piece* piece);
 private:
 	Board& _board;
+
+	std::vector<Move> filterInvalidMoves(std::vector<Move> moves);
 };
 
 #endif /* CHESS_GAME_PIECES_VALIDMOVESGENERATOR_H_ */

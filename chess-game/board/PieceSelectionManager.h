@@ -24,6 +24,7 @@ public:
 	void clearSelection();
 	ChessState selectPiece(Point point);
 	bool isSidePieceSelected(Point point, Side side);
+	Piece* getSelectedPiece();
 private:
 	Point clickedPoint = Point::UNDEFINED;
 	Cell clickedBoardCell = Cell::UNDEFINED;

@@ -10,10 +10,11 @@
 #include "chess-game/states/ChessState.h"
 #include "sdl/primitives/Point.h"
 #include "chess-game/board/Cell.h"
-#include "chess-game/board/PieceSelectionManager.h"
 
 struct ChessPage;
 struct Piece;
+struct PieceSelectionManager;
+struct ValidMovesGenerator;
 
 class ChessEntryPoint : public Engine {
 public:
@@ -30,17 +31,14 @@ public:
 
     void transitionState(ChessState newState);
 
-    void clearSelection();
-
 private:
     Page* initWelcomePage();
     Page* initChessPage();
     ChessState state = ChessState::NO_OP;
     Point clickedPoint = Point::UNDEFINED;
-    Cell clickedBoardCell = Cell::UNDEFINED;
-    Piece* selectedPiece = nullptr;
     ChessPage* chessPage = nullptr;
     PieceSelectionManager* pieceSelectionMng;
+    ValidMovesGenerator* validMovesGenerator;
 
     void handleHumanSelectPieceState();
     void handlePieceSelectedState();

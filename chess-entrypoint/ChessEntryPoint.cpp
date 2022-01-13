@@ -21,6 +21,7 @@
 #include "chess-game/board/Board.h"
 #include "chess-game/pieces/Piece.h"
 #include "chess-game/board/PieceSelectionManager.h"
+#include "chess-game/pieces/ValidMovesGenerator.h"
 
 void ChessEntryPoint::init() {
 	navigateTo(initWelcomePage());
@@ -69,6 +70,7 @@ Page* ChessEntryPoint::initChessPage() {
 	ChessPage* page = new ChessPage(*getRenderer());
 	chessPage = page;
 	pieceSelectionMng = new PieceSelectionManager(*page->getBoard());
+	validMovesGenerator = new ValidMovesGenerator(*page->getBoard());
 	return page;
 }
 
@@ -79,36 +81,13 @@ void ChessEntryPoint::handleHumanSelectPieceState() {
 void ChessEntryPoint::handlePieceSelectedState() {
 	if (pieceSelectionMng->isSidePieceSelected(clickedPoint, Side::White)) {
 		transitionState(pieceSelectionMng->selectPiece(clickedPoint));
+
+		std::vector<Move> availableMoves = validMovesGenerator->generateValidMoves(pieceSelectionMng->getSelectedPiece());
+
+		std::cout << "We got " << availableMoves.size() << std::endl;
 	} else {
 		std::cout << "Possible attack cell selected!" << std::endl;
 	}
-
-//	Cell currentlyClickedCell = chessPage->getBoard()->getCell(clickedPoint);
-//
-//	if (currentlyClickedCell != clickedBoardCell) {
-//		Piece* pieceOnCell = chessPage->getBoard()->getPieceOnPosition(currentlyClickedCell);
-//
-//		if (pieceOnCell != nullptr) {
-//			if (pieceOnCell->side == Side::Black) {
-//				clearSelection();
-//				transitionState(ChessState::HUMAN_SELECT_PIECE);
-//				return;
-//			}
-//
-//			clickedBoardCell = currentlyClickedCell;
-//			selectedPiece = pieceOnCell;
-//
-//			return;
-//		}
-//
-//
-//	}
-}
-
-void ChessEntryPoint::clearSelection() {
-	clickedPoint = Point::UNDEFINED;
-	clickedBoardCell = Cell::UNDEFINED;
-	selectedPiece = nullptr;
 }
 
 ChessEntryPoint::ChessEntryPoint() : Engine("Test", { 800, 800 }) {
