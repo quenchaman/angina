@@ -12,6 +12,8 @@
 
 #include "sdl/engine/object/Object.h"
 #include "sdl/primitives/Rect.h"
+#include "sdl/primitives/Dimensions.h"
+#include "sdl/primitives/Color.h"
 
 Board::Board(Object& object, Dimensions cellDimensions): _object(object), _cellDimensions(cellDimensions) {}
 
@@ -87,6 +89,17 @@ bool Board::isSidePieceSelected(Cell cell, Side side) {
 
 Point Board::calculatePoint(Cell cell) {
 	return { cell.row * _cellDimensions.h, cell.col * _cellDimensions.w };
+}
+
+void Board::setAvailableMoveCells(std::vector<Move> moves) {
+	for (auto& move : moves) {
+		availableMoveCells.push_back(cellToRect(move.dst));
+	}
+}
+
+Rect Board::cellToRect(Cell move) {
+	Point p = calculatePoint(move);
+	return Rect(p, Dimensions{_cellDimensions.w, _cellDimensions.h}, Color::GREEN);
 }
 
 Board::~Board() {

@@ -18,7 +18,7 @@
 
 class Rect {
 public:
-	Rect(const Point& position, const Dimensions& dim, const Color& color);
+	Rect(Point positionIn, Dimensions dimensionsIn, Color colorIn);
 	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color& color);
 
 	SDL_Rect rect;

@@ -10,7 +10,7 @@
 const Rect Rect::ZERO(0, 0, 0, 0, Color::NONE);
 const Rect Rect::UNDEFINED(10000, 10000, 0, 0, Color::NONE);
 
-Rect::Rect(const Point& positionIn, const Dimensions& dimensionsIn, const Color& colorIn) {
+Rect::Rect(Point positionIn, Dimensions dimensionsIn, Color colorIn) {
 	color = colorIn;
 	rect = { positionIn.x, positionIn.y, dimensionsIn.w, dimensionsIn.h };
 }

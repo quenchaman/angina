@@ -85,7 +85,7 @@ void ChessEntryPoint::handlePieceSelectedState() {
 		std::vector<Move> availableMoves = validMovesGenerator->generateValidMoves(pieceSelectionMng->getSelectedPiece());
 
 		std::cout << "We got " << availableMoves.size() << std::endl;
-
+		chessPage->getBoard()->setAvailableMoveCells(availableMoves);
 	} else {
 		std::cout << "Possible attack cell selected!" << std::endl;
 	}
