@@ -26,8 +26,6 @@ ChessState PieceSelectionManager::selectPiece(Point clickedPoint) {
 			Piece* pieceOnCell = _board.getPieceOnPosition(clickedBoardCell);
 
 			if (pieceOnCell->side == Side::White) {
-				std::cout << "Is the cell " << clickedBoardCell << " empty " << isEmptyCell << " and piece is " << *pieceOnCell << std::endl;
-
 				selectedPiece = pieceOnCell;
 				return ChessState::HUMAN_PIECE_SELECTED;
 			}

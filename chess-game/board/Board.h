@@ -38,6 +38,8 @@ public:
 	bool isEmptyCell(Cell cell);
 	Piece* getPieceOnPosition(Cell cell);
 	bool isSidePieceSelected(Point point, Side side);
+	bool isSidePieceSelected(Cell cell, Side side);
+	Point calculatePoint(Cell cell);
 private:
 	Object& _object;
 	Dimensions _cellDimensions;

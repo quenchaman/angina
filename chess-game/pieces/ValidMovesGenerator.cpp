@@ -19,7 +19,7 @@ std::vector<Move> ValidMovesGenerator::generateValidMoves(Piece* piece) {
 
 	switch (piece->rank) {
 		case Rank::KNIGHT:
-			moves = PieceMoveGenerator::generateKnightMoves(piece->cell);
+			moves = filterInvalidMoves(PieceMoveGenerator::generateKnightMoves(piece->cell));
 			break;
 		default:
 			break;
@@ -32,11 +32,10 @@ std::vector<Move> ValidMovesGenerator::filterInvalidMoves(std::vector<Move> move
 	std::vector<Move> validMoves;
 
 	for (auto& move : moves) {
-		if (_board.isBoardPosition(move.dst) && (_board.isEmptyCell(move.dst) || _board.getPieceOnPosition(move.dst)->side == Side::Black)) {
-			std::cout << "Do we get until here?" << std::endl;
-			bool isEmpty = _board.isEmptyCell(move.dst);
-			bool isBlack = _board.getPieceOnPosition(move.dst)->side == Side::Black;
-			std::cout << "destination: " << move.dst << " source: " << move.src << " empty: " << isEmpty << " black: " << isBlack << std::endl;
+		bool isPositionInBoard = _board.isBoardPosition(move.dst);
+		bool isEmptyCellOrEnemyCell = _board.isEmptyCell(move.dst) || _board.isSidePieceSelected(move.dst, Side::Black);
+
+		if (isPositionInBoard && isEmptyCellOrEnemyCell) {
 			validMoves.push_back(move);
 		}
 	}

@@ -58,7 +58,11 @@ bool Board::isEmptyCell(Cell cell) {
 }
 
 Piece* Board::getPieceOnPosition(Cell cell) {
-	return _piecePositions[cell];
+	if (!isEmptyCell(cell)) {
+		return _piecePositions.find(cell)->second;
+	}
+
+	return nullptr;
 }
 
 bool Board::isSidePieceSelected(Point point, Side side) {
@@ -75,6 +79,14 @@ bool Board::isSidePieceSelected(Point point, Side side) {
 	}
 
 	return false;
+}
+
+bool Board::isSidePieceSelected(Cell cell, Side side) {
+	return isSidePieceSelected(calculatePoint(cell), side);
+}
+
+Point Board::calculatePoint(Cell cell) {
+	return { cell.row * _cellDimensions.h, cell.col * _cellDimensions.w };
 }
 
 Board::~Board() {
