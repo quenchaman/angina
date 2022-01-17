@@ -14,14 +14,21 @@
 #include "sdl/primitives/Rect.h"
 #include "sdl/primitives/Dimensions.h"
 #include "sdl/primitives/Color.h"
+#include "sdl/graphics/Renderer.h"
 
 Board::Board(Object& object, Dimensions cellDimensions): _object(object), _cellDimensions(cellDimensions) {}
 
-void Board::draw() {
+void Board::draw(Renderer* renderer) {
 	_object.draw();
 
 	for (auto const& [pos, piece] : _piecePositions) {
+		std::cout << "On position " << pos << " is piece " << *piece << std::endl;
 		piece->object.draw();
+	}
+	std::cout << "------" << std::endl;
+
+	for (auto& rect : availableMoveCells) {
+		renderer->render(rect);
 	}
 }
 
@@ -88,10 +95,12 @@ bool Board::isSidePieceSelected(Cell cell, Side side) {
 }
 
 Point Board::calculatePoint(Cell cell) {
-	return { cell.row * _cellDimensions.h, cell.col * _cellDimensions.w };
+	return { cell.col * _cellDimensions.w, cell.row * _cellDimensions.h };
 }
 
 void Board::setAvailableMoveCells(std::vector<Move> moves) {
+	availableMoveCells.clear();
+
 	for (auto& move : moves) {
 		availableMoveCells.push_back(cellToRect(move.dst));
 	}

@@ -34,8 +34,9 @@ std::vector<Move> ValidMovesGenerator::filterInvalidMoves(std::vector<Move> move
 	for (auto& move : moves) {
 		bool isPositionInBoard = _board.isBoardPosition(move.dst);
 		bool isEmptyCellOrEnemyCell = _board.isEmptyCell(move.dst) || _board.isSidePieceSelected(move.dst, Side::Black);
-
+		std::cout << "Candidate move " << move << " Is empty cell " << _board.isEmptyCell(move.dst) << std::endl;
 		if (isPositionInBoard && isEmptyCellOrEnemyCell) {
+			std::cout << "Entering move " << move << std::endl;
 			validMoves.push_back(move);
 		}
 	}

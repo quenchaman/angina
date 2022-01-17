@@ -40,8 +40,8 @@ protected:
 	std::unordered_map<int32_t, Rect*> rectangles;
 	std::unordered_map<int32_t, Object*> objects;
 	Texture* _background = nullptr;
-private:
 	Renderer& _renderer;
+private:
 	TTF_Font* font;
 };
 

@@ -19,6 +19,7 @@
 #include "sdl/primitives/Dimensions.h"
 
 struct Object;
+struct Renderer;
 
 struct CellHasher {
 	size_t operator() (const Cell& point) const {
@@ -31,7 +32,7 @@ public:
 	Board(Object& object, Dimensions cellDimensions);
 	~Board();
 
-	void draw();
+	void draw(Renderer* renderer);
 
 	Point putPiece(Piece& piece);
 
