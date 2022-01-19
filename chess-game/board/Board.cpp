@@ -13,7 +13,6 @@
 #include "sdl/engine/object/Object.h"
 #include "sdl/primitives/Rect.h"
 #include "sdl/primitives/Dimensions.h"
-#include "sdl/primitives/Color.h"
 #include "sdl/graphics/Renderer.h"
 
 Board::Board(Object& object, Dimensions cellDimensions): _object(object), _cellDimensions(cellDimensions) {}
@@ -22,10 +21,8 @@ void Board::draw(Renderer* renderer) {
 	_object.draw();
 
 	for (auto const& [pos, piece] : _piecePositions) {
-		std::cout << "On position " << pos << " is piece " << *piece << std::endl;
 		piece->object.draw();
 	}
-	std::cout << "------" << std::endl;
 
 	for (auto& rect : availableMoveCells) {
 		renderer->render(rect);
@@ -40,8 +37,8 @@ Point Board::putPiece(Piece& piece) {
 
 	Point piecePoint = { pieceX, pieceY };
 	piece.object.move(pieceX, pieceY);
-	Cell c = getCell(piecePoint);
-	_piecePositions[c] = &piece;
+
+	_piecePositions[piece.cell] = &piece;
 
 	return piecePoint;
 }
@@ -56,10 +53,10 @@ bool Board::isBoardPosition(Cell cell) {
 
 Cell Board::getCell(Point point) {
 	Point boardOrigin = _object.getPosition();
-	int32_t pieceX = (point.x - boardOrigin.x) / _cellDimensions.w;
-	int32_t pieceY = (point.y - boardOrigin.y) / _cellDimensions.h;
+	int32_t col = (point.x - boardOrigin.x) / _cellDimensions.w;
+	int32_t row = (point.y - boardOrigin.y) / _cellDimensions.h;
 
-	return {pieceX, pieceY};
+	return {row, col};
 }
 
 bool Board::isEmptyCell(Cell cell) {
@@ -108,7 +105,7 @@ void Board::setAvailableMoveCells(std::vector<Move> moves) {
 
 Rect Board::cellToRect(Cell move) {
 	Point p = calculatePoint(move);
-	return Rect(p, Dimensions{_cellDimensions.w, _cellDimensions.h}, Color::GREEN);
+	return Rect(p, Dimensions{_cellDimensions.w, _cellDimensions.h}, HIGHLIGHTED_CELL_COLOR);
 }
 
 Board::~Board() {

@@ -17,6 +17,7 @@
 #include "sdl/primitives/Point.h"
 #include "sdl/primitives/Rect.h"
 #include "sdl/primitives/Dimensions.h"
+#include "sdl/primitives/Color.h"
 
 struct Object;
 struct Renderer;
@@ -50,6 +51,8 @@ private:
 	Dimensions _cellDimensions;
 	std::unordered_map<Cell, Piece*, CellHasher> _piecePositions;
 	std::vector<Rect> availableMoveCells;
+
+	const Color HIGHLIGHTED_CELL_COLOR = Color::RED;
 
 	Rect cellToRect(Cell move);
 };
