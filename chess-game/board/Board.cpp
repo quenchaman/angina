@@ -24,7 +24,7 @@ void Board::draw(Renderer* renderer) {
 		piece->object.draw();
 	}
 
-	for (auto& rect : availableMoveCells) {
+	for (auto& rect : availableMoveRects) {
 		renderer->render(rect);
 	}
 }
@@ -96,16 +96,28 @@ Point Board::calculatePoint(Cell cell) {
 }
 
 void Board::setAvailableMoveCells(std::vector<Move> moves) {
-	availableMoveCells.clear();
+	clearAvailableMoves();
+	availableMoveRects.reserve(moves.size());
+	availableMoves.reserve(moves.size());
 
 	for (auto& move : moves) {
-		availableMoveCells.push_back(cellToRect(move.dst));
+		availableMoveRects.push_back(cellToRect(move.dst));
+		availableMoves.insert(move.dst);
 	}
+}
+
+void Board::clearAvailableMoves() {
+	availableMoveRects.clear();
+	availableMoves.clear();
 }
 
 Rect Board::cellToRect(Cell move) {
 	Point p = calculatePoint(move);
 	return Rect(p, Dimensions{_cellDimensions.w, _cellDimensions.h}, HIGHLIGHTED_CELL_COLOR);
+}
+
+bool Board::isAllowedMove(Cell move) const {
+	return availableMoves.find(move) != availableMoves.end();
 }
 
 Board::~Board() {

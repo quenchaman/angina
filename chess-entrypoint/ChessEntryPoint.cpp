@@ -86,7 +86,14 @@ void ChessEntryPoint::handlePieceSelectedState() {
 
 		chessPage->getBoard()->setAvailableMoveCells(availableMoves);
 	} else {
-		std::cout << "Possible attack cell selected!" << std::endl;
+		Cell move = chessPage->getBoard()->getCell(clickedPoint);
+		bool isItAllowedMove = chessPage->getBoard()->isAllowedMove(move);
+
+		if (!isItAllowedMove) {
+			pieceSelectionMng->clearSelection();
+			chessPage->getBoard()->clearAvailableMoves();
+			transitionState(ChessState::HUMAN_SELECT_PIECE);
+		}
 	}
 }
 

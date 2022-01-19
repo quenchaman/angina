@@ -10,6 +10,7 @@
 
 #include <unordered_map>
 #include <vector>
+#include <unordered_set>
 
 #include "chess-game/board/Cell.h"
 #include "chess-game/pieces/Piece.h"
@@ -46,11 +47,14 @@ public:
 	bool isSidePieceSelected(Cell cell, Side side);
 	Point calculatePoint(Cell cell);
 	void setAvailableMoveCells(std::vector<Move> moves);
+	bool isAllowedMove(Cell move) const;
+	void clearAvailableMoves();
 private:
 	Object& _object;
 	Dimensions _cellDimensions;
 	std::unordered_map<Cell, Piece*, CellHasher> _piecePositions;
-	std::vector<Rect> availableMoveCells;
+	std::vector<Rect> availableMoveRects;
+	std::unordered_set<Cell, Cell::HashFunction> availableMoves;
 
 	const Color HIGHLIGHTED_CELL_COLOR = Color::RED;
 

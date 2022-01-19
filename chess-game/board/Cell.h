@@ -20,6 +20,15 @@ struct Cell {
 	bool operator==(const Cell& cell) const;
 	bool operator!=(const Cell& cell) const;
 
+	struct HashFunction {
+		size_t operator()(const Cell& cell) const {
+			size_t rowHash = std::hash<int>()(cell.row);
+			size_t colHash = std::hash<int>()(cell.col) << 16;
+
+			return rowHash ^ colHash;
+		}
+	};
+
 	static const Cell UNDEFINED;
 
 	friend std::ostream& operator<<(std::ostream& os, const Cell& cell);
