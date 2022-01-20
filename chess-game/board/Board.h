@@ -49,6 +49,8 @@ public:
 	void setAvailableMoveCells(std::vector<Move> moves);
 	bool isAllowedMove(Cell move) const;
 	void clearAvailableMoves();
+
+	void movePiece(Piece* piece, Cell destination);
 private:
 	Object& _object;
 	Dimensions _cellDimensions;

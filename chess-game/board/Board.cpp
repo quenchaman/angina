@@ -116,6 +116,15 @@ Rect Board::cellToRect(Cell move) {
 	return Rect(p, Dimensions{_cellDimensions.w, _cellDimensions.h}, HIGHLIGHTED_CELL_COLOR);
 }
 
+void Board::movePiece(Piece* piece, Cell destination) {
+	std::cout << "Piece: " << piece << " goes to cell " << destination << std::endl;
+	_piecePositions.erase(piece->cell);
+
+	piece->move(calculatePoint(destination), destination);
+
+	_piecePositions[destination] = piece;
+}
+
 bool Board::isAllowedMove(Cell move) const {
 	return availableMoves.find(move) != availableMoves.end();
 }

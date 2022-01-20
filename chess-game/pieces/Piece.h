@@ -13,6 +13,7 @@
 #include "chess-game/board/Cell.h"
 #include "chess-game/pieces/Side.h"
 #include "chess-game/pieces/Rank.h"
+#include "sdl/primitives/Point.h"
 
 struct Object;
 
@@ -25,6 +26,8 @@ struct Piece {
 	Side side;
 	Rank rank;
 	bool hasMoved;
+
+	void move(const Point point, const Cell cell);
 
 	friend std::ostream& operator<<(std::ostream& os, const Piece& piece);
 };

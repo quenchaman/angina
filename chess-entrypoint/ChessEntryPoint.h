@@ -31,6 +31,8 @@ public:
 
     void transitionState(ChessState newState);
 
+    void unclick();
+
 private:
     Page* initWelcomePage();
     Page* initChessPage();

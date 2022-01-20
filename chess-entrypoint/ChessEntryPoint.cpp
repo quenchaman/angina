@@ -93,8 +93,18 @@ void ChessEntryPoint::handlePieceSelectedState() {
 			pieceSelectionMng->clearSelection();
 			chessPage->getBoard()->clearAvailableMoves();
 			transitionState(ChessState::HUMAN_SELECT_PIECE);
+		} else {
+			chessPage->getBoard()->clearAvailableMoves();
+			chessPage->getBoard()->movePiece(pieceSelectionMng->getSelectedPiece(), move);
+			pieceSelectionMng->clearSelection();
+			unclick();
+			transitionState(ChessState::HUMAN_SELECT_PIECE); // TODO: Remove this after testing
 		}
 	}
+}
+
+void ChessEntryPoint::unclick() {
+	clickedPoint = Point::UNDEFINED;
 }
 
 ChessEntryPoint::ChessEntryPoint() : Engine("Test", { 800, 800 }) {
