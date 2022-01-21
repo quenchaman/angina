@@ -22,8 +22,8 @@ public:
 	Object(Texture& t, Rect& rect, Renderer& renderer);
 	~Object();
 
-	void move(int32_t x, int32_t y);
-	void draw();
+	void move(const int32_t x, const int32_t y);
+	void draw() const;
 	Point getPosition() const;
 
 	Texture& texture;

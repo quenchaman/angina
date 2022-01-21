@@ -25,16 +25,16 @@ void Renderer::clear() {
 	SDL_RenderClear(renderer);
 }
 
-void Renderer::render(const Texture& texture) {
+void Renderer::render(const Texture& texture) const {
 	SDL_RenderCopy(renderer, texture.getTexture(), nullptr, nullptr);
 }
 
-void Renderer::render(const Rect& rect) {
+void Renderer::render(const Rect& rect) const {
 	SDL_SetRenderDrawColor(renderer, rect.color.red, rect.color.green, rect.color.blue, rect.color.alpha);
 	SDL_RenderDrawRect(renderer, &rect.rect);
 }
 
-void Renderer::render(const Object& object) {
+void Renderer::render(const Object& object) const {
 	const Point* center = &object.center;
 	SDL_Point centerPoint = { center->x, center->y };
 	SDL_RenderCopyEx(renderer, object.texture.getTexture(), nullptr, &object.rectangle.rect, object.rotation, &centerPoint, (SDL_RendererFlip) object.flip);

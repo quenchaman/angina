@@ -12,8 +12,11 @@
 #include "sdl/engine/object/Object.h"
 #include "sdl/primitives/Rect.h"
 #include "sdl/components/Button.h"
+#include "sdl/graphics/Transformer.h"
 
-void ButtonManager::registerButton(int32_t id, Button* btn) {
+void ButtonManager::registerButton(int32_t id, Texture& texture, Renderer& renderer) {
+	Button* btn = Transformer::transformTextureToButton(renderer, texture);
+
 	buttons[id] = btn;
 }
 
@@ -45,4 +48,12 @@ std::unordered_map<int32_t, Button*>& ButtonManager::getButtons() {
 
 void ButtonManager::setPosition(int32_t btnIdx, int32_t x, int32_t y) {
 	getButton(btnIdx).move(x, y);
+}
+
+ButtonManager::~ButtonManager() {
+	for (auto const& [id, btn] : buttons) {
+		delete btn;
+	}
+
+	std::cout << "Buttons destroyed" << std::endl;
 }

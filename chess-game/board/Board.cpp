@@ -17,7 +17,7 @@
 
 Board::Board(Object& object, Dimensions cellDimensions): _object(object), _cellDimensions(cellDimensions) {}
 
-void Board::draw(Renderer* renderer) {
+void Board::draw(const Renderer& renderer) const {
 	_object.draw();
 
 	for (auto const& [pos, piece] : _piecePositions) {
@@ -25,11 +25,11 @@ void Board::draw(Renderer* renderer) {
 	}
 
 	for (auto& rect : availableMoveRects) {
-		renderer->render(rect);
+		renderer.render(rect);
 	}
 }
 
-Point Board::putPiece(Piece& piece) {
+Point Board::putPiece(const Piece& piece) {
 	Point boardOrigin = _object.getPosition();
 
 	int32_t pieceX = boardOrigin.x + (piece.cell.col * _cellDimensions.w);

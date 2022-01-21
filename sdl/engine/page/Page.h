@@ -33,7 +33,7 @@ public:
 	void addObject(int32_t id, Object& object);
 	void addObject(int32_t id, const std::string& resourcePath, Point position);
 	void addButton(int32_t id, const std::string& resourcePath, Point position);
-	void addText(int32_t id, std::string text);
+	void addText(int32_t id, std::string& text);
 
 	ButtonManager buttonManager;
 protected:

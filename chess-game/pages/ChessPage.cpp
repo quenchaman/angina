@@ -63,7 +63,7 @@ void ChessPage::onPageLoad() {
 
 void ChessPage::draw() {
 	objects[ChessAssets::START_SCREEN_BACKGROUND_IMAGE]->draw();
-	board->draw(&_renderer);
+	board->draw(_renderer);
 	buttonManager.getButton(ChessAssets::QUIT_CHESS_GAME_BUTTON).draw();
 }
 

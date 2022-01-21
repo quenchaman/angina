@@ -19,12 +19,11 @@ struct Board;
 class PieceSelectionManager {
 public:
 	PieceSelectionManager(Board& board);
-	~PieceSelectionManager() = default;
 
 	void clearSelection();
 	ChessState selectPiece(Point point);
-	bool isSidePieceSelected(Point point, Side side);
-	Piece* getSelectedPiece();
+	bool isSidePieceSelected(const Point point, const Side side) const;
+	Piece* getSelectedPiece() const;
 private:
 	Point clickedPoint = Point::UNDEFINED;
 	Cell clickedBoardCell = Cell::UNDEFINED;

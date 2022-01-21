@@ -30,6 +30,7 @@
 #include "sdl/components/Button.h"
 #include "sdl/engine/buttons/ButtonManager.h"
 #include "sdl/engine/page/Page.h"
+#include "sdl/graphics/GlobalRenderer.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) {
     Graphics::boot();
@@ -46,7 +47,7 @@ Engine::Engine(std::string appTitle, Dimensions screenSize) {
             { screenSize.w, screenSize.h },
             SDL_WINDOW_SHOWN
     );
-    renderer = new Renderer(*window);
+    renderer = GlobalRenderer::renderer = new Renderer(*window);
 
     event.init();
 }

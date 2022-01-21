@@ -21,12 +21,12 @@ Object::~Object() {
 	std::cout << "Object destroyed" << std::endl;
 }
 
-void Object::move(int32_t x, int32_t y) {
+void Object::move(const int32_t x, const int32_t y) {
 	rectangle.rect.x = x;
 	rectangle.rect.y = y;
 }
 
-void Object::draw() {
+void Object::draw() const {
 	_renderer.render(*this);
 }
 

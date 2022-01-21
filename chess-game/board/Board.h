@@ -34,20 +34,30 @@ public:
 	Board(Object& object, Dimensions cellDimensions);
 	~Board();
 
-	void draw(Renderer* renderer);
+	void draw(const Renderer& renderer) const;
 
-	Point putPiece(Piece& piece);
+	Point putPiece(const Piece& piece);
 
 	bool isBoardPosition(Point point);
+
 	bool isBoardPosition(Cell cell);
+
 	Cell getCell(Point point);
+
 	bool isEmptyCell(Cell cell);
+
 	Piece* getPieceOnPosition(Cell cell);
+
 	bool isSidePieceSelected(Point point, Side side);
+
 	bool isSidePieceSelected(Cell cell, Side side);
+
 	Point calculatePoint(Cell cell);
+
 	void setAvailableMoveCells(std::vector<Move> moves);
+
 	bool isAllowedMove(Cell move) const;
+
 	void clearAvailableMoves();
 
 	void movePiece(Piece* piece, Cell destination);

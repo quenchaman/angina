@@ -1,30 +1,23 @@
-/*
- * Piece.h
- *
- *  Created on: Jan 8, 2022
- *      Author: ubuntu
- */
-
 #ifndef CHESS_GAME_PIECES_PIECE_H_
 #define CHESS_GAME_PIECES_PIECE_H_
 
 #include <iostream>
 
+#include "sdl/primitives/Point.h"
+
 #include "chess-game/board/Cell.h"
 #include "chess-game/pieces/Side.h"
 #include "chess-game/pieces/Rank.h"
-#include "sdl/primitives/Point.h"
 
 struct Object;
 
 struct Piece {
 	Piece(Object& object, Cell cell, Side side, Rank rank);
-	~Piece() = default;
 
 	Object& object;
 	Cell cell;
-	Side side;
-	Rank rank;
+	const Side side;
+	const Rank rank;
 	bool hasMoved;
 
 	void move(const Point point, const Cell cell);

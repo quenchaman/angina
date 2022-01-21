@@ -35,10 +35,10 @@ ChessState PieceSelectionManager::selectPiece(Point clickedPoint) {
 	return ChessState::HUMAN_SELECT_PIECE;
 }
 
-Piece* PieceSelectionManager::getSelectedPiece() {
+Piece* PieceSelectionManager::getSelectedPiece() const {
 	return selectedPiece;
 }
 
-bool PieceSelectionManager::isSidePieceSelected(Point point, Side side) {
+bool PieceSelectionManager::isSidePieceSelected(const Point point, const Side side) const {
 	return _board.isSidePieceSelected(point, side);
 }

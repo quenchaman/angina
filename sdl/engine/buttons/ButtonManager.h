@@ -13,16 +13,22 @@
 
 struct Button;
 struct InputEvent;
+struct Texture;
+struct Renderer;
 
 class ButtonManager {
 public:
 	ButtonManager() = default;
-	~ButtonManager() = default;
+	~ButtonManager();
 
-	void registerButton(int32_t id, Button* btn);
+	void registerButton(int32_t id, Texture& btnTexture, Renderer& renderer);
+
 	int32_t getClickedButtonIndex(const InputEvent& event);
+
 	Button& getButton(int32_t id);
+
 	std::unordered_map<int32_t, Button*>& getButtons();
+
 	void setPosition(int32_t btnIdx, int32_t x, int32_t y);
 private:
 	std::unordered_map<int32_t, Button*> buttons;

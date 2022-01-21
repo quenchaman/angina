@@ -68,6 +68,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/graphics/Flip.h
 	${DIR}/sdl/components/Button.cpp
 	${DIR}/sdl/components/Button.h
+	${DIR}/sdl/graphics/GlobalRenderer.h
+	${DIR}/sdl/graphics/GlobalRenderer.cpp
 	${DIR}/chess-entrypoint/ChessEntryPoint.h
 	${DIR}/chess-entrypoint/ChessEntryPoint.cpp
 	${DIR}/chess-game/pages/LandingPage.h
@@ -91,6 +93,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess-game/states/ChessState.h
 	${DIR}/chess-game/board/PieceSelectionManager.h
 	${DIR}/chess-game/board/PieceSelectionManager.cpp
+	${DIR}/chess-game/board/CellUtils.h
+	${DIR}/chess-game/board/CellUtils.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

@@ -30,10 +30,6 @@ Page::~Page() {
 	for (auto const& [id, object] : objects) {
 		delete object;
 	}
-
-	for (auto const& [id, btn] : buttonManager.getButtons()) {
-		delete btn;
-	}
 }
 
 void Page::addRectangle(int32_t id, Rect& rectangle) {
@@ -56,12 +52,11 @@ void Page::addButton(int32_t id, const std::string& resourcePath, Point position
 	Surface* surface = ResourceLoader::load(resourcePath);
 	Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
 
-	Button* btn = Transformer::transformTextureToButton(_renderer, *texture);
-	buttonManager.registerButton(id, btn);
+	buttonManager.registerButton(id, *texture, _renderer);
 	buttonManager.getButton(id).move(position.x, position.y);
 }
 
-void Page::addText(int32_t id, std::string text) {
+void Page::addText(int32_t id, std::string& text) {
 	Surface* surface = ResourceLoader::loadText(font, text, Color::RED);
 	Texture* texture = Transformer::transformSurfaceToTexture(_renderer, *surface);
 

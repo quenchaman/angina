@@ -21,9 +21,9 @@ public:
 
 	SDL_Renderer* getRenderer();
 	void clear();
-	void render(const Texture& texture);
-	void render(const Rect& rect);
-	void render(const Object& object);
+	void render(const Texture& texture) const;
+	void render(const Rect& rect) const;
+	void render(const Object& object) const;
 	void update();
 private:
 	void init(Window& window);
