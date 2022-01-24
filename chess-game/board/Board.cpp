@@ -14,6 +14,7 @@
 #include "sdl/primitives/Rect.h"
 #include "sdl/primitives/Dimensions.h"
 #include "sdl/graphics/Renderer.h"
+#include "chess-game/board/CellUtils.h"
 
 Board::Board(Object& object, Dimensions cellDimensions): _object(object), _cellDimensions(cellDimensions) {}
 
@@ -29,14 +30,12 @@ void Board::draw(const Renderer& renderer) const {
 	}
 }
 
-Point Board::putPiece(const Piece& piece) {
+Point Board::putPiece(Piece& piece) {
 	Point boardOrigin = _object.getPosition();
+	Point pieceOrigin = CellUtils::cellToPoint(piece.cell, _cellDimensions);
+	Point piecePoint = boardOrigin + pieceOrigin;
 
-	int32_t pieceX = boardOrigin.x + (piece.cell.col * _cellDimensions.w);
-	int32_t pieceY = boardOrigin.y + (piece.cell.row * _cellDimensions.h);
-
-	Point piecePoint = { pieceX, pieceY };
-	piece.object.move(pieceX, pieceY);
+	piece.object.move(piecePoint.x, piecePoint.y);
 
 	_piecePositions[piece.cell] = &piece;
 
@@ -52,11 +51,7 @@ bool Board::isBoardPosition(Cell cell) {
 }
 
 Cell Board::getCell(Point point) {
-	Point boardOrigin = _object.getPosition();
-	int32_t col = (point.x - boardOrigin.x) / _cellDimensions.w;
-	int32_t row = (point.y - boardOrigin.y) / _cellDimensions.h;
-
-	return {row, col};
+	return CellUtils::pointToCell(point - _object.getPosition(), _cellDimensions);
 }
 
 bool Board::isEmptyCell(Cell cell) {

@@ -7,12 +7,10 @@
 
 #include "CellUtils.h"
 
-CellUtils::CellUtils() {
-	// TODO Auto-generated constructor stub
-
+Point CellUtils::cellToPoint(Cell cell, Dimensions dim) {
+	return { cell.col * dim.w, cell.row * dim.h };
 }
 
-CellUtils::~CellUtils() {
-	// TODO Auto-generated destructor stub
+Cell CellUtils::pointToCell(Point point, Dimensions dim) {
+	return { point.y / dim.h, point.x / dim.w };
 }
-

@@ -36,7 +36,7 @@ public:
 
 	void draw(const Renderer& renderer) const;
 
-	Point putPiece(const Piece& piece);
+	Point putPiece(Piece& piece);
 
 	bool isBoardPosition(Point point);
 
