@@ -45,6 +45,10 @@ void ChessEntryPoint::update() {
 			break;
 		case ChessState::FINISH_HUMAN_MOVE:
 			handleFinishHumanMove();
+			transitionState(ChessState::COMPUTER_MOVE);
+			break;
+		case ChessState::COMPUTER_MOVE:
+			handleComputerMove();
 			break;
 		default:
 			break;
@@ -127,11 +131,15 @@ void ChessEntryPoint::handleFinishHumanMove() {
 	transitionState(ChessState::HUMAN_SELECT_PIECE); // TODO: Remove this after testing
 }
 
+void ChessEntryPoint::handleComputerMove() {
+	std::cout << "I....am...thinkiiinnnnnng @!#!$@ blido ba blido ba!" << std::endl;
+}
+
 void ChessEntryPoint::unclick() {
 	clickedPoint = Point::UNDEFINED;
 }
 
-ChessEntryPoint::ChessEntryPoint() : Engine("Test", Config::WINDOW_DIM) {
+ChessEntryPoint::ChessEntryPoint() : Engine(Config::GAME_TITLE, Config::WINDOW_DIM) {
 
 }
 

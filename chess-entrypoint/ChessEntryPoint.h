@@ -46,6 +46,7 @@ private:
     void handlePieceSelectedState();
     void handleCaptures();
     void handleFinishHumanMove();
+    void handleComputerMove();
 };
 
 
