@@ -13,6 +13,7 @@
 #include "chess-game/board/Board.h"
 #include "resources/Resources.h"
 #include "chess-game/pieces/Piece.h"
+#include "config/Config.h"
 
 ChessPage::ChessPage(Renderer& renderer) : Page(renderer)  {
 	onPageLoad();
@@ -20,7 +21,7 @@ ChessPage::ChessPage(Renderer& renderer) : Page(renderer)  {
 
 void ChessPage::onPageLoad() {
 	addObject(ChessAssets::START_SCREEN_BACKGROUND_IMAGE, Resources::startScreen2, Point{0, 0});
-	addObject(ChessAssets::BOARD, Resources::board, Point{0, 0});
+	addObject(ChessAssets::BOARD, Resources::board, Config::BOARD_ORIGIN_POS);
 	board = new Board(*objects[ChessAssets::BOARD], Dimensions{80, 80});
 	addButton(ChessAssets::QUIT_CHESS_GAME_BUTTON, Resources::quitGameButton, Point{645, 20});
 

@@ -23,12 +23,6 @@
 struct Object;
 struct Renderer;
 
-struct CellHasher {
-	size_t operator() (const Cell& point) const {
-		return (point.row * 10) + point.col;
-	}
-};
-
 class Board {
 public:
 	Board(Object& object, Dimensions cellDimensions);
@@ -52,8 +46,6 @@ public:
 
 	bool isSidePieceSelected(Cell cell, Side side);
 
-	Point calculatePoint(Cell cell);
-
 	void setAvailableMoveCells(std::vector<Move> moves);
 
 	bool isAllowedMove(Cell move) const;
@@ -61,10 +53,12 @@ public:
 	void clearAvailableMoves();
 
 	void movePiece(Piece* piece, Cell destination);
+
+	void capturePiece(Cell position);
 private:
 	Object& _object;
 	Dimensions _cellDimensions;
-	std::unordered_map<Cell, Piece*, CellHasher> _piecePositions;
+	std::unordered_map<Cell, Piece*, Cell::CellHasher> _piecePositions;
 	std::vector<Rect> availableMoveRects;
 	std::unordered_set<Cell, Cell::HashFunction> availableMoves;
 

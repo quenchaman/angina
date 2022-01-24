@@ -31,9 +31,7 @@ void Board::draw(const Renderer& renderer) const {
 }
 
 Point Board::putPiece(Piece& piece) {
-	Point boardOrigin = _object.getPosition();
-	Point pieceOrigin = CellUtils::cellToPoint(piece.cell, _cellDimensions);
-	Point piecePoint = boardOrigin + pieceOrigin;
+	Point piecePoint = CellUtils::cellToPoint(piece.cell, _cellDimensions, _object.getPosition());
 
 	piece.object.move(piecePoint.x, piecePoint.y);
 
@@ -51,7 +49,7 @@ bool Board::isBoardPosition(Cell cell) {
 }
 
 Cell Board::getCell(Point point) {
-	return CellUtils::pointToCell(point - _object.getPosition(), _cellDimensions);
+	return CellUtils::pointToCell(point, _cellDimensions, _object.getPosition());
 }
 
 bool Board::isEmptyCell(Cell cell) {
@@ -83,11 +81,7 @@ bool Board::isSidePieceSelected(Point point, Side side) {
 }
 
 bool Board::isSidePieceSelected(Cell cell, Side side) {
-	return isSidePieceSelected(calculatePoint(cell), side);
-}
-
-Point Board::calculatePoint(Cell cell) {
-	return { cell.col * _cellDimensions.w, cell.row * _cellDimensions.h };
+	return isSidePieceSelected(CellUtils::cellToPoint(cell, _cellDimensions, _object.getPosition()), side);
 }
 
 void Board::setAvailableMoveCells(std::vector<Move> moves) {
@@ -107,21 +101,27 @@ void Board::clearAvailableMoves() {
 }
 
 Rect Board::cellToRect(Cell move) {
-	Point p = calculatePoint(move);
+	Point p = CellUtils::cellToPoint(move, _cellDimensions, _object.getPosition());
+
 	return Rect(p, Dimensions{_cellDimensions.w, _cellDimensions.h}, HIGHLIGHTED_CELL_COLOR);
 }
 
 void Board::movePiece(Piece* piece, Cell destination) {
-	std::cout << "Piece: " << piece << " goes to cell " << destination << std::endl;
 	_piecePositions.erase(piece->cell);
 
-	piece->move(calculatePoint(destination), destination);
+	piece->move(CellUtils::cellToPoint(destination, _cellDimensions, _object.getPosition()), destination);
 
 	_piecePositions[destination] = piece;
 }
 
 bool Board::isAllowedMove(Cell move) const {
 	return availableMoves.find(move) != availableMoves.end();
+}
+
+void Board::capturePiece(Cell position) {
+	if (!isEmptyCell(position)) {
+		_piecePositions.erase(position);
+	}
 }
 
 Board::~Board() {

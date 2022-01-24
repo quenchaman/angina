@@ -14,8 +14,8 @@
 #include "chess-game/board/Cell.h"
 
 namespace CellUtils {
-	Point cellToPoint(Cell cell, Dimensions dim);
-	Cell pointToCell(Point point, Dimensions dim);
+	Point cellToPoint(Cell cell, Dimensions cellDimensions, Point offset);
+	Cell pointToCell(Point point, Dimensions cellDimensions, Point offset);
 }
 
 #endif /* CHESS_GAME_BOARD_CELLUTILS_H_ */

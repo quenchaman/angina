@@ -22,6 +22,7 @@
 #include "chess-game/pieces/Piece.h"
 #include "chess-game/board/PieceSelectionManager.h"
 #include "chess-game/pieces/ValidMovesGenerator.h"
+#include "config/Config.h"
 
 void ChessEntryPoint::init() {
 	navigateTo(initWelcomePage());
@@ -38,6 +39,12 @@ void ChessEntryPoint::update() {
 			break;
 		case ChessState::HUMAN_PIECE_SELECTED:
 			handlePieceSelectedState();
+			break;
+		case ChessState::CAPTURES:
+			handleCaptures();
+			break;
+		case ChessState::FINISH_HUMAN_MOVE:
+			handleFinishHumanMove();
 			break;
 		default:
 			break;
@@ -90,24 +97,41 @@ void ChessEntryPoint::handlePieceSelectedState() {
 		bool isItAllowedMove = chessPage->getBoard()->isAllowedMove(move);
 
 		if (!isItAllowedMove) {
-			pieceSelectionMng->clearSelection();
-			chessPage->getBoard()->clearAvailableMoves();
-			transitionState(ChessState::HUMAN_SELECT_PIECE);
+			transitionState(ChessState::FINISH_HUMAN_MOVE);
 		} else {
-			chessPage->getBoard()->clearAvailableMoves();
-			chessPage->getBoard()->movePiece(pieceSelectionMng->getSelectedPiece(), move);
-			pieceSelectionMng->clearSelection();
-			unclick();
-			transitionState(ChessState::HUMAN_SELECT_PIECE); // TODO: Remove this after testing
+			Piece* enemyPiece = chessPage->getBoard()->getPieceOnPosition(move);
+
+			if (enemyPiece != nullptr) {
+				transitionState(ChessState::CAPTURES);
+			} else {
+				chessPage->getBoard()->movePiece(pieceSelectionMng->getSelectedPiece(), move);
+				transitionState(ChessState::FINISH_HUMAN_MOVE);
+			}
 		}
 	}
+}
+
+void ChessEntryPoint::handleCaptures() {
+	Cell move = chessPage->getBoard()->getCell(clickedPoint);
+
+	chessPage->getBoard()->capturePiece(move);
+	chessPage->getBoard()->movePiece(pieceSelectionMng->getSelectedPiece(), move);
+
+	transitionState(ChessState::FINISH_HUMAN_MOVE);
+}
+
+void ChessEntryPoint::handleFinishHumanMove() {
+	chessPage->getBoard()->clearAvailableMoves();
+	pieceSelectionMng->clearSelection();
+	unclick();
+	transitionState(ChessState::HUMAN_SELECT_PIECE); // TODO: Remove this after testing
 }
 
 void ChessEntryPoint::unclick() {
 	clickedPoint = Point::UNDEFINED;
 }
 
-ChessEntryPoint::ChessEntryPoint() : Engine("Test", { 800, 800 }) {
+ChessEntryPoint::ChessEntryPoint() : Engine("Test", Config::WINDOW_DIM) {
 
 }
 
