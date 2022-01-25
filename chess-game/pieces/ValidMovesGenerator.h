@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "chess-game/pieces/Move.h"
+#include "chess-game/pieces/Side.h"
 
 struct Board;
 struct Piece;
@@ -23,7 +24,7 @@ public:
 private:
 	Board& _board;
 
-	std::vector<Move> filterInvalidMoves(std::vector<Move> moves);
+	std::vector<Move> filterInvalidMoves(std::vector<Move> moves, Side enemySide);
 };
 
 #endif /* CHESS_GAME_PIECES_VALIDMOVESGENERATOR_H_ */
