@@ -95,6 +95,12 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess-game/board/PieceSelectionManager.cpp
 	${DIR}/chess-game/board/CellUtils.h
 	${DIR}/chess-game/board/CellUtils.cpp
+	${DIR}/chess-game/ai/AI.h
+	${DIR}/chess-game/ai/AI.cpp
+	${DIR}/chess-game/ai/ScoredMove.h
+	${DIR}/chess-game/ai/ScoredMove.cpp
+	${DIR}/chess-game/utils/VectorShuffler.h
+	${DIR}/chess-game/utils/VectorShuffler.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

@@ -38,9 +38,9 @@ public:
 
 	Cell getCell(Point point);
 
-	bool isEmptyCell(Cell cell);
+	bool isEmptyCell(Cell cell) const;
 
-	Piece* getPieceOnPosition(Cell cell);
+	Piece* getPieceOnPosition(Cell cell) const;
 
 	bool isSidePieceSelected(Point point, Side side);
 
@@ -55,6 +55,8 @@ public:
 	void movePiece(Piece* piece, Cell destination);
 
 	void capturePiece(Cell position);
+
+	std::vector<Piece*> getPiecesOfSide(Side side) const;
 private:
 	Object& _object;
 	Dimensions _cellDimensions;

@@ -133,6 +133,8 @@ void ChessEntryPoint::handleFinishHumanMove() {
 
 void ChessEntryPoint::handleComputerMove() {
 	std::cout << "I....am...thinkiiinnnnnng @!#!$@ blido ba blido ba!" << std::endl;
+
+
 }
 
 void ChessEntryPoint::unclick() {

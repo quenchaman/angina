@@ -14,7 +14,7 @@
 ValidMovesGenerator::ValidMovesGenerator(Board& board): _board(board) {
 }
 
-std::vector<Move> ValidMovesGenerator::generateValidMoves(Piece* piece) {
+std::vector<Move> ValidMovesGenerator::generateValidMoves(Piece* piece) const {
 	std::vector<Move> moves;
 	Side enemySide = piece->side == Side::Black ? Side::White : Side::Black;
 
@@ -29,7 +29,7 @@ std::vector<Move> ValidMovesGenerator::generateValidMoves(Piece* piece) {
 	return filterInvalidMoves(moves, enemySide);
 }
 
-std::vector<Move> ValidMovesGenerator::filterInvalidMoves(std::vector<Move> moves, Side enemySide) {
+std::vector<Move> ValidMovesGenerator::filterInvalidMoves(std::vector<Move> moves, Side enemySide) const {
 	std::vector<Move> validMoves;
 
 	for (auto& move : moves) {

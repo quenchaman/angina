@@ -52,11 +52,11 @@ Cell Board::getCell(Point point) {
 	return CellUtils::pointToCell(point, _cellDimensions, _object.getPosition());
 }
 
-bool Board::isEmptyCell(Cell cell) {
+bool Board::isEmptyCell(Cell cell) const {
 	return _piecePositions.find(cell) == _piecePositions.end();
 }
 
-Piece* Board::getPieceOnPosition(Cell cell) {
+Piece* Board::getPieceOnPosition(Cell cell) const {
 	if (!isEmptyCell(cell)) {
 		return _piecePositions.find(cell)->second;
 	}
@@ -122,6 +122,18 @@ void Board::capturePiece(Cell position) {
 	if (!isEmptyCell(position)) {
 		_piecePositions.erase(position);
 	}
+}
+
+std::vector<Piece*> Board::getPiecesOfSide(Side side) const {
+	std::vector<Piece*> pieces;
+
+	for (auto const& [cell, piece] : _piecePositions) {
+		if (piece->side == side) {
+			pieces.push_back(piece);
+		}
+	}
+
+	return pieces;
 }
 
 Board::~Board() {

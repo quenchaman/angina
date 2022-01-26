@@ -20,11 +20,11 @@ class ValidMovesGenerator {
 public:
 	ValidMovesGenerator(Board& board);
 
-	std::vector<Move> generateValidMoves(Piece* piece);
+	std::vector<Move> generateValidMoves(Piece* piece) const;
 private:
 	Board& _board;
 
-	std::vector<Move> filterInvalidMoves(std::vector<Move> moves, Side enemySide);
+	std::vector<Move> filterInvalidMoves(std::vector<Move> moves, Side enemySide) const;
 };
 
 #endif /* CHESS_GAME_PIECES_VALIDMOVESGENERATOR_H_ */
