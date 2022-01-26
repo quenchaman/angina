@@ -22,6 +22,8 @@
 #include "chess-game/pieces/Piece.h"
 #include "chess-game/board/PieceSelectionManager.h"
 #include "chess-game/pieces/ValidMovesGenerator.h"
+#include "chess-game/ai/AI.h"
+#include "chess-game/ai/ScoredMove.h"
 #include "config/Config.h"
 
 void ChessEntryPoint::init() {
@@ -39,9 +41,6 @@ void ChessEntryPoint::update() {
 			break;
 		case ChessState::HUMAN_PIECE_SELECTED:
 			handlePieceSelectedState();
-			break;
-		case ChessState::CAPTURES:
-			handleCaptures();
 			break;
 		case ChessState::FINISH_HUMAN_MOVE:
 			handleFinishHumanMove();
@@ -82,6 +81,8 @@ Page* ChessEntryPoint::initChessPage() {
 	chessPage = page;
 	pieceSelectionMng = new PieceSelectionManager(*page->getBoard());
 	validMovesGenerator = new ValidMovesGenerator(*page->getBoard());
+	ai = new AI(*page->getBoard(), *validMovesGenerator);
+
 	return page;
 }
 
@@ -101,27 +102,12 @@ void ChessEntryPoint::handlePieceSelectedState() {
 		bool isItAllowedMove = chessPage->getBoard()->isAllowedMove(move);
 
 		if (!isItAllowedMove) {
-			transitionState(ChessState::FINISH_HUMAN_MOVE);
+			transitionState(ChessState::HUMAN_SELECT_PIECE);
 		} else {
-			Piece* enemyPiece = chessPage->getBoard()->getPieceOnPosition(move);
-
-			if (enemyPiece != nullptr) {
-				transitionState(ChessState::CAPTURES);
-			} else {
-				chessPage->getBoard()->movePiece(pieceSelectionMng->getSelectedPiece(), move);
-				transitionState(ChessState::FINISH_HUMAN_MOVE);
-			}
+			chessPage->getBoard()->movePiece(pieceSelectionMng->getSelectedPiece(), move);
+			transitionState(ChessState::FINISH_HUMAN_MOVE);
 		}
 	}
-}
-
-void ChessEntryPoint::handleCaptures() {
-	Cell move = chessPage->getBoard()->getCell(clickedPoint);
-
-	chessPage->getBoard()->capturePiece(move);
-	chessPage->getBoard()->movePiece(pieceSelectionMng->getSelectedPiece(), move);
-
-	transitionState(ChessState::FINISH_HUMAN_MOVE);
 }
 
 void ChessEntryPoint::handleFinishHumanMove() {
@@ -134,7 +120,11 @@ void ChessEntryPoint::handleFinishHumanMove() {
 void ChessEntryPoint::handleComputerMove() {
 	std::cout << "I....am...thinkiiinnnnnng @!#!$@ blido ba blido ba!" << std::endl;
 
+	ScoredMove bestMove = ai->findBestMove(Side::Black);
 
+	chessPage->getBoard()->movePiece(bestMove.piece, bestMove.destination);
+
+	transitionState(ChessState::HUMAN_SELECT_PIECE);
 }
 
 void ChessEntryPoint::unclick() {

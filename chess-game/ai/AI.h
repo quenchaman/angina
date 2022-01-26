@@ -22,12 +22,12 @@ public:
 	AI(const Board& board, const ValidMovesGenerator& movesGen);
 
 	ScoredMove findBestMove(Side side) const;
-
-	double scoreMove(Cell move) const;
 private:
 	const Board& board;
 	const ValidMovesGenerator& movesGenerator;
 	VectorShuffler shuffler;
+
+	double scoreMove(Cell move) const;
 };
 
 #endif /* CHESS_GAME_AI_AI_H_ */

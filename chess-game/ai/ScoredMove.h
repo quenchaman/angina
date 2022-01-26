@@ -8,6 +8,8 @@
 #ifndef CHESS_GAME_AI_SCOREDMOVE_H_
 #define CHESS_GAME_AI_SCOREDMOVE_H_
 
+#include <iostream>
+
 #include "chess-game/board/Cell.h"
 
 struct Piece;
@@ -24,6 +26,8 @@ struct ScoredMove {
 			return first.score >= second.score;
 		}
 	};
+
+	friend std::ostream& operator<<(std::ostream& os, const ScoredMove& move);
 };
 
 #endif /* CHESS_GAME_AI_SCOREDMOVE_H_ */

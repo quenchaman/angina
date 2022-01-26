@@ -106,12 +106,18 @@ Rect Board::cellToRect(Cell move) {
 	return Rect(p, Dimensions{_cellDimensions.w, _cellDimensions.h}, HIGHLIGHTED_CELL_COLOR);
 }
 
-void Board::movePiece(Piece* piece, Cell destination) {
-	_piecePositions.erase(piece->cell);
+void Board::movePiece(Piece* movedPiece, Cell destination) {
+	Piece* attackedPiece = getPieceOnPosition(destination);
 
-	piece->move(CellUtils::cellToPoint(destination, _cellDimensions, _object.getPosition()), destination);
+	if (attackedPiece != nullptr) {
+		capturePiece(attackedPiece->cell);
+	}
 
-	_piecePositions[destination] = piece;
+	_piecePositions.erase(movedPiece->cell);
+
+	movedPiece->move(CellUtils::cellToPoint(destination, _cellDimensions, _object.getPosition()), destination);
+
+	_piecePositions[destination] = movedPiece;
 }
 
 bool Board::isAllowedMove(Cell move) const {

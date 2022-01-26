@@ -15,6 +15,7 @@ struct ChessPage;
 struct Piece;
 struct PieceSelectionManager;
 struct ValidMovesGenerator;
+struct AI;
 
 class ChessEntryPoint : public Engine {
 public:
@@ -41,10 +42,10 @@ private:
     ChessPage* chessPage = nullptr;
     PieceSelectionManager* pieceSelectionMng;
     ValidMovesGenerator* validMovesGenerator;
+    AI* ai;
 
     void handleHumanSelectPieceState();
     void handlePieceSelectedState();
-    void handleCaptures();
     void handleFinishHumanMove();
     void handleComputerMove();
 };
