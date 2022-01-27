@@ -22,6 +22,7 @@
 
 struct Object;
 struct Renderer;
+struct ValidMovesGenerator;
 
 typedef std::unordered_map<Side, std::vector<Piece*>> PiecesBySide;
 
@@ -34,19 +35,19 @@ public:
 
 	Point putPiece(Piece& piece);
 
-	bool isBoardPosition(Point point);
+	bool isBoardPosition(Point point) const;
 
-	bool isBoardPosition(Cell cell);
+	bool isBoardPosition(Cell cell) const;
 
-	Cell getCell(Point point);
+	Cell getCell(Point point) const;
 
 	bool isEmptyCell(Cell cell) const;
 
 	Piece* getPieceOnPosition(Cell cell) const;
 
-	bool isSidePieceSelected(Point point, Side side);
+	bool isSidePieceSelected(Point point, Side side) const;
 
-	bool isSidePieceSelected(Cell cell, Side side);
+	bool isSidePieceSelected(Cell cell, Side side) const;
 
 	void setAvailableMoveCells(std::vector<Move> moves);
 
@@ -59,10 +60,14 @@ public:
 	std::vector<Piece*> getPiecesOfSide(Side side) const;
 
 	const PiecesBySide& getCapturedPieces() const;
+
+	bool isAttacked(const Piece* piece, const ValidMovesGenerator& movesGenerator) const;
+
+	bool isInBoardCenter(Cell cell) const;
 private:
 	Object& _object;
 	Dimensions _cellDimensions;
-	std::unordered_map<Cell, Piece*, Cell::CellHasher> _piecePositions;
+	std::unordered_map<Cell, Piece*, Cell::HashFunction> _piecePositions;
 	std::vector<Rect> availableMoveRects;
 	std::unordered_set<Cell, Cell::HashFunction> availableMoves;
 	PiecesBySide capturedPieces;

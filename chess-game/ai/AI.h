@@ -16,6 +16,7 @@
 
 struct Board;
 struct ValidMovesGenerator;
+struct Piece;
 
 class AI {
 public:
@@ -27,7 +28,7 @@ private:
 	const ValidMovesGenerator& movesGenerator;
 	VectorShuffler shuffler;
 
-	double scoreMove(Cell move) const;
+	double scoreMove(Piece* piece, Cell move) const;
 };
 
 #endif /* CHESS_GAME_AI_AI_H_ */

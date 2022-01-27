@@ -33,11 +33,6 @@ struct Cell {
 
 	friend std::ostream& operator<<(std::ostream& os, const Cell& cell);
 
-	struct CellHasher {
-		size_t operator() (const Cell& point) const {
-			return (point.row * 10) + point.col;
-		}
-	};
 };
 
 
