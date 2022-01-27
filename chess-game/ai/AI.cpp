@@ -12,6 +12,7 @@
 
 #include "chess-game/board/Board.h"
 #include "chess-game/pieces/ValidMovesGenerator.h"
+#include "chess-game/pieces/PieceValue.h"
 
 AI::AI(const Board& boardIn, const ValidMovesGenerator& movesGenIn): board(boardIn), movesGenerator(movesGenIn) {}
 
@@ -44,7 +45,7 @@ double AI::scoreMove(Cell move) const {
 	Piece* pieceOnDestinationCell = board.getPieceOnPosition(move);
 
 	if (pieceOnDestinationCell != nullptr) {
-		totalScore += 1;
+		totalScore += PieceValue::getPieceValue(pieceOnDestinationCell->rank);
 	}
 
 	return totalScore;

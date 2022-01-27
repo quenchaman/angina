@@ -90,6 +90,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/chess-game/pieces/PieceMoveGenerator.cpp
 	${DIR}/chess-game/pieces/ValidMovesGenerator.h
 	${DIR}/chess-game/pieces/ValidMovesGenerator.cpp
+	${DIR}/chess-game/pieces/PieceValue.h
 	${DIR}/chess-game/states/ChessState.h
 	${DIR}/chess-game/board/PieceSelectionManager.h
 	${DIR}/chess-game/board/PieceSelectionManager.cpp
