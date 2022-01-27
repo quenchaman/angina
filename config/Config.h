@@ -22,6 +22,9 @@ namespace Config {
 	const Point BOARD_ORIGIN_POS = {0, 75};
 	const Dimensions WINDOW_DIM = {800, 800};
 	const std::string GAME_TITLE = "Chess";
+	const Point BLACK_PIECES_CEMETERY = {0, 0};
+	const Point WHITE_PIECES_CEMETERY = {0, 720};
+	const int32_t SPACE_BETWEEN_GRAVES = 30;
 }
 
 

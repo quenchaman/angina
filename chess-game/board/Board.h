@@ -23,6 +23,8 @@
 struct Object;
 struct Renderer;
 
+typedef std::unordered_map<Side, std::vector<Piece*>> PiecesBySide;
+
 class Board {
 public:
 	Board(Object& object, Dimensions cellDimensions);
@@ -54,19 +56,22 @@ public:
 
 	void movePiece(Piece* piece, Cell destination);
 
-	void capturePiece(Cell position);
-
 	std::vector<Piece*> getPiecesOfSide(Side side) const;
+
+	const PiecesBySide& getCapturedPieces() const;
 private:
 	Object& _object;
 	Dimensions _cellDimensions;
 	std::unordered_map<Cell, Piece*, Cell::CellHasher> _piecePositions;
 	std::vector<Rect> availableMoveRects;
 	std::unordered_set<Cell, Cell::HashFunction> availableMoves;
+	PiecesBySide capturedPieces;
 
 	const Color HIGHLIGHTED_CELL_COLOR = Color::RED;
 
 	Rect cellToRect(Cell move);
+
+	void capturePiece(Cell position);
 };
 
 #endif /* CHESS_GAME_BOARD_BOARD_H_ */

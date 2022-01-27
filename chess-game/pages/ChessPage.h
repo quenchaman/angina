@@ -29,6 +29,8 @@ public:
 	Board* getBoard();
 private:
 	Board* board;
+
+	void drawDeadPieces();
 };
 
 #endif /* CHESS_GAME_PAGES_CHESSPAGE_H_ */

@@ -66,6 +66,7 @@ void ChessPage::draw() {
 	objects[ChessAssets::START_SCREEN_BACKGROUND_IMAGE]->draw();
 	board->draw(_renderer);
 	buttonManager.getButton(ChessAssets::QUIT_CHESS_GAME_BUTTON).draw();
+	drawDeadPieces();
 }
 
 void ChessPage::createPiece(ChessAssets asset, std::string resource, Cell cell, Rank rank, Side side) {
@@ -76,6 +77,27 @@ void ChessPage::createPiece(ChessAssets asset, std::string resource, Cell cell, 
 
 Board* ChessPage::getBoard() {
 	return board;
+}
+
+void ChessPage::drawDeadPieces() {
+	PiecesBySide deadPiecesBySide = board->getCapturedPieces();
+
+	for (auto const& [side, pieces] : deadPiecesBySide) {
+		int32_t offsetMultiplier = 0;
+
+		for (auto piece : pieces) {
+			Point offset = { offsetMultiplier * Config::SPACE_BETWEEN_GRAVES, 0 };
+
+			if (piece->side == Side::Black) {
+				piece->move(Config::BLACK_PIECES_CEMETERY + offset, Cell::UNDEFINED);
+			} else {
+				piece->move(Config::WHITE_PIECES_CEMETERY + offset, Cell::UNDEFINED);
+			}
+
+			piece->object.draw();
+			offsetMultiplier++;
+		}
+	}
 }
 
 void ChessPage::onPageUnload() {

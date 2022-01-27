@@ -111,6 +111,8 @@ void Board::movePiece(Piece* movedPiece, Cell destination) {
 
 	if (attackedPiece != nullptr) {
 		capturePiece(attackedPiece->cell);
+
+		capturedPieces[attackedPiece->side].push_back(attackedPiece);
 	}
 
 	_piecePositions.erase(movedPiece->cell);
@@ -126,6 +128,7 @@ bool Board::isAllowedMove(Cell move) const {
 
 void Board::capturePiece(Cell position) {
 	if (!isEmptyCell(position)) {
+		_piecePositions[position]->cell = Cell::UNDEFINED;
 		_piecePositions.erase(position);
 	}
 }
@@ -140,6 +143,10 @@ std::vector<Piece*> Board::getPiecesOfSide(Side side) const {
 	}
 
 	return pieces;
+}
+
+const PiecesBySide& Board::getCapturedPieces() const {
+	return capturedPieces;
 }
 
 Board::~Board() {
