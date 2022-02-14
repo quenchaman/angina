@@ -15,12 +15,6 @@
 
 Object::Object(Texture& t, Rect& rect, Renderer& renderer): texture(t), rectangle(rect), _renderer(renderer) {}
 
-Object::~Object() {
-	delete &texture;
-
-	std::cout << "Object destroyed" << std::endl;
-}
-
 void Object::move(const int32_t x, const int32_t y) {
 	rectangle.rect.x = x;
 	rectangle.rect.y = y;
@@ -32,4 +26,10 @@ void Object::draw() const {
 
 Point Object::getPosition() const {
 	return {rectangle.rect.x, rectangle.rect.y};
+}
+
+Object::~Object() {
+	delete& texture;
+
+	std::cout << "Object destroyed" << std::endl;
 }

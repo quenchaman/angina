@@ -5,3 +5,4 @@ build
 .project
 cmake-build-debug/*
 .idea
+.vs

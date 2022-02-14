@@ -8,6 +8,8 @@
 #ifndef CONFIG_CONFIGLOADER_H_
 #define CONFIG_CONFIGLOADER_H_
 
+#include <cstdint>
+
 #include "ConfigData.h"
 #include "Config.h"
 

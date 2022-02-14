@@ -20,7 +20,6 @@
 
 namespace ResourceLoader {
 	Surface* load(const std::string& path) {
-		std::string fileExtension = std::filesystem::path(path).extension();
 		SDL_Surface* image = nullptr;
 
 		image = IMG_Load(path.c_str());
