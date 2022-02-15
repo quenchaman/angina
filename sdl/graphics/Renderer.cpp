@@ -14,9 +14,11 @@
 #include "SDL_shape.h"
 
 #include "sdl/graphics/Texture.h"
+#include "sdl/graphics/Surface.h"
 #include "sdl/primitives/Rect.h"
 #include "sdl/components/Window.h"
 #include "sdl/engine/object/Object.h"
+#include "sdl/components/Button.h"
 
 #include "exceptions/GraphicsInitException.h"
 
@@ -65,4 +67,49 @@ void Renderer::deinit() {
 
 SDL_Renderer* Renderer::getRenderer() {
 	return renderer;
+}
+
+Texture* Renderer::from(Surface& surface) const {
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(
+			renderer,
+			surface.getSurface()
+	);
+
+	if (texture == nullptr) {
+		throw GraphicsInitException(SDL_GetError());
+	}
+
+	delete &surface;
+
+	return new Texture(texture, surface.getSurface()->w, surface.getSurface()->h);
+}
+
+std::vector<Texture*> Renderer::from(const std::vector<Surface*>& surfaces) const {
+	std::vector<Texture*> textures;
+
+	for (Surface* surface : surfaces) {
+		textures.push_back(from(*surface));
+	}
+
+	return textures;
+}
+
+Object* Renderer::from(Texture& texture) const {
+	Rect* rect = new Rect(Point::UNDEFINED, {texture.w, texture.h}, Color::NONE);
+	Object* object = new Object(texture, *rect);
+
+	return object;
+}
+
+Object* Renderer::fromSurface(Surface& surface) const {
+	Texture* t = from(surface);
+
+	return from(*t);
+}
+
+Button* Renderer::from(const Texture& texture) {
+	Rect* rect = new Rect(Point::UNDEFINED, {texture.w, texture.h}, Color::NONE);
+	Button* btn = new Button(texture, *rect);
+
+	return btn;
 }

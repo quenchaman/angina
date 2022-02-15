@@ -1,10 +1,3 @@
-/*
- * ButtonManager.cpp
- *
- *  Created on: Dec 29, 2021
- *      Author: ubuntu
- */
-
 #include "ButtonManager.h"
 
 #include "sdl/events/InputEvent.h"
@@ -12,11 +5,8 @@
 #include "sdl/engine/object/Object.h"
 #include "sdl/primitives/Rect.h"
 #include "sdl/components/Button.h"
-#include "sdl/graphics/Transformer.h"
 
-void ButtonManager::registerButton(int32_t id, Texture& texture, Renderer& renderer) {
-	Button* btn = Transformer::transformTextureToButton(renderer, texture);
-
+void ButtonManager::registerButton(const int32_t id, const Button& btn) {
 	buttons[id] = btn;
 }
 

@@ -7,9 +7,5 @@
 #include "sdl/engine/object/Object.h"
 #include "sdl/graphics/Texture.h"
 
-Button::Button(Texture& texture, Rect& rect, Renderer& renderer): Object(texture, rect, renderer) {
-}
-
-void Button::draw() {
-	Object::draw();
+Button::Button(Texture& texture, Rect& rect): Object(texture, rect) {
 }

@@ -19,7 +19,17 @@ struct Rect;
 struct Object;
 struct Renderer;
 struct Point;
+struct Button;
+struct Drawable;
+struct GraphicsFactory;
 
+/**
+ * Class that represents a full screen page.
+ * It is a container for objects, rectangles, etc. and provides a way to add and get these primitives.
+ *
+ *
+ * Handles resource destruction after deinitialization.
+ */
 class Page {
 public:
 	Page(Renderer& renderer);
@@ -27,20 +37,15 @@ public:
 
 	virtual void draw() = 0;
 
-	void setBackground(Texture& background);
-
-	void addRectangle(int32_t id, Rect& rectangle);
-	void addObject(int32_t id, Object& object);
-	void addObject(int32_t id, const std::string& resourcePath, Point position);
-	void addButton(int32_t id, const std::string& resourcePath, Point position);
-	void addText(int32_t id, std::string& text);
+	void addRectangle(const int32_t id, const Rect& rectangle, int32_t zIndex);
+	void addObject(const int32_t id, const Object& object, int32_t zIndex);
+	void addButton(const int32_t id, const Button& btn, int32_t zIndex);
 
 	ButtonManager buttonManager;
 protected:
-	std::unordered_map<int32_t, Rect*> rectangles;
-	std::unordered_map<int32_t, Object*> objects;
-	Texture* _background = nullptr;
+	std::unordered_map<int32_t, Drawable*> drawables;
 	Renderer& _renderer;
+	GraphicsFactory& graphicsFactory;
 private:
 	TTF_Font* font;
 };

@@ -18,7 +18,6 @@
 #include "config/Globals.h"
 #include "sdl/graphics/Graphics.h"
 #include "sdl/graphics/Renderer.h"
-#include "sdl/graphics/Transformer.h"
 #include "sdl/graphics/Texture.h"
 #include "sdl/graphics/Surface.h"
 #include "resources/Resources.h"
@@ -47,7 +46,7 @@ Engine::Engine(std::string appTitle, Dimensions screenSize) {
             { screenSize.w, screenSize.h },
             SDL_WINDOW_SHOWN
     );
-    renderer = GlobalRenderer::renderer = new Renderer(*window);
+    renderer = new Renderer(*window);
 
     event.init();
 }

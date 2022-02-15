@@ -1,18 +1,15 @@
-/*
- * Renderer.h
- *
- *  Created on: Oct 21, 2021
- *      Author: ubuntu
- */
-
 #ifndef SDL_GRAPHICS_RENDERER_H_
 #define SDL_GRAPHICS_RENDERER_H_
+
+#include <vector>
 
 struct SDL_Renderer;
 struct Texture;
 struct Rect;
 struct Window;
 struct Object;
+struct Surface;
+struct Button;
 
 class Renderer {
 public:
@@ -25,6 +22,12 @@ public:
 	void render(const Rect& rect) const;
 	void render(const Object& object) const;
 	void update();
+
+	Texture* from(Surface& surface) const;
+	std::vector<Texture*> from(const std::vector<Surface*>& surfaces) const;
+	Object* from(Texture& texture) const;
+	Object* fromSurface(Surface& surface) const;
+	Button* from(Texture& texture);
 private:
 	void init(Window& window);
 	void deinit();

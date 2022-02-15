@@ -42,6 +42,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/engine/animation/AnimationManager.cpp
 	${DIR}/sdl/engine/page/Page.h
 	${DIR}/sdl/engine/page/Page.cpp
+	${DIR}/sdl/engine/factory/GraphicsFactory.h
+	${DIR}/sdl/engine/factory/GraphicsFactory.cpp
+	${DIR}/sdl/engine/drawables/Drawable.h
 	${DIR}/sdl/graphics/Texture.h
 	${DIR}/sdl/graphics/Texture.cpp
 	${DIR}/sdl/graphics/Renderer.h
@@ -63,8 +66,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/config/ConfigLoader.h
 	${DIR}/config/Globals.h
 	${DIR}/config/ConfigLoader.cpp
-	${DIR}/sdl/graphics/Transformer.h
-	${DIR}/sdl/graphics/Transformer.cpp
 	${DIR}/sdl/graphics/Flip.h
 	${DIR}/sdl/components/Button.cpp
 	${DIR}/sdl/components/Button.h

@@ -1,10 +1,3 @@
-/*
- * ButtonManager.h
- *
- *  Created on: Dec 29, 2021
- *      Author: ubuntu
- */
-
 #ifndef SDL_ENGINE_BUTTONS_BUTTONMANAGER_H_
 #define SDL_ENGINE_BUTTONS_BUTTONMANAGER_H_
 
@@ -21,7 +14,7 @@ public:
 	ButtonManager() = default;
 	~ButtonManager();
 
-	void registerButton(int32_t id, Texture& btnTexture, Renderer& renderer);
+	void registerButton(const int32_t id, const Button& btn);
 
 	int32_t getClickedButtonIndex(const InputEvent& event);
 
