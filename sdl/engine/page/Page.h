@@ -36,15 +36,13 @@ public:
 	Page(Renderer& renderer);
 	virtual ~Page();
 
-	virtual void draw() = 0;
-
 	void addRectangle(const int32_t id, const Rect& rectangle, int32_t zIndex);
 	void addObject(const int32_t id, const Object& object, int32_t zIndex);
-	void addButton(const int32_t id, const Button& btn, int32_t zIndex);
+	void addButton(const int32_t id, Button& btn, int32_t zIndex);
 
 	ButtonManager buttonManager;
 protected:
-	std::unordered_map<int32_t, Drawable*> drawables;
+	std::unordered_map<int32_t, Drawable<Rect>*> drawables;
 	Renderer& _renderer;
 	GraphicsFactory& graphicsFactory;
 private:

@@ -1,10 +1,3 @@
-/*
- * Window.h
- *
- *  Created on: Oct 12, 2021
- *      Author: valeri
- */
-
 #ifndef SDL_COMPONENTS_WINDOW_H_
 #define SDL_COMPONENTS_WINDOW_H_
 

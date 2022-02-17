@@ -7,7 +7,7 @@
 
 #include <cstdlib>
 
-#include "sdl/engine/object/Object.h"
+#include "renderer/primitives/Object.h"
 
 struct Texture;
 struct Point;

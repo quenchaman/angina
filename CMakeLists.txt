@@ -22,17 +22,17 @@ add_executable(${PROJECT_NAME}
 	${DIR}/exceptions/BaseException.h
 	${DIR}/exceptions/BaseException.cpp
 	${DIR}/resources/Resources.h
-	${DIR}/sdl/graphics/Graphics.h
-	${DIR}/sdl/graphics/Graphics.cpp
+	${DIR}/platform/sdl/init/Graphics.h
+	${DIR}/platform/sdl/init/Graphics.cpp
 	${DIR}/sdl/engine/Engine.h
 	${DIR}/sdl/engine/Engine.cpp
-	${DIR}/sdl/engine/time/Time.h
-	${DIR}/sdl/engine/time/Time.cpp
-	${DIR}/sdl/events/InputEvent.h
-	${DIR}/sdl/events/InputEvent.cpp
-	${DIR}/sdl/events/EventDefines.h
-	${DIR}/sdl/engine/thread/ThreadUtils.h
-	${DIR}/sdl/engine/thread/ThreadUtils.cpp
+	${DIR}/platform/time/Time.h
+	${DIR}/platform/time/Time.cpp
+	${DIR}/platform/sdl/events/InputEvent.h
+	${DIR}platform//sdl/events/InputEvent.cpp
+	${DIR}/platform/sdl/events/EventDefines.h
+	${DIR}/platform/thread/ThreadUtils.h
+	${DIR}/platform/thread/ThreadUtils.cpp
 	${DIR}/sdl/engine/object/Object.h
 	${DIR}/sdl/engine/object/Object.cpp
 	${DIR}/sdl/engine/buttons/ButtonManager.h
@@ -45,18 +45,18 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/engine/factory/GraphicsFactory.h
 	${DIR}/sdl/engine/factory/GraphicsFactory.cpp
 	${DIR}/sdl/engine/drawables/Drawable.h
-	${DIR}/sdl/graphics/Texture.h
-	${DIR}/sdl/graphics/Texture.cpp
-	${DIR}/sdl/graphics/Renderer.h
-	${DIR}/sdl/graphics/Renderer.cpp
-	${DIR}/sdl/components/Window.h
-	${DIR}/sdl/components/Window.cpp
-	${DIR}/sdl/graphics/Surface.h
-	${DIR}/sdl/graphics/Surface.cpp
+	${DIR}/platform/sdl/primitives/Texture.h
+	${DIR}/platform/sdl/primitives/Texture.cpp
+	${DIR}/renderer/Renderer.h
+	${DIR}/renderer/Renderer.cpp
+	${DIR}/platform/sdl/components/Window.h
+	${DIR}/platform/sdl/components/Window.cpp
+	${DIR}/platform/sdl/primitives/Surface.h
+	${DIR}/platform/sdl/primitives/Surface.cpp
 	${DIR}/sdl/primitives/Point.h
 	${DIR}/sdl/primitives/Point.cpp
-	${DIR}/sdl/primitives/Rect.h
-	${DIR}/sdl/primitives/Rect.cpp
+	${DIR}/platform/sdl/shapes/Rect.h
+	${DIR}/platform/sdl/shapes/Rect.cpp
 	${DIR}/sdl/primitives/Dimensions.h
 	${DIR}/sdl/primitives/Dimensions.cpp
 	${DIR}/sdl/primitives/Color.cpp
@@ -66,43 +66,41 @@ add_executable(${PROJECT_NAME}
 	${DIR}/config/ConfigLoader.h
 	${DIR}/config/Globals.h
 	${DIR}/config/ConfigLoader.cpp
-	${DIR}/sdl/graphics/Flip.h
+	${DIR}/platform/sdl/enums/Flip.h
 	${DIR}/sdl/components/Button.cpp
 	${DIR}/sdl/components/Button.h
-	${DIR}/sdl/graphics/GlobalRenderer.h
-	${DIR}/sdl/graphics/GlobalRenderer.cpp
-	${DIR}/chess-entrypoint/ChessEntryPoint.h
-	${DIR}/chess-entrypoint/ChessEntryPoint.cpp
-	${DIR}/chess-game/pages/LandingPage.h
-	${DIR}/chess-game/pages/LandingPage.cpp
-	${DIR}/chess-game/pages/ChessPage.h
-	${DIR}/chess-game/pages/ChessPage.cpp
-	${DIR}/chess-game/board/Cell.h
-	${DIR}/chess-game/board/Cell.cpp
-	${DIR}/chess-game/board/Board.h
-	${DIR}/chess-game/board/Board.cpp
-	${DIR}/chess-game/pieces/Piece.h
-	${DIR}/chess-game/pieces/Piece.cpp
-	${DIR}/chess-game/pieces/Rank.h
-	${DIR}/chess-game/pieces/Side.h
-	${DIR}/chess-game/pieces/Move.h
-	${DIR}/chess-game/pieces/Move.cpp
-	${DIR}/chess-game/pieces/PieceMoveGenerator.h
-	${DIR}/chess-game/pieces/PieceMoveGenerator.cpp
-	${DIR}/chess-game/pieces/ValidMovesGenerator.h
-	${DIR}/chess-game/pieces/ValidMovesGenerator.cpp
-	${DIR}/chess-game/pieces/PieceValue.h
-	${DIR}/chess-game/states/ChessState.h
-	${DIR}/chess-game/board/PieceSelectionManager.h
-	${DIR}/chess-game/board/PieceSelectionManager.cpp
-	${DIR}/chess-game/board/CellUtils.h
-	${DIR}/chess-game/board/CellUtils.cpp
-	${DIR}/chess-game/ai/AI.h
-	${DIR}/chess-game/ai/AI.cpp
-	${DIR}/chess-game/ai/ScoredMove.h
-	${DIR}/chess-game/ai/ScoredMove.cpp
-	${DIR}/chess-game/utils/VectorShuffler.h
-	${DIR}/chess-game/utils/VectorShuffler.cpp
+	#${DIR}/chess-entrypoint/ChessEntryPoint.h
+	#${DIR}/chess-entrypoint/ChessEntryPoint.cpp
+	#${DIR}/chess-game/pages/LandingPage.h
+	#${DIR}/chess-game/pages/LandingPage.cpp
+	#${DIR}/chess-game/pages/ChessPage.h
+	#${DIR}/chess-game/pages/ChessPage.cpp
+	#${DIR}/chess-game/board/Cell.h
+	#${DIR}/chess-game/board/Cell.cpp
+	#${DIR}/chess-game/board/Board.h
+	#${DIR}/chess-game/board/Board.cpp
+	#${DIR}/chess-game/pieces/Piece.h
+	#${DIR}/chess-game/pieces/Piece.cpp
+	#${DIR}/chess-game/pieces/Rank.h
+	#${DIR}/chess-game/pieces/Side.h
+	#${DIR}/chess-game/pieces/Move.h
+	#${DIR}/chess-game/pieces/Move.cpp
+	#${DIR}/chess-game/pieces/PieceMoveGenerator.h
+	#${DIR}/chess-game/pieces/PieceMoveGenerator.cpp
+	#${DIR}/chess-game/pieces/ValidMovesGenerator.h
+	#${DIR}/chess-game/pieces/ValidMovesGenerator.cpp
+	#${DIR}/chess-game/pieces/PieceValue.h
+	#${DIR}/chess-game/states/ChessState.h
+	#${DIR}/chess-game/board/PieceSelectionManager.h
+	#${DIR}/chess-game/board/PieceSelectionManager.cpp
+	#${DIR}/chess-game/board/CellUtils.h
+	#${DIR}/chess-game/board/CellUtils.cpp
+	#${DIR}/chess-game/ai/AI.h
+	#${DIR}/chess-game/ai/AI.cpp
+	#${DIR}/chess-game/ai/ScoredMove.h
+	#${DIR}/chess-game/ai/ScoredMove.cpp
+	#${DIR}/chess-game/utils/VectorShuffler.h
+	#${DIR}/chess-game/utils/VectorShuffler.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

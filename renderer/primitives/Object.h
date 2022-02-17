@@ -10,8 +10,8 @@
 
 #include <cstdint>
 
-#include "sdl/graphics/Flip.h"
-#include "sdl/primitives/Point.h"
+#include "platform/sdl/enums/Flip.h"
+#include "renderer/primitives/Point.h"
 
 struct Texture;
 struct Rect;

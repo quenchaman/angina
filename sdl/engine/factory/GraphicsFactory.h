@@ -7,14 +7,17 @@
 
 struct Renderer;
 struct Object;
+struct Button;
 
 class GraphicsFactory {
 public:
 	GraphicsFactory(const Renderer& renderer);
 
 	Object* createObject(const std::string& resourcePath, Point position) const;
+
+	//Button* createButton(const std::string& resourcePath, Point position) const;
 private:
-	const Renderer& renderer;
+	Renderer& renderer;
 };
 
 #endif /* SDL_ENGINE_FACTORY_GRAPHICSFACTORY_H_ */

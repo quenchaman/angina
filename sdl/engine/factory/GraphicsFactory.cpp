@@ -12,3 +12,10 @@ Object* GraphicsFactory::createObject(const std::string& resourcePath, Point pos
 
 	return renderer.fromSurface(*surface);
 }
+
+//Button* GraphicsFactory::createButton(const std::string& resourcePath, Point position) const {
+//	Surface* surface = ResourceLoader::load(resourcePath);
+//	Texture& texture = renderer.from(*surface);
+//
+//	return new Button(texture, )
+//}

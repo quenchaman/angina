@@ -1,18 +1,11 @@
-/*
- * Rectangle.h
- *
- *  Created on: Oct 22, 2021
- *      Author: ubuntu
- */
-
 #ifndef SDL_PRIMITIVES_RECT_H_
 #define SDL_PRIMITIVES_RECT_H_
 
 #include <iostream>
 
-#include "sdl/primitives/Point.h"
-#include "sdl/primitives/Dimensions.h"
-#include "sdl/primitives/Color.h"
+#include "renderer/primitives/Point.h"
+#include "renderer/primitives/Dimensions.h"
+#include "renderer/primitives/Color.h"
 
 #include "SDL_shape.h"
 

@@ -6,8 +6,8 @@
 #include "sdl/primitives/Rect.h"
 #include "sdl/components/Button.h"
 
-void ButtonManager::registerButton(const int32_t id, const Button& btn) {
-	buttons[id] = btn;
+void ButtonManager::registerButton(const int32_t id, Button& btn) {
+	buttons[id] = &btn;
 }
 
 int32_t ButtonManager::getClickedButtonIndex(const InputEvent& event) {

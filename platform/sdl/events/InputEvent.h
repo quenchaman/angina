@@ -10,8 +10,7 @@
 
 #include <cstdint>
 
-#include "sdl/primitives/Point.h"
-#include "sdl/events/EventDefines.h"
+#include "platform/sdl/events/EventDefines.h"
 
 union SDL_Event;
 
@@ -22,7 +21,8 @@ public:
 	bool poll();
 	bool hasExitEvent() const;
 
-	Point pos = Point::UNDEFINED;
+	int32_t posX;
+	int32_t posY;
 	int32_t key = Keyboard::KEY_UNKNOWN;
 	int8_t mouseButton = Mouse::UNKNOWN;
 	TouchEvent touchEvent = TouchEvent::UNKNOWN;

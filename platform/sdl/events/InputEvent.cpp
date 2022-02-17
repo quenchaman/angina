@@ -36,7 +36,7 @@ bool InputEvent::poll() {
 		return false;
 	}
 
-	SDL_GetMouseState(&pos.x, &pos.y);
+	SDL_GetMouseState(&posX, &posY);
 	setEventTypeInternal();
 
 	return true;

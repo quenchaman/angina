@@ -1,11 +1,3 @@
-/*
- * Renderer.cpp
- *
- *  Created on: Oct 21, 2021
- *      Author: ubuntu
- */
-
-
 #include "Renderer.h"
 
 #include <iostream>
@@ -13,12 +5,12 @@
 #include "SDL_render.h"
 #include "SDL_shape.h"
 
-#include "sdl/graphics/Texture.h"
-#include "sdl/graphics/Surface.h"
-#include "sdl/primitives/Rect.h"
-#include "sdl/components/Window.h"
-#include "sdl/engine/object/Object.h"
-#include "sdl/components/Button.h"
+#include "platform/sdl/primitives/Texture.h"
+#include "platform/sdl/primitives/Surface.h"
+#include "platform/sdl/shapes/Rect.h"
+#include "platform/sdl/components/Window.h"
+#include "renderer/primitives/Object.h"
+#include "renderer/primitives/Button.h"
 
 #include "exceptions/GraphicsInitException.h"
 

@@ -1,9 +1,3 @@
-/*
- * Color.cpp
- *
- *  Created on: Dec 27, 2021
- *      Author: ubuntu
- */
 #include "Color.h"
 
 const Color Color::NONE {0, 0, 0, 0};

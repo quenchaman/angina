@@ -1,10 +1,3 @@
-/*
- * Color.h
- *
- *  Created on: Dec 27, 2021
- *      Author: ubuntu
- */
-
 #ifndef SDL_PRIMITIVES_COLOR_H_
 #define SDL_PRIMITIVES_COLOR_H_
 

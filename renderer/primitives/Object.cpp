@@ -2,9 +2,8 @@
 
 #include "Object.h"
 
-#include "sdl/primitives/Rect.h"
-#include "sdl/graphics/Texture.h"
-#include "sdl/graphics/Renderer.h"
+#include "platform/sdl/shapes/Rect.h"
+#include "platform/sdl/primitives/Texture.h"
 
 Object::Object(Texture& t, Rect& rect): texture(t), rectangle(rect) {}
 

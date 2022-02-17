@@ -1,9 +1,3 @@
-/*
- * Window.cpp
- *
- *  Created on: Oct 12, 2021
- *      Author: valeri
- */
 #include "Window.h"
 
 #include <iostream>
@@ -11,7 +5,7 @@
 #include "SDL_video.h"
 #include "SDL_surface.h"
 
-#include "sdl/graphics/Surface.h"
+#include "platform/sdl/primitives/Surface.h"
 #include "exceptions/WindowInitException.h"
 
 Window::Window(std::string title, Point pos, Dimensions dimensions, int32_t flags) {

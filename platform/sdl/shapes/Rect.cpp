@@ -1,10 +1,3 @@
-/*
- * Rect.cpp
- *
- *  Created on: Oct 22, 2021
- *      Author: ubuntu
- */
-
 #include "Rect.h"
 
 const Rect Rect::ZERO(0, 0, 0, 0, Color::NONE);

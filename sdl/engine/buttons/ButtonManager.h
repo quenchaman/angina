@@ -14,7 +14,7 @@ public:
 	ButtonManager() = default;
 	~ButtonManager();
 
-	void registerButton(const int32_t id, const Button& btn);
+	void registerButton(const int32_t id, Button& btn);
 
 	int32_t getClickedButtonIndex(const InputEvent& event);
 

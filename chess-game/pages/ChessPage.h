@@ -1,10 +1,3 @@
-/*
- * ChessPage.h
- *
- *  Created on: Jan 8, 2022
- *      Author: ubuntu
- */
-
 #ifndef CHESS_GAME_PAGES_CHESSPAGE_H_
 #define CHESS_GAME_PAGES_CHESSPAGE_H_
 
@@ -20,13 +13,8 @@ struct Board;
 class ChessPage : public Page {
 public:
 	ChessPage(Renderer& renderer);
-	~ChessPage();
 
-	void draw();
 	void onPageLoad();
-	void onPageUnload();
-	void createPiece(ChessAssets asset, std::string resource, Cell cell, Rank rank, Side side);
-	Board* getBoard();
 private:
 	Board* board;
 
