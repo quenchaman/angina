@@ -22,7 +22,7 @@
 #include "renderer/primitives/Button.h"
 #include "renderer/primitives/Point.h"
 #include "sdl/engine/buttons/ButtonManager.h"
-#include "sdl/engine/page/Page.h"
+#include "engine/screen/Screen.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) {
     Graphics::boot();
@@ -90,7 +90,7 @@ void Engine::limitFPS(int64_t elapsedTime) {
 }
 
 void Engine::handleEvent() {
-	int32_t buttonIdx = page->buttonManager.getClickedButtonIndex(event);
+	int32_t buttonIdx =0;
 
 	if (buttonIdx != -1) {
 		handleBtnClick(buttonIdx);

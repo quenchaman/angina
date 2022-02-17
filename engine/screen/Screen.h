@@ -29,10 +29,10 @@ struct Button;
  *
  * Handles resource destruction after deinitialization.
  */
-class Page {
+class Screen {
 public:
-	Page(Renderer& renderer);
-	virtual ~Page();
+	Screen(Renderer& renderer);
+	virtual ~Screen();
 
 	void addRectangle(const int32_t id, const Rect& rectangle, int32_t zIndex);
 	void addObject(const int32_t id, const Object& object, int32_t zIndex);

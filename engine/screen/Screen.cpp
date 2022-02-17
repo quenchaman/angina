@@ -1,4 +1,4 @@
-#include "Page.h"
+#include "Screen.h"
 
 #include "renderer/Renderer.h"
 #include "sdl/resources/ResourceLoader.h"
@@ -10,22 +10,22 @@
 #include "renderer/primitives/Button.h"
 #include "renderer/primitives/Point.h"
 
-Page::Page(Renderer& renderer): _renderer(renderer) {
+Screen::Screen(Renderer& renderer): _renderer(renderer) {
 	font = ResourceLoader::loadFont(Resources::montserratFont, 28);
 }
 
-Page::~Page() {
+Screen::~Screen() {
 
 }
 
 // TODO: We need a better way to generate Ids.
-void Page::addRectangle([[maybe_unused]]const int32_t id, [[maybe_unused]]const Rect& rectangle, [[maybe_unused]]int32_t zIndex) {
+void Screen::addRectangle([[maybe_unused]]const int32_t id, [[maybe_unused]]const Rect& rectangle, [[maybe_unused]]int32_t zIndex) {
 
 }
 
-void Page::addObject([[maybe_unused]]const int32_t id, [[maybe_unused]]const Object& object, [[maybe_unused]]int32_t zIndex) {
+void Screen::addObject([[maybe_unused]]const int32_t id, [[maybe_unused]]const Object& object, [[maybe_unused]]int32_t zIndex) {
 
 }
-void Page::addButton(const int32_t id, Button& btn, [[maybe_unused]]int32_t zIndex) {
+void Screen::addButton(const int32_t id, Button& btn, [[maybe_unused]]int32_t zIndex) {
 	buttonManager.registerButton(id, btn);
 }

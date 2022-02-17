@@ -40,8 +40,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/engine/animation/AnimationData.h
 	${DIR}/sdl/engine/animation/AnimationManager.h
 	${DIR}/sdl/engine/animation/AnimationManager.cpp
-	${DIR}/sdl/engine/page/Page.h
-	${DIR}/sdl/engine/page/Page.cpp
+	${DIR}/engine/screen/Screen.h
+	${DIR}/engine/screen/Screen.cpp
 	#${DIR}/sdl/engine/factory/GraphicsFactory.h
 	#${DIR}/sdl/engine/factory/GraphicsFactory.cpp
 	#${DIR}/sdl/engine/drawables/Drawable.h
