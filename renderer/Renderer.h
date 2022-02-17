@@ -20,7 +20,7 @@ public:
 	void clear();
 	void render(const Texture& texture) const;
 	void render(const Rect& rect) const;
-	void render(const Object& object) const;
+	void render(Object& object) const;
 	void update();
 
 	Texture* from(Surface& surface) const;

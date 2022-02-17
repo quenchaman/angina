@@ -21,3 +21,7 @@ Object::~Object() {
 
 	std::cout << "Object destroyed" << std::endl;
 }
+
+void Object::draw(Renderer& renderer) {
+	renderer.render(*this);
+}

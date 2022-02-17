@@ -12,15 +12,18 @@
 
 #include "platform/sdl/enums/Flip.h"
 #include "renderer/primitives/Point.h"
+#include "renderer/drawable/Drawable.h"
 
 struct Texture;
 struct Rect;
+struct Renderer;
 
-class Object {
+class Object : public Drawable {
 public:
 	Object(Texture& t, Rect& rect);
 	~Object();
 
+	void draw(Renderer& renderer);
 	void move(const int32_t x, const int32_t y);
 	Point getPosition() const;
 

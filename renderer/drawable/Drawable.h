@@ -6,7 +6,7 @@ struct Renderer;
 class Drawable {
 public:
 	virtual ~Drawable();
-	virtual void draw(const Renderer& renderer) = 0;
+	virtual void draw(Renderer& renderer) = 0;
 };
 
 #endif /* RENDERER_DRAWABLE_DRAWABLE_H_ */

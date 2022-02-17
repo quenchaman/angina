@@ -28,7 +28,7 @@ void Renderer::render(const Rect& rect) const {
 	SDL_RenderDrawRect(renderer, &rect.rect);
 }
 
-void Renderer::render(const Object& object) const {
+void Renderer::render(Object& object) const {
 	const Point* center = &object.center;
 	SDL_Point centerPoint = { center->x, center->y };
 	SDL_RenderCopyEx(renderer, object.texture.getTexture(), nullptr, &object.rectangle.rect, object.rotation, &centerPoint, (SDL_RendererFlip) object.flip);

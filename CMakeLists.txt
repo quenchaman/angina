@@ -44,7 +44,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/screen/Screen.cpp
 	#${DIR}/sdl/engine/factory/GraphicsFactory.h
 	#${DIR}/sdl/engine/factory/GraphicsFactory.cpp
-	#${DIR}/sdl/engine/drawables/Drawable.h
+	#${DIR}renderer/drawables/Drawable.h
 	${DIR}/platform/sdl/primitives/Texture.h
 	${DIR}/platform/sdl/primitives/Texture.cpp
 	${DIR}/renderer/Renderer.h
