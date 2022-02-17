@@ -1,14 +1,10 @@
-//
-// Created by ubuntu on 11/28/21.
-//
-
 #ifndef ANGINA_TEST_H
 #define ANGINA_TEST_H
 
 
-#include "sdl/engine/Engine.h"
+#include "engine/Engine.h"
 #include "chess-game/states/ChessState.h"
-#include "sdl/primitives/Point.h"
+#include "renderer/primitives/Point.h"
 #include "chess-game/board/Cell.h"
 
 struct ChessPage;

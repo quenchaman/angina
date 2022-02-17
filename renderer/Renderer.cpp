@@ -99,7 +99,7 @@ Object* Renderer::fromSurface(Surface& surface) const {
 	return from(*t);
 }
 
-Button* Renderer::from(const Texture& texture) {
+Button* Renderer::from(Texture& texture) {
 	Rect* rect = new Rect(Point::UNDEFINED, {texture.w, texture.h}, Color::NONE);
 	Button* btn = new Button(texture, *rect);
 

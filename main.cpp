@@ -4,12 +4,12 @@
 
 #include <SDL.h>
 
-#include "chess-entrypoint/ChessEntryPoint.h"
+#include "test/Test.h"
 #include "exceptions/BaseException.h"
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	try {
-		Engine* game = new ChessEntryPoint();
+		Engine* game = new Test();
 
 		game->start();
 

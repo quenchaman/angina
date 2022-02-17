@@ -11,8 +11,8 @@
 #include <string>
 #include <cstdint>
 
-#include "sdl/primitives/Point.h"
-#include "sdl/primitives/Dimensions.h"
+#include "renderer/primitives/Point.h"
+#include "renderer/primitives/Dimensions.h"
 
 namespace Config {
 	const int32_t SCREEN_WIDTH = 640;

@@ -1,16 +1,16 @@
 #include "Page.h"
 
-#include "sdl/graphics/Renderer.h"
+#include "renderer/Renderer.h"
 #include "sdl/resources/ResourceLoader.h"
 #include "resources/Resources.h"
-#include "sdl/primitives/Color.h"
-#include "sdl/graphics/Texture.h"
-#include "sdl/primitives/Rect.h"
-#include "sdl/engine/object/Object.h"
-#include "sdl/components/Button.h"
-#include "sdl/primitives/Point.h"
+#include "renderer/primitives/Color.h"
+#include "platform/sdl/primitives/Texture.h"
+#include "platform/sdl/shapes/Rect.h"
+#include "renderer/primitives/Object.h"
+#include "renderer/primitives/Button.h"
+#include "renderer/primitives/Point.h"
 
-Page::Page(Renderer& renderer): _renderer(renderer), graphicsFactory(new GraphicsFactory(renderer)) {
+Page::Page(Renderer& renderer): _renderer(renderer) {
 	font = ResourceLoader::loadFont(Resources::montserratFont, 28);
 }
 
@@ -19,20 +19,13 @@ Page::~Page() {
 }
 
 // TODO: We need a better way to generate Ids.
-void Page::addRectangle(const int32_t id, const Rect& rectangle, int32_t zIndex) {
-	Drawable<Rect>* d = new Drawable<Rect>(rectangle, zIndex);
+void Page::addRectangle([[maybe_unused]]const int32_t id, [[maybe_unused]]const Rect& rectangle, [[maybe_unused]]int32_t zIndex) {
 
-	drawables[id] = d;
 }
 
-void Page::addObject(const int32_t id, const Object& object, int32_t zIndex) {
-	Drawable<Object>* d = new Drawable<Object>(object, zIndex);
+void Page::addObject([[maybe_unused]]const int32_t id, [[maybe_unused]]const Object& object, [[maybe_unused]]int32_t zIndex) {
 
-	drawables[id] = d;
 }
-void Page::addButton(const int32_t id, Button& btn, int32_t zIndex) {
+void Page::addButton(const int32_t id, Button& btn, [[maybe_unused]]int32_t zIndex) {
 	buttonManager.registerButton(id, btn);
-	Drawable<Button>* d = new Drawable<Button>(btn, zIndex);
-
-	drawables[id] = d;
 }

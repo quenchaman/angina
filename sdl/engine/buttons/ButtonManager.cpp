@@ -1,10 +1,10 @@
 #include "ButtonManager.h"
 
-#include "sdl/events/InputEvent.h"
-#include "sdl/primitives/Point.h"
-#include "sdl/engine/object/Object.h"
-#include "sdl/primitives/Rect.h"
-#include "sdl/components/Button.h"
+#include "platform/sdl/events/InputEvent.h"
+#include "renderer/primitives/Point.h"
+#include "renderer/primitives/Object.h"
+#include "platform/sdl/shapes/Rect.h"
+#include "renderer/primitives/Button.h"
 
 void ButtonManager::registerButton(const int32_t id, Button& btn) {
 	buttons[id] = &btn;
@@ -15,8 +15,8 @@ int32_t ButtonManager::getClickedButtonIndex(const InputEvent& event) {
 		return -1;
 	}
 
-	int32_t clickX = event.pos.x;
-	int32_t clickY = event.pos.y;
+	int32_t clickX = event.posX;
+	int32_t clickY = event.posY;
 	Point clickPoint = { clickX, clickY };
 
 	for (auto const& [id, button] : buttons) {

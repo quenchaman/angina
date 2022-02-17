@@ -24,17 +24,17 @@ add_executable(${PROJECT_NAME}
 	${DIR}/resources/Resources.h
 	${DIR}/platform/sdl/init/Graphics.h
 	${DIR}/platform/sdl/init/Graphics.cpp
-	${DIR}/sdl/engine/Engine.h
-	${DIR}/sdl/engine/Engine.cpp
+	${DIR}/engine/Engine.h
+	${DIR}/engine/Engine.cpp
 	${DIR}/platform/time/Time.h
 	${DIR}/platform/time/Time.cpp
 	${DIR}/platform/sdl/events/InputEvent.h
-	${DIR}platform//sdl/events/InputEvent.cpp
+	${DIR}/platform/sdl/events/InputEvent.cpp
 	${DIR}/platform/sdl/events/EventDefines.h
 	${DIR}/platform/thread/ThreadUtils.h
 	${DIR}/platform/thread/ThreadUtils.cpp
-	${DIR}/sdl/engine/object/Object.h
-	${DIR}/sdl/engine/object/Object.cpp
+	${DIR}/renderer/primitives/Object.h
+	${DIR}/renderer/primitives/Object.cpp
 	${DIR}/sdl/engine/buttons/ButtonManager.h
 	${DIR}/sdl/engine/buttons/ButtonManager.cpp
 	${DIR}/sdl/engine/animation/AnimationData.h
@@ -42,9 +42,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/sdl/engine/animation/AnimationManager.cpp
 	${DIR}/sdl/engine/page/Page.h
 	${DIR}/sdl/engine/page/Page.cpp
-	${DIR}/sdl/engine/factory/GraphicsFactory.h
-	${DIR}/sdl/engine/factory/GraphicsFactory.cpp
-	${DIR}/sdl/engine/drawables/Drawable.h
+	#${DIR}/sdl/engine/factory/GraphicsFactory.h
+	#${DIR}/sdl/engine/factory/GraphicsFactory.cpp
+	#${DIR}/sdl/engine/drawables/Drawable.h
 	${DIR}/platform/sdl/primitives/Texture.h
 	${DIR}/platform/sdl/primitives/Texture.cpp
 	${DIR}/renderer/Renderer.h
@@ -53,22 +53,24 @@ add_executable(${PROJECT_NAME}
 	${DIR}/platform/sdl/components/Window.cpp
 	${DIR}/platform/sdl/primitives/Surface.h
 	${DIR}/platform/sdl/primitives/Surface.cpp
-	${DIR}/sdl/primitives/Point.h
-	${DIR}/sdl/primitives/Point.cpp
+	${DIR}/renderer/primitives/Point.h
+	${DIR}/renderer/primitives/Point.cpp
 	${DIR}/platform/sdl/shapes/Rect.h
 	${DIR}/platform/sdl/shapes/Rect.cpp
-	${DIR}/sdl/primitives/Dimensions.h
-	${DIR}/sdl/primitives/Dimensions.cpp
-	${DIR}/sdl/primitives/Color.cpp
-	${DIR}/sdl/primitives/Color.h
+	${DIR}/renderer/primitives/Dimensions.h
+	${DIR}/renderer/primitives/Dimensions.cpp
+	${DIR}/renderer/primitives/Color.cpp
+	${DIR}/renderer/primitives/Color.h
 	${DIR}/config/Config.h
 	${DIR}/config/ConfigData.h
 	${DIR}/config/ConfigLoader.h
 	${DIR}/config/Globals.h
 	${DIR}/config/ConfigLoader.cpp
 	${DIR}/platform/sdl/enums/Flip.h
-	${DIR}/sdl/components/Button.cpp
-	${DIR}/sdl/components/Button.h
+	${DIR}/renderer/primitives/Button.cpp
+	${DIR}/renderer/primitives/Button.h
+	${DIR}/test/Test.h
+	${DIR}/test/Test.cpp
 	#${DIR}/chess-entrypoint/ChessEntryPoint.h
 	#${DIR}/chess-entrypoint/ChessEntryPoint.cpp
 	#${DIR}/chess-game/pages/LandingPage.h

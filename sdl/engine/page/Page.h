@@ -12,7 +12,6 @@
 #include <unordered_map>
 
 #include "sdl/engine/buttons/ButtonManager.h"
-#include "sdl/engine/drawables/Drawable.h"
 
 #include "SDL_ttf.h"
 
@@ -22,7 +21,6 @@ struct Object;
 struct Renderer;
 struct Point;
 struct Button;
-struct GraphicsFactory;
 
 /**
  * Class that represents a full screen page.
@@ -42,9 +40,8 @@ public:
 
 	ButtonManager buttonManager;
 protected:
-	std::unordered_map<int32_t, Drawable<Rect>*> drawables;
+	//std::unordered_map<int32_t, Drawable<Rect>*> drawables;
 	Renderer& _renderer;
-	GraphicsFactory& graphicsFactory;
 private:
 	TTF_Font* font;
 };

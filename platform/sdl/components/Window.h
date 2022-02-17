@@ -3,8 +3,8 @@
 
 #include <string>
 
-#include "sdl/primitives/Point.h"
-#include "sdl/primitives/Dimensions.h"
+#include "renderer/primitives/Point.h"
+#include "renderer/primitives/Dimensions.h"
 
 struct SDL_Window;
 struct Surface;

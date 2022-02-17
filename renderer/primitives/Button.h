@@ -17,7 +17,7 @@ struct Renderer;
 
 class Button : public Object {
 public:
-    Button(const Texture& texture, const Rect& rect);
+    Button(Texture& texture, Rect& rect);
 };
 
 

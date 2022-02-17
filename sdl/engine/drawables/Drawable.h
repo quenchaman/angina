@@ -10,7 +10,7 @@
 
 #include <cstdint>
 
-#include "sdl/graphics/Renderer.h"
+#include "renderer/Renderer.h"
 
 template <typename T>
 class Drawable {

@@ -13,10 +13,10 @@
 #include "SDL_image.h"
 #include "SDL_ttf.h"
 
-#include "sdl/graphics/Surface.h"
+#include "platform/sdl/primitives/Surface.h"
 #include "exceptions/ResourceLoadException.h"
 #include "ResourceLoader.h"
-#include "sdl/primitives/Color.h"
+#include "renderer/primitives/Color.h"
 
 namespace ResourceLoader {
 	Surface* load(const std::string& path) {
