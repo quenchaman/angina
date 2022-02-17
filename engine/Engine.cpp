@@ -99,15 +99,15 @@ void Engine::handleEvent() {
 	}
 }
 
-void Engine::navigateTo(Page* page) {
+void Engine::navigateTo(Screen* screen) {
 	clearPage();
-	this->page = page;
+	this->screen = screen;
 }
 
 void Engine::clearPage() {
-	if (page != nullptr) {
-		delete page;
-		page = nullptr;
+	if (screen != nullptr) {
+		delete screen;
+		screen = nullptr;
 	}
 }
 
@@ -116,10 +116,7 @@ Renderer* Engine::getRenderer() const {
 }
 
 Engine::~Engine() {
-	if (page != nullptr) {
-		delete page;
-		page = nullptr;
-	}
+	clearPage();
 
 	if (renderer != nullptr) {
 		delete renderer;

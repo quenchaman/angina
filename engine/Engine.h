@@ -19,7 +19,7 @@ struct Renderer;
 struct Texture;
 struct Rect;
 struct Object;
-struct Page;
+struct Screen;
 
 class Engine {
 public:
@@ -39,14 +39,14 @@ private:
 	void handleEvent();
 protected:
     InputEvent event;
-    Page* page = nullptr;
+    Screen* screen = nullptr;
 
 	virtual void init() = 0;
 	virtual void update() = 0;
 	virtual void handleLeftMouseClick(Point p) = 0;
 	virtual void handleBtnClick(int32_t idx) = 0;
 
-	void navigateTo(Page* page);
+	void navigateTo(Screen* screen);
 	void clearPage();
 };
 
