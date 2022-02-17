@@ -12,7 +12,7 @@
 
 #include "sdl/graphics/Renderer.h"
 
-template <class T>
+template <typename T>
 class Drawable {
 public:
 	Drawable(const T& thing): it(thing), zIndex(0) {

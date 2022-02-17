@@ -12,6 +12,8 @@
 #include <unordered_map>
 
 #include "sdl/engine/buttons/ButtonManager.h"
+#include "sdl/engine/drawables/Drawable.h"
+
 #include "SDL_ttf.h"
 
 struct Texture;
@@ -20,12 +22,11 @@ struct Object;
 struct Renderer;
 struct Point;
 struct Button;
-struct Drawable;
 struct GraphicsFactory;
 
 /**
  * Class that represents a full screen page.
- * It is a container for objects, rectangles, etc. and provides a way to add and get these primitives.
+ * It is a container for objects, rectangles, etc. and provides a way to add and get these primitives for drawing.
  *
  *
  * Handles resource destruction after deinitialization.

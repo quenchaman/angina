@@ -9,7 +9,6 @@
 #include "sdl/engine/object/Object.h"
 #include "sdl/components/Button.h"
 #include "sdl/primitives/Point.h"
-#include "sdl/engine/drawables/Drawable.h"
 #include "sdl/engine/factory/GraphicsFactory.h"
 
 Page::Page(Renderer& renderer): _renderer(renderer), graphicsFactory(new GraphicsFactory(renderer)) {
@@ -27,13 +26,13 @@ void Page::addRectangle(const int32_t id, const Rect& rectangle, int32_t zIndex)
 }
 
 void Page::addObject(const int32_t id, const Object& object, int32_t zIndex) {
-	Drawable<Object>* d = new Drawable(object, zIndex);
+	Drawable<Object>* d = new Drawable<Object>(object, zIndex);
 
 	drawables[id] = d;
 }
 void Page::addButton(const int32_t id, const Button& btn, int32_t zIndex) {
 	buttonManager.registerButton(id, btn);
-	Drawable<Button>* d = new Drawable(btn, zIndex);
+	Drawable<Button>* d = new Drawable<Button>(btn, zIndex);
 
 	drawables[id] = d;
 }
