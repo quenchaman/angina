@@ -3,7 +3,8 @@
 
 #include <string>
 
-#include "sdl/primitives/Point.h"
+#include "renderer/primitives/Point.h"
+#include "renderer/shapes/Rect.h"
 
 struct Renderer;
 struct Object;
@@ -11,9 +12,9 @@ struct Button;
 
 class GraphicsFactory {
 public:
-	GraphicsFactory(const Renderer& renderer);
+	GraphicsFactory(Renderer& renderer);
 
-	Object* createObject(const std::string& resourcePath, Point position) const;
+	Object* createObject(const std::string& resourcePath, Point p, Dimensions dim) const;
 
 	//Button* createButton(const std::string& resourcePath, Point position) const;
 private:

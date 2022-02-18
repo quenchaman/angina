@@ -20,6 +20,7 @@ struct Texture;
 struct Rect;
 struct Object;
 struct Screen;
+struct GraphicsFactory;
 
 class Engine {
 public:
@@ -33,6 +34,8 @@ private:
 	SDL_Event e;
 	Renderer* renderer;
 	bool quit = false;
+	GraphicsFactory* factory;
+
 
 	void limitFPS(int64_t microseconds);
 	void draw();
@@ -48,6 +51,7 @@ protected:
 
 	void navigateTo(Screen* screen);
 	void clearPage();
+	GraphicsFactory& getFactory() const;
 };
 
 

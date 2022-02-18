@@ -7,7 +7,7 @@
 
 #include "platform/sdl/primitives/Texture.h"
 #include "platform/sdl/primitives/Surface.h"
-#include "platform/sdl/shapes/Rect.h"
+#include "renderer/shapes/Rect.h"
 #include "platform/sdl/components/Window.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Button.h"
@@ -86,17 +86,16 @@ std::vector<Texture*> Renderer::from(const std::vector<Surface*>& surfaces) cons
 	return textures;
 }
 
-Object* Renderer::from(Texture& texture) const {
-	Rect* rect = new Rect(Point::UNDEFINED, {texture.w, texture.h}, Color::NONE);
-	Object* object = new Object(texture, *rect);
+Object* Renderer::from(Texture& texture, Rect& rect) const {
+	Object* object = new Object(texture, rect);
 
 	return object;
 }
 
-Object* Renderer::fromSurface(Surface& surface) const {
+Object* Renderer::fromSurface(Surface& surface, Point p, Dimensions dim) const {
 	Texture* t = from(surface);
 
-	return from(*t);
+	return from(*t, rect);
 }
 
 Button* Renderer::from(Texture& texture) {

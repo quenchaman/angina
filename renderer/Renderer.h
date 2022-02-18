@@ -3,6 +3,9 @@
 
 #include <vector>
 
+#include "renderer/primitives/Dimensions.h"
+#include "renderer/primitives/Point.h"
+
 struct SDL_Renderer;
 struct Texture;
 struct Rect;
@@ -25,8 +28,8 @@ public:
 
 	Texture* from(Surface& surface) const;
 	std::vector<Texture*> from(const std::vector<Surface*>& surfaces) const;
-	Object* from(Texture& texture) const;
-	Object* fromSurface(Surface& surface) const;
+	Object* from(Texture& texture, Rect& rect) const;
+	Object* fromSurface(Surface& surface, Point p, Dimensions dim) const;
 	Button* from(Texture& texture);
 private:
 	void init(Window& window);

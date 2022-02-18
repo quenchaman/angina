@@ -1,5 +1,7 @@
 #include "Rect.h"
 
+#include "renderer/Renderer.h"
+
 const Rect Rect::ZERO(0, 0, 0, 0, Color::NONE);
 const Rect Rect::UNDEFINED(10000, 10000, 0, 0, Color::NONE);
 
@@ -25,4 +27,8 @@ bool Rect::isInRect(const Point& point) {
 
 std::ostream& operator<<(std::ostream& os, const Rect& rect) {
 	return os << "X: " << rect.rect.x << "; Y: " << rect.rect.y << "; Width: " << rect.rect.w << "; Height: " << rect.rect.h << std::endl;
+}
+
+void Rect::draw(Renderer& renderer) {
+	renderer.render(*this);
 }

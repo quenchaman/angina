@@ -6,16 +6,19 @@
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Color.h"
+#include "renderer/drawable/Drawable.h"
 
 #include "SDL_shape.h"
 
-class Rect {
+class Rect : public Drawable {
 public:
 	Rect(Point positionIn, Dimensions dimensionsIn, Color colorIn);
 	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color& color);
 
 	SDL_Rect rect;
 	Color color;
+
+	void draw(Renderer& renderer);
 
 	bool operator==(const Rect& other) const;
 	bool operator!=(const Rect& other) const;

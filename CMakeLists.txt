@@ -35,16 +35,17 @@ add_executable(${PROJECT_NAME}
 	${DIR}/platform/thread/ThreadUtils.cpp
 	${DIR}/renderer/primitives/Object.h
 	${DIR}/renderer/primitives/Object.cpp
-	${DIR}/sdl/engine/buttons/ButtonManager.h
-	${DIR}/sdl/engine/buttons/ButtonManager.cpp
-	${DIR}/sdl/engine/animation/AnimationData.h
-	${DIR}/sdl/engine/animation/AnimationManager.h
-	${DIR}/sdl/engine/animation/AnimationManager.cpp
+	#${DIR}/sdl/engine/buttons/ButtonManager.h
+	#${DIR}/sdl/engine/buttons/ButtonManager.cpp
+	#${DIR}/sdl/engine/animation/AnimationData.h
+	#${DIR}/sdl/engine/animation/AnimationManager.h
+	#${DIR}/sdl/engine/animation/AnimationManager.cpp
 	${DIR}/engine/screen/Screen.h
 	${DIR}/engine/screen/Screen.cpp
-	#${DIR}/sdl/engine/factory/GraphicsFactory.h
-	#${DIR}/sdl/engine/factory/GraphicsFactory.cpp
-	#${DIR}renderer/drawables/Drawable.h
+	${DIR}/sdl/engine/factory/GraphicsFactory.h
+	${DIR}/sdl/engine/factory/GraphicsFactory.cpp
+	${DIR}/renderer/drawable/Drawable.h
+	${DIR}/renderer/drawable/Drawable.cpp
 	${DIR}/platform/sdl/primitives/Texture.h
 	${DIR}/platform/sdl/primitives/Texture.cpp
 	${DIR}/renderer/Renderer.h
@@ -55,8 +56,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/platform/sdl/primitives/Surface.cpp
 	${DIR}/renderer/primitives/Point.h
 	${DIR}/renderer/primitives/Point.cpp
-	${DIR}/platform/sdl/shapes/Rect.h
-	${DIR}/platform/sdl/shapes/Rect.cpp
+	${DIR}/renderer/shapes/Rect.h
+	${DIR}/renderer/shapes/Rect.cpp
 	${DIR}/renderer/primitives/Dimensions.h
 	${DIR}/renderer/primitives/Dimensions.cpp
 	${DIR}/renderer/primitives/Color.cpp

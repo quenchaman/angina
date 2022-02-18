@@ -10,8 +10,9 @@
 
 #include <cstdint>
 #include <unordered_map>
+#include <vector>
 
-#include "sdl/engine/buttons/ButtonManager.h"
+//#include "sdl/engine/buttons/ButtonManager.h"
 
 #include "SDL_ttf.h"
 
@@ -21,6 +22,7 @@ struct Object;
 struct Renderer;
 struct Point;
 struct Button;
+struct Drawable;
 
 /**
  * Class that represents a full screen page.
@@ -31,17 +33,18 @@ struct Button;
  */
 class Screen {
 public:
-	Screen(Renderer& renderer);
+	Screen();
 	virtual ~Screen();
 
-	void addRectangle(const int32_t id, const Rect& rectangle, int32_t zIndex);
-	void addObject(const int32_t id, const Object& object, int32_t zIndex);
+	void addRectangle(const int32_t id, Rect& rectangle, int32_t zIndex);
+	void addObject(const int32_t id, Object& object, int32_t zIndex);
 	void addButton(const int32_t id, Button& btn, int32_t zIndex);
 
-	ButtonManager buttonManager;
+	std::vector<Drawable*> getDrawables() const;
+
+	//ButtonManager buttonManager;
 protected:
-	//std::unordered_map<int32_t, Drawable<Rect>*> drawables;
-	Renderer& _renderer;
+	std::unordered_map<int32_t, Drawable*> drawables;
 private:
 	TTF_Font* font;
 };

@@ -15,7 +15,7 @@
 #include "platform/sdl/primitives/Surface.h"
 #include "resources/Resources.h"
 #include "renderer/primitives/Color.h"
-#include "platform/sdl/shapes/Rect.h"
+#include "renderer/shapes/Rect.h"
 #include "platform/thread/ThreadUtils.h"
 #include "platform/time/Time.h"
 #include "renderer/primitives/Object.h"
@@ -23,6 +23,7 @@
 #include "renderer/primitives/Point.h"
 #include "sdl/engine/buttons/ButtonManager.h"
 #include "engine/screen/Screen.h"
+#include "sdl/engine/factory/GraphicsFactory.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) {
     Graphics::boot();
@@ -40,6 +41,7 @@ Engine::Engine(std::string appTitle, Dimensions screenSize) {
             SDL_WINDOW_SHOWN
     );
     renderer = new Renderer(*window);
+    factory = new GraphicsFactory(*renderer);
 
     event.init();
 }
@@ -74,7 +76,9 @@ void Engine::start() {
 }
 
 void Engine::draw() {
-
+	for (Drawable* drawable : screen->getDrawables()) {
+		drawable->draw(*renderer);
+	}
 }
 
 void Engine::limitFPS(int64_t elapsedTime) {
@@ -113,6 +117,10 @@ void Engine::clearPage() {
 
 Renderer* Engine::getRenderer() const {
 	return renderer;
+}
+
+GraphicsFactory& Engine::getFactory() const {
+	return *factory;
 }
 
 Engine::~Engine() {
