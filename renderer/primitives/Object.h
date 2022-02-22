@@ -1,37 +1,36 @@
-/*
- * Object.h
- *
- *  Created on: Dec 27, 2021
- *      Author: ubuntu
- */
-
 #ifndef SDL_ENGINE_OBJECT_OBJECT_H_
 #define SDL_ENGINE_OBJECT_OBJECT_H_
 
 #include <cstdint>
 
-#include "platform/sdl/enums/Flip.h"
 #include "renderer/primitives/Point.h"
 #include "renderer/drawable/Drawable.h"
+#include "renderer/primitives/Dimensions.h"
+#include "renderer/primitives/Transformation.h"
 
 struct Texture;
-struct Rect;
 struct Renderer;
 
 class Object : public Drawable {
 public:
-	Object(Texture& t, Rect& rect);
+	Object(Texture& t, Dimensions dim, Point point);
 	~Object();
+
+	Object(const Object& other) = delete;
+	Object& operator=(const Object& other) = delete;
+	Object(Object&& other) = delete;
+	Object& operator=(Object&& other) = delete;
 
 	void draw(Renderer& renderer);
 	void move(const int32_t x, const int32_t y);
 	Point getPosition() const;
+	Dimensions getDimensions() const;
 
 	Texture& texture;
-	Rect& rectangle;
-	double rotation = 0.0;
-	Flip flip = Flip::NONE;
-	Point center = Point::ZERO;
+	Transformation transformation;
+private:
+	Dimensions dim;
+	Point point;
 };
 
 #endif /* SDL_ENGINE_OBJECT_OBJECT_H_ */

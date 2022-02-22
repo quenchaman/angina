@@ -19,8 +19,9 @@ struct Renderer;
 struct Texture;
 struct Rect;
 struct Object;
-struct Screen;
+struct Widget;
 struct GraphicsFactory;
+struct Font;
 
 class Engine {
 public:
@@ -39,17 +40,19 @@ private:
 
 	void limitFPS(int64_t microseconds);
 	void draw();
+	void draw(Widget& widget);
 	void handleEvent();
 protected:
     InputEvent event;
-    Screen* screen = nullptr;
+    Widget* rootScreen = nullptr;
+    Font* defaultFont = nullptr;
 
 	virtual void init() = 0;
 	virtual void update() = 0;
 	virtual void handleLeftMouseClick(Point p) = 0;
 	virtual void handleBtnClick(int32_t idx) = 0;
 
-	void navigateTo(Screen* screen);
+	void navigateTo(Widget* screen);
 	void clearPage();
 	GraphicsFactory& getFactory() const;
 };

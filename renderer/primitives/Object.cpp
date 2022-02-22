@@ -4,17 +4,22 @@
 
 #include "renderer/shapes/Rect.h"
 #include "platform/sdl/primitives/Texture.h"
+#include "renderer/primitives/Color.h"
 #include "renderer/Renderer.h"
 
-Object::Object(Texture& t, Rect& rect): texture(t), rectangle(rect) {}
+Object::Object(Texture& t, Dimensions d, Point p): texture(t), dim(d), point(p) {}
 
 void Object::move(const int32_t x, const int32_t y) {
-	rectangle.rect.x = x;
-	rectangle.rect.y = y;
+	point.x = x;
+	point.y = y;
 }
 
 Point Object::getPosition() const {
-	return {rectangle.rect.x, rectangle.rect.y};
+	return point;
+}
+
+Dimensions Object::getDimensions() const {
+	return dim;
 }
 
 Object::~Object() {

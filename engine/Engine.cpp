@@ -6,7 +6,7 @@
 
 #include "SDL_image.h"
 
-#include "sdl/resources/ResourceLoader.h"
+#include "platform/sdl/resource-loader/ResourceLoader.h"
 #include "platform/sdl/components/Window.h"
 #include "config/Globals.h"
 #include "platform/sdl/init/Graphics.h"
@@ -22,8 +22,9 @@
 #include "renderer/primitives/Button.h"
 #include "renderer/primitives/Point.h"
 #include "sdl/engine/buttons/ButtonManager.h"
-#include "engine/screen/Screen.h"
-#include "sdl/engine/factory/GraphicsFactory.h"
+#include "engine/factory/GraphicsFactory.h"
+#include "platform/sdl/primitives/Font.h"
+#include "engine/widget/Widget.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) {
     Graphics::boot();
@@ -42,6 +43,7 @@ Engine::Engine(std::string appTitle, Dimensions screenSize) {
     );
     renderer = new Renderer(*window);
     factory = new GraphicsFactory(*renderer);
+    defaultFont = new Font(Resources::montserratFont, 28);
 
     event.init();
 }
@@ -76,8 +78,16 @@ void Engine::start() {
 }
 
 void Engine::draw() {
-	for (Drawable* drawable : screen->getDrawables()) {
+	draw(*rootScreen);
+}
+
+void Engine::draw(Widget& widget) {
+	for (Drawable* drawable : widget.getDrawables()) {
 		drawable->draw(*renderer);
+	}
+
+	for (Widget* w : widget.getChildren()) {
+		draw(*w);
 	}
 }
 
@@ -103,15 +113,15 @@ void Engine::handleEvent() {
 	}
 }
 
-void Engine::navigateTo(Screen* screen) {
+void Engine::navigateTo(Widget* screen) {
 	clearPage();
-	this->screen = screen;
+	this->rootScreen = screen;
 }
 
 void Engine::clearPage() {
-	if (screen != nullptr) {
-		delete screen;
-		screen = nullptr;
+	if (rootScreen != nullptr) {
+		delete rootScreen;
+		rootScreen = nullptr;
 	}
 }
 

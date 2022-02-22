@@ -11,8 +11,8 @@ project(chess LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME} 
 	${DIR}/main.cpp
-	${DIR}/sdl/resources/ResourceLoader.h 
-	${DIR}/sdl/resources/ResourceLoader.cpp
+	${DIR}/platform/sdl/resource-loader/ResourceLoader.h 
+	${DIR}/platform/sdl/resource-loader/ResourceLoader.cpp
 	${DIR}/exceptions/ResourceLoadException.h
 	${DIR}/exceptions/ResourceLoadException.cpp
 	${DIR}/exceptions/GraphicsInitException.h
@@ -40,14 +40,16 @@ add_executable(${PROJECT_NAME}
 	#${DIR}/sdl/engine/animation/AnimationData.h
 	#${DIR}/sdl/engine/animation/AnimationManager.h
 	#${DIR}/sdl/engine/animation/AnimationManager.cpp
-	${DIR}/engine/screen/Screen.h
-	${DIR}/engine/screen/Screen.cpp
-	${DIR}/sdl/engine/factory/GraphicsFactory.h
-	${DIR}/sdl/engine/factory/GraphicsFactory.cpp
+	${DIR}/engine/widget/Widget.h
+	${DIR}/engine/widget/Widget.cpp
+	${DIR}/engine/factory/GraphicsFactory.h
+	${DIR}/engine/factory/GraphicsFactory.cpp
 	${DIR}/renderer/drawable/Drawable.h
 	${DIR}/renderer/drawable/Drawable.cpp
 	${DIR}/platform/sdl/primitives/Texture.h
 	${DIR}/platform/sdl/primitives/Texture.cpp
+	${DIR}/platform/sdl/primitives/Font.h
+	${DIR}/platform/sdl/primitives/Font.cpp
 	${DIR}/renderer/Renderer.h
 	${DIR}/renderer/Renderer.cpp
 	${DIR}/platform/sdl/components/Window.h
@@ -70,6 +72,12 @@ add_executable(${PROJECT_NAME}
 	${DIR}/platform/sdl/enums/Flip.h
 	${DIR}/renderer/primitives/Button.cpp
 	${DIR}/renderer/primitives/Button.h
+	${DIR}/core/math/geometry/Geometry.h
+	${DIR}/core/math/geometry/Geometry.cpp
+	${DIR}/renderer/primitives/Transformation.h
+	${DIR}/renderer/primitives/Transformation.cpp
+	${DIR}/renderer/primitives/Text.h
+	${DIR}/renderer/primitives/Text.cpp
 	${DIR}/test/Test.h
 	${DIR}/test/Test.cpp
 	#${DIR}/chess-entrypoint/ChessEntryPoint.h

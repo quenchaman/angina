@@ -1,6 +1,7 @@
 #include "Renderer.h"
 
 #include <iostream>
+#include <utility>
 
 #include "SDL_render.h"
 #include "SDL_shape.h"
@@ -11,6 +12,7 @@
 #include "platform/sdl/components/Window.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Button.h"
+#include "core/math/geometry/Geometry.h"
 
 #include "exceptions/GraphicsInitException.h"
 
@@ -29,9 +31,15 @@ void Renderer::render(const Rect& rect) const {
 }
 
 void Renderer::render(Object& object) const {
-	const Point* center = &object.center;
-	SDL_Point centerPoint = { center->x, center->y };
-	SDL_RenderCopyEx(renderer, object.texture.getTexture(), nullptr, &object.rectangle.rect, object.rotation, &centerPoint, (SDL_RendererFlip) object.flip);
+	Dimensions objectDimensions = object.getDimensions();
+	Point objectPosition = object.getPosition();
+	PointPair origin = std::make_pair(objectPosition.x, objectPosition.y);
+	DimensionsPair dim = std::make_pair(objectDimensions.w, objectDimensions.w);
+	PointPair center = Geometry::calculateCenter(origin, dim);
+	SDL_Point centerPoint = { center.first, center.second };
+	SDL_Rect rect = SDL_Rect{ objectPosition.x, objectPosition.y, objectDimensions.w, objectDimensions.h };
+
+	SDL_RenderCopyEx(renderer, object.texture.getTexture(), nullptr, &rect, object.transformation.rotation, &centerPoint, (SDL_RendererFlip) object.transformation.flip);
 }
 
 void Renderer::update() {
@@ -71,9 +79,11 @@ Texture* Renderer::from(Surface& surface) const {
 		throw GraphicsInitException(SDL_GetError());
 	}
 
+	Texture* t = new Texture(texture, surface.getSurface()->w, surface.getSurface()->h);
+
 	delete &surface;
 
-	return new Texture(texture, surface.getSurface()->w, surface.getSurface()->h);
+	return t;
 }
 
 std::vector<Texture*> Renderer::from(const std::vector<Surface*>& surfaces) const {
@@ -86,8 +96,8 @@ std::vector<Texture*> Renderer::from(const std::vector<Surface*>& surfaces) cons
 	return textures;
 }
 
-Object* Renderer::from(Texture& texture, Rect& rect) const {
-	Object* object = new Object(texture, rect);
+Object* Renderer::from(Texture& texture, Point p, Dimensions dim) const {
+	Object* object = new Object(texture, dim, p);
 
 	return object;
 }
@@ -95,12 +105,13 @@ Object* Renderer::from(Texture& texture, Rect& rect) const {
 Object* Renderer::fromSurface(Surface& surface, Point p, Dimensions dim) const {
 	Texture* t = from(surface);
 
-	return from(*t, rect);
+	return from(*t, p, dim);
 }
 
 Button* Renderer::from(Texture& texture) {
-	Rect* rect = new Rect(Point::UNDEFINED, {texture.w, texture.h}, Color::NONE);
-	Button* btn = new Button(texture, *rect);
+	Point p = Point::UNDEFINED;
+	Dimensions dim = {texture.w, texture.h};
+	Button* btn = new Button(texture, p, dim);
 
 	return btn;
 }

@@ -28,7 +28,7 @@ public:
 
 	Texture* from(Surface& surface) const;
 	std::vector<Texture*> from(const std::vector<Surface*>& surfaces) const;
-	Object* from(Texture& texture, Rect& rect) const;
+	Object* from(Texture& texture, Point p, Dimensions dim) const;
 	Object* fromSurface(Surface& surface, Point p, Dimensions dim) const;
 	Button* from(Texture& texture);
 private:

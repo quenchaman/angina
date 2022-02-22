@@ -3,6 +3,8 @@
 
 #include "engine/Engine.h"
 
+struct Text;
+
 class Test : public Engine {
 public:
 	Test();
@@ -15,6 +17,8 @@ public:
 	void handleLeftMouseClick(Point point) override;
 
 	void handleBtnClick(int32_t idx) override;
+private:
+	Text* text = nullptr;
 };
 
 #endif /* TEST_TEST_H_ */

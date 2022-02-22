@@ -12,17 +12,11 @@
 #include <unordered_map>
 #include <vector>
 
-//#include "sdl/engine/buttons/ButtonManager.h"
+#include "renderer/primitives/Point.h"
 
-#include "SDL_ttf.h"
-
-struct Texture;
-struct Rect;
-struct Object;
-struct Renderer;
-struct Point;
 struct Button;
 struct Drawable;
+struct Object;
 
 /**
  * Class that represents a full screen page.
@@ -31,22 +25,23 @@ struct Drawable;
  *
  * Handles resource destruction after deinitialization.
  */
-class Screen {
+class Widget {
 public:
-	Screen();
-	virtual ~Screen();
+	Widget();
+	Widget(Point p);
+	void addChild(Widget& widget);
 
-	void addRectangle(const int32_t id, Rect& rectangle, int32_t zIndex);
-	void addObject(const int32_t id, Object& object, int32_t zIndex);
 	void addButton(const int32_t id, Button& btn, int32_t zIndex);
+	void put(const int32_t id, Object& drawable);
 
 	std::vector<Drawable*> getDrawables() const;
+	std::vector<Widget*> getChildren() const;
 
 	//ButtonManager buttonManager;
-protected:
-	std::unordered_map<int32_t, Drawable*> drawables;
 private:
-	TTF_Font* font;
+	std::unordered_map<int32_t, Drawable*> drawables;
+	std::vector<Widget*> children;
+	Point origin;
 };
 
 #endif /* SDL_ENGINE_PAGE_PAGE_H_ */

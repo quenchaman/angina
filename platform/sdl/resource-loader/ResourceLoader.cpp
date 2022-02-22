@@ -1,9 +1,3 @@
-/*
- * ImageResource.cpp
- *
- *  Created on: Oct 9, 2021
- *      Author: valeri
- */
 #include <stdexcept>
 #include <string>
 #include <cstdint>
