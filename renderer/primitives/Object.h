@@ -23,14 +23,17 @@ public:
 
 	void draw(Renderer& renderer);
 	void move(const int32_t x, const int32_t y);
+
 	Point getPosition() const;
 	Dimensions getDimensions() const;
+	Point getCenter() const;
 
 	Texture& texture;
 	Transformation transformation;
 private:
 	Dimensions dim;
 	Point point;
+	Point center;
 };
 
 #endif /* SDL_ENGINE_OBJECT_OBJECT_H_ */

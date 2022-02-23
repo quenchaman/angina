@@ -1,18 +1,15 @@
-/*
- * Texture.cpp
- *
- *  Created on: Oct 21, 2021
- *      Author: ubuntu
- */
-
 #include "Texture.h"
 
 #include "SDL_image.h"
 
-Texture::Texture(SDL_Texture* _texture, int32_t _w, int32_t _h): w(_w), h(_h), texture(_texture) {}
+Texture::Texture(SDL_Texture* _texture, Dimensions dim): texture(_texture), dimensions(dim) {}
 
 SDL_Texture* Texture::getTexture() const {
 	return texture;
+}
+
+Dimensions Texture::getDimensions() const {
+	return dimensions;
 }
 
 Texture::~Texture() {
@@ -25,5 +22,5 @@ Texture::~Texture() {
 }
 
 std::ostream& operator<<(std::ostream& os, const Texture& t) {
-	return os << t.texture;
+	return os << "Texture with width: " << t.dimensions.w << " and height: " << t.dimensions.h;
 }

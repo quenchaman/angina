@@ -1,18 +1,20 @@
 #include "ButtonManager.h"
 
+#include <iostream>
+
 #include "platform/sdl/events/InputEvent.h"
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Object.h"
-#include "platform/sdl/shapes/Rect.h"
-#include "renderer/primitives/Button.h"
+#include "engine/components/buttons/BaseButton.h"
+#include "renderer/utils/PrimitivesUtils.h"
 
-void ButtonManager::registerButton(const int32_t id, Button& btn) {
+void ButtonManager::registerButton(const int32_t id, BaseButton& btn) {
 	buttons[id] = &btn;
 }
 
-int32_t ButtonManager::getClickedButtonIndex(const InputEvent& event) {
+void ButtonManager::invokeCallback(const InputEvent& event) {
 	if (event.type != EventType::MOUSE_RELEASE) {
-		return -1;
+		return;
 	}
 
 	int32_t clickX = event.posX;
@@ -20,24 +22,18 @@ int32_t ButtonManager::getClickedButtonIndex(const InputEvent& event) {
 	Point clickPoint = { clickX, clickY };
 
 	for (auto const& [id, button] : buttons) {
-		if (button->rectangle.isInRect(clickPoint)) {
-			return id;
+		if (PrimitivesUtils::isInRect(button->getPosition(), button->getDimensions(), clickPoint)) {
+			button->getCallback()();
 		}
 	}
-
-	return -1;
 }
 
-Button& ButtonManager::getButton(int32_t id) {
+BaseButton& ButtonManager::getButton(int32_t id) {
 	return *buttons[id];
 }
 
-std::unordered_map<int32_t, Button*>& ButtonManager::getButtons() {
+std::unordered_map<int32_t, BaseButton*>& ButtonManager::getButtons() {
 	return buttons;
-}
-
-void ButtonManager::setPosition(int32_t btnIdx, int32_t x, int32_t y) {
-	getButton(btnIdx).move(x, y);
 }
 
 ButtonManager::~ButtonManager() {

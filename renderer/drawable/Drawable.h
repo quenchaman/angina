@@ -6,6 +6,7 @@ struct Renderer;
 class Drawable {
 public:
 	virtual ~Drawable() = default;
+
 	virtual void draw(Renderer& renderer) = 0;
 };
 

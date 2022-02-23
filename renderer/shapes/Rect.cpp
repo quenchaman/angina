@@ -1,6 +1,7 @@
 #include "Rect.h"
 
 #include "renderer/Renderer.h"
+#include "renderer/utils/PrimitivesUtils.h"
 
 const Rect Rect::ZERO(0, 0, 0, 0, Color::NONE);
 const Rect Rect::UNDEFINED(10000, 10000, 0, 0, Color::NONE);
@@ -21,8 +22,7 @@ bool Rect::operator!=(const Rect& other) const {
 }
 
 bool Rect::isInRect(const Point& point) {
-    return point.x >= rect.x && point.x <= (rect.x + rect.w) &&
-    		point.y >= rect.y && point.y <= rect.y + rect.h;
+    return PrimitivesUtils::isInRect({rect.x,  rect.y}, {rect.w, rect.h}, point);
 }
 
 std::ostream& operator<<(std::ostream& os, const Rect& rect) {
@@ -31,4 +31,12 @@ std::ostream& operator<<(std::ostream& os, const Rect& rect) {
 
 void Rect::draw(Renderer& renderer) {
 	renderer.render(*this);
+}
+
+SDL_Rect Rect::getRawRect() const {
+	return rect;
+}
+
+Color Rect::getColor() const {
+	return color;
 }

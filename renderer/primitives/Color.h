@@ -15,5 +15,4 @@ struct Color {
 	static const Color BLUE;
 };
 
-
 #endif /* SDL_PRIMITIVES_COLOR_H_ */

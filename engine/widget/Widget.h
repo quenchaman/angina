@@ -17,6 +17,7 @@
 struct Button;
 struct Drawable;
 struct Object;
+struct BaseButton;
 
 /**
  * Class that represents a full screen page.
@@ -27,11 +28,12 @@ struct Object;
  */
 class Widget {
 public:
+	// TODO: Add Buttons manager here and enable adding buttons to it.
 	Widget();
 	Widget(Point p);
 	void addChild(Widget& widget);
 
-	void addButton(const int32_t id, Button& btn, int32_t zIndex);
+	void put(const int32_t id, BaseButton& btn);
 	void put(const int32_t id, Object& drawable);
 
 	std::vector<Drawable*> getDrawables() const;

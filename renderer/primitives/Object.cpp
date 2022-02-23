@@ -6,12 +6,15 @@
 #include "platform/sdl/primitives/Texture.h"
 #include "renderer/primitives/Color.h"
 #include "renderer/Renderer.h"
+#include "renderer/utils/PrimitivesUtils.h"
 
-Object::Object(Texture& t, Dimensions d, Point p): texture(t), dim(d), point(p) {}
+Object::Object(Texture& t, Dimensions d, Point p): texture(t), dim(d), point(p), center(PrimitivesUtils::calculateCenter(p, dim)) {}
 
 void Object::move(const int32_t x, const int32_t y) {
 	point.x = x;
 	point.y = y;
+
+	center = PrimitivesUtils::calculateCenter(point, dim);
 }
 
 Point Object::getPosition() const {
@@ -20,6 +23,10 @@ Point Object::getPosition() const {
 
 Dimensions Object::getDimensions() const {
 	return dim;
+}
+
+Point Object::getCenter() const {
+	return center;
 }
 
 Object::~Object() {

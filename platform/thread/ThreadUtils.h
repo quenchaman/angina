@@ -1,10 +1,3 @@
-/*
- * ThreadUtils.h
- *
- *  Created on: Dec 22, 2021
- *      Author: ubuntu
- */
-
 #ifndef UTILS_THREAD_THREADUTILS_H_
 #define UTILS_THREAD_THREADUTILS_H_
 

@@ -4,6 +4,7 @@
 #include "renderer/drawable/Drawable.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Point.h"
+#include "engine/components/buttons/BaseButton.h"
 
 Widget::Widget(): origin(Point::ZERO) {
 }
@@ -19,8 +20,8 @@ void Widget::put(const int32_t id, Object& drawable) {
 	drawables[id] = &drawable;
 }
 
-void Widget::addButton([[maybe_unused]]const int32_t id, [[maybe_unused]]Button& btn, [[maybe_unused]]int32_t zIndex) {
-	//buttonManager.registerButton(id, btn);
+void Widget::put(const int32_t id, BaseButton& btn) {
+	drawables[id] = &btn;
 }
 
 void Widget::addChild(Widget& widget) {

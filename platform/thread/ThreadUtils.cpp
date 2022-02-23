@@ -1,10 +1,3 @@
-/*
- * ThreadUtils.cpp
- *
- *  Created on: Dec 22, 2021
- *      Author: ubuntu
- */
-
 #include <thread>
 
 #include "ThreadUtils.h"

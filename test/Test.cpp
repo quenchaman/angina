@@ -6,6 +6,7 @@
 #include "engine/factory/GraphicsFactory.h"
 #include "renderer/primitives/Color.h"
 #include "renderer/primitives/Text.h"
+#include "engine/components/buttons/RectTextButton.h"
 
 Test::Test() : Engine(Config::GAME_TITLE, Config::WINDOW_DIM) {
 
@@ -15,21 +16,21 @@ Test::~Test() {
 
 }
 
+void callbackFunc() {
+	std::cout << "Hello ! I am the clicked button!" << std::endl;
+}
+
+
 void Test::init() {
-	Point widgetOrigin = { 100, 100 };
-	rootScreen = new Widget(widgetOrigin);
 	Point p = { 0, 0 };
-	Dimensions dim = { 500, 100 };
-	text = getFactory().createText("Hello World!", *defaultFont, p, dim);
+	Dimensions dim = { 200, 70 };
+	Color background = Color::BLUE;
+	Color textColor = Color::RED;
+	std::string txt = "Click me!";
 
-	Widget* innerWidget = new Widget(Point{100, 200});
-	Text* anotherText = getFactory().createText("I am inside", *defaultFont, p, dim);
+	RectTextButton* btn = getFactory().createButton(p, dim, background, textColor, txt, *defaultFont, &callbackFunc);
 
-	innerWidget->put(2, *anotherText);
-
-	rootScreen->addChild(*innerWidget);
-
-	rootScreen->put(1, *text);
+	rootScreen->put(12, *btn);
 }
 
 void Test::update() {
@@ -42,3 +43,4 @@ void Test::handleLeftMouseClick([[maybe_unused]]Point point) {
 void Test::handleBtnClick([[maybe_unused]]int32_t idx) {
 
 }
+

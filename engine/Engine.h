@@ -9,7 +9,6 @@
 #include "SDL_events.h"
 #include "SDL_ttf.h"
 
-#include "sdl/engine/buttons/ButtonManager.h"
 #include "platform/sdl/events/InputEvent.h"
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Point.h"
@@ -25,7 +24,7 @@ struct Font;
 
 class Engine {
 public:
-	Engine(std::string appTitle, Dimensions dimensions);
+	Engine(std::string appTitle, Dimensions screenSize);
 	virtual ~Engine();
 
 	void start();
@@ -43,9 +42,9 @@ private:
 	void draw(Widget& widget);
 	void handleEvent();
 protected:
-    InputEvent event;
-    Widget* rootScreen = nullptr;
-    Font* defaultFont = nullptr;
+	InputEvent event;
+	Widget* rootScreen = nullptr;
+	Font* defaultFont = nullptr;
 
 	virtual void init() = 0;
 	virtual void update() = 0;

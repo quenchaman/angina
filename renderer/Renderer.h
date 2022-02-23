@@ -19,10 +19,9 @@ public:
 	Renderer(Window& window);
 	~Renderer();
 
-	SDL_Renderer* getRenderer();
 	void clear();
 	void render(const Texture& texture) const;
-	void render(const Rect& rect) const;
+	void render(Rect& rect) const;
 	void render(Object& object) const;
 	void update();
 

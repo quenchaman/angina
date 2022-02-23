@@ -1,10 +1,3 @@
-/*
- * Time.h
- *
- *  Created on: Dec 22, 2021
- *      Author: ubuntu
- */
-
 #ifndef UTILS_TIME_TIME_H_
 #define UTILS_TIME_TIME_H_
 

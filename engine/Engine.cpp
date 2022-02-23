@@ -21,7 +21,6 @@
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Button.h"
 #include "renderer/primitives/Point.h"
-#include "sdl/engine/buttons/ButtonManager.h"
 #include "engine/factory/GraphicsFactory.h"
 #include "platform/sdl/primitives/Font.h"
 #include "engine/widget/Widget.h"
@@ -46,6 +45,8 @@ Engine::Engine(std::string appTitle, Dimensions screenSize) {
     defaultFont = new Font(Resources::montserratFont, 28);
 
     event.init();
+
+    rootScreen = new Widget(Point::ZERO);
 }
 
 void Engine::start() {
@@ -136,6 +137,16 @@ GraphicsFactory& Engine::getFactory() const {
 Engine::~Engine() {
 	clearPage();
 
+	if (factory != nullptr) {
+		delete factory;
+		factory = nullptr;
+	}
+
+	if (defaultFont != nullptr) {
+		delete defaultFont;
+		defaultFont = nullptr;
+	}
+
 	if (renderer != nullptr) {
 		delete renderer;
 		renderer = nullptr;
@@ -146,8 +157,8 @@ Engine::~Engine() {
 		window = nullptr;
 	}
 
-    IMG_Quit();
-    SDL_Quit();
+	IMG_Quit();
+	SDL_Quit();
 
-    std::cout << "Engine deinitialised" << std::endl;
+	std::cout << "Engine deinitialised" << std::endl;
 }

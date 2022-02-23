@@ -4,21 +4,23 @@
 #include <iostream>
 #include <cstdint>
 
+#include "renderer/primitives/Dimensions.h"
+
 struct SDL_Texture;
 struct SDL_Point;
 
 class Texture {
 public:
-	Texture(SDL_Texture* texture, int32_t w, int32_t h);
+	Texture(SDL_Texture* texture, Dimensions dim);
 	~Texture();
 
 	SDL_Texture* getTexture() const;
-	int32_t w;
-	int32_t h;
+	Dimensions getDimensions() const;
 
 	friend std::ostream& operator<<(std::ostream& os, const Texture& t);
 private:
 	SDL_Texture* texture;
+	Dimensions dimensions;
 };
 
 #endif /* SDL_GRAPHICS_TEXTURE_H_ */

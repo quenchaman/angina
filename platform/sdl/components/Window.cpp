@@ -8,6 +8,12 @@
 #include "platform/sdl/primitives/Surface.h"
 #include "exceptions/WindowInitException.h"
 
+/**
+ * Not great to have exceptions thrown in constructors.
+ * But, if we cannot get window's surface then the game cannot start and we should not worry about memory leaks.
+ * ...But this is still poor. TODO: Improve it.
+ *
+ */
 Window::Window(std::string title, Point pos, Dimensions dimensions, int32_t flags) {
 	window = SDL_CreateWindow(title.c_str(), pos.x, pos.y, dimensions.w, dimensions.h, flags);
 
@@ -35,7 +41,10 @@ Surface& Window::getSurface() {
 }
 
 Window::~Window() {
-	delete surface;
+	if (surface != nullptr) {
+		delete surface;
+		surface = nullptr;
+	}
 
 	if (window != nullptr) {
 		SDL_DestroyWindow(window);

@@ -4,8 +4,10 @@
 #include "platform/sdl/enums/Flip.h"
 
 struct Transformation {
-	double rotation = 0.0;
-	Flip flip = Flip::NONE;
+	Transformation();
+
+	double rotation;
+	Flip flip;
 };
 
 #endif /* RENDERER_PRIMITIVES_TRANSFORMATION_H_ */

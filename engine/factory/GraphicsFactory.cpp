@@ -8,11 +8,12 @@
 #include "renderer/primitives/Dimensions.h"
 #include "platform/sdl/primitives/Font.h"
 #include "renderer/primitives/Text.h"
+#include "engine/components/buttons/RectTextButton.h"
 
 GraphicsFactory::GraphicsFactory(Renderer& r): renderer(r) {
 }
 
-Object* GraphicsFactory::createObject(const std::string& resourcePath, Point p, Dimensions dim) const {
+Object* GraphicsFactory::createObject(const std::string& resourcePath, Point p, Dimensions dim) {
 	Surface* surface = ResourceLoader::load(resourcePath);
 
 	Object* obj = renderer.fromSurface(*surface, p, dim);
@@ -28,9 +29,10 @@ Text* GraphicsFactory::createText(std::string textVal, Font& font, Point p, Dime
 	return text;
 }
 
-//Button* GraphicsFactory::createButton(const std::string& resourcePath, Point position) const {
-//	Surface* surface = ResourceLoader::load(resourcePath);
-//	Texture& texture = renderer.from(*surface);
-//
-//	return new Button(texture, )
-//}
+RectTextButton* GraphicsFactory::createButton(Point p, Dimensions dim, Color backgroundColor, Color textColor, std::string text, Font& font, void (*clb)()) {
+	Text* btnText = GraphicsFactory::createText(text, font, p, dim, textColor);
+
+	// TODO: Add a padding to the text or ,even better, center it.
+
+	return new RectTextButton(p, dim, backgroundColor, *btnText, clb);
+}

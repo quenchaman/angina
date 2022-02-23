@@ -1,6 +1,8 @@
 #ifndef TEST_TEST_H_
 #define TEST_TEST_H_
 
+#include <iostream>
+
 #include "engine/Engine.h"
 
 struct Text;
@@ -18,7 +20,7 @@ public:
 
 	void handleBtnClick(int32_t idx) override;
 private:
-	Text* text = nullptr;
+	//void callbackFunc();
 };
 
 #endif /* TEST_TEST_H_ */

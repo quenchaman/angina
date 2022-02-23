@@ -13,6 +13,8 @@
 #include "renderer/primitives/Color.h"
 
 namespace ResourceLoader {
+
+	// TODO: Instead of throwing an exception we should gracefully degrade with a default image.
 	Surface* load(const std::string& path) {
 		SDL_Surface* image = nullptr;
 
@@ -25,10 +27,10 @@ namespace ResourceLoader {
 		return new Surface(image);
 	}
 
-	std::vector<Surface*> loadBulk(std::vector<std::string> paths) {
+	std::vector<Surface*> loadBulk(std::vector<std::string>& paths) {
 		std::vector<Surface*> images;
 
-		for (std::string path : paths) {
+		for (std::string& path : paths) {
 			images.push_back(ResourceLoader::load(path));
 		}
 
@@ -44,5 +46,3 @@ namespace ResourceLoader {
 		return new Surface(surface);
 	}
 }
-
-

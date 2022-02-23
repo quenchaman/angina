@@ -12,7 +12,6 @@
 #include "platform/sdl/components/Window.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Button.h"
-#include "core/math/geometry/Geometry.h"
 
 #include "exceptions/GraphicsInitException.h"
 
@@ -25,21 +24,22 @@ void Renderer::render(const Texture& texture) const {
 	SDL_RenderCopy(renderer, texture.getTexture(), nullptr, nullptr);
 }
 
-void Renderer::render(const Rect& rect) const {
-	SDL_SetRenderDrawColor(renderer, rect.color.red, rect.color.green, rect.color.blue, rect.color.alpha);
-	SDL_RenderDrawRect(renderer, &rect.rect);
+void Renderer::render(Rect& rect) const {
+	Color rectColor = rect.getColor();
+	SDL_Rect rawRect = rect.getRawRect();
+
+	SDL_SetRenderDrawColor(renderer, rectColor.red, rectColor.green, rectColor.blue, rectColor.alpha);
+	SDL_RenderDrawRect(renderer, &rawRect);
 }
 
 void Renderer::render(Object& object) const {
 	Dimensions objectDimensions = object.getDimensions();
 	Point objectPosition = object.getPosition();
-	PointPair origin = std::make_pair(objectPosition.x, objectPosition.y);
-	DimensionsPair dim = std::make_pair(objectDimensions.w, objectDimensions.w);
-	PointPair center = Geometry::calculateCenter(origin, dim);
-	SDL_Point centerPoint = { center.first, center.second };
 	SDL_Rect rect = SDL_Rect{ objectPosition.x, objectPosition.y, objectDimensions.w, objectDimensions.h };
+	Point center = object.getCenter();
+	SDL_Point sdlCenter = {center.x, center.y};
 
-	SDL_RenderCopyEx(renderer, object.texture.getTexture(), nullptr, &rect, object.transformation.rotation, &centerPoint, (SDL_RendererFlip) object.transformation.flip);
+	SDL_RenderCopyEx(renderer, object.texture.getTexture(), nullptr, &rect, object.transformation.rotation, &sdlCenter, (SDL_RendererFlip) object.transformation.flip);
 }
 
 void Renderer::update() {
@@ -65,9 +65,7 @@ void Renderer::deinit() {
 	std::cout << "Renderer deinitialised" << std::endl;
 }
 
-SDL_Renderer* Renderer::getRenderer() {
-	return renderer;
-}
+
 
 Texture* Renderer::from(Surface& surface) const {
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(
@@ -79,7 +77,7 @@ Texture* Renderer::from(Surface& surface) const {
 		throw GraphicsInitException(SDL_GetError());
 	}
 
-	Texture* t = new Texture(texture, surface.getSurface()->w, surface.getSurface()->h);
+	Texture* t = new Texture(texture, { surface.getSurface()->w, surface.getSurface()->h });
 
 	delete &surface;
 
@@ -97,9 +95,7 @@ std::vector<Texture*> Renderer::from(const std::vector<Surface*>& surfaces) cons
 }
 
 Object* Renderer::from(Texture& texture, Point p, Dimensions dim) const {
-	Object* object = new Object(texture, dim, p);
-
-	return object;
+	return new Object(texture, dim, p);
 }
 
 Object* Renderer::fromSurface(Surface& surface, Point p, Dimensions dim) const {
@@ -109,9 +105,5 @@ Object* Renderer::fromSurface(Surface& surface, Point p, Dimensions dim) const {
 }
 
 Button* Renderer::from(Texture& texture) {
-	Point p = Point::UNDEFINED;
-	Dimensions dim = {texture.w, texture.h};
-	Button* btn = new Button(texture, p, dim);
-
-	return btn;
+	return new Button(texture, Point::UNDEFINED, texture.getDimensions());
 }

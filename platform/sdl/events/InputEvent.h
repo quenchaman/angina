@@ -1,10 +1,3 @@
-/*
- * InputEvent.h
- *
- *  Created on: Dec 22, 2021
- *      Author: ubuntu
- */
-
 #ifndef SDLUTILS_INPUTEVENT_H_
 #define SDLUTILS_INPUTEVENT_H_
 

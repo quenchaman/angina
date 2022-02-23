@@ -35,8 +35,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/platform/thread/ThreadUtils.cpp
 	${DIR}/renderer/primitives/Object.h
 	${DIR}/renderer/primitives/Object.cpp
-	#${DIR}/sdl/engine/buttons/ButtonManager.h
-	#${DIR}/sdl/engine/buttons/ButtonManager.cpp
+	${DIR}/engine/managers/ButtonManager.h
+	${DIR}/engine/managers/ButtonManager.cpp
 	#${DIR}/sdl/engine/animation/AnimationData.h
 	#${DIR}/sdl/engine/animation/AnimationManager.h
 	#${DIR}/sdl/engine/animation/AnimationManager.cpp
@@ -45,7 +45,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/factory/GraphicsFactory.h
 	${DIR}/engine/factory/GraphicsFactory.cpp
 	${DIR}/renderer/drawable/Drawable.h
-	${DIR}/renderer/drawable/Drawable.cpp
 	${DIR}/platform/sdl/primitives/Texture.h
 	${DIR}/platform/sdl/primitives/Texture.cpp
 	${DIR}/platform/sdl/primitives/Font.h
@@ -64,6 +63,12 @@ add_executable(${PROJECT_NAME}
 	${DIR}/renderer/primitives/Dimensions.cpp
 	${DIR}/renderer/primitives/Color.cpp
 	${DIR}/renderer/primitives/Color.h
+	${DIR}/renderer/utils/PrimitivesUtils.h
+	${DIR}/renderer/utils/PrimitivesUtils.cpp
+	${DIR}/engine/components/buttons/BaseButton.h
+	${DIR}/engine/components/buttons/BaseButton.cpp
+	${DIR}/engine/components/buttons/RectTextButton.h
+	${DIR}/engine/components/buttons/RectTextButton.cpp
 	${DIR}/config/Config.h
 	${DIR}/config/ConfigData.h
 	${DIR}/config/ConfigLoader.h

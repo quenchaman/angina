@@ -10,7 +10,7 @@
 
 struct Renderer;
 struct Object;
-struct Button;
+struct RectTextButton;
 struct Font;
 struct Text;
 
@@ -18,11 +18,11 @@ class GraphicsFactory {
 public:
 	GraphicsFactory(Renderer& renderer);
 
-	Object* createObject(const std::string& resourcePath, Point p, Dimensions dim) const;
+	Object* createObject(const std::string& resourcePath, Point p, Dimensions dim);
 
 	Text* createText(std::string text, Font& font, Point p, Dimensions dim, Color color = Color::NONE);
 
-	//Button* createButton(const std::string& resourcePath, Point position) const;
+	RectTextButton* createButton(Point p, Dimensions dim, Color backgroundColor, Color textColor, std::string text, Font& font, void (*clb)());
 private:
 	Renderer& renderer;
 };

@@ -15,13 +15,13 @@ public:
 	Rect(Point positionIn, Dimensions dimensionsIn, Color colorIn);
 	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color& color);
 
-	SDL_Rect rect;
-	Color color;
-
 	void draw(Renderer& renderer);
 
 	bool operator==(const Rect& other) const;
 	bool operator!=(const Rect& other) const;
+
+	SDL_Rect getRawRect() const;
+	Color getColor() const;
 
 	bool isInRect(const Point& point);
 
@@ -29,6 +29,9 @@ public:
 	static const Rect UNDEFINED;
 
 	friend std::ostream& operator<<(std::ostream& os, const Rect& rect);
+private:
+	SDL_Rect rect;
+	Color color;
 };
 
 #endif /* SDL_PRIMITIVES_RECT_H_ */

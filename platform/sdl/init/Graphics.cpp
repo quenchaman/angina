@@ -1,10 +1,3 @@
-/*
- * Graphics.cpp
- *
- *  Created on: Oct 12, 2021
- *      Author: valeri
- */
-
 #include "Graphics.h"
 
 #include <cstdint>
