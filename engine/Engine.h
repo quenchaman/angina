@@ -13,29 +13,29 @@
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Point.h"
 
-struct Window;
-struct Renderer;
+#include "engine/widget/Widget.h"
+#include "platform/sdl/primitives/Font.h"
+#include "engine/factory/GraphicsFactory.h"
+#include "platform/sdl/components/Window.h"
+#include "renderer/Renderer.h"
+#include "engine/factory/GraphicsFactory.h"
+
 struct Texture;
 struct Rect;
 struct Object;
-struct Widget;
-struct GraphicsFactory;
-struct Font;
 
 class Engine {
 public:
 	Engine(std::string appTitle, Dimensions screenSize);
-	virtual ~Engine();
+	virtual ~Engine() = default;
 
 	void start();
-	Renderer* getRenderer() const;
 private:
-	Window* window;
+	Window window;
 	SDL_Event e;
-	Renderer* renderer;
+	Renderer renderer;
+	GraphicsFactory factory;
 	bool quit = false;
-	GraphicsFactory* factory;
-
 
 	void limitFPS(int64_t microseconds);
 	void draw();
@@ -43,17 +43,15 @@ private:
 	void handleEvent();
 protected:
 	InputEvent event;
-	Widget* rootScreen = nullptr;
-	Font* defaultFont = nullptr;
+	Widget rootScreen;
+	Font defaultFont;
 
 	virtual void init() = 0;
 	virtual void update() = 0;
 	virtual void handleLeftMouseClick(Point p) = 0;
 	virtual void handleBtnClick(int32_t idx) = 0;
 
-	void navigateTo(Widget* screen);
-	void clearPage();
-	GraphicsFactory& getFactory() const;
+	GraphicsFactory& getFactory();
 };
 
 

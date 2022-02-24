@@ -9,7 +9,6 @@
 #define SDL_ENGINE_PAGE_PAGE_H_
 
 #include <cstdint>
-#include <unordered_map>
 #include <vector>
 
 #include "renderer/primitives/Point.h"
@@ -33,15 +32,13 @@ public:
 	Widget(Point p);
 	void addChild(Widget& widget);
 
-	void put(const int32_t id, BaseButton& btn);
-	void put(const int32_t id, Object& drawable);
+	void put(BaseButton& btn);
+	void put(Object& drawable);
 
-	std::vector<Drawable*> getDrawables() const;
-	std::vector<Widget*> getChildren() const;
-
-	//ButtonManager buttonManager;
+	std::vector<Drawable*>& getDrawables();
+	std::vector<Widget*>& getChildren();
 private:
-	std::unordered_map<int32_t, Drawable*> drawables;
+	std::vector<Drawable*> drawables;
 	std::vector<Widget*> children;
 	Point origin;
 };

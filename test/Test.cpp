@@ -28,9 +28,9 @@ void Test::init() {
 	Color textColor = Color::RED;
 	std::string txt = "Click me!";
 
-	RectTextButton* btn = getFactory().createButton(p, dim, background, textColor, txt, *defaultFont, &callbackFunc);
+	RectTextButton* btn = getFactory().createButton(p, dim, background, textColor, txt, defaultFont, &callbackFunc);
 
-	rootScreen->put(12, *btn);
+	rootScreen.put(*btn);
 }
 
 void Test::update() {

@@ -86,6 +86,7 @@ Texture* Renderer::from(Surface& surface) const {
 
 std::vector<Texture*> Renderer::from(const std::vector<Surface*>& surfaces) const {
 	std::vector<Texture*> textures;
+	textures.reserve(surfaces.size());
 
 	for (Surface* surface : surfaces) {
 		textures.push_back(from(*surface));

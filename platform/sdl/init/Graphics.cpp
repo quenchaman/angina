@@ -22,9 +22,14 @@ namespace Graphics {
 		}
 	}
 
-    void bootTTFExtensions() {
-        if (TTF_Init() == -1) {
-            throw GraphicsInitException(SDL_GetError());
-        }
-    }
+	void bootTTFExtensions() {
+			if (TTF_Init() == -1) {
+					throw GraphicsInitException(SDL_GetError());
+			}
+	}
+
+	void shutdown() {
+		IMG_Quit();
+		SDL_Quit();
+	}
 }

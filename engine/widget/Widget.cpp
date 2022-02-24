@@ -12,32 +12,25 @@ Widget::Widget(): origin(Point::ZERO) {
 Widget::Widget(Point p): origin(p) {
 }
 
-// TODO: We need a better way to generate Ids.
-void Widget::put(const int32_t id, Object& drawable) {
+void Widget::put(Object& drawable) {
 	Point newDrawablePos = origin + drawable.getPosition();
 	drawable.move(newDrawablePos.x, newDrawablePos.y);
 
-	drawables[id] = &drawable;
+	drawables.push_back(&drawable);
 }
 
-void Widget::put(const int32_t id, BaseButton& btn) {
-	drawables[id] = &btn;
+void Widget::put(BaseButton& btn) {
+	drawables.push_back(&btn);
 }
 
 void Widget::addChild(Widget& widget) {
 	children.push_back(&widget);
 }
 
-std::vector<Widget*> Widget::getChildren() const {
+std::vector<Widget*>& Widget::getChildren() {
 	return children;
 }
 
-std::vector<Drawable*> Widget::getDrawables() const {
-	std::vector<Drawable*> d;
-
-	for (auto const& [id, drawable] : drawables) {
-		d.push_back(drawable);
-	}
-
-	return d;
+std::vector<Drawable*>& Widget::getDrawables() {
+	return drawables;
 }

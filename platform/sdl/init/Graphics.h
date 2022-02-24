@@ -4,7 +4,8 @@
 namespace Graphics {
 	void boot();
 	void bootImageExtension();
-    void bootTTFExtensions();
+	void bootTTFExtensions();
+	void shutdown();
 }
 
 
