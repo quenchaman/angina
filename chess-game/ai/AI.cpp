@@ -10,10 +10,10 @@
 
 #include "AI.h"
 
+#include "../pieces/PieceObject.h"
 #include "chess-game/board/Board.h"
 #include "chess-game/pieces/ValidMovesGenerator.h"
 #include "chess-game/pieces/PieceValue.h"
-#include "chess-game/pieces/Piece.h"
 
 AI::AI(const Board& boardIn, const ValidMovesGenerator& movesGenIn): board(boardIn), movesGenerator(movesGenIn) {}
 

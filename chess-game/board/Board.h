@@ -12,8 +12,8 @@
 #include <vector>
 #include <unordered_set>
 
+#include "../pieces/PieceObject.h"
 #include "chess-game/board/Cell.h"
-#include "chess-game/pieces/Piece.h"
 #include "chess-game/pieces/Move.h"
 #include "sdl/primitives/Point.h"
 #include "sdl/primitives/Rect.h"

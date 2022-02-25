@@ -28,7 +28,7 @@ struct Object;
 class Engine {
 public:
 	Engine(std::string appTitle, Dimensions screenSize);
-	virtual ~Engine() = default;
+	virtual ~Engine();
 
 	void start();
 private:
@@ -44,7 +44,7 @@ private:
 	void handleEvent();
 protected:
 	InputEvent event;
-	Widget rootScreen;
+	Widget* rootScreen;
 	Font defaultFont;
 	ButtonManager btnManager;
 
@@ -52,6 +52,9 @@ protected:
 	virtual void update() = 0;
 	virtual void handleLeftMouseClick(Point p) = 0;
 	virtual void handleBtnClick(int32_t idx) = 0;
+
+	void clearScreen();
+	void changeScreen(Widget& widget);
 
 	GraphicsFactory& getFactory();
 };

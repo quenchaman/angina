@@ -7,9 +7,9 @@
 
 #include "ValidMovesGenerator.h"
 
-#include "chess-game/pieces/Piece.h"
 #include "chess-game/board/Board.h"
 #include "chess-game/pieces/PieceMoveGenerator.h"
+#include "PieceObject.h"
 
 ValidMovesGenerator::ValidMovesGenerator(Board& board): _board(board) {
 }

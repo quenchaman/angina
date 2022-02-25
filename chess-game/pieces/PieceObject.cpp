@@ -1,10 +1,9 @@
-#include "Piece.h"
-
+#include "PieceObject.h"
 #include "sdl/engine/object/Object.h"
 
-Piece::Piece(Object& objectIn, Cell cellIn, Side sideIn, Rank rankIn): object(objectIn), cell(cellIn), side(sideIn), rank(rankIn), hasMoved(false) {}
+PieceObject::PieceObject(Object& objectIn, Cell cellIn, Side sideIn, Rank rankIn): object(objectIn), cell(cellIn), side(sideIn), rank(rankIn), hasMoved(false) {}
 
-void Piece::move(const Point point, const Cell dst) {
+void PieceObject::move(const Point point, const Cell dst) {
 	object.move(point.x, point.y);
 	cell = dst;
 	hasMoved = true;

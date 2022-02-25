@@ -20,7 +20,6 @@ void Test::callbackFunc() {
 	std::cout << "Hello ! I am the clicked button! The secret is " << privateNumber << std::endl;
 }
 
-
 void Test::init() {
 	Point p = { 0, 0 };
 	Dimensions dim = { 200, 70 };
@@ -30,7 +29,7 @@ void Test::init() {
 
 	RectTextButton* btn = getFactory().createButton(p, dim, background, textColor, txt, defaultFont, std::bind(&Test::callbackFunc, this));
 
-	rootScreen.put(*btn);
+	rootScreen->put(*btn);
 }
 
 void Test::update() {

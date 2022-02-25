@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <string>
 
+#include "../chess-game/pieces/PieceObject.h"
 #include "sdl/primitives/Rect.h"
 #include "sdl/engine/object/Object.h"
 #include "resources/Resources.h"
@@ -19,7 +20,6 @@
 #include "chess-game/pages/LandingPage.h"
 #include "chess-game/pages/ChessPage.h"
 #include "chess-game/board/Board.h"
-#include "chess-game/pieces/Piece.h"
 #include "chess-game/board/PieceSelectionManager.h"
 #include "chess-game/pieces/ValidMovesGenerator.h"
 #include "chess-game/ai/AI.h"

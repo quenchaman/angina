@@ -1,11 +1,11 @@
 #include "ChessPage.h"
 
+#include "../pieces/PieceObject.h"
 #include "sdl/engine/object/Object.h"
 #include "sdl/primitives/Point.h"
 #include "sdl/components/Button.h"
 #include "chess-game/board/Board.h"
 #include "resources/Resources.h"
-#include "chess-game/pieces/Piece.h"
 #include "config/Config.h"
 
 ChessPage::ChessPage(Renderer& renderer) : Page(renderer)  {

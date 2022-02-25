@@ -1,5 +1,5 @@
-#ifndef CHESS_GAME_PIECES_PIECE_H_
-#define CHESS_GAME_PIECES_PIECE_H_
+#ifndef CHESS_GAME_PIECES_PIECEOBJECT_H_
+#define CHESS_GAME_PIECES_PIECEOBJECT_H_
 
 #include <iostream>
 
@@ -11,8 +11,8 @@
 
 struct Object;
 
-struct Piece {
-	Piece(Object& object, Cell cell, Side side, Rank rank);
+struct PieceObject {
+	PieceObject(Object& object, Cell cell, Side side, Rank rank);
 
 	Object& object;
 	Cell cell;
@@ -25,4 +25,4 @@ struct Piece {
 	friend std::ostream& operator<<(std::ostream& os, const Piece& piece);
 };
 
-#endif /* CHESS_GAME_PIECES_PIECE_H_ */
+#endif /* CHESS_GAME_PIECES_PIECEOBJECT_H_ */

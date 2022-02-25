@@ -1,30 +1,69 @@
 # angina
 
-Steps to run:
+## Steps to run:
 
 - Go to `build` folder
 - `cmake ..`
 - `make`
 - `./chess`
 
-Features:
+## Getting started with your own game!
 
-- movement of all pieces
-- king check (works most of the time)
-- king castle (available just to the human player)
-- start screen - new game, continue, quit
-- quit game while playing
-- computer opponent
-- 1 minute timer for each player
-- en passant
-- checkmate
-- stalemate (should be working but never reproduced)
-- winner animation
-- log moves
-- save and load game
+Step 1: Inherit Engine class and implement virtual methods.
+Step 2: Create a component and add it to main screen
 
-Known issues:
+```cpp
+void Test::callbackFunc() {
+	std::cout << "Hello ! I am the clicked button! The secret is " << privateNumber << std::endl;
+}
 
-- Sometimes when the human player is in check, they can still move on attacked piece
-- Castle does not account for attacked king
-- code is shit
+void Test::init() {
+	Point p = { 0, 0 };
+	Dimensions dim = { 200, 70 };
+	Color background = Color::BLUE;
+	Color textColor = Color::RED;
+	std::string txt = "Click me!";
+
+  // Here we use a factory to create a button and add a callback to it.
+	RectTextButton* btn = getFactory().createButton(p, dim, background, textColor, txt, defaultFont, std::bind(&Test::callbackFunc, this));
+
+	rootScreen.put(*btn); --> Putting the button on the main screen.
+}
+```
+
+Step 3: Instantiate your game engine and do not forget to startup SDL.
+
+```cpp
+#include <cstdint>
+#include <cstdlib>
+#include <iostream>
+
+#include "platform/sdl/init/Graphics.h"
+
+#include "test/Test.h"
+#include "exceptions/BaseException.h"
+
+int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
+	try {
+		Graphics::boot();
+		Graphics::bootImageExtension();
+		Graphics::bootTTFExtensions();
+
+		Engine* game = new Test();
+
+		game->start();
+
+		delete game;
+
+		Graphics::shutdown();
+
+		return EXIT_SUCCESS;
+	} catch (const BaseException& ex) {
+		std::cerr << ex << std::endl;
+
+		Graphics::shutdown();
+
+		return EXIT_FAILURE;
+	}
+}
+```

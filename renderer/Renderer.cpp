@@ -29,7 +29,7 @@ void Renderer::render(Rect& rect) const {
 	SDL_Rect rawRect = rect.getRawRect();
 
 	SDL_SetRenderDrawColor(renderer, rectColor.red, rectColor.green, rectColor.blue, rectColor.alpha);
-	SDL_RenderDrawRect(renderer, &rawRect);
+	SDL_RenderFillRect(renderer, &rawRect);
 }
 
 void Renderer::render(Object& object) const {

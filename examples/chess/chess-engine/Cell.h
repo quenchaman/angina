@@ -1,10 +1,3 @@
-/*
- * Cell.h
- *
- *  Created on: Jan 8, 2022
- *      Author: ubuntu
- */
-
 #ifndef CHESS_GAME_BOARD_CELL_H_
 #define CHESS_GAME_BOARD_CELL_H_
 
