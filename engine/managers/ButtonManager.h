@@ -1,7 +1,7 @@
 #ifndef SDL_ENGINE_BUTTONS_BUTTONMANAGER_H_
 #define SDL_ENGINE_BUTTONS_BUTTONMANAGER_H_
 
-#include <unordered_map>
+#include <vector>
 #include <cstdint>
 
 struct BaseButton;
@@ -15,18 +15,12 @@ struct Renderer;
  */
 class ButtonManager {
 public:
-	ButtonManager() = default;
 	~ButtonManager();
+	void registerButton(BaseButton& btn);
 
-	void registerButton(const int32_t id, BaseButton& btn);
-
-	void invokeCallback(const InputEvent& event);
-
-	BaseButton& getButton(int32_t id);
-
-	std::unordered_map<int32_t, BaseButton*>& getButtons();
+	bool invokeCallback(const InputEvent& event);
 private:
-	std::unordered_map<int32_t, BaseButton*> buttons;
+	std::vector<BaseButton*> buttons;
 };
 
 #endif /* SDL_ENGINE_BUTTONS_BUTTONMANAGER_H_ */

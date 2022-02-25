@@ -15,7 +15,7 @@ Point PrimitivesUtils::calculateCenter(Point origin, Dimensions dim) {
 
 bool PrimitivesUtils::isInRect(Point origin, Dimensions dim, Point query) {
 	PointPair originPair = std::make_pair(origin.x, origin.y);
-	DimensionsPair dimPair = std::make_pair(dim.w, dim.w);
+	DimensionsPair dimPair = std::make_pair(dim.w, dim.h);
 	PointPair queryPair = std::make_pair(query.x, query.y);
 
 	bool res = Geometry::isInRect(originPair, dimPair, queryPair);

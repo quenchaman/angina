@@ -2,6 +2,7 @@
 #define SDL_PRIMITIVES_POINT_H_
 
 #include <cstdint>
+#include <iostream>
 
 struct Point {
 	Point();
@@ -17,6 +18,8 @@ struct Point {
 
 	static const Point ZERO;
 	static const Point UNDEFINED;
+
+	friend std::ostream& operator<<(std::ostream& os, const Point& point);
 };
 
 #endif /* SDL_PRIMITIVES_POINT_H_ */

@@ -20,7 +20,9 @@ public:
 
 	void handleBtnClick(int32_t idx) override;
 private:
-	//void callbackFunc();
+	int privateNumber = 42;
+
+	void callbackFunc();
 };
 
 #endif /* TEST_TEST_H_ */

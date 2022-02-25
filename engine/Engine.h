@@ -19,6 +19,7 @@
 #include "platform/sdl/components/Window.h"
 #include "renderer/Renderer.h"
 #include "engine/factory/GraphicsFactory.h"
+#include "engine/managers/ButtonManager.h"
 
 struct Texture;
 struct Rect;
@@ -45,6 +46,7 @@ protected:
 	InputEvent event;
 	Widget rootScreen;
 	Font defaultFont;
+	ButtonManager btnManager;
 
 	virtual void init() = 0;
 	virtual void update() = 0;

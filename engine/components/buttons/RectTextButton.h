@@ -8,21 +8,21 @@
 #include "renderer/primitives/Color.h"
 
 #include "engine/components/buttons/BaseButton.h"
+#include "renderer/shapes/Rect.h"
 
-struct Rect;
 struct Text;
 struct Renderer;
 
 class RectTextButton : public BaseButton {
 public:
-	RectTextButton(Point p, Dimensions dim, Color backgroundColor, Text& text, void (*clb)());
-	~RectTextButton();
+	RectTextButton(Point p, Dimensions dim, Color backgroundColor, Text& text, std::function<void(void)> clb);
+	~RectTextButton() = default;
 
 	void draw(Renderer& renderer);
 
 private:
-	Rect* rect;
-	Text* text;
+	Rect rect;
+	Text& text;
 };
 
 #endif /* ENGINE_COMPONENTS_BUTTONS_RECTTEXTBUTTON_H_ */

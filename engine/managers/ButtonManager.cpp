@@ -8,36 +8,30 @@
 #include "engine/components/buttons/BaseButton.h"
 #include "renderer/utils/PrimitivesUtils.h"
 
-void ButtonManager::registerButton(const int32_t id, BaseButton& btn) {
-	buttons[id] = &btn;
+void ButtonManager::registerButton(BaseButton& btn) {
+	buttons.push_back(&btn);
 }
 
-void ButtonManager::invokeCallback(const InputEvent& event) {
+bool ButtonManager::invokeCallback(const InputEvent& event) {
 	if (event.type != EventType::MOUSE_RELEASE) {
-		return;
+		return false;
 	}
 
-	int32_t clickX = event.posX;
-	int32_t clickY = event.posY;
-	Point clickPoint = { clickX, clickY };
+	Point clickPoint = { event.posX, event.posY };
 
-	for (auto const& [id, button] : buttons) {
+	std::cout << "Clicked at " << clickPoint << std::endl;
+
+	for (auto const& button : buttons) {
 		if (PrimitivesUtils::isInRect(button->getPosition(), button->getDimensions(), clickPoint)) {
 			button->getCallback()();
 		}
 	}
-}
 
-BaseButton& ButtonManager::getButton(int32_t id) {
-	return *buttons[id];
-}
-
-std::unordered_map<int32_t, BaseButton*>& ButtonManager::getButtons() {
-	return buttons;
+	return true;
 }
 
 ButtonManager::~ButtonManager() {
-	for (auto const& [id, btn] : buttons) {
+	for (auto const& btn : buttons) {
 		delete btn;
 	}
 

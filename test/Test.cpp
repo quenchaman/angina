@@ -16,8 +16,8 @@ Test::~Test() {
 
 }
 
-void callbackFunc() {
-	std::cout << "Hello ! I am the clicked button!" << std::endl;
+void Test::callbackFunc() {
+	std::cout << "Hello ! I am the clicked button! The secret is " << privateNumber << std::endl;
 }
 
 
@@ -28,7 +28,7 @@ void Test::init() {
 	Color textColor = Color::RED;
 	std::string txt = "Click me!";
 
-	RectTextButton* btn = getFactory().createButton(p, dim, background, textColor, txt, defaultFont, &callbackFunc);
+	RectTextButton* btn = getFactory().createButton(p, dim, background, textColor, txt, defaultFont, std::bind(&Test::callbackFunc, this));
 
 	rootScreen.put(*btn);
 }

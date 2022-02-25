@@ -29,7 +29,7 @@ Text* GraphicsFactory::createText(std::string textVal, Font& font, Point p, Dime
 	return text;
 }
 
-RectTextButton* GraphicsFactory::createButton(Point p, Dimensions dim, Color backgroundColor, Color textColor, std::string text, Font& font, void (*clb)()) {
+RectTextButton* GraphicsFactory::createButton(Point p, Dimensions dim, Color backgroundColor, Color textColor, std::string text, Font& font, std::function<void(void)> clb) {
 	Text* btnText = GraphicsFactory::createText(text, font, p, dim, textColor);
 
 	// TODO: Add a padding to the text or ,even better, center it.

@@ -2,6 +2,7 @@
 #define SDL_ENGINE_FACTORY_GRAPHICSFACTORY_H_
 
 #include <string>
+#include <functional>
 
 #include "renderer/primitives/Point.h"
 #include "renderer/shapes/Rect.h"
@@ -22,7 +23,7 @@ public:
 
 	Text* createText(std::string text, Font& font, Point p, Dimensions dim, Color color = Color::NONE);
 
-	RectTextButton* createButton(Point p, Dimensions dim, Color backgroundColor, Color textColor, std::string text, Font& font, void (*clb)());
+	RectTextButton* createButton(Point p, Dimensions dim, Color backgroundColor, Color textColor, std::string text, Font& font, std::function<void(void)> clb);
 private:
 	Renderer& renderer;
 };

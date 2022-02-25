@@ -27,7 +27,7 @@ Engine::Engine(std::string appTitle, Dimensions screenSize):
     )),
 		renderer(Renderer(window)),
 		factory(GraphicsFactory(renderer)),
-		rootScreen(Widget(Point::ZERO)),
+		rootScreen(Widget(btnManager, Point::ZERO)),
 		defaultFont(Font(Resources::montserratFont, 28)) {
 
     event.init();
@@ -89,11 +89,7 @@ void Engine::limitFPS(int64_t elapsedTime) {
 }
 
 void Engine::handleEvent() {
-	int32_t buttonIdx = 0;
-
-	if (buttonIdx != -1) {
-		handleBtnClick(buttonIdx);
-	} else if (event.type == EventType::MOUSE_RELEASE) {
+	if (!btnManager.invokeCallback(event)) {
 		handleLeftMouseClick(Point{event.posX, event.posY});
 	}
 }

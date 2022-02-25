@@ -5,11 +5,12 @@
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Point.h"
 #include "engine/components/buttons/BaseButton.h"
+#include "engine/managers/ButtonManager.h"
 
-Widget::Widget(): origin(Point::ZERO) {
+Widget::Widget(ButtonManager& btnMngr): btnManager(btnMngr), origin(Point::ZERO) {
 }
 
-Widget::Widget(Point p): origin(p) {
+Widget::Widget(ButtonManager& btnMngr, Point p): btnManager(btnMngr), origin(p) {
 }
 
 void Widget::put(Object& drawable) {
@@ -21,6 +22,7 @@ void Widget::put(Object& drawable) {
 
 void Widget::put(BaseButton& btn) {
 	drawables.push_back(&btn);
+	btnManager.registerButton(btn);
 }
 
 void Widget::addChild(Widget& widget) {
