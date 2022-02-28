@@ -1,24 +1,16 @@
-/*
- * ScoredMove.h
- *
- *  Created on: Jan 26, 2022
- *      Author: ubuntu
- */
-
 #ifndef CHESS_GAME_AI_SCOREDMOVE_H_
 #define CHESS_GAME_AI_SCOREDMOVE_H_
 
 #include <iostream>
 
-#include "chess-game/board/Cell.h"
+#include "examples/chess/chess-engine/Cell.h"
 
 struct Piece;
 
 struct ScoredMove {
-	ScoredMove(Cell destination, Piece* piece, double score);
+	ScoredMove(Cell destination, double score);
 
 	Cell destination;
-	Piece* piece;
 	double score;
 
 	struct HighestScoreComparator {

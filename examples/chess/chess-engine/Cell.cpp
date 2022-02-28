@@ -17,3 +17,27 @@ const Cell Cell::UNDEFINED(10000, 10000);
 std::ostream& operator<<(std::ostream& os, const Cell& cell) {
 	return os << "Row: " << cell.row << "; " << "Col: " << cell.col;
 }
+
+Cell& Cell::moveTop() {
+	this->row--;
+
+	return *this;
+}
+
+Cell& Cell::moveRight() {
+	this->col++;
+
+	return *this;
+}
+
+Cell& Cell::moveDown() {
+	this->row++;
+
+	return *this;
+}
+
+Cell& Cell::moveLeft() {
+	this->col--;
+
+	return *this;
+}

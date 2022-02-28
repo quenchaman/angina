@@ -4,7 +4,7 @@
 
 #include "platform/sdl/init/Graphics.h"
 
-#include "test/Test.h"
+#include "examples/chess/ChessGame.h"
 #include "exceptions/BaseException.h"
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
@@ -13,11 +13,10 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 		Graphics::bootImageExtension();
 		Graphics::bootTTFExtensions();
 
-		Engine* game = new Test();
+		ChessGame game;
 
-		game->start();
-
-		delete game;
+		game.start();
+		game.print();
 
 		Graphics::shutdown();
 

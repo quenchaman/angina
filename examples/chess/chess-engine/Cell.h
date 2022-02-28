@@ -13,10 +13,15 @@ struct Cell {
 	bool operator==(const Cell& cell) const;
 	bool operator!=(const Cell& cell) const;
 
+	Cell& moveTop();
+	Cell& moveRight();
+	Cell& moveDown();
+	Cell& moveLeft();
+
 	struct HashFunction {
 		size_t operator()(const Cell& cell) const {
-			size_t rowHash = std::hash<int>()(cell.row);
-			size_t colHash = std::hash<int>()(cell.col) << 16;
+			size_t rowHash = std::hash<int32_t>()(cell.row);
+			size_t colHash = std::hash<int32_t>()(cell.col) << 16;
 
 			return rowHash ^ colHash;
 		}

@@ -117,6 +117,20 @@ add_executable(${PROJECT_NAME}
 	#${DIR}/chess-game/ai/ScoredMove.cpp
 	#${DIR}/chess-game/utils/VectorShuffler.h
 	#${DIR}/chess-game/utils/VectorShuffler.cpp
+	${DIR}/examples/chess/chess-engine/Cell.h
+	${DIR}/examples/chess/chess-engine/Cell.cpp
+	${DIR}/examples/chess/chess-engine/ChessEngine.cpp
+	${DIR}/examples/chess/chess-engine/ChessEngine.h
+	${DIR}/examples/chess/chess-engine/Move.h
+	${DIR}/examples/chess/chess-engine/Move.cpp
+	${DIR}/examples/chess/chess-engine/Piece.h
+	${DIR}/examples/chess/chess-engine/Piece.cpp
+	${DIR}/examples/chess/chess-engine/Rank.h
+	${DIR}/examples/chess/chess-engine/Side.h
+	${DIR}/examples/chess/ChessGame.h
+	${DIR}/examples/chess/ChessGame.cpp
+	${DIR}/examples/chess/chess-engine/ScoredMove.h
+	${DIR}/examples/chess/chess-engine/ScoredMove.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
