@@ -1,6 +1,6 @@
 #include "Move.h"
 
-Move::Move(Cell src, Cell dst): source(src), destination(dst) {
+Move::Move(Cell src, Cell dst, double scr): source(src), destination(dst), score(scr) {
 }
 
 bool Move::operator==(const Move& other) const {

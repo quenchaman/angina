@@ -1,9 +1,9 @@
 #ifndef EXAMPLES_CHESS_CHESSGAME_H_
 #define EXAMPLES_CHESS_CHESSGAME_H_
 
+#include "examples/chess/chess-engine/ChessEngine.h"
 #include "engine/Engine.h"
 
-#include "examples/chess/chess-engine/ChessEngine.h"
 
 
 class ChessGame : public Engine {

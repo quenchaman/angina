@@ -6,10 +6,11 @@
 #include "examples/chess/chess-engine/Cell.h"
 
 struct Move {
-	Move(Cell src, Cell dst);
+	Move(Cell src, Cell dst, double score);
 
 	Cell source;
 	Cell destination;
+	double score;
 
 	bool operator==(const Move& other) const;
 	bool operator!=(const Move& other) const;

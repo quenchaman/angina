@@ -7,7 +7,6 @@ ChessGame::ChessGame(): Engine("Chess", Config::WINDOW_DIM) {}
 ChessGame::~ChessGame() {}
 
 void ChessGame::print() {
-	std::cout << engine << std::endl;
 }
 
 void ChessGame::init() {
