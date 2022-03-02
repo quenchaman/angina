@@ -1,5 +1,7 @@
 #include "Widget.h"
 
+#include <iostream>
+
 #include "renderer/primitives/Button.h"
 #include "renderer/drawable/Drawable.h"
 #include "renderer/primitives/Object.h"
@@ -35,4 +37,16 @@ std::vector<Widget*>& Widget::getChildren() {
 
 std::vector<Drawable*>& Widget::getDrawables() {
 	return drawables;
+}
+
+Widget::~Widget() {
+	for (Widget* child : children) {
+		delete child;
+	}
+
+	for (Drawable* drawable : drawables) {
+		delete drawable;
+	}
+
+	std::cout << "Widget destroyed" << std::endl;
 }

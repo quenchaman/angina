@@ -65,8 +65,6 @@ void Renderer::deinit() {
 	std::cout << "Renderer deinitialised" << std::endl;
 }
 
-
-
 Texture* Renderer::from(Surface& surface) const {
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(
 			renderer,

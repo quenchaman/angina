@@ -31,6 +31,7 @@ public:
 	// TODO: Add Buttons manager here and enable adding buttons to it.
 	Widget(ButtonManager& btnManager);
 	Widget(ButtonManager& btnManager, Point p);
+	~Widget();
 	void addChild(Widget& widget);
 
 	void put(BaseButton& btn);

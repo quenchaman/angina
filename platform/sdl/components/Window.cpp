@@ -41,15 +41,16 @@ Surface& Window::getSurface() {
 }
 
 Window::~Window() {
+	std::cout << "Window destruction started" << std::endl;
 	if (surface != nullptr) {
 		delete surface;
 		surface = nullptr;
 	}
-
+	std::cout << "Window surface destroyed" << std::endl;
 	if (window != nullptr) {
 		SDL_DestroyWindow(window);
 		window = nullptr;
 	}
 
-	std::cout << "Window deinitialised" << std::endl;
+	std::cout << "Window destroyed" << std::endl;
 }

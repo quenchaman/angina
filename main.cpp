@@ -17,10 +17,6 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 
 		game.start();
 		game.print();
-
-		Graphics::shutdown();
-
-		return EXIT_SUCCESS;
 	} catch (const BaseException& ex) {
 		std::cerr << ex << std::endl;
 
@@ -28,4 +24,8 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 
 		return EXIT_FAILURE;
 	}
+
+	Graphics::shutdown();
+
+	return EXIT_SUCCESS;
 }

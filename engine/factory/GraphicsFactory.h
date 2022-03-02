@@ -18,6 +18,7 @@ struct Text;
 class GraphicsFactory {
 public:
 	GraphicsFactory(Renderer& renderer);
+	~GraphicsFactory();
 
 	Object* createObject(const std::string& resourcePath, Point p, Dimensions dim);
 

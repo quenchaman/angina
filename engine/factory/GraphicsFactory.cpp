@@ -36,3 +36,7 @@ RectTextButton* GraphicsFactory::createButton(Point p, Dimensions dim, Color bac
 
 	return new RectTextButton(p, dim, backgroundColor, *btnText, clb);
 }
+
+GraphicsFactory::~GraphicsFactory() {
+	std::cout << "GraphicsFactory destroyed" << std::endl;
+}

@@ -113,4 +113,7 @@ void Engine::changeScreen(Widget& widget) {
 
 Engine::~Engine() {
 	clearScreen();
+	event.deinit();
+
+	std::cout << "Engine destroyed" << std::endl;
 }
