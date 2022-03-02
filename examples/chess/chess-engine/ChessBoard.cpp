@@ -10,27 +10,27 @@ void ChessBoard::setBoard() {
 	const int32_t whitePawnRow = 6;
 
 	for (int32_t col = 0; col < BOARD_SIZE; col++) {
-		board[Cell { blackPawnRow, col }] = Piece { Rank::PAWN, Side::BLACK };
-		board[Cell { whitePawnRow, col }] = Piece { Rank::PAWN, Side::WHITE };
+		board[Cell { blackPawnRow, col }] = Piece::BLACK_PAWN;
+		board[Cell { whitePawnRow, col }] = Piece::WHITE_PAWN;
 	}
 
-	board[Cell {0, 0}] = Piece { Rank::ROOK, Side::BLACK };
-	board[Cell {0, 1}] = Piece { Rank::BISHOP, Side::BLACK };
-	board[Cell {0, 2}] = Piece { Rank::KNIGHT, Side::BLACK };
-	board[Cell {0, 3}] = Piece { Rank::QUEEN, Side::BLACK };
-	board[Cell {0, 4}] = Piece { Rank::KING, Side::BLACK };
-	board[Cell {0, 5}] = Piece { Rank::KNIGHT, Side::BLACK };
-	board[Cell {0, 6}] = Piece { Rank::BISHOP, Side::BLACK };
-	board[Cell {0, 7}] = Piece { Rank::ROOK, Side::BLACK };
+	board[Cell {0, 0}] = Piece::BLACK_ROOK;
+	board[Cell {0, 1}] = Piece::BLACK_BISHOP;
+	board[Cell {0, 2}] = Piece::BLACK_KNIGHT;
+	board[Cell {0, 3}] = Piece::BLACK_QUEEN;
+	board[Cell {0, 4}] = Piece::BLACK_KING;
+	board[Cell {0, 5}] = Piece::BLACK_KNIGHT;
+	board[Cell {0, 6}] = Piece::BLACK_BISHOP;
+	board[Cell {0, 7}] = Piece::BLACK_ROOK;
 
-	board[Cell {7, 0}] = Piece { Rank::ROOK, Side::WHITE };
-	board[Cell {7, 1}] = Piece { Rank::BISHOP, Side::WHITE };
-	board[Cell {7, 2}] = Piece { Rank::KNIGHT, Side::WHITE };
-	board[Cell {7, 3}] = Piece { Rank::QUEEN, Side::WHITE };
-	board[Cell {7, 4}] = Piece { Rank::KING, Side::WHITE };
-	board[Cell {7, 5}] = Piece { Rank::KNIGHT, Side::WHITE };
-	board[Cell {7, 6}] = Piece { Rank::BISHOP, Side::WHITE };
-	board[Cell {7, 7}] = Piece { Rank::ROOK, Side::WHITE };
+	board[Cell {7, 0}] = Piece::WHITE_ROOK;
+	board[Cell {7, 1}] = Piece::WHITE_BISHOP;
+	board[Cell {7, 2}] = Piece::WHITE_KNIGHT;
+	board[Cell {7, 3}] = Piece::WHITE_QUEEN;
+	board[Cell {7, 4}] = Piece::WHITE_KING;
+	board[Cell {7, 5}] = Piece::WHITE_KNIGHT;
+	board[Cell {7, 6}] = Piece::WHITE_BISHOP;
+	board[Cell {7, 7}] = Piece::WHITE_ROOK;
 }
 
 bool ChessBoard::makeMove(const Cell& source, const Cell& destination) {

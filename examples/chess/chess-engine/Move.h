@@ -24,6 +24,8 @@ struct Move {
 		}
 	};
 
+	static const Move UNDEFINED;
+
 	friend std::ostream& operator<<(std::ostream& os, const Move& move);
 };
 

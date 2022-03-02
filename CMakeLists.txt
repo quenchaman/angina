@@ -109,8 +109,6 @@ add_executable(${PROJECT_NAME}
 	#${DIR}/chess-game/states/ChessState.h
 	#${DIR}/chess-game/board/PieceSelectionManager.h
 	#${DIR}/chess-game/board/PieceSelectionManager.cpp
-	#${DIR}/chess-game/board/CellUtils.h
-	#${DIR}/chess-game/board/CellUtils.cpp
 	#${DIR}/chess-game/ai/AI.h
 	#${DIR}/chess-game/ai/AI.cpp
 	#${DIR}/chess-game/ai/ScoredMove.h
@@ -134,6 +132,10 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/ScoredMove.h
 	${DIR}/examples/chess/chess-engine/ScoredMove.cpp
 	${DIR}/examples/chess/chess-engine/ChessState.h
+	${DIR}/examples/chess/CellUtils.h
+	${DIR}/examples/chess/CellUtils.cpp
+	${DIR}/examples/chess/chess-engine/PieceToObjectTranslator.h
+	${DIR}/examples/chess/chess-engine/PieceToObjectTranslator.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

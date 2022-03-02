@@ -1,5 +1,7 @@
 #include "Move.h"
 
+const Move Move::UNDEFINED(Cell::UNDEFINED, Cell::UNDEFINED, 0.0);
+
 Move::Move(Cell src, Cell dst, double scr): source(src), destination(dst), score(scr) {
 }
 
