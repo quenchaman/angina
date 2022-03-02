@@ -86,6 +86,10 @@ void ChessGame::initPieceToObjectConversion() {
 	const PiecePositions& positions = engine.getPieces();
 
 	for (auto const& [cell, piece] : positions) {
-		Object& obj = getFactory().createObject(pieceToResource[piece], , dim)
+		Object& obj = getFactory().createObject(
+			pieceToResource[piece],\
+			CellUtils::cellToPoint(cell, Config::, offset),
+			dim
+		);
 	}
 }
