@@ -32,8 +32,8 @@ void ChessBoard::setBoard() {
 	board[Cell {7, 6}] = Piece::WHITE_BISHOP;
 	board[Cell {7, 7}] = Piece::WHITE_ROOK;
 
-	for (auto const& [cell, piece] : board) {
-		piecePositions[piece] = cell;
+	for (auto& [cell, piece] : board) {
+		piece.move(cell);
 	}
 }
 
@@ -53,8 +53,6 @@ void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
 	Piece sourcePiece = board[source];
 	board.erase(source);
 	board[destination] = sourcePiece;
-	piecePositions.erase(sourcePiece);
-	piecePositions[sourcePiece] = destination;
 }
 
 bool ChessBoard::isValidMove(const Cell& source, const Cell& destination) const {
@@ -305,10 +303,6 @@ double ChessBoard::scoreMove(const Cell& destination) const {
 
 const Piece& ChessBoard::getPieceOnCell(const Cell& source) const {
 	return board.at(source);
-}
-
-const Cell& ChessBoard::getCellOfPiece(const Piece& piece) const {
-	return piecePositions.at(piece);
 }
 
 const CellToPieceLookup& ChessBoard::getPiecePositions() const {

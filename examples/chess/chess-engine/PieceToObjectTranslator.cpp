@@ -19,6 +19,5 @@ PieceToObjectTranslator::PieceToObjectTranslator() {
 }
 
 PieceToObjectTranslator::~PieceToObjectTranslator() {
-	// TODO Auto-generated destructor stub
 }
 

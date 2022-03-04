@@ -1,6 +1,7 @@
 #ifndef EXAMPLES_CHESS_CHESSGAME_H_
 #define EXAMPLES_CHESS_CHESSGAME_H_
 
+#include <utility>
 #include <vector>
 
 #include "examples/chess/chess-engine/ChessEngine.h"
@@ -13,11 +14,8 @@ struct Object;
 struct Piece;
 struct Cell;
 
-struct PieceCellObjectTriple {
-	PieceCellObjectTriple(Piece& p, Cell c, Object& o): piece(p), cell(c), object(o) {}
-
+struct PieceObjectPair {
 	Piece& piece;
-	Cell cell;
 	Object& object;
 };
 
@@ -34,7 +32,7 @@ public:
 private:
 	ChessEngine engine;
 	PieceToResourcePath pieceToResource;
-	std::vector<PieceCellObjectTriple> pieceCellObjectTriples;
+	std::vector<PieceObjectPair> pieceObjectPairs;
 	const Dimensions cellDim = { 80, 80 }; // TODO: Move this to chess config
 
 	Widget* buildLandingPage();

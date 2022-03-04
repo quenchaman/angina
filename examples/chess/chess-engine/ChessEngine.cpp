@@ -33,10 +33,6 @@ bool ChessEngine::isCellSelected() const {
 	return selectedCell != Cell::UNDEFINED;
 }
 
-const Cell ChessEngine::getCellOfPiece(const Piece& piece) const {
-	return board.getCellOfPiece(piece);
-}
-
 const CellToPieceLookup& ChessEngine::getPieces() const {
 	return board.getPiecePositions();
 }

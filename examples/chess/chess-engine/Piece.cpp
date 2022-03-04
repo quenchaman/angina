@@ -21,3 +21,7 @@ bool Piece::operator==(const Piece& other) const {
 bool Piece::operator!=(const Piece& other) const {
 	return !(*this == other);
 }
+
+void Piece::move(const Cell& destination) {
+	cell = destination;
+}

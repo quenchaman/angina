@@ -17,7 +17,6 @@ public:
 	void selectPiece(const Cell& source);
 	void movePiece(const Cell& destination);
 	const CellToPieceLookup& getPieces() const;
-	const Cell getCellOfPiece(const Piece& piece) const;
 	bool isCellSelected() const;
 
 	void setState(ChessState newState);

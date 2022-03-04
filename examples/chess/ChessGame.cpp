@@ -99,18 +99,18 @@ void ChessGame::initPieceToObjectConversion() {
 		);
 
 		rootScreen->put(obj);
-		pieceCellObjectTriples.push_back(PieceCellObjectTriple{
-			const_cast<Piece&>(piece), const_cast<Cell&>(cell), const_cast<Object&>(obj)
-		});
+		pieceObjectPairs.push_back(PieceObjectPair{const_cast<Piece&>(piece), obj});
 	}
 }
 
 void ChessGame::updateObjectsFromPieces() {
-	for (auto& pcoTriple : pieceCellObjectTriples) {
-		Cell pieceCell = engine.getCellOfPiece(pcoTriple.piece);
-		const Point newPos = CellUtils::cellToPoint(pieceCell, cellDim, Point::ZERO);
+	for (auto const& pieceObjectPair : pieceObjectPairs) {
+		Point newPos = CellUtils::cellToPoint(pieceObjectPair.piece.cell, cellDim, Point::ZERO);
 
-		pcoTriple.object.move(newPos);
-		pcoTriple.cell = pieceCell;
+		if (newPos != pieceObjectPair.object.getPosition()) {
+			pieceObjectPair.object.move(newPos);
+
+			std::cout << "The updated piece is " << pieceObjectPair.object.getPosition() << std::endl;
+		}
 	}
 }
