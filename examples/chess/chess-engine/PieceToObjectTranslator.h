@@ -6,7 +6,7 @@
 
 #include "examples/chess/chess-engine/Piece.h"
 
-typedef std::unordered_map<Piece, std::string> PieceToResourcePath;
+typedef std::unordered_map<Piece, std::string, Piece::HashFunction> PieceToResourcePath;
 
 class PieceToObjectTranslator {
 public:

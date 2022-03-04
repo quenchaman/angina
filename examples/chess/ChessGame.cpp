@@ -8,8 +8,6 @@
 #include "engine/components/buttons/RectTextButton.h"
 #include "examples/chess/CellUtils.h"
 
-typedef std::unordered_map<Piece, std::string> PieceToResourcePath;
-
 ChessGame::ChessGame(): Engine("Chess", Config::WINDOW_DIM) {
 	pieceToResource[Piece::WHITE_PAWN] = Resources::whitePawn;
 	pieceToResource[Piece::WHITE_ROOK] = Resources::whiteRook;
@@ -70,7 +68,7 @@ Widget* ChessGame::buildLandingPage() {
 Widget* ChessGame::buildChessPage() {
 	Widget* chessPageWidget = new Widget(btnManager, Point::ZERO);
 	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, Config::WINDOW_DIM);
-	Object* board = getFactory().createObject(Resources::board, Point::ZERO, Dimensions{600, 600});
+	Object* board = getFactory().createObject(Resources::board, Point::ZERO, Dimensions{640, 640});
 
 	chessPageWidget->put(*background);
 	chessPageWidget->put(*board);
@@ -80,16 +78,19 @@ Widget* ChessGame::buildChessPage() {
 
 void ChessGame::handleStartGameButton() {
 	changeScreen(*buildChessPage());
+	initPieceToObjectConversion();
 }
 
 void ChessGame::initPieceToObjectConversion() {
 	const PiecePositions& positions = engine.getPieces();
 
 	for (auto const& [cell, piece] : positions) {
-		Object& obj = getFactory().createObject(
-			pieceToResource[piece],\
-			CellUtils::cellToPoint(cell, Config::, offset),
-			dim
+		Object& obj = *getFactory().createObject(
+			pieceToResource[piece],
+			CellUtils::cellToPoint(cell, cellDim, Point::ZERO),
+			cellDim
 		);
+
+		rootScreen->put(obj);
 	}
 }

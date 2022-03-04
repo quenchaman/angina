@@ -9,6 +9,17 @@ struct Piece {
 	Rank rank;
 	Side side;
 
+	bool operator==(const Piece& other) const;
+
+	struct HashFunction {
+		size_t operator ()(const Piece& piece) const {
+			size_t rankHash = std::hash<int32_t>()(piece.rank);
+			size_t sideHash = std::hash<int32_t>()(piece.side) << 16;
+
+			return rankHash ^ sideHash;
+		}
+	};
+
 	static const Piece WHITE_ROOK;
 	static const Piece WHITE_KNIGHT;
 	static const Piece WHITE_BISHOP;

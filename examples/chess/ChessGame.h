@@ -6,6 +6,7 @@
 #include "examples/chess/chess-engine/ChessEngine.h"
 #include "engine/Engine.h"
 #include "renderer/primitives/Dimensions.h"
+#include "examples/chess/chess-engine/PieceToObjectTranslator.h"
 
 struct Widget;
 

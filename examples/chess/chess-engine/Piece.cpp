@@ -13,3 +13,7 @@ const Piece Piece::BLACK_KNIGHT{Rank::KNIGHT, Side::BLACK};
 const Piece Piece::BLACK_PAWN{Rank::PAWN, Side::BLACK};
 const Piece Piece::BLACK_QUEEN{Rank::QUEEN, Side::BLACK};
 const Piece Piece::BLACK_KING{Rank::KING, Side::BLACK};
+
+bool Piece::operator==(const Piece& other) const {
+	return rank == other.rank && side == other.side;
+}
