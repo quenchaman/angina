@@ -23,6 +23,7 @@ public:
 
 	void draw(Renderer& renderer);
 	void move(const int32_t x, const int32_t y);
+	void move(const Point& p);
 
 	Point getPosition() const;
 	Dimensions getDimensions() const;

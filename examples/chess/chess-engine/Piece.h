@@ -5,16 +5,19 @@
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Cell.h"
 
+// This class is not going to work well with map because we have multiple equal pieces.
+// Maybe it would be better to have the Cell position on the piece itself....
 struct Piece {
 	Rank rank;
 	Side side;
 
 	bool operator==(const Piece& other) const;
+	bool operator!=(const Piece& other) const;
 
 	struct HashFunction {
 		size_t operator ()(const Piece& piece) const {
-			size_t rankHash = std::hash<int32_t>()(piece.rank);
-			size_t sideHash = std::hash<int32_t>()(piece.side) << 16;
+			size_t rankHash = std::hash<Rank>()(piece.rank);
+			size_t sideHash = std::hash<Side>()(piece.side) << 16;
 
 			return rankHash ^ sideHash;
 		}

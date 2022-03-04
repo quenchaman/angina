@@ -89,8 +89,10 @@ void Engine::limitFPS(int64_t elapsedTime) {
 }
 
 void Engine::handleEvent() {
-	if (!btnManager.invokeCallback(event)) {
-		handleLeftMouseClick(Point{event.posX, event.posY});
+	if (event.type == EventType::MOUSE_RELEASE) {
+		if (!btnManager.invokeCallback(event)) {
+			handleLeftMouseClick(Point{event.posX, event.posY});
+		}
 	}
 }
 

@@ -5,6 +5,7 @@
 #include <iostream>
 
 struct Cell {
+	Cell();
 	Cell(int32_t row, int32_t col);
 
 	int32_t row;

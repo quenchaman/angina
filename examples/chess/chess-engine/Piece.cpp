@@ -17,3 +17,7 @@ const Piece Piece::BLACK_KING{Rank::KING, Side::BLACK};
 bool Piece::operator==(const Piece& other) const {
 	return rank == other.rank && side == other.side;
 }
+
+bool Piece::operator!=(const Piece& other) const {
+	return !(*this == other);
+}

@@ -11,14 +11,15 @@
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Move.h"
 
-typedef std::unordered_map<Cell, Piece, Cell::HashFunction> PiecePositions;
+typedef std::unordered_map<Cell, Piece, Cell::HashFunction> CellToPieceLookup;
+typedef std::unordered_map<Piece, Cell, Piece::HashFunction> PieceToCellLookup;
 
 class ChessBoard {
 public:
 	ChessBoard();
 	~ChessBoard() = default;
 
-	const PiecePositions& getPiecePositions() const;
+	const CellToPieceLookup& getPiecePositions() const;
 
 	bool makeMove(const Cell& source, const Cell& destination);
 
@@ -43,6 +44,7 @@ public:
 	void setBoard();
 
 	const Piece& getPieceOnCell(const Cell& source) const;
+	const Cell& getCellOfPiece(const Piece& piece) const;
 
 	/**
 	 * AI API
@@ -50,7 +52,8 @@ public:
 	std::vector<Move> calculateAllAvailableMoves(Side side) const;
 
 private:
-	PiecePositions board;
+	CellToPieceLookup board;
+	PieceToCellLookup piecePositions;
 	Side currentSide = Side::WHITE;
 
 	const int32_t BOARD_SIZE = 8;

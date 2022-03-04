@@ -9,12 +9,15 @@
 #include "examples/chess/chess-engine/PieceToObjectTranslator.h"
 
 struct Widget;
+struct Object;
+struct Piece;
+struct Cell;
 
 struct PieceCellObjectTriple {
-	PieceCellObjectTriple(Piece& p, Cell& c, Object& o): piece(p), cell(c), object(o) {}
+	PieceCellObjectTriple(Piece& p, Cell c, Object& o): piece(p), cell(c), object(o) {}
 
 	Piece& piece;
-	Cell& cell;
+	Cell cell;
 	Object& object;
 };
 
@@ -43,6 +46,7 @@ private:
 	 * Methods to handle piece to object translation/conversion.
 	 */
 	void initPieceToObjectConversion();
+	void updateObjectsFromPieces();
 };
 
 #endif /* EXAMPLES_CHESS_CHESSGAME_H_ */

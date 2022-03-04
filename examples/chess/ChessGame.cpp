@@ -7,6 +7,7 @@
 #include "resources/Resources.h"
 #include "engine/components/buttons/RectTextButton.h"
 #include "examples/chess/CellUtils.h"
+#include "renderer/primitives/Object.h"
 
 ChessGame::ChessGame(): Engine("Chess", Config::WINDOW_DIM) {
 	pieceToResource[Piece::WHITE_PAWN] = Resources::whitePawn;
@@ -37,11 +38,17 @@ void ChessGame::init() {
 }
 
 void ChessGame::update() {
-
+	updateObjectsFromPieces();
 }
 
 void ChessGame::handleLeftMouseClick([[maybe_unused]]Point p) {
+	Cell selectedCell = CellUtils::pointToCell(p, cellDim, Point::ZERO);
 
+	if (!engine.isCellSelected()) {
+		engine.selectPiece(selectedCell);
+	} else {
+		engine.movePiece(selectedCell);
+	}
 }
 
 void ChessGame::handleBtnClick([[maybe_unused]]int32_t idx) {
@@ -82,7 +89,7 @@ void ChessGame::handleStartGameButton() {
 }
 
 void ChessGame::initPieceToObjectConversion() {
-	const PiecePositions& positions = engine.getPieces();
+	const CellToPieceLookup& positions = engine.getPieces();
 
 	for (auto const& [cell, piece] : positions) {
 		Object& obj = *getFactory().createObject(
@@ -92,5 +99,18 @@ void ChessGame::initPieceToObjectConversion() {
 		);
 
 		rootScreen->put(obj);
+		pieceCellObjectTriples.push_back(PieceCellObjectTriple{
+			const_cast<Piece&>(piece), const_cast<Cell&>(cell), const_cast<Object&>(obj)
+		});
+	}
+}
+
+void ChessGame::updateObjectsFromPieces() {
+	for (auto& pcoTriple : pieceCellObjectTriples) {
+		Cell pieceCell = engine.getCellOfPiece(pcoTriple.piece);
+		const Point newPos = CellUtils::cellToPoint(pieceCell, cellDim, Point::ZERO);
+
+		pcoTriple.object.move(newPos);
+		pcoTriple.cell = pieceCell;
 	}
 }

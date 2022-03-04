@@ -24,10 +24,12 @@ bool ButtonManager::invokeCallback(const InputEvent& event) {
 	for (auto const& button : buttons) {
 		if (PrimitivesUtils::isInRect(button->getPosition(), button->getDimensions(), clickPoint)) {
 			button->getCallback()();
+
+			return true;
 		}
 	}
 
-	return true;
+	return false;
 }
 
 ButtonManager::~ButtonManager() {

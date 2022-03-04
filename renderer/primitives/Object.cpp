@@ -17,6 +17,10 @@ void Object::move(const int32_t x, const int32_t y) {
 	center = PrimitivesUtils::calculateCenter(point, dim);
 }
 
+void Object::move(const Point& p) {
+	move(p.x, p.y);
+}
+
 Point Object::getPosition() const {
 	return point;
 }

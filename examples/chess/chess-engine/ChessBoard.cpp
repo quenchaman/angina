@@ -31,12 +31,18 @@ void ChessBoard::setBoard() {
 	board[Cell {7, 5}] = Piece::WHITE_KNIGHT;
 	board[Cell {7, 6}] = Piece::WHITE_BISHOP;
 	board[Cell {7, 7}] = Piece::WHITE_ROOK;
+
+	for (auto const& [cell, piece] : board) {
+		piecePositions[piece] = cell;
+	}
 }
 
 bool ChessBoard::makeMove(const Cell& source, const Cell& destination) {
 	if (!isValidMove(source, destination) || !isAllowedMove(source, destination)) {
 		return false;
 	}
+
+	std::cout << "Attemptingg to move piece " << destination << std::endl;
 
 	movePiece(source, destination);
 
@@ -47,6 +53,8 @@ void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
 	Piece sourcePiece = board[source];
 	board.erase(source);
 	board[destination] = sourcePiece;
+	piecePositions.erase(sourcePiece);
+	piecePositions[sourcePiece] = destination;
 }
 
 bool ChessBoard::isValidMove(const Cell& source, const Cell& destination) const {
@@ -299,7 +307,11 @@ const Piece& ChessBoard::getPieceOnCell(const Cell& source) const {
 	return board.at(source);
 }
 
-const PiecePositions& ChessBoard::getPiecePositions() const {
+const Cell& ChessBoard::getCellOfPiece(const Piece& piece) const {
+	return piecePositions.at(piece);
+}
+
+const CellToPieceLookup& ChessBoard::getPiecePositions() const {
 	return board;
 }
 
