@@ -52,6 +52,8 @@ bool ChessBoard::makeMove(const Cell& source, const Cell& destination) {
 void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
 	Piece sourcePiece = board[source];
 	board.erase(source);
+
+	sourcePiece.move(destination);
 	board[destination] = sourcePiece;
 }
 

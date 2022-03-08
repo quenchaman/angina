@@ -102,7 +102,7 @@ void ChessGame::initPieceToObjectConversion() {
 	for (auto const& [cell, piece] : positions) {
 		Object& obj = *getFactory().createObject(
 			pieceToResource[piece],
-			CellUtils::cellToPoint(cell, GameConfig::CELL_DIM, Point::ZERO),
+			CellUtils::cellToPoint(cell, GameConfig::CELL_DIM),
 			GameConfig::CELL_DIM
 		);
 
@@ -113,12 +113,10 @@ void ChessGame::initPieceToObjectConversion() {
 
 void ChessGame::updateObjectsFromPieces() {
 	for (auto const& pieceObjectPair : pieceObjectPairs) {
-		Point newPos = CellUtils::cellToPoint(pieceObjectPair.piece.cell, GameConfig::CELL_DIM, Point::ZERO);
+		Point newPos = CellUtils::cellToPoint(pieceObjectPair.piece.cell, GameConfig::CELL_DIM);
 
 		if (newPos != pieceObjectPair.object.getPosition()) {
 			pieceObjectPair.object.move(newPos);
-
-			std::cout << "The updated piece is " << pieceObjectPair.object.getPosition() << std::endl;
 		}
 	}
 }

@@ -21,6 +21,8 @@ void ChessEngine::movePiece(const Cell& destination) {
 		return;
 	}
 
+	std::cout << "We are moving a piece!" << std::endl;
+
 	board.makeMove(selectedCell, destination);
 	setState(ChessState::COMPUTER_MOVE);
 }
