@@ -5,6 +5,7 @@
 #include "examples/chess/chess-engine/ChessBoard.h"
 #include "examples/chess/chess-engine/Piece.h"
 #include "examples/chess/chess-engine/Cell.h"
+#include "examples/chess/chess-engine/Move.h"
 
 typedef std::function<void(const Cell&, const Cell&)> MoveEventCallback;
 
@@ -21,7 +22,10 @@ public:
 	const CellToPieceLookup& getPieces() const;
 	bool isCellSelected() const;
 
-	void setState(ChessState newState);
+	/**
+	 * AI API
+	 */
+	Move getAIMove();
 
 	/*
 	 * Pub-sub API
@@ -29,7 +33,6 @@ public:
 	void subscribe(MoveEventCallback);
 
 private:
-	ChessState state = ChessState::WHITE_PLAYER;
 	ChessBoard board;
 	Cell selectedCell = Cell::UNDEFINED;
 	std::vector<MoveEventCallback> subscribers;

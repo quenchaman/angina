@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+#include "examples/chess/chess-engine/PieceMoveGenerator.h"
+
 ChessBoard::ChessBoard(): moveGen(PieceMoveGenerator(*this)) {
 	setBoard();
 }

@@ -31,20 +31,25 @@ void ChessGame::init() {
 }
 
 void ChessGame::update() {
+	if (state == ChessState::COMPUTER_MOVE) {
+		handleComputerMove();
+		setState(ChessState::WHITE_PLAYER);
+	}
 }
 
 void ChessGame::handleLeftMouseClick([[maybe_unused]]Point p) {
 	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
 
-	if (!engine.isCellSelected()) {
+	if (state == ChessState::WHITE_PLAYER && !engine.isCellSelected()) {
 		engine.selectPiece(selectedCell);
-	} else {
+		setState(ChessState::WHITE_PIECE_SELECTED);
+	} else if (state == ChessState::WHITE_PIECE_SELECTED) {
 		engine.movePiece(selectedCell);
+		setState(ChessState::COMPUTER_MOVE);
 	}
 }
 
 void ChessGame::handleBtnClick([[maybe_unused]]int32_t idx) {
-
 }
 
 Widget* ChessGame::buildLandingPage() {
@@ -101,11 +106,21 @@ void ChessGame::initPieceToObjectConversion() {
 }
 
 void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) {
-	std::cout << "Called the callback for a piece move!" << std::endl;
 	for (auto& cellObjectPair : cellObjectPairs) {
 		if (cellObjectPair.cell == source) {
 			cellObjectPair.cell = destination;
 			cellObjectPair.object.move(CellUtils::cellToPoint(destination, GameConfig::CELL_DIM));
 		}
 	}
+}
+
+void ChessGame::setState(ChessState newState) {
+	state = newState;
+}
+
+void ChessGame::handleComputerMove() {
+	Move bestMove = engine.getAIMove();
+
+	engine.selectPiece(bestMove.source);
+	engine.movePiece(bestMove.destination);
 }

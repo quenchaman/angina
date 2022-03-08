@@ -34,6 +34,10 @@ private:
 	PieceToObjectTranslator pieceToResourceTranslator;
 	std::vector<CellObjectPair> cellObjectPairs;
 
+	ChessState state = ChessState::WHITE_PLAYER;
+
+	void setState(ChessState newState);
+
 	Widget* buildLandingPage();
 	Widget* buildChessPage();
 
@@ -45,6 +49,8 @@ private:
 	void initPieceToObjectConversion();
 
 	void pieceMovedCallback(const Cell& source, const Cell& destination);
+
+	void handleComputerMove();
 };
 
 #endif /* EXAMPLES_CHESS_CHESSGAME_H_ */

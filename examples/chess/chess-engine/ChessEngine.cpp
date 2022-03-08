@@ -8,26 +8,12 @@ ChessEngine::~ChessEngine() {
 }
 
 void ChessEngine::selectPiece(const Cell& source) {
-	if (state != ChessState::WHITE_PLAYER) {
-		return;
-	}
-
 	selectedCell = source;
-	setState(ChessState::WHITE_PIECE_SELECTED);
 }
 
 void ChessEngine::movePiece(const Cell& destination) {
-	if (state != ChessState::WHITE_PIECE_SELECTED) {
-		return;
-	}
-
 	board.makeMove(selectedCell, destination);
 	notify(selectedCell, destination);
-	setState(ChessState::COMPUTER_MOVE);
-}
-
-void ChessEngine::setState(ChessState newState) {
-	state = newState;
 }
 
 bool ChessEngine::isCellSelected() const {
@@ -46,4 +32,21 @@ void ChessEngine::notify(const Cell& source, const Cell& destination) const {
 	for (auto& subscriber : subscribers) {
 		subscriber(source, destination);
 	}
+}
+
+Move ChessEngine::getAIMove() {
+	// Here we will assume AI is with black pieces.
+	std::vector<Move> allMoves = board.calculateAllAvailableMoves(Side::BLACK);
+
+	std::cout << "Size of all moves is: " << allMoves.size() << std::endl;
+
+	if (allMoves.empty()) {
+		// TODO: here we might have check or draw or something.
+	}
+
+	sort(allMoves.begin(), allMoves.end(), [](const Move& lMove, const Move& rMove) {
+		return rMove.score - lMove.score;
+	});
+
+	return allMoves[0];
 }
