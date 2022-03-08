@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "platform/sdl/resource-loader/ResourceLoader.h"
-#include "config/Globals.h"
+#include "engine/config/EngineConfig.h"
 #include "platform/sdl/primitives/Texture.h"
 #include "platform/sdl/primitives/Surface.h"
 #include "resources/Resources.h"
@@ -77,7 +77,7 @@ void Engine::draw(Widget& widget) {
 }
 
 void Engine::limitFPS(int64_t elapsedTime) {
-	const int64_t maxFrames = Globals::config.frameRate;
+	const int64_t maxFrames = EngineConfig::FRAME_RATE;
 	const int64_t timeForFrameMicro = 1000000 / maxFrames;
 	const int64_t sleepTime = timeForFrameMicro - elapsedTime;
 

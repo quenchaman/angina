@@ -2,14 +2,18 @@
 
 #include <iostream>
 
-#include "config/Config.h"
-#include "renderer/primitives/Point.h"
-#include "resources/Resources.h"
-#include "engine/components/buttons/RectTextButton.h"
-#include "examples/chess/CellUtils.h"
 #include "renderer/primitives/Object.h"
+#include "renderer/primitives/Point.h"
 
-ChessGame::ChessGame(): Engine("Chess", Config::WINDOW_DIM) {
+#include "engine/components/buttons/RectTextButton.h"
+#include "engine/config/EngineConfig.h"
+
+#include "resources/Resources.h"
+
+#include "examples/chess/CellUtils.h"
+#include "examples/chess/GameConfig.h"
+
+ChessGame::ChessGame(): Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM) {
 	pieceToResource[Piece::WHITE_PAWN] = Resources::whitePawn;
 	pieceToResource[Piece::WHITE_ROOK] = Resources::whiteRook;
 	pieceToResource[Piece::WHITE_KNIGHT] = Resources::whiteKnight;
@@ -42,7 +46,7 @@ void ChessGame::update() {
 }
 
 void ChessGame::handleLeftMouseClick([[maybe_unused]]Point p) {
-	Cell selectedCell = CellUtils::pointToCell(p, cellDim, Point::ZERO);
+	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
 
 	if (!engine.isCellSelected()) {
 		engine.selectPiece(selectedCell);
@@ -57,16 +61,19 @@ void ChessGame::handleBtnClick([[maybe_unused]]int32_t idx) {
 
 Widget* ChessGame::buildLandingPage() {
 	Widget* landingPageWidget = new Widget(btnManager, Point::ZERO);
-	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, Config::WINDOW_DIM);
-	Point p = { 300, 300 };
-	Dimensions dim = { 200, 70 };
-	Color backgroundColor = Color::BLUE;
-	Color textColor = Color::RED;
-	std::string txt = "Start Game";
 
-	RectTextButton* btn = getFactory().createButton(p, dim, backgroundColor, textColor, txt, defaultFont, std::bind(&ChessGame::handleStartGameButton, this));
-
+	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, GameConfig::WINDOW_DIM);
 	landingPageWidget->put(*background);
+
+	RectTextButton* btn = getFactory().createButton(
+		GameConfig::NEW_GAME_BTN_POS,
+		GameConfig::NEW_GAME_BTN_DIM,
+		GameConfig::NEW_GAME_BTN_BACKGROUND_COLOR,
+		GameConfig::NEW_GAME_BTN_TEXT_COLOR,
+		GameConfig::NEW_GAME_BTN_TEXT,
+		defaultFont,
+		std::bind(&ChessGame::handleStartGameButton, this)
+	);
 	landingPageWidget->put(*btn);
 
 	return landingPageWidget;
@@ -74,10 +81,11 @@ Widget* ChessGame::buildLandingPage() {
 
 Widget* ChessGame::buildChessPage() {
 	Widget* chessPageWidget = new Widget(btnManager, Point::ZERO);
-	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, Config::WINDOW_DIM);
-	Object* board = getFactory().createObject(Resources::board, Point::ZERO, Dimensions{640, 640});
 
+	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, GameConfig::WINDOW_DIM);
 	chessPageWidget->put(*background);
+
+	Object* board = getFactory().createObject(Resources::board, Point::ZERO, GameConfig::BOARD_DIM);
 	chessPageWidget->put(*board);
 
 	return chessPageWidget;
@@ -94,8 +102,8 @@ void ChessGame::initPieceToObjectConversion() {
 	for (auto const& [cell, piece] : positions) {
 		Object& obj = *getFactory().createObject(
 			pieceToResource[piece],
-			CellUtils::cellToPoint(cell, cellDim, Point::ZERO),
-			cellDim
+			CellUtils::cellToPoint(cell, GameConfig::CELL_DIM, Point::ZERO),
+			GameConfig::CELL_DIM
 		);
 
 		rootScreen->put(obj);
@@ -105,7 +113,7 @@ void ChessGame::initPieceToObjectConversion() {
 
 void ChessGame::updateObjectsFromPieces() {
 	for (auto const& pieceObjectPair : pieceObjectPairs) {
-		Point newPos = CellUtils::cellToPoint(pieceObjectPair.piece.cell, cellDim, Point::ZERO);
+		Point newPos = CellUtils::cellToPoint(pieceObjectPair.piece.cell, GameConfig::CELL_DIM, Point::ZERO);
 
 		if (newPos != pieceObjectPair.object.getPosition()) {
 			pieceObjectPair.object.move(newPos);

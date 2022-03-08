@@ -33,7 +33,6 @@ private:
 	ChessEngine engine;
 	PieceToResourcePath pieceToResource;
 	std::vector<PieceObjectPair> pieceObjectPairs;
-	const Dimensions cellDim = { 80, 80 }; // TODO: Move this to chess config
 
 	Widget* buildLandingPage();
 	Widget* buildChessPage();

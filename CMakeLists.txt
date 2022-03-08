@@ -69,11 +69,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/components/buttons/BaseButton.cpp
 	${DIR}/engine/components/buttons/RectTextButton.h
 	${DIR}/engine/components/buttons/RectTextButton.cpp
-	${DIR}/config/Config.h
-	${DIR}/config/ConfigData.h
-	${DIR}/config/ConfigLoader.h
-	${DIR}/config/Globals.h
-	${DIR}/config/ConfigLoader.cpp
+	${DIR}/engine/config/EngineConfig.h
 	${DIR}/platform/sdl/enums/Flip.h
 	${DIR}/renderer/primitives/Button.cpp
 	${DIR}/renderer/primitives/Button.h
@@ -83,38 +79,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/renderer/primitives/Transformation.cpp
 	${DIR}/renderer/primitives/Text.h
 	${DIR}/renderer/primitives/Text.cpp
-	${DIR}/test/Test.h
-	${DIR}/test/Test.cpp
-	#${DIR}/chess-entrypoint/ChessEntryPoint.h
-	#${DIR}/chess-entrypoint/ChessEntryPoint.cpp
-	#${DIR}/chess-game/pages/LandingPage.h
-	#${DIR}/chess-game/pages/LandingPage.cpp
-	#${DIR}/chess-game/pages/ChessPage.h
-	#${DIR}/chess-game/pages/ChessPage.cpp
-	#${DIR}/chess-game/board/Cell.h
-	#${DIR}/chess-game/board/Cell.cpp
-	#${DIR}/chess-game/board/Board.h
-	#${DIR}/chess-game/board/Board.cpp
-	#${DIR}/chess-game/pieces/Piece.h
-	#${DIR}/chess-game/pieces/Piece.cpp
-	#${DIR}/chess-game/pieces/Rank.h
-	#${DIR}/chess-game/pieces/Side.h
-	#${DIR}/chess-game/pieces/Move.h
-	#${DIR}/chess-game/pieces/Move.cpp
-	#${DIR}/chess-game/pieces/PieceMoveGenerator.h
-	#${DIR}/chess-game/pieces/PieceMoveGenerator.cpp
-	#${DIR}/chess-game/pieces/ValidMovesGenerator.h
-	#${DIR}/chess-game/pieces/ValidMovesGenerator.cpp
-	#${DIR}/chess-game/pieces/PieceValue.h
-	#${DIR}/chess-game/states/ChessState.h
-	#${DIR}/chess-game/board/PieceSelectionManager.h
-	#${DIR}/chess-game/board/PieceSelectionManager.cpp
-	#${DIR}/chess-game/ai/AI.h
-	#${DIR}/chess-game/ai/AI.cpp
-	#${DIR}/chess-game/ai/ScoredMove.h
-	#${DIR}/chess-game/ai/ScoredMove.cpp
-	#${DIR}/chess-game/utils/VectorShuffler.h
-	#${DIR}/chess-game/utils/VectorShuffler.cpp
 	${DIR}/examples/chess/chess-engine/Cell.h
 	${DIR}/examples/chess/chess-engine/Cell.cpp
 	${DIR}/examples/chess/chess-engine/ChessBoard.cpp
@@ -136,6 +100,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/CellUtils.cpp
 	${DIR}/examples/chess/chess-engine/PieceToObjectTranslator.h
 	${DIR}/examples/chess/chess-engine/PieceToObjectTranslator.cpp
+	${DIR}/examples/chess/GameConfig.h
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)

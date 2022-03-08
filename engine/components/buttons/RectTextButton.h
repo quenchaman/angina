@@ -6,9 +6,9 @@
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Color.h"
+#include "renderer/shapes/Rect.h"
 
 #include "engine/components/buttons/BaseButton.h"
-#include "renderer/shapes/Rect.h"
 
 struct Text;
 struct Renderer;

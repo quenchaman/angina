@@ -10,14 +10,15 @@
 #include "SDL_ttf.h"
 
 #include "platform/sdl/events/InputEvent.h"
+#include "platform/sdl/primitives/Font.h"
+#include "platform/sdl/components/Window.h"
+
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Point.h"
+#include "renderer/Renderer.h"
 
 #include "engine/widget/Widget.h"
-#include "platform/sdl/primitives/Font.h"
 #include "engine/factory/GraphicsFactory.h"
-#include "platform/sdl/components/Window.h"
-#include "renderer/Renderer.h"
 #include "engine/factory/GraphicsFactory.h"
 #include "engine/managers/ButtonManager.h"
 
