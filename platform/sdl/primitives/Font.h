@@ -10,10 +10,10 @@ public:
 	Font(const std::string& path, int32_t pointSize);
 	~Font();
 
-	Font(const Font& other) = delete;
-	Font& operator=(const Font& other) = delete;
-	Font(Font&& other) = delete;
-	Font& operator=(Font&& other) = delete;
+	Font(const Font&) = delete;
+	Font& operator=(const Font&) = delete;
+	Font(Font&&) = delete;
+	Font& operator=(Font&&) = delete;
 
 	TTF_Font* getFont() const;
 private:

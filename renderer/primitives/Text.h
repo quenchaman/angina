@@ -5,7 +5,7 @@
 
 class Text : public Object {
 public:
-	Text(Texture& t, Dimensions dim, Point point);
+	Text(Texture&, Dimensions, Point);
 };
 
 #endif /* RENDERER_PRIMITIVES_TEXT_H_ */

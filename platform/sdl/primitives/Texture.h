@@ -11,13 +11,13 @@ struct SDL_Point;
 
 class Texture {
 public:
-	Texture(SDL_Texture* texture, Dimensions dim);
+	Texture(SDL_Texture*, Dimensions);
 	~Texture();
 
 	SDL_Texture* getTexture() const;
 	Dimensions getDimensions() const;
 
-	friend std::ostream& operator<<(std::ostream& os, const Texture& t);
+	friend std::ostream& operator<<(std::ostream&, const Texture&);
 private:
 	SDL_Texture* texture;
 	Dimensions dimensions;

@@ -16,9 +16,9 @@ struct Renderer;
 class ButtonManager {
 public:
 	~ButtonManager();
-	void registerButton(BaseButton& btn);
+	void registerButton(BaseButton&);
 
-	bool invokeCallback(const InputEvent& event);
+	bool invokeCallback(const InputEvent&);
 private:
 	std::vector<BaseButton*> buttons;
 };

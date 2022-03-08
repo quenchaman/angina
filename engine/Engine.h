@@ -40,7 +40,7 @@ private:
 
 	void limitFPS(int64_t microseconds);
 	void draw();
-	void draw(Widget& widget);
+	void draw(Widget&);
 	void handleEvent();
 protected:
 	InputEvent event;
@@ -50,11 +50,11 @@ protected:
 
 	virtual void init() = 0;
 	virtual void update() = 0;
-	virtual void handleLeftMouseClick(Point p) = 0;
+	virtual void handleLeftMouseClick(Point) = 0;
 	virtual void handleBtnClick(int32_t idx) = 0;
 
 	void clearScreen();
-	void changeScreen(Widget& widget);
+	void changeScreen(Widget&);
 
 	GraphicsFactory& getFactory();
 };

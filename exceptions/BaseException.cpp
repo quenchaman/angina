@@ -1,10 +1,3 @@
-/*
- * BaseException.cpp
- *
- *  Created on: Oct 12, 2021
- *      Author: valeri
- */
-
 #include "BaseException.h"
 
 BaseException::BaseException(std::string msg):

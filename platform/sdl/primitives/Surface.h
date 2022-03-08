@@ -5,13 +5,13 @@ struct SDL_Surface;
 
 class Surface {
 public:
-	Surface(SDL_Surface* surface);
+	Surface(SDL_Surface*);
 	~Surface();
 
-	Surface(const Surface& other) = delete;
-	Surface& operator=(const Surface& other) = delete;
-	Surface(Surface&& other) = delete;
-	Surface& operator=(Surface&& other) = delete;
+	Surface(const Surface&) = delete;
+	Surface& operator=(const Surface&) = delete;
+	Surface(Surface&&) = delete;
+	Surface& operator=(Surface&&) = delete;
 
 	SDL_Surface* getSurface();
 private:

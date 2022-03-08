@@ -29,12 +29,12 @@ struct ButtonManager;
 class Widget {
 public:
 	// TODO: Add Buttons manager here and enable adding buttons to it.
-	Widget(ButtonManager& btnManager);
-	Widget(ButtonManager& btnManager, Point p);
+	Widget(ButtonManager&);
+	Widget(ButtonManager&, Point);
 	~Widget();
-	void addChild(Widget& widget);
+	void addChild(Widget&);
 
-	void put(BaseButton& btn);
+	void put(BaseButton&);
 	void put(Object& drawable);
 
 	std::vector<Drawable*>& getDrawables();

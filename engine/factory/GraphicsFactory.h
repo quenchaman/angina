@@ -17,15 +17,15 @@ struct Text;
 
 class GraphicsFactory {
 public:
-	GraphicsFactory(Renderer& renderer);
+	GraphicsFactory(Renderer&);
 	virtual ~GraphicsFactory();
 
-	virtual Object* createObject(const std::string& resourcePath, Point p, Dimensions dim);
+	virtual Object* createObject(const std::string& resourcePath, Point, Dimensions);
 
-	virtual Text* createText(std::string text, Font& font, Point p, Dimensions dim, Color color = Color::NONE);
+	virtual Text* createText(std::string text, Font&, Point, Dimensions, Color color = Color::NONE);
 
 	// We will not cache buttons for now as they are static.
-	RectTextButton* createButton(Point p, Dimensions dim, Color backgroundColor, Color textColor, std::string text, Font& font, std::function<void(void)> clb);
+	RectTextButton* createButton(Point, Dimensions, Color backgroundColor, Color textColor, std::string text, Font&, std::function<void(void)>);
 private:
 	Renderer& renderer;
 };

@@ -7,7 +7,7 @@ class Drawable {
 public:
 	virtual ~Drawable() = default;
 
-	virtual void draw(Renderer& renderer) = 0;
+	virtual void draw(Renderer&) = 0;
 };
 
 #endif /* RENDERER_DRAWABLE_DRAWABLE_H_ */

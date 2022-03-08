@@ -18,7 +18,7 @@ namespace ResourceLoader {
 
 	TTF_Font* loadFont(const std::string& path, int32_t pointSize);
 
-	Surface* loadText(TTF_Font* font, const std::string& text, Color color);
+	Surface* loadText(TTF_Font*, const std::string& text, Color);
 }
 
 #endif /* SDL_IMAGERESOURCE_H_ */

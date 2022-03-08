@@ -9,10 +9,10 @@
 
 class BaseButton : public Drawable {
 public:
-	BaseButton(Point pos, Dimensions dim, std::function<void(void)> callback);
+	BaseButton(Point, Dimensions, std::function<void(void)> callback);
 	virtual ~BaseButton() = default;
 
-	void draw(Renderer& renderer) = 0;
+	void draw(Renderer&) = 0;
 
 	Point getPosition() const;
 	Dimensions getDimensions() const;

@@ -15,10 +15,10 @@ struct Renderer;
 
 class RectTextButton : public BaseButton {
 public:
-	RectTextButton(Point p, Dimensions dim, Color backgroundColor, Text& text, std::function<void(void)> clb);
+	RectTextButton(Point, Dimensions, Color, Text&, std::function<void(void)>);
 	~RectTextButton() = default;
 
-	void draw(Renderer& renderer);
+	void draw(Renderer&);
 
 private:
 	Rect rect;

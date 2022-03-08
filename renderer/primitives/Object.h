@@ -13,17 +13,17 @@ struct Renderer;
 
 class Object : public Drawable {
 public:
-	Object(Texture& t, Dimensions dim, Point point);
+	Object(Texture&, Dimensions, Point);
 	~Object();
 
-	Object(const Object& other) = delete;
-	Object& operator=(const Object& other) = delete;
-	Object(Object&& other) = delete;
-	Object& operator=(Object&& other) = delete;
+	Object(const Object&) = delete;
+	Object& operator=(const Object&) = delete;
+	Object(Object&&) = delete;
+	Object& operator=(Object&&) = delete;
 
-	void draw(Renderer& renderer);
+	void draw(Renderer&);
 	void move(const int32_t x, const int32_t y);
-	void move(const Point& p);
+	void move(const Point&);
 
 	Point getPosition() const;
 	Dimensions getDimensions() const;

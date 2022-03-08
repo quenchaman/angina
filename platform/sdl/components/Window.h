@@ -15,13 +15,13 @@ struct Surface;
  */
 class Window {
 public:
-	Window(std::string title, Point pos, Dimensions dimensions, int32_t flags);
+	Window(std::string title, Point, Dimensions, int32_t flags);
 	~Window();
 
-	Window(const Window& other) = delete;
-	Window& operator=(const Window& other) = delete;
-	Window(Window&& other) = delete;
-	Window& operator=(Window&& other) = delete;
+	Window(const Window&) = delete;
+	Window& operator=(const Window&) = delete;
+	Window(Window&&) = delete;
+	Window& operator=(Window&&) = delete;
 
 	SDL_Window* getWindow();
 	Surface& getSurface();

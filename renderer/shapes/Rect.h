@@ -12,23 +12,23 @@
 
 class Rect : public Drawable {
 public:
-	Rect(Point positionIn, Dimensions dimensionsIn, Color colorIn);
-	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color& color);
+	Rect(Point, Dimensions, Color);
+	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color&);
 
-	void draw(Renderer& renderer);
+	void draw(Renderer&);
 
-	bool operator==(const Rect& other) const;
-	bool operator!=(const Rect& other) const;
+	bool operator==(const Rect&) const;
+	bool operator!=(const Rect&) const;
 
 	SDL_Rect getRawRect() const;
 	Color getColor() const;
 
-	bool isInRect(const Point& point);
+	bool isInRect(const Point&);
 
 	static const Rect ZERO;
 	static const Rect UNDEFINED;
 
-	friend std::ostream& operator<<(std::ostream& os, const Rect& rect);
+	friend std::ostream& operator<<(std::ostream&, const Rect&);
 private:
 	SDL_Rect rect;
 	Color color;
