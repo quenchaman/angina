@@ -11,11 +11,7 @@ typedef std::unordered_map<Piece, std::string, Piece::HashFunction> PieceToResou
 class PieceToObjectTranslator {
 public:
 	PieceToObjectTranslator();
-	virtual ~PieceToObjectTranslator();
 
-	const PieceToResourcePath& getPieceToResources() const;
-
-private:
 	PieceToResourcePath pieceToResource;
 };
 

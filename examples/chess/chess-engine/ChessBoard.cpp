@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-ChessBoard::ChessBoard() {
+ChessBoard::ChessBoard(): moveGen(PieceMoveGenerator(*this)) {
 	setBoard();
 }
 
@@ -43,8 +43,6 @@ bool ChessBoard::makeMove(const Cell& source, const Cell& destination) {
 		return false;
 	}
 
-	std::cout << "Attemptingg to move piece " << destination << std::endl;
-
 	movePiece(source, destination);
 
 	return true;
@@ -72,11 +70,8 @@ bool ChessBoard::isValidMove(const Cell& source, const Cell& destination) const 
 }
 
 bool ChessBoard::isAllowedMove(const Cell& source, const Cell& destination) const {
-	Piece sourcePiece = board.at(source);
-	std::vector<Cell> allowedMoves = generatePieceMoves(sourcePiece, source);
-
-	std::cout << "We are generating moves " << allowedMoves[0].row << " and " << allowedMoves[0].col <<
-			"and the destination is " << destination << std::endl;
+	Piece sourcePiece = getPieceOnCell(source);
+	std::vector<Cell> allowedMoves = moveGen.generatePieceMoves(sourcePiece, source);
 
 	for (Cell& dest : allowedMoves) {
 		if (dest == destination) {
@@ -109,166 +104,12 @@ bool ChessBoard::isFriendlyCell(const Cell& cell) const {
 	return board.at(cell).side == currentSide;
 }
 
-std::vector<Cell> ChessBoard::generatePieceMoves(Piece piece, Cell source) const {
-	std::vector<Cell> moves;
-
-	switch (piece.rank) {
-		case Rank::KNIGHT:
-			moves = generateKnightMoves(source);
-			break;
-		case Rank::ROOK:
-			moves = generateRookMoves(source);
-			break;
-		case Rank::BISHOP:
-			moves = generateBishopMoves(source);
-			break;
-		case Rank::PAWN:
-			moves = generatePawnMoves(source, piece.side);
-			std::cout << "we are creating pawn moves " << moves.size() << std::endl;
-			break;
-		case Rank::QUEEN:
-			moves = generateQueenMoves(source);
-			break;
-		default:
-			break;
-	}
-
-	return moves;
-}
-
-std::vector<Cell> ChessBoard::generateKnightMoves(Cell& knightPosition) const {
-	std::vector<Cell> m;
-	m.reserve(8);
-
-	m.push_back(Cell{knightPosition.row - 2, knightPosition.col + 1});
-	m.push_back(Cell{knightPosition.row - 2, knightPosition.col - 1});
-
-	m.push_back(Cell{knightPosition.row + 2, knightPosition.col + 1});
-	m.push_back(Cell{knightPosition.row + 2, knightPosition.col - 1});
-
-	m.push_back(Cell{knightPosition.row - 1, knightPosition.col - 2});
-	m.push_back(Cell{knightPosition.row + 1, knightPosition.col - 2});
-
-	m.push_back(Cell{knightPosition.row - 1, knightPosition.col + 2});
-	m.push_back(Cell{knightPosition.row + 1, knightPosition.col + 2});
-
-	return m;
-}
-
-std::vector<Cell> ChessBoard::generateRookMoves(Cell& currentCell) const {
-	std::vector<Cell> destinationCells;
-
-	/* Go top */
-	Cell cellGoingTop = currentCell;
-
-	while (isInBounds(cellGoingTop) && !isFriendlyCell(cellGoingTop)) {
-		destinationCells.push_back(cellGoingTop);
-		cellGoingTop.moveTop();
-	}
-
-	/* Go right */
-	Cell cellGoingRight = currentCell;
-
-	while (isInBounds(cellGoingRight) && !isFriendlyCell(cellGoingRight)) {
-		destinationCells.push_back(cellGoingRight);
-		cellGoingRight.moveRight();
-	}
-
-	/* Go down */
-	Cell cellGoingDown = currentCell;
-
-	while (isInBounds(cellGoingDown) && !isFriendlyCell(cellGoingDown)) {
-		destinationCells.push_back(cellGoingDown);
-		cellGoingDown.moveDown();
-	}
-
-	/* Go left */
-	Cell cellGoingLeft = currentCell;
-
-	while (isInBounds(cellGoingLeft) && !isFriendlyCell(cellGoingLeft)) {
-		destinationCells.push_back(cellGoingLeft);
-		cellGoingDown.moveLeft();
-	}
-
-	return destinationCells;
-}
-
-std::vector<Cell> ChessBoard::generateBishopMoves(Cell& currentCell) const {
-	std::vector<Cell> destinationCells;
-
-	/* Go top-left diagonal */
-	Cell cellGoingTopLeft = currentCell;
-
-	while (isInBounds(cellGoingTopLeft) && !isFriendlyCell(cellGoingTopLeft)) {
-		destinationCells.push_back(cellGoingTopLeft);
-		cellGoingTopLeft.moveTop();
-		cellGoingTopLeft.moveLeft();
-	}
-
-	/* Go top-right */
-	Cell cellGoingTopRight = currentCell;
-
-	while (isInBounds(cellGoingTopRight) && !isFriendlyCell(cellGoingTopRight)) {
-		destinationCells.push_back(cellGoingTopRight);
-		cellGoingTopRight.moveRight();
-		cellGoingTopRight.moveTop();
-	}
-
-	/* Go down-right */
-	Cell cellGoingDownRight = currentCell;
-
-	while (isInBounds(cellGoingDownRight) && !isFriendlyCell(cellGoingDownRight)) {
-		destinationCells.push_back(cellGoingDownRight);
-		cellGoingDownRight.moveDown();
-		cellGoingDownRight.moveRight();
-	}
-
-	/* Go down-left */
-	Cell cellGoingDownLeft = currentCell;
-
-	while (isInBounds(cellGoingDownLeft) && !isFriendlyCell(cellGoingDownLeft)) {
-		destinationCells.push_back(cellGoingDownLeft);
-		cellGoingDownLeft.moveLeft();
-		cellGoingDownLeft.moveDown();
-	}
-
-	return destinationCells;
-}
-
-std::vector<Cell> ChessBoard::generateQueenMoves(Cell& currentCell) const {
-	std::vector<Cell> bishopMoves = generateBishopMoves(currentCell);
-	std::vector<Cell> rookMoves = generateRookMoves(currentCell);
-
-	bishopMoves.insert(bishopMoves.end(), rookMoves.begin(), rookMoves.end());
-
-	return bishopMoves;
-}
-
-std::vector<Cell> ChessBoard::generatePawnMoves(Cell& currentCell, Side side) const {
-	std::vector<Cell> destinationCells;
-
-	Cell forwardMove = currentCell;
-
-	if (side == Side::WHITE) {
-		forwardMove.moveTop();
-	} else {
-		forwardMove.moveDown();
-	}
-
-	destinationCells.push_back(forwardMove);
-
-	return destinationCells;
-}
-
 std::vector<Move> ChessBoard::generateValidPieceMoves(const Piece& piece, const Cell& cell) const {
 	std::vector<Move> moves;
 
-	std::vector<Cell> currentPieceMoves = generatePieceMoves(piece, cell);
-
-	std::cout << "The current move is " << currentPieceMoves[0].row << " and " << currentPieceMoves[0].col << std::endl;
+	std::vector<Cell> currentPieceMoves = moveGen.generatePieceMoves(piece, cell);
 
 	for (Cell& dest : currentPieceMoves) {
-
 		if (isValidMove(cell, dest)) {
 
 			double score = scoreMove(dest);

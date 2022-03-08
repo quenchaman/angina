@@ -11,6 +11,7 @@
 #include "examples/chess/chess-engine/Piece.h"
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Move.h"
+#include "examples/chess/chess-engine/PieceMoveGenerator.h"
 
 typedef std::unordered_map<Cell, Piece, Cell::HashFunction> CellToPieceLookup;
 
@@ -45,6 +46,12 @@ public:
 
 	const Piece& getPieceOnCell(const Cell& source) const;
 
+	bool isInBounds(const Cell&) const;
+	bool isEmptyCell(const Cell&) const;
+	bool isFriendlyCell(const Cell&) const;
+
+	std::vector<Move> generateValidPieceMoves(const Piece& piece, const Cell& cell) const;
+
 	/**
 	 * AI API
 	 */
@@ -53,25 +60,14 @@ public:
 private:
 	CellToPieceLookup board;
 	Side currentSide = Side::WHITE;
+	PieceMoveGenerator moveGen;
 
 	const int32_t BOARD_SIZE = 8;
 
-	bool isInBounds(const Cell&) const;
-	bool isEmptyCell(const Cell&) const;
-	bool isFriendlyCell(const Cell&) const;
 	void movePiece(const Cell& source, const Cell& destination);
-
 	double scoreMove(const Cell& destination) const;
 
 	friend std::ostream& operator<<(std::ostream&, const ChessBoard&);
-
-	std::vector<Move> generateValidPieceMoves(const Piece&, const Cell&) const;
-	std::vector<Cell> generatePieceMoves(Piece, Cell source) const;
-	std::vector<Cell> generateKnightMoves(Cell& knightPosition) const;
-	std::vector<Cell> generateRookMoves(Cell& currentCell) const;
-	std::vector<Cell> generateBishopMoves(Cell& currentCell) const;
-	std::vector<Cell> generateQueenMoves(Cell& currentCell) const;
-	std::vector<Cell> generatePawnMoves(Cell& currentCell, Side) const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_CHESSBOARD_H_ */

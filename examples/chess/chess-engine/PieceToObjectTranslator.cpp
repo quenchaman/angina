@@ -17,7 +17,3 @@ PieceToObjectTranslator::PieceToObjectTranslator() {
 	pieceToResource[Piece::BLACK_QUEEN] = Resources::blackQueen;
 	pieceToResource[Piece::BLACK_KING] = Resources::blackKing;
 }
-
-PieceToObjectTranslator::~PieceToObjectTranslator() {
-}
-

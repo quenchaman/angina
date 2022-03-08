@@ -31,7 +31,7 @@ public:
 	void handleBtnClick(int32_t idx);
 private:
 	ChessEngine engine;
-	PieceToResourcePath pieceToResource;
+	PieceToObjectTranslator pieceToResourceTranslator;
 	std::vector<CellObjectPair> cellObjectPairs;
 
 	Widget* buildLandingPage();
