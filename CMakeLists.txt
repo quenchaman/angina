@@ -37,9 +37,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/renderer/primitives/Object.cpp
 	${DIR}/engine/managers/ButtonManager.h
 	${DIR}/engine/managers/ButtonManager.cpp
-	#${DIR}/sdl/engine/animation/AnimationData.h
-	#${DIR}/sdl/engine/animation/AnimationManager.h
-	#${DIR}/sdl/engine/animation/AnimationManager.cpp
 	${DIR}/engine/widget/Widget.h
 	${DIR}/engine/widget/Widget.cpp
 	${DIR}/engine/factory/GraphicsFactory.h

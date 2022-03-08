@@ -1,5 +1,14 @@
 # angina
 
+## Project structure
+
+- `platform` - Low level module. SDL wrappers (Surface, Texture), thread and time libraries.
+- `renderer` - Low level module. Renderer and primitives - Object, Point.
+- `engine` - Mid level module. Uses renderer, contains class that drives game loop.
+- `core` - Low level module for math, physics libraries, etc. of that sort.
+- `examples` - Implementations of games, built with the engine.
+- `resources` - Place for all the assets of the game and a header file that exposes paths to them.
+
 ## Steps to run:
 
 - Go to `build` folder
