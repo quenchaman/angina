@@ -42,7 +42,6 @@ void ChessGame::init() {
 }
 
 void ChessGame::update() {
-	updateObjectsFromPieces();
 }
 
 void ChessGame::handleLeftMouseClick([[maybe_unused]]Point p) {
@@ -94,6 +93,7 @@ Widget* ChessGame::buildChessPage() {
 void ChessGame::handleStartGameButton() {
 	changeScreen(*buildChessPage());
 	initPieceToObjectConversion();
+	engine.subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void ChessGame::initPieceToObjectConversion() {
@@ -107,16 +107,16 @@ void ChessGame::initPieceToObjectConversion() {
 		);
 
 		rootScreen->put(obj);
-		pieceObjectPairs.push_back(PieceObjectPair{const_cast<Piece&>(piece), obj});
+		cellObjectPairs.push_back(CellObjectPair{piece.cell, obj});
 	}
 }
 
-void ChessGame::updateObjectsFromPieces() {
-	for (auto const& pieceObjectPair : pieceObjectPairs) {
-		Point newPos = CellUtils::cellToPoint(pieceObjectPair.piece.cell, GameConfig::CELL_DIM);
-
-		if (newPos != pieceObjectPair.object.getPosition()) {
-			pieceObjectPair.object.move(newPos);
+void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) {
+	std::cout << "Called the callback for a piece move!" << std::endl;
+	for (auto& cellObjectPair : cellObjectPairs) {
+		if (cellObjectPair.cell == source) {
+			cellObjectPair.cell = destination;
+			cellObjectPair.object.move(CellUtils::cellToPoint(destination, GameConfig::CELL_DIM));
 		}
 	}
 }

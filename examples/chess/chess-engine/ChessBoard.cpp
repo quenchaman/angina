@@ -1,5 +1,6 @@
-#include <cstdint>
 #include "ChessBoard.h"
+
+#include <cstdint>
 
 ChessBoard::ChessBoard() {
 	setBoard();
@@ -50,11 +51,11 @@ bool ChessBoard::makeMove(const Cell& source, const Cell& destination) {
 }
 
 void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
-	Piece sourcePiece = board[source];
+	Piece* sourcePiece = &board[source];
 	board.erase(source);
 
-	sourcePiece.move(destination);
-	board[destination] = sourcePiece;
+	sourcePiece->move(destination);
+	board[destination] = *sourcePiece;
 }
 
 bool ChessBoard::isValidMove(const Cell& source, const Cell& destination) const {
@@ -73,6 +74,9 @@ bool ChessBoard::isValidMove(const Cell& source, const Cell& destination) const 
 bool ChessBoard::isAllowedMove(const Cell& source, const Cell& destination) const {
 	Piece sourcePiece = board.at(source);
 	std::vector<Cell> allowedMoves = generatePieceMoves(sourcePiece, source);
+
+	std::cout << "We are generating moves " << allowedMoves[0].row << " and " << allowedMoves[0].col <<
+			"and the destination is " << destination << std::endl;
 
 	for (Cell& dest : allowedMoves) {
 		if (dest == destination) {
@@ -120,6 +124,7 @@ std::vector<Cell> ChessBoard::generatePieceMoves(Piece piece, Cell source) const
 			break;
 		case Rank::PAWN:
 			moves = generatePawnMoves(source, piece.side);
+			std::cout << "we are creating pawn moves " << moves.size() << std::endl;
 			break;
 		case Rank::QUEEN:
 			moves = generateQueenMoves(source);
@@ -260,8 +265,12 @@ std::vector<Move> ChessBoard::generateValidPieceMoves(const Piece& piece, const 
 
 	std::vector<Cell> currentPieceMoves = generatePieceMoves(piece, cell);
 
+	std::cout << "The current move is " << currentPieceMoves[0].row << " and " << currentPieceMoves[0].col << std::endl;
+
 	for (Cell& dest : currentPieceMoves) {
+
 		if (isValidMove(cell, dest)) {
+
 			double score = scoreMove(dest);
 			moves.push_back(Move{cell, dest, score});
 		}

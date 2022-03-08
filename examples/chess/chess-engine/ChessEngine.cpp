@@ -21,9 +21,8 @@ void ChessEngine::movePiece(const Cell& destination) {
 		return;
 	}
 
-	std::cout << "We are moving a piece!" << std::endl;
-
 	board.makeMove(selectedCell, destination);
+	notify(selectedCell, destination);
 	setState(ChessState::COMPUTER_MOVE);
 }
 
@@ -37,4 +36,14 @@ bool ChessEngine::isCellSelected() const {
 
 const CellToPieceLookup& ChessEngine::getPieces() const {
 	return board.getPiecePositions();
+}
+
+void ChessEngine::subscribe(MoveEventCallback callback) {
+	subscribers.push_back(callback);
+}
+
+void ChessEngine::notify(const Cell& source, const Cell& destination) const {
+	for (auto& subscriber : subscribers) {
+		subscriber(source, destination);
+	}
 }

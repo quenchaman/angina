@@ -4,6 +4,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
+#include <functional>
 #include <stack>
 
 #include "examples/chess/chess-engine/Cell.h"
@@ -55,22 +56,22 @@ private:
 
 	const int32_t BOARD_SIZE = 8;
 
-	bool isInBounds(const Cell& cell) const;
-	bool isEmptyCell(const Cell& cell) const;
-	bool isFriendlyCell(const Cell& cell) const;
+	bool isInBounds(const Cell&) const;
+	bool isEmptyCell(const Cell&) const;
+	bool isFriendlyCell(const Cell&) const;
 	void movePiece(const Cell& source, const Cell& destination);
 
 	double scoreMove(const Cell& destination) const;
 
-	friend std::ostream& operator<<(std::ostream& os, const ChessBoard& chessBoard);
+	friend std::ostream& operator<<(std::ostream&, const ChessBoard&);
 
-	std::vector<Move> generateValidPieceMoves(const Piece& piece, const Cell& cell) const;
-	std::vector<Cell> generatePieceMoves(Piece piece, Cell source) const;
+	std::vector<Move> generateValidPieceMoves(const Piece&, const Cell&) const;
+	std::vector<Cell> generatePieceMoves(Piece, Cell source) const;
 	std::vector<Cell> generateKnightMoves(Cell& knightPosition) const;
 	std::vector<Cell> generateRookMoves(Cell& currentCell) const;
 	std::vector<Cell> generateBishopMoves(Cell& currentCell) const;
 	std::vector<Cell> generateQueenMoves(Cell& currentCell) const;
-	std::vector<Cell> generatePawnMoves(Cell& currentCell, Side side) const;
+	std::vector<Cell> generatePawnMoves(Cell& currentCell, Side) const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_CHESSBOARD_H_ */

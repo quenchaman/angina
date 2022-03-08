@@ -14,8 +14,8 @@ struct Object;
 struct Piece;
 struct Cell;
 
-struct PieceObjectPair {
-	Piece& piece;
+struct CellObjectPair {
+	Cell cell;
 	Object& object;
 };
 
@@ -32,7 +32,7 @@ public:
 private:
 	ChessEngine engine;
 	PieceToResourcePath pieceToResource;
-	std::vector<PieceObjectPair> pieceObjectPairs;
+	std::vector<CellObjectPair> cellObjectPairs;
 
 	Widget* buildLandingPage();
 	Widget* buildChessPage();
@@ -43,7 +43,8 @@ private:
 	 * Methods to handle piece to object translation/conversion.
 	 */
 	void initPieceToObjectConversion();
-	void updateObjectsFromPieces();
+
+	void pieceMovedCallback(const Cell& source, const Cell& destination);
 };
 
 #endif /* EXAMPLES_CHESS_CHESSGAME_H_ */
