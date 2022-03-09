@@ -1,18 +1,21 @@
 #include "ChessBoard.h"
 
 #include <cstdint>
+#include <unordered_set>
 
 #include "examples/chess/chess-engine/PieceMoveGenerator.h"
 
+#include "examples/chess/GameConfig.h"
+
 ChessBoard::ChessBoard(): moveGen(PieceMoveGenerator(*this)) {
-	setBoard();
+	setInitialPieceFormation();
 }
 
-void ChessBoard::setBoard() {
+void ChessBoard::setInitialPieceFormation() {
 	const int32_t blackPawnRow = 1;
 	const int32_t whitePawnRow = 6;
 
-	for (int32_t col = 0; col < BOARD_SIZE; col++) {
+	for (int32_t col = 0; col < GameConfig::BOARD_SIZE; col++) {
 		board[Cell { blackPawnRow, col }] = Piece::BLACK_PAWN;
 		board[Cell { whitePawnRow, col }] = Piece::WHITE_PAWN;
 	}
@@ -34,31 +37,26 @@ void ChessBoard::setBoard() {
 	board[Cell {7, 5}] = Piece::WHITE_KNIGHT;
 	board[Cell {7, 6}] = Piece::WHITE_BISHOP;
 	board[Cell {7, 7}] = Piece::WHITE_ROOK;
-
-	for (auto& [cell, piece] : board) {
-		piece.move(cell);
-	}
 }
 
 bool ChessBoard::makeMove(const Cell& source, const Cell& destination) {
-	if (!isValidMove(source, destination) || !isAllowedMove(source, destination)) {
+	if (!isPossibleMove(source, destination) || !isValidPieceMove(source, destination)) {
 		return false;
 	}
 
 	movePiece(source, destination);
+	switchSide();
 
 	return true;
 }
 
 void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
-	Piece* sourcePiece = &board[source];
+	Piece* sourcePiece = &board.at(source);
 	board.erase(source);
-
-	sourcePiece->move(destination);
 	board[destination] = *sourcePiece;
 }
 
-bool ChessBoard::isValidMove(const Cell& source, const Cell& destination) const {
+bool ChessBoard::isPossibleMove(const Cell& source, const Cell& destination) const {
 	bool inBounds = isInBounds(source) && isInBounds(destination);
 
 	if (!inBounds || isEmptyCell(source)) {
@@ -66,53 +64,39 @@ bool ChessBoard::isValidMove(const Cell& source, const Cell& destination) const 
 	}
 
 	bool sourcePieceIsOnMove = board.at(source).side == currentSide;
-	bool friendyFire = !isEmptyCell(destination) && isFriendlyCell(destination);
+	bool friendyFire = !isEmptyCell(destination) && isOccupiedBySameSidePiece(destination);
 
 	return sourcePieceIsOnMove && !friendyFire;
 }
 
-bool ChessBoard::isAllowedMove(const Cell& source, const Cell& destination) const {
-	Piece sourcePiece = getPieceOnCell(source);
-	std::vector<Cell> allowedMoves = moveGen.generatePieceMoves(sourcePiece, source);
+bool ChessBoard::isValidPieceMove(const Cell& source, const Cell& destination) const {
+	CellUnorderedSet allowedMoves = moveGen.generatePieceMoves(getPieceOnCell(source), source);
 
-	for (Cell& dest : allowedMoves) {
-		if (dest == destination) {
-			return true;
-		}
-	}
-
-	return false;
+	return allowedMoves.find(destination) != allowedMoves.end();
 }
 
 Side ChessBoard::switchSide() {
-	if (currentSide == Side::WHITE) {
-		currentSide = Side::BLACK;
-	} else {
-		currentSide = Side::WHITE;
-	}
-
-	return currentSide;
+	return currentSide = currentSide == Side::WHITE ? Side::BLACK : Side::WHITE;
 }
 
 bool ChessBoard::isInBounds(const Cell& cell) const {
-	return cell.row >= 0 && cell.row < BOARD_SIZE && cell.col >= 0 && cell.row < BOARD_SIZE;
+	return cell.row >= 0 && cell.row < GameConfig::BOARD_SIZE && cell.col >= 0 && cell.col < GameConfig::BOARD_SIZE;
 }
 
 bool ChessBoard::isEmptyCell(const Cell& cell) const {
 	return board.find(cell) == board.end();
 }
 
-bool ChessBoard::isFriendlyCell(const Cell& cell) const {
-	return board.at(cell).side == currentSide;
+bool ChessBoard::isOccupiedBySameSidePiece(const Cell& cell) const {
+	return !isEmptyCell(cell) && board.at(cell).side == currentSide;
 }
 
 std::vector<Move> ChessBoard::generateValidPieceMoves(const Piece& piece, const Cell& cell) const {
 	std::vector<Move> moves;
+	CellUnorderedSet currentPieceMoves = moveGen.generatePieceMoves(piece, cell);
 
-	std::vector<Cell> currentPieceMoves = moveGen.generatePieceMoves(piece, cell);
-
-	for (Cell& dest : currentPieceMoves) {
-		if (isValidMove(cell, dest)) {
+	for (const Cell& dest : currentPieceMoves) {
+		if (isPossibleMove(cell, dest)) {
 
 			double score = scoreMove(dest);
 			moves.push_back(Move{cell, dest, score});
@@ -122,19 +106,16 @@ std::vector<Move> ChessBoard::generateValidPieceMoves(const Piece& piece, const 
 	return moves;
 }
 
-std::vector<Move> ChessBoard::calculateMovesForPiece(const Cell& source) const {
-	std::vector<Move> moves;
-
-	if (board.find(source) != board.end()) {
-		moves = generateValidPieceMoves(board.at(source), source);
-	}
-
-	return moves;
-}
-
 /* AI API */
 std::vector<Move> ChessBoard::calculateAllAvailableMoves(Side side) const {
 	std::vector<Move> allMoves;
+
+//	In chess, if a "node" is considered to be a legal position,
+//	the average branching factor has been said to be about 35,[1][2]
+//	and a statistical analysis of over 2.5 million games revealed an average of 31.[3]
+//	This means that, on average, a player has about 31 to 35 legal moves at their disposal at each turn.
+//	By comparison, the average branching factor for the game Go is 250.[1]
+	allMoves.reserve(31);
 
 	for (auto const& [cell, piece] : board) {
 		if (piece.side == side) {
@@ -148,7 +129,7 @@ std::vector<Move> ChessBoard::calculateAllAvailableMoves(Side side) const {
 }
 
 double ChessBoard::scoreMove(const Cell& destination) const {
-	if (board.find(destination) != board.end()) {
+	if (!isEmptyCell(destination)) {
 		return 1;
 	}
 

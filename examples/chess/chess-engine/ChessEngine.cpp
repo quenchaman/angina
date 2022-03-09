@@ -1,7 +1,7 @@
 #include "ChessEngine.h"
 
 ChessEngine::ChessEngine() {
-	board.setBoard();
+	board.setInitialPieceFormation();
 }
 
 ChessEngine::~ChessEngine() {
@@ -11,9 +11,16 @@ void ChessEngine::selectPiece(const Cell& source) {
 	selectedCell = source;
 }
 
-void ChessEngine::movePiece(const Cell& destination) {
-	board.makeMove(selectedCell, destination);
-	notify(selectedCell, destination);
+bool ChessEngine::movePiece(const Cell& destination) {
+	if (board.makeMove(selectedCell, destination)) {
+		notify(selectedCell, destination);
+		resetSelection();
+
+		return true;
+	}
+
+	resetSelection();
+	return false;
 }
 
 bool ChessEngine::isCellSelected() const {
@@ -49,4 +56,8 @@ Move ChessEngine::getAIMove() {
 	});
 
 	return allMoves[0];
+}
+
+void ChessEngine::resetSelection() {
+	selectedCell = Cell::UNDEFINED;
 }

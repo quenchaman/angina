@@ -18,7 +18,7 @@ public:
 	~ChessEngine();
 
 	void selectPiece(const Cell& source);
-	void movePiece(const Cell& destination);
+	bool movePiece(const Cell& destination);
 	const CellToPieceLookup& getPieces() const;
 	bool isCellSelected() const;
 
@@ -36,6 +36,8 @@ private:
 	ChessBoard board;
 	Cell selectedCell = Cell::UNDEFINED;
 	std::vector<MoveEventCallback> subscribers;
+
+	void resetSelection();
 
 	/*
 	 * Pub-sub API

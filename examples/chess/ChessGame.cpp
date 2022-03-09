@@ -22,10 +22,6 @@ ChessGame::~ChessGame() {
 	std::cout << "ChessGame destroyed" << std::endl;
 }
 
-void ChessGame::print() {
-	std::cout << "Hello from print" << std::endl;
-}
-
 void ChessGame::init() {
 	changeScreen(*buildLandingPage());
 }
@@ -44,8 +40,11 @@ void ChessGame::handleLeftMouseClick([[maybe_unused]]Point p) {
 		engine.selectPiece(selectedCell);
 		setState(ChessState::WHITE_PIECE_SELECTED);
 	} else if (state == ChessState::WHITE_PIECE_SELECTED) {
-		engine.movePiece(selectedCell);
-		setState(ChessState::COMPUTER_MOVE);
+		if (engine.movePiece(selectedCell)) {
+			setState(ChessState::COMPUTER_MOVE);
+		} else {
+			setState(ChessState::WHITE_PLAYER);
+		}
 	}
 }
 
@@ -86,11 +85,11 @@ Widget* ChessGame::buildChessPage() {
 
 void ChessGame::handleStartGameButton() {
 	changeScreen(*buildChessPage());
-	initPieceToObjectConversion();
+	createPieceObjects();
 	engine.subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-void ChessGame::initPieceToObjectConversion() {
+void ChessGame::createPieceObjects() {
 	const CellToPieceLookup& positions = engine.getPieces();
 
 	for (auto const& [cell, piece] : positions) {
@@ -101,17 +100,14 @@ void ChessGame::initPieceToObjectConversion() {
 		);
 
 		rootScreen->put(obj);
-		cellObjectPairs.push_back(CellObjectPair{piece.cell, obj});
+		cellObject[cell] = obj;
 	}
 }
 
 void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) {
-	for (auto& cellObjectPair : cellObjectPairs) {
-		if (cellObjectPair.cell == source) {
-			cellObjectPair.cell = destination;
-			cellObjectPair.object.move(CellUtils::cellToPoint(destination, GameConfig::CELL_DIM));
-		}
-	}
+	Object& obj = cellObject[source];
+	cellObject.erase(source);
+	cellObject[destination] = obj;
 }
 
 void ChessGame::setState(ChessState newState) {

@@ -1,7 +1,7 @@
 #ifndef EXAMPLES_CHESS_CHESS_ENGINE_PIECEMOVEGENERATOR_H_
 #define EXAMPLES_CHESS_CHESS_ENGINE_PIECEMOVEGENERATOR_H_
 
-#include <vector>
+#include <unordered_set>
 
 #include "examples/chess/chess-engine/Move.h"
 #include "examples/chess/chess-engine/Piece.h"
@@ -16,15 +16,17 @@ class PieceMoveGenerator {
 public:
 	PieceMoveGenerator(ChessBoard&);
 
-	std::vector<Cell> generatePieceMoves(Piece, Cell source) const;
-	std::vector<Cell> generateKnightMoves(Cell& knightPosition) const;
-	std::vector<Cell> generateRookMoves(Cell& currentCell) const;
-	std::vector<Cell> generateBishopMoves(Cell& currentCell) const;
-	std::vector<Cell> generateQueenMoves(Cell& currentCell) const;
-	std::vector<Cell> generatePawnMoves(Cell& currentCell, Side) const;
+	CellUnorderedSet generatePieceMoves(Piece, Cell source) const;
+	CellUnorderedSet generateKnightMoves(Cell& knightPosition) const;
+	CellUnorderedSet generateRookMoves(Cell& currentCell) const;
+	CellUnorderedSet generateBishopMoves(Cell& currentCell) const;
+	CellUnorderedSet generateQueenMoves(Cell& currentCell) const;
+	CellUnorderedSet generatePawnMoves(Cell& currentCell, Side) const;
 
 private:
 	ChessBoard& board;
+
+	bool isNotFriendlyOrIsEmpty(const Cell&) const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_PIECEMOVEGENERATOR_H_ */

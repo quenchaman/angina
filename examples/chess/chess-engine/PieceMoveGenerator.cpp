@@ -4,8 +4,8 @@
 
 PieceMoveGenerator::PieceMoveGenerator(ChessBoard& chessBoard): board(chessBoard) {}
 
-std::vector<Cell> PieceMoveGenerator::generatePieceMoves(Piece piece, Cell source) const {
-	std::vector<Cell> moves;
+CellUnorderedSet PieceMoveGenerator::generatePieceMoves(Piece piece, Cell source) const {
+	CellUnorderedSet moves;
 
 	switch (piece.rank) {
 		case Rank::KNIGHT:
@@ -23,6 +23,7 @@ std::vector<Cell> PieceMoveGenerator::generatePieceMoves(Piece piece, Cell sourc
 		case Rank::QUEEN:
 			moves = generateQueenMoves(source);
 			break;
+		// TODO: Add case for King
 		default:
 			break;
 	}
@@ -30,116 +31,120 @@ std::vector<Cell> PieceMoveGenerator::generatePieceMoves(Piece piece, Cell sourc
 	return moves;
 }
 
-std::vector<Cell> PieceMoveGenerator::generateKnightMoves(Cell& knightPosition) const {
-	std::vector<Cell> m;
+CellUnorderedSet PieceMoveGenerator::generateKnightMoves(Cell& knightPosition) const {
+	CellUnorderedSet m;
 	m.reserve(8);
 
-	m.push_back(Cell{knightPosition.row - 2, knightPosition.col + 1});
-	m.push_back(Cell{knightPosition.row - 2, knightPosition.col - 1});
+	m.insert(Cell{knightPosition.row - 2, knightPosition.col + 1});
+	m.insert(Cell{knightPosition.row - 2, knightPosition.col - 1});
 
-	m.push_back(Cell{knightPosition.row + 2, knightPosition.col + 1});
-	m.push_back(Cell{knightPosition.row + 2, knightPosition.col - 1});
+	m.insert(Cell{knightPosition.row + 2, knightPosition.col + 1});
+	m.insert(Cell{knightPosition.row + 2, knightPosition.col - 1});
 
-	m.push_back(Cell{knightPosition.row - 1, knightPosition.col - 2});
-	m.push_back(Cell{knightPosition.row + 1, knightPosition.col - 2});
+	m.insert(Cell{knightPosition.row - 1, knightPosition.col - 2});
+	m.insert(Cell{knightPosition.row + 1, knightPosition.col - 2});
 
-	m.push_back(Cell{knightPosition.row - 1, knightPosition.col + 2});
-	m.push_back(Cell{knightPosition.row + 1, knightPosition.col + 2});
+	m.insert(Cell{knightPosition.row - 1, knightPosition.col + 2});
+	m.insert(Cell{knightPosition.row + 1, knightPosition.col + 2});
 
 	return m;
 }
 
-std::vector<Cell> PieceMoveGenerator::generateRookMoves(Cell& currentCell) const {
-	std::vector<Cell> destinationCells;
+CellUnorderedSet PieceMoveGenerator::generateRookMoves(Cell& currentCell) const {
+	CellUnorderedSet destinationCells;
 
 	/* Go top */
 	Cell cellGoingTop = currentCell;
+	cellGoingTop.moveTop();
 
-	while (board.isInBounds(cellGoingTop) && !board.isFriendlyCell(cellGoingTop)) {
-		destinationCells.push_back(cellGoingTop);
+	while (board.isInBounds(cellGoingTop) && isNotFriendlyOrIsEmpty(cellGoingTop)) {
+		destinationCells.insert(cellGoingTop);
 		cellGoingTop.moveTop();
 	}
 
 	/* Go right */
 	Cell cellGoingRight = currentCell;
+	cellGoingRight.moveRight();
 
-	while (board.isInBounds(cellGoingRight) && !board.isFriendlyCell(cellGoingRight)) {
-		destinationCells.push_back(cellGoingRight);
+	while (board.isInBounds(cellGoingRight) && isNotFriendlyOrIsEmpty(cellGoingRight)) {
+		destinationCells.insert(cellGoingRight);
 		cellGoingRight.moveRight();
 	}
 
 	/* Go down */
 	Cell cellGoingDown = currentCell;
+	cellGoingDown.moveDown();
 
-	while (board.isInBounds(cellGoingDown) && !board.isFriendlyCell(cellGoingDown)) {
-		destinationCells.push_back(cellGoingDown);
+	while (board.isInBounds(cellGoingDown) && isNotFriendlyOrIsEmpty(cellGoingDown)) {
+		destinationCells.insert(cellGoingDown);
 		cellGoingDown.moveDown();
 	}
 
 	/* Go left */
 	Cell cellGoingLeft = currentCell;
+	cellGoingLeft.moveLeft();
 
-	while (board.isInBounds(cellGoingLeft) && !board.isFriendlyCell(cellGoingLeft)) {
-		destinationCells.push_back(cellGoingLeft);
-		cellGoingDown.moveLeft();
+	while (board.isInBounds(cellGoingLeft) && isNotFriendlyOrIsEmpty(cellGoingLeft)) {
+		destinationCells.insert(cellGoingLeft);
+		cellGoingLeft.moveLeft();
 	}
 
 	return destinationCells;
 }
 
-std::vector<Cell> PieceMoveGenerator::generateBishopMoves(Cell& currentCell) const {
-	std::vector<Cell> destinationCells;
+CellUnorderedSet PieceMoveGenerator::generateBishopMoves(Cell& currentCell) const {
+	CellUnorderedSet destinationCells;
 
 	/* Go top-left diagonal */
 	Cell cellGoingTopLeft = currentCell;
+	cellGoingTopLeft.moveTop().moveLeft();
 
-	while (board.isInBounds(cellGoingTopLeft) && !board.isFriendlyCell(cellGoingTopLeft)) {
-		destinationCells.push_back(cellGoingTopLeft);
-		cellGoingTopLeft.moveTop();
-		cellGoingTopLeft.moveLeft();
+	while (board.isInBounds(cellGoingTopLeft) && isNotFriendlyOrIsEmpty(cellGoingTopLeft)) {
+		destinationCells.insert(cellGoingTopLeft);
+		cellGoingTopLeft.moveTop().moveLeft();
 	}
 
 	/* Go top-right */
 	Cell cellGoingTopRight = currentCell;
+	cellGoingTopRight.moveTop().moveRight();
 
-	while (board.isInBounds(cellGoingTopRight) && !board.isFriendlyCell(cellGoingTopRight)) {
-		destinationCells.push_back(cellGoingTopRight);
-		cellGoingTopRight.moveRight();
-		cellGoingTopRight.moveTop();
+	while (board.isInBounds(cellGoingTopRight) && isNotFriendlyOrIsEmpty(cellGoingTopRight)) {
+		destinationCells.insert(cellGoingTopRight);
+		cellGoingTopRight.moveRight().moveTop();
 	}
 
 	/* Go down-right */
 	Cell cellGoingDownRight = currentCell;
+	cellGoingDownRight.moveDown().moveRight();
 
-	while (board.isInBounds(cellGoingDownRight) && !board.isFriendlyCell(cellGoingDownRight)) {
-		destinationCells.push_back(cellGoingDownRight);
-		cellGoingDownRight.moveDown();
-		cellGoingDownRight.moveRight();
+	while (board.isInBounds(cellGoingDownRight) && isNotFriendlyOrIsEmpty(cellGoingDownRight)) {
+		destinationCells.insert(cellGoingDownRight);
+		cellGoingDownRight.moveDown().moveRight();
 	}
 
 	/* Go down-left */
 	Cell cellGoingDownLeft = currentCell;
+	cellGoingDownLeft.moveLeft().moveDown();
 
-	while (board.isInBounds(cellGoingDownLeft) && !board.isFriendlyCell(cellGoingDownLeft)) {
-		destinationCells.push_back(cellGoingDownLeft);
-		cellGoingDownLeft.moveLeft();
-		cellGoingDownLeft.moveDown();
+	while (board.isInBounds(cellGoingDownLeft) && isNotFriendlyOrIsEmpty(cellGoingDownLeft)) {
+		destinationCells.insert(cellGoingDownLeft);
+		cellGoingDownLeft.moveLeft().moveDown();
 	}
 
 	return destinationCells;
 }
 
-std::vector<Cell> PieceMoveGenerator::generateQueenMoves(Cell& currentCell) const {
-	std::vector<Cell> bishopMoves = generateBishopMoves(currentCell);
-	std::vector<Cell> rookMoves = generateRookMoves(currentCell);
+CellUnorderedSet PieceMoveGenerator::generateQueenMoves(Cell& currentCell) const {
+	CellUnorderedSet bishopMoves = generateBishopMoves(currentCell);
+	CellUnorderedSet rookMoves = generateRookMoves(currentCell);
 
-	bishopMoves.insert(bishopMoves.end(), rookMoves.begin(), rookMoves.end());
+	bishopMoves.insert(rookMoves.begin(), rookMoves.end());
 
 	return bishopMoves;
 }
 
-std::vector<Cell> PieceMoveGenerator::generatePawnMoves(Cell& currentCell, Side side) const {
-	std::vector<Cell> destinationCells;
+CellUnorderedSet PieceMoveGenerator::generatePawnMoves(Cell& currentCell, Side side) const {
+	CellUnorderedSet destinationCells;
 
 	Cell forwardMove = currentCell;
 
@@ -149,7 +154,11 @@ std::vector<Cell> PieceMoveGenerator::generatePawnMoves(Cell& currentCell, Side 
 		forwardMove.moveDown();
 	}
 
-	destinationCells.push_back(forwardMove);
+	destinationCells.insert(forwardMove);
 
 	return destinationCells;
+}
+
+bool PieceMoveGenerator::isNotFriendlyOrIsEmpty(const Cell& cell) const {
+	return board.isEmptyCell(cell) || !board.isOccupiedBySameSidePiece(cell);
 }

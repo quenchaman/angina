@@ -3,6 +3,7 @@
 
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
+#include "renderer/primitives/Color.h"
 
 namespace GameConfig {
 	const Point BOARD_ORIGIN_POS = {0, 75};
@@ -19,6 +20,7 @@ namespace GameConfig {
 	const Color NEW_GAME_BTN_BACKGROUND_COLOR = Color::BLUE;
 	const Color NEW_GAME_BTN_TEXT_COLOR = Color::RED;
 	const std::string NEW_GAME_BTN_TEXT = "Start game";
+	const int32_t BOARD_SIZE = 8;
 }
 
 #endif /* EXAMPLES_CHESS_GAMECONFIG_H_ */

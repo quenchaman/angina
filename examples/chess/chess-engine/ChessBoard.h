@@ -18,13 +18,10 @@ typedef std::unordered_map<Cell, Piece, Cell::HashFunction> CellToPieceLookup;
 class ChessBoard {
 public:
 	ChessBoard();
-	~ChessBoard() = default;
 
 	const CellToPieceLookup& getPiecePositions() const;
 
 	bool makeMove(const Cell& source, const Cell& destination);
-
-	std::vector<Move> calculateMovesForPiece(const Cell& source) const;
 
 	/**
 	 * Whether a move is valid based on physical rules:
@@ -33,22 +30,22 @@ public:
 	 * 3. The source cell is not empty.
 	 * 4. The destination cell is either empty or an enemy.
 	 */
-	bool isValidMove(const Cell& source, const Cell& destination) const;
+	bool isPossibleMove(const Cell& source, const Cell& destination) const;
 
 	/**
 	 * Whether a move is valid in terms of piece movement rules and general chess rules: check, etc.
 	 */
-	bool isAllowedMove(const Cell& source, const Cell& destination) const;
+	bool isValidPieceMove(const Cell& source, const Cell& destination) const;
 
 	Side switchSide();
 
-	void setBoard();
+	void setInitialPieceFormation();
 
 	const Piece& getPieceOnCell(const Cell& source) const;
 
 	bool isInBounds(const Cell&) const;
 	bool isEmptyCell(const Cell&) const;
-	bool isFriendlyCell(const Cell&) const;
+	bool isOccupiedBySameSidePiece(const Cell&) const;
 
 	std::vector<Move> generateValidPieceMoves(const Piece& piece, const Cell& cell) const;
 
@@ -61,8 +58,6 @@ private:
 	CellToPieceLookup board;
 	Side currentSide = Side::WHITE;
 	PieceMoveGenerator moveGen;
-
-	const int32_t BOARD_SIZE = 8;
 
 	void movePiece(const Cell& source, const Cell& destination);
 	double scoreMove(const Cell& destination) const;

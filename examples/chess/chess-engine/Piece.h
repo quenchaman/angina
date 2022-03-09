@@ -5,17 +5,11 @@
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Cell.h"
 
-// This class is not going to work well with map because we have multiple equal pieces.
-// Maybe it would be better to have the Cell position on the piece itself....
 struct Piece {
 	Rank rank;
 	Side side;
-	Cell cell = Cell::UNDEFINED;
-
 	bool operator==(const Piece& other) const;
 	bool operator!=(const Piece& other) const;
-
-	void move(const Cell& destination);
 
 	struct HashFunction {
 		size_t operator ()(const Piece& piece) const {

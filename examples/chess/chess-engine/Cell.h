@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <iostream>
+#include <unordered_set>
 
 struct Cell {
 	Cell();
@@ -22,7 +23,7 @@ struct Cell {
 	struct HashFunction {
 		size_t operator()(const Cell& cell) const {
 			size_t rowHash = std::hash<int32_t>()(cell.row);
-			size_t colHash = std::hash<int32_t>()(cell.col) << 16;
+			size_t colHash = std::hash<int32_t>()(cell.col) << 1;
 
 			return rowHash ^ colHash;
 		}
@@ -34,5 +35,6 @@ struct Cell {
 
 };
 
+typedef std::unordered_set<Cell, Cell::HashFunction> CellUnorderedSet;
 
 #endif /* CHESS_GAME_BOARD_CELL_H_ */

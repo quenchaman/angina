@@ -3,6 +3,7 @@
 
 #include <utility>
 #include <vector>
+#include <unordered_set>
 
 #include "examples/chess/chess-engine/ChessEngine.h"
 #include "engine/Engine.h"
@@ -14,17 +15,13 @@ struct Object;
 struct Piece;
 struct Cell;
 
-struct CellObjectPair {
-	Cell cell;
-	Object& object;
-};
+typedef std::unordered_set<Cell, Object&, Cell::HashFunction> CellToObjectLookup;
 
 class ChessGame : public Engine {
 public:
 	ChessGame();
 	~ChessGame();
 
-	void print();
 	void init();
 	void update();
 	void handleLeftMouseClick(Point p);
@@ -32,8 +29,7 @@ public:
 private:
 	ChessEngine engine;
 	PieceToObjectTranslator pieceToResourceTranslator;
-	std::vector<CellObjectPair> cellObjectPairs;
-
+	CellToObjectLookup cellObject;
 	ChessState state = ChessState::WHITE_PLAYER;
 
 	void setState(ChessState newState);
@@ -44,9 +40,9 @@ private:
 	void handleStartGameButton();
 
 	/*
-	 * Methods to handle piece to object translation/conversion.
+	 * For every piece in the chess engine, create a drawable object. Keep a mapping between the two.
 	 */
-	void initPieceToObjectConversion();
+	void createPieceObjects();
 
 	void pieceMovedCallback(const Cell& source, const Cell& destination);
 

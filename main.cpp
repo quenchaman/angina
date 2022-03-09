@@ -16,7 +16,6 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 		ChessGame game;
 
 		game.start();
-		game.print();
 	} catch (const BaseException& ex) {
 		std::cerr << ex << std::endl;
 
