@@ -95,8 +95,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/ChessState.h
 	${DIR}/examples/chess/CellUtils.h
 	${DIR}/examples/chess/CellUtils.cpp
-	${DIR}/examples/chess/chess-engine/PieceToObjectTranslator.h
-	${DIR}/examples/chess/chess-engine/PieceToObjectTranslator.cpp
 	${DIR}/examples/chess/chess-engine/PieceMoveGenerator.h
 	${DIR}/examples/chess/chess-engine/PieceMoveGenerator.cpp
 	${DIR}/examples/chess/GameConfig.h

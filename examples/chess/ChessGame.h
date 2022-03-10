@@ -3,19 +3,21 @@
 
 #include <utility>
 #include <vector>
-#include <unordered_set>
+#include <unordered_map>
+#include <string>
 
 #include "examples/chess/chess-engine/ChessEngine.h"
+#include "examples/chess/chess-engine/Piece.h"
+#include "examples/chess/chess-engine/Cell.h"
+
 #include "engine/Engine.h"
 #include "renderer/primitives/Dimensions.h"
-#include "examples/chess/chess-engine/PieceToObjectTranslator.h"
 
 struct Widget;
 struct Object;
-struct Piece;
-struct Cell;
 
-typedef std::unordered_set<Cell, Object&, Cell::HashFunction> CellToObjectLookup;
+typedef std::unordered_map<Cell, Object*, Cell::HashFunction> CellToObjectLookup;
+typedef std::unordered_map<Piece, std::string, Piece::HashFunction> PieceToResourcePath;
 
 class ChessGame : public Engine {
 public:
@@ -28,9 +30,9 @@ public:
 	void handleBtnClick(int32_t idx);
 private:
 	ChessEngine engine;
-	PieceToObjectTranslator pieceToResourceTranslator;
 	CellToObjectLookup cellObject;
 	ChessState state = ChessState::WHITE_PLAYER;
+	PieceToResourcePath pieceToResource;
 
 	void setState(ChessState newState);
 

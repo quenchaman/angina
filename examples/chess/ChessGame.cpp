@@ -12,11 +12,24 @@
 
 #include "examples/chess/CellUtils.h"
 #include "examples/chess/GameConfig.h"
-#include "examples/chess/chess-engine/PieceToObjectTranslator.h"
 
 ChessGame::ChessGame():
-	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM),
-	pieceToResourceTranslator(PieceToObjectTranslator()) {}
+	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM) {
+
+	pieceToResource[Piece::WHITE_PAWN] = Resources::whitePawn;
+	pieceToResource[Piece::WHITE_ROOK] = Resources::whiteRook;
+	pieceToResource[Piece::WHITE_KNIGHT] = Resources::whiteKnight;
+	pieceToResource[Piece::WHITE_BISHOP] = Resources::whiteBishop;
+	pieceToResource[Piece::WHITE_QUEEN] = Resources::whiteQueen;
+	pieceToResource[Piece::WHITE_KING] = Resources::whiteKing;
+
+	pieceToResource[Piece::BLACK_PAWN] = Resources::blackPawn;
+	pieceToResource[Piece::BLACK_ROOK] = Resources::blackRook;
+	pieceToResource[Piece::BLACK_KNIGHT] = Resources::blackKnight;
+	pieceToResource[Piece::BLACK_BISHOP] = Resources::blackBishop;
+	pieceToResource[Piece::BLACK_QUEEN] = Resources::blackQueen;
+	pieceToResource[Piece::BLACK_KING] = Resources::blackKing;
+}
 
 ChessGame::~ChessGame() {
 	std::cout << "ChessGame destroyed" << std::endl;
@@ -33,7 +46,7 @@ void ChessGame::update() {
 	}
 }
 
-void ChessGame::handleLeftMouseClick([[maybe_unused]]Point p) {
+void ChessGame::handleLeftMouseClick(Point p) {
 	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
 
 	if (state == ChessState::WHITE_PLAYER && !engine.isCellSelected()) {
@@ -94,18 +107,18 @@ void ChessGame::createPieceObjects() {
 
 	for (auto const& [cell, piece] : positions) {
 		Object& obj = *getFactory().createObject(
-			pieceToResourceTranslator.pieceToResource[piece],
+			pieceToResource[piece],
 			CellUtils::cellToPoint(cell, GameConfig::CELL_DIM),
 			GameConfig::CELL_DIM
 		);
 
 		rootScreen->put(obj);
-		cellObject[cell] = obj;
+		cellObject[cell] = &obj;
 	}
 }
 
 void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) {
-	Object& obj = cellObject[source];
+	Object* obj = cellObject[source];
 	cellObject.erase(source);
 	cellObject[destination] = obj;
 }
