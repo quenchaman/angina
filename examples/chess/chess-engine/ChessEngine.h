@@ -1,66 +1,65 @@
 #ifndef EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_
 #define EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_
 
-#include "examples/chess/chess-engine/ChessState.h"
-#include "examples/chess/chess-engine/ChessBoard.h"
-#include "examples/chess/chess-engine/Piece.h"
+#include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Cell.h"
-#include "examples/chess/chess-engine/Move.h"
+#include "examples/chess/chess-engine/PlayerType.h"
+#include "examples/chess/chess-engine/ChessState.h"
 
-#include "examples/chess/chess-engine/PieceMoveGenerator.h"
+struct ChessMoveManager;
+struct ChessBoard;
+struct Piece;
 
-typedef std::function<void(const Cell&, const Cell&)> MoveEventCallback;
-
-/**
- * This chess engine assumes that white pieces is human and black pieces is computer.
- */
 class ChessEngine {
 public:
-	ChessEngine();
-	~ChessEngine();
-
-	Side switchSide();
-	void selectPiece(const Cell& source);
-	bool movePiece(const Cell& destination);
-	const CellToPieceLookup& getPieces() const;
-	bool isCellSelected() const;
-
-	/**
-	 * Whether a move is valid in terms of piece movement rules and general chess rules: check, etc.
-	 */
-	bool isValidPieceMove(const Cell& source, const Cell& destination) const;
-
-	std::vector<Move> generateValidPieceMoves(const Piece& piece, const Cell& cell) const;
-	/**
-	 * AI API
-	 */
-	Move getAIMove();
+	ChessEngine(ChessBoard&, ChessMoveManager&);
 
 	/*
-	 * Pub-sub API
+	 * Used for human players.
+	 * Selects a piece on the given cell. Returns whether the piece is selected.
 	 */
-	void subscribe(MoveEventCallback);
+	bool selectCell(const Cell&);
+
+	/**
+	 * Used for human players.
+	 * Based on the previously selected piece, tries to make a move. Returns whether move was done.
+	 */
+	bool movePiece(const Cell&);
+
+	/*
+	 * Makes a computer move based on ChessMoveManager AI logic.
+	 * Returns whether there are moves available. If none, it means that computer is in check or tie.
+	 */
+	bool makeComputerMove();
+
+	/*
+	 * Sets whether side is human/computer.
+	 */
+	void setPlayerType(Side, PlayerType);
 
 private:
-	ChessBoard board;
-	Cell selectedCell = Cell::UNDEFINED;
-	std::vector<MoveEventCallback> subscribers;
-	PieceMoveGenerator moveGen;
-	Side currentSide = Side::WHITE;
-
-	void resetSelection();
+	ChessMoveManager& moveManager;
+	ChessBoard& board;
+	Cell selectedCell;
+	ChessState state;
+	Side currentSide;
+	PlayerType whitePlayerType;
+	PlayerType blackPlayerType;
 
 	/*
-	 * Pub-sub API
+	 * Toggles between white/black.
 	 */
-	void notify(const Cell& source, const Cell& destination) const;
+	Side switchSide();
 
-	/**
-	 * AI API
+	/*
+	 * Changes the state of the state machine.
 	 */
-	std::vector<Move> calculateAllAvailableMoves(Side side) const;
+	ChessState setState(ChessState);
 
-	double scoreMove(const Cell& destination) const;
+	/*
+	 * Returns whether the piece user is trying to select is of the side (black/white) that is currently on the move.
+	 */
+	bool isSelectedPieceOnTurn(const Piece&) const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_ */

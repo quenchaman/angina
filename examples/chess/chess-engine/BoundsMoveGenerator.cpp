@@ -1,10 +1,10 @@
-#include "PieceMoveGenerator.h"
+#include "BoundsMoveGenerator.h"
 
 #include "examples/chess/chess-engine/ChessBoard.h"
 
-PieceMoveGenerator::PieceMoveGenerator(ChessBoard& chessBoard): board(chessBoard) {}
+BoundsMoveGenerator::BoundsMoveGenerator(ChessBoard& chessBoard): board(chessBoard) {}
 
-CellUnorderedSet PieceMoveGenerator::generatePieceMoves(Piece piece, Cell source) const {
+CellUnorderedSet BoundsMoveGenerator::generatePieceMoves(const Piece& piece, const Cell& source) const {
 	CellUnorderedSet moves;
 
 	switch (piece.rank) {
@@ -31,7 +31,7 @@ CellUnorderedSet PieceMoveGenerator::generatePieceMoves(Piece piece, Cell source
 	return moves;
 }
 
-CellUnorderedSet PieceMoveGenerator::generateKnightMoves(Cell& knightPosition) const {
+CellUnorderedSet BoundsMoveGenerator::generateKnightMoves(const Cell& knightPosition) const {
 	CellUnorderedSet m;
 	m.reserve(8);
 
@@ -50,14 +50,14 @@ CellUnorderedSet PieceMoveGenerator::generateKnightMoves(Cell& knightPosition) c
 	return m;
 }
 
-CellUnorderedSet PieceMoveGenerator::generateRookMoves(Cell& currentCell) const {
+CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell) const {
 	CellUnorderedSet destinationCells;
 
 	/* Go top */
 	Cell cellGoingTop = currentCell;
 	cellGoingTop.moveTop();
 
-	while (board.isInBounds(cellGoingTop) && isNotFriendlyOrIsEmpty(cellGoingTop)) {
+	while (board.isInBounds(cellGoingTop)) {
 		destinationCells.insert(cellGoingTop);
 		cellGoingTop.moveTop();
 	}
@@ -66,7 +66,7 @@ CellUnorderedSet PieceMoveGenerator::generateRookMoves(Cell& currentCell) const 
 	Cell cellGoingRight = currentCell;
 	cellGoingRight.moveRight();
 
-	while (board.isInBounds(cellGoingRight) && isNotFriendlyOrIsEmpty(cellGoingRight)) {
+	while (board.isInBounds(cellGoingRight)) {
 		destinationCells.insert(cellGoingRight);
 		cellGoingRight.moveRight();
 	}
@@ -75,7 +75,7 @@ CellUnorderedSet PieceMoveGenerator::generateRookMoves(Cell& currentCell) const 
 	Cell cellGoingDown = currentCell;
 	cellGoingDown.moveDown();
 
-	while (board.isInBounds(cellGoingDown) && isNotFriendlyOrIsEmpty(cellGoingDown)) {
+	while (board.isInBounds(cellGoingDown)) {
 		destinationCells.insert(cellGoingDown);
 		cellGoingDown.moveDown();
 	}
@@ -84,7 +84,7 @@ CellUnorderedSet PieceMoveGenerator::generateRookMoves(Cell& currentCell) const 
 	Cell cellGoingLeft = currentCell;
 	cellGoingLeft.moveLeft();
 
-	while (board.isInBounds(cellGoingLeft) && isNotFriendlyOrIsEmpty(cellGoingLeft)) {
+	while (board.isInBounds(cellGoingLeft)) {
 		destinationCells.insert(cellGoingLeft);
 		cellGoingLeft.moveLeft();
 	}
@@ -92,14 +92,14 @@ CellUnorderedSet PieceMoveGenerator::generateRookMoves(Cell& currentCell) const 
 	return destinationCells;
 }
 
-CellUnorderedSet PieceMoveGenerator::generateBishopMoves(Cell& currentCell) const {
+CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCell) const {
 	CellUnorderedSet destinationCells;
 
 	/* Go top-left diagonal */
 	Cell cellGoingTopLeft = currentCell;
 	cellGoingTopLeft.moveTop().moveLeft();
 
-	while (board.isInBounds(cellGoingTopLeft) && isNotFriendlyOrIsEmpty(cellGoingTopLeft)) {
+	while (board.isInBounds(cellGoingTopLeft)) {
 		destinationCells.insert(cellGoingTopLeft);
 		cellGoingTopLeft.moveTop().moveLeft();
 	}
@@ -108,7 +108,7 @@ CellUnorderedSet PieceMoveGenerator::generateBishopMoves(Cell& currentCell) cons
 	Cell cellGoingTopRight = currentCell;
 	cellGoingTopRight.moveTop().moveRight();
 
-	while (board.isInBounds(cellGoingTopRight) && isNotFriendlyOrIsEmpty(cellGoingTopRight)) {
+	while (board.isInBounds(cellGoingTopRight)) {
 		destinationCells.insert(cellGoingTopRight);
 		cellGoingTopRight.moveRight().moveTop();
 	}
@@ -117,7 +117,7 @@ CellUnorderedSet PieceMoveGenerator::generateBishopMoves(Cell& currentCell) cons
 	Cell cellGoingDownRight = currentCell;
 	cellGoingDownRight.moveDown().moveRight();
 
-	while (board.isInBounds(cellGoingDownRight) && isNotFriendlyOrIsEmpty(cellGoingDownRight)) {
+	while (board.isInBounds(cellGoingDownRight)) {
 		destinationCells.insert(cellGoingDownRight);
 		cellGoingDownRight.moveDown().moveRight();
 	}
@@ -126,7 +126,7 @@ CellUnorderedSet PieceMoveGenerator::generateBishopMoves(Cell& currentCell) cons
 	Cell cellGoingDownLeft = currentCell;
 	cellGoingDownLeft.moveLeft().moveDown();
 
-	while (board.isInBounds(cellGoingDownLeft) && isNotFriendlyOrIsEmpty(cellGoingDownLeft)) {
+	while (board.isInBounds(cellGoingDownLeft)) {
 		destinationCells.insert(cellGoingDownLeft);
 		cellGoingDownLeft.moveLeft().moveDown();
 	}
@@ -134,7 +134,7 @@ CellUnorderedSet PieceMoveGenerator::generateBishopMoves(Cell& currentCell) cons
 	return destinationCells;
 }
 
-CellUnorderedSet PieceMoveGenerator::generateQueenMoves(Cell& currentCell) const {
+CellUnorderedSet BoundsMoveGenerator::generateQueenMoves(const Cell& currentCell) const {
 	CellUnorderedSet bishopMoves = generateBishopMoves(currentCell);
 	CellUnorderedSet rookMoves = generateRookMoves(currentCell);
 
@@ -143,9 +143,8 @@ CellUnorderedSet PieceMoveGenerator::generateQueenMoves(Cell& currentCell) const
 	return bishopMoves;
 }
 
-CellUnorderedSet PieceMoveGenerator::generatePawnMoves(Cell& currentCell, Side side) const {
+CellUnorderedSet BoundsMoveGenerator::generatePawnMoves(const Cell& currentCell, const Side& side) const {
 	CellUnorderedSet destinationCells;
-
 	Cell forwardMove = currentCell;
 
 	if (side == Side::WHITE) {
@@ -157,8 +156,4 @@ CellUnorderedSet PieceMoveGenerator::generatePawnMoves(Cell& currentCell, Side s
 	destinationCells.insert(forwardMove);
 
 	return destinationCells;
-}
-
-bool PieceMoveGenerator::isNotFriendlyOrIsEmpty(const Cell& cell) const {
-	return board.isEmptyCell(cell) || !board.isOccupiedBySameSidePiece(cell);
 }

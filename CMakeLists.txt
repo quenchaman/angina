@@ -80,8 +80,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/Cell.cpp
 	${DIR}/examples/chess/chess-engine/ChessBoard.cpp
 	${DIR}/examples/chess/chess-engine/ChessBoard.h
-	${DIR}/examples/chess/chess-engine/ChessEngine.cpp
-	${DIR}/examples/chess/chess-engine/ChessEngine.h
+	${DIR}/examples/chess/chess-engine/ChessMoveManager.cpp
+	${DIR}/examples/chess/chess-engine/ChessMoveManager.h
 	${DIR}/examples/chess/chess-engine/Move.h
 	${DIR}/examples/chess/chess-engine/Move.cpp
 	${DIR}/examples/chess/chess-engine/Piece.h
@@ -95,8 +95,11 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/ChessState.h
 	${DIR}/examples/chess/CellUtils.h
 	${DIR}/examples/chess/CellUtils.cpp
-	${DIR}/examples/chess/chess-engine/PieceMoveGenerator.h
-	${DIR}/examples/chess/chess-engine/PieceMoveGenerator.cpp
+	${DIR}/examples/chess/chess-engine/BoundsMoveGenerator.h
+	${DIR}/examples/chess/chess-engine/BoundsMoveGenerator.cpp
+	${DIR}/examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h
+	${DIR}/examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.cpp
+	${DIR}/examples/chess/chess-engine/PlayerType.h
 	${DIR}/examples/chess/GameConfig.h
 )
 

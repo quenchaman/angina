@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <string>
 
-#include "examples/chess/chess-engine/ChessEngine.h"
+#include "chess-engine/ChessMoveManager.h"
 #include "examples/chess/chess-engine/Piece.h"
 #include "examples/chess/chess-engine/Cell.h"
 
@@ -29,7 +29,7 @@ public:
 	void handleLeftMouseClick(Point p);
 	void handleBtnClick(int32_t idx);
 private:
-	ChessEngine engine;
+	ChessMoveManager engine;
 	CellToObjectLookup cellObject;
 	ChessState state = ChessState::WHITE_PLAYER;
 	PieceToResourcePath pieceToResource;
