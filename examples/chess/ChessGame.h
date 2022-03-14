@@ -12,6 +12,10 @@
 
 #include "engine/Engine.h"
 #include "renderer/primitives/Dimensions.h"
+#include "examples/chess/chess-engine/BoundsMoveGenerator.h"
+#include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
+#include "examples/chess/chess-engine/ChessEngine.h"
+#include "examples/chess/chess-engine/ChessMoveManager.h"
 
 struct Widget;
 struct Object;
@@ -29,12 +33,13 @@ public:
 	void handleLeftMouseClick(Point p);
 	void handleBtnClick(int32_t idx);
 private:
-	ChessMoveManager engine;
+	ChessBoard board;
+	BoundsMoveGenerator baseMoveGen;
+	FriendlyFireExcludedMoveGenerator moveGen;
+	ChessMoveManager moveManager;
+	ChessEngine engine;
 	CellToObjectLookup cellObject;
-	ChessState state = ChessState::WHITE_PLAYER;
 	PieceToResourcePath pieceToResource;
-
-	void setState(ChessState newState);
 
 	Widget* buildLandingPage();
 	Widget* buildChessPage();

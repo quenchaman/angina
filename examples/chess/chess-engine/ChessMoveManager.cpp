@@ -2,7 +2,7 @@
 
 #include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
 
-ChessMoveManager::ChessMoveManager(ChessBoard& chessBoard, FriendlyFireExcludedMoveGenerator& generator): moveGen(generator) {}
+ChessMoveManager::ChessMoveManager(ChessBoard& chessBoard, FriendlyFireExcludedMoveGenerator& generator): board(chessBoard), moveGen(generator) {}
 
 bool ChessMoveManager::movePiece(const Cell& source, const Cell& destination) {
 	CellUnorderedSet moves = moveGen.generatePieceMoves(source);
@@ -44,7 +44,7 @@ Move ChessMoveManager::getAIMove(Side side) {
 	return allMoves[0];
 }
 
-std::vector<Move> ChessMoveManager::scorePieceMoves(const Piece& piece, const Cell& cell) const {
+std::vector<Move> ChessMoveManager::scorePieceMoves(const Cell& cell) const {
 	std::vector<Move> moves;
 	CellUnorderedSet currentPieceMoves = moveGen.generatePieceMoves(cell);
 
@@ -67,7 +67,7 @@ std::vector<Move> ChessMoveManager::calculateAllAvailableMoves(Side side) const 
 
 	for (auto const& [cell, piece] : board.getPiecePositions()) {
 		if (piece.side == side) {
-			std::vector<Move> currentValidPieceMoves = scorePieceMoves(piece, cell);
+			std::vector<Move> currentValidPieceMoves = scorePieceMoves(cell);
 
 			allMoves.insert(allMoves.end(), currentValidPieceMoves.begin(), currentValidPieceMoves.end());
 		}

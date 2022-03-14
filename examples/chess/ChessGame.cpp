@@ -14,7 +14,11 @@
 #include "examples/chess/GameConfig.h"
 
 ChessGame::ChessGame():
-	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM) {
+	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM),
+	baseMoveGen(BoundsMoveGenerator(board)),
+	moveGen(FriendlyFireExcludedMoveGenerator(board, baseMoveGen)),
+	moveManager(ChessMoveManager(board, moveGen)),
+	engine(ChessEngine(board, moveManager)) {
 
 	pieceToResource[Piece::WHITE_PAWN] = Resources::whitePawn;
 	pieceToResource[Piece::WHITE_ROOK] = Resources::whiteRook;
@@ -40,25 +44,13 @@ void ChessGame::init() {
 }
 
 void ChessGame::update() {
-	if (state == ChessState::COMPUTER_MOVE) {
-		handleComputerMove();
-		setState(ChessState::WHITE_PLAYER);
-	}
+
 }
 
 void ChessGame::handleLeftMouseClick(Point p) {
 	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
 
-	if (state == ChessState::WHITE_PLAYER && !engine.isCellSelected()) {
-		engine.selectPiece(selectedCell);
-		setState(ChessState::WHITE_PIECE_SELECTED);
-	} else if (state == ChessState::WHITE_PIECE_SELECTED) {
-		if (engine.movePiece(selectedCell)) {
-			setState(ChessState::COMPUTER_MOVE);
-		} else {
-			setState(ChessState::WHITE_PLAYER);
-		}
-	}
+	engine.selectCell(selectedCell);
 }
 
 void ChessGame::handleBtnClick([[maybe_unused]]int32_t idx) {
@@ -103,7 +95,7 @@ void ChessGame::handleStartGameButton() {
 }
 
 void ChessGame::createPieceObjects() {
-	const CellToPieceLookup& positions = engine.getPieces();
+	const CellToPieceLookup& positions = board.getPiecePositions();
 
 	for (auto const& [cell, piece] : positions) {
 		Object& obj = *getFactory().createObject(
@@ -123,13 +115,6 @@ void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) 
 	cellObject[destination] = obj;
 }
 
-void ChessGame::setState(ChessState newState) {
-	state = newState;
-}
-
 void ChessGame::handleComputerMove() {
-	Move bestMove = engine.getAIMove();
 
-	engine.selectPiece(bestMove.source);
-	engine.movePiece(bestMove.destination);
 }

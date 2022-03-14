@@ -28,7 +28,7 @@ public:
 protected:
 	virtual std::vector<Move> calculateAllAvailableMoves(Side side) const;
 	virtual double scoreMove(const Cell& destination) const;
-	virtual std::vector<Move> scorePieceMoves(const Piece& piece, const Cell& cell) const;
+	virtual std::vector<Move> scorePieceMoves(const Cell& cell) const;
 
 private:
 	ChessBoard board;

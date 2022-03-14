@@ -1,6 +1,8 @@
 #ifndef EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_
 #define EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_
 
+#include <unordered_map>
+
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Cell.h"
 #include "examples/chess/chess-engine/PlayerType.h"
@@ -13,7 +15,6 @@ struct Piece;
 class ChessEngine {
 public:
 	ChessEngine(ChessBoard&, ChessMoveManager&);
-
 	/*
 	 * Used for human players.
 	 * Selects a piece on the given cell. Returns whether the piece is selected.
@@ -45,6 +46,7 @@ private:
 	Side currentSide;
 	PlayerType whitePlayerType;
 	PlayerType blackPlayerType;
+	std::unordered_map<Side, PlayerType> sideToPlayerType;
 
 	/*
 	 * Toggles between white/black.
@@ -60,6 +62,11 @@ private:
 	 * Returns whether the piece user is trying to select is of the side (black/white) that is currently on the move.
 	 */
 	bool isSelectedPieceOnTurn(const Piece&) const;
+
+	/*
+	 * Based on the current state and the type of white and black player, returns the next state;
+	 */
+	ChessState getNextState();
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_ */

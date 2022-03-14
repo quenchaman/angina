@@ -6,11 +6,20 @@ ChessEngine::ChessEngine(ChessBoard& chessBoard, ChessMoveManager& moveMng):
 	moveManager(moveMng),
 	board(chessBoard),
 	selectedCell(Cell::UNDEFINED),
-	state(ChessState::HUMAN_SELECT_PIECE), // This should be checked based on player type.
+	state(ChessState::NO_OP),
 	currentSide(Side::WHITE),
 	whitePlayerType(PlayerType::HUMAN),
-	blackPlayerType(PlayerType::COMPUTER) {}
+	blackPlayerType(PlayerType::HUMAN) {
 
+	if (whitePlayerType == PlayerType::HUMAN) {
+		state = ChessState::HUMAN_SELECT_PIECE;
+	} else {
+		state = ChessState::COMPUTER_MOVE;
+	}
+
+	sideToPlayerType[Side::WHITE] = whitePlayerType;
+	sideToPlayerType[Side::BLACK] = blackPlayerType;
+}
 
 bool ChessEngine::selectCell(const Cell& cell) {
 	if (state != ChessState::HUMAN_SELECT_PIECE || board.isEmptyCell(cell)) {
@@ -37,20 +46,41 @@ bool ChessEngine::movePiece(const Cell& destination) {
 	bool moveOK = moveManager.movePiece(selectedCell, destination);
 
 	if (moveOK) {
-		setState(ChessState::COMPUTER_MOVE);
+		switchSide();
+		setState(getNextState());
 	}
 
 	return moveOK;
 }
 
+// TODO: Improve this once we get to AI
 bool ChessEngine::makeComputerMove() {
 	if (state != ChessState::COMPUTER_MOVE) {
 		return false;
 	}
 
-	return moveManager.getAIMove(currentSide);
+	Move aiMove = moveManager.getAIMove(currentSide);
+
+	switchSide();
+	setState(getNextState());
+
+	return true;
 }
 
 bool ChessEngine::isSelectedPieceOnTurn(const Piece& piece) const {
 	return piece.side == currentSide;
+}
+
+ChessState ChessEngine::getNextState() {
+		PlayerType nextPlayerType = sideToPlayerType[currentSide];
+
+		if (nextPlayerType == PlayerType::COMPUTER) {
+			return ChessState::COMPUTER_MOVE;
+		} else {
+			return ChessState::HUMAN_SELECT_PIECE;
+		}
+}
+
+Side ChessEngine::switchSide() {
+	return currentSide = (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
 }
