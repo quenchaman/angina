@@ -61,7 +61,7 @@ bool ChessBoard::isPossibleMove(const Cell& source, const Cell& destination) con
 		return false;
 	}
 
-	return !isEmptyCell(destination);
+	return true;
 }
 
 bool ChessBoard::isInBounds(const Cell& cell) const {

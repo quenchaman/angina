@@ -61,6 +61,8 @@ bool ChessEngine::makeComputerMove() {
 
 	Move aiMove = moveManager.getAIMove(currentSide);
 
+	moveManager.movePiece(aiMove.source, aiMove.destination);
+
 	switchSide();
 	setState(getNextState());
 
@@ -81,6 +83,14 @@ ChessState ChessEngine::getNextState() {
 		}
 }
 
+bool ChessEngine::isCellSelected() const {
+	return selectedCell != Cell::UNDEFINED;
+}
+
 Side ChessEngine::switchSide() {
 	return currentSide = (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
+}
+
+ChessState ChessEngine::setState(ChessState newState) {
+	return state = newState;
 }

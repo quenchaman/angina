@@ -10,7 +10,14 @@ bool ChessMoveManager::movePiece(const Cell& source, const Cell& destination) {
 	bool isOkMove = moves.find(destination) != moves.end();
 
 	if (isOkMove) {
-		return board.tryMakeMove(source, destination);
+		bool isBoardMoveOk = board.tryMakeMove(source, destination);
+
+		std::cout << "Is the board move OK? " << isBoardMoveOk << std::endl;
+		if (isBoardMoveOk) {
+			notify(source, destination);
+		}
+
+		return isBoardMoveOk;
 	}
 
 	return false;
@@ -21,6 +28,7 @@ void ChessMoveManager::subscribe(MoveEventCallback callback) {
 }
 
 void ChessMoveManager::notify(const Cell& source, const Cell& destination) const {
+	std::cout << "Notifying subscribers!" << std::endl;
 	for (auto& subscriber : subscribers) {
 		subscriber(source, destination);
 	}

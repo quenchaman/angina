@@ -38,6 +38,8 @@ public:
 	 */
 	void setPlayerType(Side, PlayerType);
 
+	bool isCellSelected() const;
+
 private:
 	ChessMoveManager& moveManager;
 	ChessBoard& board;

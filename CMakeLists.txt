@@ -82,6 +82,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/ChessBoard.h
 	${DIR}/examples/chess/chess-engine/ChessMoveManager.cpp
 	${DIR}/examples/chess/chess-engine/ChessMoveManager.h
+	${DIR}/examples/chess/chess-engine/ChessEngine.cpp
+	${DIR}/examples/chess/chess-engine/ChessEngine.h
 	${DIR}/examples/chess/chess-engine/Move.h
 	${DIR}/examples/chess/chess-engine/Move.cpp
 	${DIR}/examples/chess/chess-engine/Piece.h

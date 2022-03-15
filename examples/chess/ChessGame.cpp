@@ -50,7 +50,12 @@ void ChessGame::update() {
 void ChessGame::handleLeftMouseClick(Point p) {
 	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
 
-	engine.selectCell(selectedCell);
+	std::cout << "The selected cell is " << selectedCell << std::endl;
+	if (engine.isCellSelected()) {
+		engine.movePiece(selectedCell);
+	} else {
+		engine.selectCell(selectedCell);
+	}
 }
 
 void ChessGame::handleBtnClick([[maybe_unused]]int32_t idx) {
@@ -91,7 +96,7 @@ Widget* ChessGame::buildChessPage() {
 void ChessGame::handleStartGameButton() {
 	changeScreen(*buildChessPage());
 	createPieceObjects();
-	engine.subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
+	moveManager.subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void ChessGame::createPieceObjects() {
@@ -111,6 +116,7 @@ void ChessGame::createPieceObjects() {
 
 void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) {
 	Object* obj = cellObject[source];
+	obj->move(CellUtils::cellToPoint(destination, GameConfig::CELL_DIM));
 	cellObject.erase(source);
 	cellObject[destination] = obj;
 }

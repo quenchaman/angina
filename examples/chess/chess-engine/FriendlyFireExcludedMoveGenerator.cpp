@@ -15,12 +15,11 @@ CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(const Cel
 	}
 
 	Piece piece = board.getPieceOnCell(pieceCell);
+
 	CellUnorderedSet boundedMoves = moveGen.generatePieceMoves(piece, pieceCell);
 
 	for (auto const& cell : boundedMoves) {
-		Piece pieceOnTargetCell = board.getPieceOnCell(cell);
-
-		if (board.isEmptyCell(cell) || pieceOnTargetCell.side != piece.side) {
+		if (board.isEmptyCell(cell) || board.getPieceOnCell(cell).side != piece.side) {
 			friendlyFireExcludedMoves.insert(cell);
 		}
 	}
