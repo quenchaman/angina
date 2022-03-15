@@ -45,10 +45,16 @@ bool ChessEngine::movePiece(const Cell& destination) {
 
 	bool moveOK = moveManager.movePiece(selectedCell, destination);
 
+	std::cout << "Is the move OK? " << moveOK << std::endl;
+
 	if (moveOK) {
 		switchSide();
 		setState(getNextState());
+	} else {
+		setState(ChessState::HUMAN_SELECT_PIECE);
 	}
+
+	resetSelection();
 
 	return moveOK;
 }
@@ -63,6 +69,7 @@ bool ChessEngine::makeComputerMove() {
 
 	moveManager.movePiece(aiMove.source, aiMove.destination);
 
+	resetSelection();
 	switchSide();
 	setState(getNextState());
 
@@ -93,4 +100,8 @@ Side ChessEngine::switchSide() {
 
 ChessState ChessEngine::setState(ChessState newState) {
 	return state = newState;
+}
+
+void ChessEngine::resetSelection() {
+	selectedCell = Cell::UNDEFINED;
 }

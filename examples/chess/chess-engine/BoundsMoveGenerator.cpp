@@ -12,16 +12,16 @@ CellUnorderedSet BoundsMoveGenerator::generatePieceMoves(const Piece& piece, con
 			moves = generateKnightMoves(source);
 			break;
 		case Rank::ROOK:
-			moves = generateRookMoves(source);
+			moves = generateRookMoves(source, piece.side);
 			break;
 		case Rank::BISHOP:
-			moves = generateBishopMoves(source);
+			moves = generateBishopMoves(source, piece.side);
 			break;
 		case Rank::PAWN:
 			moves = generatePawnMoves(source, piece.side);
 			break;
 		case Rank::QUEEN:
-			moves = generateQueenMoves(source);
+			moves = generateQueenMoves(source, piece.side);
 			break;
 		// TODO: Add case for King
 		default:
@@ -50,7 +50,7 @@ CellUnorderedSet BoundsMoveGenerator::generateKnightMoves(const Cell& knightPosi
 	return m;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell) const {
+CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell, Side side) const {
 	CellUnorderedSet destinationCells;
 
 	/* Go top */
@@ -58,8 +58,16 @@ CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell)
 	cellGoingTop.moveTop();
 
 	while (board.isInBounds(cellGoingTop)) {
+		if (!board.isEmptyCell(cellGoingTop) && isSameSidePiece(cellGoingTop, side)) {
+			break;
+		}
+
 		destinationCells.insert(cellGoingTop);
 		cellGoingTop.moveTop();
+
+		if (!isSameSidePiece(cellGoingTop, side)) {
+			break;
+		}
 	}
 
 	/* Go right */
@@ -67,8 +75,16 @@ CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell)
 	cellGoingRight.moveRight();
 
 	while (board.isInBounds(cellGoingRight)) {
+		if (!board.isEmptyCell(cellGoingRight) && isSameSidePiece(cellGoingRight, side)) {
+			break;
+		}
+
 		destinationCells.insert(cellGoingRight);
 		cellGoingRight.moveRight();
+
+		if (!isSameSidePiece(cellGoingRight, side)) {
+			break;
+		}
 	}
 
 	/* Go down */
@@ -76,8 +92,16 @@ CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell)
 	cellGoingDown.moveDown();
 
 	while (board.isInBounds(cellGoingDown)) {
+		if (!board.isEmptyCell(cellGoingDown) && isSameSidePiece(cellGoingDown, side)) {
+			break;
+		}
+
 		destinationCells.insert(cellGoingDown);
 		cellGoingDown.moveDown();
+
+		if (!isSameSidePiece(cellGoingDown, side)) {
+			break;
+		}
 	}
 
 	/* Go left */
@@ -85,14 +109,22 @@ CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell)
 	cellGoingLeft.moveLeft();
 
 	while (board.isInBounds(cellGoingLeft)) {
+		if (!board.isEmptyCell(cellGoingLeft) && isSameSidePiece(cellGoingLeft, side)) {
+			break;
+		}
+
 		destinationCells.insert(cellGoingLeft);
 		cellGoingLeft.moveLeft();
+
+		if (!isSameSidePiece(cellGoingLeft, side)) {
+			break;
+		}
 	}
 
 	return destinationCells;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCell) const {
+CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCell, [[maybe_unused]]Side side) const {
 	CellUnorderedSet destinationCells;
 
 	/* Go top-left diagonal */
@@ -134,16 +166,16 @@ CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCel
 	return destinationCells;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generateQueenMoves(const Cell& currentCell) const {
-	CellUnorderedSet bishopMoves = generateBishopMoves(currentCell);
-	CellUnorderedSet rookMoves = generateRookMoves(currentCell);
+CellUnorderedSet BoundsMoveGenerator::generateQueenMoves(const Cell& currentCell, Side side) const {
+	CellUnorderedSet bishopMoves = generateBishopMoves(currentCell, side);
+	CellUnorderedSet rookMoves = generateRookMoves(currentCell, side);
 
 	bishopMoves.insert(rookMoves.begin(), rookMoves.end());
 
 	return bishopMoves;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generatePawnMoves(const Cell& currentCell, const Side& side) const {
+CellUnorderedSet BoundsMoveGenerator::generatePawnMoves(const Cell& currentCell, Side side) const {
 	CellUnorderedSet destinationCells;
 	Cell forwardMove = currentCell;
 
@@ -156,4 +188,8 @@ CellUnorderedSet BoundsMoveGenerator::generatePawnMoves(const Cell& currentCell,
 	destinationCells.insert(forwardMove);
 
 	return destinationCells;
+}
+
+bool BoundsMoveGenerator::isSameSidePiece(const Cell& cell, Side side) const {
+	return board.getPieceOnCell(cell).side == side;
 }

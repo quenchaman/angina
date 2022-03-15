@@ -69,6 +69,8 @@ private:
 	 * Based on the current state and the type of white and black player, returns the next state;
 	 */
 	ChessState getNextState();
+
+	void resetSelection();
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_ */

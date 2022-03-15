@@ -18,10 +18,10 @@ CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(const Cel
 
 	CellUnorderedSet boundedMoves = moveGen.generatePieceMoves(piece, pieceCell);
 
+	std::cout << "Bounded moves are with size: " << boundedMoves.size() << std::endl;
+
 	for (auto const& cell : boundedMoves) {
-		if (board.isEmptyCell(cell) || board.getPieceOnCell(cell).side != piece.side) {
-			friendlyFireExcludedMoves.insert(cell);
-		}
+		friendlyFireExcludedMoves.insert(cell);
 	}
 
 	return friendlyFireExcludedMoves;

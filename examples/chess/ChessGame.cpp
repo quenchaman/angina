@@ -50,10 +50,12 @@ void ChessGame::update() {
 void ChessGame::handleLeftMouseClick(Point p) {
 	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
 
-	std::cout << "The selected cell is " << selectedCell << std::endl;
+
 	if (engine.isCellSelected()) {
+		std::cout << "The moved cell is " << selectedCell << std::endl;
 		engine.movePiece(selectedCell);
 	} else {
+		std::cout << "The selected cell is " << selectedCell << std::endl;
 		engine.selectCell(selectedCell);
 	}
 }

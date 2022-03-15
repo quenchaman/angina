@@ -21,10 +21,12 @@ private:
 	ChessBoard& board;
 
 	CellUnorderedSet generateKnightMoves(const Cell&) const;
-	CellUnorderedSet generateRookMoves(const Cell&) const;
-	CellUnorderedSet generateBishopMoves(const Cell&) const;
-	CellUnorderedSet generateQueenMoves(const Cell&) const;
-	CellUnorderedSet generatePawnMoves(const Cell&, const Side&) const;
+	CellUnorderedSet generateRookMoves(const Cell&, Side) const;
+	CellUnorderedSet generateBishopMoves(const Cell&, Side) const;
+	CellUnorderedSet generateQueenMoves(const Cell&, Side) const;
+	CellUnorderedSet generatePawnMoves(const Cell&, Side) const;
+
+	bool isSameSidePiece(const Cell&, Side) const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_BOUNDSMOVEGENERATOR_H_ */
