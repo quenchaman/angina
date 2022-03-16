@@ -26,7 +26,7 @@ public:
 	void subscribe(MoveEventCallback);
 
 protected:
-	virtual std::vector<Move> calculateAllAvailableMoves(Side side) const;
+	virtual std::vector<Move> calculateAllAvailableMoves(Side side);
 	virtual double scoreMove(const Cell& destination) const;
 	virtual std::vector<Move> scorePieceMoves(const Cell& cell) const;
 

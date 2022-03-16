@@ -21,7 +21,7 @@ class ChessBoard {
 public:
 	ChessBoard();
 
-	const CellToPieceLookup& getPiecePositions() const;
+	const CellToPieceLookup& getPiecePositions();
 	bool tryMakeMove(const Cell& source, const Cell& destination);
 	bool isPossibleMove(const Cell& source, const Cell& destination) const;
 	void setInitialPieceFormation();

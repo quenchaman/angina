@@ -12,9 +12,11 @@
 
 #include "examples/chess/CellUtils.h"
 #include "examples/chess/GameConfig.h"
+#include "examples/chess/chess-engine/ChessBoard.h"
 
 ChessGame::ChessGame():
 	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM),
+	board(*(new ChessBoard())),
 	baseMoveGen(BoundsMoveGenerator(board)),
 	moveGen(FriendlyFireExcludedMoveGenerator(board, baseMoveGen)),
 	moveManager(ChessMoveManager(board, moveGen)),
@@ -53,6 +55,11 @@ void ChessGame::handleLeftMouseClick(Point p) {
 
 	if (engine.isCellSelected()) {
 		std::cout << "The moved cell is " << selectedCell << std::endl;
+		std::cout << "Is the cell empty? " << board.isEmptyCell(selectedCell) << std::endl;
+		if (!board.isEmptyCell(selectedCell)) {
+			std::cout << "WHat is the thing on the cell? " << board.getPieceOnCell(selectedCell).rank << std::endl;
+		}
+		std::cout << "what is the address of the board " << &board << std::endl;
 		engine.movePiece(selectedCell);
 	} else {
 		std::cout << "The selected cell is " << selectedCell << std::endl;

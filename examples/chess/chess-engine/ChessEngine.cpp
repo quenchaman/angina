@@ -43,7 +43,16 @@ bool ChessEngine::movePiece(const Cell& destination) {
 		return false;
 	}
 
+	const CellToPieceLookup& b = board.getPiecePositions();
+	for (auto const& [cell, piece] : b) {
+			std::cout << "Before the cells are " << cell << " and the address of collection is " << &b << std::endl;
+		}
 	bool moveOK = moveManager.movePiece(selectedCell, destination);
+
+	const CellToPieceLookup& b2 = board.getPiecePositions();
+	for (auto const& [cell, piece] : b2) {
+				std::cout << "After the cells are " << cell << " and the address of collection is " << &b2 << std::endl;
+			}
 
 	std::cout << "Is the move OK? " << moveOK << std::endl;
 

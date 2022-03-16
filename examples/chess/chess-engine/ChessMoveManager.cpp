@@ -67,7 +67,7 @@ std::vector<Move> ChessMoveManager::scorePieceMoves(const Cell& cell) const {
 	return moves;
 }
 
-std::vector<Move> ChessMoveManager::calculateAllAvailableMoves(Side side) const {
+std::vector<Move> ChessMoveManager::calculateAllAvailableMoves(Side side) {
 	std::vector<Move> allMoves;
 
   // In chess, if a "node" is considered to be a legal position,

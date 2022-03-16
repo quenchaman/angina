@@ -1,5 +1,7 @@
 #include "BoundsMoveGenerator.h"
 
+#include <iostream>
+
 #include "examples/chess/chess-engine/ChessBoard.h"
 
 BoundsMoveGenerator::BoundsMoveGenerator(ChessBoard& chessBoard): board(chessBoard) {}
@@ -58,9 +60,17 @@ CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell,
 	cellGoingTop.moveTop();
 
 	while (board.isInBounds(cellGoingTop)) {
+		std::cout << "what is the address of the board " << &board << std::endl;
+		std::cout << "The move is in bounds " << cellGoingTop << std::endl;
+
 		if (!board.isEmptyCell(cellGoingTop) && isSameSidePiece(cellGoingTop, side)) {
+			std::cout << "Is it an empty cell? " << board.isEmptyCell(cellGoingTop) << std::endl;
+			std::cout << "What is the piece here " << board.getPieceOnCell(cellGoingTop).rank << std::endl;
+			std::cout << "Is it same side cell? " << isSameSidePiece(cellGoingTop, side) << std::endl;
 			break;
 		}
+
+		std::cout << "The move is on a free cell" << std::endl;
 
 		destinationCells.insert(cellGoingTop);
 		cellGoingTop.moveTop();

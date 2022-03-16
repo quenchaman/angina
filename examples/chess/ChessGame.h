@@ -19,6 +19,7 @@
 
 struct Widget;
 struct Object;
+struct ChessBoard;
 
 typedef std::unordered_map<Cell, Object*, Cell::HashFunction> CellToObjectLookup;
 typedef std::unordered_map<Piece, std::string, Piece::HashFunction> PieceToResourcePath;
@@ -33,7 +34,7 @@ public:
 	void handleLeftMouseClick(Point p);
 	void handleBtnClick(int32_t idx);
 private:
-	ChessBoard board;
+	ChessBoard& board;
 	BoundsMoveGenerator baseMoveGen;
 	FriendlyFireExcludedMoveGenerator moveGen;
 	ChessMoveManager moveManager;

@@ -11,6 +11,7 @@ ChessBoard::ChessBoard() {
 }
 
 void ChessBoard::setInitialPieceFormation() {
+	std::cout << "In setInitialPieceFormation the address of collection is " << &board << std::endl;
 	const int32_t blackPawnRow = 1;
 	const int32_t whitePawnRow = 6;
 
@@ -49,9 +50,18 @@ bool ChessBoard::tryMakeMove(const Cell& source, const Cell& destination) {
 }
 
 void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
+	std::cout << "In movePiece the address of collection is " << &board << std::endl;
 	Piece* sourcePiece = &board.at(source);
 	board.erase(source);
+
+	std::cout << "Have we erased something? " <<(board.find(source) == board.end()) << std::endl;
+	std::cout << "We erased " << source << std::endl;
+
 	board[destination] = *sourcePiece;
+
+	for (auto const& [cell, piece] : board) {
+			std::cout << "Inside the cells are " << cell << " and the address of collection is " << &board << std::endl;
+		}
 }
 
 bool ChessBoard::isPossibleMove(const Cell& source, const Cell& destination) const {
@@ -73,10 +83,13 @@ bool ChessBoard::isEmptyCell(const Cell& cell) const {
 }
 
 const Piece& ChessBoard::getPieceOnCell(const Cell& source) const {
+	std::cout << "Is the cell empty" << (board.find(source) == board.end()) << std::endl;
+	std::cout << "Is the cell empty" << isEmptyCell(source) << std::endl;
 	return board.at(source);
 }
 
-const CellToPieceLookup& ChessBoard::getPiecePositions() const {
+const CellToPieceLookup& ChessBoard::getPiecePositions() {
+	std::cout << "The address of the board that we are returning is " << &board << std::endl;
 	return board;
 }
 
