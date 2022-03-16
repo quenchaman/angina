@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <vector>
 #include <functional>
+#include <string>
 #include <stack>
 
 #include "examples/chess/chess-engine/Cell.h"

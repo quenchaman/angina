@@ -31,7 +31,7 @@ protected:
 	virtual std::vector<Move> scorePieceMoves(const Cell& cell) const;
 
 private:
-	ChessBoard board;
+	ChessBoard& board;
 	std::vector<MoveEventCallback> subscribers;
 	FriendlyFireExcludedMoveGenerator& moveGen;
 

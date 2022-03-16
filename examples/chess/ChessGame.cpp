@@ -16,7 +16,7 @@
 
 ChessGame::ChessGame():
 	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM),
-	board(*(new ChessBoard())),
+	board(ChessBoard()),
 	baseMoveGen(BoundsMoveGenerator(board)),
 	moveGen(FriendlyFireExcludedMoveGenerator(board, baseMoveGen)),
 	moveManager(ChessMoveManager(board, moveGen)),
@@ -52,17 +52,9 @@ void ChessGame::update() {
 void ChessGame::handleLeftMouseClick(Point p) {
 	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
 
-
 	if (engine.isCellSelected()) {
-		std::cout << "The moved cell is " << selectedCell << std::endl;
-		std::cout << "Is the cell empty? " << board.isEmptyCell(selectedCell) << std::endl;
-		if (!board.isEmptyCell(selectedCell)) {
-			std::cout << "WHat is the thing on the cell? " << board.getPieceOnCell(selectedCell).rank << std::endl;
-		}
-		std::cout << "what is the address of the board " << &board << std::endl;
 		engine.movePiece(selectedCell);
 	} else {
-		std::cout << "The selected cell is " << selectedCell << std::endl;
 		engine.selectCell(selectedCell);
 	}
 }
