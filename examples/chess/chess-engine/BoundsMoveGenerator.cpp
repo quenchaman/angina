@@ -59,76 +59,36 @@ CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell,
 	Cell cellGoingTop = currentCell;
 	cellGoingTop.moveTop();
 
-	while (board.isInBounds(cellGoingTop)) {
-		std::cout << "what is the address of the board " << &board << std::endl;
-		std::cout << "The move is in bounds " << cellGoingTop << std::endl;
-
-		if (!board.isEmptyCell(cellGoingTop) && isSameSidePiece(cellGoingTop, side)) {
-			std::cout << "Is it an empty cell? " << board.isEmptyCell(cellGoingTop) << std::endl;
-			std::cout << "What is the piece here " << board.getPieceOnCell(cellGoingTop).rank << std::endl;
-			std::cout << "Is it same side cell? " << isSameSidePiece(cellGoingTop, side) << std::endl;
-			break;
-		}
-
-		std::cout << "The move is on a free cell" << std::endl;
-
+	while (isValidMove(cellGoingTop, side)) {
 		destinationCells.insert(cellGoingTop);
 		cellGoingTop.moveTop();
-
-		if (!isSameSidePiece(cellGoingTop, side)) {
-			break;
-		}
 	}
 
 	/* Go right */
 	Cell cellGoingRight = currentCell;
 	cellGoingRight.moveRight();
 
-	while (board.isInBounds(cellGoingRight)) {
-		if (!board.isEmptyCell(cellGoingRight) && isSameSidePiece(cellGoingRight, side)) {
-			break;
-		}
-
+	while (isValidMove(cellGoingRight, side)) {
 		destinationCells.insert(cellGoingRight);
 		cellGoingRight.moveRight();
-
-		if (!isSameSidePiece(cellGoingRight, side)) {
-			break;
-		}
 	}
 
 	/* Go down */
 	Cell cellGoingDown = currentCell;
 	cellGoingDown.moveDown();
 
-	while (board.isInBounds(cellGoingDown)) {
-		if (!board.isEmptyCell(cellGoingDown) && isSameSidePiece(cellGoingDown, side)) {
-			break;
-		}
-
+	while (isValidMove(cellGoingDown, side)) {
 		destinationCells.insert(cellGoingDown);
 		cellGoingDown.moveDown();
-
-		if (!isSameSidePiece(cellGoingDown, side)) {
-			break;
-		}
 	}
 
 	/* Go left */
 	Cell cellGoingLeft = currentCell;
 	cellGoingLeft.moveLeft();
 
-	while (board.isInBounds(cellGoingLeft)) {
-		if (!board.isEmptyCell(cellGoingLeft) && isSameSidePiece(cellGoingLeft, side)) {
-			break;
-		}
-
+	while (isValidMove(cellGoingLeft, side)) {
 		destinationCells.insert(cellGoingLeft);
 		cellGoingLeft.moveLeft();
-
-		if (!isSameSidePiece(cellGoingLeft, side)) {
-			break;
-		}
 	}
 
 	return destinationCells;
@@ -202,4 +162,10 @@ CellUnorderedSet BoundsMoveGenerator::generatePawnMoves(const Cell& currentCell,
 
 bool BoundsMoveGenerator::isSameSidePiece(const Cell& cell, Side side) const {
 	return board.getPieceOnCell(cell).side == side;
+}
+
+bool BoundsMoveGenerator::isValidMove(const Cell& cell, Side side) const {
+	return board.isInBounds(cell) &&
+			(board.isEmptyCell(cell) ||
+			(!board.isEmptyCell(cell) && !isSameSidePiece(cell, side)));
 }

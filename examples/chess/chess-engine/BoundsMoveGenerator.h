@@ -27,6 +27,7 @@ private:
 	CellUnorderedSet generatePawnMoves(const Cell&, Side) const;
 
 	bool isSameSidePiece(const Cell&, Side) const;
+	bool isValidMove(const Cell&, Side) const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_BOUNDSMOVEGENERATOR_H_ */

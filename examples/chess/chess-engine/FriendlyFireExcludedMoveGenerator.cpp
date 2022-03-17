@@ -16,6 +16,8 @@ CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(const Cel
 
 	Piece piece = board.getPieceOnCell(pieceCell);
 
+	std::cout << "Are we at least here?" << std::endl;
+
 	CellUnorderedSet boundedMoves = moveGen.generatePieceMoves(piece, pieceCell);
 
 	std::cout << "Bounded moves are with size: " << boundedMoves.size() << std::endl;

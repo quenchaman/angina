@@ -28,6 +28,8 @@ bool ChessEngine::selectCell(const Cell& cell) {
 
 	Piece piece = board.getPieceOnCell(cell);
 
+	std::cout << "Piece selected" << std::endl;
+
 	if (!isSelectedPieceOnTurn(piece)) {
 		return false;
 	}
@@ -44,6 +46,8 @@ bool ChessEngine::movePiece(const Cell& destination) {
 	}
 
 	bool moveOK = moveManager.movePiece(selectedCell, destination);
+
+	std::cout << "Moved piece" << std::endl;
 
 	if (moveOK) {
 		switchSide();
