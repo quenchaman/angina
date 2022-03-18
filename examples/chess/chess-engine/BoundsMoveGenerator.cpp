@@ -25,7 +25,9 @@ CellUnorderedSet BoundsMoveGenerator::generatePieceMoves(const Piece& piece, con
 		case Rank::QUEEN:
 			moves = generateQueenMoves(source, piece.side);
 			break;
-		// TODO: Add case for King
+		case Rank::KING:
+			moves = generateKingMoves(source, piece.side);
+			break;
 		default:
 			break;
 	}
@@ -168,4 +170,22 @@ bool BoundsMoveGenerator::isValidMove(const Cell& cell, Side side) const {
 	return board.isInBounds(cell) &&
 			(board.isEmptyCell(cell) ||
 			(!board.isEmptyCell(cell) && !isSameSidePiece(cell, side)));
+}
+
+CellUnorderedSet BoundsMoveGenerator::generateKingMoves(const Cell& pos, [[maybe_unused]]Side side) const {
+	CellUnorderedSet m;
+
+	m.insert(Cell{pos.row - 1, pos.col - 1});
+	m.insert(Cell{pos.row - 1, pos.col});
+
+	m.insert(Cell{pos.row - 1, pos.col + 1});
+	m.insert(Cell{pos.row, pos.col + 1});
+
+	m.insert(Cell{pos.row + 1, pos.col + 1});
+	m.insert(Cell{pos.row + 1, pos.col});
+
+	m.insert(Cell{pos.row + 1, pos.col - 1});
+	m.insert(Cell{pos.row, pos.col - 1});
+
+	return m;
 }

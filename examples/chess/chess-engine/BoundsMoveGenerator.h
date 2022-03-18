@@ -25,6 +25,7 @@ private:
 	CellUnorderedSet generateBishopMoves(const Cell&, Side) const;
 	CellUnorderedSet generateQueenMoves(const Cell&, Side) const;
 	CellUnorderedSet generatePawnMoves(const Cell&, Side) const;
+	CellUnorderedSet generateKingMoves(const Cell&, Side) const;
 
 	bool isSameSidePiece(const Cell&, Side) const;
 	bool isValidMove(const Cell&, Side) const;
