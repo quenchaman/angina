@@ -38,31 +38,10 @@ void ChessBoard::setInitialPieceFormation() {
 	board[Cell {7, 7}] = Piece::WHITE_ROOK;
 }
 
-bool ChessBoard::tryMakeMove(const Cell& source, const Cell& destination) {
-	if (isPossibleMove(source, destination)) {
-		movePiece(source, destination);
-
-		return true;
-	}
-
-	return false;
-}
-
 void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
 	Piece* sourcePiece = &board.at(source);
 	board.erase(source);
-
 	board[destination] = *sourcePiece;
-}
-
-bool ChessBoard::isPossibleMove(const Cell& source, const Cell& destination) const {
-	bool inBounds = isInBounds(source) && isInBounds(destination);
-
-	if (!inBounds || isEmptyCell(source)) {
-		return false;
-	}
-
-	return true;
 }
 
 bool ChessBoard::isInBounds(const Cell& cell) const {

@@ -28,8 +28,6 @@ bool ChessEngine::selectCell(const Cell& cell) {
 
 	Piece piece = board.getPieceOnCell(cell);
 
-	std::cout << "Piece selected" << std::endl;
-
 	if (!isSelectedPieceOnTurn(piece)) {
 		return false;
 	}

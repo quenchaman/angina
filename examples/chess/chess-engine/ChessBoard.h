@@ -23,8 +23,7 @@ public:
 	ChessBoard();
 
 	const CellToPieceLookup& getPiecePositions();
-	bool tryMakeMove(const Cell& source, const Cell& destination);
-	bool isPossibleMove(const Cell& source, const Cell& destination) const;
+	void movePiece(const Cell& source, const Cell& destination);
 	void setInitialPieceFormation();
 	const Piece& getPieceOnCell(const Cell& source) const;
 	bool isInBounds(const Cell&) const;
@@ -32,8 +31,6 @@ public:
 
 private:
 	CellToPieceLookup board;
-
-	void movePiece(const Cell& source, const Cell& destination);
 
 	friend std::ostream& operator<<(std::ostream&, const ChessBoard&);
 };

@@ -6,25 +6,14 @@ ChessMoveManager::ChessMoveManager(ChessBoard& chessBoard, FriendlyFireExcludedM
 
 bool ChessMoveManager::movePiece(const Cell& source, const Cell& destination) {
 	CellUnorderedSet moves = moveGen.generatePieceMoves(source);
-
-	for (Cell cell : moves) {
-		std::cout << "One of the destinations is " << cell << std::endl;
-	}
-
 	bool isOkMove = moves.find(destination) != moves.end();
 
-	if (isOkMove) {
-		bool isBoardMoveOk = board.tryMakeMove(source, destination);
+	if (!isOkMove) { return false; }
 
-		std::cout << "Is the board move OK? " << isBoardMoveOk << std::endl;
-		if (isBoardMoveOk) {
-			notify(source, destination);
-		}
+	board.movePiece(source, destination);
+	notify(source, destination);
 
-		return isBoardMoveOk;
-	}
-
-	return false;
+	return true;
 }
 
 void ChessMoveManager::subscribe(MoveEventCallback callback) {
