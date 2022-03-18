@@ -97,7 +97,7 @@ Widget* ChessGame::buildChessPage() {
 void ChessGame::handleStartGameButton() {
 	changeScreen(*buildChessPage());
 	createPieceObjects();
-	moveManager.subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
+	board.subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void ChessGame::createPieceObjects() {

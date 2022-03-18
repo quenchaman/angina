@@ -42,6 +42,8 @@ void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
 	Piece* sourcePiece = &board.at(source);
 	board.erase(source);
 	board[destination] = *sourcePiece;
+
+	notify(source, destination);
 }
 
 bool ChessBoard::isInBounds(const Cell& cell) const {
@@ -66,6 +68,16 @@ const Piece& ChessBoard::getPieceOnCell(const Cell& source) const {
 
 const CellToPieceLookup& ChessBoard::getPiecePositions() {
 	return board;
+}
+
+void ChessBoard::subscribe(MoveEventCallback callback) {
+	subscribers.push_back(callback);
+}
+
+void ChessBoard::notify(const Cell& source, const Cell& destination) const {
+	for (auto& subscriber : subscribers) {
+		subscriber(source, destination);
+	}
 }
 
 std::ostream& operator<<(std::ostream& os, const ChessBoard& ChessBoard) {

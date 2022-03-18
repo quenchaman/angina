@@ -5,7 +5,8 @@
 
 FriendlyFireExcludedMoveGenerator::FriendlyFireExcludedMoveGenerator(
 		ChessBoard& chessBoard,
-		BoundsMoveGenerator& generator): board(chessBoard), moveGen(generator) {}
+		BoundsMoveGenerator& generator
+): board(chessBoard), moveGen(generator) {}
 
 CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(const Cell& pieceCell) const {
 	CellUnorderedSet friendlyFireExcludedMoves;

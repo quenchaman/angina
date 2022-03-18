@@ -11,20 +11,8 @@ bool ChessMoveManager::movePiece(const Cell& source, const Cell& destination) {
 	if (!isOkMove) { return false; }
 
 	board.movePiece(source, destination);
-	notify(source, destination);
 
 	return true;
-}
-
-void ChessMoveManager::subscribe(MoveEventCallback callback) {
-	subscribers.push_back(callback);
-}
-
-void ChessMoveManager::notify(const Cell& source, const Cell& destination) const {
-	std::cout << "Notifying subscribers!" << std::endl;
-	for (auto& subscriber : subscribers) {
-		subscriber(source, destination);
-	}
 }
 
 Move ChessMoveManager::getAIMove(Side side) {

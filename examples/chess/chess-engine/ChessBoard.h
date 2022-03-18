@@ -13,6 +13,7 @@
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Move.h"
 
+typedef std::function<void(const Cell&, const Cell&)> MoveEventCallback;
 typedef std::unordered_map<Cell, Piece, Cell::HashFunction> CellToPieceLookup;
 
 /**
@@ -31,8 +32,13 @@ public:
 	bool isSameSidePiece(const Cell&, Side) const;
 	bool isValidTarget(const Cell&, Side) const;
 
+	void subscribe(MoveEventCallback);
+
 private:
 	CellToPieceLookup board;
+	std::vector<MoveEventCallback> subscribers;
+
+	void notify(const Cell& source, const Cell& destination) const;
 
 	friend std::ostream& operator<<(std::ostream&, const ChessBoard&);
 };

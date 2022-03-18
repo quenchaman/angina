@@ -2,10 +2,13 @@
 #define EXAMPLES_CHESS_CHESS_ENGINE_BOUNDSMOVEGENERATOR_H_
 
 #include <unordered_set>
+#include <functional>
 
 #include "examples/chess/chess-engine/Move.h"
 #include "examples/chess/chess-engine/Piece.h"
 #include "examples/chess/chess-engine/Cell.h"
+
+typedef std::function<void(const Cell&, const Cell&)> MoveEventCallback;
 
 struct ChessBoard;
 

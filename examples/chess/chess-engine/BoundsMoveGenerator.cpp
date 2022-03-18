@@ -96,14 +96,14 @@ CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell,
 	return destinationCells;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCell, [[maybe_unused]]Side side) const {
+CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCell, Side side) const {
 	CellUnorderedSet destinationCells;
 
 	/* Go top-left diagonal */
 	Cell cellGoingTopLeft = currentCell;
 	cellGoingTopLeft.moveTop().moveLeft();
 
-	while (board.isInBounds(cellGoingTopLeft)) {
+	while (isValidMove(cellGoingTopLeft, side)) {
 		destinationCells.insert(cellGoingTopLeft);
 		cellGoingTopLeft.moveTop().moveLeft();
 	}
@@ -112,7 +112,7 @@ CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCel
 	Cell cellGoingTopRight = currentCell;
 	cellGoingTopRight.moveTop().moveRight();
 
-	while (board.isInBounds(cellGoingTopRight)) {
+	while (isValidMove(cellGoingTopRight, side)) {
 		destinationCells.insert(cellGoingTopRight);
 		cellGoingTopRight.moveRight().moveTop();
 	}
@@ -121,7 +121,7 @@ CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCel
 	Cell cellGoingDownRight = currentCell;
 	cellGoingDownRight.moveDown().moveRight();
 
-	while (board.isInBounds(cellGoingDownRight)) {
+	while (isValidMove(cellGoingDownRight, side)) {
 		destinationCells.insert(cellGoingDownRight);
 		cellGoingDownRight.moveDown().moveRight();
 	}
@@ -130,7 +130,7 @@ CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCel
 	Cell cellGoingDownLeft = currentCell;
 	cellGoingDownLeft.moveLeft().moveDown();
 
-	while (board.isInBounds(cellGoingDownLeft)) {
+	while (isValidMove(cellGoingDownLeft, side)) {
 		destinationCells.insert(cellGoingDownLeft);
 		cellGoingDownLeft.moveLeft().moveDown();
 	}

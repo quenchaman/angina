@@ -8,8 +8,6 @@
 #include "examples/chess/chess-engine/Cell.h"
 #include "examples/chess/chess-engine/Move.h"
 
-typedef std::function<void(const Cell&, const Cell&)> MoveEventCallback;
-
 struct FriendlyFireExcludedMoveGenerator;
 struct ChessBoard;
 
@@ -23,7 +21,6 @@ public:
 
 	bool movePiece(const Cell& source, const Cell& destination);
 	virtual Move getAIMove(Side side);
-	void subscribe(MoveEventCallback);
 
 protected:
 	virtual std::vector<Move> calculateAllAvailableMoves(Side side);
@@ -32,10 +29,7 @@ protected:
 
 private:
 	ChessBoard& board;
-	std::vector<MoveEventCallback> subscribers;
 	FriendlyFireExcludedMoveGenerator& moveGen;
-
-	void notify(const Cell& source, const Cell& destination) const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_CHESSMOVEMANAGER_H_ */
