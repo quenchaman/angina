@@ -43,6 +43,7 @@ private:
 	PieceToResourcePath pieceToResource;
 
 	Widget* buildLandingPage();
+
 	Widget* buildChessPage();
 
 	void handleStartGameButton();

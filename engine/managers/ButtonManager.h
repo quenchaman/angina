@@ -19,6 +19,8 @@ public:
 	void registerButton(BaseButton&);
 
 	bool invokeCallback(const InputEvent&);
+
+	void clear();
 private:
 	std::vector<BaseButton*> buttons;
 };

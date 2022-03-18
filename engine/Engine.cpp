@@ -27,7 +27,7 @@ Engine::Engine(std::string appTitle, Dimensions screenSize):
     )),
 		renderer(Renderer(window)),
 		factory(GraphicsFactory(renderer)),
-		rootScreen(new Widget(btnManager, Point::ZERO)),
+		rootScreen(nullptr),
 		defaultFont(Font(Resources::montserratFont, 28)) {
 
     event.init();
@@ -63,7 +63,9 @@ void Engine::start() {
 }
 
 void Engine::draw() {
-	draw(*rootScreen);
+	if (rootScreen != nullptr) {
+		draw(*rootScreen);
+	}
 }
 
 void Engine::draw(Widget& widget) {

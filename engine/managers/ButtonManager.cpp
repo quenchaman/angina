@@ -32,10 +32,17 @@ bool ButtonManager::invokeCallback(const InputEvent& event) {
 	return false;
 }
 
-ButtonManager::~ButtonManager() {
-	for (auto const& btn : buttons) {
-		delete btn;
+void ButtonManager::clear() {
+	std::cout << "Clearing buttons " << std::endl;
+	for (auto& btn : buttons) {
+		delete &btn;
 	}
+
+	buttons.clear();
+}
+
+ButtonManager::~ButtonManager() {
+	clear();
 
 	std::cout << "Buttons destroyed" << std::endl;
 }

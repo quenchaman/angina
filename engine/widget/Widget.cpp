@@ -48,5 +48,9 @@ Widget::~Widget() {
 		delete drawable;
 	}
 
+	// TODO: For now we will delete all buttons in btn Manager.
+	// If we start implementing multi-widget screens then it will be a bad idea.
+	btnManager.clear();
+
 	std::cout << "Widget destroyed" << std::endl;
 }
