@@ -52,6 +52,14 @@ bool ChessBoard::isEmptyCell(const Cell& cell) const {
 	return board.find(cell) == board.end();
 }
 
+bool ChessBoard::isSameSidePiece(const Cell& cell, Side side) const {
+	return getPieceOnCell(cell).side == side;
+}
+
+bool ChessBoard::isValidTarget(const Cell& cell, Side side) const {
+	return isEmptyCell(cell) || (!isEmptyCell(cell) && !isSameSidePiece(cell, side));
+}
+
 const Piece& ChessBoard::getPieceOnCell(const Cell& source) const {
 	return board.at(source);
 }

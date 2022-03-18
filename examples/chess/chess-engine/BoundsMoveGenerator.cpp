@@ -162,14 +162,8 @@ CellUnorderedSet BoundsMoveGenerator::generatePawnMoves(const Cell& currentCell,
 	return destinationCells;
 }
 
-bool BoundsMoveGenerator::isSameSidePiece(const Cell& cell, Side side) const {
-	return board.getPieceOnCell(cell).side == side;
-}
-
 bool BoundsMoveGenerator::isValidMove(const Cell& cell, Side side) const {
-	return board.isInBounds(cell) &&
-			(board.isEmptyCell(cell) ||
-			(!board.isEmptyCell(cell) && !isSameSidePiece(cell, side)));
+	return board.isInBounds(cell) && board.isValidTarget(cell, side);
 }
 
 CellUnorderedSet BoundsMoveGenerator::generateKingMoves(const Cell& pos, [[maybe_unused]]Side side) const {

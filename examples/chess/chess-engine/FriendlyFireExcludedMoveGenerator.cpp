@@ -10,20 +10,14 @@ FriendlyFireExcludedMoveGenerator::FriendlyFireExcludedMoveGenerator(
 CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(const Cell& pieceCell) const {
 	CellUnorderedSet friendlyFireExcludedMoves;
 
-	if (board.isEmptyCell(pieceCell)) {
-		return friendlyFireExcludedMoves;
-	}
-
 	Piece piece = board.getPieceOnCell(pieceCell);
-
-	std::cout << "Are we at least here?" << std::endl;
 
 	CellUnorderedSet boundedMoves = moveGen.generatePieceMoves(piece, pieceCell);
 
-	std::cout << "Bounded moves are with size: " << boundedMoves.size() << std::endl;
-
 	for (auto const& cell : boundedMoves) {
-		friendlyFireExcludedMoves.insert(cell);
+		if (board.isValidTarget(cell, piece.side)) {
+			friendlyFireExcludedMoves.insert(cell);
+		}
 	}
 
 	return friendlyFireExcludedMoves;

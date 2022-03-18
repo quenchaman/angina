@@ -28,6 +28,8 @@ public:
 	const Piece& getPieceOnCell(const Cell& source) const;
 	bool isInBounds(const Cell&) const;
 	bool isEmptyCell(const Cell&) const;
+	bool isSameSidePiece(const Cell&, Side) const;
+	bool isValidTarget(const Cell&, Side) const;
 
 private:
 	CellToPieceLookup board;

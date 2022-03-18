@@ -27,7 +27,6 @@ private:
 	CellUnorderedSet generatePawnMoves(const Cell&, Side) const;
 	CellUnorderedSet generateKingMoves(const Cell&, Side) const;
 
-	bool isSameSidePiece(const Cell&, Side) const;
 	bool isValidMove(const Cell&, Side) const;
 };
 
