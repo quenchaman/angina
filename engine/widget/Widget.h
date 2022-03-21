@@ -42,7 +42,7 @@ public:
 	std::vector<Drawable*>& getDrawables();
 	std::vector<Widget*>& getChildren();
 private:
-	// There should be an easy way to add and remove stuff from drawables.
+	// There should be an easy way to add and remove stuff from drawables. And maybe they should have an ID.
 	std::vector<Drawable*> drawables;
 	std::vector<Widget*> children;
 	ButtonManager& btnManager;
