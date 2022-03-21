@@ -21,5 +21,7 @@ CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(const Cel
 		}
 	}
 
+	std::cout << "How many moves has the pawn " << friendlyFireExcludedMoves.size() << std::endl;
+
 	return friendlyFireExcludedMoves;
 }

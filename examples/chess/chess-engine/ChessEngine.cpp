@@ -28,9 +28,14 @@ bool ChessEngine::selectCell(const Cell& cell) {
 
 	Piece piece = board.getPieceOnCell(cell);
 
+	std::cout << "The current side is " << currentSide << std::endl;
+	std::cout << "1 Selected piece " << piece.rank << " and side is " << piece.side << std::endl;
+
 	if (!isSelectedPieceOnTurn(piece)) {
 		return false;
 	}
+
+	std::cout << "2 Selected piece " << piece.rank << std::endl;
 
 	selectedCell = cell;
 	setState(ChessState::HUMAN_PIECE_SELECTED);
@@ -45,7 +50,7 @@ bool ChessEngine::movePiece(const Cell& destination) {
 
 	bool moveOK = moveManager.movePiece(selectedCell, destination);
 
-	std::cout << "Moved piece" << std::endl;
+	std::cout << "Is the move ok " << moveOK << std::endl;
 
 	if (moveOK) {
 		switchSide();
@@ -81,13 +86,13 @@ bool ChessEngine::isSelectedPieceOnTurn(const Piece& piece) const {
 }
 
 ChessState ChessEngine::getNextState() {
-		PlayerType nextPlayerType = sideToPlayerType[currentSide];
+	PlayerType nextPlayerType = sideToPlayerType[currentSide];
 
-		if (nextPlayerType == PlayerType::COMPUTER) {
-			return ChessState::COMPUTER_MOVE;
-		} else {
-			return ChessState::HUMAN_SELECT_PIECE;
-		}
+	if (nextPlayerType == PlayerType::COMPUTER) {
+		return ChessState::COMPUTER_MOVE;
+	} else {
+		return ChessState::HUMAN_SELECT_PIECE;
+	}
 }
 
 bool ChessEngine::isCellSelected() const {
@@ -95,7 +100,10 @@ bool ChessEngine::isCellSelected() const {
 }
 
 Side ChessEngine::switchSide() {
-	return currentSide = (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
+	Side cs = (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
+	std::cout << "Switching side to " << cs << std::endl;
+	currentSide = cs;
+	return cs;
 }
 
 ChessState ChessEngine::setState(ChessState newState) {

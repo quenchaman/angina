@@ -39,7 +39,7 @@ void ChessBoard::setInitialPieceFormation() {
 }
 
 void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
-	Piece* sourcePiece = &board.at(source);
+	Piece sourcePiece = board.at(source);
 
 	// Handle capture & emitting event
 //	if (isEnemyCell(destination, sourcePiece->side)) {
@@ -47,8 +47,15 @@ void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
 //		board.erase(destination);
 //	}
 
+	// BUG: There is a bug with this code !!!
+	std::cout << "Before moved piece has side " << sourcePiece.side << std::endl;
+	// There is a problem with pawns and possibly other pieces
 	board.erase(source);
-	board[destination] = *sourcePiece;
+
+	// BUG!! We are creating a copy of piece here and not a very good copy too...implement copy assignment?
+	board[destination] = sourcePiece;
+
+	std::cout << "After moved piece has side " << sourcePiece.side << std::endl;
 
 	notify(source, destination);
 }
