@@ -37,9 +37,12 @@ public:
 	void put(BaseButton&);
 	void put(Object& drawable);
 
+	void remove(Object& drawable);
+
 	std::vector<Drawable*>& getDrawables();
 	std::vector<Widget*>& getChildren();
 private:
+	// There should be an easy way to add and remove stuff from drawables.
 	std::vector<Drawable*> drawables;
 	std::vector<Widget*> children;
 	ButtonManager& btnManager;

@@ -116,9 +116,15 @@ void ChessGame::createPieceObjects() {
 }
 
 void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) {
+	if (!board.isEmptyCell(destination)) {
+		rootScreen->remove(*cellObject[destination]);
+		cellObject.erase(destination);
+	}
+
 	Object* obj = cellObject[source];
 	obj->move(CellUtils::cellToPoint(destination, GameConfig::CELL_DIM));
 	cellObject.erase(source);
+
 	cellObject[destination] = obj;
 }
 

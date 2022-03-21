@@ -39,6 +39,15 @@ std::vector<Drawable*>& Widget::getDrawables() {
 	return drawables;
 }
 
+void Widget::remove(Object& drawable) {
+	for (Drawable* other : drawables) {
+		if (&drawable == other) {
+			//delete &drawable;
+			break;
+		}
+	}
+}
+
 Widget::~Widget() {
 	for (Widget* child : children) {
 		delete child;

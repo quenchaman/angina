@@ -40,6 +40,13 @@ void ChessBoard::setInitialPieceFormation() {
 
 void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
 	Piece* sourcePiece = &board.at(source);
+
+	// Handle capture & emitting event
+//	if (isEnemyCell(destination, sourcePiece->side)) {
+//		std::cout << "We are removing the captured piece" << std::endl;
+//		board.erase(destination);
+//	}
+
 	board.erase(source);
 	board[destination] = *sourcePiece;
 
@@ -60,6 +67,10 @@ bool ChessBoard::isSameSidePiece(const Cell& cell, Side side) const {
 
 bool ChessBoard::isValidTarget(const Cell& cell, Side side) const {
 	return isEmptyCell(cell) || (!isEmptyCell(cell) && !isSameSidePiece(cell, side));
+}
+
+bool ChessBoard::isEnemyCell(const Cell& cell, Side side) const {
+	return !isEmptyCell(cell) && !isSameSidePiece(cell, side);
 }
 
 const Piece& ChessBoard::getPieceOnCell(const Cell& source) const {

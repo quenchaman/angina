@@ -3,10 +3,8 @@
 
 #include <iostream>
 #include <unordered_map>
-#include <vector>
 #include <functional>
 #include <string>
-#include <stack>
 
 #include "examples/chess/chess-engine/Cell.h"
 #include "examples/chess/chess-engine/Piece.h"
@@ -31,6 +29,7 @@ public:
 	bool isEmptyCell(const Cell&) const;
 	bool isSameSidePiece(const Cell&, Side) const;
 	bool isValidTarget(const Cell&, Side) const;
+	bool isEnemyCell(const Cell&, Side) const;
 
 	void subscribe(MoveEventCallback);
 
