@@ -15,16 +15,22 @@ Widget::Widget(ButtonManager& btnMngr): btnManager(btnMngr), origin(Point::ZERO)
 Widget::Widget(ButtonManager& btnMngr, Point p): btnManager(btnMngr), origin(p) {
 }
 
-void Widget::put(Object& drawable) {
+int32_t Widget::put(Object& drawable) {
 	Point newDrawablePos = origin + drawable.getPosition();
 	drawable.move(newDrawablePos.x, newDrawablePos.y);
 
-	drawables.push_back(&drawable);
+	int32_t id = idGen.next();
+	drawables[id] = &drawable;
+
+	return id;
 }
 
-void Widget::put(BaseButton& btn) {
-	drawables.push_back(&btn);
+int32_t Widget::put(BaseButton& btn) {
+	int32_t id = idGen.next();
+	drawables[id] = &btn;
 	btnManager.registerButton(btn);
+
+	return id;
 }
 
 void Widget::addChild(Widget& widget) {
@@ -35,17 +41,13 @@ std::vector<Widget*>& Widget::getChildren() {
 	return children;
 }
 
-std::vector<Drawable*>& Widget::getDrawables() {
+std::unordered_map<int32_t, Drawable*>& Widget::getDrawables() {
 	return drawables;
 }
 
-void Widget::remove(Object& drawable) {
-	for (Drawable* other : drawables) {
-		if (&drawable == other) {
-			//delete &drawable;
-			break;
-		}
-	}
+void Widget::remove(int32_t id) {
+	delete drawables[id];
+	drawables.erase(id);
 }
 
 Widget::~Widget() {
@@ -53,7 +55,7 @@ Widget::~Widget() {
 		delete child;
 	}
 
-	for (Drawable* drawable : drawables) {
+	for (auto const& [id, drawable] : drawables) {
 		delete drawable;
 	}
 

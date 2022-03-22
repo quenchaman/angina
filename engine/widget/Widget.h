@@ -1,17 +1,12 @@
-/*
- * Page.h
- *
- *  Created on: Jan 2, 2022
- *      Author: ubuntu
- */
-
 #ifndef SDL_ENGINE_PAGE_PAGE_H_
 #define SDL_ENGINE_PAGE_PAGE_H_
 
 #include <cstdint>
 #include <vector>
+#include <unordered_map>
 
 #include "renderer/primitives/Point.h"
+#include "platform/ids/IdGenerator.h"
 
 struct Button;
 struct Drawable;
@@ -34,19 +29,20 @@ public:
 	~Widget();
 	void addChild(Widget&);
 
-	void put(BaseButton&);
-	void put(Object& drawable);
+	int32_t put(BaseButton&);
+	int32_t put(Object& drawable);
 
-	void remove(Object& drawable);
+	void remove(int32_t id);
 
-	std::vector<Drawable*>& getDrawables();
+	std::unordered_map<int32_t, Drawable*>& getDrawables();
 	std::vector<Widget*>& getChildren();
 private:
-	// There should be an easy way to add and remove stuff from drawables. And maybe they should have an ID.
-	std::vector<Drawable*> drawables;
+	std::unordered_map<int32_t, Drawable*> drawables;
 	std::vector<Widget*> children;
 	ButtonManager& btnManager;
 	Point origin;
+	IdGenerator idGen;
+
 };
 
 #endif /* SDL_ENGINE_PAGE_PAGE_H_ */

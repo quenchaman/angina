@@ -103,6 +103,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.cpp
 	${DIR}/examples/chess/chess-engine/PlayerType.h
 	${DIR}/examples/chess/GameConfig.h
+	${DIR}/platform/ids/IdGenerator.h
+	${DIR}/platform/ids/IdGenerator.cpp
 )
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
