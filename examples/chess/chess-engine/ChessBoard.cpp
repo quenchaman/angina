@@ -6,9 +6,7 @@
 #include "BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/GameConfig.h"
 
-ChessBoard::ChessBoard() {
-	setInitialPieceFormation();
-}
+ChessBoard::ChessBoard() {}
 
 void ChessBoard::setInitialPieceFormation() {
 	const int32_t blackPawnRow = 1;

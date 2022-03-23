@@ -14,6 +14,9 @@
 #include "examples/chess/GameConfig.h"
 #include "examples/chess/chess-engine/ChessBoard.h"
 
+/**
+ * Stack-based allocation is eager. Heap based allocation is lazy.
+ */
 ChessGame::ChessGame():
 	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM),
 	board(ChessBoard()),
@@ -84,6 +87,7 @@ Widget* ChessGame::buildLandingPage() {
 }
 
 Widget* ChessGame::buildChessPage() {
+	board.setInitialPieceFormation();
 	Widget* chessPageWidget = new Widget(Point::ZERO);
 
 	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, GameConfig::WINDOW_DIM);

@@ -76,3 +76,6 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 	}
 }
 ```
+
+## TODO
+1. Create a component encapsulates all the chess board related logic.
