@@ -42,6 +42,7 @@ private:
 	// ids - for keeping track of insertion order of drawables. This matters for drawing. Later I can add z-index.
 	std::set<int32_t> ids;
 	std::vector<Widget*> children;
+	// Make button manager per widget instance
 	ButtonManager& btnManager;
 	Point origin;
 	IdGenerator idGen;

@@ -46,8 +46,6 @@ std::vector<Widget*>& Widget::getChildren() {
 std::vector<Drawable*> Widget::getDrawables() {
 	std::vector<Drawable*> draws;
 
-	std::cout << "Number of drawables " << ids.size() << std::endl;
-
 	for (int32_t n : ids) {
 		draws.push_back(drawables[n]);
 	}

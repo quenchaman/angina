@@ -50,6 +50,7 @@ private:
 	Widget* buildChessPage();
 
 	void handleStartGameButton();
+	void handleQuitGameButton();
 
 	/*
 	 * For every piece in the chess engine, create a drawable object. Keep a mapping between the two.

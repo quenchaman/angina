@@ -28,14 +28,9 @@ bool ChessEngine::selectCell(const Cell& cell) {
 
 	Piece piece = board.getPieceOnCell(cell);
 
-	std::cout << "The current side is " << currentSide << std::endl;
-	std::cout << "1 Selected piece " << piece.rank << " and side is " << piece.side << std::endl;
-
 	if (!isSelectedPieceOnTurn(piece)) {
 		return false;
 	}
-
-	std::cout << "2 Selected piece " << piece.rank << std::endl;
 
 	selectedCell = cell;
 	setState(ChessState::HUMAN_PIECE_SELECTED);

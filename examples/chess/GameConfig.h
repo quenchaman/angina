@@ -16,10 +16,12 @@ namespace GameConfig {
 	const Dimensions BOARD_DIM = { 640, 640 };
 
 	const Point NEW_GAME_BTN_POS = { 300, 300 };
-	const Dimensions NEW_GAME_BTN_DIM = { 200, 70 };
-	const Color NEW_GAME_BTN_BACKGROUND_COLOR = Color::BLUE;
-	const Color NEW_GAME_BTN_TEXT_COLOR = Color::RED;
+	const Dimensions DEFAULT_BTN_DIM = { 200, 70 };
+	const Color DEFAULT_BTN_BACKGROUND_COLOR = Color::BLUE;
+	const Color DEFAULT_BTN_TEXT_COLOR = Color::RED;
 	const std::string NEW_GAME_BTN_TEXT = "Start game";
+	const std::string QUIT_GAME_BTN_TEXT = "Quit";
+	const Point QUIT_GAME_BTN_POS = { 670, 50 };
 	const int32_t BOARD_SIZE = 8;
 }
 

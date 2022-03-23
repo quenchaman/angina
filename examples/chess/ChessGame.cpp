@@ -63,6 +63,7 @@ void ChessGame::handleBtnClick([[maybe_unused]]int32_t idx) {
 }
 
 Widget* ChessGame::buildLandingPage() {
+	// Make button manager per widget instance
 	Widget* landingPageWidget = new Widget(btnManager, Point::ZERO);
 
 	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, GameConfig::WINDOW_DIM);
@@ -70,9 +71,9 @@ Widget* ChessGame::buildLandingPage() {
 
 	RectTextButton* btn = getFactory().createButton(
 		GameConfig::NEW_GAME_BTN_POS,
-		GameConfig::NEW_GAME_BTN_DIM,
-		GameConfig::NEW_GAME_BTN_BACKGROUND_COLOR,
-		GameConfig::NEW_GAME_BTN_TEXT_COLOR,
+		GameConfig::DEFAULT_BTN_DIM,
+		GameConfig::DEFAULT_BTN_BACKGROUND_COLOR,
+		GameConfig::DEFAULT_BTN_TEXT_COLOR,
 		GameConfig::NEW_GAME_BTN_TEXT,
 		defaultFont,
 		std::bind(&ChessGame::handleStartGameButton, this)
@@ -91,6 +92,17 @@ Widget* ChessGame::buildChessPage() {
 	Object* board = getFactory().createObject(Resources::board, Point::ZERO, GameConfig::BOARD_DIM);
 	chessPageWidget->put(*board);
 
+	RectTextButton* btn = getFactory().createButton(
+		GameConfig::QUIT_GAME_BTN_POS,
+		GameConfig::DEFAULT_BTN_DIM,
+		GameConfig::DEFAULT_BTN_BACKGROUND_COLOR,
+		GameConfig::DEFAULT_BTN_TEXT_COLOR,
+		GameConfig::QUIT_GAME_BTN_TEXT,
+		defaultFont,
+		std::bind(&ChessGame::handleQuitGameButton, this)
+	);
+	chessPageWidget->put(*btn);
+
 	return chessPageWidget;
 }
 
@@ -98,6 +110,10 @@ void ChessGame::handleStartGameButton() {
 	changeScreen(*buildChessPage());
 	createPieceObjects();
 	board.subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
+}
+
+void ChessGame::handleQuitGameButton() {
+	changeScreen(*buildLandingPage());
 }
 
 void ChessGame::createPieceObjects() {
@@ -117,13 +133,14 @@ void ChessGame::createPieceObjects() {
 }
 
 void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) {
+	// Handle captured pieces
 	if (!board.isEmptyCell(destination)) {
-		std::cout << "Is this called? " << std::endl;
 		rootScreen->remove(cellToObjectId[destination]);
 		cellObject.erase(destination);
 		cellToObjectId.erase(destination);
 	}
 
+	// Update data structures after move and captures
 	Object* obj = cellObject[source];
 	obj->move(CellUtils::cellToPoint(destination, GameConfig::CELL_DIM));
 	cellObject.erase(source);
