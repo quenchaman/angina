@@ -22,6 +22,7 @@ struct Object;
 struct ChessBoard;
 
 typedef std::unordered_map<Cell, Object*, Cell::HashFunction> CellToObjectLookup;
+typedef std::unordered_map<Cell, int32_t, Cell::HashFunction> CellToObjectId;
 typedef std::unordered_map<Piece, std::string, Piece::HashFunction> PieceToResourcePath;
 
 class ChessGame : public Engine {
@@ -39,8 +40,10 @@ private:
 	FriendlyFireExcludedMoveGenerator moveGen;
 	ChessMoveManager moveManager;
 	ChessEngine engine;
+
 	CellToObjectLookup cellObject;
 	PieceToResourcePath pieceToResource;
+	CellToObjectId cellToObjectId;
 
 	Widget* buildLandingPage();
 

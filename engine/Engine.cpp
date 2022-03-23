@@ -69,7 +69,7 @@ void Engine::draw() {
 }
 
 void Engine::draw(Widget& widget) {
-	for (auto const& [id, drawable] : widget.getDrawables()) {
+	for (auto const& drawable : widget.getDrawables()) {
 		drawable->draw(renderer);
 	}
 

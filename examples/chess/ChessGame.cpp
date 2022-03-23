@@ -110,22 +110,29 @@ void ChessGame::createPieceObjects() {
 			GameConfig::CELL_DIM
 		);
 
-		rootScreen->put(obj);
+		int32_t id = rootScreen->put(obj);
+		cellToObjectId[cell] = id;
 		cellObject[cell] = &obj;
 	}
 }
 
 void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) {
-//	if (!board.isEmptyCell(destination)) {
-//		rootScreen->remove(*cellObject[destination]);
-//		cellObject.erase(destination);
-//	}
+	if (!board.isEmptyCell(destination)) {
+		std::cout << "Is this called? " << std::endl;
+		rootScreen->remove(cellToObjectId[destination]);
+		cellObject.erase(destination);
+		cellToObjectId.erase(destination);
+	}
 
 	Object* obj = cellObject[source];
 	obj->move(CellUtils::cellToPoint(destination, GameConfig::CELL_DIM));
 	cellObject.erase(source);
 
+	int32_t id = cellToObjectId[source];
+	cellToObjectId.erase(source);
+
 	cellObject[destination] = obj;
+	cellToObjectId[destination] = id;
 }
 
 void ChessGame::handleComputerMove() {

@@ -21,7 +21,7 @@ int32_t Widget::put(Object& drawable) {
 
 	int32_t id = idGen.next();
 	drawables[id] = &drawable;
-
+	ids.insert(id);
 	return id;
 }
 
@@ -29,6 +29,7 @@ int32_t Widget::put(BaseButton& btn) {
 	int32_t id = idGen.next();
 	drawables[id] = &btn;
 	btnManager.registerButton(btn);
+	ids.insert(id);
 
 	return id;
 }
@@ -41,13 +42,23 @@ std::vector<Widget*>& Widget::getChildren() {
 	return children;
 }
 
-std::unordered_map<int32_t, Drawable*>& Widget::getDrawables() {
-	return drawables;
+// Don't like this very much but nothing better comes to mind.
+std::vector<Drawable*> Widget::getDrawables() {
+	std::vector<Drawable*> draws;
+
+	std::cout << "Number of drawables " << ids.size() << std::endl;
+
+	for (int32_t n : ids) {
+		draws.push_back(drawables[n]);
+	}
+
+	return draws;
 }
 
 void Widget::remove(int32_t id) {
 	delete drawables[id];
 	drawables.erase(id);
+	ids.erase(id);
 }
 
 Widget::~Widget() {
