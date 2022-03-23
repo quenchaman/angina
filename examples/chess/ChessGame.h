@@ -6,13 +6,13 @@
 #include <unordered_map>
 #include <string>
 
+#include "chess-engine/BoardBoundsPieceMoveGenerator.h"
 #include "chess-engine/ChessMoveManager.h"
 #include "examples/chess/chess-engine/Piece.h"
 #include "examples/chess/chess-engine/Cell.h"
 
 #include "engine/Engine.h"
 #include "renderer/primitives/Dimensions.h"
-#include "examples/chess/chess-engine/BoundsMoveGenerator.h"
 #include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
 #include "examples/chess/chess-engine/ChessEngine.h"
 #include "examples/chess/chess-engine/ChessMoveManager.h"
@@ -36,7 +36,7 @@ public:
 	void handleBtnClick(int32_t idx);
 private:
 	ChessBoard board;
-	BoundsMoveGenerator baseMoveGen;
+	BoardBoundsPieceMoveGenerator baseMoveGen;
 	FriendlyFireExcludedMoveGenerator moveGen;
 	ChessMoveManager moveManager;
 	ChessEngine engine;

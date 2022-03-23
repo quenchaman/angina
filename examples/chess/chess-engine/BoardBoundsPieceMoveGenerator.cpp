@@ -1,12 +1,12 @@
-#include "BoundsMoveGenerator.h"
+#include "BoardBoundsPieceMoveGenerator.h"
 
 #include <iostream>
 
 #include "examples/chess/chess-engine/ChessBoard.h"
 
-BoundsMoveGenerator::BoundsMoveGenerator(ChessBoard& chessBoard): board(chessBoard) {}
+BoardBoundsPieceMoveGenerator::BoardBoundsPieceMoveGenerator(ChessBoard& chessBoard): board(chessBoard) {}
 
-CellUnorderedSet BoundsMoveGenerator::generatePieceMoves(const Piece& piece, const Cell& source) const {
+CellUnorderedSet BoardBoundsPieceMoveGenerator::generatePieceMoves(const Piece& piece, const Cell& source) const {
 	CellUnorderedSet moves;
 
 	switch (piece.rank) {
@@ -36,7 +36,7 @@ CellUnorderedSet BoundsMoveGenerator::generatePieceMoves(const Piece& piece, con
 	return moves;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generateKnightMoves(const Cell& knightPosition) const {
+CellUnorderedSet BoardBoundsPieceMoveGenerator::generateKnightMoves(const Cell& knightPosition) const {
 	CellUnorderedSet m;
 	m.reserve(8);
 
@@ -55,7 +55,7 @@ CellUnorderedSet BoundsMoveGenerator::generateKnightMoves(const Cell& knightPosi
 	return m;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell, Side side) const {
+CellUnorderedSet BoardBoundsPieceMoveGenerator::generateRookMoves(const Cell& currentCell, Side side) const {
 	CellUnorderedSet destinationCells;
 
 	/* Go top */
@@ -97,7 +97,7 @@ CellUnorderedSet BoundsMoveGenerator::generateRookMoves(const Cell& currentCell,
 	return destinationCells;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCell, Side side) const {
+CellUnorderedSet BoardBoundsPieceMoveGenerator::generateBishopMoves(const Cell& currentCell, Side side) const {
 	CellUnorderedSet destinationCells;
 
 	/* Go top-left diagonal */
@@ -139,7 +139,7 @@ CellUnorderedSet BoundsMoveGenerator::generateBishopMoves(const Cell& currentCel
 	return destinationCells;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generateQueenMoves(const Cell& currentCell, Side side) const {
+CellUnorderedSet BoardBoundsPieceMoveGenerator::generateQueenMoves(const Cell& currentCell, Side side) const {
 	CellUnorderedSet bishopMoves = generateBishopMoves(currentCell, side);
 	CellUnorderedSet rookMoves = generateRookMoves(currentCell, side);
 
@@ -148,7 +148,7 @@ CellUnorderedSet BoundsMoveGenerator::generateQueenMoves(const Cell& currentCell
 	return bishopMoves;
 }
 
-CellUnorderedSet BoundsMoveGenerator::generatePawnMoves(const Cell& currentCell, Side side) const {
+CellUnorderedSet BoardBoundsPieceMoveGenerator::generatePawnMoves(const Cell& currentCell, Side side) const {
 	CellUnorderedSet destinationCells;
 	Cell forwardMove = currentCell;
 
@@ -163,11 +163,11 @@ CellUnorderedSet BoundsMoveGenerator::generatePawnMoves(const Cell& currentCell,
 	return destinationCells;
 }
 
-bool BoundsMoveGenerator::isValidMove(const Cell& cell, Side side) const {
+bool BoardBoundsPieceMoveGenerator::isValidMove(const Cell& cell, Side side) const {
 	return board.isInBounds(cell) && board.isValidTarget(cell, side);
 }
 
-CellUnorderedSet BoundsMoveGenerator::generateKingMoves(const Cell& pos, [[maybe_unused]]Side side) const {
+CellUnorderedSet BoardBoundsPieceMoveGenerator::generateKingMoves(const Cell& pos, [[maybe_unused]]Side side) const {
 	CellUnorderedSet m;
 
 	m.insert(Cell{pos.row - 1, pos.col - 1});

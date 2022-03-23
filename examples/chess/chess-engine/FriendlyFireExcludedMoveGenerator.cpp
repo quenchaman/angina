@@ -1,11 +1,11 @@
 #include "FriendlyFireExcludedMoveGenerator.h"
 
+#include "examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/chess-engine/ChessBoard.h"
-#include "examples/chess/chess-engine/BoundsMoveGenerator.h"
 
 FriendlyFireExcludedMoveGenerator::FriendlyFireExcludedMoveGenerator(
 		ChessBoard& chessBoard,
-		BoundsMoveGenerator& generator
+		BoardBoundsPieceMoveGenerator& generator
 ): board(chessBoard), moveGen(generator) {}
 
 CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(const Cell& pieceCell) const {
@@ -20,8 +20,6 @@ CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(const Cel
 			friendlyFireExcludedMoves.insert(cell);
 		}
 	}
-
-	std::cout << "How many moves has the pawn " << friendlyFireExcludedMoves.size() << std::endl;
 
 	return friendlyFireExcludedMoves;
 }

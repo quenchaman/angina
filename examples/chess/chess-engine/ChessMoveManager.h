@@ -1,7 +1,7 @@
 #ifndef EXAMPLES_CHESS_CHESS_ENGINE_CHESSMOVEMANAGER_H_
 #define EXAMPLES_CHESS_CHESS_ENGINE_CHESSMOVEMANAGER_H_
 
-#include "BoundsMoveGenerator.h"
+#include "BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/chess-engine/ChessState.h"
 #include "examples/chess/chess-engine/ChessBoard.h"
 #include "examples/chess/chess-engine/Piece.h"

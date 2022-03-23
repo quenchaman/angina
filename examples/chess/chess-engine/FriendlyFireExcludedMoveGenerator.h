@@ -5,11 +5,14 @@
 #include "examples/chess/chess-engine/Piece.h"
 
 struct ChessBoard;
-struct BoundsMoveGenerator;
+struct BoardBoundsPieceMoveGenerator;
 
+/**
+ * Maybe this class is not needed. It could be replaced by a function.
+ */
 class FriendlyFireExcludedMoveGenerator {
 public:
-	FriendlyFireExcludedMoveGenerator(ChessBoard&, BoundsMoveGenerator&);
+	FriendlyFireExcludedMoveGenerator(ChessBoard&, BoardBoundsPieceMoveGenerator&);
 
 	/*
 	 * Generates all moves that are not on a friendly occupied cell.
@@ -17,7 +20,7 @@ public:
 	CellUnorderedSet generatePieceMoves(const Cell&) const;
 private:
 	ChessBoard& board;
-	BoundsMoveGenerator& moveGen;
+	BoardBoundsPieceMoveGenerator& moveGen;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_FRIENDLYFIREEXCLUDEDMOVEGENERATOR_H_ */

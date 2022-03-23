@@ -1,5 +1,5 @@
-#ifndef EXAMPLES_CHESS_CHESS_ENGINE_BOUNDSMOVEGENERATOR_H_
-#define EXAMPLES_CHESS_CHESS_ENGINE_BOUNDSMOVEGENERATOR_H_
+#ifndef EXAMPLES_CHESS_CHESS_ENGINE_BOARDBOUNDSPIECEMOVEGENERATOR_H_
+#define EXAMPLES_CHESS_CHESS_ENGINE_BOARDBOUNDSPIECEMOVEGENERATOR_H_
 
 #include <unordered_set>
 #include <functional>
@@ -15,9 +15,9 @@ struct ChessBoard;
 /**
  * Generates piece moves that are within boards' bounds.
  */
-class BoundsMoveGenerator {
+class BoardBoundsPieceMoveGenerator {
 public:
-	BoundsMoveGenerator(ChessBoard&);
+	BoardBoundsPieceMoveGenerator(ChessBoard&);
 
 	CellUnorderedSet generatePieceMoves(const Piece& piece, const Cell& source) const;
 private:
@@ -33,4 +33,4 @@ private:
 	bool isValidMove(const Cell&, Side) const;
 };
 
-#endif /* EXAMPLES_CHESS_CHESS_ENGINE_BOUNDSMOVEGENERATOR_H_ */
+#endif /* EXAMPLES_CHESS_CHESS_ENGINE_BOARDBOUNDSPIECEMOVEGENERATOR_H_ */

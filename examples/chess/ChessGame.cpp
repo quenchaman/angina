@@ -17,7 +17,7 @@
 ChessGame::ChessGame():
 	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM),
 	board(ChessBoard()),
-	baseMoveGen(BoundsMoveGenerator(board)),
+	baseMoveGen(BoardBoundsPieceMoveGenerator(board)),
 	moveGen(FriendlyFireExcludedMoveGenerator(board, baseMoveGen)),
 	moveManager(ChessMoveManager(board, moveGen)),
 	engine(ChessEngine(board, moveManager)) {

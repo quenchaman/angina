@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <unordered_set>
 
-#include "BoundsMoveGenerator.h"
+#include "BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/GameConfig.h"
 
 ChessBoard::ChessBoard() {

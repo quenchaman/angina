@@ -97,8 +97,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/ChessState.h
 	${DIR}/examples/chess/CellUtils.h
 	${DIR}/examples/chess/CellUtils.cpp
-	${DIR}/examples/chess/chess-engine/BoundsMoveGenerator.h
-	${DIR}/examples/chess/chess-engine/BoundsMoveGenerator.cpp
+	${DIR}/examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h
+	${DIR}/examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.cpp
 	${DIR}/examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h
 	${DIR}/examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.cpp
 	${DIR}/examples/chess/chess-engine/PlayerType.h
