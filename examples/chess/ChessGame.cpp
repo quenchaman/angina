@@ -64,7 +64,7 @@ void ChessGame::handleBtnClick([[maybe_unused]]int32_t idx) {
 
 Widget* ChessGame::buildLandingPage() {
 	// Make button manager per widget instance
-	Widget* landingPageWidget = new Widget(btnManager, Point::ZERO);
+	Widget* landingPageWidget = new Widget(Point::ZERO);
 
 	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, GameConfig::WINDOW_DIM);
 	landingPageWidget->put(*background);
@@ -84,7 +84,7 @@ Widget* ChessGame::buildLandingPage() {
 }
 
 Widget* ChessGame::buildChessPage() {
-	Widget* chessPageWidget = new Widget(btnManager, Point::ZERO);
+	Widget* chessPageWidget = new Widget(Point::ZERO);
 
 	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, GameConfig::WINDOW_DIM);
 	chessPageWidget->put(*background);
@@ -94,7 +94,7 @@ Widget* ChessGame::buildChessPage() {
 
 	RectTextButton* btn = getFactory().createButton(
 		GameConfig::QUIT_GAME_BTN_POS,
-		GameConfig::DEFAULT_BTN_DIM,
+		GameConfig::QUIT_GAME_BTN_DIM,
 		GameConfig::DEFAULT_BTN_BACKGROUND_COLOR,
 		GameConfig::DEFAULT_BTN_TEXT_COLOR,
 		GameConfig::QUIT_GAME_BTN_TEXT,

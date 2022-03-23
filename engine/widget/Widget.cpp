@@ -9,10 +9,10 @@
 #include "engine/components/buttons/BaseButton.h"
 #include "engine/managers/ButtonManager.h"
 
-Widget::Widget(ButtonManager& btnMngr): btnManager(btnMngr), origin(Point::ZERO) {
+Widget::Widget(): origin(Point::ZERO) {
 }
 
-Widget::Widget(ButtonManager& btnMngr, Point p): btnManager(btnMngr), origin(p) {
+Widget::Widget(Point p): origin(p) {
 }
 
 int32_t Widget::put(Object& drawable) {
@@ -59,6 +59,10 @@ void Widget::remove(int32_t id) {
 	ids.erase(id);
 }
 
+ButtonManager& Widget::getButtonManager() {
+	return btnManager;
+}
+
 Widget::~Widget() {
 	for (Widget* child : children) {
 		delete child;
@@ -67,10 +71,6 @@ Widget::~Widget() {
 	for (auto const& [id, drawable] : drawables) {
 		delete drawable;
 	}
-
-	// TODO: For now we will delete all buttons in btn Manager.
-	// If we start implementing multi-widget screens then it will be a bad idea.
-	btnManager.clear();
 
 	std::cout << "Widget destroyed" << std::endl;
 }

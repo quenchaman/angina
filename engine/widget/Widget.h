@@ -8,12 +8,12 @@
 
 #include "renderer/primitives/Point.h"
 #include "platform/ids/IdGenerator.h"
+#include "engine/managers/ButtonManager.h"
 
 struct Button;
 struct Drawable;
 struct Object;
 struct BaseButton;
-struct ButtonManager;
 
 /**
  * Class that represents a full screen page.
@@ -25,8 +25,8 @@ struct ButtonManager;
 class Widget {
 public:
 	// TODO: Add Buttons manager here and enable adding buttons to it.
-	Widget(ButtonManager&);
-	Widget(ButtonManager&, Point);
+	Widget();
+	Widget(Point);
 	~Widget();
 	void addChild(Widget&);
 
@@ -37,13 +37,14 @@ public:
 
 	std::vector<Drawable*> getDrawables();
 	std::vector<Widget*>& getChildren();
+	ButtonManager& getButtonManager();
 private:
 	std::unordered_map<int32_t, Drawable*> drawables;
 	// ids - for keeping track of insertion order of drawables. This matters for drawing. Later I can add z-index.
 	std::set<int32_t> ids;
 	std::vector<Widget*> children;
 	// Make button manager per widget instance
-	ButtonManager& btnManager;
+	ButtonManager btnManager;
 	Point origin;
 	IdGenerator idGen;
 

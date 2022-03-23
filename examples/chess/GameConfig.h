@@ -22,6 +22,7 @@ namespace GameConfig {
 	const std::string NEW_GAME_BTN_TEXT = "Start game";
 	const std::string QUIT_GAME_BTN_TEXT = "Quit";
 	const Point QUIT_GAME_BTN_POS = { 670, 50 };
+	const Dimensions QUIT_GAME_BTN_DIM = { 100, 50 };
 	const int32_t BOARD_SIZE = 8;
 }
 

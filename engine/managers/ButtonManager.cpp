@@ -33,12 +33,6 @@ bool ButtonManager::invokeCallback(const InputEvent& event) {
 }
 
 void ButtonManager::clear() {
-	std::cout << "Clearing buttons " << std::endl;
-	for (auto& btn : buttons) {
-		std::cout << "Clearing button " << btn->getPosition() << std::endl;
-		delete &btn;
-	}
-
 	buttons.clear();
 }
 

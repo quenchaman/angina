@@ -47,7 +47,6 @@ protected:
 	InputEvent event;
 	Widget* rootScreen;
 	Font defaultFont;
-	ButtonManager btnManager;
 
 	virtual void init() = 0;
 	virtual void update() = 0;

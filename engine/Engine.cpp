@@ -92,7 +92,7 @@ void Engine::limitFPS(int64_t elapsedTime) {
 
 void Engine::handleEvent() {
 	if (event.type == EventType::MOUSE_RELEASE) {
-		if (!btnManager.invokeCallback(event)) {
+		if (rootScreen != nullptr && !rootScreen->getButtonManager().invokeCallback(event)) {
 			handleLeftMouseClick(Point{event.posX, event.posY});
 		}
 	}
