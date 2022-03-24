@@ -4,11 +4,13 @@
 
 ChessMoveManager::ChessMoveManager(ChessBoard& chessBoard, FriendlyFireExcludedMoveGenerator& generator): board(chessBoard), moveGen(generator) {}
 
-bool ChessMoveManager::movePiece(const Cell& source, const Cell& destination) {
-	CellUnorderedSet moves = moveGen.generatePieceMoves(source);
-	bool isOkMove = moves.find(destination) != moves.end();
+bool ChessMoveManager::movePiece(const Cell& source, const Cell& destination, bool force) {
+	if (!force) {
+		CellUnorderedSet moves = moveGen.generatePieceMoves(source);
+		bool isOkMove = moves.find(destination) != moves.end();
 
-	if (!isOkMove) { return false; }
+		if (!isOkMove) { return false; }
+	}
 
 	board.movePiece(source, destination);
 

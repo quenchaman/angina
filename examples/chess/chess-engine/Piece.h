@@ -1,6 +1,10 @@
 #ifndef EXAMPLES_CHESS_CHESS_ENGINE_PIECE_H_
 #define EXAMPLES_CHESS_CHESS_ENGINE_PIECE_H_
 
+#include <unordered_map>
+#include <string>
+#include <iostream>
+
 #include "examples/chess/chess-engine/Rank.h"
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Cell.h"
@@ -20,6 +24,8 @@ struct Piece {
 		}
 	};
 
+	friend std::ostream& operator<<(std::ostream&, const Piece&);
+
 	static const Piece WHITE_ROOK;
 	static const Piece WHITE_KNIGHT;
 	static const Piece WHITE_BISHOP;
@@ -33,6 +39,8 @@ struct Piece {
 	static const Piece BLACK_PAWN;
 	static const Piece BLACK_QUEEN;
 	static const Piece BLACK_KING;
+
+	static const std::unordered_map<Rank, std::string> rankToString;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_PIECE_H_ */

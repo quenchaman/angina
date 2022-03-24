@@ -5,6 +5,7 @@
 #include <vector>
 #include <unordered_map>
 #include <set>
+#include <functional>
 
 #include "renderer/primitives/Point.h"
 #include "platform/ids/IdGenerator.h"
@@ -38,6 +39,8 @@ public:
 	std::vector<Drawable*> getDrawables();
 	std::vector<Widget*>& getChildren();
 	ButtonManager& getButtonManager();
+
+	void onDestroy(std::function<void(void)> callback);
 private:
 	std::unordered_map<int32_t, Drawable*> drawables;
 	// ids - for keeping track of insertion order of drawables. This matters for drawing. Later I can add z-index.
@@ -47,6 +50,7 @@ private:
 	ButtonManager btnManager;
 	Point origin;
 	IdGenerator idGen;
+	std::function<void(void)> onDestroyCallback;
 
 };
 

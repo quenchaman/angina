@@ -40,6 +40,8 @@ public:
 
 	bool isCellSelected() const;
 
+	bool isKingAttacked();
+
 private:
 	ChessMoveManager& moveManager;
 	ChessBoard& board;
@@ -71,6 +73,8 @@ private:
 	ChessState getNextState();
 
 	void resetSelection();
+
+	Side getEnemySide() const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_ */

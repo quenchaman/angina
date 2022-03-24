@@ -6,7 +6,9 @@
 #include "BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/GameConfig.h"
 
-ChessBoard::ChessBoard() {}
+ChessBoard::ChessBoard() {
+	setInitialPieceFormation();
+}
 
 void ChessBoard::setInitialPieceFormation() {
 	const int32_t blackPawnRow = 1;
@@ -39,6 +41,8 @@ void ChessBoard::setInitialPieceFormation() {
 void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
 	Piece sourcePiece = board.at(source);
 
+	std::cout << "The piece to be moved is " << sourcePiece << std::endl;
+
 	// Handle capture & emitting event
 	notify(source, destination);
 
@@ -48,7 +52,6 @@ void ChessBoard::movePiece(const Cell& source, const Cell& destination) {
 
 	board.erase(source);
 
-	// BUG!! We are creating a copy of piece here and not a very good copy too...implement copy assignment?
 	board[destination] = sourcePiece;
 }
 
@@ -78,6 +81,16 @@ const Piece& ChessBoard::getPieceOnCell(const Cell& source) const {
 
 const CellToPieceLookup& ChessBoard::getPiecePositions() {
 	return board;
+}
+
+Cell ChessBoard::getPiecePosition(Piece p) {
+	for (auto const& [cell, piece] : board) {
+		if (p == piece) {
+			return cell;
+		}
+	}
+
+	return Cell::UNDEFINED;
 }
 
 void ChessBoard::subscribe(MoveEventCallback callback) {

@@ -31,6 +31,12 @@ public:
 	bool isValidTarget(const Cell&, Side) const;
 	bool isEnemyCell(const Cell&, Side) const;
 
+	/**
+	 * Works well for pieces that have only one instance per side - queen and king.
+	 * For other pieces, it will return the first encountered piece and its position.
+	 */
+	Cell getPiecePosition(Piece);
+
 	void subscribe(MoveEventCallback);
 
 private:

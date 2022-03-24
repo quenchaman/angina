@@ -21,3 +21,16 @@ bool Piece::operator==(const Piece& other) const {
 bool Piece::operator!=(const Piece& other) const {
 	return !(*this == other);
 }
+
+std::ostream& operator<<(std::ostream& os, const Piece& piece) {
+	return os << "The piece is with rank " << Piece::rankToString.at(piece.rank) << " and side " << piece.side;
+}
+
+const std::unordered_map<Rank, std::string> Piece::rankToString = {
+		{ Rank::PAWN, "pawn" },
+		{ Rank::BISHOP, "bishop" },
+		{ Rank::KING, "king" },
+		{ Rank::KNIGHT, "knight" },
+		{ Rank::QUEEN, "queen" },
+		{ Rank::ROOK, "rook" }
+};

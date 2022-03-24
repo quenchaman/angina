@@ -5,6 +5,7 @@
 #include <vector>
 #include <unordered_map>
 #include <string>
+#include <functional>
 
 #include "chess-engine/BoardBoundsPieceMoveGenerator.h"
 #include "chess-engine/ChessMoveManager.h"
@@ -35,11 +36,11 @@ public:
 	void handleLeftMouseClick(Point p);
 	void handleBtnClick(int32_t idx);
 private:
-	ChessBoard board;
-	BoardBoundsPieceMoveGenerator baseMoveGen;
-	FriendlyFireExcludedMoveGenerator moveGen;
-	ChessMoveManager moveManager;
-	ChessEngine engine;
+	ChessBoard* board = nullptr;
+	BoardBoundsPieceMoveGenerator* baseMoveGen = nullptr;
+	FriendlyFireExcludedMoveGenerator* moveGen = nullptr;
+	ChessMoveManager* moveManager = nullptr;
+	ChessEngine* engine = nullptr;
 
 	CellToObjectLookup cellObject;
 	PieceToResourcePath pieceToResource;
@@ -49,8 +50,12 @@ private:
 
 	Widget* buildChessPage();
 
+	/**
+	 * Event handlers
+	 */
 	void handleStartGameButton();
 	void handleQuitGameButton();
+	void onChessWidgetDestroy();
 
 	/*
 	 * For every piece in the chess engine, create a drawable object. Keep a mapping between the two.
@@ -60,6 +65,8 @@ private:
 	void pieceMovedCallback(const Cell& source, const Cell& destination);
 
 	void handleComputerMove();
+
+	void initialiseChessClasses();
 };
 
 #endif /* EXAMPLES_CHESS_CHESSGAME_H_ */

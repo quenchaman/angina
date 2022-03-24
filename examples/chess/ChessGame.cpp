@@ -18,12 +18,7 @@
  * Stack-based allocation is eager. Heap based allocation is lazy.
  */
 ChessGame::ChessGame():
-	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM),
-	board(ChessBoard()),
-	baseMoveGen(BoardBoundsPieceMoveGenerator(board)),
-	moveGen(FriendlyFireExcludedMoveGenerator(board, baseMoveGen)),
-	moveManager(ChessMoveManager(board, moveGen)),
-	engine(ChessEngine(board, moveManager)) {
+	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM) {
 
 	pieceToResource[Piece::WHITE_PAWN] = Resources::whitePawn;
 	pieceToResource[Piece::WHITE_ROOK] = Resources::whiteRook;
@@ -55,10 +50,10 @@ void ChessGame::update() {
 void ChessGame::handleLeftMouseClick(Point p) {
 	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
 
-	if (engine.isCellSelected()) {
-		engine.movePiece(selectedCell);
+	if (engine->isCellSelected()) {
+		engine->movePiece(selectedCell);
 	} else {
-		engine.selectCell(selectedCell);
+		engine->selectCell(selectedCell);
 	}
 }
 
@@ -87,7 +82,7 @@ Widget* ChessGame::buildLandingPage() {
 }
 
 Widget* ChessGame::buildChessPage() {
-	board.setInitialPieceFormation();
+	initialiseChessClasses();
 	Widget* chessPageWidget = new Widget(Point::ZERO);
 
 	Object* background = getFactory().createObject(Resources::startScreen2, Point::ZERO, GameConfig::WINDOW_DIM);
@@ -107,21 +102,31 @@ Widget* ChessGame::buildChessPage() {
 	);
 	chessPageWidget->put(*btn);
 
+	chessPageWidget->onDestroy(std::bind(&ChessGame::onChessWidgetDestroy, this));
+
 	return chessPageWidget;
 }
 
 void ChessGame::handleStartGameButton() {
 	changeScreen(*buildChessPage());
 	createPieceObjects();
-	board.subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
+	board->subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void ChessGame::handleQuitGameButton() {
 	changeScreen(*buildLandingPage());
 }
 
+void ChessGame::onChessWidgetDestroy() {
+	delete board;
+	delete baseMoveGen;
+	delete moveGen;
+	delete moveManager;
+	delete engine;
+}
+
 void ChessGame::createPieceObjects() {
-	const CellToPieceLookup& positions = board.getPiecePositions();
+	const CellToPieceLookup& positions = board->getPiecePositions();
 
 	for (auto const& [cell, piece] : positions) {
 		Object& obj = *getFactory().createObject(
@@ -138,7 +143,7 @@ void ChessGame::createPieceObjects() {
 
 void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) {
 	// Handle captured pieces
-	if (!board.isEmptyCell(destination)) {
+	if (!board->isEmptyCell(destination)) {
 		rootScreen->remove(cellToObjectId[destination]);
 		cellObject.erase(destination);
 		cellToObjectId.erase(destination);
@@ -154,6 +159,14 @@ void ChessGame::pieceMovedCallback(const Cell& source, const Cell& destination) 
 
 	cellObject[destination] = obj;
 	cellToObjectId[destination] = id;
+}
+
+void ChessGame::initialiseChessClasses() {
+	board = new ChessBoard();
+	baseMoveGen = new BoardBoundsPieceMoveGenerator(*board);
+	moveGen = new FriendlyFireExcludedMoveGenerator(*board, *baseMoveGen);
+	moveManager = new ChessMoveManager(*board, *moveGen);
+	engine = new ChessEngine(*board, *moveManager);
 }
 
 void ChessGame::handleComputerMove() {

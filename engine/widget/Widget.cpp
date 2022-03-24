@@ -63,6 +63,10 @@ ButtonManager& Widget::getButtonManager() {
 	return btnManager;
 }
 
+void Widget::onDestroy(std::function<void(void)> callback) {
+	onDestroyCallback = callback;
+}
+
 Widget::~Widget() {
 	for (Widget* child : children) {
 		delete child;

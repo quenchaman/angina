@@ -64,6 +64,7 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generateRookMoves(const Cell& cu
 
 	while (isValidMove(cellGoingTop, side)) {
 		destinationCells.insert(cellGoingTop);
+		if (board.isEnemyCell(cellGoingTop, side)) break;
 		cellGoingTop.moveTop();
 	}
 
@@ -73,6 +74,7 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generateRookMoves(const Cell& cu
 
 	while (isValidMove(cellGoingRight, side)) {
 		destinationCells.insert(cellGoingRight);
+		if (board.isEnemyCell(cellGoingRight, side)) break;
 		cellGoingRight.moveRight();
 	}
 
@@ -82,6 +84,7 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generateRookMoves(const Cell& cu
 
 	while (isValidMove(cellGoingDown, side)) {
 		destinationCells.insert(cellGoingDown);
+		if (board.isEnemyCell(cellGoingDown, side)) break;
 		cellGoingDown.moveDown();
 	}
 
@@ -91,6 +94,7 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generateRookMoves(const Cell& cu
 
 	while (isValidMove(cellGoingLeft, side)) {
 		destinationCells.insert(cellGoingLeft);
+		if (board.isEnemyCell(cellGoingLeft, side)) break;
 		cellGoingLeft.moveLeft();
 	}
 
@@ -106,6 +110,7 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generateBishopMoves(const Cell& 
 
 	while (isValidMove(cellGoingTopLeft, side)) {
 		destinationCells.insert(cellGoingTopLeft);
+		if (board.isEnemyCell(cellGoingTopLeft, side)) break;
 		cellGoingTopLeft.moveTop().moveLeft();
 	}
 
@@ -115,6 +120,7 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generateBishopMoves(const Cell& 
 
 	while (isValidMove(cellGoingTopRight, side)) {
 		destinationCells.insert(cellGoingTopRight);
+		if (board.isEnemyCell(cellGoingTopRight, side)) break;
 		cellGoingTopRight.moveRight().moveTop();
 	}
 
@@ -124,6 +130,7 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generateBishopMoves(const Cell& 
 
 	while (isValidMove(cellGoingDownRight, side)) {
 		destinationCells.insert(cellGoingDownRight);
+		if (board.isEnemyCell(cellGoingDownRight, side)) break;
 		cellGoingDownRight.moveDown().moveRight();
 	}
 
@@ -133,6 +140,7 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generateBishopMoves(const Cell& 
 
 	while (isValidMove(cellGoingDownLeft, side)) {
 		destinationCells.insert(cellGoingDownLeft);
+		if (board.isEnemyCell(cellGoingDownLeft, side)) break;
 		cellGoingDownLeft.moveLeft().moveDown();
 	}
 

@@ -19,11 +19,11 @@ public:
 	ChessMoveManager(ChessBoard&, FriendlyFireExcludedMoveGenerator&);
 	virtual ~ChessMoveManager() = default;
 
-	bool movePiece(const Cell& source, const Cell& destination);
+	bool movePiece(const Cell& source, const Cell& destination, bool force = false);
 	virtual Move getAIMove(Side side);
 
-protected:
 	virtual std::vector<Move> calculateAllAvailableMoves(Side side);
+protected:
 	virtual double scoreMove(const Cell& destination) const;
 	virtual std::vector<Move> scorePieceMoves(const Cell& cell) const;
 
