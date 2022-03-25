@@ -6,6 +6,7 @@
 #include "renderer/primitives/Color.h"
 
 namespace GameConfig {
+
 const Point BOARD_ORIGIN_POS = { 0, 75 };
 const std::string GAME_TITLE = "Chess";
 const Point BLACK_PIECES_CEMETERY = { 0, 0 };
@@ -27,6 +28,9 @@ const int32_t BOARD_SIZE = 8;
 
 const Point HUMAN_VS_COMPUTER_POS = { 250, 370 };
 const std::string HUMAN_VS_COMPUTER_TEXT = "PvCPU";
+
+const Point COMPUTER_VS_COMPUTER_POS = { 460, 370 };
+const std::string COMPUTER_VS_COMPUTER_TEXT = "CPUvCPU";
 }
 
 #endif /* EXAMPLES_CHESS_GAMECONFIG_H_ */

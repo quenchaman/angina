@@ -61,6 +61,7 @@ private:
     void handleQuitGameButton();
     void onChessWidgetDestroy();
     void handleHumanVSComputerButton();
+    void handleComputerVSComputerButton();
 
     /*
      * For every piece in the chess engine, create a drawable object. Keep a mapping between the two.
