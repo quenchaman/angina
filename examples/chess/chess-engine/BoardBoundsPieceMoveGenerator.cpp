@@ -33,7 +33,15 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generatePieceMoves(const Piece& 
 			break;
 	}
 
-	return moves;
+	CellUnorderedSet movesInBounds;
+
+	for (const Cell& c : moves) {
+		if (board.isInBounds(c)) {
+			movesInBounds.insert(c);
+		}
+	}
+
+	return movesInBounds;
 }
 
 CellUnorderedSet BoardBoundsPieceMoveGenerator::generateKnightMoves(const Cell& knightPosition) const {

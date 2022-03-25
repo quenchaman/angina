@@ -44,7 +44,6 @@ void ChessGame::init() {
 }
 
 void ChessGame::update() {
-
 }
 
 void ChessGame::handleLeftMouseClick(Point p) {

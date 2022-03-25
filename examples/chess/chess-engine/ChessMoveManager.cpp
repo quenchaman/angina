@@ -18,7 +18,6 @@ bool ChessMoveManager::movePiece(const Cell& source, const Cell& destination, bo
 }
 
 Move ChessMoveManager::getAIMove(Side side) {
-	// Here we will assume AI is with black pieces.
 	std::vector<Move> allMoves = calculateAllAvailableMoves(side);
 
 	std::cout << "Size of all moves is: " << allMoves.size() << std::endl;
@@ -40,6 +39,8 @@ std::vector<Move> ChessMoveManager::scorePieceMoves(const Cell& cell) const {
 	CellUnorderedSet currentPieceMoves = moveGen.generatePieceMoves(cell);
 
 	for (const Cell& dest : currentPieceMoves) {
+		Move m = Move{cell, dest, scoreMove(dest)};
+		std::cout << "The move is " << m << std::endl;
 		moves.push_back(Move{cell, dest, scoreMove(dest)});
 	}
 

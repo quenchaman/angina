@@ -9,7 +9,7 @@ ChessEngine::ChessEngine(ChessBoard& chessBoard, ChessMoveManager& moveMng):
 	state(ChessState::NO_OP),
 	currentSide(Side::WHITE),
 	whitePlayerType(PlayerType::HUMAN),
-	blackPlayerType(PlayerType::HUMAN) {
+	blackPlayerType(PlayerType::COMPUTER) {
 
 	if (whitePlayerType == PlayerType::HUMAN) {
 		state = ChessState::HUMAN_SELECT_PIECE;
@@ -48,7 +48,6 @@ bool ChessEngine::movePiece(const Cell& destination) {
 	bool isChecked = isKingAttacked();
 
 	if (isChecked) {
-		std::cout << "we are under check!" << std::endl;
 		moveManager.movePiece(destination, selectedCell, true);
 	}
 
@@ -57,9 +56,11 @@ bool ChessEngine::movePiece(const Cell& destination) {
 	if (moveOK) {
 		switchSide();
 		setState(getNextState());
+
+		if (state == ChessState::COMPUTER_MOVE) {
+			makeComputerMove();
+		}
 	} else {
-		std::cout << "We should select a piece again" << std::endl;
-		std::cout << "The current side is " << currentSide << std::endl;
 		setState(ChessState::HUMAN_SELECT_PIECE);
 	}
 
@@ -74,12 +75,8 @@ bool ChessEngine::isKingAttacked() {
 	// From the 'check' logic we can safely say that we will always have a king piece on the board.
 	Cell kingPosition = board.getPiecePosition(Piece{ Rank::KING, currentSide });
 
-	std::cout << "We are checking if the king is attacked for side " << currentSide <<
-			" The king position is " << kingPosition << std::endl;
-
 	for (Move& m : allEnemyMoves) {
 		if (m.destination == kingPosition) {
-			std::cout << "The move that will attack the king is " << m << std::endl;
 			return true;
 		}
 	}
@@ -95,11 +92,17 @@ bool ChessEngine::makeComputerMove() {
 
 	Move aiMove = moveManager.getAIMove(currentSide);
 
+	std::cout << "The AI move is " << aiMove << std::endl;
+
 	moveManager.movePiece(aiMove.source, aiMove.destination);
 
 	resetSelection();
 	switchSide();
 	setState(getNextState());
+
+	if (state == ChessState::COMPUTER_MOVE) {
+		makeComputerMove();
+	}
 
 	return true;
 }
