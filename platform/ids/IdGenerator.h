@@ -5,11 +5,11 @@
 
 class IdGenerator {
 public:
-	IdGenerator();
+    IdGenerator();
 
-	int32_t next();
+    int32_t next();
 private:
-	int32_t current;
+    int32_t current;
 };
 
 #endif /* IDGENERATOR_H_ */

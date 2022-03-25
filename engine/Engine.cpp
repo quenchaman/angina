@@ -18,106 +18,103 @@
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
 
-Engine::Engine(std::string appTitle, Dimensions screenSize):
-		window(Window(
-			appTitle,
-			{ SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED },
-			{ screenSize.w, screenSize.h },
-			SDL_WINDOW_SHOWN
-    )),
-		renderer(Renderer(window)),
-		factory(GraphicsFactory(renderer)),
-		rootScreen(nullptr),
-		defaultFont(Font(Resources::montserratFont, 28)) {
+Engine::Engine(std::string appTitle, Dimensions screenSize) :
+        window(
+                Window(appTitle, { SDL_WINDOWPOS_UNDEFINED,
+                        SDL_WINDOWPOS_UNDEFINED },
+                        { screenSize.w, screenSize.h }, SDL_WINDOW_SHOWN)), renderer(
+                Renderer(window)), factory(GraphicsFactory(renderer)), rootScreen(
+                nullptr), defaultFont(Font(Resources::montserratFont, 28)) {
 
     event.init();
 }
 
 void Engine::start() {
-	init();
-	Time time;
+    init();
+    Time time;
 
-	while (!quit) {
-		time.getElapsed();
-		renderer.clear();
+    while (!quit) {
+        time.getElapsed();
+        renderer.clear();
 
-		while (event.poll()) {
-			if (event.hasExitEvent()) {
-				quit = true;
-				break;
-			}
+        while (event.poll()) {
+            if (event.hasExitEvent()) {
+                quit = true;
+                break;
+            }
 
-			handleEvent();
-		}
+            handleEvent();
+        }
 
-		update();
+        update();
 
-		draw();
+        draw();
 
-		renderer.update();
+        renderer.update();
 
-		int64_t timePassed = time.getElapsed().toMicroseconds();
+        int64_t timePassed = time.getElapsed().toMicroseconds();
 
-		ThreadUtils::sleepFor(timePassed);
-	}
+        ThreadUtils::sleepFor(timePassed);
+    }
 }
 
 void Engine::draw() {
-	if (rootScreen != nullptr) {
-		draw(*rootScreen);
-	}
+    if (rootScreen != nullptr) {
+        draw(*rootScreen);
+    }
 }
 
-void Engine::draw(Widget& widget) {
-	for (auto const& drawable : widget.getDrawables()) {
-		drawable->draw(renderer);
-	}
+void Engine::draw(Widget &widget) {
+    for (auto const &drawable : widget.getDrawables()) {
+        drawable->draw(renderer);
+    }
 
-	for (Widget* w : widget.getChildren()) {
-		draw(*w);
-	}
+    for (Widget *w : widget.getChildren()) {
+        draw(*w);
+    }
 }
 
 void Engine::limitFPS(int64_t elapsedTime) {
-	const int64_t maxFrames = EngineConfig::FRAME_RATE;
-	const int64_t timeForFrameMicro = 1000000 / maxFrames;
-	const int64_t sleepTime = timeForFrameMicro - elapsedTime;
+    const int64_t maxFrames = EngineConfig::FRAME_RATE;
+    const int64_t timeForFrameMicro = 1000000 / maxFrames;
+    const int64_t sleepTime = timeForFrameMicro - elapsedTime;
 
-	if (sleepTime <= 0) {
-		return;
-	}
+    if (sleepTime <= 0) {
+        return;
+    }
 
-	ThreadUtils::sleepFor(sleepTime);
+    ThreadUtils::sleepFor(sleepTime);
 }
 
 void Engine::handleEvent() {
-	if (event.type == EventType::MOUSE_RELEASE) {
-		if (rootScreen != nullptr && !rootScreen->getButtonManager().invokeCallback(event)) {
-			handleLeftMouseClick(Point{event.posX, event.posY});
-		}
-	}
+    if (event.type == EventType::MOUSE_RELEASE) {
+        if (rootScreen != nullptr
+                && !rootScreen->getButtonManager().invokeCallback(event)) {
+            handleLeftMouseClick(Point { event.posX, event.posY });
+        }
+    }
 }
 
 GraphicsFactory& Engine::getFactory() {
-	return factory;
+    return factory;
 }
 
 void Engine::clearScreen() {
-	if (rootScreen != nullptr) {
-		delete rootScreen;
-		rootScreen = nullptr;
-	}
+    if (rootScreen != nullptr) {
+        delete rootScreen;
+        rootScreen = nullptr;
+    }
 }
 
-void Engine::changeScreen(Widget& widget) {
-	clearScreen();
+void Engine::changeScreen(Widget &widget) {
+    clearScreen();
 
-	rootScreen = &widget;
+    rootScreen = &widget;
 }
 
 Engine::~Engine() {
-	clearScreen();
-	event.deinit();
+    clearScreen();
+    event.deinit();
 
-	std::cout << "Engine destroyed" << std::endl;
+    std::cout << "Engine destroyed" << std::endl;
 }

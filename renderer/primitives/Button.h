@@ -15,10 +15,9 @@ struct Rect;
 struct InputEvent;
 struct Renderer;
 
-class Button : public Object {
+class Button: public Object {
 public:
     Button(Texture&, Point, Dimensions);
 };
-
 
 #endif //ANGINA_BUTTON_H

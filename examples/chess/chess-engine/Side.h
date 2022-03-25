@@ -2,9 +2,7 @@
 #define CHESS_SIDE_H_
 
 enum Side {
-	WHITE,
-	BLACK,
-	NA
+    WHITE, BLACK, NA
 };
 
 #endif /* CHESS_SIDE_H_ */

@@ -14,43 +14,45 @@
  * ...But this is still poor. TODO: Improve it.
  *
  */
-Window::Window(std::string title, Point pos, Dimensions dimensions, int32_t flags) {
-	window = SDL_CreateWindow(title.c_str(), pos.x, pos.y, dimensions.w, dimensions.h, flags);
+Window::Window(std::string title, Point pos, Dimensions dimensions,
+        int32_t flags) {
+    window = SDL_CreateWindow(title.c_str(), pos.x, pos.y, dimensions.w,
+            dimensions.h, flags);
 
-	if (window == nullptr) {
-		throw WindowInitException(SDL_GetError());
-	}
+    if (window == nullptr) {
+        throw WindowInitException(SDL_GetError());
+    }
 
-	SDL_Surface* ws = SDL_GetWindowSurface(window);
+    SDL_Surface *ws = SDL_GetWindowSurface(window);
 
-	if (ws == nullptr) {
-		throw WindowInitException(SDL_GetError());
-	}
+    if (ws == nullptr) {
+        throw WindowInitException(SDL_GetError());
+    }
 
-	surface = new Surface(ws);
+    surface = new Surface(ws);
 
-	std::cout << "Window initialised" << std::endl;
+    std::cout << "Window initialised" << std::endl;
 }
 
 SDL_Window* Window::getWindow() {
-	return window;
+    return window;
 }
 
 Surface& Window::getSurface() {
-	return *surface;
+    return *surface;
 }
 
 Window::~Window() {
-	std::cout << "Window destruction started" << std::endl;
-	if (surface != nullptr) {
-		delete surface;
-		surface = nullptr;
-	}
-	std::cout << "Window surface destroyed" << std::endl;
-	if (window != nullptr) {
-		SDL_DestroyWindow(window);
-		window = nullptr;
-	}
+    std::cout << "Window destruction started" << std::endl;
+    if (surface != nullptr) {
+        delete surface;
+        surface = nullptr;
+    }
+    std::cout << "Window surface destroyed" << std::endl;
+    if (window != nullptr) {
+        SDL_DestroyWindow(window);
+        window = nullptr;
+    }
 
-	std::cout << "Window destroyed" << std::endl;
+    std::cout << "Window destroyed" << std::endl;
 }

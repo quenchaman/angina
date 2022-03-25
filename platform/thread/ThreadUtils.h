@@ -5,9 +5,9 @@
 
 class ThreadUtils {
 public:
-	ThreadUtils() = delete;
+    ThreadUtils() = delete;
 
-	static void sleepFor(int64_t microseconds);
+    static void sleepFor(int64_t microseconds);
 };
 
 #endif /* UTILS_THREAD_THREADUTILS_H_ */

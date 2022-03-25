@@ -6,32 +6,32 @@
 #include <unordered_set>
 
 struct Cell {
-	Cell();
-	Cell(int32_t row, int32_t col);
+    Cell();
+    Cell(int32_t row, int32_t col);
 
-	int32_t row;
-	int32_t col;
+    int32_t row;
+    int32_t col;
 
-	bool operator==(const Cell& cell) const;
-	bool operator!=(const Cell& cell) const;
+    bool operator==(const Cell &cell) const;
+    bool operator!=(const Cell &cell) const;
 
-	Cell& moveTop();
-	Cell& moveRight();
-	Cell& moveDown();
-	Cell& moveLeft();
+    Cell& moveTop();
+    Cell& moveRight();
+    Cell& moveDown();
+    Cell& moveLeft();
 
-	struct HashFunction {
-		size_t operator()(const Cell& cell) const {
-			size_t rowHash = std::hash<int32_t>()(cell.row);
-			size_t colHash = std::hash<int32_t>()(cell.col) << 1;
+    struct HashFunction {
+        size_t operator()(const Cell &cell) const {
+            size_t rowHash = std::hash<int32_t>()(cell.row);
+            size_t colHash = std::hash<int32_t>()(cell.col) << 1;
 
-			return rowHash ^ colHash;
-		}
-	};
+            return rowHash ^ colHash;
+        }
+    };
 
-	static const Cell UNDEFINED;
+    static const Cell UNDEFINED;
 
-	friend std::ostream& operator<<(std::ostream& os, const Cell& cell);
+    friend std::ostream& operator<<(std::ostream &os, const Cell &cell);
 
 };
 

@@ -13,12 +13,13 @@
 #include "examples/chess/CellUtils.h"
 #include "examples/chess/GameConfig.h"
 #include "examples/chess/chess-engine/ChessBoard.h"
+#include "examples/chess/chess-engine/PlayerType.h"
 
 /**
  * Stack-based allocation is eager. Heap based allocation is lazy.
  */
 ChessGame::ChessGame():
-	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM) {
+	Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM), whitePlayerType(PlayerType::HUMAN), blackPlayerType(PlayerType::HUMAN) {
 
 	pieceToResource[Piece::WHITE_PAWN] = Resources::whitePawn;
 	pieceToResource[Piece::WHITE_ROOK] = Resources::whiteRook;
@@ -44,10 +45,17 @@ void ChessGame::init() {
 }
 
 void ChessGame::update() {
+	if (engine != nullptr && engine->getState() == ChessState::COMPUTER_MOVE) {
+		engine->makeComputerMove();
+	}
 }
 
 void ChessGame::handleLeftMouseClick(Point p) {
 	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
+
+	if (engine == nullptr) {
+		return;
+	}
 
 	if (engine->isCellSelected()) {
 		engine->movePiece(selectedCell);
@@ -76,6 +84,17 @@ Widget* ChessGame::buildLandingPage() {
 		std::bind(&ChessGame::handleStartGameButton, this)
 	);
 	landingPageWidget->put(*btn);
+
+	RectTextButton* humanVsComputerBtn = getFactory().createButton(
+		GameConfig::HUMAN_VS_COMPUTER_POS,
+		GameConfig::DEFAULT_BTN_DIM,
+		GameConfig::DEFAULT_BTN_BACKGROUND_COLOR,
+		GameConfig::DEFAULT_BTN_TEXT_COLOR,
+		GameConfig::HUMAN_VS_COMPUTER_TEXT,
+		defaultFont,
+		std::bind(&ChessGame::handleHumanVSComputerButton, this)
+	);
+	landingPageWidget->put(*humanVsComputerBtn);
 
 	return landingPageWidget;
 }
@@ -106,14 +125,26 @@ Widget* ChessGame::buildChessPage() {
 	return chessPageWidget;
 }
 
-void ChessGame::handleStartGameButton() {
+void ChessGame::startChessGame() {
 	changeScreen(*buildChessPage());
 	createPieceObjects();
 	board->subscribe(std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1, std::placeholders::_2));
 }
 
+void ChessGame::handleStartGameButton() {
+	whitePlayerType = PlayerType::HUMAN;
+	blackPlayerType = PlayerType::HUMAN;
+	startChessGame();
+}
+
 void ChessGame::handleQuitGameButton() {
 	changeScreen(*buildLandingPage());
+}
+
+void ChessGame::handleHumanVSComputerButton() {
+	whitePlayerType = PlayerType::HUMAN;
+	blackPlayerType = PlayerType::COMPUTER;
+	startChessGame();
 }
 
 void ChessGame::onChessWidgetDestroy() {
@@ -165,7 +196,7 @@ void ChessGame::initialiseChessClasses() {
 	baseMoveGen = new BoardBoundsPieceMoveGenerator(*board);
 	moveGen = new FriendlyFireExcludedMoveGenerator(*board, *baseMoveGen);
 	moveManager = new ChessMoveManager(*board, *moveGen);
-	engine = new ChessEngine(*board, *moveManager);
+	engine = new ChessEngine(*board, *moveManager, whitePlayerType, blackPlayerType);
 }
 
 void ChessGame::handleComputerMove() {

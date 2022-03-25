@@ -15,14 +15,14 @@ struct Renderer;
  */
 class ButtonManager {
 public:
-	~ButtonManager();
-	void registerButton(BaseButton&);
+    ~ButtonManager();
+    void registerButton(BaseButton&);
 
-	bool invokeCallback(const InputEvent&);
+    bool invokeCallback(const InputEvent&);
 
-	void clear();
+    void clear();
 private:
-	std::vector<BaseButton*> buttons;
+    std::vector<BaseButton*> buttons;
 };
 
 #endif /* SDL_ENGINE_BUTTONS_BUTTONMANAGER_H_ */

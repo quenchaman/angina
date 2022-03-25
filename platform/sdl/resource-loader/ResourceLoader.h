@@ -12,13 +12,13 @@ struct Texture;
 struct Color;
 
 namespace ResourceLoader {
-	Surface* load(const std::string& path);
+Surface* load(const std::string &path);
 
-	std::vector<Surface*> loadBulk(const std::vector<std::string>& paths);
+std::vector<Surface*> loadBulk(const std::vector<std::string> &paths);
 
-	TTF_Font* loadFont(const std::string& path, int32_t pointSize);
+TTF_Font* loadFont(const std::string &path, int32_t pointSize);
 
-	Surface* loadText(TTF_Font*, const std::string& text, Color);
+Surface* loadText(TTF_Font*, const std::string &text, Color);
 }
 
 #endif /* SDL_IMAGERESOURCE_H_ */

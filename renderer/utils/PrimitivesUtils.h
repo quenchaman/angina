@@ -5,8 +5,9 @@
 #include "renderer/primitives/Dimensions.h"
 
 namespace PrimitivesUtils {
-	Point calculateCenter(Point origin, Dimensions dim);
-	bool isInRect(Point origin, Dimensions dim, Point query);
-};
+Point calculateCenter(Point origin, Dimensions dim);
+bool isInRect(Point origin, Dimensions dim, Point query);
+}
+;
 
 #endif /* RENDERER_UTILS_PRIMITIVESUTILS_H_ */

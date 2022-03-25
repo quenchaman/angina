@@ -2,143 +2,147 @@
 
 #include "examples/chess/chess-engine/ChessMoveManager.h"
 
-ChessEngine::ChessEngine(ChessBoard& chessBoard, ChessMoveManager& moveMng):
-	moveManager(moveMng),
-	board(chessBoard),
-	selectedCell(Cell::UNDEFINED),
-	state(ChessState::NO_OP),
-	currentSide(Side::WHITE),
-	whitePlayerType(PlayerType::HUMAN),
-	blackPlayerType(PlayerType::COMPUTER) {
+ChessEngine::ChessEngine(ChessBoard &chessBoard, ChessMoveManager &moveMng,
+        PlayerType whitePType, PlayerType blackPType) :
+        moveManager(moveMng), board(chessBoard), selectedCell(Cell::UNDEFINED), state(
+                ChessState::NO_OP), currentSide(Side::WHITE), whitePlayerType(
+                whitePType), blackPlayerType(blackPType) {
 
-	if (whitePlayerType == PlayerType::HUMAN) {
-		state = ChessState::HUMAN_SELECT_PIECE;
-	} else {
-		state = ChessState::COMPUTER_MOVE;
-	}
+    if (whitePlayerType == PlayerType::HUMAN) {
+        state = ChessState::HUMAN_SELECT_PIECE;
+    } else {
+        state = ChessState::COMPUTER_MOVE;
+    }
 
-	sideToPlayerType[Side::WHITE] = whitePlayerType;
-	sideToPlayerType[Side::BLACK] = blackPlayerType;
+    sideToPlayerType[Side::WHITE] = whitePlayerType;
+    sideToPlayerType[Side::BLACK] = blackPlayerType;
 }
 
-bool ChessEngine::selectCell(const Cell& cell) {
-	if (state != ChessState::HUMAN_SELECT_PIECE || board.isEmptyCell(cell)) {
-		return false;
-	}
+bool ChessEngine::selectCell(const Cell &cell) {
+    if (state != ChessState::HUMAN_SELECT_PIECE || board.isEmptyCell(cell)) {
+        return false;
+    }
 
-	Piece piece = board.getPieceOnCell(cell);
+    Piece piece = board.getPieceOnCell(cell);
 
-	if (!isSelectedPieceOnTurn(piece)) {
-		return false;
-	}
+    if (!isSelectedPieceOnTurn(piece)) {
+        return false;
+    }
 
-	selectedCell = cell;
-	setState(ChessState::HUMAN_PIECE_SELECTED);
+    selectedCell = cell;
+    setState(ChessState::HUMAN_PIECE_SELECTED);
 
-	return true;
+    return true;
 }
 
-bool ChessEngine::movePiece(const Cell& destination) {
-	if (state != ChessState::HUMAN_PIECE_SELECTED) {
-		return false;
-	}
+bool ChessEngine::movePiece(const Cell &destination) {
+    if (state != ChessState::HUMAN_PIECE_SELECTED) {
+        return false;
+    }
 
-	bool moveOK = moveManager.movePiece(selectedCell, destination);
+    bool moveOK = moveManager.movePiece(selectedCell, destination);
 
-	bool isChecked = isKingAttacked();
+    bool isChecked = isKingAttacked();
 
-	if (isChecked) {
-		moveManager.movePiece(destination, selectedCell, true);
-	}
+    if (isChecked) {
+        moveManager.movePiece(destination, selectedCell, true);
+    }
 
-	moveOK = moveOK && !isChecked;
+    moveOK = moveOK && !isChecked;
 
-	if (moveOK) {
-		switchSide();
-		setState(getNextState());
+    if (moveOK) {
+        switchSide();
+        setState(getNextState());
+    } else {
+        setState(ChessState::HUMAN_SELECT_PIECE);
+    }
 
-		if (state == ChessState::COMPUTER_MOVE) {
-			makeComputerMove();
-		}
-	} else {
-		setState(ChessState::HUMAN_SELECT_PIECE);
-	}
+    resetSelection();
 
-	resetSelection();
-
-	return moveOK;
+    return moveOK;
 }
 
 bool ChessEngine::isKingAttacked() {
-	std::vector<Move> allEnemyMoves = moveManager.calculateAllAvailableMoves(getEnemySide());
+    std::vector<Move> allEnemyMoves = moveManager.calculateAllAvailableMoves(
+            getEnemySide());
 
-	// From the 'check' logic we can safely say that we will always have a king piece on the board.
-	Cell kingPosition = board.getPiecePosition(Piece{ Rank::KING, currentSide });
+    // From the 'check' logic we can safely say that we will always have a king piece on the board.
+    Cell kingPosition = board.getPiecePosition(
+            Piece { Rank::KING, currentSide });
 
-	for (Move& m : allEnemyMoves) {
-		if (m.destination == kingPosition) {
-			return true;
-		}
-	}
+    for (Move &m : allEnemyMoves) {
+        if (m.destination == kingPosition) {
+            return true;
+        }
+    }
 
-	return false;
+    return false;
 }
 
 // TODO: Improve this once we get to AI
 bool ChessEngine::makeComputerMove() {
-	if (state != ChessState::COMPUTER_MOVE) {
-		return false;
-	}
+    std::vector<Move> aiMoves = moveManager.getAIMoves(currentSide);
 
-	Move aiMove = moveManager.getAIMove(currentSide);
+    for (Move &move : aiMoves) {
+        std::cout << "The AI move is " << move << std::endl;
 
-	std::cout << "The AI move is " << aiMove << std::endl;
+        moveManager.movePiece(move.source, move.destination);
 
-	moveManager.movePiece(aiMove.source, aiMove.destination);
+        bool isChecked = isKingAttacked();
 
-	resetSelection();
-	switchSide();
-	setState(getNextState());
+        if (isChecked) {
+            // TODO: This part has a big fat bug. If there was a capture, we do not revert it here...
+            // It would have been smart to use some CQRS type of pattern or command pattern with undo
+            // so we can easily revert back the board.
+            moveManager.movePiece(move.destination, move.source, true);
+        } else {
+            resetSelection();
+            switchSide();
+            setState(getNextState());
 
-	if (state == ChessState::COMPUTER_MOVE) {
-		makeComputerMove();
-	}
+            return true;
+        }
+    }
 
-	return true;
+    return false;
 }
 
-bool ChessEngine::isSelectedPieceOnTurn(const Piece& piece) const {
-	return piece.side == currentSide;
+bool ChessEngine::isSelectedPieceOnTurn(const Piece &piece) const {
+    return piece.side == currentSide;
 }
 
 ChessState ChessEngine::getNextState() {
-	PlayerType nextPlayerType = sideToPlayerType[currentSide];
+    PlayerType nextPlayerType = sideToPlayerType[currentSide];
 
-	if (nextPlayerType == PlayerType::COMPUTER) {
-		return ChessState::COMPUTER_MOVE;
-	} else {
-		return ChessState::HUMAN_SELECT_PIECE;
-	}
+    if (nextPlayerType == PlayerType::COMPUTER) {
+        return ChessState::COMPUTER_MOVE;
+    } else {
+        return ChessState::HUMAN_SELECT_PIECE;
+    }
 }
 
 bool ChessEngine::isCellSelected() const {
-	return selectedCell != Cell::UNDEFINED;
+    return selectedCell != Cell::UNDEFINED;
 }
 
 Side ChessEngine::switchSide() {
-	Side cs = getEnemySide();
-	currentSide = cs;
-	return cs;
+    Side cs = getEnemySide();
+    currentSide = cs;
+    return cs;
 }
 
 ChessState ChessEngine::setState(ChessState newState) {
-	return state = newState;
+    return state = newState;
+}
+
+ChessState ChessEngine::getState() const {
+    return state;
 }
 
 void ChessEngine::resetSelection() {
-	selectedCell = Cell::UNDEFINED;
+    selectedCell = Cell::UNDEFINED;
 }
 
 Side ChessEngine::getEnemySide() const {
-	return (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
+    return (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
 }

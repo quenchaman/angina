@@ -1,43 +1,47 @@
 #include "Cell.h"
 
-Cell::Cell(): row(0), col(0) {}
-
-Cell::Cell(int32_t _row, int32_t _col): row(_row), col(_col) {}
-
-bool Cell::operator==(const Cell& cell) const {
-	return row == cell.row && col == cell.col;
+Cell::Cell() :
+        row(0), col(0) {
 }
 
-bool Cell::operator!=(const Cell& cell) const {
-	return !(*this == cell);
+Cell::Cell(int32_t _row, int32_t _col) :
+        row(_row), col(_col) {
+}
+
+bool Cell::operator==(const Cell &cell) const {
+    return row == cell.row && col == cell.col;
+}
+
+bool Cell::operator!=(const Cell &cell) const {
+    return !(*this == cell);
 }
 
 const Cell Cell::UNDEFINED(10000, 10000);
 
-std::ostream& operator<<(std::ostream& os, const Cell& cell) {
-	return os << "Row: " << cell.row << "; " << "Col: " << cell.col;
+std::ostream& operator<<(std::ostream &os, const Cell &cell) {
+    return os << "Row: " << cell.row << "; " << "Col: " << cell.col;
 }
 
 Cell& Cell::moveTop() {
-	this->row--;
+    this->row--;
 
-	return *this;
+    return *this;
 }
 
 Cell& Cell::moveRight() {
-	this->col++;
+    this->col++;
 
-	return *this;
+    return *this;
 }
 
 Cell& Cell::moveDown() {
-	this->row++;
+    this->row++;
 
-	return *this;
+    return *this;
 }
 
 Cell& Cell::moveLeft() {
-	this->col--;
+    this->col--;
 
-	return *this;
+    return *this;
 }

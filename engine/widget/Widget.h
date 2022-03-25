@@ -25,32 +25,32 @@ struct BaseButton;
  */
 class Widget {
 public:
-	// TODO: Add Buttons manager here and enable adding buttons to it.
-	Widget();
-	Widget(Point);
-	~Widget();
-	void addChild(Widget&);
+    // TODO: Add Buttons manager here and enable adding buttons to it.
+    Widget();
+    Widget(Point);
+    ~Widget();
+    void addChild(Widget&);
 
-	int32_t put(BaseButton&);
-	int32_t put(Object& drawable);
+    int32_t put(BaseButton&);
+    int32_t put(Object &drawable);
 
-	void remove(int32_t id);
+    void remove(int32_t id);
 
-	std::vector<Drawable*> getDrawables();
-	std::vector<Widget*>& getChildren();
-	ButtonManager& getButtonManager();
+    std::vector<Drawable*> getDrawables();
+    std::vector<Widget*>& getChildren();
+    ButtonManager& getButtonManager();
 
-	void onDestroy(std::function<void(void)> callback);
+    void onDestroy(std::function<void(void)> callback);
 private:
-	std::unordered_map<int32_t, Drawable*> drawables;
-	// ids - for keeping track of insertion order of drawables. This matters for drawing. Later I can add z-index.
-	std::set<int32_t> ids;
-	std::vector<Widget*> children;
-	// Make button manager per widget instance
-	ButtonManager btnManager;
-	Point origin;
-	IdGenerator idGen;
-	std::function<void(void)> onDestroyCallback;
+    std::unordered_map<int32_t, Drawable*> drawables;
+    // ids - for keeping track of insertion order of drawables. This matters for drawing. Later I can add z-index.
+    std::set<int32_t> ids;
+    std::vector<Widget*> children;
+    // Make button manager per widget instance
+    ButtonManager btnManager;
+    Point origin;
+    IdGenerator idGen;
+    std::function<void(void)> onDestroyCallback;
 
 };
 

@@ -10,28 +10,28 @@
 
 #include "SDL_shape.h"
 
-class Rect : public Drawable {
+class Rect: public Drawable {
 public:
-	Rect(Point, Dimensions, Color);
-	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color&);
+    Rect(Point, Dimensions, Color);
+    Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color&);
 
-	void draw(Renderer&);
+    void draw(Renderer&);
 
-	bool operator==(const Rect&) const;
-	bool operator!=(const Rect&) const;
+    bool operator==(const Rect&) const;
+    bool operator!=(const Rect&) const;
 
-	SDL_Rect getRawRect() const;
-	Color getColor() const;
+    SDL_Rect getRawRect() const;
+    Color getColor() const;
 
-	bool isInRect(const Point&);
+    bool isInRect(const Point&);
 
-	static const Rect ZERO;
-	static const Rect UNDEFINED;
+    static const Rect ZERO;
+    static const Rect UNDEFINED;
 
-	friend std::ostream& operator<<(std::ostream&, const Rect&);
+    friend std::ostream& operator<<(std::ostream&, const Rect&);
 private:
-	SDL_Rect rect;
-	Color color;
+    SDL_Rect rect;
+    Color color;
 };
 
 #endif /* SDL_PRIMITIVES_RECT_H_ */

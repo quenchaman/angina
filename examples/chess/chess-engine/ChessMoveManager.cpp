@@ -2,77 +2,84 @@
 
 #include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
 
-ChessMoveManager::ChessMoveManager(ChessBoard& chessBoard, FriendlyFireExcludedMoveGenerator& generator): board(chessBoard), moveGen(generator) {}
-
-bool ChessMoveManager::movePiece(const Cell& source, const Cell& destination, bool force) {
-	if (!force) {
-		CellUnorderedSet moves = moveGen.generatePieceMoves(source);
-		bool isOkMove = moves.find(destination) != moves.end();
-
-		if (!isOkMove) { return false; }
-	}
-
-	board.movePiece(source, destination);
-
-	return true;
+ChessMoveManager::ChessMoveManager(ChessBoard &chessBoard,
+        FriendlyFireExcludedMoveGenerator &generator) :
+        board(chessBoard), moveGen(generator) {
 }
 
-Move ChessMoveManager::getAIMove(Side side) {
-	std::vector<Move> allMoves = calculateAllAvailableMoves(side);
+bool ChessMoveManager::movePiece(const Cell &source, const Cell &destination,
+        bool force) {
+    if (!force) {
+        CellUnorderedSet moves = moveGen.generatePieceMoves(source);
+        bool isOkMove = moves.find(destination) != moves.end();
 
-	std::cout << "Size of all moves is: " << allMoves.size() << std::endl;
+        if (!isOkMove) {
+            return false;
+        }
+    }
 
-	if (allMoves.empty()) {
-		// TODO: here we might have check or draw or something.
-	}
+    board.movePiece(source, destination);
 
-	sort(allMoves.begin(), allMoves.end(), [](const Move& lMove, const Move& rMove) {
-		return rMove.score - lMove.score;
-	});
-
-	// We can return an undefined move if we don't have moves.
-	return allMoves[0];
+    return true;
 }
 
-std::vector<Move> ChessMoveManager::scorePieceMoves(const Cell& cell) const {
-	std::vector<Move> moves;
-	CellUnorderedSet currentPieceMoves = moveGen.generatePieceMoves(cell);
+std::vector<Move> ChessMoveManager::getAIMoves(Side side) {
+    std::vector<Move> allMoves = calculateAllAvailableMoves(side);
 
-	for (const Cell& dest : currentPieceMoves) {
-		Move m = Move{cell, dest, scoreMove(dest)};
-		std::cout << "The move is " << m << std::endl;
-		moves.push_back(Move{cell, dest, scoreMove(dest)});
-	}
+    sort(allMoves.begin(), allMoves.end(),
+            [](const Move &lMove, const Move &rMove) {
+                return lMove.score > rMove.score;
+            });
 
-	return moves;
+    return allMoves;
+}
+
+std::vector<Move> ChessMoveManager::scorePieceMoves(const Cell &cell) const {
+    std::vector<Move> moves;
+    CellUnorderedSet currentPieceMoves = moveGen.generatePieceMoves(cell);
+
+    for (const Cell &dest : currentPieceMoves) {
+        moves.push_back(Move { cell, dest, scoreMove(dest) });
+    }
+
+    return moves;
 }
 
 std::vector<Move> ChessMoveManager::calculateAllAvailableMoves(Side side) {
-	std::vector<Move> allMoves;
+    std::vector<Move> allMoves;
 
-  // In chess, if a "node" is considered to be a legal position,
-  // the average branching factor has been said to be about 35,[1][2]
-  // and a statistical analysis of over 2.5 million games revealed an average of 31.[3]
-  // This means that, on average, a player has about 31 to 35 legal moves at their disposal at each turn.
-  // By comparison, the average branching factor for the game Go is 250.[1]
-	allMoves.reserve(31);
+    // In chess, if a "node" is considered to be a legal position,
+    // the average branching factor has been said to be about 35,[1][2]
+    // and a statistical analysis of over 2.5 million games revealed an average of 31.[3]
+    // This means that, on average, a player has about 31 to 35 legal moves at their disposal at each turn.
+    // By comparison, the average branching factor for the game Go is 250.[1]
+    allMoves.reserve(31);
 
-	for (auto const& [cell, piece] : board.getPiecePositions()) {
-		if (piece.side == side) {
-			std::vector<Move> currentValidPieceMoves = scorePieceMoves(cell);
+    for (auto const& [cell, piece] : board.getPiecePositions()) {
+        if (piece.side == side) {
+            std::vector<Move> currentValidPieceMoves = scorePieceMoves(cell);
 
-			allMoves.insert(allMoves.end(), currentValidPieceMoves.begin(), currentValidPieceMoves.end());
-		}
-	}
+            allMoves.insert(allMoves.end(), currentValidPieceMoves.begin(),
+                    currentValidPieceMoves.end());
+        }
+    }
 
-	return allMoves;
+    return allMoves;
 }
 
-double ChessMoveManager::scoreMove(const Cell& destination) const {
-	if (!board.isEmptyCell(destination)) {
-		return 1;
-	}
+double ChessMoveManager::scoreMove(const Cell &destination) const {
+    if (!board.isEmptyCell(destination)) {
+        Piece p = board.getPieceOnCell(destination);
 
-	return 0;
+        return Piece::rankToCost.at(p.rank);
+    }
+
+    // Center of board is preferable place.
+    if (destination.row >= 3 && destination.row <= 5 && destination.col >= 3
+            && destination.col <= 5) {
+        return 0.5;
+    }
+
+    return 0;
 }
 

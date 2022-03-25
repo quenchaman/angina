@@ -4,22 +4,24 @@
 #include "examples/chess/chess-engine/ChessBoard.h"
 
 FriendlyFireExcludedMoveGenerator::FriendlyFireExcludedMoveGenerator(
-		ChessBoard& chessBoard,
-		BoardBoundsPieceMoveGenerator& generator
-): board(chessBoard), moveGen(generator) {}
+        ChessBoard &chessBoard, BoardBoundsPieceMoveGenerator &generator) :
+        board(chessBoard), moveGen(generator) {
+}
 
-CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(const Cell& pieceCell) const {
-	CellUnorderedSet friendlyFireExcludedMoves;
+CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(
+        const Cell &pieceCell) const {
+    CellUnorderedSet friendlyFireExcludedMoves;
 
-	Piece piece = board.getPieceOnCell(pieceCell);
+    Piece piece = board.getPieceOnCell(pieceCell);
 
-	CellUnorderedSet boundedMoves = moveGen.generatePieceMoves(piece, pieceCell);
+    CellUnorderedSet boundedMoves = moveGen.generatePieceMoves(piece,
+            pieceCell);
 
-	for (auto const& cell : boundedMoves) {
-		if (board.isValidTarget(cell, piece.side)) {
-			friendlyFireExcludedMoves.insert(cell);
-		}
-	}
+    for (auto const &cell : boundedMoves) {
+        if (board.isValidTarget(cell, piece.side)) {
+            friendlyFireExcludedMoves.insert(cell);
+        }
+    }
 
-	return friendlyFireExcludedMoves;
+    return friendlyFireExcludedMoves;
 }

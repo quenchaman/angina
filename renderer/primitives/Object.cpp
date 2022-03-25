@@ -8,38 +8,41 @@
 #include "renderer/Renderer.h"
 #include "renderer/utils/PrimitivesUtils.h"
 
-Object::Object(Texture& t, Dimensions d, Point p): texture(t), dim(d), point(p), center(PrimitivesUtils::calculateCenter(p, dim)) {}
-
-void Object::move(const int32_t x, const int32_t y) {
-	point.x = x;
-	point.y = y;
-
-	center = PrimitivesUtils::calculateCenter(point, dim);
+Object::Object(Texture &t, Dimensions d, Point p) :
+        texture(t), dim(d), point(p), center(
+                PrimitivesUtils::calculateCenter(p, dim)) {
 }
 
-void Object::move(const Point& p) {
-	move(p.x, p.y);
+void Object::move(const int32_t x, const int32_t y) {
+    point.x = x;
+    point.y = y;
+
+    center = PrimitivesUtils::calculateCenter(point, dim);
+}
+
+void Object::move(const Point &p) {
+    move(p.x, p.y);
 }
 
 Point Object::getPosition() const {
-	return point;
+    return point;
 }
 
 Dimensions Object::getDimensions() const {
-	return dim;
+    return dim;
 }
 
 Point Object::getCenter() const {
-	return center;
+    return center;
 }
 
 Object::~Object() {
-	delete& texture;
+    delete &texture;
 
-	std::cout << "Object destroyed" << std::endl;
+    std::cout << "Object destroyed" << std::endl;
 }
 
-void Object::draw(Renderer& renderer) {
-	//std::cout << "I am being drawn at " << rectangle.rect.x << " and " << rectangle.rect.y << std::endl;
-	renderer.render(*this);
+void Object::draw(Renderer &renderer) {
+    //std::cout << "I am being drawn at " << rectangle.rect.x << " and " << rectangle.rect.y << std::endl;
+    renderer.render(*this);
 }

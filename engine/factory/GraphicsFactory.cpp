@@ -10,33 +10,38 @@
 #include "renderer/primitives/Text.h"
 #include "engine/components/buttons/RectTextButton.h"
 
-GraphicsFactory::GraphicsFactory(Renderer& r): renderer(r) {
+GraphicsFactory::GraphicsFactory(Renderer &r) :
+        renderer(r) {
 }
 
-Object* GraphicsFactory::createObject(const std::string& resourcePath, Point p, Dimensions dim) {
-	Surface* surface = ResourceLoader::load(resourcePath);
+Object* GraphicsFactory::createObject(const std::string &resourcePath, Point p,
+        Dimensions dim) {
+    Surface *surface = ResourceLoader::load(resourcePath);
 
-	Object* obj = renderer.fromSurface(*surface, p, dim);
+    Object *obj = renderer.fromSurface(*surface, p, dim);
 
-	return obj;
+    return obj;
 }
 
-Text* GraphicsFactory::createText(std::string textVal, Font& font, Point p, Dimensions dim, Color color) {
-	Surface* surface = ResourceLoader::loadText(font.getFont(), textVal, color);
-	Texture* texture = renderer.from(*surface);
-	Text* text = new Text(*texture, dim, p);
+Text* GraphicsFactory::createText(std::string textVal, Font &font, Point p,
+        Dimensions dim, Color color) {
+    Surface *surface = ResourceLoader::loadText(font.getFont(), textVal, color);
+    Texture *texture = renderer.from(*surface);
+    Text *text = new Text(*texture, dim, p);
 
-	return text;
+    return text;
 }
 
-RectTextButton* GraphicsFactory::createButton(Point p, Dimensions dim, Color backgroundColor, Color textColor, std::string text, Font& font, std::function<void(void)> clb) {
-	Text* btnText = GraphicsFactory::createText(text, font, p, dim, textColor);
+RectTextButton* GraphicsFactory::createButton(Point p, Dimensions dim,
+        Color backgroundColor, Color textColor, std::string text, Font &font,
+        std::function<void(void)> clb) {
+    Text *btnText = GraphicsFactory::createText(text, font, p, dim, textColor);
 
-	// TODO: Add a padding to the text or ,even better, center it.
+    // TODO: Add a padding to the text or ,even better, center it.
 
-	return new RectTextButton(p, dim, backgroundColor, *btnText, clb);
+    return new RectTextButton(p, dim, backgroundColor, *btnText, clb);
 }
 
 GraphicsFactory::~GraphicsFactory() {
-	std::cout << "GraphicsFactory destroyed" << std::endl;
+    std::cout << "GraphicsFactory destroyed" << std::endl;
 }
