@@ -6,6 +6,7 @@ include(${DIR}/cmake_helpers/helpers.cmake)
 set(CMAKE_MODULE_PATH
 ${CMAKE_MODULE_PATH}
 ${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/find_modules)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
 
 project(chess LANGUAGES CXX)
 
@@ -106,6 +107,11 @@ add_executable(${PROJECT_NAME}
 	${DIR}/platform/ids/IdGenerator.h
 	${DIR}/platform/ids/IdGenerator.cpp
 )
+
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	${CMAKE_CURRENT_SOURCE_DIR}/resources/chess
+	$<TARGET_FILE_DIR:${PROJECT_NAME}>)
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
 enable_target_warnings(${PROJECT_NAME})

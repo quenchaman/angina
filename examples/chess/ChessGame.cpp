@@ -80,6 +80,11 @@ Widget* ChessGame::buildLandingPage() {
             Point::ZERO, GameConfig::WINDOW_DIM);
     landingPageWidget->put(*background);
 
+    Text* title = getFactory().createText(GameConfig::TITLE_TEXT,
+            defaultFont,
+            GameConfig::TITLE_POS, GameConfig::TITLE_DIM, Color::BLUE);
+    landingPageWidget->put(*(Object*)title);
+
     RectTextButton *btn = getFactory().createButton(
             GameConfig::NEW_GAME_BTN_POS, GameConfig::DEFAULT_BTN_DIM,
             GameConfig::DEFAULT_BTN_BACKGROUND_COLOR,

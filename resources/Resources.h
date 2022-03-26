@@ -2,9 +2,15 @@
 #define RESOURCES_RESOURCES_H_
 
 #include <string>
+#include <iostream>
 
 namespace Resources {
-const std::string prefix = "../resources/chess/";
+#ifndef DEBUG
+    const std::string prefix = "../resources/chess/";
+#endif
+#ifdef DEBUG
+    const std::string prefix = "resources/chess/";
+#endif
 
 const std::string whiteWins = prefix + "white_wins.png";
 const std::string blackWins = prefix + "black_wins.png";

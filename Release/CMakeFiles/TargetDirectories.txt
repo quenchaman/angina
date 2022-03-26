@@ -1,0 +1,3 @@
+/home/ubuntu/Projects/angina3/Release/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/Projects/angina3/Release/CMakeFiles/edit_cache.dir
+/home/ubuntu/Projects/angina3/Release/CMakeFiles/chess.dir
