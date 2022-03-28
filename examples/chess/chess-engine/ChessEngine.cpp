@@ -92,7 +92,7 @@ ChessState ChessEngine::getNextState() {
 }
 
 bool ChessEngine::isMoveAllowed(const Cell& src, const Cell& dst) const {
-	ChessBoard tempBoard = board;
+	ChessBoard& tempBoard = *(new ChessBoard(board));
 	tempBoard.clearSubscribers();
 	BoardBoundsPieceMoveGenerator bbpmg(tempBoard);
 	FriendlyFireExcludedMoveGenerator ffemg(tempBoard, bbpmg);
@@ -122,31 +122,33 @@ bool ChessEngine::isMoveAllowed(const Cell& src, const Cell& dst) const {
 	 * End King attacked logic
 	 */
 
+	delete &tempBoard;
 	return moveOK && !isChecked;
 }
 
 bool ChessEngine::isCellSelected() const {
-    return selectedCell != Cell::UNDEFINED;
+	return selectedCell != Cell::UNDEFINED;
 }
 
 Side ChessEngine::switchSide() {
-    Side cs = getEnemySide();
-    currentSide = cs;
-    return cs;
+	Side cs = getEnemySide();
+	currentSide = cs;
+	return cs;
 }
 
 ChessState ChessEngine::setState(ChessState newState) {
-    return state = newState;
+	return state = newState;
 }
 
 ChessState ChessEngine::getState() const {
-    return state;
+	return state;
 }
 
 void ChessEngine::resetSelection() {
-    selectedCell = Cell::UNDEFINED;
+	selectedCell = Cell::UNDEFINED;
 }
 
 Side ChessEngine::getEnemySide() const {
-    return (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
+	return (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
 }
+

@@ -63,10 +63,41 @@ void ChessGame::handleLeftMouseClick(Point p) {
     }
 
     if (engine->isCellSelected()) {
+    		clearPossibleMoves();
         engine->movePiece(selectedCell);
     } else {
-        engine->selectCell(selectedCell);
+        if (engine->selectCell(selectedCell)) {
+        	std::cout << "Select cell " << selectedCell << std::endl;
+        	fillPossibleMoves(selectedCell);
+        }
+
+//        if (engine->isCellSelected()) {
+//        	fillPossibleMoves(selectedCell);
+//        }
+
     }
+}
+
+void ChessGame::fillPossibleMoves(const Cell& target) {
+	possibleMoveCellsIds.clear();
+	CellUnorderedSet possibleMoves = moveGen->generatePieceMoves(target);
+
+	for (const Cell& c : possibleMoves) {
+		Rect* r = getFactory().createRect(CellUtils::cellToPoint(c, GameConfig::CELL_DIM, Point::ZERO),
+				GameConfig::CELL_DIM, Color::GREEN);
+
+		int32_t id = rootScreen->put(*r);
+
+		possibleMoveCellsIds.push_back(id);
+	}
+}
+
+void ChessGame::clearPossibleMoves() {
+	for (int32_t id : possibleMoveCellsIds) {
+		rootScreen->remove(id);
+	}
+
+	possibleMoveCellsIds.clear();
 }
 
 void ChessGame::handleBtnClick([[maybe_unused]]int32_t idx) {

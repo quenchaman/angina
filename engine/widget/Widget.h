@@ -15,6 +15,7 @@ struct Button;
 struct Drawable;
 struct Object;
 struct BaseButton;
+struct Rect;
 
 /**
  * Class that represents a full screen page.
@@ -33,6 +34,7 @@ public:
 
     int32_t put(BaseButton&);
     int32_t put(Object &drawable);
+    int32_t put(Rect&);
 
     void remove(int32_t id);
 

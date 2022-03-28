@@ -19,6 +19,7 @@ CellUnorderedSet FriendlyFireExcludedMoveGenerator::generatePieceMoves(
 
     for (auto const &cell : boundedMoves) {
         if (board.isValidTarget(cell, piece.side)) {
+        	std::cout << "Inserting a cell " << cell << std::endl;
             friendlyFireExcludedMoves.insert(cell);
         }
     }

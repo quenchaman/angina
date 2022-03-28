@@ -13,6 +13,7 @@ struct Object;
 struct RectTextButton;
 struct Font;
 struct Text;
+struct Rect;
 
 class GraphicsFactory {
 public:
@@ -24,6 +25,8 @@ public:
 
     virtual Text* createText(std::string text, Font&, Point, Dimensions,
             Color color = Color::NONE);
+
+    virtual Rect* createRect(Point, Dimensions, Color);
 
     // We will not cache buttons for now as they are static.
     RectTextButton* createButton(Point, Dimensions, Color backgroundColor,

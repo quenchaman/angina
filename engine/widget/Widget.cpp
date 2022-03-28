@@ -6,6 +6,7 @@
 #include "renderer/drawable/Drawable.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Point.h"
+#include "renderer/shapes/Rect.h"
 #include "engine/components/buttons/BaseButton.h"
 #include "engine/managers/ButtonManager.h"
 
@@ -18,13 +19,13 @@ Widget::Widget(Point p) :
 }
 
 int32_t Widget::put(Object &drawable) {
-    Point newDrawablePos = origin + drawable.getPosition();
-    drawable.move(newDrawablePos.x, newDrawablePos.y);
+	Point newDrawablePos = origin + drawable.getPosition();
+	drawable.move(newDrawablePos.x, newDrawablePos.y);
 
-    int32_t id = idGen.next();
-    drawables[id] = &drawable;
-    ids.insert(id);
-    return id;
+	int32_t id = idGen.next();
+	drawables[id] = &drawable;
+	ids.insert(id);
+	return id;
 }
 
 int32_t Widget::put(BaseButton &btn) {
@@ -34,6 +35,14 @@ int32_t Widget::put(BaseButton &btn) {
     ids.insert(id);
 
     return id;
+}
+
+int32_t Widget::put(Rect& r) {
+	int32_t id = idGen.next();
+	drawables[id] = &r;
+	ids.insert(id);
+
+	return id;
 }
 
 void Widget::addChild(Widget &widget) {
@@ -56,9 +65,9 @@ std::vector<Drawable*> Widget::getDrawables() {
 }
 
 void Widget::remove(int32_t id) {
-    delete drawables[id];
-    drawables.erase(id);
-    ids.erase(id);
+	delete drawables[id];
+	drawables.erase(id);
+	ids.erase(id);
 }
 
 ButtonManager& Widget::getButtonManager() {

@@ -2,6 +2,7 @@
 #define EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_
 
 #include <unordered_map>
+#include <vector>
 
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Cell.h"

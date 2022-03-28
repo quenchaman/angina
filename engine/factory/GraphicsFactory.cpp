@@ -8,6 +8,7 @@
 #include "renderer/primitives/Dimensions.h"
 #include "platform/sdl/primitives/Font.h"
 #include "renderer/primitives/Text.h"
+#include "renderer/shapes/Rect.h"
 #include "engine/components/buttons/RectTextButton.h"
 
 GraphicsFactory::GraphicsFactory(Renderer &r) :
@@ -40,6 +41,10 @@ RectTextButton* GraphicsFactory::createButton(Point p, Dimensions dim,
     // TODO: Add a padding to the text or ,even better, center it.
 
     return new RectTextButton(p, dim, backgroundColor, *btnText, clb);
+}
+
+Rect* GraphicsFactory::createRect(Point p, Dimensions dim, Color c) {
+	return new Rect(p, dim, c);
 }
 
 GraphicsFactory::~GraphicsFactory() {

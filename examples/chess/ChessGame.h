@@ -48,6 +48,8 @@ private:
     PlayerType whitePlayerType;
     PlayerType blackPlayerType;
 
+    std::vector<int32_t> possibleMoveCellsIds;
+
     Widget* buildLandingPage();
 
     Widget* buildChessPage();
@@ -73,6 +75,9 @@ private:
     void handleComputerMove();
 
     void initialiseChessClasses();
+
+    void fillPossibleMoves(const Cell&);
+    void clearPossibleMoves();
 };
 
 #endif /* EXAMPLES_CHESS_CHESSGAME_H_ */
