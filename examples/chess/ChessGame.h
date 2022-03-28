@@ -7,20 +7,22 @@
 #include <string>
 #include <functional>
 
-#include "chess-engine/BoardBoundsPieceMoveGenerator.h"
-#include "chess-engine/ChessMoveManager.h"
 #include "examples/chess/chess-engine/Piece.h"
 #include "examples/chess/chess-engine/Cell.h"
 
+#include "examples/chess/chess-engine/PlayerType.h"
+
 #include "engine/Engine.h"
 #include "renderer/primitives/Dimensions.h"
-#include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
-#include "examples/chess/chess-engine/ChessEngine.h"
 #include "examples/chess/chess-engine/ChessMoveManager.h"
 
 struct Widget;
 struct Object;
 struct ChessBoard;
+struct ChessEngine;
+struct ChessMoveLog;
+struct BoardBoundsPieceMoveGenerator;
+struct ChessMoveManager;
 
 typedef std::unordered_map<Cell, Object*, Cell::HashFunction> CellToObjectLookup;
 typedef std::unordered_map<Cell, int32_t, Cell::HashFunction> CellToObjectId;
@@ -41,6 +43,7 @@ private:
     FriendlyFireExcludedMoveGenerator *moveGen = nullptr;
     ChessMoveManager *moveManager = nullptr;
     ChessEngine *engine = nullptr;
+    ChessMoveLog *log = nullptr;
 
     CellToObjectLookup cellObject;
     PieceToResourcePath pieceToResource;

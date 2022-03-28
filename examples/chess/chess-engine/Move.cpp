@@ -1,9 +1,11 @@
 #include "Move.h"
 
-const Move Move::UNDEFINED(Cell::UNDEFINED, Cell::UNDEFINED, 0.0);
+#include "examples/chess/CellUtils.h"
 
-Move::Move(Cell src, Cell dst, double scr) :
-        source(src), destination(dst), score(scr) {
+const Move Move::UNDEFINED(Cell::UNDEFINED, Cell::UNDEFINED, 0.0, Side::NA);
+
+Move::Move(Cell src, Cell dst, double scr, Side moveSide) :
+        source(src), destination(dst), score(scr), side(moveSide) {
 }
 
 bool Move::operator==(const Move &other) const {
@@ -15,6 +17,6 @@ bool Move::operator!=(const Move &other) const {
 }
 
 std::ostream& operator<<(std::ostream &os, const Move &move) {
-    return os << "Move start: " << move.source << "; Move end:"
-            << move.destination << " and the score is " << move.score;
+	return os << ((move.side == Side::WHITE) ? "White" : "Black") << ": From " << CellUtils::toChessCoordinates(move.source)
+			<< ", To "<< CellUtils::toChessCoordinates(move.destination) << " and the score is " << move.score;
 }

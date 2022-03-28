@@ -13,7 +13,12 @@
 #include "examples/chess/CellUtils.h"
 #include "examples/chess/GameConfig.h"
 #include "examples/chess/chess-engine/ChessBoard.h"
-#include "examples/chess/chess-engine/PlayerType.h"
+
+#include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
+#include "examples/chess/chess-engine/ChessEngine.h"
+#include "examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h"
+#include "examples/chess/chess-engine/ChessMoveManager.h"
+#include "examples/chess/chess-engine/ChessMoveLog.h"
 
 #include "platform/thread/ThreadUtils.h"
 
@@ -50,7 +55,7 @@ void ChessGame::init() {
 void ChessGame::update() {
     if (engine != nullptr && engine->getState() == ChessState::COMPUTER_MOVE) {
         engine->makeComputerMove();
-        ThreadUtils::sleepFor(50000);
+        ThreadUtils::sleepFor(50000); // When CPUs play 1v1 you can't see the moves.
     }
 }
 
@@ -243,7 +248,8 @@ void ChessGame::initialiseChessClasses() {
     baseMoveGen = new BoardBoundsPieceMoveGenerator(*board);
     moveGen = new FriendlyFireExcludedMoveGenerator(*board, *baseMoveGen);
     moveManager = new ChessMoveManager(*board, *moveGen);
-    engine = new ChessEngine(*board, *moveManager, whitePlayerType,
+    log = new ChessMoveLog();
+    engine = new ChessEngine(*board, *moveManager, *log, whitePlayerType,
             blackPlayerType);
 }
 

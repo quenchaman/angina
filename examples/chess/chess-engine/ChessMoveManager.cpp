@@ -34,12 +34,12 @@ std::vector<Move> ChessMoveManager::getAIMoves(Side side) {
     return allMoves;
 }
 
-std::vector<Move> ChessMoveManager::scorePieceMoves(const Cell &cell) const {
+std::vector<Move> ChessMoveManager::scorePieceMoves(const Cell &cell, Side side) const {
     std::vector<Move> moves;
     CellUnorderedSet currentPieceMoves = moveGen.generatePieceMoves(cell);
 
     for (const Cell &dest : currentPieceMoves) {
-        moves.push_back(Move { cell, dest, scoreMove(dest) });
+        moves.push_back(Move { cell, dest, scoreMove(dest), side });
     }
 
     return moves;
@@ -57,7 +57,7 @@ std::vector<Move> ChessMoveManager::calculateAllAvailableMoves(Side side) {
 
     for (auto const& [cell, piece] : board.getPiecePositions()) {
         if (piece.side == side) {
-            std::vector<Move> currentValidPieceMoves = scorePieceMoves(cell);
+            std::vector<Move> currentValidPieceMoves = scorePieceMoves(cell, side);
 
             allMoves.insert(allMoves.end(), currentValidPieceMoves.begin(),
                     currentValidPieceMoves.end());

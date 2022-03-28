@@ -26,9 +26,10 @@ public:
     virtual std::vector<Move> getAIMoves(Side side);
 
     virtual std::vector<Move> calculateAllAvailableMoves(Side side);
-protected:
+
     virtual double scoreMove(const Cell &destination) const;
-    virtual std::vector<Move> scorePieceMoves(const Cell &cell) const;
+protected:
+    virtual std::vector<Move> scorePieceMoves(const Cell &cell, Side) const;
 
 private:
     ChessBoard &board;

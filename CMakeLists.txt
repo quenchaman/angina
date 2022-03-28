@@ -67,6 +67,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/components/buttons/BaseButton.cpp
 	${DIR}/engine/components/buttons/RectTextButton.h
 	${DIR}/engine/components/buttons/RectTextButton.cpp
+	${DIR}/engine/repositories/TextRepository.h
+	${DIR}/engine/repositories/TextRepository.cpp
 	${DIR}/engine/config/EngineConfig.h
 	${DIR}/platform/sdl/enums/Flip.h
 	${DIR}/renderer/primitives/Button.cpp
@@ -93,8 +95,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/Side.h
 	${DIR}/examples/chess/ChessGame.h
 	${DIR}/examples/chess/ChessGame.cpp
-	${DIR}/examples/chess/chess-engine/ScoredMove.h
-	${DIR}/examples/chess/chess-engine/ScoredMove.cpp
 	${DIR}/examples/chess/chess-engine/ChessState.h
 	${DIR}/examples/chess/CellUtils.h
 	${DIR}/examples/chess/CellUtils.cpp
@@ -102,6 +102,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.cpp
 	${DIR}/examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h
 	${DIR}/examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.cpp
+	${DIR}/examples/chess/chess-engine/ChessMoveLog.h
+	${DIR}/examples/chess/chess-engine/ChessMoveLog.cpp
 	${DIR}/examples/chess/chess-engine/PlayerType.h
 	${DIR}/examples/chess/GameConfig.h
 	${DIR}/platform/ids/IdGenerator.h

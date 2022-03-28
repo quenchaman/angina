@@ -8,6 +8,7 @@
 #include "examples/chess/chess-engine/Cell.h"
 #include "examples/chess/chess-engine/PlayerType.h"
 #include "examples/chess/chess-engine/ChessState.h"
+#include "examples/chess/chess-engine/ChessMoveLog.h"
 
 struct ChessMoveManager;
 struct ChessBoard;
@@ -15,7 +16,7 @@ struct Piece;
 
 class ChessEngine {
 public:
-    ChessEngine(ChessBoard&, ChessMoveManager&, PlayerType whitePType =
+    ChessEngine(ChessBoard&, ChessMoveManager&, ChessMoveLog& moveLog, PlayerType whitePType =
             PlayerType::HUMAN, PlayerType blackPType = PlayerType::HUMAN);
     /*
      * Used for human players.
@@ -47,6 +48,7 @@ public:
 private:
     ChessMoveManager &moveManager;
     ChessBoard &board;
+    ChessMoveLog& log;
     Cell selectedCell;
     ChessState state;
     Side currentSide;

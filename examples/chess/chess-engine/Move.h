@@ -4,13 +4,15 @@
 #include <iostream>
 
 #include "examples/chess/chess-engine/Cell.h"
+#include "examples/chess/chess-engine/Side.h"
 
 struct Move {
-    Move(Cell src, Cell dst, double score);
+    Move(Cell src, Cell dst, double score, Side);
 
     Cell source;
     Cell destination;
     double score;
+    Side side;
 
     bool operator==(const Move &other) const;
     bool operator!=(const Move &other) const;
