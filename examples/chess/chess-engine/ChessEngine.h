@@ -41,8 +41,6 @@ public:
 
     bool isCellSelected() const;
 
-    bool isKingAttacked();
-
     ChessState getState() const;
 
 private:
@@ -78,6 +76,11 @@ private:
     void resetSelection();
 
     Side getEnemySide() const;
+
+    /**
+     * Performs the move on a temporary board and checks whether the move is valid and the king is in check.
+     */
+    bool isMoveAllowed(const Cell&, const Cell&) const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_ */

@@ -105,6 +105,10 @@ void ChessBoard::notify(const Cell &source, const Cell &destination) const {
     }
 }
 
+void ChessBoard::clearSubscribers() {
+	subscribers.clear();
+}
+
 std::ostream& operator<<(std::ostream &os, const ChessBoard &ChessBoard) {
     for (auto const& [cell, piece] : ChessBoard.board) {
         os << "At cell: " << cell << " is piece: " << piece.rank << std::endl;

@@ -39,6 +39,8 @@ public:
 
     void subscribe(MoveEventCallback);
 
+    void clearSubscribers();
+
 private:
     CellToPieceLookup board;
     std::vector<MoveEventCallback> subscribers;

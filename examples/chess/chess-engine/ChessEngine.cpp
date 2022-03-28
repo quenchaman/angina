@@ -1,6 +1,8 @@
 #include "ChessEngine.h"
 
 #include "examples/chess/chess-engine/ChessMoveManager.h"
+#include "examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h"
+#include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
 
 ChessEngine::ChessEngine(ChessBoard &chessBoard, ChessMoveManager &moveMng,
         PlayerType whitePType, PlayerType blackPType) :
@@ -40,17 +42,10 @@ bool ChessEngine::movePiece(const Cell &destination) {
         return false;
     }
 
-    bool moveOK = moveManager.movePiece(selectedCell, destination);
-
-    bool isChecked = isKingAttacked();
-
-    if (isChecked) {
-        moveManager.movePiece(destination, selectedCell, true);
-    }
-
-    moveOK = moveOK && !isChecked;
+    bool moveOK = isMoveAllowed(selectedCell, destination);
 
     if (moveOK) {
+    		moveManager.movePiece(selectedCell, destination);
         switchSide();
         setState(getNextState());
     } else {
@@ -62,45 +57,20 @@ bool ChessEngine::movePiece(const Cell &destination) {
     return moveOK;
 }
 
-bool ChessEngine::isKingAttacked() {
-    std::vector<Move> allEnemyMoves = moveManager.calculateAllAvailableMoves(
-            getEnemySide());
-
-    // From the 'check' logic we can safely say that we will always have a king piece on the board.
-    Cell kingPosition = board.getPiecePosition(
-            Piece { Rank::KING, currentSide });
-
-    for (Move &m : allEnemyMoves) {
-        if (m.destination == kingPosition) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 // TODO: Improve this once we get to AI
 bool ChessEngine::makeComputerMove() {
     std::vector<Move> aiMoves = moveManager.getAIMoves(currentSide);
 
     for (Move &move : aiMoves) {
-        std::cout << "The AI move is " << move << std::endl;
+        bool isMoveOk = isMoveAllowed(move.source, move.destination);
 
-        moveManager.movePiece(move.source, move.destination);
+        if (isMoveOk) {
+        	moveManager.movePiece(move.source, move.destination);
+        	resetSelection();
+					switchSide();
+					setState(getNextState());
 
-        bool isChecked = isKingAttacked();
-
-        if (isChecked) {
-            // TODO: This part has a big fat bug. If there was a capture, we do not revert it here...
-            // It would have been smart to use some CQRS type of pattern or command pattern with undo
-            // so we can easily revert back the board.
-            moveManager.movePiece(move.destination, move.source, true);
-        } else {
-            resetSelection();
-            switchSide();
-            setState(getNextState());
-
-            return true;
+					return true;
         }
     }
 
@@ -119,6 +89,40 @@ ChessState ChessEngine::getNextState() {
     } else {
         return ChessState::HUMAN_SELECT_PIECE;
     }
+}
+
+bool ChessEngine::isMoveAllowed(const Cell& src, const Cell& dst) const {
+	ChessBoard tempBoard = board;
+	tempBoard.clearSubscribers();
+	BoardBoundsPieceMoveGenerator bbpmg(tempBoard);
+	FriendlyFireExcludedMoveGenerator ffemg(tempBoard, bbpmg);
+	ChessMoveManager moveMng(tempBoard, ffemg);
+
+	bool moveOK = moveMng.movePiece(src, dst);
+
+	/**
+	 * King attacked logic
+	 */
+	std::vector<Move> allEnemyMoves = moveMng.calculateAllAvailableMoves(
+						getEnemySide());
+
+	// From the 'check' logic we can safely say that we will always have a king piece on the board.
+	Cell kingPosition = tempBoard.getPiecePosition(
+					Piece { Rank::KING, currentSide });
+
+	bool isChecked = false;
+
+	for (Move &m : allEnemyMoves) {
+			if (m.destination == kingPosition) {
+					isChecked = true;
+					break;
+			}
+	}
+	/**
+	 * End King attacked logic
+	 */
+
+	return moveOK && !isChecked;
 }
 
 bool ChessEngine::isCellSelected() const {
