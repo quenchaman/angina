@@ -67,6 +67,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/components/buttons/BaseButton.cpp
 	${DIR}/engine/components/buttons/RectTextButton.h
 	${DIR}/engine/components/buttons/RectTextButton.cpp
+	${DIR}/engine/components/textstack/TextStack.h
+	${DIR}/engine/components/textstack/TextStack.cpp
 	${DIR}/engine/repositories/TextRepository.h
 	${DIR}/engine/repositories/TextRepository.cpp
 	${DIR}/engine/config/EngineConfig.h

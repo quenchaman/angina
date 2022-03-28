@@ -23,6 +23,7 @@ struct ChessEngine;
 struct ChessMoveLog;
 struct BoardBoundsPieceMoveGenerator;
 struct ChessMoveManager;
+struct TextStack;
 
 typedef std::unordered_map<Cell, Object*, Cell::HashFunction> CellToObjectLookup;
 typedef std::unordered_map<Cell, int32_t, Cell::HashFunction> CellToObjectId;
@@ -44,6 +45,8 @@ private:
     ChessMoveManager *moveManager = nullptr;
     ChessEngine *engine = nullptr;
     ChessMoveLog *log = nullptr;
+    TextStack *textStack = nullptr;
+    Widget *logTextWidget = nullptr;
 
     CellToObjectLookup cellObject;
     PieceToResourcePath pieceToResource;
@@ -67,6 +70,7 @@ private:
     void onChessWidgetDestroy();
     void handleHumanVSComputerButton();
     void handleComputerVSComputerButton();
+    void handleMoveLog(const Move&);
 
     /*
      * For every piece in the chess engine, create a drawable object. Keep a mapping between the two.
@@ -81,6 +85,8 @@ private:
 
     void fillPossibleMoves(const Cell&);
     void clearPossibleMoves();
+
+    void putLogText();
 };
 
 #endif /* EXAMPLES_CHESS_CHESSGAME_H_ */

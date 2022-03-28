@@ -19,6 +19,7 @@
 #include "examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/chess-engine/ChessMoveManager.h"
 #include "examples/chess/chess-engine/ChessMoveLog.h"
+#include "engine/components/textstack/TextStack.h"
 
 #include "platform/thread/ThreadUtils.h"
 
@@ -68,7 +69,7 @@ void ChessGame::handleLeftMouseClick(Point p) {
     }
 
     if (engine->isCellSelected()) {
-    		clearPossibleMoves();
+        clearPossibleMoves();
         engine->movePiece(selectedCell);
     } else {
         if (engine->selectCell(selectedCell)) {
@@ -167,6 +168,10 @@ Widget* ChessGame::buildChessPage() {
     chessPageWidget->onDestroy(
             std::bind(&ChessGame::onChessWidgetDestroy, this));
 
+    logTextWidget = new Widget(GameConfig::LOG_TEXT_POS);
+
+    chessPageWidget->addChild(*logTextWidget);
+
     return chessPageWidget;
 }
 
@@ -176,6 +181,8 @@ void ChessGame::startChessGame() {
     board->subscribe(
             std::bind(&ChessGame::pieceMovedCallback, this,
                     std::placeholders::_1, std::placeholders::_2));
+    log->subscribe(std::bind(&ChessGame::handleMoveLog, this,
+            std::placeholders::_1));
 }
 
 void ChessGame::handleStartGameButton() {
@@ -200,12 +207,21 @@ void ChessGame::handleComputerVSComputerButton() {
     startChessGame();
 }
 
+void ChessGame::handleMoveLog(const Move& move) {
+    std::stringstream ss;
+    ss << move;
+    textStack->add(ss.str());
+    putLogText();
+}
+
 void ChessGame::onChessWidgetDestroy() {
     delete board;
     delete baseMoveGen;
     delete moveGen;
     delete moveManager;
     delete engine;
+    delete log;
+    delete textStack;
 }
 
 void ChessGame::createPieceObjects() {
@@ -251,8 +267,13 @@ void ChessGame::initialiseChessClasses() {
     log = new ChessMoveLog();
     engine = new ChessEngine(*board, *moveManager, *log, whitePlayerType,
             blackPlayerType);
+    textStack = new TextStack();
 }
 
 void ChessGame::handleComputerMove() {
+
+}
+
+void ChessGame::putLogText() {
 
 }

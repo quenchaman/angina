@@ -2,12 +2,26 @@
 
 #include "renderer/primitives/Text.h"
 
-TextRepository::TextRepository() {
-	// TODO Auto-generated constructor stub
+#include "engine/factory/GraphicsFactory.h"
 
-}
+#include "platform/sdl/primitives/Font.h"
+
+TextRepository::TextRepository(GraphicsFactory& factory, Font& textFont): gFactory(factory), font(textFont) {}
 
 TextRepository::~TextRepository() {
-	// TODO we will manage the lifecycle of Text objects.
+    for (auto const& [txt, texture] : data) {
+        delete texture;
+    }
 }
 
+Text* TextRepository::get(std::string text) {
+    bool exists = data.find(text) != data.end();
+
+    if (!exists) {
+        Text* textTexture = gFactory.createText(text, font, Point::UNDEFINED, Dimensions::UNDEFINED);
+
+        data[text] = textTexture;
+    }
+
+    return data[text];
+}
