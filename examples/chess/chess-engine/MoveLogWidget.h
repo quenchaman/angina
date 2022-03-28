@@ -9,16 +9,19 @@
 
 struct TextStack;
 struct TextRepository;
+struct IdGenerator;
 
 class MoveLogWidget : public Widget {
 public:
-    MoveLogWidget(TextStack&, TextRepository&, uint32_t sizeCap);
+    MoveLogWidget(TextStack&, TextRepository&, IdGenerator&, uint32_t sizeCap);
 
     void add(std::string&);
 private:
-    uint32_t sizeCap;
     TextStack& textStack;
     TextRepository& textRepo;
+    IdGenerator& idGen;
+    uint32_t sizeCap;
+
     std::deque<int32_t> textLineIds;
 };
 
