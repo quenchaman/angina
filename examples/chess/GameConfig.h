@@ -35,6 +35,8 @@ const std::string COMPUTER_VS_COMPUTER_TEXT = "CPUvCPU";
 const Point TITLE_POS = { 300, 100 };
 const std::string TITLE_TEXT = "Chess";
 const Dimensions TITLE_DIM = { 200, 100 };
+
+const Color HIGHLIGHT_COLOR = Color { 0, 255, 0, 128 };
 }
 
 #endif /* EXAMPLES_CHESS_GAMECONFIG_H_ */

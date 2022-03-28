@@ -61,6 +61,7 @@ Renderer::~Renderer() {
 void Renderer::init(Window &window) {
     renderer = SDL_CreateRenderer(window.getWindow(), -1,
             SDL_RENDERER_ACCELERATED);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
     std::cout << "Renderer initialised" << std::endl;
 }

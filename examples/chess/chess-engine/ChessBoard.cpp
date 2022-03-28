@@ -41,8 +41,6 @@ void ChessBoard::setInitialPieceFormation() {
 void ChessBoard::movePiece(const Cell &source, const Cell &destination) {
 	Piece sourcePiece = board.at(source);
 
-	std::cout << "The piece to be moved is " << sourcePiece << std::endl;
-
 	// Handle capture & emitting event
 	notify(source, destination);
 
@@ -78,7 +76,6 @@ bool ChessBoard::isEnemyCell(const Cell &cell, Side side) const {
 }
 
 const Piece& ChessBoard::getPieceOnCell(const Cell &source) const {
-	std::cout << "The requested cell is " << source << std::endl;
 	return board.at(source);
 }
 

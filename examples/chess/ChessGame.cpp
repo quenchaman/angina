@@ -67,14 +67,8 @@ void ChessGame::handleLeftMouseClick(Point p) {
         engine->movePiece(selectedCell);
     } else {
         if (engine->selectCell(selectedCell)) {
-        	std::cout << "Select cell " << selectedCell << std::endl;
         	fillPossibleMoves(selectedCell);
         }
-
-//        if (engine->isCellSelected()) {
-//        	fillPossibleMoves(selectedCell);
-//        }
-
     }
 }
 
@@ -84,7 +78,7 @@ void ChessGame::fillPossibleMoves(const Cell& target) {
 
 	for (const Cell& c : possibleMoves) {
 		Rect* r = getFactory().createRect(CellUtils::cellToPoint(c, GameConfig::CELL_DIM, Point::ZERO),
-				GameConfig::CELL_DIM, Color::GREEN);
+				GameConfig::CELL_DIM, GameConfig::HIGHLIGHT_COLOR);
 
 		int32_t id = rootScreen->put(*r);
 

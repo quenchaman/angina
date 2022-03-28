@@ -25,8 +25,6 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generatePieceMoves(
         break;
     case Rank::PAWN:
         moves = generatePawnMoves(source, piece.side);
-        std::cout << "How many moves has the pawn " << moves.size()
-                << std::endl;
         break;
     case Rank::QUEEN:
         moves = generateQueenMoves(source, piece.side);
