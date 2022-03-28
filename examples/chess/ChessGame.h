@@ -46,6 +46,7 @@ private:
     ChessEngine *engine = nullptr;
     ChessMoveLog *log = nullptr;
     TextStack *textStack = nullptr;
+    // TODO: We can have a class that wraps a text stack component and its visualisation.
     Widget *logTextWidget = nullptr;
 
     CellToObjectLookup cellObject;
