@@ -29,9 +29,9 @@
 /**
  * Tip of the day: Stack-based allocation is eager. Heap based allocation is lazy.
  */
-ChessGame::ChessGame() :
+ChessGame::ChessGame():
 		Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM), whitePlayerType(
-				PlayerType::HUMAN), blackPlayerType(PlayerType::HUMAN) {
+				PlayerType::HUMAN), blackPlayerType(PlayerType::HUMAN), loadingFromSave(false) {
 
 	pieceToResource[Piece::WHITE_PAWN] = Resources::whitePawn;
 	pieceToResource[Piece::WHITE_ROOK] = Resources::whiteRook;
@@ -180,15 +180,17 @@ Widget* ChessGame::buildChessPage() {
 
 	chessPageWidget->addChild(*logTextWidget);
 
-	std::cout << board->serialize() << std::endl;
-
 	return chessPageWidget;
 }
 
 void ChessGame::startChessGame() {
 	changeScreen(*buildChessPage());
 
-	// TODO: Load pieces from file or go with the default order.
+	if (loadingFromSave) {
+	    engine->deserialise(FileSystem::readLines(GameConfig::SAVE_GAME_PATH));
+	} else {
+	    board->setInitialPieceFormation();
+	}
 
 	createPieceObjects();
 	board->subscribe(
@@ -221,18 +223,18 @@ void ChessGame::handleComputerVSComputerButton() {
 }
 
 void ChessGame::handleSaveGameButton() {
-	FileSystem::overwriteFile(GameConfig::SAVE_GAME_PATH, board->serialize());
+	FileSystem::overwriteFile(GameConfig::SAVE_GAME_PATH, engine->serialize());
 }
 
 void ChessGame::handleContinueGameButton() {
-
+    loadingFromSave = true;
+    startChessGame();
 }
 
 void ChessGame::handleMoveLog(const Move &move) {
 	std::stringstream ss;
 	ss << move;
 	logTextWidget->add(ss.str(), GameConfig::LOG_LINE_WIDTH);
-	putLogText();
 }
 
 void ChessGame::onChessWidgetDestroy() {
@@ -290,9 +292,5 @@ void ChessGame::initialiseChessClasses() {
 }
 
 void ChessGame::handleComputerMove() {
-
-}
-
-void ChessGame::putLogText() {
 
 }

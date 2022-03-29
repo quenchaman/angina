@@ -1,5 +1,8 @@
 #include "ChessEngine.h"
 
+#include <sstream>
+#include <iostream>
+
 #include "examples/chess/chess-engine/ChessMoveManager.h"
 #include "examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
@@ -161,15 +164,18 @@ std::string ChessEngine::serialize() const {
 	std::string ser;
 
 	/*
-	 * Portion to save white and black player actor - human or computer.
+	 * Portion to save white and black player actor - human or computer. Also who's on turn.
 	 * Ex:
 	 * 0
 	 * 1
+	 * 0
 	 * *
 	 * It means that the white player is human and the black is computer. Star (*) separates from following lines.
+	 * Last number means that it is white player turn.
 	 */
 	ser += std::to_string(whitePlayerType) + "\n";
 	ser += std::to_string(blackPlayerType) + "\n";
+	ser += std::to_string(currentSide) + "\n";
 	ser += "*\n";
 
 	for (int32_t row = 0; row < GameConfig::BOARD_SIZE; row++) {
@@ -189,5 +195,37 @@ std::string ChessEngine::serialize() const {
 	}
 
 	return ser;
+}
+
+void ChessEngine::setPlayerType(Side side, PlayerType type) {
+    if (side == Side::WHITE) {
+        whitePlayerType = type;
+    } else {
+        blackPlayerType = type;
+    }
+}
+
+void ChessEngine::deserialise(std::vector<std::string> savedGame) {
+    setPlayerType(Side::WHITE, static_cast<PlayerType>(std::stoi(savedGame[0])));
+    setPlayerType(Side::BLACK, static_cast<PlayerType>(std::stoi(savedGame[1])));
+    currentSide = static_cast<Side>(std::stoi(savedGame[2]));
+
+    int32_t startIdx = 4;
+
+    for (int32_t row = 0; row < GameConfig::BOARD_SIZE; row++) {
+        for (int32_t col = 0; col < GameConfig::BOARD_SIZE; col++) {
+            std::string line = savedGame[startIdx];
+
+            if (!line.empty()) {
+                std::stringstream ss(savedGame[startIdx]);
+
+                Cell c {row, col};
+                Piece p;
+                ss >> p;
+                board.setPiece(c, p);
+            }
+            startIdx++;
+        }
+    }
 }
 

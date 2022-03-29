@@ -55,6 +55,7 @@ private:
 	CellToObjectId cellToObjectId;
 	PlayerType whitePlayerType;
 	PlayerType blackPlayerType;
+	bool loadingFromSave;
 
 	std::vector<int32_t> possibleMoveCellsIds;
 
@@ -89,8 +90,6 @@ private:
 
 	void fillPossibleMoves(const Cell&);
 	void clearPossibleMoves();
-
-	void putLogText();
 };
 
 #endif /* EXAMPLES_CHESS_CHESSGAME_H_ */

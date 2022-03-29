@@ -31,6 +31,14 @@ std::ostream& operator<<(std::ostream &os, const Piece &piece) {
 			<< " and side " << piece.side;
 }
 
+void operator>>(std::istream& is, Piece& piece) {
+    int rank, side;
+    is >> rank >> side;
+
+    piece.rank = static_cast<Rank>(rank);
+    piece.side = static_cast<Side>(side);
+}
+
 const std::unordered_map<Rank, std::string> Piece::rankToString = { {
 		Rank::PAWN, "pawn" }, { Rank::BISHOP, "bishop" }, { Rank::KING, "king" }, {
 		Rank::KNIGHT, "knight" }, { Rank::QUEEN, "queen" }, { Rank::ROOK, "rook" } };

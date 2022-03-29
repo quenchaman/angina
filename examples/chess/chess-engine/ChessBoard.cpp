@@ -7,7 +7,7 @@
 #include "examples/chess/GameConfig.h"
 
 ChessBoard::ChessBoard() {
-	setInitialPieceFormation();
+
 }
 
 void ChessBoard::setInitialPieceFormation() {
@@ -91,6 +91,10 @@ Cell ChessBoard::getPiecePosition(Piece p) {
 	}
 
 	return Cell::UNDEFINED;
+}
+
+void ChessBoard::setPiece(const Cell& cell, const Piece& piece) {
+   board[cell] = piece;
 }
 
 void ChessBoard::subscribe(MoveEventCallback callback) {

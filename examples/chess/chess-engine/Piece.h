@@ -28,6 +28,8 @@ struct Piece {
 
 	friend std::ostream& operator<<(std::ostream&, const Piece&);
 
+	friend void operator>>(std::istream&, Piece&);
+
 	static const Piece WHITE_ROOK;
 	static const Piece WHITE_KNIGHT;
 	static const Piece WHITE_BISHOP;

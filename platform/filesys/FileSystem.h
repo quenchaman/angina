@@ -9,7 +9,7 @@ namespace FileSystem {
 /*
  * There is a C-style variant of this method that is 3-4 times faster if performance is needed.
  */
-	std::vector<std::string> readLines(std::string& path) {
+	std::vector<std::string> readLines(const std::string& path) {
 		std::ifstream infile(path);
 		std::vector<std::string> lines;
 		std::string line;

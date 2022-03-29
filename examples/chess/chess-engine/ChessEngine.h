@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 #include <vector>
+#include <string>
 
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Cell.h"
@@ -51,6 +52,8 @@ public:
 	 * If the line is empty then the cell is empty too. If there is a piece then a piece code will be present.
 	 */
 	std::string serialize() const;
+
+	void deserialise(std::vector<std::string>);
 
 private:
 	ChessMoveManager &moveManager;
