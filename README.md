@@ -8,6 +8,14 @@ Users of `angina` should inherit from the main `Engine` class and build their ow
 
 *Tested only on Windows and Linux.
 
+## See it :eyes:
+
+![1](https://github.com/pancanin/angina/blob/main/screenshots/cpu_vs_cpu.gif?raw=true)
+![2](https://github.com/pancanin/angina/blob/main/screenshots/move_log.PNG?raw=true)
+![3](https://github.com/pancanin/angina/blob/main/screenshots/possible_move_highlighting.PNG?raw=true)
+![4](https://github.com/pancanin/angina/blob/main/screenshots/save_game.png?raw=true)
+![5](https://github.com/pancanin/angina/blob/main/screenshots/welcome.png?raw=true)
+
 ## Project structure
 
 - `platform` - Low level module. SDL wrappers (Surface, Texture), thread and time libraries.
