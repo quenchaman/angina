@@ -15,14 +15,14 @@ struct Renderer;
 
 class RectTextButton: public BaseButton {
 public:
-    RectTextButton(Point, Dimensions, Color, Text&, std::function<void(void)>);
-    ~RectTextButton() = default;
+	RectTextButton(Point, Dimensions, Color, Text&, std::function<void(void)>);
+	~RectTextButton() = default;
 
-    void draw(Renderer&);
+	void draw(Renderer&);
 
 private:
-    Rect rect;
-    Text &text;
+	Rect rect;
+	Text &text;
 };
 
 #endif /* ENGINE_COMPONENTS_BUTTONS_RECTTEXTBUTTON_H_ */

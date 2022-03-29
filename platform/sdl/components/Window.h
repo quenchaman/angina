@@ -15,19 +15,19 @@ struct Surface;
  */
 class Window {
 public:
-    Window(std::string title, Point, Dimensions, int32_t flags);
-    ~Window();
+	Window(std::string title, Point, Dimensions, int32_t flags);
+	~Window();
 
-    Window(const Window&) = delete;
-    Window& operator=(const Window&) = delete;
-    Window(Window&&) = delete;
-    Window& operator=(Window&&) = delete;
+	Window(const Window&) = delete;
+	Window& operator=(const Window&) = delete;
+	Window(Window&&) = delete;
+	Window& operator=(Window&&) = delete;
 
-    SDL_Window* getWindow();
-    Surface& getSurface();
+	SDL_Window* getWindow();
+	Surface& getSurface();
 private:
-    SDL_Window *window;
-    Surface *surface;
+	SDL_Window *window;
+	Surface *surface;
 };
 
 #endif /* SDL_COMPONENTS_WINDOW_H_ */

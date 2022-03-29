@@ -9,18 +9,18 @@
 
 class BaseButton: public Drawable {
 public:
-    BaseButton(Point, Dimensions, std::function<void(void)> callback);
-    virtual ~BaseButton() = default;
+	BaseButton(Point, Dimensions, std::function<void(void)> callback);
+	virtual ~BaseButton() = default;
 
-    void draw(Renderer&) = 0;
+	void draw(Renderer&) = 0;
 
-    Point getPosition() const;
-    Dimensions getDimensions() const;
-    std::function<void(void)> getCallback() const;
+	Point getPosition() const;
+	Dimensions getDimensions() const;
+	std::function<void(void)> getCallback() const;
 private:
-    std::function<void(void)> callback;
-    Point position;
-    Dimensions dimensions;
+	std::function<void(void)> callback;
+	Point position;
+	Dimensions dimensions;
 };
 
 #endif /* ENGINE_COMPONENTS_BUTTONS_BASEBUTTON_H_ */

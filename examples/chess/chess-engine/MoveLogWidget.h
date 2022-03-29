@@ -12,20 +12,20 @@
 struct GraphicsFactory;
 struct Font;
 
-class MoveLogWidget : public Widget {
+class MoveLogWidget: public Widget {
 public:
-    MoveLogWidget(Point, GraphicsFactory&, Font&, uint32_t sizeCap = 10);
+	MoveLogWidget(Point, GraphicsFactory&, Font&, uint32_t sizeCap = 10);
 
-    void add(std::string, int32_t textWidth, Color = Color::GREEN);
+	void add(std::string, int32_t textWidth, Color = Color::GREEN);
 private:
-    GraphicsFactory& textFactory;
-    Font& font;
-    uint32_t sizeCap;
-    int32_t yOffset;
+	GraphicsFactory &textFactory;
+	Font &font;
+	uint32_t sizeCap;
+	int32_t yOffset;
 
-    std::deque<int32_t> textLineIds;
+	std::deque<int32_t> textLineIds;
 
-    void removeLastLine();
+	void removeLastLine();
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_MOVELOGWIDGET_H_ */

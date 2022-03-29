@@ -1,5 +1,5 @@
 #include "IdGenerator.h"
 
 IdGenerator::IdGenerator() :
-        current(0) {
+		current(0) {
 }

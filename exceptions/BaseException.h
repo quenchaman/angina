@@ -6,9 +6,9 @@
 
 class BaseException: public std::runtime_error {
 public:
-    BaseException(std::string msg);
+	BaseException(std::string msg);
 
-    friend std::ostream& operator<<(std::ostream&, const std::runtime_error&);
+	friend std::ostream& operator<<(std::ostream&, const std::runtime_error&);
 };
 
 #endif /* EXCEPTIONS_BASEEXCEPTION_H_ */

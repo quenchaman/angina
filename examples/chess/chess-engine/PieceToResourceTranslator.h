@@ -10,9 +10,9 @@ typedef std::unordered_map<Piece, std::string, Piece::HashFunction> PieceToResou
 
 class PieceToObjectTranslator {
 public:
-    PieceToObjectTranslator();
+	PieceToObjectTranslator();
 
-    PieceToResourcePath pieceToResource;
+	PieceToResourcePath pieceToResource;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_PIECETOOBJECTTRANSLATOR_H_ */

@@ -8,19 +8,18 @@
 struct Piece;
 
 struct ScoredMove {
-    ScoredMove(Cell destination, double score);
+	ScoredMove(Cell destination, double score);
 
-    Cell destination;
-    double score;
+	Cell destination;
+	double score;
 
-    struct HighestScoreComparator {
-        inline bool operator()(const ScoredMove &first,
-                const ScoredMove &second) {
-            return first.score >= second.score;
-        }
-    };
+	struct HighestScoreComparator {
+		inline bool operator()(const ScoredMove &first, const ScoredMove &second) {
+			return first.score >= second.score;
+		}
+	};
 
-    friend std::ostream& operator<<(std::ostream &os, const ScoredMove &move);
+	friend std::ostream& operator<<(std::ostream &os, const ScoredMove &move);
 };
 
 #endif /* CHESS_GAME_AI_SCOREDMOVE_H_ */

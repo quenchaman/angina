@@ -3,7 +3,7 @@
 
 #include "platform/ids/IdGenerator.h"
 
-class ReverseIdGenerator : public IdGenerator {
+class ReverseIdGenerator: public IdGenerator {
 public:
 	ReverseIdGenerator();
 

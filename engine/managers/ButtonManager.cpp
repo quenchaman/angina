@@ -9,36 +9,36 @@
 #include "renderer/utils/PrimitivesUtils.h"
 
 void ButtonManager::registerButton(BaseButton &btn) {
-    buttons.push_back(&btn);
+	buttons.push_back(&btn);
 }
 
 bool ButtonManager::invokeCallback(const InputEvent &event) {
-    if (event.type != EventType::MOUSE_RELEASE) {
-        return false;
-    }
+	if (event.type != EventType::MOUSE_RELEASE) {
+		return false;
+	}
 
-    Point clickPoint = { event.posX, event.posY };
+	Point clickPoint = { event.posX, event.posY };
 
-    std::cout << "Clicked at " << clickPoint << std::endl;
+	std::cout << "Clicked at " << clickPoint << std::endl;
 
-    for (auto const &button : buttons) {
-        if (PrimitivesUtils::isInRect(button->getPosition(),
-                button->getDimensions(), clickPoint)) {
-            button->getCallback()();
+	for (auto const &button : buttons) {
+		if (PrimitivesUtils::isInRect(button->getPosition(),
+				button->getDimensions(), clickPoint)) {
+			button->getCallback()();
 
-            return true;
-        }
-    }
+			return true;
+		}
+	}
 
-    return false;
+	return false;
 }
 
 void ButtonManager::clear() {
-    buttons.clear();
+	buttons.clear();
 }
 
 ButtonManager::~ButtonManager() {
-    clear();
+	clear();
 
-    std::cout << "Buttons destroyed" << std::endl;
+	std::cout << "Buttons destroyed" << std::endl;
 }

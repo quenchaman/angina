@@ -1,6 +1,7 @@
 #include "ForwardIdGenerator.h"
 
-ForwardIdGenerator::ForwardIdGenerator() {}
+ForwardIdGenerator::ForwardIdGenerator() {
+}
 
 int32_t ForwardIdGenerator::next() {
 	return current++;

@@ -4,13 +4,13 @@
 #include <cstdint>
 
 struct Dimensions {
-    Dimensions();
-    Dimensions(int32_t width, int32_t height);
+	Dimensions();
+	Dimensions(int32_t width, int32_t height);
 
-    int32_t w;
-    int32_t h;
+	int32_t w;
+	int32_t h;
 
-    static const Dimensions UNDEFINED;
+	static const Dimensions UNDEFINED;
 };
 
 #endif /* SDL_PRIMITIVES_DIMENSIONS_H_ */

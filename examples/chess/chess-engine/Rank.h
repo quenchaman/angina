@@ -2,7 +2,7 @@
 #define CHESS_RANK_H_
 
 enum Rank {
-    PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING
+	PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING
 };
 
 #endif /* CHESS_RANK_H_ */

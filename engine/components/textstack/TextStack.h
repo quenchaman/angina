@@ -10,14 +10,14 @@
  */
 class TextStack {
 public:
-    TextStack(uint32_t sizeCap = 10);
-    virtual ~TextStack();
+	TextStack(uint32_t sizeCap = 10);
+	virtual ~TextStack();
 
-    void add(std::string);
-    std::vector<std::string> getLines();
+	void add(std::string);
+	std::vector<std::string> getLines();
 private:
-    uint32_t sizeCap;
-    std::deque<std::string> data;
+	uint32_t sizeCap;
+	std::deque<std::string> data;
 };
 
 #endif /* ENGINE_COMPONENTS_TEXTSTACK_TEXTSTACK_H_ */

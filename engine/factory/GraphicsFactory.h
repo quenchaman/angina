@@ -17,23 +17,22 @@ struct Rect;
 
 class GraphicsFactory {
 public:
-    GraphicsFactory(Renderer&);
-    virtual ~GraphicsFactory();
+	GraphicsFactory(Renderer&);
+	virtual ~GraphicsFactory();
 
-    virtual Object* createObject(const std::string &resourcePath, Point,
-            Dimensions);
+	virtual Object* createObject(const std::string &resourcePath, Point,
+			Dimensions);
 
-    virtual Text* createText(std::string text, Font&, Point, Dimensions,
-            Color color = Color::NONE);
+	virtual Text* createText(std::string text, Font&, Point, Dimensions,
+			Color color = Color::NONE);
 
-    virtual Rect* createRect(Point, Dimensions, Color);
+	virtual Rect* createRect(Point, Dimensions, Color);
 
-    // We will not cache buttons for now as they are static.
-    RectTextButton* createButton(Point, Dimensions, Color backgroundColor,
-            Color textColor, std::string text, Font&,
-            std::function<void(void)>);
+	// We will not cache buttons for now as they are static.
+	RectTextButton* createButton(Point, Dimensions, Color backgroundColor,
+			Color textColor, std::string text, Font&, std::function<void(void)>);
 private:
-    Renderer &renderer;
+	Renderer &renderer;
 };
 
 #endif /* SDL_ENGINE_FACTORY_GRAPHICSFACTORY_H_ */

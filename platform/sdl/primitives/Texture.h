@@ -11,16 +11,16 @@ struct SDL_Point;
 
 class Texture {
 public:
-    Texture(SDL_Texture*, Dimensions);
-    ~Texture();
+	Texture(SDL_Texture*, Dimensions);
+	~Texture();
 
-    SDL_Texture* getTexture() const;
-    Dimensions getDimensions() const;
+	SDL_Texture* getTexture() const;
+	Dimensions getDimensions() const;
 
-    friend std::ostream& operator<<(std::ostream&, const Texture&);
+	friend std::ostream& operator<<(std::ostream&, const Texture&);
 private:
-    SDL_Texture *texture;
-    Dimensions dimensions;
+	SDL_Texture *texture;
+	Dimensions dimensions;
 };
 
 #endif /* SDL_GRAPHICS_TEXTURE_H_ */

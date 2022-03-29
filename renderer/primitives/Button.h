@@ -17,7 +17,7 @@ struct Renderer;
 
 class Button: public Object {
 public:
-    Button(Texture&, Point, Dimensions);
+	Button(Texture&, Point, Dimensions);
 };
 
 #endif //ANGINA_BUTTON_H

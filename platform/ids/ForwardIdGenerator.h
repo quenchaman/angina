@@ -3,7 +3,7 @@
 
 #include "platform/ids/IdGenerator.h"
 
-class ForwardIdGenerator : public IdGenerator {
+class ForwardIdGenerator: public IdGenerator {
 public:
 	ForwardIdGenerator();
 

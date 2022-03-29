@@ -16,25 +16,25 @@ struct Button;
 
 class Renderer {
 public:
-    Renderer(Window&);
-    ~Renderer();
+	Renderer(Window&);
+	~Renderer();
 
-    void clear();
-    void render(const Texture&) const;
-    void render(Rect&) const;
-    void render(Object&) const;
-    void update();
+	void clear();
+	void render(const Texture&) const;
+	void render(Rect&) const;
+	void render(Object&) const;
+	void update();
 
-    Texture* from(Surface&) const;
-    std::vector<Texture*> from(const std::vector<Surface*>&) const;
-    Object* from(Texture&, Point, Dimensions) const;
-    Object* fromSurface(Surface&, Point, Dimensions) const;
-    Button* from(Texture&);
+	Texture* from(Surface&) const;
+	std::vector<Texture*> from(const std::vector<Surface*>&) const;
+	Object* from(Texture&, Point, Dimensions) const;
+	Object* fromSurface(Surface&, Point, Dimensions) const;
+	Button* from(Texture&);
 private:
-    void init(Window&);
-    void deinit();
+	void init(Window&);
+	void deinit();
 
-    SDL_Renderer *renderer;
+	SDL_Renderer *renderer;
 };
 
 #endif /* SDL_GRAPHICS_RENDERER_H_ */

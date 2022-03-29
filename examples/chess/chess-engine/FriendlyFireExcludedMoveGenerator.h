@@ -12,16 +12,16 @@ struct BoardBoundsPieceMoveGenerator;
  */
 class FriendlyFireExcludedMoveGenerator {
 public:
-    FriendlyFireExcludedMoveGenerator(ChessBoard&,
-            BoardBoundsPieceMoveGenerator&);
+	FriendlyFireExcludedMoveGenerator(ChessBoard&,
+			BoardBoundsPieceMoveGenerator&);
 
-    /*
-     * Generates all moves that are not on a friendly occupied cell.
-     */
-    CellUnorderedSet generatePieceMoves(const Cell&) const;
+	/*
+	 * Generates all moves that are not on a friendly occupied cell.
+	 */
+	CellUnorderedSet generatePieceMoves(const Cell&) const;
 private:
-    ChessBoard &board;
-    BoardBoundsPieceMoveGenerator &moveGen;
+	ChessBoard &board;
+	BoardBoundsPieceMoveGenerator &moveGen;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_FRIENDLYFIREEXCLUDEDMOVEGENERATOR_H_ */

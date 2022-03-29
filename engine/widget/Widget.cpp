@@ -11,15 +11,17 @@
 #include "engine/managers/ButtonManager.h"
 #include "platform/ids/ForwardIdGenerator.h"
 
-Widget::Widget() : Widget(Point::ZERO, *(new ForwardIdGenerator())) {
+Widget::Widget() :
+		Widget(Point::ZERO, *(new ForwardIdGenerator())) {
 }
 
-Widget::Widget(Point p): Widget(p, *(new ForwardIdGenerator())) {
+Widget::Widget(Point p) :
+		Widget(p, *(new ForwardIdGenerator())) {
 
 }
 
-Widget::Widget(Point p, IdGenerator& gen) :
-        origin(p), idGen(gen) {
+Widget::Widget(Point p, IdGenerator &gen) :
+		origin(p), idGen(gen) {
 }
 
 int32_t Widget::put(Object &drawable) {
@@ -33,15 +35,15 @@ int32_t Widget::put(Object &drawable) {
 }
 
 int32_t Widget::put(BaseButton &btn) {
-    int32_t id = idGen.next();
-    drawables[id] = &btn;
-    btnManager.registerButton(btn);
-    ids.insert(id);
+	int32_t id = idGen.next();
+	drawables[id] = &btn;
+	btnManager.registerButton(btn);
+	ids.insert(id);
 
-    return id;
+	return id;
 }
 
-int32_t Widget::put(Rect& r) {
+int32_t Widget::put(Rect &r) {
 	int32_t id = idGen.next();
 	drawables[id] = &r;
 	ids.insert(id);
@@ -50,23 +52,23 @@ int32_t Widget::put(Rect& r) {
 }
 
 void Widget::addChild(Widget &widget) {
-    children.push_back(&widget);
+	children.push_back(&widget);
 }
 
 std::vector<Widget*>& Widget::getChildren() {
-    return children;
+	return children;
 }
 
 // Don't like this very much but nothing better comes to mind.
 // What needs to happen is that the drawables are returned in order of insertion.
 std::vector<Drawable*> Widget::getDrawables() {
-    std::vector<Drawable*> draws;
+	std::vector<Drawable*> draws;
 
-    for (int32_t n : ids) {
-        draws.push_back(drawables[n]);
-    }
+	for (int32_t n : ids) {
+		draws.push_back(drawables[n]);
+	}
 
-    return draws;
+	return draws;
 }
 
 void Widget::remove(int32_t id) {
@@ -76,21 +78,21 @@ void Widget::remove(int32_t id) {
 }
 
 ButtonManager& Widget::getButtonManager() {
-    return btnManager;
+	return btnManager;
 }
 
 void Widget::onDestroy(std::function<void(void)> callback) {
-    onDestroyCallback = callback;
+	onDestroyCallback = callback;
 }
 
 Widget::~Widget() {
-    for (Widget *child : children) {
-        delete child;
-    }
+	for (Widget *child : children) {
+		delete child;
+	}
 
-    for (auto const& [id, drawable] : drawables) {
-        delete drawable;
-    }
+	for (auto const& [id, drawable] : drawables) {
+		delete drawable;
+	}
 
-    std::cout << "Widget destroyed" << std::endl;
+	std::cout << "Widget destroyed" << std::endl;
 }

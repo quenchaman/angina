@@ -6,26 +6,29 @@
 
 #include "platform/sdl/primitives/Font.h"
 
-TextRepository::TextRepository(GraphicsFactory& factory, Font& textFont): gFactory(factory), font(textFont) {}
+TextRepository::TextRepository(GraphicsFactory &factory, Font &textFont) :
+		gFactory(factory), font(textFont) {
+}
 
 TextRepository::~TextRepository() {
-    for (auto const& [txt, texture] : data) {
-        delete texture;
-    }
+	for (auto const& [txt, texture] : data) {
+		delete texture;
+	}
 }
 
 Text* TextRepository::get(std::string text) {
-    bool exists = data.find(text) != data.end();
+	bool exists = data.find(text) != data.end();
 
-    if (!exists) {
-        Text* textTexture = gFactory.createText(text, font, Point::UNDEFINED, Dimensions::UNDEFINED);
+	if (!exists) {
+		Text *textTexture = gFactory.createText(text, font, Point::UNDEFINED,
+				Dimensions::UNDEFINED);
 
-        data[text] = textTexture;
-    }
+		data[text] = textTexture;
+	}
 
-    return data[text];
+	return data[text];
 }
 
-void TextRepository::deleteJustKey(std::string& text) {
+void TextRepository::deleteJustKey(std::string &text) {
 	data.erase(text);
 }

@@ -8,23 +8,23 @@
 #include "exceptions/BaseException.h"
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
-    try {
-        Graphics::boot();
-        Graphics::bootImageExtension();
-        Graphics::bootTTFExtensions();
+	try {
+		Graphics::boot();
+		Graphics::bootImageExtension();
+		Graphics::bootTTFExtensions();
 
-        ChessGame game;
+		ChessGame game;
 
-        game.start();
-    } catch (const BaseException &ex) {
-        std::cerr << ex << std::endl;
+		game.start();
+	} catch (const BaseException &ex) {
+		std::cerr << ex << std::endl;
 
-        Graphics::shutdown();
+		Graphics::shutdown();
 
-        return EXIT_FAILURE;
-    }
+		return EXIT_FAILURE;
+	}
 
-    Graphics::shutdown();
+	Graphics::shutdown();
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

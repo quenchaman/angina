@@ -7,7 +7,7 @@
 
 class ResourceLoadException: public BaseException {
 public:
-    ResourceLoadException(std::string msg);
+	ResourceLoadException(std::string msg);
 };
 
 #endif /* EXCEPTIONS_RESOURCELOADEXCEPTION_H_ */

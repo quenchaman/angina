@@ -7,7 +7,7 @@
 
 class WindowInitException: public BaseException {
 public:
-    WindowInitException(std::string msg);
+	WindowInitException(std::string msg);
 };
 
 #endif /* EXCEPTIONS_WINDOWINITEXCEPTION_H_ */

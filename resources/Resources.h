@@ -6,7 +6,7 @@
 
 namespace Resources {
 #ifndef DEBUG
-    const std::string prefix = "../resources/chess/";
+const std::string prefix = "../resources/chess/";
 #endif
 #ifdef DEBUG
     const std::string prefix = "resources/chess/";

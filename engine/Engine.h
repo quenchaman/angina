@@ -28,35 +28,35 @@ struct Object;
 
 class Engine {
 public:
-    Engine(std::string appTitle, Dimensions screenSize);
-    virtual ~Engine();
+	Engine(std::string appTitle, Dimensions screenSize);
+	virtual ~Engine();
 
-    void start();
+	void start();
 private:
-    Window window;
-    SDL_Event e;
-    Renderer renderer;
-    GraphicsFactory factory;
-    bool quit = false;
+	Window window;
+	SDL_Event e;
+	Renderer renderer;
+	GraphicsFactory factory;
+	bool quit = false;
 
-    void limitFPS(int64_t microseconds);
-    void draw();
-    void draw(Widget&);
-    void handleEvent();
+	void limitFPS(int64_t microseconds);
+	void draw();
+	void draw(Widget&);
+	void handleEvent();
 protected:
-    InputEvent event;
-    Widget *rootScreen;
-    Font defaultFont;
+	InputEvent event;
+	Widget *rootScreen;
+	Font defaultFont;
 
-    virtual void init() = 0;
-    virtual void update() = 0;
-    virtual void handleLeftMouseClick(Point) = 0;
-    virtual void handleBtnClick(int32_t idx) = 0;
+	virtual void init() = 0;
+	virtual void update() = 0;
+	virtual void handleLeftMouseClick(Point) = 0;
+	virtual void handleBtnClick(int32_t idx) = 0;
 
-    void clearScreen();
-    void changeScreen(Widget&);
+	void clearScreen();
+	void changeScreen(Widget&);
 
-    GraphicsFactory& getFactory();
+	GraphicsFactory& getFactory();
 };
 
 #endif /* SDL_GRAPHICS_ENGINE_H_ */

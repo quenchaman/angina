@@ -17,21 +17,21 @@ struct ChessBoard;
  */
 class BoardBoundsPieceMoveGenerator {
 public:
-    BoardBoundsPieceMoveGenerator(ChessBoard&);
+	BoardBoundsPieceMoveGenerator(ChessBoard&);
 
-    CellUnorderedSet generatePieceMoves(const Piece &piece,
-            const Cell &source) const;
+	CellUnorderedSet generatePieceMoves(const Piece &piece,
+			const Cell &source) const;
 private:
-    ChessBoard &board;
+	ChessBoard &board;
 
-    CellUnorderedSet generateKnightMoves(const Cell&) const;
-    CellUnorderedSet generateRookMoves(const Cell&, Side) const;
-    CellUnorderedSet generateBishopMoves(const Cell&, Side) const;
-    CellUnorderedSet generateQueenMoves(const Cell&, Side) const;
-    CellUnorderedSet generatePawnMoves(const Cell&, Side) const;
-    CellUnorderedSet generateKingMoves(const Cell&, Side) const;
+	CellUnorderedSet generateKnightMoves(const Cell&) const;
+	CellUnorderedSet generateRookMoves(const Cell&, Side) const;
+	CellUnorderedSet generateBishopMoves(const Cell&, Side) const;
+	CellUnorderedSet generateQueenMoves(const Cell&, Side) const;
+	CellUnorderedSet generatePawnMoves(const Cell&, Side) const;
+	CellUnorderedSet generateKingMoves(const Cell&, Side) const;
 
-    bool isValidMove(const Cell&, Side) const;
+	bool isValidMove(const Cell&, Side) const;
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_BOARDBOUNDSPIECEMOVEGENERATOR_H_ */

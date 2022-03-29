@@ -33,62 +33,62 @@ typedef std::unordered_map<Piece, std::string, Piece::HashFunction> PieceToResou
 
 class ChessGame: public Engine {
 public:
-    ChessGame();
-    ~ChessGame();
+	ChessGame();
+	~ChessGame();
 
-    void init();
-    void update();
-    void handleLeftMouseClick(Point p);
-    void handleBtnClick(int32_t idx);
+	void init();
+	void update();
+	void handleLeftMouseClick(Point p);
+	void handleBtnClick(int32_t idx);
 private:
-    ChessBoard *board = nullptr;
-    BoardBoundsPieceMoveGenerator *baseMoveGen = nullptr;
-    FriendlyFireExcludedMoveGenerator *moveGen = nullptr;
-    ChessMoveManager *moveManager = nullptr;
-    ChessEngine *engine = nullptr;
-    ChessMoveLog *log = nullptr;
-    // TODO: We can have a class that wraps a text stack component and its visualisation.
-    MoveLogWidget *logTextWidget = nullptr;
+	ChessBoard *board = nullptr;
+	BoardBoundsPieceMoveGenerator *baseMoveGen = nullptr;
+	FriendlyFireExcludedMoveGenerator *moveGen = nullptr;
+	ChessMoveManager *moveManager = nullptr;
+	ChessEngine *engine = nullptr;
+	ChessMoveLog *log = nullptr;
+	// TODO: We can have a class that wraps a text stack component and its visualisation.
+	MoveLogWidget *logTextWidget = nullptr;
 
-    CellToObjectLookup cellObject;
-    PieceToResourcePath pieceToResource;
-    CellToObjectId cellToObjectId;
-    PlayerType whitePlayerType;
-    PlayerType blackPlayerType;
+	CellToObjectLookup cellObject;
+	PieceToResourcePath pieceToResource;
+	CellToObjectId cellToObjectId;
+	PlayerType whitePlayerType;
+	PlayerType blackPlayerType;
 
-    std::vector<int32_t> possibleMoveCellsIds;
+	std::vector<int32_t> possibleMoveCellsIds;
 
-    Widget* buildLandingPage();
+	Widget* buildLandingPage();
 
-    Widget* buildChessPage();
+	Widget* buildChessPage();
 
-    void startChessGame();
+	void startChessGame();
 
-    /**
-     * Event handlers
-     */
-    void handleStartGameButton();
-    void handleQuitGameButton();
-    void onChessWidgetDestroy();
-    void handleHumanVSComputerButton();
-    void handleComputerVSComputerButton();
-    void handleMoveLog(const Move&);
+	/**
+	 * Event handlers
+	 */
+	void handleStartGameButton();
+	void handleQuitGameButton();
+	void onChessWidgetDestroy();
+	void handleHumanVSComputerButton();
+	void handleComputerVSComputerButton();
+	void handleMoveLog(const Move&);
 
-    /*
-     * For every piece in the chess engine, create a drawable object. Keep a mapping between the two.
-     */
-    void createPieceObjects();
+	/*
+	 * For every piece in the chess engine, create a drawable object. Keep a mapping between the two.
+	 */
+	void createPieceObjects();
 
-    void pieceMovedCallback(const Cell &source, const Cell &destination);
+	void pieceMovedCallback(const Cell &source, const Cell &destination);
 
-    void handleComputerMove();
+	void handleComputerMove();
 
-    void initialiseChessClasses();
+	void initialiseChessClasses();
 
-    void fillPossibleMoves(const Cell&);
-    void clearPossibleMoves();
+	void fillPossibleMoves(const Cell&);
+	void clearPossibleMoves();
 
-    void putLogText();
+	void putLogText();
 };
 
 #endif /* EXAMPLES_CHESS_CHESSGAME_H_ */

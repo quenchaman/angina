@@ -19,8 +19,8 @@ public:
 	Text* get(std::string);
 	void deleteJustKey(std::string&);
 private:
-	GraphicsFactory& gFactory;
-	Font& font;
+	GraphicsFactory &gFactory;
+	Font &font;
 
 	std::unordered_map<std::string, Text*> data;
 };

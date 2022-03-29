@@ -1,6 +1,7 @@
 #include "ReverseIdGenerator.h"
 
-ReverseIdGenerator::ReverseIdGenerator() {}
+ReverseIdGenerator::ReverseIdGenerator() {
+}
 
 int32_t ReverseIdGenerator::next() {
 	return current--;

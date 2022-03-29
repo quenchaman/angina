@@ -13,28 +13,28 @@ struct Renderer;
 
 class Object: public Drawable {
 public:
-    Object(Texture&, Dimensions, Point);
-    ~Object();
+	Object(Texture&, Dimensions, Point);
+	~Object();
 
-    Object(const Object&) = delete;
-    Object& operator=(const Object&) = delete;
-    Object(Object&&) = delete;
-    Object& operator=(Object&&) = delete;
+	Object(const Object&) = delete;
+	Object& operator=(const Object&) = delete;
+	Object(Object&&) = delete;
+	Object& operator=(Object&&) = delete;
 
-    void draw(Renderer&);
-    void move(const int32_t x, const int32_t y);
-    void move(const Point&);
+	void draw(Renderer&);
+	void move(const int32_t x, const int32_t y);
+	void move(const Point&);
 
-    Point getPosition() const;
-    Dimensions getDimensions() const;
-    Point getCenter() const;
+	Point getPosition() const;
+	Dimensions getDimensions() const;
+	Point getCenter() const;
 
-    Texture &texture;
-    Transformation transformation;
+	Texture &texture;
+	Transformation transformation;
 private:
-    Dimensions dim;
-    Point point;
-    Point center;
+	Dimensions dim;
+	Point point;
+	Point center;
 };
 
 #endif /* SDL_ENGINE_OBJECT_OBJECT_H_ */

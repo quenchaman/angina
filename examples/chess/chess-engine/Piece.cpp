@@ -15,23 +15,22 @@ const Piece Piece::BLACK_QUEEN { Rank::QUEEN, Side::BLACK };
 const Piece Piece::BLACK_KING { Rank::KING, Side::BLACK };
 
 bool Piece::operator==(const Piece &other) const {
-    return rank == other.rank && side == other.side;
+	return rank == other.rank && side == other.side;
 }
 
 bool Piece::operator!=(const Piece &other) const {
-    return !(*this == other);
+	return !(*this == other);
 }
 
 std::ostream& operator<<(std::ostream &os, const Piece &piece) {
-    return os << "The piece is with rank " << Piece::rankToString.at(piece.rank)
-            << " and side " << piece.side;
+	return os << "The piece is with rank " << Piece::rankToString.at(piece.rank)
+			<< " and side " << piece.side;
 }
 
 const std::unordered_map<Rank, std::string> Piece::rankToString = { {
-        Rank::PAWN, "pawn" }, { Rank::BISHOP, "bishop" },
-        { Rank::KING, "king" }, { Rank::KNIGHT, "knight" }, { Rank::QUEEN,
-                "queen" }, { Rank::ROOK, "rook" } };
+		Rank::PAWN, "pawn" }, { Rank::BISHOP, "bishop" }, { Rank::KING, "king" }, {
+		Rank::KNIGHT, "knight" }, { Rank::QUEEN, "queen" }, { Rank::ROOK, "rook" } };
 
 const std::unordered_map<Rank, int32_t> Piece::rankToCost = { { Rank::PAWN, 1 },
-        { Rank::BISHOP, 3 }, { Rank::KING, -1 }, { Rank::KNIGHT, 3 }, {
-                Rank::QUEEN, 9 }, { Rank::ROOK, 5 } };
+		{ Rank::BISHOP, 3 }, { Rank::KING, -1 }, { Rank::KNIGHT, 3 }, { Rank::QUEEN,
+				9 }, { Rank::ROOK, 5 } };
