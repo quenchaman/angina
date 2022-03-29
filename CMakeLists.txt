@@ -106,10 +106,16 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.cpp
 	${DIR}/examples/chess/chess-engine/ChessMoveLog.h
 	${DIR}/examples/chess/chess-engine/ChessMoveLog.cpp
+	${DIR}/examples/chess/chess-engine/MoveLogWidget.h
+	${DIR}/examples/chess/chess-engine/MoveLogWidget.cpp
 	${DIR}/examples/chess/chess-engine/PlayerType.h
 	${DIR}/examples/chess/GameConfig.h
 	${DIR}/platform/ids/IdGenerator.h
 	${DIR}/platform/ids/IdGenerator.cpp
+	${DIR}/platform/ids/ForwardIdGenerator.h
+	${DIR}/platform/ids/ForwardIdGenerator.cpp
+	${DIR}/platform/ids/ReverseIdGenerator.h
+	${DIR}/platform/ids/ReverseIdGenerator.cpp
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

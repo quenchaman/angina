@@ -16,8 +16,10 @@ public:
     Font& operator=(Font&&) = delete;
 
     TTF_Font* getFont() const;
+    int32_t getSize() const;
 private:
     TTF_Font *font;
+    int32_t size;
 };
 
 #endif /* PLATFORM_SDL_PRIMITIVES_FONT_H_ */

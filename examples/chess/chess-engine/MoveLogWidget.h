@@ -6,23 +6,26 @@
 #include <stdint.h>
 
 #include "engine/widget/Widget.h"
+#include "renderer/primitives/Color.h"
+#include "renderer/primitives/Dimensions.h"
 
-struct TextStack;
-struct TextRepository;
-struct IdGenerator;
+struct GraphicsFactory;
+struct Font;
 
 class MoveLogWidget : public Widget {
 public:
-    MoveLogWidget(TextStack&, TextRepository&, IdGenerator&, uint32_t sizeCap);
+    MoveLogWidget(Point, GraphicsFactory&, Font&, uint32_t sizeCap = 10);
 
-    void add(std::string&);
+    void add(std::string, int32_t textWidth, Color = Color::GREEN);
 private:
-    TextStack& textStack;
-    TextRepository& textRepo;
-    IdGenerator& idGen;
+    GraphicsFactory& textFactory;
+    Font& font;
     uint32_t sizeCap;
+    int32_t yOffset;
 
     std::deque<int32_t> textLineIds;
+
+    void removeLastLine();
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_MOVELOGWIDGET_H_ */

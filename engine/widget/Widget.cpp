@@ -9,22 +9,26 @@
 #include "renderer/shapes/Rect.h"
 #include "engine/components/buttons/BaseButton.h"
 #include "engine/managers/ButtonManager.h"
+#include "platform/ids/ForwardIdGenerator.h"
 
-Widget::Widget() :
-        origin(Point::ZERO) {
+Widget::Widget() : Widget(Point::ZERO, *(new ForwardIdGenerator())) {
 }
 
-Widget::Widget(Point p) :
-        origin(p) {
+Widget::Widget(Point p): Widget(p, *(new ForwardIdGenerator())) {
+
+}
+
+Widget::Widget(Point p, IdGenerator& gen) :
+        origin(p), idGen(gen) {
 }
 
 int32_t Widget::put(Object &drawable) {
 	Point newDrawablePos = origin + drawable.getPosition();
 	drawable.move(newDrawablePos.x, newDrawablePos.y);
-
 	int32_t id = idGen.next();
 	drawables[id] = &drawable;
 	ids.insert(id);
+
 	return id;
 }
 
@@ -54,6 +58,7 @@ std::vector<Widget*>& Widget::getChildren() {
 }
 
 // Don't like this very much but nothing better comes to mind.
+// What needs to happen is that the drawables are returned in order of insertion.
 std::vector<Drawable*> Widget::getDrawables() {
     std::vector<Drawable*> draws;
 

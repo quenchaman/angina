@@ -19,12 +19,14 @@
 #include "examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/chess-engine/ChessMoveManager.h"
 #include "examples/chess/chess-engine/ChessMoveLog.h"
+#include "examples/chess/chess-engine/MoveLogWidget.h"
 #include "engine/components/textstack/TextStack.h"
+#include "engine/repositories/TextRepository.h"
 
 #include "platform/thread/ThreadUtils.h"
 
 /**
- * Stack-based allocation is eager. Heap based allocation is lazy.
+ * Tip of the day: Stack-based allocation is eager. Heap based allocation is lazy.
  */
 ChessGame::ChessGame() :
         Engine(GameConfig::GAME_TITLE, GameConfig::WINDOW_DIM), whitePlayerType(
@@ -168,7 +170,7 @@ Widget* ChessGame::buildChessPage() {
     chessPageWidget->onDestroy(
             std::bind(&ChessGame::onChessWidgetDestroy, this));
 
-    logTextWidget = new Widget(GameConfig::LOG_TEXT_POS);
+    logTextWidget = new MoveLogWidget(GameConfig::LOG_TEXT_POS, getFactory(), defaultFont, GameConfig::LOG_LINE_CAP);
 
     chessPageWidget->addChild(*logTextWidget);
 
@@ -210,7 +212,7 @@ void ChessGame::handleComputerVSComputerButton() {
 void ChessGame::handleMoveLog(const Move& move) {
     std::stringstream ss;
     ss << move;
-    textStack->add(ss.str());
+    logTextWidget->add(ss.str(), GameConfig::LOG_LINE_WIDTH);
     putLogText();
 }
 
@@ -221,7 +223,6 @@ void ChessGame::onChessWidgetDestroy() {
     delete moveManager;
     delete engine;
     delete log;
-    delete textStack;
 }
 
 void ChessGame::createPieceObjects() {
@@ -267,7 +268,6 @@ void ChessGame::initialiseChessClasses() {
     log = new ChessMoveLog();
     engine = new ChessEngine(*board, *moveManager, *log, whitePlayerType,
             blackPlayerType);
-    textStack = new TextStack();
 }
 
 void ChessGame::handleComputerMove() {

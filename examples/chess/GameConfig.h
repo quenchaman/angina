@@ -39,6 +39,8 @@ const Dimensions TITLE_DIM = { 200, 100 };
 const Color HIGHLIGHT_COLOR = Color { 0, 255, 0, 128 };
 
 const Point LOG_TEXT_POS = Point { 10, 650 };
+const int32_t LOG_LINE_WIDTH = 300;
+const int32_t LOG_LINE_CAP = 5;
 }
 
 #endif /* EXAMPLES_CHESS_GAMECONFIG_H_ */

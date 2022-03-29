@@ -6,9 +6,10 @@
 class IdGenerator {
 public:
     IdGenerator();
+    virtual ~IdGenerator() = default;
 
-    int32_t next();
-private:
+    virtual int32_t next() = 0;
+protected:
     int32_t current;
 };
 

@@ -17,6 +17,7 @@ public:
 	~TextRepository();
 
 	Text* get(std::string);
+	void deleteJustKey(std::string&);
 private:
 	GraphicsFactory& gFactory;
 	Font& font;

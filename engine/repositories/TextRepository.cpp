@@ -25,3 +25,7 @@ Text* TextRepository::get(std::string text) {
 
     return data[text];
 }
+
+void TextRepository::deleteJustKey(std::string& text) {
+	data.erase(text);
+}

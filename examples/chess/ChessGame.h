@@ -24,6 +24,8 @@ struct ChessMoveLog;
 struct BoardBoundsPieceMoveGenerator;
 struct ChessMoveManager;
 struct TextStack;
+struct TextRepository;
+struct MoveLogWidget;
 
 typedef std::unordered_map<Cell, Object*, Cell::HashFunction> CellToObjectLookup;
 typedef std::unordered_map<Cell, int32_t, Cell::HashFunction> CellToObjectId;
@@ -45,9 +47,8 @@ private:
     ChessMoveManager *moveManager = nullptr;
     ChessEngine *engine = nullptr;
     ChessMoveLog *log = nullptr;
-    TextStack *textStack = nullptr;
     // TODO: We can have a class that wraps a text stack component and its visualisation.
-    Widget *logTextWidget = nullptr;
+    MoveLogWidget *logTextWidget = nullptr;
 
     CellToObjectLookup cellObject;
     PieceToResourcePath pieceToResource;

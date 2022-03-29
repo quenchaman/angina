@@ -8,8 +8,8 @@
 #include <functional>
 
 #include "renderer/primitives/Point.h"
-#include "platform/ids/IdGenerator.h"
 #include "engine/managers/ButtonManager.h"
+#include "platform/ids/IdGenerator.h"
 
 struct Button;
 struct Drawable;
@@ -29,6 +29,7 @@ public:
     // TODO: Add Buttons manager here and enable adding buttons to it.
     Widget();
     Widget(Point);
+    Widget(Point, IdGenerator& gen);
     ~Widget();
     void addChild(Widget&);
 
@@ -43,15 +44,16 @@ public:
     ButtonManager& getButtonManager();
 
     void onDestroy(std::function<void(void)> callback);
-private:
+protected:
     std::unordered_map<int32_t, Drawable*> drawables;
+private:
     // ids - for keeping track of insertion order of drawables. This matters for drawing. Later I can add z-index.
     std::set<int32_t> ids;
     std::vector<Widget*> children;
     // Make button manager per widget instance
     ButtonManager btnManager;
     Point origin;
-    IdGenerator idGen;
+    IdGenerator& idGen;
     std::function<void(void)> onDestroyCallback;
 
 };
