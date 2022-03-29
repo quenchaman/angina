@@ -4,6 +4,8 @@
 #include "examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
 
+#include "examples/chess/GameConfig.h"
+
 ChessEngine::ChessEngine(ChessBoard &chessBoard, ChessMoveManager &moveMng,
 		ChessMoveLog &moveLog, PlayerType whitePType, PlayerType blackPType) :
 		moveManager(moveMng), board(chessBoard), log(moveLog), selectedCell(
@@ -153,5 +155,39 @@ void ChessEngine::resetSelection() {
 
 Side ChessEngine::getEnemySide() const {
 	return (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
+}
+
+std::string ChessEngine::serialize() const {
+	std::string ser;
+
+	/*
+	 * Portion to save white and black player actor - human or computer.
+	 * Ex:
+	 * 0
+	 * 1
+	 * *
+	 * It means that the white player is human and the black is computer. Star (*) separates from following lines.
+	 */
+	ser += std::to_string(whitePlayerType) + "\n";
+	ser += std::to_string(blackPlayerType) + "\n";
+	ser += "*\n";
+
+	for (int32_t row = 0; row < GameConfig::BOARD_SIZE; row++) {
+		for (int32_t col = 0; col < GameConfig::BOARD_SIZE; col++) {
+			Cell c(row, col);
+
+			bool pieceExists = !board.isEmptyCell(c);
+
+			if (pieceExists) {
+
+				Piece p = board.getPieceOnCell(c);
+				ser += p.serialize() + "\n";
+			} else {
+				ser += "\n";
+			}
+		}
+	}
+
+	return ser;
 }
 
