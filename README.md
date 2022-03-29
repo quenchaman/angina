@@ -8,7 +8,7 @@ Users of `angina` should inherit from the main `Engine` class and build their ow
 
 *Tested only on Windows and Linux.
 
-## See it :eyes:
+## See a chess game developed with the engine :eyes:
 
 ![1](https://github.com/pancanin/angina/blob/main/screenshots/cpu_vs_cpu.gif?raw=true)
 ![2](https://github.com/pancanin/angina/blob/main/screenshots/move_log.PNG?raw=true)
@@ -30,7 +30,7 @@ Users of `angina` should inherit from the main `Engine` class and build their ow
 - Go to `build` folder
 - `cmake ..`
 
-Ubuntu 20.04 (TODO: add compiler version here)
+Ubuntu 20.04 (gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0)
 - `make`
 - `./angina`
 
