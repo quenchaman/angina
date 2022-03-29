@@ -6,9 +6,8 @@ include(${DIR}/cmake_helpers/helpers.cmake)
 set(CMAKE_MODULE_PATH
 ${CMAKE_MODULE_PATH}
 ${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/find_modules)
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
 
-project(chess LANGUAGES CXX)
+project(angina LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME} 
 	${DIR}/main.cpp

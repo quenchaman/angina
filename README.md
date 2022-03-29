@@ -1,5 +1,11 @@
 # angina
 
+`angina` is a cross-platform game engine with graphics, audio handled by SDL 2 and build system with CMake.
+
+It is written from scratch, with help of tutorials on [LazyFoo Game Tuts with SDL](https://lazyfoo.net/tutorials/SDL/index.php) and [C++ Applications Dev Course](https://softuni.bg/trainings/3556/applications-development-with-c-plus-plus-october-2021)
+
+Users of `angina` should inherit from the main `Engine` class and build their own game! :)
+
 ## Project structure
 
 - `platform` - Low level module. SDL wrappers (Surface, Texture), thread and time libraries.
@@ -13,8 +19,16 @@
 
 - Go to `build` folder
 - `cmake ..`
+
+Ubuntu 20.04 (TODO: add compiler version here)
 - `make`
-- `./chess`
+- `./angina`
+
+Windows 10 using MinGW (TODO: add compiler version here)
+- `mingw32-make`
+- `./angina.exe`
+
+MacOS (TODO: Test whether it runs on MACOS!)
 
 ## Getting started with your own game!
 
