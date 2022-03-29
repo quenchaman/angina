@@ -22,6 +22,7 @@
 #include "examples/chess/chess-engine/MoveLogWidget.h"
 #include "engine/components/textstack/TextStack.h"
 #include "engine/repositories/TextRepository.h"
+#include "platform/filesys/FileSystem.h"
 
 #include "platform/thread/ThreadUtils.h"
 
@@ -138,6 +139,13 @@ Widget* ChessGame::buildLandingPage() {
 			defaultFont, std::bind(&ChessGame::handleComputerVSComputerButton, this));
 	landingPageWidget->put(*computerVsComputerBtn);
 
+	RectTextButton *continueGameBtn = getFactory().createButton(
+			GameConfig::CONTINUE_GAME_BTN_POS, GameConfig::DEFAULT_BTN_DIM,
+			GameConfig::DEFAULT_BTN_BACKGROUND_COLOR,
+			GameConfig::DEFAULT_BTN_TEXT_COLOR, GameConfig::CONTINUE_GAME_BTN_TEXT,
+			defaultFont, std::bind(&ChessGame::handleContinueGameButton, this));
+	landingPageWidget->put(*continueGameBtn);
+
 	return landingPageWidget;
 }
 
@@ -149,15 +157,21 @@ Widget* ChessGame::buildChessPage() {
 			Point::ZERO, GameConfig::WINDOW_DIM);
 	chessPageWidget->put(*background);
 
-	Object *board = getFactory().createObject(Resources::board, Point::ZERO,
+	Object *boardObj = getFactory().createObject(Resources::board, Point::ZERO,
 			GameConfig::BOARD_DIM);
-	chessPageWidget->put(*board);
+	chessPageWidget->put(*boardObj);
 
 	RectTextButton *btn = getFactory().createButton(GameConfig::QUIT_GAME_BTN_POS,
 			GameConfig::QUIT_GAME_BTN_DIM, GameConfig::DEFAULT_BTN_BACKGROUND_COLOR,
 			GameConfig::DEFAULT_BTN_TEXT_COLOR, GameConfig::QUIT_GAME_BTN_TEXT,
 			defaultFont, std::bind(&ChessGame::handleQuitGameButton, this));
 	chessPageWidget->put(*btn);
+
+	RectTextButton *saveGameBtn = getFactory().createButton(GameConfig::SAVE_GAME_BTN_POS,
+			GameConfig::SAVE_GAME_BTN_DIM, GameConfig::DEFAULT_BTN_BACKGROUND_COLOR,
+			GameConfig::DEFAULT_BTN_TEXT_COLOR, GameConfig::SAVE_GAME_BTN_TEXT,
+			defaultFont, std::bind(&ChessGame::handleSaveGameButton, this));
+	chessPageWidget->put(*saveGameBtn);
 
 	chessPageWidget->onDestroy(std::bind(&ChessGame::onChessWidgetDestroy, this));
 
@@ -166,11 +180,16 @@ Widget* ChessGame::buildChessPage() {
 
 	chessPageWidget->addChild(*logTextWidget);
 
+	std::cout << board->serialize() << std::endl;
+
 	return chessPageWidget;
 }
 
 void ChessGame::startChessGame() {
 	changeScreen(*buildChessPage());
+
+	// TODO: Load pieces from file or go with the default order.
+
 	createPieceObjects();
 	board->subscribe(
 			std::bind(&ChessGame::pieceMovedCallback, this, std::placeholders::_1,
@@ -199,6 +218,14 @@ void ChessGame::handleComputerVSComputerButton() {
 	whitePlayerType = PlayerType::COMPUTER;
 	blackPlayerType = PlayerType::COMPUTER;
 	startChessGame();
+}
+
+void ChessGame::handleSaveGameButton() {
+	FileSystem::overwriteFile(GameConfig::SAVE_GAME_PATH, board->serialize());
+}
+
+void ChessGame::handleContinueGameButton() {
+
 }
 
 void ChessGame::handleMoveLog(const Move &move) {

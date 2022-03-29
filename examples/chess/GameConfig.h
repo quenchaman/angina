@@ -41,6 +41,14 @@ const Color HIGHLIGHT_COLOR = Color { 0, 255, 0, 128 };
 const Point LOG_TEXT_POS = Point { 10, 650 };
 const int32_t LOG_LINE_WIDTH = 300;
 const int32_t LOG_LINE_CAP = 5;
+
+const std::string SAVE_GAME_BTN_TEXT = "Save";
+const Point SAVE_GAME_BTN_POS = { 670, 120 };
+const Dimensions SAVE_GAME_BTN_DIM = { 100, 50 };
+const std::string SAVE_GAME_PATH = "./SavedGame";
+
+const std::string CONTINUE_GAME_BTN_TEXT = "Continue";
+const Point CONTINUE_GAME_BTN_POS = { 300, 570 };
 }
 
 #endif /* EXAMPLES_CHESS_GAMECONFIG_H_ */

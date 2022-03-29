@@ -41,6 +41,11 @@ public:
 
 	void clearSubscribers();
 
+	/*
+	 * String serializer for a chess board. Returns each cell on a separate line.
+	 * If the line is empty then the cell is empty too. If there is a piece then a piece code will be present.
+	 */
+	std::string serialize() const;
 private:
 	CellToPieceLookup board;
 	std::vector<MoveEventCallback> subscribers;

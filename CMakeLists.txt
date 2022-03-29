@@ -115,6 +115,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/platform/ids/ForwardIdGenerator.cpp
 	${DIR}/platform/ids/ReverseIdGenerator.h
 	${DIR}/platform/ids/ReverseIdGenerator.cpp
+	${DIR}/platform/filesys/FileSystem.h
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

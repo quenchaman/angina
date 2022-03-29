@@ -73,6 +73,8 @@ private:
 	void handleHumanVSComputerButton();
 	void handleComputerVSComputerButton();
 	void handleMoveLog(const Move&);
+	void handleSaveGameButton();
+	void handleContinueGameButton();
 
 	/*
 	 * For every piece in the chess engine, create a drawable object. Keep a mapping between the two.

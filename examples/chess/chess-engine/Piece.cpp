@@ -22,6 +22,10 @@ bool Piece::operator!=(const Piece &other) const {
 	return !(*this == other);
 }
 
+std::string Piece::serialize() const {
+	return std::string() + std::to_string(rank) + " " + std::to_string(side);
+}
+
 std::ostream& operator<<(std::ostream &os, const Piece &piece) {
 	return os << "The piece is with rank " << Piece::rankToString.at(piece.rank)
 			<< " and side " << piece.side;

@@ -107,6 +107,28 @@ void ChessBoard::clearSubscribers() {
 	subscribers.clear();
 }
 
+std::string ChessBoard::serialize() const {
+	std::string ser;
+
+	for (int32_t row = 0; row < GameConfig::BOARD_SIZE; row++) {
+		for (int32_t col = 0; col < GameConfig::BOARD_SIZE; col++) {
+			Cell c(row, col);
+
+			bool pieceExists = board.find(c) != board.end();
+
+			if (pieceExists) {
+
+				Piece p = board.at(c);
+				ser += p.serialize() + "\n";
+			} else {
+				ser += "\n";
+			}
+		}
+	}
+
+	return ser;
+}
+
 std::ostream& operator<<(std::ostream &os, const ChessBoard &ChessBoard) {
 	for (auto const& [cell, piece] : ChessBoard.board) {
 		os << "At cell: " << cell << " is piece: " << piece.rank << std::endl;

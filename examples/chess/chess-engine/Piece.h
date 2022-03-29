@@ -15,6 +15,8 @@ struct Piece {
 	bool operator==(const Piece &other) const;
 	bool operator!=(const Piece &other) const;
 
+	std::string serialize() const;
+
 	struct HashFunction {
 		size_t operator ()(const Piece &piece) const {
 			size_t rankHash = std::hash<Rank>()(piece.rank);
