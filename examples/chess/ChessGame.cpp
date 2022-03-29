@@ -4,27 +4,28 @@
 
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Point.h"
+#include "renderer/primitives/Text.h"
 
 #include "engine/components/buttons/RectTextButton.h"
 #include "engine/config/EngineConfig.h"
 
 #include "resources/Resources.h"
 
+#include "engine/components/textstack/TextStack.h"
+#include "engine/repositories/TextRepository.h"
+
+#include "platform/filesys/FileSystem.h"
+#include "platform/thread/ThreadUtils.h"
+
 #include "examples/chess/CellUtils.h"
 #include "examples/chess/GameConfig.h"
 #include "examples/chess/chess-engine/ChessBoard.h"
-
 #include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"
 #include "examples/chess/chess-engine/ChessEngine.h"
 #include "examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/chess-engine/ChessMoveManager.h"
 #include "examples/chess/chess-engine/ChessMoveLog.h"
 #include "examples/chess/chess-engine/MoveLogWidget.h"
-#include "engine/components/textstack/TextStack.h"
-#include "engine/repositories/TextRepository.h"
-#include "platform/filesys/FileSystem.h"
-
-#include "platform/thread/ThreadUtils.h"
 
 /**
  * Tip of the day: Stack-based allocation is eager. Heap based allocation is lazy.
@@ -48,10 +49,6 @@ ChessGame::ChessGame():
 	pieceToResource[Piece::BLACK_KING] = Resources::blackKing;
 }
 
-ChessGame::~ChessGame() {
-	std::cout << "ChessGame destroyed" << std::endl;
-}
-
 void ChessGame::init() {
 	changeScreen(*buildLandingPage());
 }
@@ -64,12 +61,11 @@ void ChessGame::update() {
 }
 
 void ChessGame::handleLeftMouseClick(Point p) {
-	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM,
-			Point::ZERO);
+    if (engine == nullptr) {
+        return;
+    }
 
-	if (engine == nullptr) {
-		return;
-	}
+	Cell selectedCell = CellUtils::pointToCell(p, GameConfig::CELL_DIM, Point::ZERO);
 
 	if (engine->isCellSelected()) {
 		clearPossibleMoves();
@@ -117,7 +113,7 @@ Widget* ChessGame::buildLandingPage() {
 
 	Text *title = getFactory().createText(GameConfig::TITLE_TEXT, defaultFont,
 			GameConfig::TITLE_POS, GameConfig::TITLE_DIM, Color::BLUE);
-	landingPageWidget->put(*(Object*) title);
+	landingPageWidget->put(*static_cast<Object*>(title));
 
 	RectTextButton *btn = getFactory().createButton(GameConfig::NEW_GAME_BTN_POS,
 			GameConfig::DEFAULT_BTN_DIM, GameConfig::DEFAULT_BTN_BACKGROUND_COLOR,
@@ -250,9 +246,11 @@ void ChessGame::createPieceObjects() {
 	const CellToPieceLookup &positions = board->getPiecePositions();
 
 	for (auto const& [cell, piece] : positions) {
-		Object &obj = *getFactory().createObject(pieceToResource[piece],
-				CellUtils::cellToPoint(cell, GameConfig::CELL_DIM),
-				GameConfig::CELL_DIM);
+		Object &obj = *getFactory().createObject(
+            pieceToResource[piece],
+            CellUtils::cellToPoint(cell, GameConfig::CELL_DIM),
+            GameConfig::CELL_DIM
+		);
 
 		int32_t id = rootScreen->put(obj);
 		cellToObjectId[cell] = id;
@@ -260,8 +258,7 @@ void ChessGame::createPieceObjects() {
 	}
 }
 
-void ChessGame::pieceMovedCallback(const Cell &source,
-		const Cell &destination) {
+void ChessGame::pieceMovedCallback(const Cell &source, const Cell &destination) {
 	// Handle captured pieces
 	if (!board->isEmptyCell(destination)) {
 		rootScreen->remove(cellToObjectId[destination]);
@@ -287,10 +284,9 @@ void ChessGame::initialiseChessClasses() {
 	moveGen = new FriendlyFireExcludedMoveGenerator(*board, *baseMoveGen);
 	moveManager = new ChessMoveManager(*board, *moveGen);
 	log = new ChessMoveLog();
-	engine = new ChessEngine(*board, *moveManager, *log, whitePlayerType,
-			blackPlayerType);
+	engine = new ChessEngine(*board, *moveManager, *log, whitePlayerType, blackPlayerType);
 }
 
-void ChessGame::handleComputerMove() {
-
+ChessGame::~ChessGame() {
+    std::cout << "ChessGame destroyed" << std::endl;
 }

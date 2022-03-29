@@ -9,14 +9,23 @@
 
 #include "examples/chess/GameConfig.h"
 
-ChessEngine::ChessEngine(ChessBoard &chessBoard, ChessMoveManager &moveMng,
-		ChessMoveLog &moveLog, PlayerType whitePType, PlayerType blackPType) :
-		moveManager(moveMng), board(chessBoard), log(moveLog), selectedCell(
-				Cell::UNDEFINED), state(ChessState::NO_OP), currentSide(Side::WHITE), whitePlayerType(
-				whitePType), blackPlayerType(blackPType) {
-
+ChessEngine::ChessEngine(
+    ChessBoard &chessBoard,
+    ChessMoveManager &moveMng,
+    ChessMoveLog &moveLog,
+    PlayerType whitePType,
+    PlayerType blackPType):
+    moveManager(moveMng),
+    board(chessBoard),
+    log(moveLog),
+    selectedCell(Cell::UNDEFINED),
+    state(ChessState::NO_OP),
+    currentSide(Side::WHITE),
+    whitePlayerType(whitePType),
+    blackPlayerType(blackPType)
+{
 	if (whitePlayerType == PlayerType::HUMAN) {
-		state = ChessState::HUMAN_SELECT_PIECE;
+	    state = ChessState::HUMAN_SELECT_PIECE;
 	} else {
 		state = ChessState::COMPUTER_MOVE;
 	}
@@ -26,14 +35,10 @@ ChessEngine::ChessEngine(ChessBoard &chessBoard, ChessMoveManager &moveMng,
 }
 
 bool ChessEngine::selectCell(const Cell &cell) {
-	if (state != ChessState::HUMAN_SELECT_PIECE || board.isEmptyCell(cell)) {
-		return false;
-	}
+	if (state != ChessState::HUMAN_SELECT_PIECE || board.isEmptyCell(cell) ||
+        !isSelectedPieceOnTurn(board.getPieceOnCell(cell))) {
 
-	Piece piece = board.getPieceOnCell(cell);
-
-	if (!isSelectedPieceOnTurn(piece)) {
-		return false;
+	    return false;
 	}
 
 	selectedCell = cell;
@@ -50,9 +55,7 @@ bool ChessEngine::movePiece(const Cell &destination) {
 	bool moveOK = isMoveAllowed(selectedCell, destination);
 
 	if (moveOK) {
-		log.addMove(
-				Move { selectedCell, destination, moveManager.scoreMove(destination),
-						currentSide });
+		log.addMove(Move { selectedCell, destination, moveManager.scoreMove(destination), currentSide });
 		moveManager.movePiece(selectedCell, destination);
 		switchSide();
 		setState(getNextState());
@@ -65,14 +68,9 @@ bool ChessEngine::movePiece(const Cell &destination) {
 	return moveOK;
 }
 
-// TODO: Improve this once we get to AI
 bool ChessEngine::makeComputerMove() {
-	std::vector<Move> aiMoves = moveManager.getAIMoves(currentSide);
-
-	for (Move &move : aiMoves) {
-		bool isMoveOk = isMoveAllowed(move.source, move.destination);
-
-		if (isMoveOk) {
+	for (Move &move : moveManager.getAIMoves(currentSide)) {
+		if (isMoveAllowed(move.source, move.destination)) {
 			moveManager.movePiece(move.source, move.destination);
 			resetSelection();
 			switchSide();
@@ -90,9 +88,7 @@ bool ChessEngine::isSelectedPieceOnTurn(const Piece &piece) const {
 }
 
 ChessState ChessEngine::getNextState() {
-	PlayerType nextPlayerType = sideToPlayerType[currentSide];
-
-	if (nextPlayerType == PlayerType::COMPUTER) {
+	if (sideToPlayerType[currentSide] == PlayerType::COMPUTER) {
 		return ChessState::COMPUTER_MOVE;
 	} else {
 		return ChessState::HUMAN_SELECT_PIECE;
@@ -115,8 +111,7 @@ bool ChessEngine::isMoveAllowed(const Cell &src, const Cell &dst) const {
 			getEnemySide());
 
 	// From the 'check' logic we can safely say that we will always have a king piece on the board.
-	Cell kingPosition = tempBoard.getPiecePosition(
-			Piece { Rank::KING, currentSide });
+	Cell kingPosition = tempBoard.getPiecePosition(Piece { Rank::KING, currentSide });
 
 	bool isChecked = false;
 
@@ -131,6 +126,7 @@ bool ChessEngine::isMoveAllowed(const Cell &src, const Cell &dst) const {
 	 */
 
 	delete &tempBoard;
+
 	return moveOK && !isChecked;
 }
 
@@ -139,9 +135,8 @@ bool ChessEngine::isCellSelected() const {
 }
 
 Side ChessEngine::switchSide() {
-	Side cs = getEnemySide();
-	currentSide = cs;
-	return cs;
+	currentSide = getEnemySide();
+	return currentSide;
 }
 
 ChessState ChessEngine::setState(ChessState newState) {
@@ -162,6 +157,7 @@ Side ChessEngine::getEnemySide() const {
 
 std::string ChessEngine::serialize() const {
 	std::string ser;
+	char br = GameConfig::SAVED_GAME_LINE_BREAK;
 
 	/*
 	 * Portion to save white and black player actor - human or computer. Also who's on turn.
@@ -173,23 +169,20 @@ std::string ChessEngine::serialize() const {
 	 * It means that the white player is human and the black is computer. Star (*) separates from following lines.
 	 * Last number means that it is white player turn.
 	 */
-	ser += std::to_string(whitePlayerType) + "\n";
-	ser += std::to_string(blackPlayerType) + "\n";
-	ser += std::to_string(currentSide) + "\n";
-	ser += "*\n";
+	ser += std::to_string(whitePlayerType) + br;
+	ser += std::to_string(blackPlayerType) + br;
+	ser += std::to_string(currentSide) + br;
+	ser += "*" + br;
 
 	for (int32_t row = 0; row < GameConfig::BOARD_SIZE; row++) {
 		for (int32_t col = 0; col < GameConfig::BOARD_SIZE; col++) {
 			Cell c(row, col);
 
-			bool pieceExists = !board.isEmptyCell(c);
-
-			if (pieceExists) {
-
+			if (!board.isEmptyCell(c)) {
 				Piece p = board.getPieceOnCell(c);
-				ser += p.serialize() + "\n";
+				ser += p.serialize() + br;
 			} else {
-				ser += "\n";
+				ser += br;
 			}
 		}
 	}
@@ -214,7 +207,7 @@ void ChessEngine::deserialise(std::vector<std::string> savedGame) {
 
     for (int32_t row = 0; row < GameConfig::BOARD_SIZE; row++) {
         for (int32_t col = 0; col < GameConfig::BOARD_SIZE; col++) {
-            std::string line = savedGame[startIdx];
+            std::string& line = savedGame[startIdx];
 
             if (!line.empty()) {
                 std::stringstream ss(savedGame[startIdx]);

@@ -7,14 +7,13 @@
 #include <string>
 #include <functional>
 
+#include "engine/Engine.h"
+
+#include "renderer/primitives/Dimensions.h"
+
 #include "examples/chess/chess-engine/Piece.h"
 #include "examples/chess/chess-engine/Cell.h"
-
 #include "examples/chess/chess-engine/PlayerType.h"
-
-#include "engine/Engine.h"
-#include "renderer/primitives/Dimensions.h"
-#include "examples/chess/chess-engine/ChessMoveManager.h"
 
 struct Widget;
 struct Object;
@@ -22,10 +21,12 @@ struct ChessBoard;
 struct ChessEngine;
 struct ChessMoveLog;
 struct BoardBoundsPieceMoveGenerator;
+struct FriendlyFireExcludedMoveGenerator;
 struct ChessMoveManager;
 struct TextStack;
 struct TextRepository;
 struct MoveLogWidget;
+struct Move;
 
 typedef std::unordered_map<Cell, Object*, Cell::HashFunction> CellToObjectLookup;
 typedef std::unordered_map<Cell, int32_t, Cell::HashFunction> CellToObjectId;
@@ -47,7 +48,6 @@ private:
 	ChessMoveManager *moveManager = nullptr;
 	ChessEngine *engine = nullptr;
 	ChessMoveLog *log = nullptr;
-	// TODO: We can have a class that wraps a text stack component and its visualisation.
 	MoveLogWidget *logTextWidget = nullptr;
 
 	CellToObjectLookup cellObject;
@@ -83,8 +83,6 @@ private:
 	void createPieceObjects();
 
 	void pieceMovedCallback(const Cell &source, const Cell &destination);
-
-	void handleComputerMove();
 
 	void initialiseChessClasses();
 

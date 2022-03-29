@@ -49,6 +49,8 @@ const std::string SAVE_GAME_PATH = "./SavedGame";
 
 const std::string CONTINUE_GAME_BTN_TEXT = "Continue";
 const Point CONTINUE_GAME_BTN_POS = { 300, 570 };
+
+const char SAVED_GAME_LINE_BREAK = '\n';
 }
 
 #endif /* EXAMPLES_CHESS_GAMECONFIG_H_ */

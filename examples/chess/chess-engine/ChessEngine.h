@@ -15,6 +15,9 @@ struct ChessMoveManager;
 struct ChessBoard;
 struct Piece;
 
+/*
+ * Selecting, moving pieces, AI, rules.
+ */
 class ChessEngine {
 public:
 	ChessEngine(ChessBoard&, ChessMoveManager&, ChessMoveLog &moveLog,
@@ -53,6 +56,9 @@ public:
 	 */
 	std::string serialize() const;
 
+	/*
+	 * Accepts lines of a saved game and loads engine and board with the state of it.
+	 */
 	void deserialise(std::vector<std::string>);
 
 private:
