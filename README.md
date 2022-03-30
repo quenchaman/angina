@@ -24,8 +24,25 @@ Users of `angina` should inherit from the main `Engine` class and build their ow
 - `core` - Low level module for math, physics libraries, etc. of that sort.
 - `examples` - Implementations of games, built with the engine.
 - `resources` - Place for all the assets of the game and a header file that exposes paths to them.
+- `releases` - Holds archives of builds that you can download, unzip and run.
 
-## Steps to run:
+## Steps to run on your computer
+
+- Go to `releases` folder and pick the version for your OS.
+- Download the zip
+- Unzip it
+- Run the exe/binary.
+
+## Steps to build
+### Windows 10
+- `cd Release`
+- `cmake -DCMAKE_BUILD_TYPE=Release .. -G "MinGW Makefiles"`
+- `mingw32-make`
+
+### Linux
+TODO: Add steps
+
+## Steps to run in debug mode:
 
 - Go to `build` folder
 - `cmake ..`
