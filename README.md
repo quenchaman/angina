@@ -118,11 +118,13 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 }
 ```
 
-## To be done (Art is never finished, it is abandoned.)
+## To be done ("Art is never finished, it is abandoned.")
 1. Pawn two-cell move
 2. Pawn en-passant move
 3. Pawn attack move
 4. Handle check, winner.
-5. Draw
+5. Draw (no one wins)
 6. Keep player score
-7. Implement Minimax
+7. Implement Minimax (Not until a tic-tac-toe with minimax)
+8. Networking (something simple using networking first)
+9. Player timers (Blitz style)
