@@ -118,9 +118,9 @@ add_executable(${PROJECT_NAME}
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-	COMMAND ${CMAKE_COMMAND} -E copy
+	COMMAND ${CMAKE_COMMAND} -E copy_directory
 	${CMAKE_CURRENT_SOURCE_DIR}/resources/chess
-	$<TARGET_FILE_DIR:${PROJECT_NAME}>)
+	$<TARGET_FILE_DIR:${PROJECT_NAME}>/resources/chess)
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
 enable_target_warnings(${PROJECT_NAME})

@@ -5,11 +5,11 @@
 #include <iostream>
 
 namespace Resources {
-#ifndef DEBUG
-const std::string prefix = "../resources/chess/";
+#ifndef NDEBUG
+	const std::string prefix = "../resources/chess/";
 #endif
-#ifdef DEBUG
-    const std::string prefix = "resources/chess/";
+#ifdef NDEBUG
+	const std::string prefix = "resources/chess/";
 #endif
 
 const std::string whiteWins = prefix + "white_wins.png";

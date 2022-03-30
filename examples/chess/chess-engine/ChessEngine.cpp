@@ -176,7 +176,8 @@ std::string ChessEngine::serialize() const {
 	ser += std::to_string(whitePlayerType) + br;
 	ser += std::to_string(blackPlayerType) + br;
 	ser += std::to_string(currentSide) + br;
-	ser += "*" + br;
+	ser += "*";
+	ser += br;
 
 	for (int32_t row = 0; row < GameConfig::BOARD_SIZE; row++) {
 		for (int32_t col = 0; col < GameConfig::BOARD_SIZE; col++) {
