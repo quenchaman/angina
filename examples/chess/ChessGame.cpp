@@ -17,7 +17,7 @@
 #include "platform/filesys/FileSystem.h"
 #include "platform/thread/ThreadUtils.h"
 
-#include "examples/chess/CellUtils.h"
+#include "engine/primitives/cell/CellUtils.h"
 #include "examples/chess/GameConfig.h"
 #include "examples/chess/chess-engine/ChessBoard.h"
 #include "examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h"

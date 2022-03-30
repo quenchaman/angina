@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "examples/chess/chess-engine/Cell.h"
+#include "engine/primitives/cell/Cell.h"
 #include "examples/chess/chess-engine/Side.h"
 
 struct Move {

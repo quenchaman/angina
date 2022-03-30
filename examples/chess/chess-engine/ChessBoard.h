@@ -6,7 +6,7 @@
 #include <functional>
 #include <string>
 
-#include "examples/chess/chess-engine/Cell.h"
+#include "engine/primitives/cell/Cell.h"
 #include "examples/chess/chess-engine/Piece.h"
 #include "examples/chess/chess-engine/Side.h"
 #include "examples/chess/chess-engine/Move.h"

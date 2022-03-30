@@ -7,8 +7,7 @@ ChessMoveManager::ChessMoveManager(ChessBoard &chessBoard,
 		board(chessBoard), moveGen(generator) {
 }
 
-bool ChessMoveManager::movePiece(const Cell &source, const Cell &destination,
-		bool force) {
+bool ChessMoveManager::movePiece(const Cell &source, const Cell &destination, bool force) {
 	if (!force) {
 		CellUnorderedSet moves = moveGen.generatePieceMoves(source);
 		bool isOkMove = moves.find(destination) != moves.end();
@@ -34,8 +33,7 @@ std::vector<Move> ChessMoveManager::getAIMoves(Side side) {
 	return allMoves;
 }
 
-std::vector<Move> ChessMoveManager::scorePieceMoves(const Cell &cell,
-		Side side) const {
+std::vector<Move> ChessMoveManager::scorePieceMoves(const Cell &cell, Side side) const {
 	std::vector<Move> moves;
 	CellUnorderedSet currentPieceMoves = moveGen.generatePieceMoves(cell);
 

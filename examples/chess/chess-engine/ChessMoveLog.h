@@ -14,8 +14,6 @@ public:
 
 	void addMove(const Move&);
 
-	std::vector<std::string> getLogs() const;
-
 	void subscribe(std::function<void(const Move&)>);
 private:
 	std::vector<Move> moves;

@@ -1,6 +1,6 @@
 #include "Move.h"
 
-#include "examples/chess/CellUtils.h"
+#include "engine/primitives/cell/CellUtils.h"
 
 const Move Move::UNDEFINED(Cell::UNDEFINED, Cell::UNDEFINED, 0.0, Side::NA);
 

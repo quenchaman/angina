@@ -56,7 +56,9 @@ bool ChessEngine::movePiece(const Cell &destination) {
 
 	if (moveOK) {
 		log.addMove(Move { selectedCell, destination, moveManager.scoreMove(destination), currentSide });
+
 		moveManager.movePiece(selectedCell, destination);
+
 		switchSide();
 		setState(getNextState());
 	} else {
@@ -71,6 +73,8 @@ bool ChessEngine::movePiece(const Cell &destination) {
 bool ChessEngine::makeComputerMove() {
 	for (Move &move : moveManager.getAIMoves(currentSide)) {
 		if (isMoveAllowed(move.source, move.destination)) {
+			log.addMove(Move { move.source, move.destination, moveManager.scoreMove(move.destination), currentSide });
+
 			moveManager.movePiece(move.source, move.destination);
 			resetSelection();
 			switchSide();

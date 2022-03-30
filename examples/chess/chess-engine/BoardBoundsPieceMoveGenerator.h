@@ -6,7 +6,7 @@
 
 #include "examples/chess/chess-engine/Move.h"
 #include "examples/chess/chess-engine/Piece.h"
-#include "examples/chess/chess-engine/Cell.h"
+#include "engine/primitives/cell/Cell.h"
 
 typedef std::function<void(const Cell&, const Cell&)> MoveEventCallback;
 

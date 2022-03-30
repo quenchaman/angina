@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "examples/chess/chess-engine/Cell.h"
+#include "engine/primitives/cell/Cell.h"
 
 struct Piece;
 

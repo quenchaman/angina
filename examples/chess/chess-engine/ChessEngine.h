@@ -6,7 +6,7 @@
 #include <string>
 
 #include "examples/chess/chess-engine/Side.h"
-#include "examples/chess/chess-engine/Cell.h"
+#include "engine/primitives/cell/Cell.h"
 #include "examples/chess/chess-engine/PlayerType.h"
 #include "examples/chess/chess-engine/ChessState.h"
 #include "examples/chess/chess-engine/ChessMoveLog.h"

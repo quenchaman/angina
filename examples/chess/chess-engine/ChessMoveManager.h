@@ -7,7 +7,7 @@
 #include "examples/chess/chess-engine/ChessState.h"
 #include "examples/chess/chess-engine/ChessBoard.h"
 #include "examples/chess/chess-engine/Piece.h"
-#include "examples/chess/chess-engine/Cell.h"
+#include "engine/primitives/cell/Cell.h"
 #include "examples/chess/chess-engine/Move.h"
 
 struct FriendlyFireExcludedMoveGenerator;

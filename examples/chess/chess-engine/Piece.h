@@ -7,7 +7,7 @@
 
 #include "examples/chess/chess-engine/Rank.h"
 #include "examples/chess/chess-engine/Side.h"
-#include "examples/chess/chess-engine/Cell.h"
+#include "engine/primitives/cell/Cell.h"
 
 struct Piece {
 	Rank rank;

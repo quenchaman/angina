@@ -1,7 +1,7 @@
 #ifndef EXAMPLES_CHESS_CHESS_ENGINE_FRIENDLYFIREEXCLUDEDMOVEGENERATOR_H_
 #define EXAMPLES_CHESS_CHESS_ENGINE_FRIENDLYFIREEXCLUDEDMOVEGENERATOR_H_
 
-#include "examples/chess/chess-engine/Cell.h"
+#include "engine/primitives/cell/Cell.h"
 #include "examples/chess/chess-engine/Piece.h"
 
 struct ChessBoard;

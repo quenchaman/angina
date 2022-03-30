@@ -80,8 +80,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/renderer/primitives/Transformation.cpp
 	${DIR}/renderer/primitives/Text.h
 	${DIR}/renderer/primitives/Text.cpp
-	${DIR}/examples/chess/chess-engine/Cell.h
-	${DIR}/examples/chess/chess-engine/Cell.cpp
+	${DIR}/engine/primitives/cell/Cell.h
+	${DIR}/engine/primitives/cell/Cell.cpp
 	${DIR}/examples/chess/chess-engine/ChessBoard.cpp
 	${DIR}/examples/chess/chess-engine/ChessBoard.h
 	${DIR}/examples/chess/chess-engine/ChessMoveManager.cpp
@@ -97,8 +97,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/chess/ChessGame.h
 	${DIR}/examples/chess/ChessGame.cpp
 	${DIR}/examples/chess/chess-engine/ChessState.h
-	${DIR}/examples/chess/CellUtils.h
-	${DIR}/examples/chess/CellUtils.cpp
+	${DIR}/engine/primitives/cell/CellUtils.h
 	${DIR}/examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h
 	${DIR}/examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.cpp
 	${DIR}/examples/chess/chess-engine/FriendlyFireExcludedMoveGenerator.h

@@ -6,7 +6,7 @@
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
 
-#include "examples/chess/chess-engine/Cell.h"
+#include "engine/primitives/cell/Cell.h"
 
 namespace CellUtils {
 
