@@ -175,6 +175,10 @@ Side ChessEngine::getCurrentSide() const {
 	return currentSide;
 }
 
+void ChessEngine::acknowledgeGameEnd() {
+	setState(ChessState::NO_OP);
+}
+
 std::string ChessEngine::serialize() const {
 	std::string ser;
 	char br = GameConfig::SAVED_GAME_LINE_BREAK;

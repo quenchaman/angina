@@ -59,9 +59,13 @@ void ChessGame::update() {
 			engine->makeComputerMove();
 			ThreadUtils::sleepFor(50000); // When CPUs play 1v1 you can't see the moves.
 		} else if (engine->getState() == ChessState::CHECKMATE) {
-			std::cout << "Checkmate! Player " << (engine->getCurrentSide() == Side::WHITE ? "White" : "Black") << " wins!" << std::endl;
+			std::string msg = "Checkmate! Player " + std::string(engine->getEnemySide() == Side::WHITE ? "White" : "Black") + " wins!";
+			logTextWidget->add(msg, GameConfig::LOG_LINE_WIDTH);
+			engine->acknowledgeGameEnd();
 		} else if (engine->getState() == ChessState::DRAW) {
-			std::cout << "Game finishes with a draw! Shake hands!" << std::endl;
+			std::string msg = "Game finishes with a draw! Shake hands!";
+			logTextWidget->add(msg, GameConfig::LOG_LINE_WIDTH);
+			engine->acknowledgeGameEnd();
 		}
 	}
 }

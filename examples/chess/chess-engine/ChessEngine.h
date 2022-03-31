@@ -50,6 +50,8 @@ public:
 
 	ChessState getState() const;
 
+	void acknowledgeGameEnd();
+
 	Side getCurrentSide() const;
 
 	/*
