@@ -54,9 +54,15 @@ void ChessGame::init() {
 }
 
 void ChessGame::update() {
-	if (engine != nullptr && engine->getState() == ChessState::COMPUTER_MOVE) {
-		engine->makeComputerMove();
-		ThreadUtils::sleepFor(50000); // When CPUs play 1v1 you can't see the moves.
+	if (engine != nullptr) {
+		if (engine->getState() == ChessState::COMPUTER_MOVE) {
+			engine->makeComputerMove();
+			ThreadUtils::sleepFor(50000); // When CPUs play 1v1 you can't see the moves.
+		} else if (engine->getState() == ChessState::CHECKMATE) {
+			std::cout << "Checkmate! Player " << (engine->getCurrentSide() == Side::WHITE ? "White" : "Black") << " wins!" << std::endl;
+		} else if (engine->getState() == ChessState::DRAW) {
+			std::cout << "Game finishes with a draw! Shake hands!" << std::endl;
+		}
 	}
 }
 

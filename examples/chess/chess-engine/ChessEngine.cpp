@@ -22,7 +22,9 @@ ChessEngine::ChessEngine(
     state(ChessState::NO_OP),
     currentSide(Side::WHITE),
     whitePlayerType(whitePType),
-    blackPlayerType(blackPType)
+    blackPlayerType(blackPType),
+		isInCheck(false),
+		noMoreMoves(false)
 {
 	if (whitePlayerType == PlayerType::HUMAN) {
 	    state = ChessState::HUMAN_SELECT_PIECE;
@@ -84,6 +86,14 @@ bool ChessEngine::makeComputerMove() {
 		}
 	}
 
+	noMoreMoves = true;
+
+	if (noMoreMoves && isInCheck) {
+		setState(ChessState::CHECKMATE);
+	} else if (noMoreMoves) {
+		setState(ChessState::DRAW);
+	}
+
 	return false;
 }
 
@@ -99,7 +109,7 @@ ChessState ChessEngine::getNextState() {
 	}
 }
 
-bool ChessEngine::isMoveAllowed(const Cell &src, const Cell &dst) const {
+bool ChessEngine::isMoveAllowed(const Cell &src, const Cell &dst) {
 	ChessBoard &tempBoard = *(new ChessBoard(board));
 	tempBoard.clearSubscribers();
 	BoardBoundsPieceMoveGenerator bbpmg(tempBoard);
@@ -125,6 +135,8 @@ bool ChessEngine::isMoveAllowed(const Cell &src, const Cell &dst) const {
 			break;
 		}
 	}
+
+	isInCheck = isChecked;
 	/**
 	 * End King attacked logic
 	 */
@@ -157,6 +169,10 @@ void ChessEngine::resetSelection() {
 
 Side ChessEngine::getEnemySide() const {
 	return (currentSide == Side::WHITE) ? Side::BLACK : Side::WHITE;
+}
+
+Side ChessEngine::getCurrentSide() const {
+	return currentSide;
 }
 
 std::string ChessEngine::serialize() const {

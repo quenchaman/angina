@@ -50,6 +50,8 @@ public:
 
 	ChessState getState() const;
 
+	Side getCurrentSide() const;
+
 	/*
 	 * String serializer for a chess board. Returns each cell on a separate line.
 	 * If the line is empty then the cell is empty too. If there is a piece then a piece code will be present.
@@ -70,6 +72,8 @@ private:
 	Side currentSide;
 	PlayerType whitePlayerType;
 	PlayerType blackPlayerType;
+	bool isInCheck;
+	bool noMoreMoves;
 	std::unordered_map<Side, PlayerType> sideToPlayerType;
 
 	/*
@@ -99,7 +103,7 @@ private:
 	/**
 	 * Performs the move on a temporary board and checks whether the move is valid and the king is in check.
 	 */
-	bool isMoveAllowed(const Cell&, const Cell&) const;
+	bool isMoveAllowed(const Cell&, const Cell&);
 };
 
 #endif /* EXAMPLES_CHESS_CHESS_ENGINE_CHESSENGINE_H_ */
