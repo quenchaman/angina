@@ -192,6 +192,15 @@ CellUnorderedSet BoardBoundsPieceMoveGenerator::generatePawnMoves(
 
 	destinationCells.insert(forwardMove);
 
+	// Double move logic for the pawn.
+	if (side == Side::WHITE && currentCell.row == 6) {
+		forwardMove.moveTop();
+	} else if (currentCell.row == 1) {
+		forwardMove.moveDown();
+	}
+
+	destinationCells.insert(forwardMove);
+
 	return destinationCells;
 }
 
