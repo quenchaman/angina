@@ -24,6 +24,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/resources/Resources.h
 	${DIR}/platform/sdl/init/Graphics.h
 	${DIR}/platform/sdl/init/Graphics.cpp
+	${DIR}/platform/sdl/init/Audio.h
+	${DIR}/platform/sdl/init/Audio.cpp
 	${DIR}/engine/Engine.h
 	${DIR}/engine/Engine.cpp
 	${DIR}/platform/time/Time.h
@@ -135,10 +137,23 @@ if (UNIX)
 	find_package(SDL2_image REQUIRED)
 endif (UNIX)
 
-find_package(SDL2_ttf REQUIRED)
-find_package(SDL2_mixer REQUIRED)
+if (UNIX)
+	find_package(SDL2_ttf REQUIRED)
+endif (UNIX)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${INTERFACE_INCLUDE_DIRECTORIES})
+if (WIN32)
+	find_package(SDL2_TTF REQUIRED)
+endif (WIN32)
+
+if (WIN32)
+	find_package(SDL2_MIXER REQUIRED)
+endif (WIN32)
+
+if (UNIX)
+	find_package(SDL2_mixer REQUIRED)
+endif (UNIX)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${INTERFACE_INCLUDE_DIRECTORIES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${DIR})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${SDL2_MIXER_LIBRARY})

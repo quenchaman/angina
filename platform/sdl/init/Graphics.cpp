@@ -11,7 +11,7 @@ namespace Graphics {
 const int32_t imgFlags = IMG_INIT_PNG;
 
 void boot() {
-	if (SDL_Init(SDL_INIT_VIDEO) != EXIT_SUCCESS) {
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != EXIT_SUCCESS) {
 		throw GraphicsInitException(SDL_GetError());
 	}
 }

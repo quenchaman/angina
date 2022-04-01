@@ -119,6 +119,7 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char** argv) {
 ```
 
 ## To be done ("Art is never finished, it is abandoned.")
+6. Separate engine resources from chess game resources.
 7. Implement Minimax (Not until a tic-tac-toe with minimax)
 8. Networking (something simple using networking first)
 9. Player timers (Blitz style)
