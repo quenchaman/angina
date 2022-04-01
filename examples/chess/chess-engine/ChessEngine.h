@@ -54,6 +54,8 @@ public:
 
 	Side getCurrentSide() const;
 
+	Side getEnemySide() const;
+
 	/*
 	 * String serializer for a chess board. Returns each cell on a separate line.
 	 * If the line is empty then the cell is empty too. If there is a piece then a piece code will be present.
@@ -99,8 +101,6 @@ private:
 	ChessState getNextState();
 
 	void resetSelection();
-
-	Side getEnemySide() const;
 
 	/**
 	 * Performs the move on a temporary board and checks whether the move is valid and the king is in check.

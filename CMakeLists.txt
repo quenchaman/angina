@@ -136,7 +136,7 @@ if (UNIX)
 endif (UNIX)
 
 find_package(SDL2_ttf REQUIRED)
-#find_package(SDL2_mixer REQUIRED)
+find_package(SDL2_mixer REQUIRED)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${INTERFACE_INCLUDE_DIRECTORIES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${DIR})
