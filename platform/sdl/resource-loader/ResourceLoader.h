@@ -7,18 +7,19 @@
 
 #include "SDL_ttf.h"
 
-struct Surface;
+struct SDL_Surface;
 struct Texture;
 struct Color;
 
+/*
+ * Functionality for loading resources (images, fonts, sounds) from disk.
+ */
 namespace ResourceLoader {
-Surface* load(const std::string &path);
+	SDL_Surface& loadImage(const std::string &path);
 
-std::vector<Surface*> loadBulk(const std::vector<std::string> &paths);
+	TTF_Font& loadFont(const std::string &path, int32_t pointSize);
 
-TTF_Font* loadFont(const std::string &path, int32_t pointSize);
-
-Surface* loadText(TTF_Font*, const std::string &text, Color);
+	SDL_Surface& loadText(TTF_Font*, const std::string &text, Color);
 }
 
 #endif /* SDL_IMAGERESOURCE_H_ */

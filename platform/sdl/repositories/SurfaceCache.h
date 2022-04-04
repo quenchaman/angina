@@ -1,7 +1,7 @@
 #ifndef ENGINE_REPOSITORIES_SURFACEREPOSITORY_H_
 #define ENGINE_REPOSITORIES_SURFACEREPOSITORY_H_
 
-#include "renderer/repositories/Repository.h"
+#include "Cache.h"
 #include "platform/sdl/primitives/Surface.h"
 
 /*
@@ -13,7 +13,7 @@
  * In the case of a RTS or RPG game, we will very often have creation of the same types of monsters, items etc. so it is good idea to
  * keep the surface in handy to avoid a costly resource load during runtime.
  */
-class SurfaceRepository : public Repository<Surface> {
+class SurfaceCache : public Cache<Surface> {
 };
 
 #endif /* ENGINE_REPOSITORIES_SURFACEREPOSITORY_H_ */

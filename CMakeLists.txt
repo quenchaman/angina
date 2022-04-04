@@ -70,10 +70,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/components/buttons/RectTextButton.cpp
 	${DIR}/engine/components/textstack/TextStack.h
 	${DIR}/engine/components/textstack/TextStack.cpp
-	${DIR}/renderer/repositories/Repository.h
-	${DIR}/renderer/repositories/TextRepository.h
-	${DIR}/renderer/repositories/TextRepository.cpp
-	${DIR}/renderer/repositories/SurfaceRepository.h
+	${DIR}/platform/sdl/repositories/Repository.h
+	${DIR}/platform/sdl/repositories/SurfaceRepository.h
 	${DIR}/engine/config/EngineConfig.h
 	${DIR}/platform/sdl/enums/Flip.h
 	${DIR}/renderer/primitives/Button.cpp
@@ -119,6 +117,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/platform/ids/ReverseIdGenerator.h
 	${DIR}/platform/ids/ReverseIdGenerator.cpp
 	${DIR}/platform/filesys/FileSystem.h
+	${DIR}/platform/sdl/translators/Translators.h
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

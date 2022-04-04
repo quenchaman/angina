@@ -6,7 +6,7 @@
 #include <iostream>
 
 template <typename T>
-class Repository {
+class Cache {
 public:
 
 	void add(const std::string key, T& item) {
