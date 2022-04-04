@@ -12,7 +12,6 @@
 #include "resources/Resources.h"
 
 #include "engine/components/textstack/TextStack.h"
-#include "engine/repositories/TextRepository.h"
 
 #include "platform/filesys/FileSystem.h"
 #include "platform/thread/ThreadUtils.h"

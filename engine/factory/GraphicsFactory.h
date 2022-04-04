@@ -7,6 +7,7 @@
 #include "renderer/primitives/Point.h"
 #include "renderer/shapes/Rect.h"
 #include "renderer/primitives/Color.h"
+#include "renderer/repositories/SurfaceRepository.h"
 
 struct Renderer;
 struct Object;
@@ -15,6 +16,9 @@ struct Font;
 struct Text;
 struct Rect;
 
+/*
+ * Factory with a cache layer for surfaces and
+ */
 class GraphicsFactory {
 public:
 	GraphicsFactory(Renderer&);
@@ -33,6 +37,8 @@ public:
 			Color textColor, std::string text, Font&, std::function<void(void)>);
 private:
 	Renderer &renderer;
+
+	SurfaceRepository surfaceRepo;
 };
 
 #endif /* SDL_ENGINE_FACTORY_GRAPHICSFACTORY_H_ */

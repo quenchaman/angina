@@ -17,7 +17,14 @@ GraphicsFactory::GraphicsFactory(Renderer &r) :
 
 Object* GraphicsFactory::createObject(const std::string &resourcePath, Point p,
 		Dimensions dim) {
-	Surface *surface = ResourceLoader::load(resourcePath);
+	Surface *surface;
+
+	if (surfaceRepo.exists(resourcePath)) {
+		surface = &surfaceRepo.get(resourcePath);
+	} else {
+		surface = ResourceLoader::load(resourcePath);
+		surfaceRepo.add(resourcePath, *surface);
+	}
 
 	Object *obj = renderer.fromSurface(*surface, p, dim);
 
@@ -27,6 +34,14 @@ Object* GraphicsFactory::createObject(const std::string &resourcePath, Point p,
 Text* GraphicsFactory::createText(std::string textVal, Font &font, Point p,
 		Dimensions dim, Color color) {
 	Surface *surface = ResourceLoader::loadText(font.getFont(), textVal, color);
+
+	if (surfaceRepo.exists(textVal)) {
+		surface = &surfaceRepo.get(textVal);
+	} else {
+		surface = ResourceLoader::loadText(font.getFont(), textVal, color);
+		surfaceRepo.add(textVal, *surface);
+	}
+
 	Texture *texture = renderer.from(*surface);
 	Text *text = new Text(*texture, dim, p);
 

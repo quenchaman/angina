@@ -1,6 +1,6 @@
 #include "MoveLogWidget.h"
 
-#include "engine/repositories/TextRepository.h"
+#include "renderer/repositories/TextRepository.h"
 #include "renderer/primitives/Text.h"
 #include "platform/sdl/primitives/Font.h"
 #include "engine/components/textstack/TextStack.h"

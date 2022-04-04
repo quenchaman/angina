@@ -82,8 +82,6 @@ Texture* Renderer::from(Surface &surface) const {
 	Texture *t = new Texture(texture,
 			{ surface.getSurface()->w, surface.getSurface()->h });
 
-	delete &surface;
-
 	return t;
 }
 

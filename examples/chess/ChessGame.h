@@ -24,7 +24,6 @@ struct BoardBoundsPieceMoveGenerator;
 struct FriendlyFireExcludedMoveGenerator;
 struct ChessMoveManager;
 struct TextStack;
-struct TextRepository;
 struct MoveLogWidget;
 struct Move;
 

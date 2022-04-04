@@ -5,6 +5,7 @@
 
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Point.h"
+#include "renderer/repositories/SurfaceRepository.h"
 
 struct SDL_Renderer;
 struct Texture;
@@ -35,6 +36,8 @@ private:
 	void deinit();
 
 	SDL_Renderer *renderer;
+
+
 };
 
 #endif /* SDL_GRAPHICS_RENDERER_H_ */
