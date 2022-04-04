@@ -1,10 +1,8 @@
 #ifndef ENGINE_REPOSITORIES_SURFACEREPOSITORY_H_
 #define ENGINE_REPOSITORIES_SURFACEREPOSITORY_H_
 
-#include <string>
-#include <unordered_map>
-
-struct Surface;
+#include "renderer/repositories/Repository.h"
+#include "platform/sdl/primitives/Surface.h"
 
 /*
  * Cache for CPU 2D primitive.
@@ -15,15 +13,7 @@ struct Surface;
  * In the case of a RTS or RPG game, we will very often have creation of the same types of monsters, items etc. so it is good idea to
  * keep the surface in handy to avoid a costly resource load during runtime.
  */
-class SurfaceRepository {
-public:
-	SurfaceRepository();
-
-	void add(const std::string key, Surface&);
-	Surface& get(const std::string& key);
-	bool exists(const std::string& key) const;
-private:
-	std::unordered_map<std::string, Surface*> data;
+class SurfaceRepository : public Repository<Surface> {
 };
 
 #endif /* ENGINE_REPOSITORIES_SURFACEREPOSITORY_H_ */

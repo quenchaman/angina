@@ -70,10 +70,10 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/components/buttons/RectTextButton.cpp
 	${DIR}/engine/components/textstack/TextStack.h
 	${DIR}/engine/components/textstack/TextStack.cpp
+	${DIR}/renderer/repositories/Repository.h
 	${DIR}/renderer/repositories/TextRepository.h
 	${DIR}/renderer/repositories/TextRepository.cpp
 	${DIR}/renderer/repositories/SurfaceRepository.h
-	${DIR}/renderer/repositories/SurfaceRepository.cpp
 	${DIR}/engine/config/EngineConfig.h
 	${DIR}/platform/sdl/enums/Flip.h
 	${DIR}/renderer/primitives/Button.cpp

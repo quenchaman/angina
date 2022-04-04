@@ -37,8 +37,6 @@ Point Object::getCenter() const {
 }
 
 Object::~Object() {
-	delete &texture;
-
 	std::cout << "Object destroyed" << std::endl;
 }
 

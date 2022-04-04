@@ -19,7 +19,6 @@
 
 #include "engine/widget/Widget.h"
 #include "engine/factory/GraphicsFactory.h"
-#include "engine/factory/GraphicsFactory.h"
 #include "engine/managers/ButtonManager.h"
 
 struct Texture;

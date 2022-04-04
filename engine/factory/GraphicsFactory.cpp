@@ -19,6 +19,7 @@ Object* GraphicsFactory::createObject(const std::string &resourcePath, Point p,
 		Dimensions dim) {
 	Surface *surface;
 
+	// TODO: Maybe it is a good idea to have a 'cached' Resource loader that would have a black boxed API that handles the caching.
 	if (surfaceRepo.exists(resourcePath)) {
 		surface = &surfaceRepo.get(resourcePath);
 	} else {
@@ -26,9 +27,16 @@ Object* GraphicsFactory::createObject(const std::string &resourcePath, Point p,
 		surfaceRepo.add(resourcePath, *surface);
 	}
 
-	Object *obj = renderer.fromSurface(*surface, p, dim);
+	Texture* texture;
 
-	return obj;
+	if (textureRepo.exists(resourcePath)) {
+		texture = &textureRepo.get(resourcePath);
+	} else {
+		texture = renderer.from(*surface);
+		textureRepo.add(resourcePath, *texture);
+	}
+
+	return renderer.from(*texture, p, dim);
 }
 
 Text* GraphicsFactory::createText(std::string textVal, Font &font, Point p,
@@ -42,7 +50,15 @@ Text* GraphicsFactory::createText(std::string textVal, Font &font, Point p,
 		surfaceRepo.add(textVal, *surface);
 	}
 
-	Texture *texture = renderer.from(*surface);
+	Texture* texture;
+
+	if (textureRepo.exists(textVal)) {
+		texture = &textureRepo.get(textVal);
+	} else {
+		texture = renderer.from(*surface);
+		textureRepo.add(textVal, *texture);
+	}
+
 	Text *text = new Text(*texture, dim, p);
 
 	return text;

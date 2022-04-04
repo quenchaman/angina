@@ -8,6 +8,7 @@
 #include "renderer/shapes/Rect.h"
 #include "renderer/primitives/Color.h"
 #include "renderer/repositories/SurfaceRepository.h"
+#include "renderer/repositories/TextureRepository.h"
 
 struct Renderer;
 struct Object;
@@ -32,13 +33,14 @@ public:
 
 	virtual Rect* createRect(Point, Dimensions, Color);
 
-	// We will not cache buttons for now as they are static.
+	// We will not cache buttons for now as they are static (in a sense that they do not change location).
 	RectTextButton* createButton(Point, Dimensions, Color backgroundColor,
 			Color textColor, std::string text, Font&, std::function<void(void)>);
 private:
 	Renderer &renderer;
 
 	SurfaceRepository surfaceRepo;
+	TextureRepository textureRepo;
 };
 
 #endif /* SDL_ENGINE_FACTORY_GRAPHICSFACTORY_H_ */
