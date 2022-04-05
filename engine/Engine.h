@@ -21,6 +21,9 @@
 #include "engine/factory/GraphicsFactory.h"
 #include "engine/managers/ButtonManager.h"
 
+#include "platform/sdl/repositories/TextureRepository.h"
+#include "platform/sdl/repositories/SurfaceRepository.h"
+
 struct Texture;
 struct Rect;
 struct Object;
@@ -35,6 +38,8 @@ private:
 	Window window;
 	SDL_Event e;
 	Renderer renderer;
+	SurfaceRepository surfaceRepo;
+	TextureRepository textureRepo;
 	GraphicsFactory factory;
 	bool quit = false;
 

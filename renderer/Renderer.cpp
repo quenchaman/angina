@@ -54,59 +54,40 @@ Renderer::Renderer(Window &window) {
 	init(window);
 }
 
-Renderer::~Renderer() {
-	deinit();
-}
-
 void Renderer::init(Window &window) {
-	renderer = SDL_CreateRenderer(window.getWindow(), -1,
-			SDL_RENDERER_ACCELERATED);
+	renderer = SDL_CreateRenderer(window.getWindow(), -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
 	std::cout << "Renderer initialised" << std::endl;
 }
 
-void Renderer::deinit() {
-	SDL_DestroyRenderer(renderer);
-	std::cout << "Renderer deinitialised" << std::endl;
-}
-
-Texture* Renderer::from(Surface &surface) const {
-	SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer,
-			surface.getSurface());
+Texture& Renderer::from(Surface &surface) const {
+	SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, &surface.getSurface());
 
 	if (texture == nullptr) {
 		throw GraphicsInitException(SDL_GetError());
 	}
 
-	Texture *t = new Texture(texture,
-			{ surface.getSurface()->w, surface.getSurface()->h });
-
-	return t;
+	return *new Texture(texture, { surface.getSurface().w, surface.getSurface().h });
 }
 
-std::vector<Texture*> Renderer::from(
-		const std::vector<Surface*> &surfaces) const {
-	std::vector<Texture*> textures;
-	textures.reserve(surfaces.size());
-
-	for (Surface *surface : surfaces) {
-		textures.push_back(from(*surface));
-	}
-
-	return textures;
+Object& Renderer::from(Texture &texture, Point p, Dimensions dim) const {
+	return *new Object(texture, dim, p);
 }
 
-Object* Renderer::from(Texture &texture, Point p, Dimensions dim) const {
-	return new Object(texture, dim, p);
+Object& Renderer::fromSurface(Surface &surface, Point p, Dimensions dim) const {
+	return from(from(surface), p, dim);
 }
 
-Object* Renderer::fromSurface(Surface &surface, Point p, Dimensions dim) const {
-	Texture *t = from(surface);
-
-	return from(*t, p, dim);
+Button& Renderer::from(Texture &texture) {
+	return *new Button(texture, Point::UNDEFINED, texture.getDimensions());
 }
 
-Button* Renderer::from(Texture &texture) {
-	return new Button(texture, Point::UNDEFINED, texture.getDimensions());
+void Renderer::deinit() {
+    SDL_DestroyRenderer(renderer);
+    std::cout << "Renderer deinitialised" << std::endl;
+}
+
+Renderer::~Renderer() {
+    deinit();
 }

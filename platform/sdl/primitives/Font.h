@@ -15,10 +15,10 @@ public:
 	Font(Font&&) = delete;
 	Font& operator=(Font&&) = delete;
 
-	TTF_Font* getFont() const;
+	TTF_Font& getFont() const;
 	int32_t getSize() const;
 private:
-	TTF_Font *font;
+	TTF_Font &font;
 	int32_t size;
 };
 

@@ -5,7 +5,6 @@
 
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Point.h"
-#include "renderer/repositories/SurfaceRepository.h"
 
 struct SDL_Renderer;
 struct Texture;
@@ -26,18 +25,15 @@ public:
 	void render(Object&) const;
 	void update();
 
-	Texture* from(Surface&) const;
-	std::vector<Texture*> from(const std::vector<Surface*>&) const;
-	Object* from(Texture&, Point, Dimensions) const;
-	Object* fromSurface(Surface&, Point, Dimensions) const;
-	Button* from(Texture&);
+	Texture& from(Surface&) const;
+	Object& from(Texture&, Point, Dimensions) const;
+	Object& fromSurface(Surface&, Point, Dimensions) const;
+	Button& from(Texture&);
 private:
 	void init(Window&);
 	void deinit();
 
 	SDL_Renderer *renderer;
-
-
 };
 
 #endif /* SDL_GRAPHICS_RENDERER_H_ */

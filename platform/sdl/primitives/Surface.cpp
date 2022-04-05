@@ -4,19 +4,14 @@
 
 #include "SDL_surface.h"
 
-Surface::Surface(SDL_Surface *surface) {
-	this->surface = surface;
-}
+Surface::Surface(SDL_Surface& s): surface(s) {}
 
 Surface::~Surface() {
-	if (surface != nullptr) {
-		SDL_FreeSurface(surface);
-		surface = nullptr;
-	}
+    SDL_FreeSurface(&surface);
 
 	std::cout << "Surface destroyed" << std::endl;
 }
 
-SDL_Surface* Surface::getSurface() {
+SDL_Surface& Surface::getSurface() {
 	return surface;
 }

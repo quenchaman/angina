@@ -19,12 +19,18 @@
 #include "renderer/primitives/Dimensions.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) :
-		window(
-				Window(appTitle, { SDL_WINDOWPOS_UNDEFINED,
-				SDL_WINDOWPOS_UNDEFINED }, { screenSize.w, screenSize.h },
-						SDL_WINDOW_SHOWN)), renderer(Renderer(window)), factory(
-				GraphicsFactory(renderer)), rootScreen(nullptr), defaultFont(
-				Font(Resources::montserratFont, 28)) {
+		window(Window(
+		        appTitle,
+		        { SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED },
+		        { screenSize.w, screenSize.h },
+				SDL_WINDOW_SHOWN
+			  )),
+        renderer(Renderer(window)),
+        surfaceRepo(SurfaceRepository()),
+        textureRepo(TextureRepository(surfaceRepo, renderer)),
+        factory(GraphicsFactory(renderer, textureRepo)),
+        rootScreen(nullptr),
+        defaultFont(Font(Resources::montserratFont, 28)) {
 
 	event.init();
 }

@@ -1,15 +1,23 @@
 #ifndef PLATFORM_SDL_REPOSITORIES_TEXTUREREPOSITORY_H_
 #define PLATFORM_SDL_REPOSITORIES_TEXTUREREPOSITORY_H_
 
-/*
- * A cache on surfaces and textures. If the surface/texture is not loaded yet from disk it loads them, in the case of images.
- * For text it checks whether the specific string has been loaded already.
- * Note: Surfaces are not exposed from API, because we are not using CPU primitives in general.
- */
+#include <string>
+
+#include "platform/sdl/repositories/TextureCache.h"
+
+struct SurfaceRepository;
+struct Texture;
+struct Renderer;
+
 class TextureRepository {
 public:
-	TextureRepository();
-	~TextureRepository();
+    TextureRepository(SurfaceRepository&, Renderer&);
+
+    Texture& get(const std::string& resourcePath);
+private:
+    TextureCache textureCache;
+    SurfaceRepository& surfaceRepo;
+    Renderer& renderer;
 };
 
 #endif /* PLATFORM_SDL_REPOSITORIES_TEXTUREREPOSITORY_H_ */

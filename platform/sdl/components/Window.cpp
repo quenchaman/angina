@@ -29,7 +29,7 @@ Window::Window(std::string title, Point pos, Dimensions dimensions,
 		throw WindowInitException(SDL_GetError());
 	}
 
-	surface = new Surface(ws);
+	surface = new Surface(*ws);
 
 	std::cout << "Window initialised" << std::endl;
 }

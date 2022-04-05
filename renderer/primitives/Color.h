@@ -13,6 +13,7 @@ struct Color {
 	static const Color RED;
 	static const Color GREEN;
 	static const Color BLUE;
+	static const Color BLACK;
 };
 
 #endif /* SDL_PRIMITIVES_COLOR_H_ */
