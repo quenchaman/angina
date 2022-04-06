@@ -74,10 +74,6 @@ void Engine::draw(Screen &widget) {
 	for (auto const &drawable : widget.getDrawables()) {
 		drawable->draw(renderer);
 	}
-
-	for (Screen *w : widget.getChildren()) {
-		draw(*w);
-	}
 }
 
 void Engine::limitFPS(int64_t elapsedTime) {
@@ -94,10 +90,10 @@ void Engine::limitFPS(int64_t elapsedTime) {
 
 void Engine::handleEvent() {
 	if (event.type == EventType::MOUSE_RELEASE) {
-		if (rootScreen != nullptr
-				&& !rootScreen->getButtonManager().invokeCallback(event)) {
-			handleLeftMouseClick(Point { event.posX, event.posY });
-		}
+//		if (rootScreen != nullptr
+//				&& !rootScreen->getButtonManager().invokeCallback(event)) {
+//			handleLeftMouseClick(Point { event.posX, event.posY });
+//		}
 	}
 }
 
@@ -112,10 +108,10 @@ void Engine::clearScreen() {
 	}
 }
 
-void Engine::changeScreen(Screen &widget) {
+void Engine::changeScreen(Screen &screen) {
 	clearScreen();
 
-	rootScreen = &widget;
+	rootScreen = &screen;
 }
 
 Engine::~Engine() {
