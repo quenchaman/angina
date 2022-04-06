@@ -13,12 +13,8 @@
 
 Screen::Screen() {}
 
-int32_t Screen::put(Object &drawable) {
-	Point newDrawablePos = origin + drawable.getPosition();
-	drawable.move(newDrawablePos.x, newDrawablePos.y);
-	int32_t id = idGen.next();
+int32_t Screen::put(Drawable& drawable) {
 	drawables[id] = &drawable;
-	ids.insert(id);
 
 	return id;
 }
