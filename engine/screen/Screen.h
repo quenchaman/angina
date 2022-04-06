@@ -22,40 +22,32 @@ struct Rect;
  * It is a container for objects, rectangles, etc. and provides a way to add and get these primitives for drawing.
  *
  *
- * Handles resource destruction after deinitialization.
+ * Does not handle resource destruction.
  */
-class Widget {
+class Screen {
 public:
-	// TODO: Add Buttons manager here and enable adding buttons to it.
-	Widget();
-	Widget(Point);
-	Widget(Point, IdGenerator &gen);
-	~Widget();
-	void addChild(Widget&);
+	Screen();
+	~Screen();
 
 	int32_t put(BaseButton&);
-	int32_t put(Object &drawable);
-	int32_t put(Rect&);
+	int32_t put(Drawable& drawable);
 
 	void remove(int32_t id);
 
 	std::vector<Drawable*> getDrawables();
-	std::vector<Widget*>& getChildren();
-	ButtonManager& getButtonManager();
+	//ButtonManager& getButtonManager();
 
-	void onDestroy(std::function<void(void)> callback);
+	//void onDestroy(std::function<void(void)> callback);
 protected:
 	std::unordered_map<int32_t, Drawable*> drawables;
 private:
 	// ids - for keeping track of insertion order of drawables. This matters for drawing. Later I can add z-index.
-	std::set<int32_t> ids;
-	std::vector<Widget*> children;
-	// Make button manager per widget instance
-	ButtonManager btnManager;
-	Point origin;
-	IdGenerator &idGen;
-	std::function<void(void)> onDestroyCallback;
-
+	//std::set<int32_t> ids;
+	//std::vector<Screen*> children;
+	//ButtonManager btnManager;
+	//Point origin;
+	//IdGenerator &idGen;
+	//std::function<void(void)> onDestroyCallback;
 };
 
 #endif /* SDL_ENGINE_PAGE_PAGE_H_ */

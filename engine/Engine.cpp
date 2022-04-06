@@ -70,12 +70,12 @@ void Engine::draw() {
 	}
 }
 
-void Engine::draw(Widget &widget) {
+void Engine::draw(Screen &widget) {
 	for (auto const &drawable : widget.getDrawables()) {
 		drawable->draw(renderer);
 	}
 
-	for (Widget *w : widget.getChildren()) {
+	for (Screen *w : widget.getChildren()) {
 		draw(*w);
 	}
 }
@@ -112,7 +112,7 @@ void Engine::clearScreen() {
 	}
 }
 
-void Engine::changeScreen(Widget &widget) {
+void Engine::changeScreen(Screen &widget) {
 	clearScreen();
 
 	rootScreen = &widget;

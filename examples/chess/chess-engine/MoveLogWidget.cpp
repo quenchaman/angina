@@ -1,15 +1,14 @@
-#include "MoveLogWidget.h"
-
 #include "renderer/repositories/TextRepository.h"
 #include "renderer/primitives/Text.h"
 #include "platform/sdl/primitives/Font.h"
 #include "engine/components/textstack/TextStack.h"
 #include "engine/factory/GraphicsFactory.h"
+#include "MoveLogScreen.h"
 #include "platform/ids/ReverseIdGenerator.h"
 
 MoveLogWidget::MoveLogWidget(Point pos, GraphicsFactory &factory, Font &f,
 		uint32_t cap) :
-		Widget(pos), textFactory(factory), font(f), sizeCap(cap), yOffset(0) {
+		Screen(pos), textFactory(factory), font(f), sizeCap(cap), yOffset(0) {
 }
 
 void MoveLogWidget::add(std::string text, int32_t textWidth, Color color) {

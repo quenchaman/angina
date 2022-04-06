@@ -17,12 +17,12 @@
 #include "renderer/primitives/Point.h"
 #include "renderer/Renderer.h"
 
-#include "engine/widget/Widget.h"
 #include "engine/factory/GraphicsFactory.h"
 #include "engine/managers/ButtonManager.h"
 
 #include "platform/sdl/repositories/TextureRepository.h"
 #include "platform/sdl/repositories/SurfaceRepository.h"
+#include "screen/Screen.h"
 
 struct Texture;
 struct Rect;
@@ -45,11 +45,11 @@ private:
 
 	void limitFPS(int64_t microseconds);
 	void draw();
-	void draw(Widget&);
+	void draw(Screen&);
 	void handleEvent();
 protected:
 	InputEvent event;
-	Widget *rootScreen;
+	Screen *rootScreen;
 	Font defaultFont;
 
 	virtual void init() = 0;
@@ -58,7 +58,7 @@ protected:
 	virtual void handleBtnClick(int32_t idx) = 0;
 
 	void clearScreen();
-	void changeScreen(Widget&);
+	void changeScreen(Screen&);
 
 	GraphicsFactory& getFactory();
 };

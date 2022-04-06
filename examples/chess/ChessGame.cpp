@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "chess-engine/MoveLogScreen.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Text.h"
@@ -24,7 +25,6 @@
 #include "examples/chess/chess-engine/BoardBoundsPieceMoveGenerator.h"
 #include "examples/chess/chess-engine/ChessMoveManager.h"
 #include "examples/chess/chess-engine/ChessMoveLog.h"
-#include "examples/chess/chess-engine/MoveLogWidget.h"
 
 /**
  * Tip of the day: Stack-based allocation is eager. Heap based allocation is lazy.
@@ -112,9 +112,9 @@ void ChessGame::clearPossibleMoves() {
 void ChessGame::handleBtnClick([[maybe_unused]]int32_t idx) {
 }
 
-Widget* ChessGame::buildLandingPage() {
+Screen* ChessGame::buildLandingPage() {
 	// Make button manager per widget instance
-	Widget *landingPageWidget = new Widget(Point::ZERO);
+	Screen *landingPageWidget = new Screen(Point::ZERO);
 
 	Object *background = getFactory().createObject(Resources::startScreen2,
 			Point::ZERO, GameConfig::WINDOW_DIM);
@@ -154,9 +154,9 @@ Widget* ChessGame::buildLandingPage() {
 	return landingPageWidget;
 }
 
-Widget* ChessGame::buildChessPage() {
+Screen* ChessGame::buildChessPage() {
 	initialiseChessClasses();
-	Widget *chessPageWidget = new Widget(Point::ZERO);
+	Screen *chessPageWidget = new Screen(Point::ZERO);
 
 	Object *background = getFactory().createObject(Resources::startScreen2,
 			Point::ZERO, GameConfig::WINDOW_DIM);

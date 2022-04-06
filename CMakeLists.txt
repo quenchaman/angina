@@ -88,8 +88,8 @@ add_executable(${PROJECT_NAME}
 	
 	${DIR}/engine/managers/ButtonManager.h
 	${DIR}/engine/managers/ButtonManager.cpp
-	${DIR}/engine/widget/Widget.h
-	${DIR}/engine/widget/Widget.cpp
+	${DIR}/engine/screen/Screen.h
+	${DIR}/engine/screen/Screen.cpp
 	${DIR}/engine/factory/GraphicsFactory.h
 	${DIR}/engine/factory/GraphicsFactory.cpp
 	${DIR}/engine/components/buttons/BaseButton.h

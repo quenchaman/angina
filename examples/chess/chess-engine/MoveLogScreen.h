@@ -1,18 +1,18 @@
-#ifndef EXAMPLES_CHESS_CHESS_ENGINE_MOVELOGWIDGET_H_
-#define EXAMPLES_CHESS_CHESS_ENGINE_MOVELOGWIDGET_H_
+#ifndef EXAMPLES_CHESS_CHESS_ENGINE_MOVELOGSCREEN_H_
+#define EXAMPLES_CHESS_CHESS_ENGINE_MOVELOGSCREEN_H_
 
 #include <deque>
 #include <string>
 #include <stdint.h>
 
-#include "engine/widget/Widget.h"
+#include "../../../engine/screen/Screen.h"
 #include "renderer/primitives/Color.h"
 #include "renderer/primitives/Dimensions.h"
 
 struct GraphicsFactory;
 struct Font;
 
-class MoveLogWidget: public Widget {
+class MoveLogWidget: public Screen {
 public:
 	MoveLogWidget(Point, GraphicsFactory&, Font&, uint32_t sizeCap = 10);
 
@@ -28,4 +28,4 @@ private:
 	void removeLastLine();
 };
 
-#endif /* EXAMPLES_CHESS_CHESS_ENGINE_MOVELOGWIDGET_H_ */
+#endif /* EXAMPLES_CHESS_CHESS_ENGINE_MOVELOGSCREEN_H_ */
