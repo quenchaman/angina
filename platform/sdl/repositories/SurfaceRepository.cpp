@@ -10,7 +10,8 @@ Surface& SurfaceRepository::get(const std::string& resourcePath) {
     if (surfaceCache.exists(resourcePath)) {
         surface = &surfaceCache.get(resourcePath);
     } else {
-        surfaceCache.add(resourcePath, *new Surface(ResourceLoader::loadImage(resourcePath)));
+    	surface = new Surface(ResourceLoader::loadImage(resourcePath));
+      surfaceCache.add(resourcePath, *surface);
     }
 
     return *surface;

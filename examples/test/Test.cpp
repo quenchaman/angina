@@ -2,8 +2,6 @@
 
 #include <iostream>
 
-
-
 #include "resources/Resources.h"
 
 // TODO: Move Point and Dimensions to the 'core' package.
@@ -14,12 +12,15 @@
 Test::Test(): Engine("Test", Dimensions {400, 400}) {}
 
 void Test::init() {
-    Screen* HelloWorldScreen = new Screen();
-    std::cout << "First entry point should be here?" << std::endl;
-    Object& image = getFactory().createObject(Resources::blackKing, Point::ZERO, Dimensions{80,80});
-    std::cout << "Are we reaching here?" << std::endl;
-    HelloWorldScreen->put(*dynamic_cast<Drawable*>(&image));
-    std::cout << "What about here?" << std::endl;
+    Object& image = getFactory().createObject(Resources::blackKing, Point{80, 80}, Dimensions{80,80});
+    Object& image2 = getFactory().createObject(Resources::blackKing, Point{160, 160}, Dimensions{80,80});
+    Object& image3 = getFactory().createObject(Resources::blackKing, Point{240, 240}, Dimensions{80,80});
+    Object& image4 = getFactory().createObject(Resources::blackKing, Point{320, 320}, Dimensions{80,80});
+
+    addComponent(image);
+    addComponent(image2);
+    addComponent(image3);
+    addComponent(image4);
 }
 
 void Test::update() {

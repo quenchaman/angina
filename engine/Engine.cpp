@@ -4,19 +4,23 @@
 #include <string>
 #include <iostream>
 
-#include "platform/sdl/resource-loader/ResourceLoader.h"
-#include "engine/config/EngineConfig.h"
 #include "platform/sdl/primitives/Texture.h"
 #include "platform/sdl/primitives/Surface.h"
-#include "resources/Resources.h"
-#include "renderer/primitives/Color.h"
-#include "renderer/shapes/Rect.h"
+#include "platform/sdl/resource-loader/ResourceLoader.h"
 #include "platform/thread/ThreadUtils.h"
 #include "platform/time/Time.h"
+
+#include "resources/Resources.h"
+
+#include "renderer/primitives/Color.h"
+#include "renderer/shapes/Rect.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Button.h"
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
+
+#include "engine/config/EngineConfig.h"
+#include "engine/screen/Screen.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) :
 		window(Window(
@@ -33,6 +37,7 @@ Engine::Engine(std::string appTitle, Dimensions screenSize) :
         defaultFont(Font(Resources::montserratFont, 28)) {
 
 	event.init();
+	initialiseScreen();
 }
 
 void Engine::start() {
@@ -101,21 +106,25 @@ GraphicsFactory& Engine::getFactory() {
 	return factory;
 }
 
-void Engine::clearScreen() {
+void Engine::initialiseScreen() {
+	cleanScreen();
+
+	rootScreen = new Screen();
+}
+
+void Engine::addComponent(Object& obj) {
+	 rootScreen->put(dynamic_cast<Drawable&>(obj));
+}
+
+void Engine::cleanScreen() {
 	if (rootScreen != nullptr) {
 		delete rootScreen;
 		rootScreen = nullptr;
 	}
 }
 
-void Engine::changeScreen(Screen &screen) {
-	clearScreen();
-
-	rootScreen = &screen;
-}
-
 Engine::~Engine() {
-	clearScreen();
+	cleanScreen();
 	event.deinit();
 
 	std::cout << "Engine destroyed" << std::endl;

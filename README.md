@@ -1,5 +1,8 @@
 # angina
 
+:warning: Under construction :warning:
+Some of the code examples you see on this page are outdated. I am working on a new API.
+
 `angina` is a cross-platform* game engine with graphics, audio handled by SDL 2 and build system with CMake.
 
 It is written from scratch, with help of tutorials on [LazyFoo Game Tuts with SDL](https://lazyfoo.net/tutorials/SDL/index.php) and [C++ Applications Dev Course](https://softuni.bg/trainings/3556/applications-development-with-c-plus-plus-october-2021)

@@ -8,7 +8,6 @@
 template <typename T>
 class Cache {
 public:
-
 	void add(const std::string key, T& item) {
 		data[key] = &item;
 	}
@@ -22,6 +21,13 @@ public:
 		return data.find(key) != data.end();
 	}
 
+	~Cache() {
+		for (auto const& [id, item] : data) {
+			if (item != nullptr) {
+				delete item;
+			}
+		}
+	}
 private:
 	std::unordered_map<std::string, T*> data;
 };

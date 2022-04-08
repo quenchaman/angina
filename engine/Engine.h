@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <string>
 #include <unordered_map>
+#include <memory>
 
 #include "SDL_events.h"
 #include "SDL_ttf.h"
@@ -22,11 +23,11 @@
 
 #include "platform/sdl/repositories/TextureRepository.h"
 #include "platform/sdl/repositories/SurfaceRepository.h"
-#include "screen/Screen.h"
 
 struct Texture;
 struct Rect;
 struct Object;
+struct Screen;
 
 class Engine {
 public:
@@ -41,6 +42,7 @@ private:
 	SurfaceRepository surfaceRepo;
 	TextureRepository textureRepo;
 	GraphicsFactory factory;
+	Screen* rootScreen;
 	bool quit = false;
 
 	void limitFPS(int64_t microseconds);
@@ -49,7 +51,6 @@ private:
 	void handleEvent();
 protected:
 	InputEvent event;
-	Screen *rootScreen;
 	Font defaultFont;
 
 	virtual void init() = 0;
@@ -57,8 +58,10 @@ protected:
 	virtual void handleLeftMouseClick(Point) = 0;
 	virtual void handleBtnClick(int32_t idx) = 0;
 
-	void clearScreen();
-	void changeScreen(Screen&);
+
+	void initialiseScreen();
+	void addComponent(Object&);
+	void cleanScreen();
 
 	GraphicsFactory& getFactory();
 };

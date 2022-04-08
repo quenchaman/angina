@@ -13,8 +13,8 @@ Texture& TextureRepository::get(const std::string& resourcePath) {
     if (textureCache.exists(resourcePath)) {
         texture = &textureCache.get(resourcePath);
     } else {
-        texture = &renderer.from(surfaceRepo.get(resourcePath));
-        textureCache.add(resourcePath, *texture);
+       texture = &renderer.from(surfaceRepo.get(resourcePath));
+       textureCache.add(resourcePath, *texture);
     }
 
     return *texture;
