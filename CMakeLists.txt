@@ -102,6 +102,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/primitives/cell/Cell.h
 	${DIR}/engine/primitives/cell/Cell.cpp
 	${DIR}/engine/config/EngineConfig.h
+	${DIR}/engine/behaviour/Behaviour.h
 	${DIR}/engine/Engine.h
 	${DIR}/engine/Engine.cpp
 	
@@ -110,6 +111,8 @@ add_executable(${PROJECT_NAME}
 	
 	${DIR}/examples/test/Test.h
 	${DIR}/examples/test/Test.cpp
+	${DIR}/examples/test/HeroBehaviour.h
+	${DIR}/examples/test/HeroBehaviour.cpp
 	
 	#${DIR}/examples/chess/chess-engine/ChessBoard.cpp
 #	${DIR}/examples/chess/chess-engine/ChessBoard.h

@@ -13,7 +13,6 @@ public:
 	}
 
 	T& get(const std::string& key) {
-		std::cout << "Cache hit!" << std::endl;
 		return *data.at(key);
 	}
 

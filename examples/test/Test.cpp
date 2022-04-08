@@ -12,15 +12,9 @@
 Test::Test(): Engine("Test", Dimensions {400, 400}) {}
 
 void Test::init() {
-    Object& image = getFactory().createObject(Resources::blackKing, Point{80, 80}, Dimensions{80,80});
-    Object& image2 = getFactory().createObject(Resources::blackKing, Point{160, 160}, Dimensions{80,80});
-    Object& image3 = getFactory().createObject(Resources::blackKing, Point{240, 240}, Dimensions{80,80});
-    Object& image4 = getFactory().createObject(Resources::blackKing, Point{320, 320}, Dimensions{80,80});
+    Object& hero = getFactory().createObject(Resources::blackKing, Point{0, 0}, Dimensions{80,80});
 
-    addComponent(image);
-    addComponent(image2);
-    addComponent(image3);
-    addComponent(image4);
+    addComponent(hero);
 }
 
 void Test::update() {

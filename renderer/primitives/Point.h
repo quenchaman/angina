@@ -4,6 +4,9 @@
 #include <cstdint>
 #include <iostream>
 
+/**
+ * I am also using this struct as a 2D vector...Hopefully that does not backfire...
+ */
 struct Point {
 	Point();
 	Point(int32_t x, int32_t y);
