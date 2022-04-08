@@ -28,6 +28,7 @@ struct Texture;
 struct Rect;
 struct Object;
 struct Screen;
+struct Behaviour;
 
 class Engine {
 public:
@@ -62,6 +63,8 @@ protected:
 	void initialiseScreen();
 	void addComponent(Object&);
 	void cleanScreen();
+
+	void addBehaviour(Behaviour&);
 
 	GraphicsFactory& getFactory();
 };

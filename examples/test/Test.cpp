@@ -8,6 +8,7 @@
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Object.h"
+#include "examples/test/HeroController.h"
 
 Test::Test(): Engine("Test", Dimensions {400, 400}) {}
 
@@ -15,6 +16,7 @@ void Test::init() {
     Object& hero = getFactory().createObject(Resources::blackKing, Point{0, 0}, Dimensions{80,80});
 
     addComponent(hero);
+
 }
 
 void Test::update() {

@@ -1,7 +1,7 @@
 #ifndef ENGINE_BEHAVIOUR_BEHAVIOUR_H_
 #define ENGINE_BEHAVIOUR_BEHAVIOUR_H_
 
-struct Engine;
+#include "engine/Engine.h"
 
 /**
  * Wraps a target and enforces the implementation of life-cycle methods on a target.

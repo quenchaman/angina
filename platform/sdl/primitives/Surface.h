@@ -15,7 +15,7 @@ public:
 
 	SDL_Surface& getSurface();
 private:
-	SDL_Surface& surface;
+	SDL_Surface* surface;
 };
 
 #endif /* SDL_COMPONENTS_SURFACE_H_ */

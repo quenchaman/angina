@@ -7,7 +7,7 @@
 #include "renderer/primitives/Dimensions.h"
 
 struct SDL_Window;
-struct Surface;
+struct SDL_Surface;
 
 /**
  * Wrapper around SDL_Window.
@@ -24,10 +24,10 @@ public:
 	Window& operator=(Window&&) = delete;
 
 	SDL_Window* getWindow();
-	Surface& getSurface();
+	SDL_Surface* getSurface();
 private:
 	SDL_Window *window;
-	Surface *surface;
+	SDL_Surface *surface;
 };
 
 #endif /* SDL_COMPONENTS_WINDOW_H_ */

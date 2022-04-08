@@ -21,6 +21,7 @@
 
 #include "engine/config/EngineConfig.h"
 #include "engine/screen/Screen.h"
+#include "engine/behaviour/Behaviour.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) :
 		window(Window(
@@ -114,6 +115,10 @@ void Engine::initialiseScreen() {
 
 void Engine::addComponent(Object& obj) {
 	 rootScreen->put(dynamic_cast<Drawable&>(obj));
+}
+
+void Engine::addBehaviour([[maybe_unused]]Behaviour& behaviour) {
+
 }
 
 void Engine::cleanScreen() {

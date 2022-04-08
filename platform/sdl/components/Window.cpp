@@ -23,13 +23,11 @@ Window::Window(std::string title, Point pos, Dimensions dimensions,
 		throw WindowInitException(SDL_GetError());
 	}
 
-	SDL_Surface *ws = SDL_GetWindowSurface(window);
+	surface = SDL_GetWindowSurface(window);
 
-	if (ws == nullptr) {
+	if (surface == nullptr) {
 		throw WindowInitException(SDL_GetError());
 	}
-
-	surface = new Surface(*ws);
 
 	std::cout << "Window initialised" << std::endl;
 }
@@ -38,17 +36,11 @@ SDL_Window* Window::getWindow() {
 	return window;
 }
 
-Surface& Window::getSurface() {
-	return *surface;
+SDL_Surface* Window::getSurface() {
+	return surface;
 }
 
 Window::~Window() {
-	std::cout << "Window destruction started" << std::endl;
-	if (surface != nullptr) {
-		delete surface;
-		surface = nullptr;
-	}
-	std::cout << "Window surface destroyed" << std::endl;
 	if (window != nullptr) {
 		SDL_DestroyWindow(window);
 		window = nullptr;
