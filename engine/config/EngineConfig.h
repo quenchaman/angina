@@ -8,7 +8,7 @@
 #include "renderer/primitives/Dimensions.h"
 
 namespace EngineConfig {
-const int32_t FRAME_RATE = 1;
+const int32_t FRAME_RATE = 60;
 }
 
 #endif /* CONFIG_CONFIG_H_ */

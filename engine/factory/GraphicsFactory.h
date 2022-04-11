@@ -10,6 +10,7 @@
 
 struct Renderer;
 struct Object;
+struct MovingObject;
 struct RectTextButton;
 struct Font;
 struct Text;
@@ -24,6 +25,7 @@ public:
 	GraphicsFactory(Renderer&, TextureRepository&);
 
 	Object& createObject(const std::string &resourcePath, Point, Dimensions);
+	MovingObject& createMovingObject(const std::string &resourcePath, Point, Dimensions, int32_t velocity, Point dest);
 
 	//Text& createText(const std::string text, Font&, Point, Dimensions, Color color = Color::BLACK);
 

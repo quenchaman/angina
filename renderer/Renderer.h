@@ -2,6 +2,7 @@
 #define SDL_GRAPHICS_RENDERER_H_
 
 #include <vector>
+#include <cstdint>
 
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Point.h"
@@ -11,6 +12,7 @@ struct Texture;
 struct Rect;
 struct Window;
 struct Object;
+struct MovingObject;
 struct Surface;
 struct Button;
 struct Line;
@@ -29,6 +31,7 @@ public:
 
 	Texture& from(Surface&) const;
 	Object& from(Texture&, Point, Dimensions) const;
+	MovingObject& from(Texture&, Point, Dimensions, int32_t velocity, Point dest) const;
 	Object& fromSurface(Surface&, Point, Dimensions) const;
 	Button& from(Texture&);
 private:

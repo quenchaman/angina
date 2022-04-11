@@ -21,6 +21,7 @@
 #include "engine/factory/GraphicsFactory.h"
 #include "engine/managers/ButtonManager.h"
 #include "engine/behaviour/Behaviour.h"
+#include "engine/movement/LinearFixedMovementManager.h"
 
 #include "platform/sdl/repositories/TextureRepository.h"
 #include "platform/sdl/repositories/SurfaceRepository.h"
@@ -28,6 +29,7 @@
 struct Texture;
 struct Rect;
 struct Object;
+struct MovingObject;
 struct Screen;
 struct Line;
 
@@ -45,6 +47,7 @@ private:
 	TextureRepository textureRepo;
 	GraphicsFactory factory;
 	Screen* rootScreen;
+	LinearFixedMovementManager movementManager;
 	bool quit = false;
 	std::vector<Behaviour<Object>*> behaviours;
 
@@ -66,6 +69,7 @@ protected:
 
 	void initialiseScreen();
 	void addComponent(Object&);
+	void addComponent(MovingObject&);
 	void addComponent(Line&);
 	void cleanScreen();
 

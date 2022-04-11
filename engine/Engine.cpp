@@ -44,10 +44,13 @@ Engine::Engine(std::string appTitle, Dimensions screenSize) :
 void Engine::start() {
 	init();
 	triggerObjectStart();
-	Time time;
+	Time globalTime;
+	Time movementUpdateTime;
+
 
 	while (!quit) {
-		time.getElapsed();
+		globalTime.getElapsed();
+		movementUpdateTime.getElapsed();
 		renderer.clear();
 
 		while (event.poll()) {
@@ -61,12 +64,14 @@ void Engine::start() {
 
 		update();
 		triggerObjectUpdate();
+		int64_t movementUpdateTimePassed = movementUpdateTime.getElapsed().toMicroseconds();
+		movementManager.processFrame(movementUpdateTimePassed);
 
 		draw();
 
 		renderer.update();
 
-		int64_t timePassed = time.getElapsed().toMicroseconds();
+		int64_t timePassed = globalTime.getElapsed().toMicroseconds();
 
 		limitFPS(timePassed);
 	}
@@ -129,6 +134,11 @@ void Engine::initialiseScreen() {
 
 void Engine::addComponent(Object& obj) {
 	 rootScreen->put(dynamic_cast<Drawable&>(obj));
+}
+
+void Engine::addComponent(MovingObject& moveObj) {
+	movementManager.addMoveable(moveObj);
+	rootScreen->put(dynamic_cast<Drawable&>(moveObj));
 }
 
 void Engine::addComponent(Line& line) {

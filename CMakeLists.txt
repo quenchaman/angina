@@ -103,9 +103,13 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/primitives/cell/CellUtils.h
 	${DIR}/engine/primitives/cell/Cell.h
 	${DIR}/engine/primitives/cell/Cell.cpp
+	${DIR}/engine/primitives/MovingObject.h
+	${DIR}/engine/primitives/MovingObject.cpp
 	${DIR}/engine/config/EngineConfig.h
 	${DIR}/engine/behaviour/Behaviour.h
 	${DIR}/engine/behaviour/ObjectBehaviour.h
+	${DIR}/engine/movement/LinearFixedMovementManager.h
+	${DIR}/engine/movement/LinearFixedMovementManager.cpp
 	${DIR}/engine/sprites/Sprite.h
 	${DIR}/engine/sprites/Sprite.cpp
 	${DIR}/engine/Engine.h
