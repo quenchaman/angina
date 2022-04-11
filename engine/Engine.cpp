@@ -50,7 +50,7 @@ void Engine::start() {
 
 	while (!quit) {
 		globalTime.getElapsed();
-		movementUpdateTime.getElapsed();
+
 		renderer.clear();
 
 		while (event.poll()) {
@@ -66,6 +66,7 @@ void Engine::start() {
 		triggerObjectUpdate();
 		int64_t movementUpdateTimePassed = movementUpdateTime.getElapsed().toMicroseconds();
 		movementManager.processFrame(movementUpdateTimePassed);
+		movementUpdateTime.getElapsed();
 
 		draw();
 
@@ -136,11 +137,6 @@ void Engine::addComponent(Object& obj) {
 	 rootScreen->put(dynamic_cast<Drawable&>(obj));
 }
 
-void Engine::addComponent(MovingObject& moveObj) {
-	movementManager.addMoveable(moveObj);
-	rootScreen->put(dynamic_cast<Drawable&>(moveObj));
-}
-
 void Engine::addComponent(Line& line) {
 	rootScreen->put(dynamic_cast<Drawable&>(line));
 }
@@ -148,6 +144,10 @@ void Engine::addComponent(Line& line) {
 void Engine::addBehaviour(Behaviour<Object>& behaviour) {
 	behaviour.setEngine(*this);
 	behaviours.push_back(&behaviour);
+}
+
+void Engine::addMovement(Object& obj) {
+    movementManager.addMoveable(obj);
 }
 
 void Engine::cleanScreen() {

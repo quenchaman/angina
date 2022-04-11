@@ -4,19 +4,19 @@
 #include <list>
 #include <cstdint>
 
-#include "engine/primitives/MovingObject.h"
+#include "renderer/primitives/Object.h"
 
 class LinearFixedMovementManager {
 public:
 	LinearFixedMovementManager();
 
-	void addMoveable(MovingObject&);
+	void addMoveable(Object&);
 
 	void processFrame(int64_t elapsedTime);
 private:
-	std::list<MovingObject*> moveables;
+	std::list<Object*> moveables;
 
-	void processMoveable(MovingObject&, int64_t elapsedTimeMicro);
+	void processMoveable(Object&, int64_t elapsedTimeMicro);
 };
 
 #endif /* ENGINE_MOVEMENT_LINEARFIXEDMOVEMENTMANAGER_H_ */

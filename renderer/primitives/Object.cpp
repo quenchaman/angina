@@ -8,10 +8,18 @@
 #include "renderer/Renderer.h"
 #include "renderer/utils/PrimitivesUtils.h"
 
-Object::Object(Texture &t, Dimensions d, Point p) :
-		texture(t), dim(d), point(p), center(
-				PrimitivesUtils::calculateCenter(p, dim)), clip(Rect::UNDEFINED) {
-}
+Object::Object(Texture &t, Dimensions d, Point p, int32_t v, Point dest) :
+		texture(t),
+		dim(d),
+		point(p),
+		center(PrimitivesUtils::calculateCenter(p, dim)),
+		clip(Rect::UNDEFINED),
+		velocity(v),
+		destination(dest)
+		{}
+
+Object::Object(Texture& t, Dimensions d, Point p):
+    Object(t, d, p, 0, Point::UNDEFINED) {}
 
 void Object::move(const int32_t x, const int32_t y) {
 	point.x = x;
@@ -50,6 +58,24 @@ void Object::setClip(Rect clipRect) {
 
 Rect Object::getClip() const {
 	return clip;
+}
+
+int32_t Object::getVelocity() const {
+    return velocity;
+}
+
+Point Object::getDestination() const {
+    return destination;
+}
+
+Object& Object::setVelocity(int32_t velo) {
+    velocity = velo;
+    return *this;
+}
+
+Object& Object::setDestination(Point dest) {
+    destination = dest;
+    return *this;
 }
 
 Object::~Object() {

@@ -11,8 +11,6 @@
 #include "renderer/primitives/Line.h"
 #include "renderer/shapes/Rect.h"
 
-#include "engine/primitives/MovingObject.h"
-
 #include "examples/test/HeroController.h"
 
 #include "engine/sprites/Sprite.h"
@@ -20,16 +18,19 @@
 Test::Test(): Engine("Test", Dimensions {400, 400}), sprite(nullptr) {}
 
 void Test::init() {
-    MovingObject& hero = getFactory().createObject(Resources::circleSprite, Point{0, 0}, Dimensions{100,100});
+    Object& hero = getFactory().createObject(Resources::circleSprite, Point{0, 0}, Dimensions{100,100});
 
     addComponent(hero);
     addBehaviour(*new HeroController(hero));
 
     addComponent(*new Line(Point{100, 100}, Point{100, 200}, Color::RED));
+
+    hero.setVelocity(100).setDestination(Point{400, 400});
+    addMovement(hero);
 }
 
 void Test::update() {
-	sprite->next();
+	//sprite->next();
 }
 
 void Test::handleLeftMouseClick([[maybe_unused]] Point p) {

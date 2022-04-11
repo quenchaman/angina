@@ -103,8 +103,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/primitives/cell/CellUtils.h
 	${DIR}/engine/primitives/cell/Cell.h
 	${DIR}/engine/primitives/cell/Cell.cpp
-	${DIR}/engine/primitives/MovingObject.h
-	${DIR}/engine/primitives/MovingObject.cpp
 	${DIR}/engine/config/EngineConfig.h
 	${DIR}/engine/behaviour/Behaviour.h
 	${DIR}/engine/behaviour/ObjectBehaviour.h

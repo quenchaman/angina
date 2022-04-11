@@ -17,6 +17,7 @@ struct Surface;
 struct Button;
 struct Line;
 
+// TODO: Change this rendering to floating point coordinates.
 class Renderer {
 public:
 	Renderer(Window&);
@@ -31,7 +32,6 @@ public:
 
 	Texture& from(Surface&) const;
 	Object& from(Texture&, Point, Dimensions) const;
-	MovingObject& from(Texture&, Point, Dimensions, int32_t velocity, Point dest) const;
 	Object& fromSurface(Surface&, Point, Dimensions) const;
 	Button& from(Texture&);
 private:

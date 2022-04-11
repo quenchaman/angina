@@ -14,8 +14,6 @@
 #include "renderer/primitives/Button.h"
 #include "renderer/primitives/Line.h"
 
-#include "engine/primitives/MovingObject.h"
-
 #include "exceptions/GraphicsInitException.h"
 
 void Renderer::clear() {
@@ -89,10 +87,6 @@ Texture& Renderer::from(Surface &surface) const {
 
 Object& Renderer::from(Texture &texture, Point p, Dimensions dim) const {
 	return *new Object(texture, dim, p);
-}
-
-MovingObject& Renderer::from(Texture &texture, Point p, Dimensions dim, int32_t velocity, Point dest) const {
-	return *new MovingObject(texture, dim, p, velocity, dest);
 }
 
 Object& Renderer::fromSurface(Surface &surface, Point p, Dimensions dim) const {

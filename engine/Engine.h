@@ -29,7 +29,6 @@
 struct Texture;
 struct Rect;
 struct Object;
-struct MovingObject;
 struct Screen;
 struct Line;
 
@@ -69,11 +68,11 @@ protected:
 
 	void initialiseScreen();
 	void addComponent(Object&);
-	void addComponent(MovingObject&);
 	void addComponent(Line&);
 	void cleanScreen();
 
 	void addBehaviour(Behaviour<Object>&);
+	void addMovement(Object& obj);
 
 	GraphicsFactory& getFactory();
 };

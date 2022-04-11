@@ -1,19 +1,24 @@
 #include "LinearFixedMovementManager.h"
 
+#include <iostream>
+
+#include "renderer/primitives/Object.h"
+
 LinearFixedMovementManager::LinearFixedMovementManager() {}
 
-void LinearFixedMovementManager::addMoveable(MovingObject& moveable) {
+void LinearFixedMovementManager::addMoveable(Object& moveable) {
 	moveables.push_back(&moveable);
 }
 
 void LinearFixedMovementManager::processFrame(int64_t elapsedTime) {
-	for (MovingObject* moveable : moveables) {
+	for (Object* moveable : moveables) {
 		processMoveable(*moveable, elapsedTime);
 	}
 }
 
-void LinearFixedMovementManager::processMoveable(MovingObject& moveable, int64_t elapsedTimeMicro) {
+void LinearFixedMovementManager::processMoveable(Object& moveable, int64_t elapsedTimeMicro) {
 	int32_t unitsTravelled = static_cast<int32_t>((moveable.getVelocity() * elapsedTimeMicro) / 1000000);
+	std::cout << "Units to travel are " << unitsTravelled << std::endl;
 	Point currentPos = moveable.getPosition();
 	Point destination = moveable.getDestination();
 
