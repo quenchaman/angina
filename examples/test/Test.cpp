@@ -1,6 +1,7 @@
 #include "Test.h"
 
 #include <iostream>
+#include <vector>
 
 #include "resources/Resources.h"
 
@@ -9,12 +10,23 @@
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Line.h"
+#include "renderer/shapes/Rect.h"
 #include "examples/test/HeroController.h"
 
-Test::Test(): Engine("Test", Dimensions {400, 400}) {}
+#include "engine/sprites/Sprite.h"
+
+Test::Test(): Engine("Test", Dimensions {400, 400}), sprite(nullptr) {}
 
 void Test::init() {
-    Object& hero = getFactory().createObject(Resources::blackKing, Point{0, 0}, Dimensions{80,80});
+    Object& hero = getFactory().createObject(Resources::circleSprite, Point{0, 0}, Dimensions{100,100});
+    std::vector<Rect> spriteStates = {
+    		Rect{0,0,100,100},
+				Rect{100,0,100,100},
+				Rect{0,100, 100, 100},
+				Rect{100, 100, 100, 100}
+    };
+
+    sprite = new Sprite(hero, spriteStates);
 
     addComponent(hero);
     addBehaviour(*new HeroController(hero));
@@ -23,7 +35,7 @@ void Test::init() {
 }
 
 void Test::update() {
-
+	sprite->next();
 }
 
 void Test::handleLeftMouseClick([[maybe_unused]] Point p) {

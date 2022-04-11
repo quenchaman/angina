@@ -68,7 +68,7 @@ void Engine::start() {
 
 		int64_t timePassed = time.getElapsed().toMicroseconds();
 
-		ThreadUtils::sleepFor(timePassed);
+		limitFPS(timePassed);
 	}
 }
 

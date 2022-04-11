@@ -106,6 +106,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/config/EngineConfig.h
 	${DIR}/engine/behaviour/Behaviour.h
 	${DIR}/engine/behaviour/ObjectBehaviour.h
+	${DIR}/engine/sprites/Sprite.h
+	${DIR}/engine/sprites/Sprite.cpp
 	${DIR}/engine/Engine.h
 	${DIR}/engine/Engine.cpp
 	

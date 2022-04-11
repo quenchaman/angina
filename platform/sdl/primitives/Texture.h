@@ -14,7 +14,7 @@ public:
 	Texture(SDL_Texture*, Dimensions);
 	~Texture();
 
-	SDL_Texture* getTexture() const;
+	SDL_Texture* getRawTexture() const;
 	Dimensions getDimensions() const;
 
 	friend std::ostream& operator<<(std::ostream&, const Texture&);

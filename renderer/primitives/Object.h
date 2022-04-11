@@ -4,6 +4,7 @@
 #include <cstdint>
 
 #include "renderer/primitives/Point.h"
+#include "renderer/shapes/Rect.h"
 #include "renderer/drawable/Drawable.h"
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Transformation.h"
@@ -25,16 +26,21 @@ public:
 	void move(const int32_t x, const int32_t y);
 	void move(const Point& newPosition);
 
+	void setClip(Rect);
+
 	Point getPosition() const;
 	Dimensions getDimensions() const;
 	Point getCenter() const;
-
+	Texture& getTexture();
+	Transformation getTransformation() const;
+	Rect getClip() const;
+private:
 	Texture &texture;
 	Transformation transformation;
-private:
 	Dimensions dim;
 	Point point;
 	Point center;
+	Rect clip;
 };
 
 #endif /* SDL_ENGINE_OBJECT_OBJECT_H_ */

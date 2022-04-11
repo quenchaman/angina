@@ -13,7 +13,7 @@
 class Rect: public Drawable {
 public:
 	Rect(Point, Dimensions, Color);
-	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color&);
+	Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color& = Color::NONE);
 
 	void draw(Renderer&);
 

@@ -10,7 +10,7 @@
 
 Object::Object(Texture &t, Dimensions d, Point p) :
 		texture(t), dim(d), point(p), center(
-				PrimitivesUtils::calculateCenter(p, dim)) {
+				PrimitivesUtils::calculateCenter(p, dim)), clip(Rect::UNDEFINED) {
 }
 
 void Object::move(const int32_t x, const int32_t y) {
@@ -34,6 +34,22 @@ Dimensions Object::getDimensions() const {
 
 Point Object::getCenter() const {
 	return center;
+}
+
+Texture& Object::getTexture() {
+	return texture;
+}
+
+Transformation Object::getTransformation() const {
+	return transformation;
+}
+
+void Object::setClip(Rect clipRect) {
+	clip = clipRect;
+}
+
+Rect Object::getClip() const {
+	return clip;
 }
 
 Object::~Object() {

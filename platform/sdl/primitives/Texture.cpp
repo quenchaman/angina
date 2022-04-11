@@ -6,7 +6,7 @@ Texture::Texture(SDL_Texture *_texture, Dimensions dim) :
 		texture(_texture), dimensions(dim) {
 }
 
-SDL_Texture* Texture::getTexture() const {
+SDL_Texture* Texture::getRawTexture() const {
 	return texture;
 }
 

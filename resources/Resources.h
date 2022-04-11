@@ -40,6 +40,8 @@ const std::string montserratFont = prefix + "Montserrat-Bold.ttf";
 const std::string wheel = prefix + "wheel.png";
 const std::string gas = prefix + "button_gas.png";
 const std::string brake = prefix + "button_brake.png";
+
+const std::string circleSprite = prefix + "circle-sprites.png";
 }
 ;
 

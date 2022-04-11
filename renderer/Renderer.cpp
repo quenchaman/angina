@@ -22,7 +22,7 @@ void Renderer::clear() {
 }
 
 void Renderer::render(const Texture &texture) const {
-	SDL_RenderCopy(renderer, texture.getTexture(), nullptr, nullptr);
+	SDL_RenderCopy(renderer, texture.getRawTexture(), nullptr, nullptr);
 }
 
 void Renderer::render(Rect &rect) const {
@@ -41,10 +41,18 @@ void Renderer::render(Object &object) const {
 			objectDimensions.w, objectDimensions.h };
 	Point center = object.getCenter();
 	SDL_Point sdlCenter = { center.x, center.y };
+	Transformation transform = object.getTransformation();
+	Rect clip = object.getClip();
+	SDL_Rect clipRect = clip.getRawRect();
 
-	SDL_RenderCopyEx(renderer, object.texture.getTexture(), nullptr, &rect,
-			object.transformation.rotation, &sdlCenter,
-			(SDL_RendererFlip) object.transformation.flip);
+	SDL_RenderCopyEx(
+			renderer,
+			object.getTexture().getRawTexture(),
+			clip == Rect::UNDEFINED ? nullptr : &clipRect,
+			&rect,
+			transform.rotation,
+			&sdlCenter,
+			(SDL_RendererFlip) transform.flip);
 }
 
 void Renderer::render(Line& line) const {
