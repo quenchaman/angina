@@ -13,6 +13,7 @@ struct Window;
 struct Object;
 struct Surface;
 struct Button;
+struct Line;
 
 class Renderer {
 public:
@@ -23,6 +24,7 @@ public:
 	void render(const Texture&) const;
 	void render(Rect&) const;
 	void render(Object&) const;
+	void render(Line&) const;
 	void update();
 
 	Texture& from(Surface&) const;

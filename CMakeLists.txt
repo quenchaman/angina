@@ -74,6 +74,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/renderer/primitives/Color.h
 	${DIR}/renderer/primitives/Button.cpp
 	${DIR}/renderer/primitives/Button.h
+	${DIR}/renderer/primitives/Line.h
+	${DIR}/renderer/primitives/Line.cpp
 	${DIR}/renderer/shapes/Rect.h
 	${DIR}/renderer/shapes/Rect.cpp
 	${DIR}/renderer/utils/PrimitivesUtils.h

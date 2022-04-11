@@ -18,6 +18,7 @@
 #include "renderer/primitives/Button.h"
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
+#include "renderer/primitives/Line.h"
 
 #include "engine/config/EngineConfig.h"
 #include "engine/screen/Screen.h"
@@ -128,6 +129,10 @@ void Engine::initialiseScreen() {
 
 void Engine::addComponent(Object& obj) {
 	 rootScreen->put(dynamic_cast<Drawable&>(obj));
+}
+
+void Engine::addComponent(Line& line) {
+	rootScreen->put(dynamic_cast<Drawable&>(line));
 }
 
 void Engine::addBehaviour(Behaviour<Object>& behaviour) {

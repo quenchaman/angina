@@ -12,6 +12,7 @@
 #include "platform/sdl/components/Window.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Button.h"
+#include "renderer/primitives/Line.h"
 
 #include "exceptions/GraphicsInitException.h"
 
@@ -44,6 +45,11 @@ void Renderer::render(Object &object) const {
 	SDL_RenderCopyEx(renderer, object.texture.getTexture(), nullptr, &rect,
 			object.transformation.rotation, &sdlCenter,
 			(SDL_RendererFlip) object.transformation.flip);
+}
+
+void Renderer::render(Line& line) const {
+	SDL_SetRenderDrawColor(renderer, line.color.red, line.color.green, line.color.blue, line.color.alpha);
+	SDL_RenderDrawLine(renderer, line.a.x, line.a.y, line.b.x, line.b.y);
 }
 
 void Renderer::update() {

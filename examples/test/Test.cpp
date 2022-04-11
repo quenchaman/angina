@@ -8,6 +8,7 @@
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Object.h"
+#include "renderer/primitives/Line.h"
 #include "examples/test/HeroController.h"
 
 Test::Test(): Engine("Test", Dimensions {400, 400}) {}
@@ -17,6 +18,8 @@ void Test::init() {
 
     addComponent(hero);
     addBehaviour(*new HeroController(hero));
+
+    addComponent(*new Line(Point{100, 100}, Point{100, 200}, Color::RED));
 }
 
 void Test::update() {
