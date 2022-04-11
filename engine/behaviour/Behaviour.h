@@ -1,7 +1,7 @@
 #ifndef ENGINE_BEHAVIOUR_BEHAVIOUR_H_
 #define ENGINE_BEHAVIOUR_BEHAVIOUR_H_
 
-#include "engine/Engine.h"
+struct Engine;
 
 /**
  * Wraps a target and enforces the implementation of life-cycle methods on a target.
@@ -18,10 +18,8 @@ public:
 	/* called on every frame */
 	virtual void update() = 0;
 
-	Behaviour& setEngine(Engine& engine) {
-		this->engine = engine;
-
-		return *this;
+	void setEngine(Engine& engine) {
+		this->engine = &engine;
 	}
 private:
 	Engine* engine = nullptr;

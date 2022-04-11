@@ -6,7 +6,11 @@
 
 class ObjectBehaviour : Behaviour<Object> {
     ObjectBehaviour(Object& targetObj): Behaviour(targetObj) {}
-}
+
+    virtual void start() = 0;
+
+    virtual void update() = 0;
+};
 
 
 #endif /* ENGINE_BEHAVIOUR_OBJECTBEHAVIOUR_H_ */

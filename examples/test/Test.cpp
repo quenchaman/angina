@@ -16,7 +16,7 @@ void Test::init() {
     Object& hero = getFactory().createObject(Resources::blackKing, Point{0, 0}, Dimensions{80,80});
 
     addComponent(hero);
-
+    addBehaviour(*new HeroController(hero));
 }
 
 void Test::update() {

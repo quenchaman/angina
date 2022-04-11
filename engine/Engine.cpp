@@ -21,7 +21,6 @@
 
 #include "engine/config/EngineConfig.h"
 #include "engine/screen/Screen.h"
-#include "engine/behaviour/Behaviour.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) :
 		window(Window(
@@ -43,6 +42,7 @@ Engine::Engine(std::string appTitle, Dimensions screenSize) :
 
 void Engine::start() {
 	init();
+	triggerObjectStart();
 	Time time;
 
 	while (!quit) {
@@ -59,6 +59,7 @@ void Engine::start() {
 		}
 
 		update();
+		triggerObjectUpdate();
 
 		draw();
 
@@ -103,6 +104,18 @@ void Engine::handleEvent() {
 	}
 }
 
+void Engine::triggerObjectStart() {
+	for (Behaviour<Object>* behaviour : behaviours) {
+		behaviour->start();
+	}
+}
+
+void Engine::triggerObjectUpdate() {
+	for (Behaviour<Object>* behaviour : behaviours) {
+		behaviour->update();
+	}
+}
+
 GraphicsFactory& Engine::getFactory() {
 	return factory;
 }
@@ -117,8 +130,9 @@ void Engine::addComponent(Object& obj) {
 	 rootScreen->put(dynamic_cast<Drawable&>(obj));
 }
 
-void Engine::addBehaviour([[maybe_unused]]Behaviour& behaviour) {
-
+void Engine::addBehaviour(Behaviour<Object>& behaviour) {
+	behaviour.setEngine(*this);
+	behaviours.push_back(&behaviour);
 }
 
 void Engine::cleanScreen() {

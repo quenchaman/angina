@@ -20,6 +20,7 @@
 
 #include "engine/factory/GraphicsFactory.h"
 #include "engine/managers/ButtonManager.h"
+#include "engine/behaviour/Behaviour.h"
 
 #include "platform/sdl/repositories/TextureRepository.h"
 #include "platform/sdl/repositories/SurfaceRepository.h"
@@ -28,7 +29,6 @@ struct Texture;
 struct Rect;
 struct Object;
 struct Screen;
-struct Behaviour;
 
 class Engine {
 public:
@@ -45,11 +45,14 @@ private:
 	GraphicsFactory factory;
 	Screen* rootScreen;
 	bool quit = false;
+	std::vector<Behaviour<Object>*> behaviours;
 
 	void limitFPS(int64_t microseconds);
 	void draw();
 	void draw(Screen&);
 	void handleEvent();
+	void triggerObjectStart();
+	void triggerObjectUpdate();
 protected:
 	InputEvent event;
 	Font defaultFont;
@@ -64,7 +67,7 @@ protected:
 	void addComponent(Object&);
 	void cleanScreen();
 
-	void addBehaviour(Behaviour&);
+	void addBehaviour(Behaviour<Object>&);
 
 	GraphicsFactory& getFactory();
 };
