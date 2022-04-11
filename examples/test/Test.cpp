@@ -20,7 +20,7 @@
 Test::Test(): Engine("Test", Dimensions {400, 400}), sprite(nullptr) {}
 
 void Test::init() {
-    MovingObject& hero = getFactory().createObject(Resources::circleSprite, Point{0, 0}, Dimensions{100,100}, 10, );
+    MovingObject& hero = getFactory().createObject(Resources::circleSprite, Point{0, 0}, Dimensions{100,100});
 
     addComponent(hero);
     addBehaviour(*new HeroController(hero));

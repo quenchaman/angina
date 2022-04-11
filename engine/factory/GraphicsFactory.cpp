@@ -20,7 +20,7 @@ Object& GraphicsFactory::createObject(const std::string &resourcePath, Point p, 
 }
 
 MovingObject& GraphicsFactory::createMovingObject(const std::string &resourcePath, Point, Dimensions, int32_t velocity, Point dest) {
-	return renderer.from(textureRepo.get(resourcePath, p, dim, velocity, dest));
+	return renderer.from(textureRepo.get(resourcePath), p, dim, velocity, dest);
 }
 
 //Text& GraphicsFactory::createText(const std::string textVal, Font &font, Point p,
