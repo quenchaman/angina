@@ -22,6 +22,7 @@
 #include "engine/managers/ButtonManager.h"
 #include "engine/behaviour/Behaviour.h"
 #include "engine/movement/LinearFixedMovementManager.h"
+#include "engine/managers/ButtonManager.h"
 
 #include "platform/sdl/repositories/TextureRepository.h"
 #include "platform/sdl/repositories/SurfaceRepository.h"
@@ -31,6 +32,7 @@ struct Rect;
 struct Object;
 struct Screen;
 struct Line;
+struct Grid;
 struct RectTextButton;
 
 class Engine {
@@ -46,6 +48,7 @@ private:
 	SurfaceRepository surfaceRepo;
 	TextureRepository textureRepo;
 	GraphicsFactory factory;
+	ButtonManager btnManager;
 	Screen* rootScreen;
 	LinearFixedMovementManager movementManager;
 	bool quit = false;
@@ -70,6 +73,7 @@ protected:
 	void initialiseScreen();
 	void addComponent(Object&);
 	void addComponent(Line&);
+	void addComponent(Grid&);
 	void addComponent(RectTextButton&);
 	void cleanScreen();
 

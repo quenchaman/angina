@@ -10,6 +10,7 @@
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Line.h"
 #include "renderer/primitives/Object.h"
+#include "renderer/primitives/Grid.h"
 #include "engine/components/buttons/RectTextButton.h"
 #include "renderer/shapes/Rect.h"
 
@@ -36,13 +37,26 @@ void TowerDefence::handleBtnClick([[maybe_unused]]int32_t idx) {
 }
 
 void TowerDefence::buildStartPage() {
+	initialiseScreen();
+
 	Object& startBG = getFactory().createObject(Resources::startBackground, Point::ZERO, TDConfig::GAME_DIM);
+	addComponent(startBG);
 	RectTextButton& mapBuilderButton = getFactory().createButton(
 			Point {730, 580},
 			Dimensions{ 50, 50 },
 			Color::BLUE,
 			"MB",
-			nullptr);
-	addComponent(startBG);
+			std::bind(&TowerDefence::onMapBuilderBtn, this));
 	addComponent(mapBuilderButton);
+}
+
+void TowerDefence::onMapBuilderBtn() {
+	initialiseScreen();
+	resizeWindow(TDConfig::MB_DIM);
+
+	Object& bg = getFactory().createObject(Resources::mapBuilderBackground, Point::ZERO, TDConfig::MB_DIM);
+	addComponent(bg);
+
+	Grid& textureGrid = *new Grid(Point::ZERO, 80, 80, 800, 640);
+	addComponent(textureGrid);
 }

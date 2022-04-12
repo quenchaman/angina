@@ -85,6 +85,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/renderer/primitives/Transformation.cpp
 	${DIR}/renderer/primitives/Text.h
 	${DIR}/renderer/primitives/Text.cpp
+	${DIR}/renderer/primitives/Grid.h
+	${DIR}/renderer/primitives/Grid.cpp
 	${DIR}/renderer/Renderer.h
 	${DIR}/renderer/Renderer.cpp
 	

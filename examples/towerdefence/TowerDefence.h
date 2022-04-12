@@ -19,6 +19,9 @@ private:
 
     /* Screen builders */
     void buildStartPage();
+
+    /* Btn handles */
+    void onMapBuilderBtn();
 };
 
 #endif /* EXAMPLES_TOWERDEFENCE_TOWERDEFENCE_H_ */

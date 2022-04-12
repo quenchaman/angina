@@ -22,8 +22,7 @@ bool ButtonManager::invokeCallback(const InputEvent &event) {
 	std::cout << "Clicked at " << clickPoint << std::endl;
 
 	for (auto const &button : buttons) {
-		if (PrimitivesUtils::isInRect(button->getPosition(),
-				button->getDimensions(), clickPoint)) {
+		if (PrimitivesUtils::isInRect(button->getPosition(), button->getDimensions(), clickPoint)) {
 			button->getCallback()();
 
 			return true;

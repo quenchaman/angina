@@ -43,6 +43,7 @@ const std::string brake = prefix + "button_brake.png";
 
 const std::string circleSprite = prefix + "circle-sprites.png";
 const std::string startBackground = prefix + "startbg.png";
+const std::string mapBuilderBackground = prefix + "mbbg.jpg";
 
 inline bool isResource(const std::string& str) {
 	return str.find(prefix) != std::string::npos;

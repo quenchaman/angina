@@ -19,6 +19,7 @@
 #include "renderer/primitives/Point.h"
 #include "renderer/primitives/Dimensions.h"
 #include "renderer/primitives/Line.h"
+#include "renderer/primitives/Grid.h"
 
 #include "engine/config/EngineConfig.h"
 #include "engine/screen/Screen.h"
@@ -103,12 +104,7 @@ void Engine::limitFPS(int64_t elapsedTime) {
 }
 
 void Engine::handleEvent() {
-	if (event.type == EventType::MOUSE_RELEASE) {
-//		if (rootScreen != nullptr
-//				&& !rootScreen->getButtonManager().invokeCallback(event)) {
-//			handleLeftMouseClick(Point { event.posX, event.posY });
-//		}
-	}
+	btnManager.invokeCallback(event);
 }
 
 void Engine::triggerObjectStart() {
@@ -142,7 +138,12 @@ void Engine::addComponent(Line& line) {
 }
 
 void Engine::addComponent(RectTextButton& btn) {
+	btnManager.registerButton(btn);
 	rootScreen->put(dynamic_cast<Drawable&>(btn));
+}
+
+void Engine::addComponent(Grid& grid) {
+	rootScreen->put(dynamic_cast<Drawable&>(grid));
 }
 
 void Engine::addBehaviour(Behaviour<Object>& behaviour) {

@@ -5,6 +5,7 @@
 
 namespace TDConfig {
 	const Dimensions GAME_DIM = {800, 640};
+	const Dimensions MB_DIM = {950, 640};
 }
 
 
