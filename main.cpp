@@ -2,9 +2,9 @@
 #include <cstdlib>
 #include <iostream>
 
+#include "examples/towerdefence/TowerDefence.h"
 #include "platform/sdl/init/Graphics.h"
 
-#include "examples/test/Test.h"
 #include "exceptions/BaseException.h"
 
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
@@ -13,7 +13,7 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 		Graphics::bootImageExtension();
 		Graphics::bootTTFExtensions();
 
-		Test game;
+		TowerDefence game;
 
 		game.start();
 	} catch (const BaseException &ex) {

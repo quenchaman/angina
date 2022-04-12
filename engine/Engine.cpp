@@ -157,6 +157,10 @@ void Engine::cleanScreen() {
 	}
 }
 
+void Engine::resizeWindow(Dimensions dim) {
+	window.resize(dim);
+}
+
 Engine::~Engine() {
 	cleanScreen();
 	event.deinit();

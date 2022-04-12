@@ -1,8 +1,7 @@
-#include "Test.h"
-
 #include <iostream>
 #include <vector>
 
+#include "examples/towerdefence/HeroController.h"
 #include "resources/Resources.h"
 
 // TODO: Move Point and Dimensions to the 'core' package.
@@ -11,13 +10,12 @@
 #include "renderer/primitives/Line.h"
 #include "renderer/shapes/Rect.h"
 
-#include "examples/test/HeroController.h"
-
 #include "engine/sprites/Sprite.h"
+#include "TowerDefence.h"
 
-Test::Test(): Engine("Test", Dimensions {400, 400}), sprite(nullptr) {}
+TowerDefence::TowerDefence(): Engine("Test", Dimensions {400, 400}), sprite(nullptr) {}
 
-void Test::init() {
+void TowerDefence::init() {
     Object& hero = getFactory().createObject(Resources::circleSprite, Point{0, 0}, Dimensions{100,100});
 
     addComponent(hero);
@@ -27,16 +25,17 @@ void Test::init() {
 
     hero.setVelocity(100).setDestination(Point{100, 200});
     addMovement(hero);
+
 }
 
-void Test::update() {
+void TowerDefence::update() {
 	//sprite->next();
 }
 
-void Test::handleLeftMouseClick([[maybe_unused]] Point p) {
+void TowerDefence::handleLeftMouseClick([[maybe_unused]] Point p) {
 
 }
 
-void Test::handleBtnClick([[maybe_unused]]int32_t idx) {
+void TowerDefence::handleBtnClick([[maybe_unused]]int32_t idx) {
 
 }

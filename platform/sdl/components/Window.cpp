@@ -38,6 +38,10 @@ Window::Window(std::string title, Point pos, Dimensions dimensions,
 	std::cout << "Window initialised" << std::endl;
 }
 
+void Window::resize(Dimensions dim) {
+	SDL_SetWindowSize(window, static_cast<int32_t>(dim.w), static_cast<int32_t>(dim.h));
+}
+
 SDL_Window* Window::getWindow() {
 	return window;
 }

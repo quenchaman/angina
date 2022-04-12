@@ -116,10 +116,10 @@ add_executable(${PROJECT_NAME}
 	${DIR}/core/math/geometry/Geometry.h
 	${DIR}/core/math/geometry/Geometry.cpp
 	
-	${DIR}/examples/test/Test.h
-	${DIR}/examples/test/Test.cpp
-	${DIR}/examples/test/HeroController.h
-	${DIR}/examples/test/HeroController.cpp
+	${DIR}/examples/towerdefence/TowerDefence.h
+	${DIR}/examples/towerdefence/TowerDefence.cpp
+	${DIR}/examples/towerdefence/HeroController.h
+	${DIR}/examples/towerdefence/HeroController.cpp
 	
 	#${DIR}/examples/chess/chess-engine/ChessBoard.cpp
 #	${DIR}/examples/chess/chess-engine/ChessBoard.h

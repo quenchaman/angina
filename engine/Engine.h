@@ -65,6 +65,7 @@ protected:
 	virtual void handleLeftMouseClick(Point) = 0;
 	virtual void handleBtnClick(int32_t idx) = 0;
 
+	void resizeWindow(Dimensions dim);
 
 	void initialiseScreen();
 	void addComponent(Object&);

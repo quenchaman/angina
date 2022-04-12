@@ -18,6 +18,8 @@ public:
 	Window(std::string title, Point, Dimensions, int32_t flags);
 	~Window();
 
+	void resize(Dimensions dim);
+
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
 	Window(Window&&) = delete;

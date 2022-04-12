@@ -1,5 +1,5 @@
-#ifndef EXAMPLES_TEST_HEROCONTROLLER_H_
-#define EXAMPLES_TEST_HEROCONTROLLER_H_
+#ifndef EXAMPLES_TOWERDEFENCE_HEROCONTROLLER_H_
+#define EXAMPLES_TOWERDEFENCE_HEROCONTROLLER_H_
 
 #include "engine/behaviour/Behaviour.h"
 #include "renderer/primitives/Object.h"
@@ -13,4 +13,4 @@ public:
 	void update();
 };
 
-#endif /* EXAMPLES_TEST_HEROCONTROLLER_H_ */
+#endif /* EXAMPLES_TOWERDEFENCE_HEROCONTROLLER_H_ */

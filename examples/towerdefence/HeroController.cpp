@@ -1,4 +1,4 @@
-#include "HeroController.h"
+#include "../towerdefence/HeroController.h"
 
 HeroController::HeroController(Object& hero): Behaviour(hero) {
 
