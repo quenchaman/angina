@@ -22,6 +22,7 @@
 
 #include "engine/config/EngineConfig.h"
 #include "engine/screen/Screen.h"
+#include "engine/components/buttons/RectTextButton.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) :
 		window(Window(
@@ -34,8 +35,7 @@ Engine::Engine(std::string appTitle, Dimensions screenSize) :
         surfaceRepo(SurfaceRepository()),
         textureRepo(TextureRepository(surfaceRepo, renderer)),
         factory(GraphicsFactory(renderer, textureRepo)),
-        rootScreen(nullptr),
-        defaultFont(Font(Resources::montserratFont, 28)) {
+        rootScreen(nullptr) {
 
 	event.init();
 	initialiseScreen();
@@ -139,6 +139,10 @@ void Engine::addComponent(Object& obj) {
 
 void Engine::addComponent(Line& line) {
 	rootScreen->put(dynamic_cast<Drawable&>(line));
+}
+
+void Engine::addComponent(RectTextButton& btn) {
+	rootScreen->put(dynamic_cast<Drawable&>(btn));
 }
 
 void Engine::addBehaviour(Behaviour<Object>& behaviour) {

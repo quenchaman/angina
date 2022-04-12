@@ -11,6 +11,7 @@ struct SDL_Renderer;
 struct Texture;
 struct Rect;
 struct Window;
+struct Text;
 struct Object;
 struct MovingObject;
 struct Surface;
@@ -32,6 +33,7 @@ public:
 
 	Texture& from(Surface&) const;
 	Object& from(Texture&, Point, Dimensions) const;
+	Text& fromTexture(Texture&, Point, Dimensions) const;
 	Object& fromSurface(Surface&, Point, Dimensions) const;
 	Button& from(Texture&);
 private:

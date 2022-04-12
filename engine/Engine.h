@@ -31,6 +31,7 @@ struct Rect;
 struct Object;
 struct Screen;
 struct Line;
+struct RectTextButton;
 
 class Engine {
 public:
@@ -58,7 +59,6 @@ private:
 	void triggerObjectUpdate();
 protected:
 	InputEvent event;
-	Font defaultFont;
 
 	virtual void init() = 0;
 	virtual void update() = 0;
@@ -70,6 +70,7 @@ protected:
 	void initialiseScreen();
 	void addComponent(Object&);
 	void addComponent(Line&);
+	void addComponent(RectTextButton&);
 	void cleanScreen();
 
 	void addBehaviour(Behaviour<Object>&);

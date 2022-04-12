@@ -19,19 +19,17 @@ Object& GraphicsFactory::createObject(const std::string &resourcePath, Point p, 
 	return renderer.from(textureRepo.get(resourcePath), p, dim);
 }
 
-//Text& GraphicsFactory::createText(const std::string textVal, Font &font, Point p,
-//	return;
-//}
+Text& GraphicsFactory::createText(const std::string textVal, Point p, Dimensions dim) {
+	return renderer.fromTexture(textureRepo.get(textVal), p, dim);
+}
 
-//RectTextButton& GraphicsFactory::createButton(Point p, Dimensions dim,
-//		Color backgroundColor, Color textColor, std::string text, Font &font,
-//		std::function<void(void)> clb) {
-//	Text *btnText = &GraphicsFactory::createText(text, font, p, dim, textColor);
-//
-//	// TODO: Add a padding to the text or ,even better, center it.
-//
-//	return *new RectTextButton(p, dim, backgroundColor, *btnText, clb);
-//}
+RectTextButton& GraphicsFactory::createButton(Point p, Dimensions dim,
+		Color backgroundColor, std::string text,
+		std::function<void(void)> clb) {
+	Text *btnText = &GraphicsFactory::createText(text, p, dim);
+
+	return *new RectTextButton(p, dim, backgroundColor, *btnText, clb);
+}
 
 Rect& GraphicsFactory::createRect(Point p, Dimensions dim, Color c) {
 	return *new Rect(p, dim, c);

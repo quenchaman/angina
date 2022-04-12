@@ -26,12 +26,12 @@ public:
 
 	Object& createObject(const std::string &resourcePath, Point, Dimensions);
 
-	//Text& createText(const std::string text, Font&, Point, Dimensions, Color color = Color::BLACK);
+	// TODO: Improve this so it is cached too, as other textures.
+	Text& createText(const std::string text, Point, Dimensions);
 
 	Rect& createRect(Point, Dimensions, Color);
 
-//	RectTextButton& createButton(Point, Dimensions, Color backgroundColor,
-//			Color textColor, std::string text, Font&, std::function<void(void)>);
+	RectTextButton& createButton(Point, Dimensions, Color backgroundColor, std::string text, std::function<void(void)>);
 private:
 	Renderer &renderer;
 	TextureRepository& textureRepo;

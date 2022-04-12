@@ -16,6 +16,9 @@ public:
     void handleBtnClick(int32_t idx);
 private:
     Sprite* sprite;
+
+    /* Screen builders */
+    void buildStartPage();
 };
 
 #endif /* EXAMPLES_TOWERDEFENCE_TOWERDEFENCE_H_ */

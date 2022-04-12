@@ -120,6 +120,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/towerdefence/TowerDefence.cpp
 	${DIR}/examples/towerdefence/HeroController.h
 	${DIR}/examples/towerdefence/HeroController.cpp
+	${DIR}/examples/towerdefence/TDConfig.h
 	
 	#${DIR}/examples/chess/chess-engine/ChessBoard.cpp
 #	${DIR}/examples/chess/chess-engine/ChessBoard.h

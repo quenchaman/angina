@@ -42,7 +42,11 @@ const std::string gas = prefix + "button_gas.png";
 const std::string brake = prefix + "button_brake.png";
 
 const std::string circleSprite = prefix + "circle-sprites.png";
+const std::string startBackground = prefix + "startbg.png";
+
+inline bool isResource(const std::string& str) {
+	return str.find(prefix) != std::string::npos;
 }
-;
+};
 
 #endif /* RESOURCES_RESOURCES_H_ */

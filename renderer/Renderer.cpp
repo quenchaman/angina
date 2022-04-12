@@ -13,6 +13,7 @@
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Button.h"
 #include "renderer/primitives/Line.h"
+#include "renderer/primitives/Text.h"
 
 #include "exceptions/GraphicsInitException.h"
 
@@ -90,6 +91,10 @@ Texture& Renderer::from(Surface &surface) const {
 
 Object& Renderer::from(Texture &texture, Point p, Dimensions dim) const {
 	return *new Object(texture, dim, p);
+}
+
+Text& Renderer::fromTexture(Texture& texture, Point p, Dimensions dim) const {
+	return *new Text(texture, dim, p);
 }
 
 Object& Renderer::fromSurface(Surface &surface, Point p, Dimensions dim) const {

@@ -4,6 +4,9 @@
 #include <string>
 
 #include "platform/sdl/repositories/SurfaceCache.h"
+#include "platform/sdl/primitives/Font.h"
+
+#include "renderer/primitives/Color.h"
 
 struct Surface;
 
@@ -14,9 +17,14 @@ struct Surface;
  */
 class SurfaceRepository {
 public:
+	SurfaceRepository();
 	Surface& get(const std::string& resourcePath);
 private:
 	SurfaceCache surfaceCache;
+
+	/* These below are hardcoded in the constructor initialiser list for simplicity */
+	Font textFont;
+	Color textColor;
 };
 
 #endif /* PLATFORM_SDL_REPOSITORIES_SURFACEREPOSITORY_H_ */
