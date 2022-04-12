@@ -22,7 +22,22 @@ Grid::Grid(Point origin, [[maybe_unused]]float cellWidth, float cellHeight, [[ma
 		lines.push_back(line);
 	}
 
-//	int32_t verticalLinesCount = static_cast<int32_t>((fullWidth / cellWidth) - 1);
+	int32_t verticalLinesCount = static_cast<int32_t>(fullWidth / cellWidth);
+
+	for (int32_t i = 0; i < verticalLinesCount; i++) {
+		float startPointY = origin.y;
+		float startPointX = origin.x + (cellWidth * (static_cast<float>(i) + 1.0f));
+		float endPointY = fullHeight;
+		float endPointX = startPointX;
+
+		Line line = {
+				Point{startPointX, startPointY},
+				Point{endPointX, endPointY},
+				Color::RED
+		};
+
+		lines.push_back(line);
+	}
 }
 
 void Grid::draw(Renderer& renderer) {
