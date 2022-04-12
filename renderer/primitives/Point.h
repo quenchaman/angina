@@ -1,7 +1,6 @@
 #ifndef SDL_PRIMITIVES_POINT_H_
 #define SDL_PRIMITIVES_POINT_H_
 
-#include <cstdint>
 #include <iostream>
 
 /**
@@ -9,13 +8,14 @@
  */
 struct Point {
 	Point();
-	Point(int32_t x, int32_t y);
+	Point(float x, float y);
 
-	int32_t x;
-	int32_t y;
+	float x;
+	float y;
 
 	bool operator==(const Point&) const;
 	bool operator!=(const Point&) const;
+	bool operator>(const Point&) const;
 	Point operator+(const Point&) const;
 	Point operator-(const Point&) const;
 

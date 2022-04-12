@@ -25,7 +25,7 @@ void Test::init() {
 
     addComponent(*new Line(Point{100, 100}, Point{100, 200}, Color::RED));
 
-    hero.setVelocity(100).setDestination(Point{400, 400});
+    hero.setVelocity(100).setDestination(Point{100, 200});
     addMovement(hero);
 }
 

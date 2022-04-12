@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "renderer/primitives/Object.h"
+#include "core/math/geometry/Geometry.h"
 
 LinearFixedMovementManager::LinearFixedMovementManager() {}
 
@@ -17,15 +18,19 @@ void LinearFixedMovementManager::processFrame(int64_t elapsedTime) {
 }
 
 void LinearFixedMovementManager::processMoveable(Object& moveable, int64_t elapsedTimeMicro) {
-	int32_t unitsTravelled = static_cast<int32_t>((moveable.getVelocity() * elapsedTimeMicro) / 1000000);
-	std::cout << "Units to travel are " << unitsTravelled << std::endl;
 	Point currentPos = moveable.getPosition();
 	Point destination = moveable.getDestination();
 
-	// Here I try to do linear interpolation
-	int32_t x = currentPos.x + unitsTravelled;
+	if (currentPos > destination) {
+		return;
+	}
 
-	int32_t y = (currentPos.y * (destination.x - x) + destination.y * (x - currentPos.x)) / (destination.x - currentPos.x);
+	float unitsTravelled = (moveable.getVelocity() * static_cast<float>(elapsedTimeMicro)) / 1000000.0f;
+	PointPair lerpedPoint = Geometry::lerp(
+			std::make_pair(currentPos.x, currentPos.y),
+			std::make_pair(destination.x, destination.y),
+			unitsTravelled
+	);
 
-	moveable.move(x, y);
+	moveable.move(lerpedPoint.first, lerpedPoint.second);
 }

@@ -11,7 +11,7 @@ Rect::Rect(Point positionIn, Dimensions dimensionsIn, Color colorIn) {
 	rect = { positionIn.x, positionIn.y, dimensionsIn.w, dimensionsIn.h };
 }
 
-Rect::Rect(int32_t x, int32_t y, int32_t w, int32_t h, const Color &color) :
+Rect::Rect(float x, float y, float w, float h, const Color &color) :
 		Rect::Rect( { x, y }, { w, h }, color) {
 }
 
@@ -25,8 +25,7 @@ bool Rect::operator!=(const Rect &other) const {
 }
 
 bool Rect::isInRect(const Point &point) {
-	return PrimitivesUtils::isInRect( { rect.x, rect.y }, { rect.w, rect.h },
-			point);
+	return PrimitivesUtils::isInRect( { rect.x, rect.y }, { rect.w, rect.h }, point);
 }
 
 std::ostream& operator<<(std::ostream &os, const Rect &rect) {
@@ -38,8 +37,17 @@ void Rect::draw(Renderer &renderer) {
 	renderer.render(*this);
 }
 
-SDL_Rect Rect::getRawRect() const {
+SDL_FRect Rect::getRawRect() const {
 	return rect;
+}
+
+SDL_Rect Rect::toIntRect() const {
+	return {
+		static_cast<int32_t>(rect.x),
+		static_cast<int32_t>(rect.y),
+		static_cast<int32_t>(rect.w),
+		static_cast<int32_t>(rect.h),
+	};
 }
 
 Color Rect::getColor() const {

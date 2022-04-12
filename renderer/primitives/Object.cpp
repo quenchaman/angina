@@ -8,7 +8,7 @@
 #include "renderer/Renderer.h"
 #include "renderer/utils/PrimitivesUtils.h"
 
-Object::Object(Texture &t, Dimensions d, Point p, int32_t v, Point dest) :
+Object::Object(Texture &t, Dimensions d, Point p, float v, Point dest) :
 		texture(t),
 		dim(d),
 		point(p),
@@ -21,7 +21,7 @@ Object::Object(Texture &t, Dimensions d, Point p, int32_t v, Point dest) :
 Object::Object(Texture& t, Dimensions d, Point p):
     Object(t, d, p, 0, Point::UNDEFINED) {}
 
-void Object::move(const int32_t x, const int32_t y) {
+void Object::move(const float x, const float y) {
 	point.x = x;
 	point.y = y;
 
@@ -60,7 +60,7 @@ Rect Object::getClip() const {
 	return clip;
 }
 
-int32_t Object::getVelocity() const {
+float Object::getVelocity() const {
     return velocity;
 }
 
@@ -68,7 +68,7 @@ Point Object::getDestination() const {
     return destination;
 }
 
-Object& Object::setVelocity(int32_t velo) {
+Object& Object::setVelocity(float velo) {
     velocity = velo;
     return *this;
 }

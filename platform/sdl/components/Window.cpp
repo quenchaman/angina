@@ -16,8 +16,14 @@
  */
 Window::Window(std::string title, Point pos, Dimensions dimensions,
 		int32_t flags) {
-	window = SDL_CreateWindow(title.c_str(), pos.x, pos.y, dimensions.w,
-			dimensions.h, flags);
+	window = SDL_CreateWindow(
+			title.c_str(),
+			static_cast<int32_t>(pos.x),
+			static_cast<int32_t>(pos.y),
+			static_cast<int32_t>(dimensions.w),
+			static_cast<int32_t>(dimensions.h),
+			flags
+	);
 
 	if (window == nullptr) {
 		throw WindowInitException(SDL_GetError());

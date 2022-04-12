@@ -17,7 +17,7 @@ bool ButtonManager::invokeCallback(const InputEvent &event) {
 		return false;
 	}
 
-	Point clickPoint = { event.posX, event.posY };
+	Point clickPoint = { static_cast<float>(event.posX), static_cast<float>(event.posY) };
 
 	std::cout << "Clicked at " << clickPoint << std::endl;
 

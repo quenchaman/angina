@@ -20,7 +20,5 @@ bool PrimitivesUtils::isInRect(Point origin, Dimensions dim, Point query) {
 
 	bool res = Geometry::isInRect(originPair, dimPair, queryPair);
 
-	std::cout << res << std::endl;
-
 	return res;
 }

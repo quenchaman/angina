@@ -15,7 +15,7 @@ struct Renderer;
 class Object: public Drawable {
 public:
 	Object(Texture&, Dimensions, Point);
-	Object(Texture&, Dimensions, Point, int32_t velocity, Point dest);
+	Object(Texture&, Dimensions, Point, float velocity, Point dest);
 	~Object();
 
 	Object(const Object&) = delete;
@@ -24,7 +24,7 @@ public:
 	Object& operator=(Object&&) = delete;
 
 	void draw(Renderer&);
-	void move(const int32_t x, const int32_t y);
+	void move(const float x, const float y);
 	void move(const Point& newPosition);
 
 	void setClip(Rect);
@@ -36,8 +36,8 @@ public:
 	Transformation getTransformation() const;
 	Rect getClip() const;
 
-	int32_t getVelocity() const;
-	Object& setVelocity(int32_t);
+	float getVelocity() const;
+	Object& setVelocity(float);
 
 	Point getDestination() const;
 	Object& setDestination(Point);
@@ -48,8 +48,8 @@ private:
 	Point point;
 	Point center;
 	Rect clip;
-	int32_t velocity;
-    Point destination;
+	float velocity;
+	Point destination;
 };
 
 #endif /* SDL_ENGINE_OBJECT_OBJECT_H_ */

@@ -3,7 +3,7 @@
 Dimensions::Dimensions() :
 		w(0), h(0) {
 }
-Dimensions::Dimensions(int32_t width, int32_t height) :
+Dimensions::Dimensions(float width, float height) :
 		w(width), h(height) {
 }
 

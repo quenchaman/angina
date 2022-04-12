@@ -27,25 +27,25 @@ void Renderer::render(const Texture &texture) const {
 
 void Renderer::render(Rect &rect) const {
 	Color rectColor = rect.getColor();
-	SDL_Rect rawRect = rect.getRawRect();
+	SDL_FRect rawRect = rect.getRawRect();
 
 	SDL_SetRenderDrawColor(renderer, rectColor.red, rectColor.green,
 			rectColor.blue, rectColor.alpha);
-	SDL_RenderFillRect(renderer, &rawRect);
+	SDL_RenderFillRectF(renderer, &rawRect);
 }
 
 void Renderer::render(Object &object) const {
 	Dimensions objectDimensions = object.getDimensions();
 	Point objectPosition = object.getPosition();
-	SDL_Rect rect = SDL_Rect { objectPosition.x, objectPosition.y,
+	SDL_FRect rect = SDL_FRect { objectPosition.x, objectPosition.y,
 			objectDimensions.w, objectDimensions.h };
 	Point center = object.getCenter();
-	SDL_Point sdlCenter = { center.x, center.y };
+	SDL_FPoint sdlCenter = { center.x, center.y };
 	Transformation transform = object.getTransformation();
 	Rect clip = object.getClip();
-	SDL_Rect clipRect = clip.getRawRect();
+	SDL_Rect clipRect = clip.toIntRect();
 
-	SDL_RenderCopyEx(
+	SDL_RenderCopyExF(
 			renderer,
 			object.getTexture().getRawTexture(),
 			clip == Rect::UNDEFINED ? nullptr : &clipRect,
@@ -57,7 +57,7 @@ void Renderer::render(Object &object) const {
 
 void Renderer::render(Line& line) const {
 	SDL_SetRenderDrawColor(renderer, line.color.red, line.color.green, line.color.blue, line.color.alpha);
-	SDL_RenderDrawLine(renderer, line.a.x, line.a.y, line.b.x, line.b.y);
+	SDL_RenderDrawLineF(renderer, line.a.x, line.a.y, line.b.x, line.b.y);
 }
 
 void Renderer::update() {
@@ -82,7 +82,10 @@ Texture& Renderer::from(Surface &surface) const {
 		throw GraphicsInitException(SDL_GetError());
 	}
 
-	return *new Texture(texture, { surface.getSurface().w, surface.getSurface().h });
+	return *new Texture(texture, Dimensions{
+		static_cast<float>(surface.getSurface().w),
+		static_cast<float>(surface.getSurface().h)
+	});
 }
 
 Object& Renderer::from(Texture &texture, Point p, Dimensions dim) const {
