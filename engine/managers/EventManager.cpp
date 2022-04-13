@@ -2,11 +2,7 @@
 
 #include <iostream>
 
-#include "platform/sdl/events/InputEvent.h"
-#include "renderer/primitives/Point.h"
-#include "renderer/primitives/Object.h"
-#include "engine/components/buttons/BaseButton.h"
-#include "renderer/utils/PrimitivesUtils.h"
+
 
 void ButtonManager::registerButton(BaseButton &btn) {
 	buttons.push_back(&btn);
