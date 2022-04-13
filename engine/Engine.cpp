@@ -162,6 +162,17 @@ void Engine::cleanScreen() {
 	}
 }
 
+void Engine::initMapBuilder() {
+	initialiseScreen();
+	resizeWindow(EngineConfig::MB_DIM);
+
+	Object& bg = getFactory().createObject(Resources::MapBuilder::background, Point::ZERO, EngineConfig::MB_DIM);
+	addComponent(bg);
+
+	Grid& textureGrid = *new Grid(Point::ZERO, 80, 80, 800, 640);
+	addComponent(textureGrid);
+}
+
 void Engine::resizeWindow(Dimensions dim) {
 	window.resize(dim);
 }

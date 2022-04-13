@@ -77,6 +77,8 @@ protected:
 	void addComponent(RectTextButton&);
 	void cleanScreen();
 
+	void initMapBuilder();
+
 	void addBehaviour(Behaviour<Object>&);
 	void addMovement(Object& obj);
 

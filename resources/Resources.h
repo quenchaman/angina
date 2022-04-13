@@ -6,44 +6,50 @@
 
 namespace Resources {
 #ifndef NDEBUG
-	const std::string prefix = "../resources/chess/";
+	const std::string prefix = "../resources/";
 #endif
 #ifdef NDEBUG
-	const std::string prefix = "resources/chess/";
+	const std::string prefix = "resources/";
 #endif
 
-const std::string whiteWins = prefix + "white_wins.png";
-const std::string blackWins = prefix + "black_wins.png";
-const std::string startScreen = prefix + "start_screen.png";
-const std::string board = prefix + "Chess-Board.png";
-const std::string blackBishop = prefix + "Bishop_B.png";
-const std::string blackKing = prefix + "King_B.png";
-const std::string blackKnight = prefix + "Knight_B.png";
-const std::string blackPawn = prefix + "Pawn_B.png";
-const std::string blackQueen = prefix + "Queen_B.png";
-const std::string blackRook = prefix + "Rook_B.png";
 
-const std::string whiteBishop = prefix + "Bishop_W.png";
-const std::string whiteKing = prefix + "King_W.png";
-const std::string whiteKnight = prefix + "Knight_W.png";
-const std::string whitePawn = prefix + "Pawn_W.png";
-const std::string whiteQueen = prefix + "Queen_W.png";
-const std::string whiteRook = prefix + "Rook_W.png";
-const std::string startScreen2 = prefix + "start_screen_2.png";
-const std::string newGameButton = prefix + "button_new-game.png";
-const std::string continueGameButton = prefix + "button_continue_game.png";
-const std::string quitGameButton = prefix + "button_quit.png";
-const std::string saveGameButton = prefix + "button_save_game.png";
+	namespace Chess {
+		const std::string chessPrefix = prefix + "chess/";
 
-const std::string montserratFont = prefix + "Montserrat-Bold.ttf";
+		const std::string board = chessPrefix + "Chess-Board.png";
+		const std::string blackBishop = chessPrefix + "Bishop_B.png";
+		const std::string blackKing = chessPrefix + "King_B.png";
+		const std::string blackKnight = chessPrefix + "Knight_B.png";
+		const std::string blackPawn = chessPrefix + "Pawn_B.png";
+		const std::string blackQueen = chessPrefix + "Queen_B.png";
+		const std::string blackRook = chessPrefix + "Rook_B.png";
 
-const std::string wheel = prefix + "wheel.png";
-const std::string gas = prefix + "button_gas.png";
-const std::string brake = prefix + "button_brake.png";
+		const std::string whiteBishop = chessPrefix + "Bishop_W.png";
+		const std::string whiteKing = chessPrefix + "King_W.png";
+		const std::string whiteKnight = chessPrefix + "Knight_W.png";
+		const std::string whitePawn = chessPrefix + "Pawn_W.png";
+		const std::string whiteQueen = chessPrefix + "Queen_W.png";
+		const std::string whiteRook = chessPrefix + "Rook_W.png";
+		const std::string startScreen2 = chessPrefix + "start_screen_2.png";
+	}
 
-const std::string circleSprite = prefix + "circle-sprites.png";
-const std::string startBackground = prefix + "startbg.png";
-const std::string mapBuilderBackground = prefix + "mbbg.jpg";
+	namespace Engine {
+		const std::string enginePrefix = prefix + "engine/";
+		const std::string montserratFont = enginePrefix + "montserrat/Montserrat-Bold.ttf";
+	}
+
+	namespace MapBuilder {
+		const std::string mapBuilderPrefix = prefix + "mapbuilder/";
+
+		const std::string background = mapBuilderPrefix + "mbbg.jpg";
+	}
+
+	namespace TD {
+		const std::string TDPrefix = prefix + "td/";
+
+		const std::string background = TDPrefix + "startbg.png";
+	}
+
 
 inline bool isResource(const std::string& str) {
 	return str.find(prefix) != std::string::npos;

@@ -5,7 +5,7 @@
 #include "platform/sdl/primitives/Surface.h"
 #include "platform/sdl/resource-loader/ResourceLoader.h"
 
-SurfaceRepository::SurfaceRepository(): textFont(Font(Resources::montserratFont, 18)), textColor(Color::BLACK) {
+SurfaceRepository::SurfaceRepository(): textFont(Font(Resources::Engine::montserratFont, 18)), textColor(Color::BLACK) {
 
 }
 
