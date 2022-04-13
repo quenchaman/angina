@@ -4,11 +4,11 @@
 
 #include "renderer/Renderer.h"
 
-Grid::Grid(Point origin, [[maybe_unused]]float cellWidth, float cellHeight, [[maybe_unused]]float fullWidth, [[maybe_unused]]float fullHeight) {
-	int32_t horizontalLinesCount = static_cast<int32_t>((fullHeight / cellHeight) - 1);
+Grid::Grid(Point origin, Dimensions dim, float fullWidth, float fullHeight) {
+	int32_t horizontalLinesCount = static_cast<int32_t>((fullHeight / dim.h) - 1);
 
 	for (int32_t i = 0; i < horizontalLinesCount; i++) {
-		float startPointY = origin.y + (cellHeight * (static_cast<float>(i) + 1.0f));
+		float startPointY = origin.y + (dim.h * (static_cast<float>(i) + 1.0f));
 		float startPointX = origin.x;
 		float endPointY = startPointY;
 		float endPointX = fullWidth;
@@ -22,11 +22,11 @@ Grid::Grid(Point origin, [[maybe_unused]]float cellWidth, float cellHeight, [[ma
 		lines.push_back(line);
 	}
 
-	int32_t verticalLinesCount = static_cast<int32_t>(fullWidth / cellWidth);
+	int32_t verticalLinesCount = static_cast<int32_t>(fullWidth / dim.w);
 
 	for (int32_t i = 0; i < verticalLinesCount; i++) {
 		float startPointY = origin.y;
-		float startPointX = origin.x + (cellWidth * (static_cast<float>(i) + 1.0f));
+		float startPointX = origin.x + (dim.w * (static_cast<float>(i) + 1.0f));
 		float endPointY = fullHeight;
 		float endPointX = startPointX;
 

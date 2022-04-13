@@ -24,6 +24,7 @@
 #include "engine/config/EngineConfig.h"
 #include "engine/screen/Screen.h"
 #include "engine/components/buttons/RectTextButton.h"
+#include "engine/components/foldergallery/FolderGallery.h"
 
 Engine::Engine(std::string appTitle, Dimensions screenSize) :
 		window(Window(
@@ -146,6 +147,10 @@ void Engine::addComponent(Grid& grid) {
 	rootScreen->put(dynamic_cast<Drawable&>(grid));
 }
 
+void Engine::addComponent(FolderGallery& gallery) {
+	rootScreen->put(dynamic_cast<Drawable&>(gallery));
+}
+
 void Engine::addBehaviour(Behaviour<Object>& behaviour) {
 	behaviour.setEngine(*this);
 	behaviours.push_back(&behaviour);
@@ -169,8 +174,22 @@ void Engine::initMapBuilder() {
 	Object& bg = getFactory().createObject(Resources::MapBuilder::background, Point::ZERO, EngineConfig::MB_DIM);
 	addComponent(bg);
 
-	Grid& textureGrid = *new Grid(Point::ZERO, 80, 80, 800, 640);
+	Grid& textureGrid = *new Grid(Point::ZERO, EngineConfig::TILE_DIM, 800, 640);
 	addComponent(textureGrid);
+
+	// Move this as parameter to the method and get it from the game.
+	std::vector<std::string> textureList = {Resources::TD::grass};
+
+	FolderGallery& gallery = *new FolderGallery(
+			Point {801, 0},
+			getFactory(),
+			textureList,
+			1,
+			1,
+			Dimensions{80,80}
+	);
+
+	addComponent(gallery);
 }
 
 void Engine::resizeWindow(Dimensions dim) {

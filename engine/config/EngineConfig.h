@@ -10,6 +10,7 @@
 namespace EngineConfig {
 const int32_t FRAME_RATE = 60;
 const Dimensions MB_DIM = {950, 640};
+const Dimensions TILE_DIM = {80, 80};
 }
 
 #endif /* CONFIG_CONFIG_H_ */

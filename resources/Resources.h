@@ -48,6 +48,10 @@ namespace Resources {
 		const std::string TDPrefix = prefix + "td/";
 
 		const std::string background = TDPrefix + "startbg.png";
+
+		const std::string TDTexturePrefix = TDPrefix + "textures/";
+
+		const std::string grass = TDTexturePrefix + "grass.png";
 	}
 
 

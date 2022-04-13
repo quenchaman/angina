@@ -34,6 +34,7 @@ struct Screen;
 struct Line;
 struct Grid;
 struct RectTextButton;
+struct FolderGallery;
 
 class Engine {
 public:
@@ -75,6 +76,7 @@ protected:
 	void addComponent(Line&);
 	void addComponent(Grid&);
 	void addComponent(RectTextButton&);
+	void addComponent(FolderGallery&);
 	void cleanScreen();
 
 	void initMapBuilder();

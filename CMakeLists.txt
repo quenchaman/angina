@@ -102,6 +102,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/engine/components/buttons/RectTextButton.cpp
 	${DIR}/engine/components/textstack/TextStack.h
 	${DIR}/engine/components/textstack/TextStack.cpp
+	${DIR}/engine/components/foldergallery/FolderGallery.h
+	${DIR}/engine/components/foldergallery/FolderGallery.cpp
 	${DIR}/engine/primitives/cell/CellUtils.h
 	${DIR}/engine/primitives/cell/Cell.h
 	${DIR}/engine/primitives/cell/Cell.cpp
