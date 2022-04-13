@@ -19,11 +19,10 @@
 #include "renderer/Renderer.h"
 
 #include "engine/factory/GraphicsFactory.h"
-#include "engine/managers/ButtonManager.h"
 #include "engine/behaviour/Behaviour.h"
 #include "engine/movement/LinearFixedMovementManager.h"
-#include "engine/managers/ButtonManager.h"
-
+#include "managers/EventManager.h"
+#include "managers/EventManager.h"
 #include "platform/sdl/repositories/TextureRepository.h"
 #include "platform/sdl/repositories/SurfaceRepository.h"
 

@@ -13,13 +13,16 @@
 struct Text;
 struct Renderer;
 
+/**
+ * A button made of a rectangle and a text.
+ * Color of rectangle can be configured.
+ */
 class RectTextButton: public BaseButton {
 public:
 	RectTextButton(Point, Dimensions, Color, Text&, std::function<void(void)>);
 	~RectTextButton() = default;
 
 	void draw(Renderer&);
-
 private:
 	Rect rect;
 	Text &text;

@@ -2,6 +2,7 @@
 #define SDL_ENGINE_OBJECT_OBJECT_H_
 
 #include <cstdint>
+#include <functional>
 
 #include "renderer/primitives/Point.h"
 #include "renderer/shapes/Rect.h"

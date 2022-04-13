@@ -186,7 +186,7 @@ void Engine::initMapBuilder() {
 			textureList,
 			1,
 			1,
-			Dimensions{80,80}
+			EngineConfig::TILE_DIM
 	);
 
 	addComponent(gallery);
