@@ -9,7 +9,7 @@
 #include "platform/sdl/primitives/Texture.h"
 #include "platform/sdl/primitives/Surface.h"
 #include "renderer/shapes/Rect.h"
-#include "platform/sdl/components/Window.h"
+#include "enginev2/graphics/sdl/window/Window.h"
 #include "renderer/primitives/Object.h"
 #include "renderer/primitives/Button.h"
 #include "renderer/primitives/Line.h"
@@ -65,51 +65,16 @@ void Renderer::update() {
 	SDL_RenderPresent(renderer);
 }
 
-Renderer::Renderer(Window &window) {
-	init(window);
-}
+Renderer::Renderer(): renderer(nullptr) {}
 
 void Renderer::init(Window &window) {
-	renderer = SDL_CreateRenderer(window.getWindow(), -1, SDL_RENDERER_ACCELERATED);
+	renderer = SDL_CreateRenderer(window.sdlWindow, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
-	std::cout << "Renderer initialised" << std::endl;
-}
-
-Texture& Renderer::from(Surface &surface) const {
-	SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, &surface.getSurface());
-
-	if (texture == nullptr) {
-		throw GraphicsInitException(SDL_GetError());
-	}
-
-	return *new Texture(texture, Dimensions{
-		static_cast<float>(surface.getSurface().w),
-		static_cast<float>(surface.getSurface().h)
-	});
-}
-
-Object& Renderer::from(Texture &texture, Point p, Dimensions dim) const {
-	return *new Object(texture, dim, p);
-}
-
-Text& Renderer::fromTexture(Texture& texture, Point p, Dimensions dim) const {
-	return *new Text(texture, dim, p);
-}
-
-Object& Renderer::fromSurface(Surface &surface, Point p, Dimensions dim) const {
-	return from(from(surface), p, dim);
-}
-
-Button& Renderer::from(Texture &texture) {
-	return *new Button(texture, Point::UNDEFINED, texture.getDimensions());
-}
-
-void Renderer::deinit() {
-    SDL_DestroyRenderer(renderer);
-    std::cout << "Renderer deinitialised" << std::endl;
+	std::cout << "Renderer initialized" << std::endl;
 }
 
 Renderer::~Renderer() {
-    deinit();
+	SDL_DestroyRenderer(renderer);
+	std::cout << "Renderer destroyed" << std::endl;
 }

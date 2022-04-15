@@ -105,7 +105,7 @@ void Engine::limitFPS(int64_t elapsedTime) {
 }
 
 void Engine::handleEvent() {
-	btnManager.invokeCallback(event);
+	//btnManager.invokeCallback(event);
 }
 
 void Engine::triggerObjectStart() {
@@ -139,7 +139,7 @@ void Engine::addComponent(Line& line) {
 }
 
 void Engine::addComponent(RectTextButton& btn) {
-	btnManager.registerButton(btn);
+	//btnManager.registerButton(btn);
 	rootScreen->put(dynamic_cast<Drawable&>(btn));
 }
 

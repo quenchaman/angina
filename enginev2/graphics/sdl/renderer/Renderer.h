@@ -18,11 +18,12 @@ struct Surface;
 struct Button;
 struct Line;
 
-// TODO: Change this rendering to floating point coordinates.
 class Renderer {
 public:
-	Renderer(Window&);
+	Renderer();
 	~Renderer();
+
+	void init(Window&);
 
 	void clear();
 	void render(const Texture&) const;
@@ -30,16 +31,7 @@ public:
 	void render(Object&) const;
 	void render(Line&) const;
 	void update();
-
-	Texture& from(Surface&) const;
-	Object& from(Texture&, Point, Dimensions) const;
-	Text& fromTexture(Texture&, Point, Dimensions) const;
-	Object& fromSurface(Surface&, Point, Dimensions) const;
-	Button& from(Texture&);
 private:
-	void init(Window&);
-	void deinit();
-
 	SDL_Renderer *renderer;
 };
 

@@ -3,8 +3,9 @@
 
 #include <string>
 
-#include "renderer/primitives/Point.h"
-#include "renderer/primitives/Dimensions.h"
+#include "enginev2/graphics/sdl/renderer/Renderer.h"
+#include "enginev2/graphics/commons/primitives/Width.h"
+#include "enginev2/graphics/commons/primitives/Height.h"
 
 struct SDL_Window;
 struct SDL_Surface;
@@ -15,21 +16,32 @@ struct SDL_Surface;
  */
 class Window {
 public:
-	Window(std::string title, Point, Dimensions, int32_t flags);
+	friend class Renderer;
+	Window();
 	~Window();
 
-	void resize(Dimensions dim);
+	void init(const std::string& title,
+			int32_t xPos,
+			int32_t yPos,
+			Width width,
+			Height height);
+
+	void init(const std::string& title,
+				Width width,
+				Height height);
+
+	void resize(Width width, Height height);
+	void update();
 
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
 	Window(Window&&) = delete;
 	Window& operator=(Window&&) = delete;
 
-	SDL_Window* getWindow();
-	SDL_Surface* getSurface();
-private:
-	SDL_Window *window;
+	SDL_Window *sdlWindow;
 	SDL_Surface *surface;
+private:
+
 };
 
 #endif /* SDL_COMPONENTS_WINDOW_H_ */

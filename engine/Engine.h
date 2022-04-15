@@ -21,8 +21,8 @@
 #include "engine/factory/GraphicsFactory.h"
 #include "engine/behaviour/Behaviour.h"
 #include "engine/movement/LinearFixedMovementManager.h"
-#include "managers/EventManager.h"
-#include "managers/EventManager.h"
+//#include "managers/EventManager.h"
+//#include "managers/EventManager.h"
 #include "platform/sdl/repositories/TextureRepository.h"
 #include "platform/sdl/repositories/SurfaceRepository.h"
 
@@ -48,7 +48,6 @@ private:
 	SurfaceRepository surfaceRepo;
 	TextureRepository textureRepo;
 	GraphicsFactory factory;
-	ButtonManager btnManager;
 	Screen* rootScreen;
 	LinearFixedMovementManager movementManager;
 	bool quit = false;

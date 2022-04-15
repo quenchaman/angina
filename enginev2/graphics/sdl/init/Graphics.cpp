@@ -7,29 +7,35 @@
 
 #include "exceptions/GraphicsInitException.h"
 
-namespace Graphics {
-const int32_t imgFlags = IMG_INIT_PNG;
+void Graphics::init() {
+	boot();
+	bootImageExtension();
+	bootTTFExtensions();
+}
 
-void boot() {
+void Graphics::boot() {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != EXIT_SUCCESS) {
 		throw GraphicsInitException(SDL_GetError());
 	}
 }
 
-void bootImageExtension() {
-	if (!(IMG_Init(imgFlags) & imgFlags)) {
+void Graphics::bootImageExtension() {
+	if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) {
 		throw GraphicsInitException(SDL_GetError());
 	}
 }
 
-void bootTTFExtensions() {
+void Graphics::bootTTFExtensions() {
 	if (TTF_Init() == -1) {
 		throw GraphicsInitException(SDL_GetError());
 	}
 }
 
-void shutdown() {
+void Graphics::shutdown() {
 	IMG_Quit();
 	SDL_Quit();
 }
+
+Graphics::~Graphics() {
+	shutdown();
 }
