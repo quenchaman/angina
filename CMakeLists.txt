@@ -22,6 +22,13 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/graphics/commons/primitives/Width.h
 	${DIR}/enginev2/graphics/commons/primitives/Height.h
 	
+	${DIR}/enginev2/events/EventDefines.h
+	${DIR}/enginev2/events/GlobalInputComponent.h
+	${DIR}/enginev2/events/GlobalInputComponent.cpp
+	
+	${DIR}/enginev2/GameEngine.h
+	${DIR}/enginev2/GameEngine.cpp
+	
 	${DIR}/exceptions/ResourceLoadException.h
 	${DIR}/exceptions/ResourceLoadException.cpp
 	${DIR}/exceptions/GraphicsInitException.h

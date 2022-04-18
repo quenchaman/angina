@@ -11,6 +11,7 @@
 #include "enginev2/graphics/sdl/primitives/Surface.h"
 #include "enginev2/graphics/commons/primitives/Width.h"
 #include "enginev2/graphics/commons/primitives/Height.h"
+#include "enginev2/GameEngine.h"
 #include "resources/Resources.h"
 
 #include "exceptions/BaseException.h"
@@ -19,17 +20,9 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 	try {
 		Graphics g;
 		g.init();
-		Window win;
-		win.init("Hello SDL", Width(640), Height(480));
-
-		SurfaceRenderer render;
-		Surface s(Resources::TD::background);
-		SDL_Rect sourceRect = {0, 0, 640, 480};
-
-		SDL_Rect destinationRect1 = SDL_Rect {0, 0, 640/2, 480/2};
-		render.drawOnSurface(s.getSurface(), sourceRect, *win.surface, destinationRect1);
-
-		win.update();
+		GameEngine engine;
+		engine.init("Hello SDL", 640, 480	);
+		engine.start();
 	} catch (const BaseException &ex) {
 		std::cerr << ex << std::endl;
 
