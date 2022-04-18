@@ -1,12 +1,14 @@
 #ifndef SDL_PRIMITIVES_DIMENSIONS_H_
 #define SDL_PRIMITIVES_DIMENSIONS_H_
 
+#include <cstdint>
+
 struct Dimensions {
 	Dimensions();
-	Dimensions(float width, float height);
+	Dimensions(int32_t width, int32_t height);
 
-	float w;
-	float h;
+	int32_t w;
+	int32_t h;
 
 	static const Dimensions UNDEFINED;
 };

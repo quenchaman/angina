@@ -23,8 +23,16 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/graphics/sdl/primitives/Surface.cpp
 	${DIR}/enginev2/graphics/sdl/primitives/Texture.h
 	${DIR}/enginev2/graphics/sdl/primitives/Texture.cpp
+	${DIR}/enginev2/graphics/sdl/primitives/Rectangle.h
+	${DIR}/enginev2/graphics/sdl/primitives/Rectangle.cpp
 	${DIR}/enginev2/graphics/commons/primitives/Width.h
 	${DIR}/enginev2/graphics/commons/primitives/Height.h
+	${DIR}/enginev2/graphics/commons/primitives/Dimensions.h
+	${DIR}/enginev2/graphics/commons/primitives/Dimensions.cpp
+	${DIR}/enginev2/graphics/commons/primitives/Point.h
+	${DIR}/enginev2/graphics/commons/primitives/Point.cpp
+	${DIR}/enginev2/graphics/commons/primitives/Color.h
+	${DIR}/enginev2/graphics/commons/primitives/Color.cpp
 	
 	${DIR}/enginev2/events/EventDefines.h
 	${DIR}/enginev2/events/GlobalInputComponent.h

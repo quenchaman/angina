@@ -7,7 +7,7 @@ Point::Point() :
 		x(0), y(0) {
 }
 
-Point::Point(float inputX, float inputY) :
+Point::Point(int32_t inputX, int32_t inputY) :
 		x(inputX), y(inputY) {
 }
 

@@ -8,7 +8,7 @@ struct GameEngine;
 struct SurfaceComponent;
 
 /**
- * Wrapper around SDL_Surface and manages the life-cycle of the surface.
+ * Wrapper around SDL_Surface and manages the life-cycle of it.
  */
 class Surface {
 public:

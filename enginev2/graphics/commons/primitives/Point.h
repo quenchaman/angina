@@ -2,16 +2,17 @@
 #define SDL_PRIMITIVES_POINT_H_
 
 #include <iostream>
+#include <cstdint>
 
 /**
  * I am also using this struct as a 2D vector...Hopefully that does not backfire...
  */
 struct Point {
 	Point();
-	Point(float x, float y);
+	Point(int32_t x, int32_t y);
 
-	float x;
-	float y;
+	int32_t x;
+	int32_t y;
 
 	bool operator==(const Point&) const;
 	bool operator!=(const Point&) const;
