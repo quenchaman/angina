@@ -30,3 +30,7 @@ void GameEngine::draw() {
 
 	win.update();
 }
+
+void GameEngine::loadSurfaceOptim(const std::string& resourcePath) {
+	surfaceComponent.loadSurfaceOptim(resourcePath, win);
+}

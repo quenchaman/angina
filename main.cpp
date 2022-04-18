@@ -22,7 +22,7 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 		GameEngine engine;
 		engine.init("Hello SDL", 640, 480	);
 
-		engine.surfaceComponent.loadSurface(Resources::TD::background);
+		engine.loadSurfaceOptim(Resources::TD::background);
 
 		engine.start();
 	} catch (const BaseException &ex) {

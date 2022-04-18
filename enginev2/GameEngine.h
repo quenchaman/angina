@@ -16,6 +16,7 @@ public:
 	void init(const std::string& appTitle, int32_t width, int32_t height);
 	void start();
 	void draw();
+	void loadSurfaceOptim(const std::string& resourcePath);
 
 	SurfaceComponent surfaceComponent;
 protected:
