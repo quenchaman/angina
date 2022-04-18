@@ -25,7 +25,7 @@ void GameEngine::draw() {
 	win.clear();
 
 	for (Surface& surface : surfaceComponent.surfaces) {
-		renderer.drawOnSurface(surface.getSurface(), *win.surface);
+		renderer.drawOnSurface(*surface.surface, *win.surface);
 	}
 
 	win.update();

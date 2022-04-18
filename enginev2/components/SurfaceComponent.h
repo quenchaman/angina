@@ -6,6 +6,7 @@
 
 #include "enginev2/graphics/sdl/primitives/Surface.h"
 
+struct Window;
 struct GameEngine;
 
 class SurfaceComponent {
@@ -15,6 +16,7 @@ public:
 	SurfaceComponent();
 
 	void loadSurface(const std::string& pathToResource);
+	void loadSurfaceOptim(const std::string& pathToResource, Window&);
 private:
 	std::vector<Surface> surfaces;
 };

@@ -4,16 +4,20 @@
 #include <string>
 
 struct SDL_Surface;
+struct GameEngine;
+struct SurfaceComponent;
 
 /**
  * Wrapper around SDL_Surface and manages the life-cycle of the surface.
  */
 class Surface {
 public:
-	Surface(const std::string& surfaceAssetPath);
-	~Surface();
+	friend class GameEngine;
+	friend class SurfaceComponent;
 
-	SDL_Surface& getSurface();
+	Surface(const std::string& surfaceAssetPath);
+	Surface(SDL_Surface* rawSurface);
+	~Surface();
 private:
 	SDL_Surface* surface;
 };

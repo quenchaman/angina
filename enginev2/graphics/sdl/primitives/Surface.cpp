@@ -16,9 +16,7 @@ Surface::Surface(const std::string& surfaceAssetPath): surface(nullptr) {
 	}
 }
 
-SDL_Surface& Surface::getSurface() {
-	return *surface;
-}
+Surface::Surface(SDL_Surface* rawSurface): surface(rawSurface) {}
 
 Surface::~Surface() {
 	SDL_FreeSurface(surface);

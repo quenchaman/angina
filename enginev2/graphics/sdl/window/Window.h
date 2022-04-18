@@ -3,12 +3,13 @@
 
 #include <string>
 
-#include "enginev2/graphics/sdl/renderer/Renderer.h"
 #include "enginev2/graphics/commons/primitives/Width.h"
 #include "enginev2/graphics/commons/primitives/Height.h"
 
 struct SDL_Window;
 struct SDL_Surface;
+struct SurfaceComponent;
+struct Renderer;
 
 /**
  * Wrapper around SDL_Window.
@@ -17,6 +18,7 @@ struct SDL_Surface;
 class Window {
 public:
 	friend class Renderer;
+	friend class SurfaceComponent;
 	Window();
 	~Window();
 
