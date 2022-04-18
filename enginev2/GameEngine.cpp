@@ -7,6 +7,7 @@
 void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height) {
 	win.init(appTitle, Width(width), Height(height));
 	inputComponent.init();
+	textureRenderer.init(win);
 }
 
 void GameEngine::start() {
@@ -17,11 +18,11 @@ void GameEngine::start() {
 			break;
 		}
 
-		draw();
+		drawGPU();
 	}
 }
 
-void GameEngine::draw() {
+void GameEngine::drawCPU() {
 	win.clear();
 
 	for (Surface& surface : surfaceComponent.surfaces) {
@@ -31,6 +32,20 @@ void GameEngine::draw() {
 	win.update();
 }
 
+void GameEngine::drawGPU() {
+	textureRenderer.clear();
+
+	for (Texture& texture : textureComponent.textures) {
+		textureRenderer.render(texture);
+	}
+
+	textureRenderer.update();
+}
+
 void GameEngine::loadSurfaceOptim(const std::string& resourcePath) {
 	surfaceComponent.loadSurfaceOptim(resourcePath, win);
+}
+
+void GameEngine::loadTexture(const std::string& resourcePath) {
+	textureComponent.loadSurface(resourcePath, textureRenderer);
 }

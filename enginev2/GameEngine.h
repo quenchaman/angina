@@ -7,7 +7,9 @@
 #include "enginev2/graphics/sdl/window/Window.h"
 #include "enginev2/events/GlobalInputComponent.h"
 #include "enginev2/components/SurfaceComponent.h"
-#include "enginev2/graphics/sdl/renderer/SurfaceRenderer.h"
+#include "enginev2/components/TextureComponent.h"
+#include "enginev2/graphics/sdl/renderer/SurfaceRendererComponent.h"
+#include "enginev2/graphics/sdl/renderer/TextureRendererComponent.h"
 
 class GameEngine {
 public:
@@ -15,18 +17,21 @@ public:
 
 	void init(const std::string& appTitle, int32_t width, int32_t height);
 	void start();
-	void draw();
+	void drawCPU();
+	void drawGPU();
 	void loadSurfaceOptim(const std::string& resourcePath);
-
-	SurfaceComponent surfaceComponent;
+	void loadTexture(const std::string& resourcePath);
 protected:
 	GlobalInputComponent inputComponent;
 private:
 	Window win;
+	SurfaceComponent surfaceComponent;
+	TextureComponent textureComponent;
+	TextureRendererComponent textureRenderer;
 	bool gameOver = false;
 
 	// TODO: Remove after testing
-	SurfaceRenderer renderer;
+	SurfaceRendererComponent renderer;
 
 };
 

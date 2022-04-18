@@ -6,6 +6,8 @@ struct TextureRendererComponent;
 
 class Texture {
 public:
+	friend class TextureRendererComponent;
+
 	Texture(SDL_Texture*);
 	~Texture();
 private:

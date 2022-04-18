@@ -4,7 +4,6 @@
 
 #include "enginev2/graphics/sdl/window/Window.h"
 
-
 const int32_t MAX_IMAGES = 1000000;
 
 SurfaceComponent::SurfaceComponent() {

@@ -6,10 +6,10 @@
 
 #include "enginev2/graphics/sdl/init/Graphics.h"
 #include "enginev2/graphics/sdl/window/Window.h"
-#include "enginev2/graphics/sdl/renderer/SurfaceRenderer.h"
 #include "enginev2/graphics/sdl/primitives/Surface.h"
 #include "enginev2/graphics/commons/primitives/Width.h"
 #include "enginev2/graphics/commons/primitives/Height.h"
+#include "enginev2/graphics/sdl/renderer/SurfaceRendererComponent.h"
 #include "enginev2/GameEngine.h"
 #include "resources/Resources.h"
 
@@ -22,7 +22,7 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 		GameEngine engine;
 		engine.init("Hello SDL", 640, 480	);
 
-		engine.loadSurfaceOptim(Resources::TD::background);
+		engine.loadTexture(Resources::TD::background);
 
 		engine.start();
 	} catch (const BaseException &ex) {

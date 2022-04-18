@@ -13,12 +13,16 @@ add_executable(${PROJECT_NAME}
 	${DIR}/main.cpp
 	${DIR}/enginev2/graphics/sdl/init/Graphics.h
 	${DIR}/enginev2/graphics/sdl/init/Graphics.cpp
-	${DIR}/enginev2/graphics/sdl/renderer/SurfaceRenderer.h
-	${DIR}/enginev2/graphics/sdl/renderer/SurfaceRenderer.cpp
+	${DIR}/enginev2/graphics/sdl/renderer/SurfaceRendererComponent.h
+	${DIR}/enginev2/graphics/sdl/renderer/SurfaceRendererComponent.cpp
+	${DIR}/enginev2/graphics/sdl/renderer/TextureRendererComponent.h
+	${DIR}/enginev2/graphics/sdl/renderer/TextureRendererComponent.cpp
 	${DIR}/enginev2/graphics/sdl/window/Window.h
 	${DIR}/enginev2/graphics/sdl/window/Window.cpp
 	${DIR}/enginev2/graphics/sdl/primitives/Surface.h
 	${DIR}/enginev2/graphics/sdl/primitives/Surface.cpp
+	${DIR}/enginev2/graphics/sdl/primitives/Texture.h
+	${DIR}/enginev2/graphics/sdl/primitives/Texture.cpp
 	${DIR}/enginev2/graphics/commons/primitives/Width.h
 	${DIR}/enginev2/graphics/commons/primitives/Height.h
 	
@@ -28,6 +32,8 @@ add_executable(${PROJECT_NAME}
 	
 	${DIR}/enginev2/components/SurfaceComponent.h
 	${DIR}/enginev2/components/SurfaceComponent.cpp
+	${DIR}/enginev2/components/TextureComponent.h
+	${DIR}/enginev2/components/TextureComponent.cpp
 	
 	${DIR}/enginev2/GameEngine.h
 	${DIR}/enginev2/GameEngine.cpp
