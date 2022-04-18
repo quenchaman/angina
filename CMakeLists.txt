@@ -26,6 +26,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/events/GlobalInputComponent.h
 	${DIR}/enginev2/events/GlobalInputComponent.cpp
 	
+	${DIR}/enginev2/components/SurfaceComponent.h
+	${DIR}/enginev2/components/SurfaceComponent.cpp
+	
 	${DIR}/enginev2/GameEngine.h
 	${DIR}/enginev2/GameEngine.cpp
 	

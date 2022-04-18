@@ -7,7 +7,6 @@
 void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height) {
 	win.init(appTitle, Width(width), Height(height));
 	inputComponent.init();
-
 }
 
 void GameEngine::start() {
@@ -18,6 +17,16 @@ void GameEngine::start() {
 			break;
 		}
 
-
+		draw();
 	}
+}
+
+void GameEngine::draw() {
+	win.clear();
+
+	for (Surface& surface : surfaceComponent.surfaces) {
+		renderer.drawOnSurface(surface.getSurface(), *win.surface);
+	}
+
+	win.update();
 }

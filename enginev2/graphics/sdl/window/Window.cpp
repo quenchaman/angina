@@ -50,7 +50,10 @@ void Window::resize(Width width, Height height) {
 
 void Window::update() {
 	SDL_UpdateWindowSurface(sdlWindow);
-	SDL_Delay(2000);
+}
+
+void Window::clear() {
+	SDL_FillRect(surface, NULL, SDL_MapRGB( surface->format, 0xFF, 0xFF, 0xFF ));
 }
 
 Window::~Window() {

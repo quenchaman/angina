@@ -32,6 +32,7 @@ public:
 
 	void resize(Width width, Height height);
 	void update();
+	void clear();
 
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;

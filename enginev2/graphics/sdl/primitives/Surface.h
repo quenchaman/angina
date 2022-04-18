@@ -13,11 +13,6 @@ public:
 	Surface(const std::string& surfaceAssetPath);
 	~Surface();
 
-	Surface(const Surface&) = delete;
-	Surface& operator=(const Surface&) = delete;
-	Surface(Surface&&) = delete;
-	Surface& operator=(Surface&&) = delete;
-
 	SDL_Surface& getSurface();
 private:
 	SDL_Surface* surface;
