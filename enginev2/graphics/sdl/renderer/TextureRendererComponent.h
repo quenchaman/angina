@@ -10,6 +10,8 @@ class TextureRendererComponent {
 public:
 	friend class TextureComponent;
 
+	~TextureRendererComponent();
+
 	void init(Window&);
 
 	void clear();

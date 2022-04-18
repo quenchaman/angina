@@ -21,5 +21,9 @@ void TextureRendererComponent::render(Texture& texture) {
 }
 
 void TextureRendererComponent::update() {
-	SDL_RenderPresent( sdlRenderer );
+	SDL_RenderPresent(sdlRenderer);
+}
+
+TextureRendererComponent::~TextureRendererComponent() {
+	SDL_DestroyRenderer(sdlRenderer);
 }
