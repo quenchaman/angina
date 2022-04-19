@@ -13,10 +13,11 @@ class Rectangle {
 public:
 	friend class TextureRendererComponent;
 
-	Rectangle(const Point& pos, const Dimensions& dim, const Color& color);
+	Rectangle(const Point& pos, const Dimensions& dim, const Color& color, bool fill = false);
 private:
 	SDL_Rect rect;
 	Color color;
+	bool fill;
 };
 
 #endif /* ENGINEV2_GRAPHICS_SDL_PRIMITIVES_RECTANGLE_H_ */

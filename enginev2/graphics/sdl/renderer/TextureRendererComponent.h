@@ -6,6 +6,8 @@ struct Window;
 struct Texture;
 struct TextureComponent;
 struct Rectangle;
+struct Pixel;
+struct Line;
 
 class TextureRendererComponent {
 public:
@@ -18,6 +20,8 @@ public:
 	void clear();
 	void render(Texture&);
 	void render(Rectangle&);
+	void render(Pixel&);
+	void render(Line&);
 	void update();
 private:
 	SDL_Renderer* sdlRenderer;

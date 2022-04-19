@@ -39,6 +39,18 @@ void GameEngine::drawGPU() {
 		textureRenderer.render(texture);
 	}
 
+	for(Rectangle& rect : rectangleComponent.rectangles) {
+		textureRenderer.render(rect);
+	}
+
+	for(Line& line : lineComponent.lines) {
+		textureRenderer.render(line);
+	}
+
+	for(Pixel& pixel : pixelComponent.pixels) {
+		textureRenderer.render(pixel);
+	}
+
 	textureRenderer.update();
 }
 

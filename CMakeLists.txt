@@ -33,6 +33,10 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/graphics/commons/primitives/Point.cpp
 	${DIR}/enginev2/graphics/commons/primitives/Color.h
 	${DIR}/enginev2/graphics/commons/primitives/Color.cpp
+	${DIR}/enginev2/graphics/commons/primitives/Pixel.h
+	${DIR}/enginev2/graphics/commons/primitives/Pixel.cpp
+	${DIR}/enginev2/graphics/commons/primitives/Line.h
+	${DIR}/enginev2/graphics/commons/primitives/Line.cpp
 	
 	${DIR}/enginev2/events/EventDefines.h
 	${DIR}/enginev2/events/GlobalInputComponent.h
@@ -42,6 +46,12 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/components/SurfaceComponent.cpp
 	${DIR}/enginev2/components/TextureComponent.h
 	${DIR}/enginev2/components/TextureComponent.cpp
+	${DIR}/enginev2/components/RectangleComponent.h
+	${DIR}/enginev2/components/RectangleComponent.cpp
+	${DIR}/enginev2/components/PixelComponent.h
+	${DIR}/enginev2/components/PixelComponent.cpp
+	${DIR}/enginev2/components/LineComponent.h
+	${DIR}/enginev2/components/LineComponent.cpp
 	
 	${DIR}/enginev2/GameEngine.h
 	${DIR}/enginev2/GameEngine.cpp
