@@ -9,6 +9,9 @@ It is written from scratch, with help of tutorials on [LazyFoo Game Tuts with SD
 
 Users of `angina` should inherit from the main `Engine` class and build their own game! :)
 
+## Drawing rectangles, lines, points
+![1](https://github.com/pancanin/angina/blob/rectangles-point-line-drawing/screenshots/rectangles-lines-points-drawing.png?raw=true)
+
 *Tested only on Windows and Linux.
 
 ## See a chess game developed with the engine :eyes:
