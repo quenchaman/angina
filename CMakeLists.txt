@@ -52,6 +52,7 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/components/PixelComponent.cpp
 	${DIR}/enginev2/components/LineComponent.h
 	${DIR}/enginev2/components/LineComponent.cpp
+	${DIR}/enginev2/components/PrimitivesComponent.h
 	
 	${DIR}/enginev2/GameEngine.h
 	${DIR}/enginev2/GameEngine.cpp

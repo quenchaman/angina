@@ -36,6 +36,7 @@ namespace Resources {
 	namespace Engine {
 		const std::string enginePrefix = prefix + "engine/";
 		const std::string montserratFont = enginePrefix + "montserrat/Montserrat-Bold.ttf";
+		const std::string eye = enginePrefix + "eye.png";
 	}
 
 	namespace MapBuilder {

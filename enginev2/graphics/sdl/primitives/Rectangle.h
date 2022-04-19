@@ -13,7 +13,17 @@ class Rectangle {
 public:
 	friend class TextureRendererComponent;
 
-	Rectangle(const Point& pos, const Dimensions& dim, const Color& color, bool fill = false);
+	Rectangle();
+
+	Rectangle(
+				const Point& pos,
+				const Dimensions& dim);
+
+	Rectangle(
+			const Point& pos,
+			const Dimensions& dim,
+			const Color& color,
+			bool fill = false);
 private:
 	SDL_Rect rect;
 	Color color;

@@ -14,6 +14,8 @@
 #include "enginev2/graphics/sdl/renderer/SurfaceRendererComponent.h"
 #include "enginev2/graphics/sdl/renderer/TextureRendererComponent.h"
 
+struct Rectangle;
+
 class GameEngine {
 public:
 	virtual ~GameEngine() = default;
@@ -26,6 +28,7 @@ public:
 
 	void loadSurfaceOptim(const std::string& resourcePath);
 	void loadTexture(const std::string& resourcePath);
+	void loadTexture(const std::string& resourcePath, const Rectangle&);
 
 	RectangleComponent rectangleComponent;
 	PixelComponent pixelComponent;
@@ -36,6 +39,7 @@ private:
 	Window win;
 	SurfaceComponent surfaceComponent;
 	TextureComponent textureComponent;
+	TextureComponent viewPortTextureComponent;
 
 	TextureRendererComponent textureRenderer;
 	bool gameOver = false;

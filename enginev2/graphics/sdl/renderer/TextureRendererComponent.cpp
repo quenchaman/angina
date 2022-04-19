@@ -25,6 +25,11 @@ void TextureRendererComponent::render(Texture& texture) {
 	SDL_RenderCopy(sdlRenderer, texture.texture, nullptr, nullptr);
 }
 
+void TextureRendererComponent::render(Texture& texture, Rectangle& viewPort) {
+	SDL_RenderSetViewport(sdlRenderer, &viewPort.rect);
+	render(texture);
+}
+
 void TextureRendererComponent::render(Rectangle& rect) {
 	 SDL_SetRenderDrawColor(sdlRenderer, rect.color.red, rect.color.green, rect.color.blue, rect.color.alpha);
 

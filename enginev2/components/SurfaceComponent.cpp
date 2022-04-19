@@ -4,14 +4,10 @@
 
 #include "enginev2/graphics/sdl/window/Window.h"
 
-const int32_t MAX_IMAGES = 1000000;
-
-SurfaceComponent::SurfaceComponent() {
-	surfaces.reserve(MAX_IMAGES);
-}
+SurfaceComponent::SurfaceComponent(): PrimitivesComponent(1000) {}
 
 void SurfaceComponent::loadSurface(const std::string& pathToResource) {
-	surfaces.emplace_back(pathToResource);
+	data.emplace_back(pathToResource);
 }
 
 void SurfaceComponent::loadSurfaceOptim(const std::string& pathToResource, Window& window) {
@@ -19,5 +15,5 @@ void SurfaceComponent::loadSurfaceOptim(const std::string& pathToResource, Windo
 
 	SDL_Surface* optimSurface = SDL_ConvertSurface(surface.surface, window.surface->format, 0);
 
-	surfaces.emplace_back(optimSurface);
+	data.emplace_back(optimSurface);
 }

@@ -19,6 +19,7 @@ public:
 
 	void clear();
 	void render(Texture&);
+	void render(Texture&, Rectangle& viewPort);
 	void render(Rectangle&);
 	void render(Pixel&);
 	void render(Line&);
