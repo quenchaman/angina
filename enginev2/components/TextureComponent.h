@@ -18,7 +18,7 @@ public:
 	void init(TextureLoaderComponent&);
 
 	void loadTexture(const std::string& resourcePath);
-	void loadTexture(const std::string& resourcePath, const Rectangle&);
+	void loadTexture(const std::string& resourcePath, const Rectangle& viewPort);
 
 private:
 	TextureLoaderComponent* textureLoader;
