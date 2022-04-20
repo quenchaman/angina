@@ -2,17 +2,21 @@
 
 #include "SDL_image.h"
 
-#include "enginev2/graphics/sdl/renderer/TextureRendererComponent.h"
+#include "enginev2/graphics/sdl/renderer/TextureLoaderComponent.h"
 
-TextureComponent::TextureComponent(): PrimitivesComponent(1000) {}
+TextureComponent::TextureComponent(): PrimitivesComponent(1000), textureLoader(nullptr) {}
 
-void TextureComponent::loadTexture(const std::string& resourcePath, TextureRendererComponent& renderer) {
-	SDL_Texture* texture = IMG_LoadTexture(renderer.sdlRenderer, resourcePath.c_str());
+void TextureComponent::init(TextureLoaderComponent& txLoader) {
+    textureLoader = &txLoader;
+}
+
+void TextureComponent::loadTexture(const std::string& resourcePath) {
+	SDL_Texture* texture = textureLoader->loadTexture(resourcePath);
 
 	data.emplace_back(texture);
 }
 
-void TextureComponent::loadTexture(const std::string& resourcePath, TextureRendererComponent& renderer, const Rectangle& rect) {
-	loadTexture(resourcePath, renderer);
+void TextureComponent::loadTexture(const std::string& resourcePath, const Rectangle& rect) {
+	loadTexture(resourcePath);
 	addViewPort(rect);
 }

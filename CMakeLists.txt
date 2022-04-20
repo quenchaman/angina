@@ -17,6 +17,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/graphics/sdl/renderer/SurfaceRendererComponent.cpp
 	${DIR}/enginev2/graphics/sdl/renderer/TextureRendererComponent.h
 	${DIR}/enginev2/graphics/sdl/renderer/TextureRendererComponent.cpp
+	${DIR}/enginev2/graphics/sdl/renderer/TextureLoaderComponent.h
+	${DIR}/enginev2/graphics/sdl/renderer/TextureLoaderComponent.cpp
 	${DIR}/enginev2/graphics/sdl/window/Window.h
 	${DIR}/enginev2/graphics/sdl/window/Window.cpp
 	${DIR}/enginev2/graphics/sdl/primitives/Surface.h
@@ -38,6 +40,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/graphics/commons/primitives/Line.h
 	${DIR}/enginev2/graphics/commons/primitives/Line.cpp
 	
+	${DIR}/enginev2/models/GameObject.h
+	${DIR}/enginev2/models/GameObject.cpp
+	
 	${DIR}/enginev2/events/EventDefines.h
 	${DIR}/enginev2/events/GlobalInputComponent.h
 	${DIR}/enginev2/events/GlobalInputComponent.cpp
@@ -52,6 +57,8 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/components/PixelComponent.cpp
 	${DIR}/enginev2/components/LineComponent.h
 	${DIR}/enginev2/components/LineComponent.cpp
+	${DIR}/enginev2/components/GameObjectComponent.h
+	${DIR}/enginev2/components/GameObjectComponent.cpp
 	${DIR}/enginev2/components/PrimitivesComponent.h
 	
 	${DIR}/enginev2/GameEngine.h

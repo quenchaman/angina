@@ -8,10 +8,12 @@ struct TextureComponent;
 struct Rectangle;
 struct Pixel;
 struct Line;
+struct GameObject;
 
 class TextureRendererComponent {
 public:
 	friend class TextureComponent;
+	friend class TextureLoaderComponent;
 
 	~TextureRendererComponent();
 
@@ -19,6 +21,7 @@ public:
 
 	void clear();
 	void render(Texture&);
+	void render(GameObject&);
 	void render(Texture&, Rectangle& viewPort);
 	void render(Rectangle&);
 	void render(Pixel&);

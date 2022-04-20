@@ -3,9 +3,12 @@
 #include <iostream>
 
 #include "SDL_image.h"
+#include "SDL_render.h"
 
-Texture::Texture(SDL_Texture *_texture) :
-		texture(_texture) {
+Texture::Texture(SDL_Texture *_texture):
+		texture(_texture), dim(Dimensions::UNDEFINED) {
+
+    SDL_QueryTexture(texture, NULL, NULL, &dim.w, &dim.h);
 }
 
 Texture::~Texture() {

@@ -1,6 +1,7 @@
 #include "TextureRendererComponent.h"
 
 #include "SDL_render.h"
+#include "SDL_shape.h"
 
 #include "enginev2/graphics/sdl/window/Window.h"
 #include "enginev2/graphics/sdl/primitives/Texture.h"
@@ -9,6 +10,7 @@
 #include "enginev2/graphics/commons/primitives/Pixel.h"
 #include "enginev2/graphics/commons/primitives/Line.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
+#include "enginev2/models/GameObject.h"
 
 void TextureRendererComponent::init(Window& window) {
 	// TODO: These hard-coded values should be made easily configurable.
@@ -23,6 +25,11 @@ void TextureRendererComponent::clear() {
 
 void TextureRendererComponent::render(Texture& texture) {
 	SDL_RenderCopy(sdlRenderer, texture.texture, nullptr, nullptr);
+}
+
+void TextureRendererComponent::render(GameObject& obj) {
+    SDL_Rect dest{obj.pos.x, obj.pos.y, obj.tx->dim.w, obj.tx->dim.h};
+    SDL_RenderCopy(sdlRenderer, obj.tx->texture, nullptr, &dest);
 }
 
 void TextureRendererComponent::render(Texture& texture, Rectangle& viewPort) {

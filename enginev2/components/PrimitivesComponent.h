@@ -23,7 +23,7 @@ protected:
 	}
 
 	std::vector<T> data;
-	std::unordered_map<int32_t, Rectangle> viewPorts;
+	std::unordered_map<size_t, Rectangle> viewPorts;
 };
 
 #endif /* ENGINEV2_COMPONENTS_PRIMITIVESCOMPONENT_H_ */

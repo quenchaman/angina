@@ -8,6 +8,9 @@ void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height
 	win.init(appTitle, Width(width), Height(height));
 	inputComponent.init();
 	textureRenderer.init(win);
+	textureLoader.init(textureRenderer);
+	objectComponent.init(textureLoader);
+	textureComponent.init(textureLoader);
 }
 
 void GameEngine::start() {
@@ -51,6 +54,10 @@ void GameEngine::drawGPU() {
 		textureRenderer.render(pixel);
 	}
 
+	for (GameObject& obj : objectComponent.data) {
+	    textureRenderer.render(obj);
+	}
+
 	for (size_t idx = 0; idx < viewPortTextureComponent.data.size(); idx++) {
 		textureRenderer.render(viewPortTextureComponent.data[idx], viewPortTextureComponent.viewPorts[idx + 1]);
 	}
@@ -60,13 +67,5 @@ void GameEngine::drawGPU() {
 
 void GameEngine::loadSurfaceOptim(const std::string& resourcePath) {
 	surfaceComponent.loadSurfaceOptim(resourcePath, win);
-}
-
-void GameEngine::loadTexture(const std::string& resourcePath) {
-	textureComponent.loadTexture(resourcePath, textureRenderer);
-}
-
-void GameEngine::loadTexture(const std::string& resourcePath, const Rectangle& rect) {
-	viewPortTextureComponent.loadTexture(resourcePath, textureRenderer, rect);
 }
 

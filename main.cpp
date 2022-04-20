@@ -25,13 +25,8 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 		const int32_t screenH = 480;
 		engine.init("Hello SDL", screenW, screenH);
 
-		Rectangle topleftViewport(Point::ZERO, Dimensions {screenW / 2, screenH / 2});
-		Rectangle toprightViewport(Point{screenW / 2, 0}, Dimensions {screenW / 2, screenH / 2});
-		Rectangle bottomViewport(Point{0, screenH / 2}, Dimensions {screenW, screenH / 2});
-
-		engine.loadTexture(Resources::Engine::eye, topleftViewport);
-		engine.loadTexture(Resources::Engine::eye, toprightViewport);
-		engine.loadTexture(Resources::Engine::eye, bottomViewport);
+		engine.textureComponent.loadTexture(Resources::Engine::bg);
+		engine.objectComponent.loadGameObject(Resources::Engine::human, Point {200, 200});
 
 		engine.start();
 	} catch (const BaseException &ex) {

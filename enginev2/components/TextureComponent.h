@@ -7,14 +7,21 @@
 
 #include "enginev2/components/PrimitivesComponent.h"
 
-struct TextureRendererComponent;
+struct TextureLoaderComponent;
 
 class TextureComponent : public PrimitivesComponent<Texture> {
 public:
+    friend class TextureLoaderComponent;
+
 	TextureComponent();
 
-	void loadTexture(const std::string& resourcePath, TextureRendererComponent&);
-	void loadTexture(const std::string& resourcePath, TextureRendererComponent&, const Rectangle&);
+	void init(TextureLoaderComponent&);
+
+	void loadTexture(const std::string& resourcePath);
+	void loadTexture(const std::string& resourcePath, const Rectangle&);
+
+private:
+	TextureLoaderComponent* textureLoader;
 };
 
 #endif /* ENGINEV2_COMPONENTS_TEXTURECOMPONENT_H_ */
