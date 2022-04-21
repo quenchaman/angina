@@ -25,8 +25,15 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 		const int32_t screenH = 480;
 		engine.init("Hello SDL", screenW, screenH);
 
-		engine.textureComponent.loadTexture(Resources::Engine::bg);
-		engine.objectComponent.loadGameObject(Resources::Engine::human, Point {200, 200});
+		Rectangle rect1(Point{0,0}, Dimensions{100, 100});
+		Rectangle rect2(Point{100,0}, Dimensions{100, 100});
+		Rectangle rect3(Point{0,100}, Dimensions{100, 100});
+		Rectangle rect4(Point{100,100}, Dimensions{100, 100});
+
+		engine.objectComponent.loadGameObjectSprite(Resources::Engine::balls, Point::ZERO, rect1);
+		engine.objectComponent.loadGameObjectSprite(Resources::Engine::balls, Point{205, 0}, rect2);
+		engine.objectComponent.loadGameObjectSprite(Resources::Engine::balls, Point{0, 205}, rect3);
+		engine.objectComponent.loadGameObjectSprite(Resources::Engine::balls, Point{205, 205}, rect4);
 
 		engine.start();
 	} catch (const BaseException &ex) {

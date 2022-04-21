@@ -5,7 +5,7 @@
 #include "SDL_image.h"
 #include "SDL_render.h"
 
-Texture::Texture(SDL_Texture* tx, Rectangle rect): texture(tx), dim(Dimensions::UNDEFINED), clip(&rect) {
+Texture::Texture(SDL_Texture* tx, Rectangle rect): texture(tx), dim(Dimensions::UNDEFINED), clip(rect) {
     SDL_QueryTexture(texture, NULL, NULL, &dim.w, &dim.h);
 }
 

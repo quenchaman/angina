@@ -39,6 +39,7 @@ namespace Resources {
 		const std::string eye = enginePrefix + "eye.png";
 		const std::string bg = enginePrefix + "sunnyday.png";
 		const std::string human = enginePrefix + "human.png";
+		const std::string balls = enginePrefix + "balls.png";
 	}
 
 	namespace MapBuilder {

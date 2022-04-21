@@ -16,6 +16,12 @@ void TextureComponent::loadTexture(const std::string& resourcePath) {
 	data.emplace_back(texture);
 }
 
+void TextureComponent::loadSpriteTexture(const std::string& resourcePath, const Rectangle& clip) {
+    SDL_Texture* texture = textureLoader->loadTexture(resourcePath);
+
+    data.emplace_back(texture, clip);
+}
+
 void TextureComponent::loadTexture(const std::string& resourcePath, const Rectangle& rect) {
 	loadTexture(resourcePath);
 	addViewPort(rect);

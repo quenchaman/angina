@@ -12,3 +12,8 @@ void GameObjectComponent::loadGameObject(const std::string& textureResourcePath,
     SDL_Texture* tx = txLoader->loadTexture(textureResourcePath);
     data.emplace_back(point, *tx);
 }
+
+void GameObjectComponent::loadGameObjectSprite(const std::string& textureResourcePath, const Point& point, const Rectangle& rect) {
+    SDL_Texture* tx = txLoader->loadTexture(textureResourcePath);
+    data.emplace_back(point, *tx, rect);
+}

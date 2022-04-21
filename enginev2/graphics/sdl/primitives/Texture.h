@@ -20,7 +20,7 @@ public:
 private:
 	SDL_Texture* texture;
 	Dimensions dim;
-	Rectangle* clip;
+	Rectangle clip;
 };
 
 #endif /* SDL_GRAPHICS_TEXTURE_H_ */

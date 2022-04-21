@@ -24,12 +24,12 @@ void TextureRendererComponent::clear() {
 }
 
 void TextureRendererComponent::render(Texture& texture) {
-	SDL_RenderCopy(sdlRenderer, texture.texture, nullptr, nullptr);
+    SDL_RenderCopy(sdlRenderer, texture.texture, &texture.clip.rect, nullptr);
 }
 
 void TextureRendererComponent::render(GameObject& obj) {
     SDL_Rect dest{obj.pos.x, obj.pos.y, obj.tx->dim.w, obj.tx->dim.h};
-    SDL_RenderCopy(sdlRenderer, obj.tx->texture, nullptr, &dest);
+    SDL_RenderCopy(sdlRenderer, obj.tx->texture, &obj.tx->clip.rect, &dest);
 }
 
 void TextureRendererComponent::render(Texture& texture, Rectangle& viewPort) {

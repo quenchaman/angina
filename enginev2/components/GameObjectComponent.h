@@ -17,6 +17,7 @@ public:
     void init(TextureLoaderComponent&);
 
     void loadGameObject(const std::string& textureResourcePath, const Point&);
+    void loadGameObjectSprite(const std::string& textureResourcePath, const Point&, const Rectangle&);
 private:
     TextureLoaderComponent* txLoader;
 };

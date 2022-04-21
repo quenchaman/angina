@@ -12,6 +12,7 @@ struct TextureRendererComponent;
 class Rectangle {
 public:
 	friend class TextureRendererComponent;
+	friend class GameObject;
 
 	Rectangle();
 
@@ -24,6 +25,8 @@ public:
 			const Dimensions& dim,
 			const Color& color,
 			bool fill = false);
+
+	bool operator==(const Rectangle&) const;
 private:
 	SDL_Rect rect;
 	Color color;
