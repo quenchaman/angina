@@ -17,6 +17,8 @@ public:
 	Texture(SDL_Texture*);
 	Texture(SDL_Texture*, Rectangle);
 	~Texture();
+
+	void modulateColor(const Color&) const;
 private:
 	SDL_Texture* texture;
 	Dimensions dim;

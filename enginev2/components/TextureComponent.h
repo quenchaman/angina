@@ -1,6 +1,7 @@
 #ifndef ENGINEV2_COMPONENTS_TEXTURECOMPONENT_H_
 #define ENGINEV2_COMPONENTS_TEXTURECOMPONENT_H_
 
+#include <cstdint>
 #include <string>
 
 #include "enginev2/graphics/sdl/primitives/Texture.h"
@@ -17,10 +18,11 @@ public:
 
 	void init(TextureLoaderComponent&);
 
-	void loadTexture(const std::string& resourcePath);
+	int32_t loadTexture(const std::string& resourcePath);
 	void loadSpriteTexture(const std::string& resourcePath, const Rectangle& clip);
 	void loadTexture(const std::string& resourcePath, const Rectangle& viewPort);
 
+	const Texture& getTexture(int32_t id) const;
 private:
 	TextureLoaderComponent* textureLoader;
 };

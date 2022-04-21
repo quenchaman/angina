@@ -19,3 +19,7 @@ Texture::~Texture() {
 
 	std::cout << "Texture destroyed" << std::endl;
 }
+
+void Texture::modulateColor(const Color& clr) const {
+    SDL_SetTextureColorMod(texture, clr.red, clr.green, clr.blue);
+}

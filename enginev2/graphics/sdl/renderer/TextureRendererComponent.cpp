@@ -24,7 +24,7 @@ void TextureRendererComponent::clear() {
 }
 
 void TextureRendererComponent::render(Texture& texture) {
-    SDL_RenderCopy(sdlRenderer, texture.texture, &texture.clip.rect, nullptr);
+    SDL_RenderCopy(sdlRenderer, texture.texture, nullptr, nullptr);
 }
 
 void TextureRendererComponent::render(GameObject& obj) {

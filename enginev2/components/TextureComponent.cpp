@@ -10,10 +10,12 @@ void TextureComponent::init(TextureLoaderComponent& txLoader) {
     textureLoader = &txLoader;
 }
 
-void TextureComponent::loadTexture(const std::string& resourcePath) {
+int32_t TextureComponent::loadTexture(const std::string& resourcePath) {
 	SDL_Texture* texture = textureLoader->loadTexture(resourcePath);
 
 	data.emplace_back(texture);
+
+	return static_cast<int32_t>(data.size()) - 1;
 }
 
 void TextureComponent::loadSpriteTexture(const std::string& resourcePath, const Rectangle& clip) {
@@ -25,4 +27,8 @@ void TextureComponent::loadSpriteTexture(const std::string& resourcePath, const 
 void TextureComponent::loadTexture(const std::string& resourcePath, const Rectangle& rect) {
 	loadTexture(resourcePath);
 	addViewPort(rect);
+}
+
+const Texture& TextureComponent::getTexture(int32_t id) const {
+    return data[id];
 }
