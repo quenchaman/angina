@@ -66,6 +66,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/GameEngine.h
 	${DIR}/enginev2/GameEngine.cpp
 	
+	${DIR}/examples/test/TestEngine.h
+	${DIR}/examples/test/TestEngine.cpp
+	
 	${DIR}/exceptions/ResourceLoadException.h
 	${DIR}/exceptions/ResourceLoadException.cpp
 	${DIR}/exceptions/GraphicsInitException.h

@@ -1,16 +1,18 @@
 #ifndef EXAMPLES_TEST_TESTENGINE_H_
 #define EXAMPLES_TEST_TESTENGINE_H_
 
-#include "engine/Engine.h"
+#include "enginev2/GameEngine.h"
 
-class TestEngine : public Engine {
+struct Texture;
+
+class TestEngine : public GameEngine {
 public:
 	TestEngine();
 
-	void init();
-	void update();
-	void handleLeftMouseClick(Point);
-	void handleBtnClick(int32_t idx);
+	void onStart();
+	void handleEvent();
+private:
+	Texture* txt;
 };
 
 #endif /* EXAMPLES_TEST_TESTENGINE_H_ */

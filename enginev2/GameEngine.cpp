@@ -14,15 +14,20 @@ void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height
 }
 
 void GameEngine::start() {
+    onStart();
+
 	while (!gameOver) {
-		inputComponent.poll();
+		bool hasEvents = inputComponent.poll();
 
 		if (inputComponent.hasExitEvent()) {
 			break;
 		}
 
+		if (hasEvents) {
+		    handleEvent();
+		}
+
 		drawGPU();
-		animationComponent.update();
 	}
 }
 

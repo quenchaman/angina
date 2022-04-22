@@ -3,9 +3,14 @@
 #include <iostream>
 
 #include "SDL_image.h"
-#include "SDL_render.h"
 
-Texture::Texture(SDL_Texture* tx, Rectangle rect): texture(tx), dim(Dimensions::UNDEFINED), clip(rect) {
+Texture::Texture(SDL_Texture* tx, Rectangle rect):
+    texture(tx),
+    dim(Dimensions::UNDEFINED),
+    clip(rect),
+    center(nullptr),
+    rotation(0.0),
+    flip(SDL_FLIP_NONE) {
     SDL_QueryTexture(texture, NULL, NULL, &dim.w, &dim.h);
 }
 
@@ -34,4 +39,19 @@ void Texture::setAlpha(uint8_t value) const {
 
 void Texture::setClip(const Rectangle& rect) {
 	clip = rect;
+}
+
+void Texture::rotateClockwise(double angle) {
+    rotation += angle;
+}
+
+void Texture::rotateCounterClockwise(double angle) {
+    rotation -= angle;
+}
+
+void Texture::activateHFlip() {
+    flip = SDL_FLIP_HORIZONTAL;
+}
+void Texture::activateVFlip() {
+    flip = SDL_FLIP_VERTICAL;
 }

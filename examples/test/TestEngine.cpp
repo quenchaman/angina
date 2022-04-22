@@ -4,20 +4,24 @@
 
 #include "resources/Resources.h"
 
-TestEngine::TestEngine(): Engine("Hello SDL!", Dimensions {640, 480}) {}
-
-void TestEngine::init() {
-	Object& obj = getFactory().createObject(Resources::TD::background, Point::ZERO, Dimensions {640, 480});
-	addComponent(obj);
+TestEngine::TestEngine(): GameEngine(), txt(nullptr) {
+    GameEngine::init("Hello SDL!", 640, 480);
 }
 
-void TestEngine::update() {
+void TestEngine::onStart() {
+    int32_t idx = textureComponent.loadTexture(Resources::Engine::arrow);
+    txt = &textureComponent.getTexture(idx);
 }
 
-void TestEngine::handleLeftMouseClick(Point p) {
-	std::cout << p << std::endl;
-}
-
-void TestEngine::handleBtnClick([[maybe_unused]]int32_t idx) {
-
+void TestEngine::handleEvent() {
+    if (inputComponent.touchEvent == TouchEvent::KEYBOARD_PRESS) {
+        if (inputComponent.key == Keyboard::KEY_UP) {
+            txt->rotateClockwise(3.1416);
+        } else if (inputComponent.key == Keyboard::KEY_DOWN) {
+            txt->rotateCounterClockwise(3.1416);
+        } else if (inputComponent.key == Keyboard::KEY_LEFT) {
+            txt->activateHFlip();
+            txt->rotateCounterClockwise(3.1416);
+        }
+    }
 }

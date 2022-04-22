@@ -27,18 +27,20 @@ public:
 	void init(const std::string& appTitle, int32_t width, int32_t height);
 	void start();
 
+	virtual void onStart() = 0;
+	virtual void handleEvent() = 0;
+
 	void drawCPU();
 	void drawGPU();
 
 	void loadSurfaceOptim(const std::string& resourcePath);
-
-	RectangleComponent rectangleComponent;
-	PixelComponent pixelComponent;
-	LineComponent lineComponent;
-	GameObjectComponent objectComponent;
-	TextureComponent textureComponent;
-	AnimationComponent animationComponent;
 protected:
+	RectangleComponent rectangleComponent;
+    PixelComponent pixelComponent;
+    LineComponent lineComponent;
+    GameObjectComponent objectComponent;
+    TextureComponent textureComponent;
+    AnimationComponent animationComponent;
 	GlobalInputComponent inputComponent;
 private:
 	Window win;
