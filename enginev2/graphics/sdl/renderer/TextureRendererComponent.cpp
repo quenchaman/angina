@@ -14,7 +14,7 @@
 
 void TextureRendererComponent::init(Window& window) {
 	// TODO: These hard-coded values should be made easily configurable.
-	sdlRenderer = SDL_CreateRenderer( window.sdlWindow, -1, SDL_RENDERER_ACCELERATED );
+	sdlRenderer = SDL_CreateRenderer( window.sdlWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
 	SDL_SetRenderDrawBlendMode(sdlRenderer, SDL_BLENDMODE_BLEND);
 }
 
@@ -24,7 +24,8 @@ void TextureRendererComponent::clear() {
 }
 
 void TextureRendererComponent::render(Texture& texture) {
-    SDL_RenderCopy(sdlRenderer, texture.texture, nullptr, nullptr);
+    SDL_Rect dest{0, 0, texture.clip.rect.w, texture.clip.rect.h};
+    SDL_RenderCopy(sdlRenderer, texture.texture, &texture.clip.rect, &dest);
 }
 
 void TextureRendererComponent::render(GameObject& obj) {

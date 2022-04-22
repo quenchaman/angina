@@ -41,6 +41,7 @@ namespace Resources {
 		const std::string human = enginePrefix + "human.png";
 		const std::string balls = enginePrefix + "balls.png";
 		const std::string windows = enginePrefix + "windows.png";
+		const std::string sticky = enginePrefix + "stickfigure.png";
 	}
 
 	namespace MapBuilder {

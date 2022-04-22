@@ -2,7 +2,13 @@
 
 #include "enginev2/graphics/sdl/primitives/Texture.h"
 
-AnimationComponent::AnimationComponent(Texture& txt, int32_t frames): tx(txt), frameCount(frames), index(0) {}
+AnimationComponent::AnimationComponent(): tx(nullptr), frameCount(0), index(0), framesPerUpdate(0), currentFrame(0) {}
+
+void AnimationComponent::init(Texture& texture, int32_t frames, int32_t frameRate) {
+    tx = &texture;
+    frameCount = frames;
+    framesPerUpdate = frameRate / frameCount;
+}
 
 void AnimationComponent::addFrame(const Rectangle& rect) {
 	if (index >= frameCount - 1) return;
@@ -11,7 +17,12 @@ void AnimationComponent::addFrame(const Rectangle& rect) {
 }
 
 void AnimationComponent::update() {
-	tx.setClip(frames[index++]);
+    if (currentFrame == framesPerUpdate) {
+        tx->setClip(frames[index++]);
+        currentFrame = 0;
+    } else {
+        currentFrame++;
+    }
 
 	if (index >= frameCount - 1) {
 		index = 0;

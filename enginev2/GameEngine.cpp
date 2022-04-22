@@ -22,6 +22,7 @@ void GameEngine::start() {
 		}
 
 		drawGPU();
+		animationComponent.update();
 	}
 }
 

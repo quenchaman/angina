@@ -25,12 +25,19 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 		const int32_t screenH = 480;
 		engine.init("Hello SDL", screenW, screenH);
 
-		int32_t idx = engine.textureComponent.loadTexture(Resources::Engine::windows);
-		const Texture& tx = engine.textureComponent.getTexture(idx);
+		int32_t idx = engine.textureComponent.loadTexture(Resources::Engine::sticky);
+		Texture& tx = engine.textureComponent.getTexture(idx);
+		engine.animationComponent.init(tx, 4, 60);
 
-		tx.modulateColor(Color{255, 128, 255, 255});
-		tx.activateBlend();
-		tx.setAlpha(32);
+		Rectangle frame1(Point{0, 0}, Dimensions{64, 205});
+		Rectangle frame2(Point{64, 0}, Dimensions{64, 205});
+		Rectangle frame3(Point{128, 0}, Dimensions{64, 205});
+		Rectangle frame4(Point{192, 0}, Dimensions{64, 205});
+
+		engine.animationComponent.addFrame(frame1);
+		engine.animationComponent.addFrame(frame2);
+		engine.animationComponent.addFrame(frame3);
+		engine.animationComponent.addFrame(frame4);
 
 		engine.start();
 	} catch (const BaseException &ex) {

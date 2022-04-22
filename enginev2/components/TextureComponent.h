@@ -22,7 +22,7 @@ public:
 	void loadSpriteTexture(const std::string& resourcePath, const Rectangle& clip);
 	void loadTexture(const std::string& resourcePath, const Rectangle& viewPort);
 
-	const Texture& getTexture(int32_t id) const;
+	Texture& getTexture(int32_t id);
 private:
 	TextureLoaderComponent* textureLoader;
 };

@@ -12,6 +12,7 @@
 #include "enginev2/components/PixelComponent.h"
 #include "enginev2/components/LineComponent.h"
 #include "enginev2/components/GameObjectComponent.h"
+#include "enginev2/components/AnimationComponent.h"
 #include "enginev2/graphics/sdl/renderer/SurfaceRendererComponent.h"
 #include "enginev2/graphics/sdl/renderer/TextureRendererComponent.h"
 #include "enginev2/graphics/sdl/renderer/TextureLoaderComponent.h"
@@ -36,6 +37,7 @@ public:
 	LineComponent lineComponent;
 	GameObjectComponent objectComponent;
 	TextureComponent textureComponent;
+	AnimationComponent animationComponent;
 protected:
 	GlobalInputComponent inputComponent;
 private:

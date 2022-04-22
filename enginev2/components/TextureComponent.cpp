@@ -29,6 +29,6 @@ void TextureComponent::loadTexture(const std::string& resourcePath, const Rectan
 	addViewPort(rect);
 }
 
-const Texture& TextureComponent::getTexture(int32_t id) const {
+Texture& TextureComponent::getTexture(int32_t id) {
     return data[id];
 }
