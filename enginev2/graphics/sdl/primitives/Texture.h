@@ -19,6 +19,7 @@ public:
 	~Texture();
 
 	void modulateColor(const Color&) const;
+	void activateBlendMode() const;
 private:
 	SDL_Texture* texture;
 	Dimensions dim;
