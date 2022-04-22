@@ -29,6 +29,8 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 		const Texture& tx = engine.textureComponent.getTexture(idx);
 
 		tx.modulateColor(Color{255, 128, 255, 255});
+		tx.activateBlend();
+		tx.setAlpha(32);
 
 		engine.start();
 	} catch (const BaseException &ex) {

@@ -23,3 +23,15 @@ Texture::~Texture() {
 void Texture::modulateColor(const Color& clr) const {
     SDL_SetTextureColorMod(texture, clr.red, clr.green, clr.blue);
 }
+
+void Texture::activateBlend() const {
+	 SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
+}
+
+void Texture::setAlpha(uint8_t value) const {
+	 SDL_SetTextureAlphaMod(texture, value);
+}
+
+void Texture::setClip(const Rectangle& rect) {
+	clip = rect;
+}

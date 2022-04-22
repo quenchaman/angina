@@ -18,8 +18,10 @@ public:
 	Texture(SDL_Texture*, Rectangle);
 	~Texture();
 
+	void setClip(const Rectangle&);
 	void modulateColor(const Color&) const;
-	void activateBlendMode() const;
+	void activateBlend() const;
+	void setAlpha(uint8_t value) const;
 private:
 	SDL_Texture* texture;
 	Dimensions dim;
