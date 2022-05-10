@@ -13,6 +13,7 @@ public:
 	LineComponent();
 
 	void loadLine(const Point&, const Point&, const Color&);
+	void loadLine(const Line&);
 };
 
 #endif /* ENGINEV2_COMPONENTS_LINECOMPONENT_H_ */

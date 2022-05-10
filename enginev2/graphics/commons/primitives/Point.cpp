@@ -31,6 +31,14 @@ bool Point::operator>(const Point& other) const {
 	return x > other.x && y > other.y;
 }
 
+Point operator*(int32_t scalar, const Point& p) {
+	return {p.x * scalar, p.y * scalar};
+}
+
+Point operator*(const Point& p, int32_t scalar) {
+	return {p.x * scalar, p.y * scalar};
+}
+
 std::ostream& operator<<(std::ostream &os, const Point &point) {
 	return os << "X: " << point.x << "; Y: " << point.y;
 }

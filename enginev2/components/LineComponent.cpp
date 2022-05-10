@@ -7,3 +7,7 @@ LineComponent::LineComponent(): PrimitivesComponent(2048) {}
 void LineComponent::loadLine(const Point& start, const Point& end, const Color& clr) {
 	data.emplace_back(start, end, clr);
 }
+
+void LineComponent::loadLine(const Line& line) {
+	data.push_back(line);
+}

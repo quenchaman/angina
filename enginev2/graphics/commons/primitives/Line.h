@@ -1,8 +1,8 @@
 #ifndef RENDERER_PRIMITIVES_LINE_H_
 #define RENDERER_PRIMITIVES_LINE_H_
 
-#include "renderer/primitives/Point.h"
-#include "renderer/primitives/Color.h"
+#include "enginev2/graphics/commons/primitives/Point.h"
+#include "enginev2/graphics/commons/primitives/Color.h"
 
 struct TextureRendererComponent;
 
@@ -12,6 +12,8 @@ public:
 
 	Line(const Point& start, const Point& end, const Color&);
 
+	Line operator+(const Line& other) const;
+	Line operator*(int32_t scalar);
 private:
 	Point a;
 	Point b;
