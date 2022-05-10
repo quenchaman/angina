@@ -11,6 +11,8 @@ Users of `angina` should inherit from the main `Engine` class and build their ow
 
 *Tested only on Windows and Linux.
 
+![serpinski](https://github.com/pancanin/angina/blob/main/screenshots/serpinski.png?raw=true)
+
 ## See a chess game developed with the engine :eyes:
 
 ![1](https://github.com/pancanin/angina/blob/main/screenshots/cpu_vs_cpu.gif?raw=true)

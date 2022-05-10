@@ -30,4 +30,6 @@ Point operator*(int32_t scalar, const Point& p);
 
 Point operator*(const Point& p, int32_t scalar);
 
+Point operator/(const Point& p, int32_t scalar);
+
 #endif /* SDL_PRIMITIVES_POINT_H_ */

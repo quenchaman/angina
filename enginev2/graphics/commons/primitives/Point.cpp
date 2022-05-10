@@ -39,6 +39,10 @@ Point operator*(const Point& p, int32_t scalar) {
 	return {p.x * scalar, p.y * scalar};
 }
 
+Point operator/(const Point& p, int32_t scalar) {
+  return {p.x / scalar, p.y / scalar};
+}
+
 std::ostream& operator<<(std::ostream &os, const Point &point) {
 	return os << "X: " << point.x << "; Y: " << point.y;
 }
