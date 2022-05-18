@@ -9,6 +9,7 @@
 #include "resources/Resources.h"
 
 #include "enginev2/graphics/commons/primitives/Line.h"
+#include "enginev2/graphics/sdl/primitives/Texture.h"
 
 TestEngine::TestEngine(): GameEngine(), txt(nullptr) {
 	GameEngine::init("Hello SDL!", 960, 860);
@@ -17,11 +18,11 @@ TestEngine::TestEngine(): GameEngine(), txt(nullptr) {
 void TestEngine::onStart() {
   //const int32_t width = 960;
   //const int32_t height = 860;
-	SDL_Surface* surface = IMG_Load(Resources::Engine::arrow.c_str());
+	SDL_Surface* surface = IMG_Load(Resources::Engine::maze101.c_str());
 	SDL_Texture* texture = nullptr;
 	SDL_Surface* formattedSurface = SDL_ConvertSurfaceFormat( surface, SDL_GetWindowPixelFormat( win.sdlWindow ), 0 );
 	texture = SDL_CreateTexture( textureRenderer.sdlRenderer, SDL_GetWindowPixelFormat( win.sdlWindow ), SDL_TEXTUREACCESS_STREAMING, formattedSurface->w, formattedSurface->h );
-
+	Texture wrapped = Texture(texture);
 	void* mPixels;
 	int32_t mPitch;
 	[[maybe_unused]]int32_t mWidth;

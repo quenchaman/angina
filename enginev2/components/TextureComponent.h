@@ -21,6 +21,7 @@ public:
 	int32_t loadTexture(const std::string& resourcePath);
 	void loadSpriteTexture(const std::string& resourcePath, const Rectangle& clip);
 	void loadTexture(const std::string& resourcePath, const Rectangle& viewPort);
+	void loadTexture(Texture&);
 
 	Texture& getTexture(int32_t id);
 private:

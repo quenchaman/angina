@@ -43,6 +43,7 @@ namespace Resources {
 		const std::string windows = enginePrefix + "windows.png";
 		const std::string sticky = enginePrefix + "stickfigure.png";
 		const std::string arrow = enginePrefix + "arrow.png";
+		const std::string maze101 = enginePrefix + "maze-101.png";
 	}
 
 	namespace MapBuilder {
