@@ -87,7 +87,7 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
 enable_target_warnings(${PROJECT_NAME})
-
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -z stack-size=1000000000")
 find_package(SDL2 REQUIRED)
 
 if (WIN32)

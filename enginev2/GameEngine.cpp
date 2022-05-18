@@ -1,5 +1,7 @@
 #include "GameEngine.h"
 
+#include "SDL.h"
+
 #include "enginev2/graphics/commons/primitives/Dimensions.h"
 #include "enginev2/graphics/commons/primitives/Width.h"
 #include "enginev2/graphics/commons/primitives/Height.h"

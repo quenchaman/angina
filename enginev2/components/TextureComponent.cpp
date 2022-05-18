@@ -32,3 +32,7 @@ void TextureComponent::loadTexture(const std::string& resourcePath, const Rectan
 Texture& TextureComponent::getTexture(int32_t id) {
     return data[id];
 }
+
+void TextureComponent::loadTexture(Texture& t) {
+  data.push_back(t);
+}
