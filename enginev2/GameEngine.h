@@ -42,8 +42,8 @@ protected:
     TextureComponent textureComponent;
     AnimationComponent animationComponent;
 	GlobalInputComponent inputComponent;
-private:
 	Window win;
+protected:
 	SurfaceComponent surfaceComponent;
 
 	TextureComponent viewPortTextureComponent;

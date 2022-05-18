@@ -1,6 +1,10 @@
 #include "TestEngine.h"
 
 #include <iostream>
+#include <string.h>
+
+#include "SDL.h"
+#include "SDL_image.h"
 
 #include "resources/Resources.h"
 
@@ -11,51 +15,32 @@ TestEngine::TestEngine(): GameEngine(), txt(nullptr) {
 }
 
 void TestEngine::onStart() {
-  const int32_t width = 960;
-  const int32_t height = 860;
-	Point origin = Point(width/2, 0);
-	Line lr(origin, Point(0, height), Color::RED);
-	Line lg(origin, Point(width, height), Color::GREEN);
+  //const int32_t width = 960;
+  //const int32_t height = 860;
+	SDL_Surface* surface = IMG_Load(Resources::Engine::arrow.c_str());
+	SDL_Texture* texture = nullptr;
+	SDL_Surface* formattedSurface = SDL_ConvertSurfaceFormat( surface, SDL_GetWindowPixelFormat( win.sdlWindow ), 0 );
+	texture = SDL_CreateTexture( textureRenderer.sdlRenderer, SDL_GetWindowPixelFormat( win.sdlWindow ), SDL_TEXTUREACCESS_STREAMING, formattedSurface->w, formattedSurface->h );
 
-	drawSerpinski(lr, lg, 1);
+	void* mPixels;
+	int32_t mPitch;
+	[[maybe_unused]]int32_t mWidth;
+	int32_t mHeight;
+
+	SDL_LockTexture( texture, NULL, &mPixels, &mPitch );
+
+	memcpy( mPixels, formattedSurface->pixels, formattedSurface->pitch * formattedSurface->h );
+
+	[[maybe_unused]]uint32_t* pixels = (uint32_t*)mPixels;
+	mWidth = formattedSurface->w;
+	mHeight = formattedSurface->h;
+	int32_t pixelCount = (mPitch / 4) * mHeight;
+
+	std::cout << pixelCount << std::endl;
+
 }
 
 void TestEngine::handleEvent() {
 
 }
 
-void TestEngine::drawSerpinski(const Line& lr, const Line& lg, int32_t level) {
-  if (level > maxLevels) {
-    return;
-  }
-
-  Line connectLrLg = lr.connect(lg);
-  Line m = lr.midpoint(lg);
-  Line n = connectLrLg.midpoint(lr.reversed());
-  Line o = connectLrLg.reversed().midpoint(lg.reversed());
-
-  Line om = Line(o.getEnd(), m.getEnd(), Color::BLACK);
-  Line mn = Line(m.getEnd(), n.getEnd(), Color::BLACK);
-  Line no = Line(n.getEnd(), o.getEnd(), Color::BLACK);
-
-  lineComponent.loadLine(lr);
-  lineComponent.loadLine(lg);
-  lineComponent.loadLine(connectLrLg);
-  lineComponent.loadLine(om);
-  lineComponent.loadLine(mn);
-  lineComponent.loadLine(no);
-
-  Line co = Line(lr.getOrigin(), o.getEnd(), Color::RED);
-  Line cn = Line(lr.getOrigin(), n.getEnd(), Color::RED);
-
-  drawSerpinski(co, cn, level + 1);
-
-  Line oa = Line(om.getOrigin(), lr.getEnd(), Color::GREEN);
-  Line om1 = Line(om.getOrigin(), m.getEnd(), Color::GREEN);
-  drawSerpinski(oa, om1, level + 1);
-
-  Line nm = Line(no.getOrigin(), m.getEnd(), Color::BLUE);
-  Line nb = Line(no.getOrigin(), lg.getEnd(), Color::BLUE);
-
-  drawSerpinski(nm, nb, level + 1);
-}

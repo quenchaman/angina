@@ -27,7 +27,6 @@ public:
 	void render(Pixel&);
 	void render(Line&);
 	void update();
-private:
 	SDL_Renderer* sdlRenderer;
 };
 
