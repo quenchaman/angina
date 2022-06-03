@@ -79,6 +79,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/exceptions/BaseException.cpp
 	
 	${DIR}/resources/Resources.h
+	
+	${DIR}/core/math/geometry/Geometry.h
+	${DIR}/core/math/geometry/Geometry.cpp
 )
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy_directory

@@ -1,61 +1,114 @@
 #include "TestEngine.h"
 
 #include <iostream>
-
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+#include <utility>
 #include "resources/Resources.h"
+#include "core/math/geometry/Geometry.h"
 
+#include "enginev2/graphics/commons/primitives/Dimensions.h"
 #include "enginev2/graphics/commons/primitives/Line.h"
+#include "enginev2/graphics/commons/primitives/Color.h"
 
-TestEngine::TestEngine(): GameEngine(), txt(nullptr) {
-	GameEngine::init("Hello SDL!", 960, 860);
+const int32_t width = 960;
+const int32_t height = 860;
+const int32_t squareSize = 4;
+
+TestEngine::TestEngine(): GameEngine() {
+	GameEngine::init("Hello SDL!", width, height);
 }
 
 void TestEngine::onStart() {
-  const int32_t width = 960;
-  const int32_t height = 860;
-	Point origin = Point(width/2, 0);
-	Line lr(origin, Point(0, height), Color::RED);
-	Line lg(origin, Point(width, height), Color::GREEN);
+	srand(time(NULL));
 
-	drawSerpinski(lr, lg, 1);
+	for (int32_t i = 0; i < pointCount; i++) {
+		int32_t randomX = rand() % width;
+		int32_t randomY = rand() % height;
+
+		points[i] = Point(randomX, randomY);
+		Dimensions dim = Dimensions(squareSize, squareSize);
+		rectangleComponent.loadRectangle(points[i], dim, Color::RED, true);
+	}
+
+	findClosestForAllPoints();
 }
 
 void TestEngine::handleEvent() {
+	if (inputComponent.type == EventType::MOUSE_RELEASE) {
+		Point p = findRectOrigin(inputComponent.posX, inputComponent.posY);
 
+		std::cout << "Point clicked " << p << std::endl;
+
+		Point closest = findClosestPoint(p);
+
+		if (closest != Point::UNDEFINED) {
+			std::cout << "The closest point is with coordinates " << closest << std::endl;
+
+			lineComponent.clear();
+
+			Point offsetFromOrigin = Point(squareSize / 2, squareSize / 2);
+
+			lineComponent.loadLine(p + offsetFromOrigin, closest + offsetFromOrigin, Color::GREEN);
+		} else {
+			std::cout << "No close point found" << std::endl;
+		}
+	}
 }
 
-void TestEngine::drawSerpinski(const Line& lr, const Line& lg, int32_t level) {
-  if (level > maxLevels) {
-    return;
-  }
+Point TestEngine::findRectOrigin(int32_t x, int32_t y) const {
+	for (int32_t i = 0; i < pointCount; i++) {
+		Point p = points[i];
+		PointPair origin = std::make_pair(p.x, p.y);
+		DimensionsPair dims = std::make_pair(squareSize, squareSize);
+		PointPair query = std::make_pair(x, y);
 
-  Line connectLrLg = lr.connect(lg);
-  Line m = lr.midpoint(lg);
-  Line n = connectLrLg.midpoint(lr.reversed());
-  Line o = connectLrLg.reversed().midpoint(lg.reversed());
+		bool isInsideRect = Geometry::isInRect(origin, dims, query);
 
-  Line om = Line(o.getEnd(), m.getEnd(), Color::BLACK);
-  Line mn = Line(m.getEnd(), n.getEnd(), Color::BLACK);
-  Line no = Line(n.getEnd(), o.getEnd(), Color::BLACK);
+		if (isInsideRect) {
+			return p;
+		}
+	}
 
-  lineComponent.loadLine(lr);
-  lineComponent.loadLine(lg);
-  lineComponent.loadLine(connectLrLg);
-  lineComponent.loadLine(om);
-  lineComponent.loadLine(mn);
-  lineComponent.loadLine(no);
+	return Point::UNDEFINED;
+}
 
-  Line co = Line(lr.getOrigin(), o.getEnd(), Color::RED);
-  Line cn = Line(lr.getOrigin(), n.getEnd(), Color::RED);
+int32_t TestEngine::distanceBetweenPoints(const Point& p1, const Point& p2) const {
+	int32_t deltaX = p1.x - p2.x;
+	int32_t deltaY = p1.y - p2.y;
+	return static_cast<int32_t>(sqrt(deltaX * deltaX + deltaY * deltaY));
+}
 
-  drawSerpinski(co, cn, level + 1);
+Point TestEngine::findClosestPoint(const Point& p) const {
+	Point closestPoint = Point::UNDEFINED;
+	int32_t smallestDistance = width + 1;
 
-  Line oa = Line(om.getOrigin(), lr.getEnd(), Color::GREEN);
-  Line om1 = Line(om.getOrigin(), m.getEnd(), Color::GREEN);
-  drawSerpinski(oa, om1, level + 1);
+	for (int32_t i = 0; i < pointCount; i++) {
+		Point candidate = points[i];
 
-  Line nm = Line(no.getOrigin(), m.getEnd(), Color::BLUE);
-  Line nb = Line(no.getOrigin(), lg.getEnd(), Color::BLUE);
+		if (candidate == p) continue;
 
-  drawSerpinski(nm, nb, level + 1);
+		int32_t distance = distanceBetweenPoints(p, candidate);
+
+		if (distance < smallestDistance) {
+			closestPoint = candidate;
+			smallestDistance = distance;
+		}
+	}
+
+	return closestPoint;
+}
+
+void TestEngine::findClosestForAllPoints() {
+	Point offsetFromOrigin = Point(squareSize / 2, squareSize / 2);
+
+	for (int32_t i = 0; i < pointCount; i++) {
+			Point candidate = points[i];
+			Point closest = findClosestPoint(candidate);
+
+			if (closest != Point::UNDEFINED) {
+				lineComponent.loadLine(candidate + offsetFromOrigin, closest + offsetFromOrigin, Color::GREEN);
+			}
+	}
 }

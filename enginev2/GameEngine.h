@@ -36,11 +36,11 @@ public:
 	void loadSurfaceOptim(const std::string& resourcePath);
 protected:
 	RectangleComponent rectangleComponent;
-    PixelComponent pixelComponent;
-    LineComponent lineComponent;
-    GameObjectComponent objectComponent;
-    TextureComponent textureComponent;
-    AnimationComponent animationComponent;
+	PixelComponent pixelComponent;
+	LineComponent lineComponent;
+	GameObjectComponent objectComponent;
+	TextureComponent textureComponent;
+	AnimationComponent animationComponent;
 	GlobalInputComponent inputComponent;
 private:
 	Window win;

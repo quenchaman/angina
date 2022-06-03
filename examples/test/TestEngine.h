@@ -2,6 +2,7 @@
 #define EXAMPLES_TEST_TESTENGINE_H_
 
 #include "enginev2/GameEngine.h"
+#include "enginev2/graphics/commons/primitives/Point.h"
 
 struct Texture;
 
@@ -11,11 +12,14 @@ public:
 
 	void onStart();
 	void handleEvent();
-
-	void drawSerpinski(const Line& l1, const Line& l2, int32_t level);
 private:
-	Texture* txt;
-	int32_t maxLevels = 10;
+	static const int32_t pointCount = 1000;
+	Point points[pointCount];
+
+	Point findRectOrigin(int32_t x, int32_t y) const;
+	int32_t distanceBetweenPoints(const Point& p1, const Point& p2) const;
+	Point findClosestPoint(const Point& p) const;
+	void findClosestForAllPoints();
 };
 
 #endif /* EXAMPLES_TEST_TESTENGINE_H_ */

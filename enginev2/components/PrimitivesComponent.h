@@ -13,6 +13,11 @@ template <typename T>
 class PrimitivesComponent {
 public:
 	friend class GameEngine;
+
+	void clear() {
+		data.capacity();
+		viewPorts.clear();
+	}
 protected:
 	PrimitivesComponent(int32_t maxEntries) {
 		data.reserve(maxEntries);
