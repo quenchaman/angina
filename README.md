@@ -2,4 +2,4 @@
 
 ### Clusters of close points
 
-![clusters](https://github.com/pancanin/angina/blob/spatial-algos/screenshots/close-point-clusters.png?raw=true)
+![clusters](https://github.com/pancanin/angina/blob/spatial-algos/screenshots/close-point-clusters.PNG?raw=true)
