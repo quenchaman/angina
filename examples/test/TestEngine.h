@@ -13,7 +13,7 @@ public:
 	void onStart();
 	void handleEvent();
 private:
-	static const int32_t pointCount = 1000;
+	static const int32_t pointCount = 5000;
 	Point points[pointCount];
 
 	Point findRectOrigin(int32_t x, int32_t y) const;

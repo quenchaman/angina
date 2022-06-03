@@ -31,8 +31,6 @@ void TestEngine::onStart() {
 		Dimensions dim = Dimensions(squareSize, squareSize);
 		rectangleComponent.loadRectangle(points[i], dim, Color::RED, true);
 	}
-
-	findClosestForAllPoints();
 }
 
 void TestEngine::handleEvent() {
