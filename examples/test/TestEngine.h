@@ -13,13 +13,10 @@ public:
 	void onStart();
 	void handleEvent();
 private:
-	static const int32_t pointCount = 5000;
+	static const int32_t pointCount = 64;
 	Point points[pointCount];
 
-	Point findRectOrigin(int32_t x, int32_t y) const;
-	int32_t distanceBetweenPoints(const Point& p1, const Point& p2) const;
-	Point findClosestPoint(const Point& p) const;
-	void findClosestForAllPoints();
+	std::vector<Point> outlineConvex();
 };
 
 #endif /* EXAMPLES_TEST_TESTENGINE_H_ */

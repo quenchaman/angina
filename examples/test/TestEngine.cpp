@@ -5,6 +5,8 @@
 #include <time.h>
 #include <math.h>
 #include <utility>
+#include <vector>
+#include <unordered_set>
 #include "resources/Resources.h"
 #include "core/math/geometry/Geometry.h"
 
@@ -21,92 +23,75 @@ TestEngine::TestEngine(): GameEngine() {
 }
 
 void TestEngine::onStart() {
-	srand(time(NULL));
+	srand(static_cast<int32_t>(time(NULL)));
 
 	for (int32_t i = 0; i < pointCount; i++) {
-		int32_t randomX = rand() % width;
-		int32_t randomY = rand() % height;
+		int32_t randomX = rand() % width / 2 + (width / 4);
+		int32_t randomY = rand() % height / 2 + (height / 4);
 
 		points[i] = Point(randomX, randomY);
 		Dimensions dim = Dimensions(squareSize, squareSize);
 		rectangleComponent.loadRectangle(points[i], dim, Color::RED, true);
 	}
+
+	std::vector<Point> ps = outlineConvex();
+
+	for (size_t i = 1; i < ps.size(); i++) {
+	  Point current = ps[i];
+	  Point previous = ps[i - 1];
+
+	  lineComponent.loadLine(current, previous, Color::GREEN);
+	}
 }
 
 void TestEngine::handleEvent() {
-	if (inputComponent.type == EventType::MOUSE_RELEASE) {
-		Point p = findRectOrigin(inputComponent.posX, inputComponent.posY);
 
-		std::cout << "Point clicked " << p << std::endl;
-
-		Point closest = findClosestPoint(p);
-
-		if (closest != Point::UNDEFINED) {
-			std::cout << "The closest point is with coordinates " << closest << std::endl;
-
-			lineComponent.clear();
-
-			Point offsetFromOrigin = Point(squareSize / 2, squareSize / 2);
-
-			lineComponent.loadLine(p + offsetFromOrigin, closest + offsetFromOrigin, Color::GREEN);
-		} else {
-			std::cout << "No close point found" << std::endl;
-		}
-	}
 }
 
-Point TestEngine::findRectOrigin(int32_t x, int32_t y) const {
-	for (int32_t i = 0; i < pointCount; i++) {
-		Point p = points[i];
-		PointPair origin = std::make_pair(p.x, p.y);
-		DimensionsPair dims = std::make_pair(squareSize, squareSize);
-		PointPair query = std::make_pair(x, y);
+std::vector<Point> TestEngine::outlineConvex() {
+  Point current = Point::UNDEFINED;
 
-		bool isInsideRect = Geometry::isInRect(origin, dims, query);
+  for (int32_t i = 0; i < pointCount; i++) {
+    Point candidate = points[i];
 
-		if (isInsideRect) {
-			return p;
-		}
-	}
+    if (candidate.x < current.x) {
+      current = candidate;
+    } else if (candidate.x == current.x && candidate.y > current.y) {
+      current = candidate;
+    }
+  }
 
-	return Point::UNDEFINED;
-}
+  std::unordered_set<Point, Point::Hash> convexPointsSet;
+  std::vector<Point> convexPoints;
+  convexPoints.push_back(current);
 
-int32_t TestEngine::distanceBetweenPoints(const Point& p1, const Point& p2) const {
-	int32_t deltaX = p1.x - p2.x;
-	int32_t deltaY = p1.y - p2.y;
-	return static_cast<int32_t>(sqrt(deltaX * deltaX + deltaY * deltaY));
-}
+  do {
+    int32_t bestDotScore = -1;
+    Point convexPoint = Point::UNDEFINED;
 
-Point TestEngine::findClosestPoint(const Point& p) const {
-	Point closestPoint = Point::UNDEFINED;
-	int32_t smallestDistance = width + 1;
+    for (int32_t i = 0; i < pointCount; i++) {
+        Point candidate = points[i];
 
-	for (int32_t i = 0; i < pointCount; i++) {
-		Point candidate = points[i];
+        if (candidate != current && convexPointsSet.find(candidate) == convexPointsSet.end()) {
+          Point negatedLeftMostPoint = Point(0, 0) - current;
+          Point vectorBetweenCurrentAndCandidate = candidate - current;
 
-		if (candidate == p) continue;
+          int32_t dotProduct = abs(negatedLeftMostPoint.x * vectorBetweenCurrentAndCandidate.x +
+              negatedLeftMostPoint.y * vectorBetweenCurrentAndCandidate.y);
 
-		int32_t distance = distanceBetweenPoints(p, candidate);
+          if (dotProduct > bestDotScore) {
+            bestDotScore = dotProduct;
+            convexPoint = candidate;
+          }
+        }
+    }
 
-		if (distance < smallestDistance) {
-			closestPoint = candidate;
-			smallestDistance = distance;
-		}
-	}
+    std::cout << convexPoint << std::endl;
 
-	return closestPoint;
-}
+    convexPoints.push_back(convexPoint);
+    convexPointsSet.insert(convexPoint);
+    current = convexPoint;
+  } while (convexPoints[0] != convexPoints[convexPoints.size() - 1]);
 
-void TestEngine::findClosestForAllPoints() {
-	Point offsetFromOrigin = Point(squareSize / 2, squareSize / 2);
-
-	for (int32_t i = 0; i < pointCount; i++) {
-			Point candidate = points[i];
-			Point closest = findClosestPoint(candidate);
-
-			if (closest != Point::UNDEFINED) {
-				lineComponent.loadLine(candidate + offsetFromOrigin, closest + offsetFromOrigin, Color::GREEN);
-			}
-	}
+  return convexPoints;
 }

@@ -23,6 +23,12 @@ struct Point {
 	static const Point ZERO;
 	static const Point UNDEFINED;
 
+	struct Hash {
+	  size_t operator()(const Point& p) const {
+	    return p.x + p.y * 10;
+	  }
+	};
+
 	friend std::ostream& operator<<(std::ostream&, const Point&);
 };
 
