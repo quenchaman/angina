@@ -16,6 +16,8 @@
 
 #include "exceptions/BaseException.h"
 
+#undef main
+
 int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 	try {
 		Graphics g;

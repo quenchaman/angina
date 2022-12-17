@@ -86,7 +86,11 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 	$<TARGET_FILE_DIR:${PROJECT_NAME}>/resources/chess)
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
+
+if (UNIX)
 enable_target_warnings(${PROJECT_NAME})
+endif (UNIX)
+
 
 find_package(SDL2 REQUIRED)
 
