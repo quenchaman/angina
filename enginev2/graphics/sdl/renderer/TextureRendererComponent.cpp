@@ -14,54 +14,59 @@
 
 void TextureRendererComponent::init(Window& window) {
 	// TODO: These hard-coded values should be made easily configurable.
-	sdlRenderer = SDL_CreateRenderer( window.sdlWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
-	SDL_SetRenderDrawBlendMode(sdlRenderer, SDL_BLENDMODE_BLEND);
+	renderer = std::make_shared<SDL_Renderer>(SDL_CreateRenderer( window.sdlWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC ));
+	SDL_SetRenderDrawBlendMode(renderer.get(), SDL_BLENDMODE_BLEND);
 }
 
 void TextureRendererComponent::clear() {
-	SDL_SetRenderDrawColor(sdlRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	SDL_RenderClear(sdlRenderer);
+	SDL_SetRenderDrawColor(renderer.get(), 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_RenderClear(renderer.get());
 }
 
 void TextureRendererComponent::render(Texture& texture) {
     SDL_Rect dest{0, 0, texture.dim.w, texture.dim.h};
-    SDL_RenderCopyEx(sdlRenderer, texture.texture, nullptr, &dest, texture.rotation, texture.center, texture.flip);
+    SDL_RenderCopyEx(renderer.get(), texture.texture.get(), nullptr, &dest, texture.rotation, texture.center, texture.flip);
 }
 
 void TextureRendererComponent::render(GameObject& obj) {
     SDL_Rect dest{obj.pos.x, obj.pos.y, obj.tx->dim.w, obj.tx->dim.h};
-    SDL_RenderCopy(sdlRenderer, obj.tx->texture, &obj.tx->clip.rect, &dest);
+    //SDL_RenderCopy(renderer.get(), obj.tx->texture, &obj.tx->clip.rect, &dest);
 }
 
 void TextureRendererComponent::render(Texture& texture, Rectangle& viewPort) {
-	SDL_RenderSetViewport(sdlRenderer, &viewPort.rect);
+	SDL_RenderSetViewport(renderer.get(), &viewPort.rect);
 	render(texture);
 }
 
 void TextureRendererComponent::render(Rectangle& rect) {
-	 SDL_SetRenderDrawColor(sdlRenderer, rect.color.red, rect.color.green, rect.color.blue, rect.color.alpha);
+	 SDL_SetRenderDrawColor(renderer.get(), rect.color.red, rect.color.green, rect.color.blue, rect.color.alpha);
 
 	 if (rect.fill) {
-		 SDL_RenderFillRect(sdlRenderer, &rect.rect);
+		 SDL_RenderFillRect(renderer.get(), &rect.rect);
 	 } else {
-		 SDL_RenderDrawRect(sdlRenderer, &rect.rect);
+		 SDL_RenderDrawRect(renderer.get(), &rect.rect);
 	 }
 }
 
 void TextureRendererComponent::render(Pixel& pixel) {
-	SDL_SetRenderDrawColor(sdlRenderer, pixel.color.red, pixel.color.green, pixel.color.blue, pixel.color.alpha);
-	SDL_RenderDrawPoint(sdlRenderer, pixel.position.x, pixel.position.y);
+	SDL_SetRenderDrawColor(renderer.get(), pixel.color.red, pixel.color.green, pixel.color.blue, pixel.color.alpha);
+	SDL_RenderDrawPoint(renderer.get(), pixel.position.x, pixel.position.y);
 }
 
 void TextureRendererComponent::render(Line& line) {
-	SDL_SetRenderDrawColor(sdlRenderer, line.color.red, line.color.green, line.color.blue, line.color.alpha);
-	SDL_RenderDrawLine(sdlRenderer, line.a.x, line.a.y, line.b.x, line.b.y);
+	SDL_SetRenderDrawColor(renderer.get(), line.color.red, line.color.green, line.color.blue, line.color.alpha);
+	SDL_RenderDrawLine(renderer.get(), line.a.x, line.a.y, line.b.x, line.b.y);
 }
 
 void TextureRendererComponent::update() {
-	SDL_RenderPresent(sdlRenderer);
+	SDL_RenderPresent(renderer.get());
+}
+
+std::shared_ptr<SDL_Renderer> TextureRendererComponent::get() const
+{
+	return renderer;
 }
 
 TextureRendererComponent::~TextureRendererComponent() {
-	SDL_DestroyRenderer(sdlRenderer);
+	SDL_DestroyRenderer(renderer.get());
 }

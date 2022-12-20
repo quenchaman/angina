@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <vector>
 #include <unordered_map>
+#include <iostream>
 
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 
@@ -13,17 +14,16 @@ template <typename T>
 class PrimitivesComponent {
 public:
 	friend class GameEngine;
+
+	void init(uint16_t maxElements = 16) {
+		data.reserve(maxElements);
+	}
+
+	void add(const T& el) {
+		data.push_back(el);
+	}
 protected:
-	PrimitivesComponent(int32_t maxEntries) {
-		data.reserve(maxEntries);
-	}
-
-	void addViewPort(const Rectangle& rect) {
-		viewPorts[data.size()] = rect;
-	}
-
 	std::vector<T> data;
-	std::unordered_map<size_t, Rectangle> viewPorts;
 };
 
 #endif /* ENGINEV2_COMPONENTS_PRIMITIVESCOMPONENT_H_ */

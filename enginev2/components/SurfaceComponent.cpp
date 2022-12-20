@@ -4,7 +4,7 @@
 
 #include "enginev2/graphics/sdl/window/Window.h"
 
-SurfaceComponent::SurfaceComponent(): PrimitivesComponent(1000) {}
+SurfaceComponent::SurfaceComponent() {}
 
 void SurfaceComponent::loadSurface(const std::string& pathToResource) {
 	data.emplace_back(pathToResource);

@@ -4,37 +4,37 @@
 
 #include "SDL_image.h"
 
-Texture::Texture(SDL_Texture* tx, Rectangle rect):
+Texture::Texture(std::shared_ptr<SDL_Texture> tx, Rectangle rect):
     texture(tx),
     dim(Dimensions::UNDEFINED),
     clip(rect),
     center(nullptr),
     rotation(0.0),
     flip(SDL_FLIP_NONE) {
-    SDL_QueryTexture(texture, NULL, NULL, &dim.w, &dim.h);
+    SDL_QueryTexture(texture.get(), NULL, NULL, &dim.w, &dim.h);
 }
 
-Texture::Texture(SDL_Texture* _texture): Texture(_texture, Rectangle()) {}
+Texture::Texture(std::shared_ptr<SDL_Texture> _texture): Texture(_texture, Rectangle()) {}
 
 Texture::~Texture() {
 	if (texture != nullptr) {
-		SDL_DestroyTexture(texture);
+		SDL_DestroyTexture(texture.get());
 		texture = nullptr;
-	}
 
-	std::cout << "Texture destroyed" << std::endl;
+    std::cout << "Texture destroyed" << std::endl;
+	}
 }
 
 void Texture::modulateColor(const Color& clr) const {
-    SDL_SetTextureColorMod(texture, clr.red, clr.green, clr.blue);
+    SDL_SetTextureColorMod(texture.get(), clr.red, clr.green, clr.blue);
 }
 
 void Texture::activateBlend() const {
-	 SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
+	 SDL_SetTextureBlendMode(texture.get(), SDL_BLENDMODE_BLEND);
 }
 
 void Texture::setAlpha(uint8_t value) const {
-	 SDL_SetTextureAlphaMod(texture, value);
+	 SDL_SetTextureAlphaMod(texture.get(), value);
 }
 
 void Texture::setClip(const Rectangle& rect) {
@@ -52,6 +52,7 @@ void Texture::rotateCounterClockwise(double angle) {
 void Texture::activateHFlip() {
     flip = SDL_FLIP_HORIZONTAL;
 }
+
 void Texture::activateVFlip() {
     flip = SDL_FLIP_VERTICAL;
 }

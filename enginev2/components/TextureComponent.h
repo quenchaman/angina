@@ -8,23 +8,16 @@
 
 #include "enginev2/components/PrimitivesComponent.h"
 
-struct TextureLoaderComponent;
-
 class TextureComponent : public PrimitivesComponent<Texture> {
 public:
-    friend class TextureLoaderComponent;
+	void init(std::shared_ptr<TextureRendererComponent>);
+	Texture& load(const std::string& pathToTextureFile);
+	/*void loadSpriteTexture(const std::string& resourcePath, const Rectangle& clip);
+	void loadTexture(const std::string& resourcePath, const Rectangle& viewPort);*/
 
-	TextureComponent();
-
-	void init(TextureLoaderComponent&);
-
-	int32_t loadTexture(const std::string& resourcePath);
-	void loadSpriteTexture(const std::string& resourcePath, const Rectangle& clip);
-	void loadTexture(const std::string& resourcePath, const Rectangle& viewPort);
-
-	Texture& getTexture(int32_t id);
+	//Texture& getTexture(int32_t id);
 private:
-	TextureLoaderComponent* textureLoader;
+	std::shared_ptr<TextureRendererComponent> rendererPtr;
 };
 
 #endif /* ENGINEV2_COMPONENTS_TEXTURECOMPONENT_H_ */

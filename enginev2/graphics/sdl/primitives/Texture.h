@@ -1,24 +1,23 @@
 #ifndef SDL_GRAPHICS_TEXTURE_H_
 #define SDL_GRAPHICS_TEXTURE_H_
 
+#include <memory>
+
 #include "SDL_render.h"
+#include "SDL_image.h"
 
 #include "enginev2/graphics/commons/primitives/Dimensions.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 
-struct SDL_Texture;
 struct SDL_Point;
 struct TextureRendererComponent;
 
-/**
- * Wrapper around SDL_Texture and manages the life-cycle of it.
- */
 class Texture {
 public:
 	friend class TextureRendererComponent;
 
-	Texture(SDL_Texture*);
-	Texture(SDL_Texture*, Rectangle);
+	Texture(std::shared_ptr<SDL_Texture>);
+	Texture(std::shared_ptr<SDL_Texture>, Rectangle);
 	~Texture();
 
 	void setClip(const Rectangle&);
@@ -30,7 +29,7 @@ public:
 	void activateHFlip();
 	void activateVFlip();
 private:
-	SDL_Texture* texture;
+	std::shared_ptr<SDL_Texture> texture;
 	Dimensions dim;
 	Rectangle clip;
 	SDL_Point* center;

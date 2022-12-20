@@ -1,7 +1,10 @@
 #ifndef ENGINEV2_GRAPHICS_SDL_RENDERER_TEXTURERENDERERCOMPONENT_H_
 #define ENGINEV2_GRAPHICS_SDL_RENDERER_TEXTURERENDERERCOMPONENT_H_
 
-struct SDL_Renderer;
+#include <memory>
+
+#include "SDL_render.h"
+
 struct Window;
 struct Texture;
 struct TextureComponent;
@@ -12,9 +15,6 @@ struct GameObject;
 
 class TextureRendererComponent {
 public:
-	friend class TextureComponent;
-	friend class TextureLoaderComponent;
-
 	~TextureRendererComponent();
 
 	void init(Window&);
@@ -27,8 +27,9 @@ public:
 	void render(Pixel&);
 	void render(Line&);
 	void update();
+	std::shared_ptr<SDL_Renderer> get() const;
 private:
-	SDL_Renderer* sdlRenderer;
+	std::shared_ptr<SDL_Renderer> renderer;
 };
 
 #endif /* ENGINEV2_GRAPHICS_SDL_RENDERER_TEXTURERENDERERCOMPONENT_H_ */

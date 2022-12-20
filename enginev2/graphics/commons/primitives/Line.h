@@ -10,6 +10,7 @@ class Line {
 public:
 	friend class TextureRendererComponent;
 
+	Line() = default;
 	Line(const Point& start, const Point& end, const Color&);
 
 	Point getOrigin() const;

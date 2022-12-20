@@ -12,8 +12,8 @@ class GameObject {
 public:
     friend class TextureRendererComponent;
 
-    GameObject(const Point&, SDL_Texture&);
-    GameObject(const Point&, SDL_Texture&, const Rectangle& clip);
+    /*GameObject(const Point&, SDL_Texture&);
+    GameObject(const Point&, SDL_Texture&, const Rectangle& clip);*/
     virtual ~GameObject();
 private:
     Point pos;

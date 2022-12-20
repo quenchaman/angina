@@ -6,15 +6,17 @@
 
 void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height) {
 	win.init(appTitle, Width(width), Height(height));
+	//lineComponent.init(1000);
 	inputComponent.init();
 	textureRenderer.init(win);
-	textureLoader.init(textureRenderer);
-	objectComponent.init(textureLoader);
-	textureComponent.init(textureLoader);
+	//objectComponent.init(textureLoader);
+	textureComponent.init(std::make_shared<TextureRendererComponent>(textureRenderer));
 }
 
 void GameEngine::start() {
-    onStart();
+  onStart();
+
+	std::cout << sizeof(Line) << std::endl;
 
 	while (!gameOver) {
 		bool hasEvents = inputComponent.poll();
@@ -31,16 +33,6 @@ void GameEngine::start() {
 	}
 }
 
-void GameEngine::drawCPU() {
-	win.clear();
-
-	for (Surface& surface : surfaceComponent.data) {
-		renderer.drawOnSurface(*surface.surface, *win.surface);
-	}
-
-	win.update();
-}
-
 void GameEngine::drawGPU() {
 	textureRenderer.clear();
 
@@ -48,7 +40,7 @@ void GameEngine::drawGPU() {
 		textureRenderer.render(tex);
 	}
 
-	for(Rectangle& rect : rectangleComponent.data) {
+	/*for(Rectangle& rect : rectangleComponent.data) {
 		textureRenderer.render(rect);
 	}
 
@@ -60,18 +52,14 @@ void GameEngine::drawGPU() {
 		textureRenderer.render(pixel);
 	}
 
-	for (GameObject& obj : objectComponent.data) {
+	for(GameObject& obj : objectComponent.data) {
 	    textureRenderer.render(obj);
-	}
+	}*/
 
-	for (size_t idx = 0; idx < viewPortTextureComponent.data.size(); idx++) {
-		textureRenderer.render(viewPortTextureComponent.data[idx], viewPortTextureComponent.viewPorts[idx + 1]);
+	for (size_t idx = 0; idx < textureComponent.data.size(); idx++) {
+		textureRenderer.render(textureComponent.data[idx]);
 	}
 
 	textureRenderer.update();
-}
-
-void GameEngine::loadSurfaceOptim(const std::string& resourcePath) {
-	surfaceComponent.loadSurfaceOptim(resourcePath, win);
 }
 

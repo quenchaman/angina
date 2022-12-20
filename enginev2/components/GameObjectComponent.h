@@ -3,7 +3,6 @@
 
 #include <string>
 
-struct TextureLoaderComponent;
 struct Point;
 
 #include "enginev2/components/PrimitivesComponent.h"
@@ -13,13 +12,12 @@ class GameObjectComponent : private PrimitivesComponent<GameObject> {
 public:
     friend class GameEngine;
 
-    GameObjectComponent();
-    void init(TextureLoaderComponent&);
+    //GameObjectComponent();
+    //void init(TextureLoaderComponent&);
 
     void loadGameObject(const std::string& textureResourcePath, const Point&);
     void loadGameObjectSprite(const std::string& textureResourcePath, const Point&, const Rectangle&);
 private:
-    TextureLoaderComponent* txLoader;
 };
 
 #endif /* ENGINEV2_COMPONENTS_GAMEOBJECTCOMPONENT_H_ */

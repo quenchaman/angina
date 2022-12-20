@@ -1,13 +1,8 @@
 #include "TextureLoaderComponent.h"
 
-#include "SDL_image.h"
-
 #include "enginev2/graphics/sdl/renderer/TextureRendererComponent.h"
 
-void TextureLoaderComponent::init(TextureRendererComponent& r) {
-    renderer = &r;
-}
-
-SDL_Texture* TextureLoaderComponent::loadTexture(const std::string& resourcePath) {
-    return IMG_LoadTexture(renderer->sdlRenderer, resourcePath.c_str());
+std::shared_ptr<SDL_Texture> TextureLoaderComponent::loadTexture(TextureRendererComponent& renderer, const std::string& resourcePath)
+{
+  return std::make_shared<SDL_Texture>(IMG_LoadTexture(renderer.get().get(), resourcePath.c_str()));
 }

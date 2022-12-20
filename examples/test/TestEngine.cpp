@@ -6,18 +6,20 @@
 
 #include "enginev2/graphics/commons/primitives/Line.h"
 
-TestEngine::TestEngine(): GameEngine(), txt(nullptr) {
+TestEngine::TestEngine(): txt(nullptr), maxLevels(10) {
 	GameEngine::init("Hello SDL!", 960, 860);
 }
 
 void TestEngine::onStart() {
-  const int32_t width = 960;
+  /*const int32_t width = 960;
   const int32_t height = 860;
 	Point origin = Point(width/2, 0);
 	Line lr(origin, Point(0, height), Color::RED);
 	Line lg(origin, Point(width, height), Color::GREEN);
 
-	drawSerpinski(lr, lg, 1);
+	drawSerpinski(lr, lg, 1);*/
+
+  textureComponent.load(Resources::Engine::human);
 }
 
 void TestEngine::handleEvent() {
@@ -38,12 +40,12 @@ void TestEngine::drawSerpinski(const Line& lr, const Line& lg, int32_t level) {
   Line mn = Line(m.getEnd(), n.getEnd(), Color::BLACK);
   Line no = Line(n.getEnd(), o.getEnd(), Color::BLACK);
 
-  lineComponent.loadLine(lr);
-  lineComponent.loadLine(lg);
-  lineComponent.loadLine(connectLrLg);
-  lineComponent.loadLine(om);
-  lineComponent.loadLine(mn);
-  lineComponent.loadLine(no);
+  /*lineComponent.add(lr);
+  lineComponent.add(lg);
+  lineComponent.add(connectLrLg);
+  lineComponent.add(om);
+  lineComponent.add(mn);
+  lineComponent.add(no);*/
 
   Line co = Line(lr.getOrigin(), o.getEnd(), Color::RED);
   Line cn = Line(lr.getOrigin(), n.getEnd(), Color::RED);
