@@ -4,10 +4,10 @@
 
 #include "SDL_image.h"
 
-Texture::Texture(SDL_Texture* tx, Rectangle rect):
+Texture::Texture(SDL_Texture* tx, Rectangle clippingRectangle):
     texture(tx),
     dim(Dimensions::UNDEFINED),
-    clip(rect),
+    clip(clippingRectangle),
     center(nullptr),
     rotation(0.0),
     flip(SDL_FLIP_NONE) {
@@ -41,12 +41,8 @@ void Texture::setClip(const Rectangle& rect) {
 	clip = rect;
 }
 
-void Texture::rotateClockwise(double angle) {
+void Texture::rotate(double angle) {
     rotation += angle;
-}
-
-void Texture::rotateCounterClockwise(double angle) {
-    rotation -= angle;
 }
 
 void Texture::activateHFlip() {

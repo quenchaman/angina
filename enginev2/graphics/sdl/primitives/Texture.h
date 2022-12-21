@@ -22,8 +22,11 @@ public:
 	void modulateColor(const Color&) const;
 	void activateBlend() const;
 	void setAlpha(uint8_t value) const;
-	void rotateClockwise(double angle);
-	void rotateCounterClockwise(double angle);
+
+	/// <summary>
+	/// Use negative angles for counterclockwise rotation.
+	/// </summary>
+	void rotate(double angle);
 	void activateHFlip();
 	void activateVFlip();
 private:

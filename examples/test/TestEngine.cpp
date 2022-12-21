@@ -19,7 +19,8 @@ void TestEngine::onStart() {
 
 	drawSerpinski(lr, lg, 1);*/
 
-  textureComponent.load(Resources::Engine::human);
+  auto& tex = textureComponent.load(Resources::Engine::human);
+  tex.rotate(180);
 }
 
 void TestEngine::handleEvent() {
