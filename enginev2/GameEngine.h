@@ -19,7 +19,7 @@
 #include "enginev2/storage/Container.h"
 #include "renderer/primitives/Line.h"
 
-struct Rectangle;
+class Rectangle;
 
 class GameEngine {
 public:

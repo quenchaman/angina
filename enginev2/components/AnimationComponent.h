@@ -6,7 +6,7 @@
 
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 
-struct Texture;
+class Texture;
 
 /**
  * This assumes that the animation is 1 second long.

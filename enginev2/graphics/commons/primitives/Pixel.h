@@ -4,7 +4,7 @@
 #include "enginev2/graphics/commons/primitives/Point.h"
 #include "enginev2/graphics/commons/primitives/Color.h"
 
-struct TextureRendererComponent;
+class TextureRendererComponent;
 
 class Pixel {
 public:

@@ -8,7 +8,7 @@
 
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 
-struct GameEngine;
+class GameEngine;
 
 template <typename T>
 class PrimitivesComponent {

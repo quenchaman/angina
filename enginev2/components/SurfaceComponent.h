@@ -7,7 +7,7 @@
 
 #include "enginev2/components/PrimitivesComponent.h"
 
-struct Window;
+class Window;
 
 class SurfaceComponent : public PrimitivesComponent<Surface> {
 public:

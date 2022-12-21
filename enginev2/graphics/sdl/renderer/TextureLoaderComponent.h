@@ -2,14 +2,12 @@
 #define ENGINEV2_GRAPHICS_SDL_RENDERER_TEXTURELOADERCOMPONENT_H_
 
 #include <string>
-#include <memory>
 
-#include "SDL_image.h"
-
-struct TextureRendererComponent;
+struct SDL_Texture;
+class TextureRendererComponent;
 
 namespace TextureLoaderComponent {
-    std::shared_ptr<SDL_Texture> loadTexture(TextureRendererComponent&, const std::string& resourcePath);
+    SDL_Texture* loadTexture(TextureRendererComponent&, const std::string& resourcePath);
 };
 
 #endif /* ENGINEV2_GRAPHICS_SDL_RENDERER_TEXTURELOADERCOMPONENT_H_ */

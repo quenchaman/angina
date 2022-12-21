@@ -4,9 +4,8 @@
 #include "enginev2/graphics/commons/primitives/Point.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 
-struct SDL_Texture;
-struct Texture;
-struct TextureRendererComponent;
+class Texture;
+class TextureRendererComponent;
 
 class GameObject {
 public:

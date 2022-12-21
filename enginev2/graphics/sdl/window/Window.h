@@ -8,8 +8,8 @@
 
 struct SDL_Window;
 struct SDL_Surface;
-struct SurfaceComponent;
-struct Renderer;
+class SurfaceComponent;
+class Renderer;
 
 /**
  * Wrapper around SDL_Window.

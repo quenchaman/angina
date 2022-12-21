@@ -4,8 +4,8 @@
 #include <string>
 
 struct SDL_Surface;
-struct GameEngine;
-struct SurfaceComponent;
+class GameEngine;
+class SurfaceComponent;
 
 /**
  * Wrapper around SDL_Surface and manages the life-cycle of it.

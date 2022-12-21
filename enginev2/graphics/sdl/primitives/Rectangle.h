@@ -7,7 +7,7 @@
 
 struct Dimensions;
 struct Point;
-struct TextureRendererComponent;
+class TextureRendererComponent;
 
 class Rectangle {
 public:

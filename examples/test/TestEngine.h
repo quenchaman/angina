@@ -3,7 +3,7 @@
 
 #include "enginev2/GameEngine.h"
 
-struct Texture;
+class Texture;
 
 class TestEngine : public GameEngine {
 public:
