@@ -25,7 +25,7 @@ void TextureRendererComponent::clear() {
 
 void TextureRendererComponent::render(Texture& texture) {
     SDL_Rect dest{0, 0, texture.dim.w, texture.dim.h};
-    SDL_RenderCopyEx(renderer, texture.texture, nullptr, &dest, texture.rotation, texture.center, texture.flip);
+    SDL_RenderCopyEx(renderer, texture.texture, nullptr, &dest, texture.rotation, nullptr, texture.flip);
 }
 
 void TextureRendererComponent::render(GameObject& obj) {

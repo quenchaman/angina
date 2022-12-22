@@ -5,10 +5,10 @@
 
 struct Dimensions {
 	Dimensions();
-	Dimensions(int32_t width, int32_t height);
+	Dimensions(uint16_t width, uint16_t height);
 
-	int32_t w;
-	int32_t h;
+	uint16_t w;
+	uint16_t h;
 
 	static const Dimensions UNDEFINED;
 };

@@ -4,25 +4,15 @@
 
 #include "SDL_image.h"
 
-Texture::Texture(SDL_Texture* tx, Rectangle clippingRectangle):
+Texture::Texture(SDL_Texture* tx):
     texture(tx),
     dim(Dimensions::UNDEFINED),
-    clip(clippingRectangle),
-    center(nullptr),
     rotation(0.0),
     flip(SDL_FLIP_NONE) {
-    SDL_QueryTexture(texture, NULL, NULL, &dim.w, &dim.h);
-}
-
-Texture::Texture(SDL_Texture* _texture): Texture(_texture, Rectangle()) {}
-
-Texture::~Texture() {
-	if (texture != nullptr) {
-		SDL_DestroyTexture(texture);
-		texture = nullptr;
-
-    std::cout << "Texture destroyed" << std::endl;
-	}
+  int w, h;
+  SDL_QueryTexture(texture, NULL, NULL, &w, &h);
+  dim.w = w;
+  dim.h = h;
 }
 
 void Texture::modulateColor(const Color& clr) const {
@@ -37,10 +27,6 @@ void Texture::setAlpha(uint8_t value) const {
 	 SDL_SetTextureAlphaMod(texture, value);
 }
 
-void Texture::setClip(const Rectangle& rect) {
-	clip = rect;
-}
-
 void Texture::rotate(double angle) {
     rotation += angle;
 }
@@ -51,4 +37,13 @@ void Texture::activateHFlip() {
 
 void Texture::activateVFlip() {
     flip = SDL_FLIP_VERTICAL;
+}
+
+Texture::~Texture() {
+  if (texture != nullptr) {
+    SDL_DestroyTexture(texture);
+    texture = nullptr;
+
+    std::cout << "Texture destroyed" << std::endl;
+  }
 }

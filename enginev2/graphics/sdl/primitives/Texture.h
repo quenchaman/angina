@@ -15,10 +15,8 @@ public:
 	friend class TextureRendererComponent;
 
 	Texture(SDL_Texture*);
-	Texture(SDL_Texture*, Rectangle);
 	~Texture();
 
-	void setClip(const Rectangle&);
 	void modulateColor(const Color&) const;
 	void activateBlend() const;
 	void setAlpha(uint8_t value) const;
@@ -30,11 +28,9 @@ public:
 	void activateHFlip();
 	void activateVFlip();
 private:
-	SDL_Texture* texture;
 	Dimensions dim;
-	Rectangle clip;
-	SDL_Point* center;
-	double rotation;
+	SDL_Texture* texture;
+	float rotation;
 	SDL_RendererFlip flip;
 };
 

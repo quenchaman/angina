@@ -17,12 +17,12 @@ void AnimationComponent::addFrame(const Rectangle& rect) {
 }
 
 void AnimationComponent::update() {
-    if (currentFrame == framesPerUpdate) {
-        tx->setClip(frames[index++]);
-        currentFrame = 0;
-    } else {
-        currentFrame++;
-    }
+  if (currentFrame == framesPerUpdate) {
+      //tx->setClip(frames[index++]);
+      currentFrame = 0;
+  } else {
+      currentFrame++;
+  }
 
 	if (index >= frameCount - 1) {
 		index = 0;
