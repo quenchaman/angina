@@ -29,6 +29,8 @@ void GameEngine::start() {
 		    handleEvent();
 		}
 
+		spriteAnimator.update();
+
 		drawGPU();
 	}
 }

@@ -7,7 +7,7 @@ class ForwardIdGenerator: public IdGenerator {
 public:
 	ForwardIdGenerator();
 
-	int32_t next();
+	ID next();
 };
 
 #endif /* PLATFORM_IDS_FORWARDIDGENERATOR_H_ */

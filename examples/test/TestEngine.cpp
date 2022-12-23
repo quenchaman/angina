@@ -5,6 +5,8 @@
 #include "resources/Resources.h"
 
 #include "enginev2/graphics/commons/primitives/Line.h"
+#include "enginev2/graphics/animation/Sprite.h"
+#include "enginev2/graphics/sdl/primitives/Texture.h"
 
 TestEngine::TestEngine(): txt(nullptr), maxLevels(10) {
 	GameEngine::init("Hello SDL!", 960, 860);
@@ -19,8 +21,22 @@ void TestEngine::onStart() {
 
 	drawSerpinski(lr, lg, 1);*/
 
-  auto& tex = textureComponent.load(Resources::Engine::human);
-  tex.rotate(180);
+  std::shared_ptr<Texture> tex = std::make_shared<Texture>(textureComponent.load(Resources::Engine::sticky));
+  std::vector<Rectangle> spriteFrames = {
+    Rectangle(Point(0, 0), Dimensions(50, 100)),
+    Rectangle(Point(50, 0), Dimensions(50, 100)),
+    Rectangle(Point(100, 0), Dimensions(50, 100)),
+    Rectangle(Point(150, 0), Dimensions(50, 100)),
+  };
+  Sprite sprite(tex, spriteFrames, 500);
+
+  auto id = spriteAnimator.add(sprite);
+  spriteAnimator.activate(id);
+}
+
+void TestEngine::onUpdate()
+{
+  
 }
 
 void TestEngine::handleEvent() {

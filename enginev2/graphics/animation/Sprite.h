@@ -8,13 +8,18 @@
 #include "enginev2/graphics/sdl/primitives/Texture.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 
+class SpriteAnimator;
+
 class Sprite {
 public:
-	Sprite(std::shared_ptr<Texture>, const std::vector<Rectangle>&, float animationTime);
+	friend class SpriteAnimator;
+
+	Sprite() = default;
+	Sprite(std::shared_ptr<Texture>, const std::vector<Rectangle>&, uint64_t animationTime);
 private:
 	std::shared_ptr<Texture> texturePtr;
 	std::vector<Rectangle> frames;
-	float animationTime;
+	uint64_t animationTime;
 	uint8_t currentFrame;
 };
 

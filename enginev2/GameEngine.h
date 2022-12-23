@@ -19,6 +19,8 @@
 #include "enginev2/storage/Container.h"
 #include "renderer/primitives/Line.h"
 
+#include "enginev2/graphics/animation/SpriteAnimator.h"
+
 class Rectangle;
 
 class GameEngine {
@@ -30,6 +32,7 @@ public:
 	void start();
 
 	virtual void onStart() = 0;
+	virtual void onUpdate() = 0;
 	virtual void handleEvent() = 0;
 
 	void drawGPU();
@@ -39,6 +42,7 @@ protected:
   //LineComponent lineComponent;
   //GameObjectComponent objectComponent;
   TextureComponent textureComponent;
+	SpriteAnimator spriteAnimator;
   //AnimationComponent animationComponent;
 	GlobalInputComponent inputComponent;
 private:

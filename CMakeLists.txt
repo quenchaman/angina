@@ -66,9 +66,22 @@ add_executable(${PROJECT_NAME}
 	
 	${DIR}/enginev2/GameEngine.h
 	${DIR}/enginev2/GameEngine.cpp
+
+	${DIR}/enginev2/graphics/animation/Sprite.h
+	${DIR}/enginev2/graphics/animation/Sprite.cpp
+	${DIR}/enginev2/graphics/animation/SpriteAnimator.h
+	${DIR}/enginev2/graphics/animation/SpriteAnimator.cpp
+
+	${DIR}/platform/ids/ForwardIdGenerator.h
+	${DIR}/platform/ids/ForwardIdGenerator.cpp
+	${DIR}/platform/ids/IdGenerator.h
+	${DIR}/platform/ids/IdGenerator.cpp
+
+	${DIR}/platform/time/TimeUtils.h
 	
 	${DIR}/examples/test/TestEngine.h
 	${DIR}/examples/test/TestEngine.cpp
+
 	
 	${DIR}/exceptions/ResourceLoadException.h
 	${DIR}/exceptions/ResourceLoadException.cpp

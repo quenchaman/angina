@@ -10,6 +10,7 @@ public:
 	TestEngine();
 
 	void onStart();
+	void onUpdate();
 	void handleEvent();
 
 	void drawSerpinski(const Line& l1, const Line& l2, int32_t level);

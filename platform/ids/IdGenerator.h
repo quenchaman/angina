@@ -3,14 +3,16 @@
 
 #include <stdint.h>
 
+typedef uint16_t ID;
+
 class IdGenerator {
 public:
 	IdGenerator();
 	virtual ~IdGenerator() = default;
 
-	virtual int32_t next() = 0;
+	virtual ID next() = 0;
 protected:
-	int32_t current;
+	ID current;
 };
 
 #endif /* IDGENERATOR_H_ */

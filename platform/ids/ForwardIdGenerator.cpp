@@ -3,6 +3,6 @@
 ForwardIdGenerator::ForwardIdGenerator() {
 }
 
-int32_t ForwardIdGenerator::next() {
+ID ForwardIdGenerator::next() {
 	return current++;
 }
