@@ -45,6 +45,9 @@ protected:
 	SpriteAnimator spriteAnimator;
   //AnimationComponent animationComponent;
 	GlobalInputComponent inputComponent;
+
+	// TODO: Extract the helper method into a class and add it here so a client can easily namespace-use methods
+	SDL_Texture* loadTexture(const std::string& resourcePath);
 private:
 	Window win;
 	TextureRendererComponent textureRenderer;

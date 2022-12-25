@@ -21,12 +21,13 @@ void TestEngine::onStart() {
 
 	drawSerpinski(lr, lg, 1);*/
 
-  std::shared_ptr<Texture> tex = std::make_shared<Texture>(textureComponent.load(Resources::Engine::sticky));
+  auto sdlTex = loadTexture(Resources::Engine::sticky);
+  std::shared_ptr<Texture> tex = std::make_shared<Texture>(textureComponent.add(sdlTex));
   std::vector<Rectangle> spriteFrames = {
-    Rectangle(Point(0, 0), Dimensions(50, 100)),
-    Rectangle(Point(50, 0), Dimensions(50, 100)),
-    Rectangle(Point(100, 0), Dimensions(50, 100)),
-    Rectangle(Point(150, 0), Dimensions(50, 100)),
+    Rectangle(Point(0, 0), Dimensions(64, 205)),
+    Rectangle(Point(64, 0), Dimensions(64, 205)),
+    Rectangle(Point(128, 0), Dimensions(64, 205)),
+    Rectangle(Point(196, 0), Dimensions(64, 205))
   };
   Sprite sprite(tex, spriteFrames, 500);
 

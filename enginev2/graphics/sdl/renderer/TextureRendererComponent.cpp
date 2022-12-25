@@ -9,6 +9,7 @@
 #include "enginev2/graphics/commons/primitives/Point.h"
 #include "enginev2/graphics/commons/primitives/Pixel.h"
 #include "enginev2/graphics/commons/primitives/Line.h"
+#include "enginev2/graphics/animation/Sprite.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 #include "enginev2/models/GameObject.h"
 
@@ -56,6 +57,13 @@ void TextureRendererComponent::render(Pixel& pixel) {
 void TextureRendererComponent::render(Line& line) {
 	SDL_SetRenderDrawColor(renderer, line.color.red, line.color.green, line.color.blue, line.color.alpha);
 	SDL_RenderDrawLine(renderer, line.a.x, line.a.y, line.b.x, line.b.y);
+}
+
+void TextureRendererComponent::render(Sprite& sprite)
+{
+	SDL_Rect dest{ 0, 0, sprite.atlas->dim.w, sprite.atlas->dim.h };
+	
+	SDL_RenderCopyEx(renderer, sprite.atlas->texture, nullptr, &dest, sprite.atlas->texture.rotation, nullptr, sprite.atlas->texture.flip);
 }
 
 void TextureRendererComponent::update() {

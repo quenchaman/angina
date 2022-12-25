@@ -19,8 +19,9 @@ public:
 		data.reserve(maxElements);
 	}
 
-	void add(const T& el) {
+	T& add(const T& el) {
 		data.push_back(el);
+		return data[data.size() - 1];
 	}
 protected:
 	std::vector<T> data;

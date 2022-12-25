@@ -8,10 +8,12 @@
 
 #include "enginev2/components/PrimitivesComponent.h"
 
+struct SDL_Texture;
+
 class TextureComponent : public PrimitivesComponent<Texture> {
 public:
 	void init(std::shared_ptr<TextureRendererComponent>);
-	Texture& load(const std::string& pathToTextureFile);
+	Texture& add(SDL_Texture* texture);
 	/*void loadSpriteTexture(const std::string& resourcePath, const Rectangle& clip);
 	void loadTexture(const std::string& resourcePath, const Rectangle& viewPort);*/
 

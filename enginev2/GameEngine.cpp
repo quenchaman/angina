@@ -4,6 +4,8 @@
 #include "enginev2/graphics/commons/primitives/Width.h"
 #include "enginev2/graphics/commons/primitives/Height.h"
 
+#include "enginev2/graphics/sdl/renderer/TextureLoaderComponent.h"
+
 void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height) {
 	win.init(appTitle, Width(width), Height(height));
 	//lineComponent.init(1000);
@@ -62,6 +64,15 @@ void GameEngine::drawGPU() {
 		textureRenderer.render(textureComponent.data[idx]);
 	}
 
+	for (Sprite& sprite : spriteAnimator.data) {
+		textureRenderer.render(sprite);
+	}
+
 	textureRenderer.update();
+}
+
+SDL_Texture* GameEngine::loadTexture(const std::string& resourcePath)
+{
+	return TextureLoaderComponent::loadTexture(textureRenderer, resourcePath);
 }
 

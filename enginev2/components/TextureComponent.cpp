@@ -9,8 +9,8 @@ void TextureComponent::init(std::shared_ptr<TextureRendererComponent> renderer)
 	this->rendererPtr = renderer;
 }
 
-Texture& TextureComponent::load(const std::string& pathToTextureFile) {
-	data.emplace_back(TextureLoaderComponent::loadTexture(*rendererPtr, pathToTextureFile));
+Texture& TextureComponent::add(SDL_Texture* texture) {
+	data.emplace_back(texture);
 
 	return data[data.size() - 1];
 }

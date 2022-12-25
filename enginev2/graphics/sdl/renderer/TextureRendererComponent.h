@@ -8,6 +8,7 @@ class Rectangle;
 class Pixel;
 class Line;
 class GameObject;
+class Sprite;
 
 struct SDL_Renderer;
 
@@ -24,6 +25,7 @@ public:
 	void render(Rectangle&);
 	void render(Pixel&);
 	void render(Line&);
+	void render(Sprite&);
 	void update();
 	SDL_Renderer* get() const;
 private:
