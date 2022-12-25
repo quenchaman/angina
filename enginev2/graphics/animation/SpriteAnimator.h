@@ -13,7 +13,7 @@ static struct AnimatedSprite {
 	AnimatedSprite() = default;
 
 	Sprite sprite;
-	uint64_t timestamp; // TODO: Consider switching this to chrono::duration
+	uint64_t timeSinceAnimationStart; // TODO: Consider switching this to chrono::duration
 	bool isActive;
 };
 

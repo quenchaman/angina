@@ -15,7 +15,7 @@ ID SpriteAnimator::add(const Sprite& sprite)
 void SpriteAnimator::activate(ID id)
 {
 	sprites[id].isActive = true;
-	sprites[id].timestamp = TimeUtils::timestamp();
+	sprites[id].timeSinceAnimationStart = TimeUtils::timestamp();
 }
 
 void SpriteAnimator::remove(ID id)
@@ -34,10 +34,11 @@ void SpriteAnimator::update()
 
 void SpriteAnimator::process(AnimatedSprite& animSprite)
 {
-	auto now = TimeUtils::timestamp();
-	auto deltaMs = now - animSprite.timestamp;
-	auto progressInAnim = (deltaMs % animSprite.sprite.animationTime) /
+	auto now = TimeUtils::timestamp(); // Maybe it will be better to use the main loop clock to
+	// find how much time has passed
+	auto deltaMs = now - animSprite.timeSinceAnimationStart;
+	auto progressInAnim = (deltaMs % (animSprite.sprite.animationTime - 1)) /
 		static_cast<float>(animSprite.sprite.animationTime);
 
-	animSprite.sprite.currentFrame = (animSprite.sprite.frames.size() - 1) * progressInAnim;
+	animSprite.sprite.currentFrame = animSprite.sprite.frames.size() * progressInAnim;
 }
