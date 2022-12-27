@@ -1,6 +1,7 @@
 #include "TextureRendererComponent.h"
 
 #include "SDL_render.h"
+#include "SDL_image.h"
 #include "SDL_shape.h"
 
 #include "enginev2/graphics/sdl/window/Window.h"
@@ -61,9 +62,11 @@ void TextureRendererComponent::render(Line& line) {
 
 void TextureRendererComponent::render(Sprite& sprite)
 {
-	SDL_Rect dest{ 0, 0, sprite.atlas->dim.w, sprite.atlas->dim.h };
+	SDL_Rect& rect = sprite.frames[sprite.currentFrame].rect;
+	SDL_Rect dest{ 0, 0, rect.w, rect.h };
 	
-	SDL_RenderCopyEx(renderer, sprite.atlas->texture, nullptr, &dest, sprite.atlas->texture.rotation, nullptr, sprite.atlas->texture.flip);
+	
+	SDL_RenderCopyEx(renderer, sprite.atlas->texture, &rect, &dest, sprite.atlas->rotation, nullptr, sprite.atlas->flip);
 }
 
 void TextureRendererComponent::update() {

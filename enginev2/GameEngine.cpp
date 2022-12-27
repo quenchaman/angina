@@ -60,10 +60,6 @@ void GameEngine::drawGPU() {
 	    textureRenderer.render(obj);
 	}*/
 
-	for (size_t idx = 0; idx < textureComponent.data.size(); idx++) {
-		textureRenderer.render(textureComponent.data[idx]);
-	}
-
 	for (Sprite& sprite : spriteAnimator.data) {
 		textureRenderer.render(sprite);
 	}

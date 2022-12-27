@@ -13,7 +13,6 @@ public:
 	void onUpdate();
 	void handleEvent();
 
-	void drawSerpinski(const Line& l1, const Line& l2, int32_t level);
 private:
 	Texture* txt;
 	int32_t maxLevels;
