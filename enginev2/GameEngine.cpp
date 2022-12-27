@@ -8,17 +8,16 @@
 
 void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height) {
 	win.init(appTitle, Width(width), Height(height));
+	rectangleComponent.init(100);
 	//lineComponent.init(1000);
 	inputComponent.init();
-	textureRenderer.init(win);
+	textureRenderer.init(win, Color::BLACK);
 	//objectComponent.init(textureLoader);
 	textureComponent.init(std::make_shared<TextureRendererComponent>(textureRenderer));
 }
 
 void GameEngine::start() {
   onStart();
-
-	std::cout << sizeof(Line) << std::endl;
 
 	while (!gameOver) {
 		bool hasEvents = inputComponent.poll();
@@ -44,10 +43,10 @@ void GameEngine::drawGPU() {
 		textureRenderer.render(tex);
 	}
 
-	/*for(Rectangle& rect : rectangleComponent.data) {
+	for(Rectangle& rect : rectangleComponent.data) {
 		textureRenderer.render(rect);
 	}
-
+	/*
 	for(Line& line : lineComponent.data) {
 		textureRenderer.render(line);
 	}
@@ -72,3 +71,7 @@ SDL_Texture* GameEngine::loadTexture(const std::string& resourcePath)
 	return TextureLoaderComponent::loadTexture(textureRenderer, resourcePath);
 }
 
+void GameEngine::setClearColor(const Color& color)
+{
+	textureRenderer.setClearColor(color);
+}

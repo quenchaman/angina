@@ -7,9 +7,10 @@
 #include "SDL_surface.h"
 
 #include "platform/sdl/primitives/Surface.h"
+#include "enginev2/graphics/commons/primitives/Color.h"
 #include "exceptions/WindowInitException.h"
 
-Window::Window(): sdlWindow(nullptr), surface(nullptr) {}
+Window::Window(): clearColor(SDL_Color{0xFF, 0xFF, 0xFF}), sdlWindow(nullptr), surface(nullptr) {}
 
 void Window::init(const std::string& title,
 		int32_t xPos,
@@ -53,7 +54,12 @@ void Window::update() {
 }
 
 void Window::clear() {
-	SDL_FillRect(surface, NULL, SDL_MapRGB( surface->format, 0xFF, 0xFF, 0xFF ));
+	SDL_FillRect(surface, NULL, SDL_MapRGB( surface->format, clearColor.r, clearColor.g, clearColor.b ));
+}
+
+void Window::setClearColor(const Color& color)
+{
+	this->clearColor = { color.red, color.green, color.blue };
 }
 
 Window::~Window() {

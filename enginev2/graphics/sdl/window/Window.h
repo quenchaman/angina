@@ -3,11 +3,14 @@
 
 #include <string>
 
+#include "SDL_pixels.h"
+
 #include "enginev2/graphics/commons/primitives/Width.h"
 #include "enginev2/graphics/commons/primitives/Height.h"
 
 struct SDL_Window;
 struct SDL_Surface;
+struct Color;
 class SurfaceComponent;
 class Renderer;
 
@@ -19,6 +22,8 @@ class Window {
 public:
 	friend class Renderer;
 	friend class SurfaceComponent;
+	friend class TextureRendererComponent;
+
 	Window();
 	~Window();
 
@@ -35,16 +40,16 @@ public:
 	void resize(Width width, Height height);
 	void update();
 	void clear();
+	void setClearColor(const Color&);
 
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
 	Window(Window&&) = delete;
 	Window& operator=(Window&&) = delete;
-
-	SDL_Window *sdlWindow;
-	SDL_Surface *surface;
 private:
-
+	SDL_Color clearColor;
+	SDL_Window* sdlWindow;
+	SDL_Surface* surface;
 };
 
 #endif /* SDL_COMPONENTS_WINDOW_H_ */

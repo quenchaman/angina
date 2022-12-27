@@ -18,6 +18,7 @@ public:
 
 	Sprite() = default;
 	Sprite(std::shared_ptr<Texture>, const std::vector<Rectangle>&, uint64_t animationTime);
+	Sprite(SDL_Texture*, const std::vector<Rectangle>&, uint64_t animationTime);
 private:
 	std::shared_ptr<Texture> atlas;
 	std::vector<Rectangle> frames;

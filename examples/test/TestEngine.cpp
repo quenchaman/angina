@@ -13,26 +13,8 @@ TestEngine::TestEngine(): txt(nullptr), maxLevels(10) {
 }
 
 void TestEngine::onStart() {
-  /*const int32_t width = 960;
-  const int32_t height = 860;
-	Point origin = Point(width/2, 0);
-	Line lr(origin, Point(0, height), Color::RED);
-	Line lg(origin, Point(width, height), Color::GREEN);
-
-	drawSerpinski(lr, lg, 1);*/
-
-  auto sdlTex = loadTexture(Resources::Engine::sticky);
-  std::shared_ptr<Texture> tex = std::make_shared<Texture>(sdlTex);
-  std::vector<Rectangle> spriteFrames = {
-    Rectangle(Point(0, 0), Dimensions(64, 205)),
-    Rectangle(Point(64, 0), Dimensions(64, 205)),
-    Rectangle(Point(128, 0), Dimensions(64, 205)),
-    Rectangle(Point(196, 0), Dimensions(64, 205))
-  };
-  Sprite sprite(tex, spriteFrames, 400);
-
-  auto id = spriteAnimator.add(sprite);
-  spriteAnimator.activate(id);
+  setClearColor(Color(0, 0, 0));
+  rectangleComponent.add(Rectangle(Point(100, 100), Dimensions(50, 50), Color(128, 128, 64, 255), true));
 }
 
 void TestEngine::onUpdate()

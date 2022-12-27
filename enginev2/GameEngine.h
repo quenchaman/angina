@@ -37,7 +37,7 @@ public:
 
 	void drawGPU();
 protected:
-	//RectangleComponent rectangleComponent;
+	RectangleComponent rectangleComponent;
   //PixelComponent pixelComponent;
   //LineComponent lineComponent;
   //GameObjectComponent objectComponent;
@@ -48,6 +48,8 @@ protected:
 
 	// TODO: Extract the helper method into a class and add it here so a client can easily namespace-use methods
 	SDL_Texture* loadTexture(const std::string& resourcePath);
+
+	void setClearColor(const Color&);
 private:
 	Window win;
 	TextureRendererComponent textureRenderer;

@@ -6,7 +6,6 @@
 
 #include "enginev2/graphics/sdl/window/Window.h"
 #include "enginev2/graphics/sdl/primitives/Texture.h"
-#include "enginev2/graphics/commons/primitives/Color.h"
 #include "enginev2/graphics/commons/primitives/Point.h"
 #include "enginev2/graphics/commons/primitives/Pixel.h"
 #include "enginev2/graphics/commons/primitives/Line.h"
@@ -14,14 +13,15 @@
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 #include "enginev2/models/GameObject.h"
 
-void TextureRendererComponent::init(Window& window) {
+void TextureRendererComponent::init(Window& window, const Color& clearColor) {
 	// TODO: These hard-coded values should be made easily configurable.
 	renderer = SDL_CreateRenderer( window.sdlWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+	this->clearColor = clearColor;
 }
 
 void TextureRendererComponent::clear() {
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_SetRenderDrawColor(renderer, clearColor.red, clearColor.green, clearColor.blue, 0xFF);
 	SDL_RenderClear(renderer);
 }
 
@@ -76,6 +76,11 @@ void TextureRendererComponent::update() {
 SDL_Renderer* TextureRendererComponent::get() const
 {
 	return renderer;
+}
+
+void TextureRendererComponent::setClearColor(const Color& color)
+{
+	this->clearColor = color;
 }
 
 TextureRendererComponent::~TextureRendererComponent() {

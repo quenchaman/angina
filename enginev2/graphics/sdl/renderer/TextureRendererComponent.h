@@ -1,6 +1,8 @@
 #ifndef ENGINEV2_GRAPHICS_SDL_RENDERER_TEXTURERENDERERCOMPONENT_H_
 #define ENGINEV2_GRAPHICS_SDL_RENDERER_TEXTURERENDERERCOMPONENT_H_
 
+#include "enginev2/graphics/commons/primitives/Color.h"
+
 class Window;
 class Texture;
 class TextureComponent;
@@ -16,7 +18,7 @@ class TextureRendererComponent {
 public:
 	~TextureRendererComponent();
 
-	void init(Window&);
+	void init(Window&, const Color& clearColor);
 
 	void clear();
 	void render(Texture&);
@@ -28,7 +30,10 @@ public:
 	void render(Sprite&);
 	void update();
 	SDL_Renderer* get() const;
+
+	void setClearColor(const Color&);
 private:
+	Color clearColor;
 	SDL_Renderer* renderer;
 };
 
