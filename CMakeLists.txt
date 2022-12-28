@@ -72,6 +72,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/graphics/animation/SpriteAnimator.h
 	${DIR}/enginev2/graphics/animation/SpriteAnimator.cpp
 
+	${DIR}/enginev2/collisions/BoundingBox.h
+	${DIR}/enginev2/collisions/BoundingBox.cpp
+
 	${DIR}/platform/ids/ForwardIdGenerator.h
 	${DIR}/platform/ids/ForwardIdGenerator.cpp
 	${DIR}/platform/ids/IdGenerator.h
