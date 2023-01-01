@@ -26,6 +26,7 @@ public:
 
 	ID add(const Sprite&);
 	void activate(ID);
+	void deactivate(ID);
 	void remove(ID);
 	void update();
 private:

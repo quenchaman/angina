@@ -9,6 +9,9 @@ public:
 	void onStart();
 	void onUpdate();
 	void handleEvent();
+
+private:
+	uint32_t heroSpriteId;
 };
 
 #endif // !SKELETAL_RAIN_OF_BLOOD

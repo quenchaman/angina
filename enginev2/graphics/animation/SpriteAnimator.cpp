@@ -16,8 +16,16 @@ ID SpriteAnimator::add(const Sprite& sprite)
 
 void SpriteAnimator::activate(ID id)
 {
-	animatedSprites[id].isActive = true;
-	animatedSprites[id].timeSinceAnimationStart = TimeUtils::timestamp();
+	if (!animatedSprites[id].isActive) {
+		animatedSprites[id].isActive = true;
+		animatedSprites[id].timeSinceAnimationStart = TimeUtils::timestamp();
+	}
+}
+
+void SpriteAnimator::deactivate(ID id)
+{
+	animatedSprites[id].isActive = false;
+	animatedSprites[id].sprite->currentFrame = 0;
 }
 
 void SpriteAnimator::remove(ID id)
