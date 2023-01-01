@@ -6,6 +6,11 @@
 
 #include "enginev2/graphics/sdl/renderer/TextureLoaderComponent.h"
 
+GameEngine::GameEngine(const std::string& appTitle, int32_t width, int32_t height)
+{
+	init(appTitle, width, height);
+}
+
 void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height) {
 	win.init(appTitle, Width(width), Height(height));
 	rectangleComponent.init(100);

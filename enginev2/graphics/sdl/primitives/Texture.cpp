@@ -39,6 +39,11 @@ void Texture::activateVFlip() {
     flip = SDL_FLIP_VERTICAL;
 }
 
+Dimensions Texture::getDimensions() const
+{
+  return dim;
+}
+
 Texture::~Texture() {
   if (texture != nullptr) {
     SDL_DestroyTexture(texture);

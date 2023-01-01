@@ -11,7 +11,7 @@
 #include "enginev2/graphics/commons/primitives/Height.h"
 #include "enginev2/graphics/commons/primitives/Point.h"
 #include "enginev2/graphics/sdl/renderer/SurfaceRendererComponent.h"
-#include "examples/test/TestEngine.h"
+#include "examples/SkeletalRainOfBlood/Game.h"
 #include "resources/Resources.h"
 
 #include "exceptions/BaseException.h"
@@ -22,8 +22,7 @@ int32_t main([[maybe_unused]] int32_t argc, [[maybe_unused]] char **argv) {
 	try {
 		Graphics g;
 		g.init();
-		TestEngine game;
-
+		Game game;
 
 		game.start();
 	} catch (const BaseException &ex) {

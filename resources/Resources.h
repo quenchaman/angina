@@ -61,6 +61,11 @@ namespace Resources {
 		const std::string grass = TDTexturePrefix + "grass.png";
 	}
 
+	namespace SkeletalRainOfBlood {
+		const std::string GAME_RESOURCE_PREFIX = prefix + "srb/";
+		const std::string HERO = GAME_RESOURCE_PREFIX + "hero.png";
+	}
+
 
 inline bool isResource(const std::string& str) {
 	return str.find(prefix) != std::string::npos;

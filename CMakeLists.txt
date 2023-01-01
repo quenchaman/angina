@@ -82,9 +82,8 @@ add_executable(${PROJECT_NAME}
 
 	${DIR}/platform/time/TimeUtils.h
 	
-	${DIR}/examples/test/TestEngine.h
-	${DIR}/examples/test/TestEngine.cpp
-
+	${DIR}/examples/SkeletalRainOfBlood/Game.h
+	${DIR}/examples/SkeletalRainOfBlood/Game.cpp
 	
 	${DIR}/exceptions/ResourceLoadException.h
 	${DIR}/exceptions/ResourceLoadException.cpp

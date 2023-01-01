@@ -19,11 +19,14 @@ public:
 	Sprite() = default;
 	Sprite(std::shared_ptr<Texture>, const std::vector<Rectangle>&, uint64_t animationTime);
 	Sprite(SDL_Texture*, const std::vector<Rectangle>&, uint64_t animationTime);
+	Sprite(SDL_Texture*, uint32_t frameCount, uint64_t animationTime);
 private:
 	std::shared_ptr<Texture> atlas;
 	std::vector<Rectangle> frames;
 	uint64_t animationTime;
 	uint8_t currentFrame;
+
+	std::vector<Rectangle> generateFrames(uint32_t frameCount);
 };
 
 #endif // !ENGINEV2_GRAPHICS_ANIMATION_SPRITE_H

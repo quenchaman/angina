@@ -15,6 +15,7 @@ TestEngine::TestEngine(): txt(nullptr), maxLevels(10) {
 void TestEngine::onStart() {
   setClearColor(Color(0, 0, 0));
   rectangleComponent.add(Rectangle(Point(100, 100), Dimensions(50, 50), Color(128, 128, 64, 255), true));
+  rectangleComponent.add(Rectangle(Point(100, 100), Dimensions(50, 50), Color(128, 128, 64, 255), true));
 }
 
 void TestEngine::onUpdate()

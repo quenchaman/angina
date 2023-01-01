@@ -26,6 +26,7 @@ class Rectangle;
 class GameEngine {
 public:
   GameEngine() = default;
+	GameEngine(const std::string& appTitle, int32_t width, int32_t height);
 	virtual ~GameEngine() = default;
 
 	void init(const std::string& appTitle, int32_t width, int32_t height);

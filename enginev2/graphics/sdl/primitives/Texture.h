@@ -27,6 +27,8 @@ public:
 	void rotate(double angle);
 	void activateHFlip();
 	void activateVFlip();
+
+	Dimensions getDimensions() const;
 private:
 	Dimensions dim;
 	SDL_Texture* texture;
