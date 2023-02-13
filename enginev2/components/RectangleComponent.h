@@ -2,8 +2,8 @@
 #define ENGINEV2_COMPONENTS_RECTANGLECOMPONENT_H_
 
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
-#include "enginev2/graphics/commons/primitives/Point.h"
-#include "enginev2/graphics/commons/primitives/Dimensions.h"
+#include "enginev2/graphics/models/Point.h"
+#include "enginev2/graphics/models/Dimensions.h"
 
 #include "enginev2/components/PrimitivesComponent.h"
 

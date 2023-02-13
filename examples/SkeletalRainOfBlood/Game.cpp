@@ -1,7 +1,8 @@
 #include "Game.h"
 
-#include "enginev2/graphics/commons/primitives/Color.h"
+#include "enginev2/graphics/models/Color.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
+#include "enginev2/graphics/models/Point.h"
 #include "resources/Resources.h"
 
 Game::Game(): GameEngine("Skeletal Rain Of Blood", 860, 640)
@@ -11,7 +12,7 @@ Game::Game(): GameEngine("Skeletal Rain Of Blood", 860, 640)
 void Game::onStart()
 {
 	setClearColor(Color(0, 0, 0));
-	heroSpriteId = spriteAnimator.add(Sprite(loadTexture(Resources::SkeletalRainOfBlood::HERO), 4, 500));
+	heroSpriteId = spriteAnimator.add(Sprite(Point(0, 0), loadTexture(Resources::SkeletalRainOfBlood::HERO), 4, 500));
 }
 
 void Game::onUpdate()

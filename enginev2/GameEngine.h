@@ -3,6 +3,7 @@
 
 #include <string>
 #include <cstdint>
+#include <memory>
 
 #include "enginev2/graphics/sdl/window/Window.h"
 #include "enginev2/events/GlobalInputComponent.h"
@@ -48,7 +49,7 @@ protected:
 	GlobalInputComponent inputComponent;
 
 	// TODO: Extract the helper method into a class and add it here so a client can easily namespace-use methods
-	SDL_Texture* loadTexture(const std::string& resourcePath);
+	std::shared_ptr<Texture> loadTexture(const std::string& resourcePath);
 
 	void setClearColor(const Color&);
 private:

@@ -5,8 +5,8 @@
 
 #include "SDL_pixels.h"
 
-#include "enginev2/graphics/commons/primitives/Width.h"
-#include "enginev2/graphics/commons/primitives/Height.h"
+#include "enginev2/graphics/models/Width.h"
+#include "enginev2/graphics/models/Height.h"
 
 struct SDL_Window;
 struct SDL_Surface;

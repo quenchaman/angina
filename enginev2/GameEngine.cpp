@@ -1,8 +1,8 @@
 #include "GameEngine.h"
 
-#include "enginev2/graphics/commons/primitives/Dimensions.h"
-#include "enginev2/graphics/commons/primitives/Width.h"
-#include "enginev2/graphics/commons/primitives/Height.h"
+#include "enginev2/graphics/models/Dimensions.h"
+#include "enginev2/graphics/models/Width.h"
+#include "enginev2/graphics/models/Height.h"
 
 #include "enginev2/graphics/sdl/renderer/TextureLoaderComponent.h"
 
@@ -71,9 +71,9 @@ void GameEngine::drawGPU() {
 	textureRenderer.update();
 }
 
-SDL_Texture* GameEngine::loadTexture(const std::string& resourcePath)
+std::shared_ptr<Texture> GameEngine::loadTexture(const std::string& resourcePath)
 {
-	return TextureLoaderComponent::loadTexture(textureRenderer, resourcePath);
+	return std::make_shared<Texture>(TextureLoaderComponent::loadTexture(textureRenderer, resourcePath));
 }
 
 void GameEngine::setClearColor(const Color& color)

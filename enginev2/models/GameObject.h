@@ -1,22 +1,15 @@
 #ifndef ENGINEV2_MODELS_GAMEOBJECT_H_
 #define ENGINEV2_MODELS_GAMEOBJECT_H_
 
-#include "enginev2/graphics/commons/primitives/Point.h"
-#include "enginev2/graphics/sdl/primitives/Rectangle.h"
-
-class Texture;
-class TextureRendererComponent;
+#include "enginev2/graphics/models/Point.h"
 
 class GameObject {
 public:
-    friend class TextureRendererComponent;
+    GameObject(const Point&);
+    
+    virtual ~GameObject() = default;
 
-    /*GameObject(const Point&, SDL_Texture&);
-    GameObject(const Point&, SDL_Texture&, const Rectangle& clip);*/
-    virtual ~GameObject();
-private:
     Point pos;
-    Texture* tx;
 };
 
 #endif /* ENGINEV2_MODELS_GAMEOBJECT_H_ */

@@ -27,18 +27,18 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/graphics/sdl/primitives/Texture.cpp
 	${DIR}/enginev2/graphics/sdl/primitives/Rectangle.h
 	${DIR}/enginev2/graphics/sdl/primitives/Rectangle.cpp
-	${DIR}/enginev2/graphics/commons/primitives/Width.h
-	${DIR}/enginev2/graphics/commons/primitives/Height.h
-	${DIR}/enginev2/graphics/commons/primitives/Dimensions.h
-	${DIR}/enginev2/graphics/commons/primitives/Dimensions.cpp
-	${DIR}/enginev2/graphics/commons/primitives/Point.h
-	${DIR}/enginev2/graphics/commons/primitives/Point.cpp
-	${DIR}/enginev2/graphics/commons/primitives/Color.h
-	${DIR}/enginev2/graphics/commons/primitives/Color.cpp
-	${DIR}/enginev2/graphics/commons/primitives/Pixel.h
-	${DIR}/enginev2/graphics/commons/primitives/Pixel.cpp
-	${DIR}/enginev2/graphics/commons/primitives/Line.h
-	${DIR}/enginev2/graphics/commons/primitives/Line.cpp
+	${DIR}/enginev2/graphics/models/Width.h
+	${DIR}/enginev2/graphics/models/Height.h
+	${DIR}/enginev2/graphics/models/Dimensions.h
+	${DIR}/enginev2/graphics/models/Dimensions.cpp
+	${DIR}/enginev2/graphics/models/Point.h
+	${DIR}/enginev2/graphics/models/Point.cpp
+	${DIR}/enginev2/graphics/models/Color.h
+	${DIR}/enginev2/graphics/models/Color.cpp
+	${DIR}/enginev2/graphics/models/Pixel.h
+	${DIR}/enginev2/graphics/models/Pixel.cpp
+	${DIR}/enginev2/graphics/models/Line.h
+	${DIR}/enginev2/graphics/models/Line.cpp
 	
 	${DIR}/enginev2/models/GameObject.h
 	${DIR}/enginev2/models/GameObject.cpp

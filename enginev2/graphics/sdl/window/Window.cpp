@@ -7,7 +7,7 @@
 #include "SDL_surface.h"
 
 #include "platform/sdl/primitives/Surface.h"
-#include "enginev2/graphics/commons/primitives/Color.h"
+#include "enginev2/graphics/models/Color.h"
 #include "exceptions/WindowInitException.h"
 
 Window::Window(): clearColor(SDL_Color{0xFF, 0xFF, 0xFF}), sdlWindow(nullptr), surface(nullptr) {}

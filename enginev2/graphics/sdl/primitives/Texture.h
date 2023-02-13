@@ -1,7 +1,7 @@
 #ifndef SDL_GRAPHICS_TEXTURE_H_
 #define SDL_GRAPHICS_TEXTURE_H_
 
-#include "enginev2/graphics/commons/primitives/Dimensions.h"
+#include "enginev2/graphics/models/Dimensions.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 
 #include "SDL_render.h"

@@ -1,22 +1,26 @@
 #include "Sprite.h"
 
-#include "enginev2/graphics/commons/primitives/Point.h"
-#include "enginev2/graphics/commons/primitives/Dimensions.h"
+#include "enginev2/graphics/models/Point.h"
+#include "enginev2/graphics/models/Dimensions.h"
 
-Sprite::Sprite(std::shared_ptr<Texture> texture, const std::vector<Rectangle>& frames, uint64_t animationTime):
+Sprite::Sprite(const Point& pos, std::shared_ptr<Texture> texture, const std::vector<Rectangle>& frames, uint64_t animationTime):
+	pos(pos),
 	atlas(texture),
 	frames(frames),
 	currentFrame(0),
 	animationTime(animationTime) {}
 
-Sprite::Sprite(SDL_Texture* sdlTex, const std::vector<Rectangle>& frames, uint64_t animationTime):
-	Sprite(std::make_shared<Texture>(sdlTex), frames, animationTime) {}
+Sprite::Sprite(const Point& pos, SDL_Texture* sdlTex, const std::vector<Rectangle>& frames, uint64_t animationTime):
+	Sprite(pos, std::make_shared<Texture>(sdlTex), frames, animationTime) {}
 
-Sprite::Sprite(SDL_Texture* texture, uint32_t frameCount, uint64_t animationTime):
-	Sprite(std::make_shared<Texture>(texture), {}, animationTime) {
-	
+Sprite::Sprite(const Point& pos, std::shared_ptr<Texture> texture, uint32_t frameCount, uint64_t animationTime) :
+	Sprite(pos, texture, std::vector<Rectangle>(), animationTime)
+{
 	this->frames = generateFrames(frameCount);
 }
+
+Sprite::Sprite(const Point& pos, SDL_Texture* texture, uint32_t frameCount, uint64_t animationTime):
+	Sprite(pos, std::make_shared<Texture>(texture), frameCount, animationTime) {}
 
 std::vector<Rectangle> Sprite::generateFrames(uint32_t frameCount)
 {

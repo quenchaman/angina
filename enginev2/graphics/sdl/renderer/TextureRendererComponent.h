@@ -1,7 +1,7 @@
 #ifndef ENGINEV2_GRAPHICS_SDL_RENDERER_TEXTURERENDERERCOMPONENT_H_
 #define ENGINEV2_GRAPHICS_SDL_RENDERER_TEXTURERENDERERCOMPONENT_H_
 
-#include "enginev2/graphics/commons/primitives/Color.h"
+#include "enginev2/graphics/models/Color.h"
 
 class Window;
 class Texture;

@@ -1,7 +1,7 @@
 #ifndef ENGINEV2_COMPONENTS_PIXELCOMPONENT_H_
 #define ENGINEV2_COMPONENTS_PIXELCOMPONENT_H_
 
-#include "enginev2/graphics/commons/primitives/Pixel.h"
+#include "enginev2/graphics/models/Pixel.h"
 
 #include "enginev2/components/PrimitivesComponent.h"
 

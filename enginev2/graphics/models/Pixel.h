@@ -1,8 +1,8 @@
 #ifndef ENGINEV2_GRAPHICS_COMMONS_PRIMITIVES_PIXEL_H_
 #define ENGINEV2_GRAPHICS_COMMONS_PRIMITIVES_PIXEL_H_
 
-#include "enginev2/graphics/commons/primitives/Point.h"
-#include "enginev2/graphics/commons/primitives/Color.h"
+#include "enginev2/graphics/models/Point.h"
+#include "enginev2/graphics/models/Color.h"
 
 class TextureRendererComponent;
 

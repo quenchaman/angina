@@ -1,7 +1,7 @@
 #include "Rectangle.h"
 
-#include "enginev2/graphics/commons/primitives/Dimensions.h"
-#include "enginev2/graphics/commons/primitives/Point.h"
+#include "enginev2/graphics/models/Dimensions.h"
+#include "enginev2/graphics/models/Point.h"
 
 Rectangle::Rectangle(const Point& pos, const Dimensions& dim, const Color& col, bool filled)
 	: rect(SDL_Rect {pos.x, pos.y, dim.w, dim.h}), color(col), fill(filled) {}

@@ -1,7 +1,7 @@
 #ifndef ENGINEV2_COMPONENTS_LINECOMPONENT_H_
 #define ENGINEV2_COMPONENTS_LINECOMPONENT_H_
 
-#include "enginev2/graphics/commons/primitives/Line.h"
+#include "enginev2/graphics/models/Line.h"
 #include "enginev2/components/PrimitivesComponent.h"
 
 struct Point;

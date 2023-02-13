@@ -3,7 +3,7 @@
 
 #include "SDL_shape.h"
 
-#include "enginev2/graphics/commons/primitives/Color.h"
+#include "enginev2/graphics/models/Color.h"
 
 struct Dimensions;
 struct Point;

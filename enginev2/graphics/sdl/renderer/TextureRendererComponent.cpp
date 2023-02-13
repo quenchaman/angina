@@ -6,9 +6,9 @@
 
 #include "enginev2/graphics/sdl/window/Window.h"
 #include "enginev2/graphics/sdl/primitives/Texture.h"
-#include "enginev2/graphics/commons/primitives/Point.h"
-#include "enginev2/graphics/commons/primitives/Pixel.h"
-#include "enginev2/graphics/commons/primitives/Line.h"
+#include "enginev2/graphics/models/Point.h"
+#include "enginev2/graphics/models/Pixel.h"
+#include "enginev2/graphics/models/Line.h"
 #include "enginev2/graphics/animation/Sprite.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 #include "enginev2/models/GameObject.h"
@@ -31,7 +31,7 @@ void TextureRendererComponent::render(Texture& texture) {
 }
 
 void TextureRendererComponent::render(GameObject& obj) {
-    SDL_Rect dest{obj.pos.x, obj.pos.y, obj.tx->dim.w, obj.tx->dim.h};
+    //SDL_Rect dest{obj.pos.x, obj.pos.y, obj.tx->dim.w, obj.tx->dim.h};
     //SDL_RenderCopy(renderer, obj.tx->texture, &obj.tx->clip.rect, &dest);
 }
 
