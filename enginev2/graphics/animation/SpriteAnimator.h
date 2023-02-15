@@ -25,6 +25,7 @@ public:
 	friend class GameEngine;
 
 	ID add(const Sprite&);
+	void updateSprite(ID, const Sprite&);
 	void activate(ID);
 	void deactivate(ID);
 	void remove(ID);

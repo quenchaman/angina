@@ -14,6 +14,12 @@ ID SpriteAnimator::add(const Sprite& sprite)
 	return id;
 }
 
+void SpriteAnimator::updateSprite(ID id, const Sprite& newSprite)
+{
+	//PrimitivesComponent::
+	/*for (Sprite& )*/
+}
+
 void SpriteAnimator::activate(ID id)
 {
 	if (!animatedSprites[id].isActive) {
