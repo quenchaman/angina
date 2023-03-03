@@ -3,6 +3,7 @@
 
 #include "enginev2/graphics/models/Dimensions.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
+#include "enginev2/components/ID.h"
 
 #include "SDL_render.h"
 
@@ -29,6 +30,8 @@ public:
 	void activateVFlip();
 
 	Dimensions getDimensions() const;
+
+	ID id;
 private:
 	Dimensions dim;
 	SDL_Texture* texture;

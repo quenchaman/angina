@@ -24,8 +24,8 @@ class SpriteAnimator : public PrimitivesComponent<Sprite> {
 public:
 	friend class GameEngine;
 
-	ID add(const Sprite&);
-	void updateSprite(ID, const Sprite&);
+	ID add(Sprite&);
+	void updateSprite(ID, Sprite&);
 	void activate(ID);
 	void deactivate(ID);
 	void remove(ID);

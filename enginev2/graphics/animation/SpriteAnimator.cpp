@@ -4,9 +4,10 @@
 
 #include "platform/time/TimeUtils.h"
 
-ID SpriteAnimator::add(const Sprite& sprite)
+ID SpriteAnimator::add(Sprite& sprite)
 {
 	auto id = idGen.next();
+	sprite.id = id;
 	Sprite& addedSprite = PrimitivesComponent::add(sprite);
 	
 	animatedSprites[id] = AnimatedSprite { &addedSprite, false, 0 };
@@ -14,10 +15,13 @@ ID SpriteAnimator::add(const Sprite& sprite)
 	return id;
 }
 
-void SpriteAnimator::updateSprite(ID id, const Sprite& newSprite)
+void SpriteAnimator::updateSprite(ID id, Sprite& newSprite)
 {
-	//PrimitivesComponent::
-	/*for (Sprite& )*/
+	deactivate(id);
+	PrimitivesComponent::remove(id);
+	newSprite.id = id;
+	Sprite& spr = PrimitivesComponent::add(newSprite);
+	animatedSprites[id] = AnimatedSprite{ &spr, false, 0 };
 }
 
 void SpriteAnimator::activate(ID id)

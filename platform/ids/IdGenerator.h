@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-typedef uint16_t ID;
+typedef uint64_t ID;
 
 class IdGenerator {
 public:

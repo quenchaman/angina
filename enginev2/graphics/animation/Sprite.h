@@ -8,6 +8,7 @@
 #include "enginev2/graphics/sdl/primitives/Texture.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 #include "enginev2/graphics/models/Point.h"
+#include "enginev2/components/ID.h"
 
 class SpriteAnimator;
 class TextureRendererComponent;
@@ -22,6 +23,8 @@ public:
 	Sprite(const Point&, SDL_Texture*, const std::vector<Rectangle>&, uint64_t animationTime);
 	Sprite(const Point&, SDL_Texture*, uint32_t frameCount, uint64_t animationTime);
 	Sprite(const Point&, std::shared_ptr<Texture>, uint32_t frameCount, uint64_t animationTime);
+
+	ID id;
 private:
 	Point pos;
 	std::shared_ptr<Texture> atlas;
