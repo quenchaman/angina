@@ -58,15 +58,15 @@ void GameEngine::drawGPU() {
 
 	for(Pixel& pixel : pixelComponent.data) {
 		textureRenderer.render(pixel);
-	}
+	}*/
 
 	for(GameObject& obj : objectComponent.data) {
 	    textureRenderer.render(obj);
-	}*/
-
-	for (Sprite& sprite : spriteAnimator.data) {
-		textureRenderer.render(sprite);
 	}
+
+	/*for (Sprite& sprite : spriteAnimator.data) {
+		textureRenderer.render(sprite);
+	}*/
 
 	textureRenderer.update();
 }

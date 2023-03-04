@@ -42,7 +42,7 @@ protected:
 	RectangleComponent rectangleComponent;
   //PixelComponent pixelComponent;
   //LineComponent lineComponent;
-  //GameObjectComponent objectComponent;
+  GameObjectComponent objectComponent;
   TextureComponent textureComponent;
 	SpriteAnimator spriteAnimator;
   //AnimationComponent animationComponent;

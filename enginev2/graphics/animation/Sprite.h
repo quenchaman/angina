@@ -19,14 +19,13 @@ public:
 	friend class TextureRendererComponent;
 
 	Sprite() = default;
-	Sprite(const Point&, std::shared_ptr<Texture>, const std::vector<Rectangle>&, uint64_t animationTime);
-	Sprite(const Point&, SDL_Texture*, const std::vector<Rectangle>&, uint64_t animationTime);
-	Sprite(const Point&, SDL_Texture*, uint32_t frameCount, uint64_t animationTime);
-	Sprite(const Point&, std::shared_ptr<Texture>, uint32_t frameCount, uint64_t animationTime);
+	Sprite(std::shared_ptr<Texture>, const std::vector<Rectangle>&, uint64_t animationTime);
+	Sprite(SDL_Texture*, const std::vector<Rectangle>&, uint64_t animationTime);
+	Sprite(SDL_Texture*, uint32_t frameCount, uint64_t animationTime);
+	Sprite(std::shared_ptr<Texture>, uint32_t frameCount, uint64_t animationTime);
 
 	ID id;
 private:
-	Point pos;
 	std::shared_ptr<Texture> atlas;
 	std::vector<Rectangle> frames;
 	uint64_t animationTime;

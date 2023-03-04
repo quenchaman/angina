@@ -15,13 +15,10 @@ ID SpriteAnimator::add(Sprite& sprite)
 	return id;
 }
 
-void SpriteAnimator::updateSprite(ID id, Sprite& newSprite)
+void SpriteAnimator::updateSprite(ID id, std::shared_ptr<Texture> tex)
 {
-	deactivate(id);
-	PrimitivesComponent::remove(id);
-	newSprite.id = id;
-	Sprite& spr = PrimitivesComponent::add(newSprite);
-	animatedSprites[id] = AnimatedSprite{ &spr, false, 0 };
+	Sprite* oldSprite = animatedSprites[id].sprite;
+	oldSprite->atlas = tex;
 }
 
 void SpriteAnimator::activate(ID id)

@@ -8,7 +8,7 @@ struct Point;
 #include "enginev2/components/PrimitivesComponent.h"
 #include "enginev2/models/GameObject.h"
 
-class GameObjectComponent : private PrimitivesComponent<GameObject> {
+class GameObjectComponent : public PrimitivesComponent<GameObject> {
 public:
     friend class GameEngine;
 

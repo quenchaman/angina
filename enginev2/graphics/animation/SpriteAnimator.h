@@ -25,7 +25,7 @@ public:
 	friend class GameEngine;
 
 	ID add(Sprite&);
-	void updateSprite(ID, Sprite&);
+	void updateSprite(ID, std::shared_ptr<Texture>);
 	void activate(ID);
 	void deactivate(ID);
 	void remove(ID);

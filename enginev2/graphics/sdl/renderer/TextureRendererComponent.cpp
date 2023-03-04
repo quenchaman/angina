@@ -31,8 +31,9 @@ void TextureRendererComponent::render(Texture& texture) {
 }
 
 void TextureRendererComponent::render(GameObject& obj) {
-    //SDL_Rect dest{obj.pos.x, obj.pos.y, obj.tx->dim.w, obj.tx->dim.h};
-    //SDL_RenderCopy(renderer, obj.tx->texture, &obj.tx->clip.rect, &dest);
+    SDL_Rect dest{obj.pos.x, obj.pos.y, obj.dim.w, obj.dim.h};
+		SDL_Rect src{ 0, 0, obj.dim.w, obj.dim.h };
+    SDL_RenderCopy(renderer, obj.spritePtr->atlas->texture, &src, &dest);
 }
 
 void TextureRendererComponent::render(Texture& texture, Rectangle& viewPort) {
