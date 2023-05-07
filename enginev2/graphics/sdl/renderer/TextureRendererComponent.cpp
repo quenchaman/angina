@@ -33,7 +33,7 @@ void TextureRendererComponent::render(Texture& texture) {
 void TextureRendererComponent::render(GameObject& obj) {
     SDL_Rect dest{obj.pos.x, obj.pos.y, obj.dim.w, obj.dim.h};
 		SDL_Rect src{ 0, 0, obj.dim.w, obj.dim.h };
-    SDL_RenderCopy(renderer, obj.spritePtr->atlas->texture, &src, &dest);
+    SDL_RenderCopyEx(renderer, obj.spritePtr->atlas->texture, &src, &dest, NULL, nullptr, obj.spritePtr->atlas->flip);
 }
 
 void TextureRendererComponent::render(Texture& texture, Rectangle& viewPort) {

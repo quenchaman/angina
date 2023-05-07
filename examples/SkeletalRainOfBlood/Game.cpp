@@ -20,7 +20,8 @@ void Game::onStart()
 	heroFacingRight = loadTexture(Resources::SkeletalRainOfBlood::HERO);
 	ID id = spriteAnimator.add(Sprite(heroFacingRight, 4, 500));
 	Sprite& spr1 = spriteAnimator.get(id);
-	std::shared_ptr<Sprite> sprPtr = std::make_shared<Sprite>(spr1);
+	Sprite* spr1ptr = &spr1;
+	std::shared_ptr<Sprite> sprPtr(spr1ptr);
 	hero = objectComponent.add(GameObjectFactory::create(
 		sprPtr,
 		1.0f, Point(100, 100), Dimensions(64, 64)));
