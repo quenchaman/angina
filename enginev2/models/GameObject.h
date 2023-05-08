@@ -15,14 +15,16 @@ public:
   GameObject() = default;
   GameObject(ID id, Sprite& sprite, float speedFactor, Point pos,
     Dimensions dim);
-    
+   
+  void updatePosition(const Point& placementPos);
   virtual ~GameObject() = default;
 
   ID id;
   //std::shared_ptr<Texture> tex;
   Sprite& sprite;
   float speedFactor; // pixels per second
-  Point pos;
+  Point renderingPos; // Used for rendering and is at the upper left corner of the texture.
+  Point placementPos; // The middle of the bottom edge of the object/texture
   Dimensions dim;
 };
 

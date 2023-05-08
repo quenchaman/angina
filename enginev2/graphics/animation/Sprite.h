@@ -17,6 +17,7 @@ class Sprite {
 public:
 	friend class SpriteAnimator;
 	friend class TextureRendererComponent;
+	friend class GameObject;
 
 	Sprite() = default;
 	Sprite(std::shared_ptr<Texture>, const std::vector<Rectangle>&, uint64_t animationTime);
@@ -30,6 +31,7 @@ private:
 	std::vector<Rectangle> frames;
 	uint64_t animationTime;
 	uint8_t currentFrame;
+	uint8_t frameWidth;
 
 	std::vector<Rectangle> generateFrames(uint32_t frameCount);
 };

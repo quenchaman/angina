@@ -6,10 +6,10 @@
 void MovementCmpt::move(GameObject& obj, Point& destination)
 {
 	uint64_t now = TimeUtils::timestamp();
-	Point dir{ destination.x - obj.pos.x, destination.y - obj.pos.y };
+	Point dir{ destination.x - obj.placementPos.x, destination.y - obj.placementPos.y };
 	float dist = std::sqrt(std::pow(dir.x, 2) + std::pow(dir.y, 2));
 	float timeToDest = dist / obj.speedFactor;
-	MovementCmd cmd{ obj.pos, dir, now, timeToDest };
+	MovementCmd cmd{ obj.placementPos, dir, now, timeToDest };
 	movingObjects[obj.id] = std::make_pair(
 		&obj,
 		cmd
@@ -37,5 +37,5 @@ void MovementCmpt::updatePosition(GameObject* gameObjPtr, const MovementCmd& cmd
 	float newY = cmd.direction.y * movementScale;
 	Point scaledDirVec = Point(static_cast<int32_t>(newX), static_cast<int32_t>(newY));
 	Point newPos{ cmd.startPos.x + scaledDirVec.x, cmd.startPos.y + scaledDirVec.y };
-	gameObjPtr->pos = newPos;
+	gameObjPtr->updatePosition(newPos);
 }

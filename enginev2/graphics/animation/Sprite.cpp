@@ -27,6 +27,7 @@ std::vector<Rectangle> Sprite::generateFrames(uint32_t frameCount)
 	uint32_t frameWidth = dim.w / frameCount;
 	uint32_t currentWidth = 0;
 	std::vector<Rectangle> frames;
+	this->frameWidth = frameWidth;
 
 	for (int32_t frameN = 0; frameN < frameCount; frameN++) {
 		frames.push_back(Rectangle(Point(currentWidth, 0), Dimensions(frameWidth, dim.h)));
