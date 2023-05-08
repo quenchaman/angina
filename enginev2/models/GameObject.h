@@ -13,23 +13,23 @@
 class GameObject {
 public:
   GameObject() = default;
-  GameObject(ID id, std::shared_ptr<Sprite> spritePtr, float speedFactor, Point pos,
+  GameObject(ID id, Sprite& sprite, float speedFactor, Point pos,
     Dimensions dim);
     
   virtual ~GameObject() = default;
 
   ID id;
   //std::shared_ptr<Texture> tex;
-  std::shared_ptr<Sprite> spritePtr;
-  float speedFactor;
+  Sprite& sprite;
+  float speedFactor; // pixels per second
   Point pos;
   Dimensions dim;
 };
 
 struct GameObjectFactory {
-  static GameObject create(std::shared_ptr<Sprite> spritePtr, float speed, Point pos, Dimensions dim) {
+  static GameObject create(Sprite& sprite, float speed, Point pos, Dimensions dim) {
     ID id = idgen.next();
-    return GameObject(id, spritePtr, speed, pos, dim);
+    return GameObject(id, sprite, speed, pos, dim);
   }
 
 private:

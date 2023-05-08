@@ -20,14 +20,15 @@ void Game::onStart()
 	heroFacingRight = loadTexture(Resources::SkeletalRainOfBlood::HERO);
 	ID id = spriteAnimator.add(Sprite(heroFacingRight, 4, 500));
 	Sprite& spr1 = spriteAnimator.get(id);
-	Sprite* spr1ptr = &spr1;
-	std::shared_ptr<Sprite> sprPtr(spr1ptr);
-	hero = objectComponent.add(GameObjectFactory::create(
-		sprPtr,
-		1.0f, Point(100, 100), Dimensions(64, 64)));
+	
+	GameObject& gameObj = objectComponent.add(GameObjectFactory::create(
+		spr1,
+		100.0f, Point(100, 100), Dimensions(64, 64)));
+	hero = &gameObj;
 
 	heroFacingLeft = loadTexture(Resources::SkeletalRainOfBlood::HERO);
 	heroFacingLeft->activateHFlip();
+	movementComponent.move(*hero, Point(200, 200));
 }
 
 void Game::onUpdate()
@@ -38,24 +39,24 @@ void Game::handleEvent()
 {
 	if (inputComponent.key == Keyboard::KEY_D && inputComponent.touchEvent == TouchEvent::KEYBOARD_PRESS) {
 		if (dir != DIRECTION_STATE::RIGHT) {
-			spriteAnimator.updateSprite(hero.spritePtr->id, heroFacingRight);
+			spriteAnimator.updateSprite(hero->sprite.id, heroFacingRight);
 			dir = DIRECTION_STATE::RIGHT;
 		}
 		
-		spriteAnimator.activate(hero.spritePtr->id);
+		spriteAnimator.activate(hero->sprite.id);
 	}
 	else if (inputComponent.key == Keyboard::KEY_A && inputComponent.touchEvent == TouchEvent::KEYBOARD_PRESS) {
 		if (dir != DIRECTION_STATE::LEFT) {
-			spriteAnimator.updateSprite(hero.spritePtr->id, heroFacingLeft);
+			spriteAnimator.updateSprite(hero->sprite.id, heroFacingLeft);
 			dir = DIRECTION_STATE::LEFT;
 		}
 		
-		spriteAnimator.activate(hero.spritePtr->id);
+		spriteAnimator.activate(hero->sprite.id);
 	}
 	else if (inputComponent.key == Keyboard::KEY_D && inputComponent.touchEvent == TouchEvent::KEYBOARD_RELEASE) {
-		spriteAnimator.deactivate(hero.spritePtr->id);
+		spriteAnimator.deactivate(hero->sprite.id);
 	}
 	else if (inputComponent.key == Keyboard::KEY_A && inputComponent.touchEvent == TouchEvent::KEYBOARD_RELEASE) {
-		spriteAnimator.deactivate(hero.spritePtr->id);
+		spriteAnimator.deactivate(hero->sprite.id);
 	}
 }

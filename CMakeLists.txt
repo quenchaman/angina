@@ -76,6 +76,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/collisions/BoundingBox.h
 	${DIR}/enginev2/collisions/BoundingBox.cpp
 
+	${DIR}/enginev2/movement/MovementCmpt.h
+	${DIR}/enginev2/movement/MovementCmpt.cpp
+
 	${DIR}/platform/ids/ForwardIdGenerator.h
 	${DIR}/platform/ids/ForwardIdGenerator.cpp
 	${DIR}/platform/ids/IdGenerator.h

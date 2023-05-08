@@ -1,9 +1,8 @@
 #include "GameObject.h"
 
-GameObject::GameObject(ID id, std::shared_ptr<Sprite> spritePtr, float speedFactor, Point pos,
-	Dimensions dim):
+GameObject::GameObject(ID id, Sprite& sprite, float speedFactor, Point pos, Dimensions dim):
 	id(id),
-	spritePtr(spritePtr),
+	sprite(sprite),
 	speedFactor(speedFactor),
 	pos(pos),
 	dim(dim)

@@ -36,6 +36,7 @@ void GameEngine::start() {
 		}
 
 		spriteAnimator.update();
+		movementComponent.update();
 
 		drawGPU();
 	}
