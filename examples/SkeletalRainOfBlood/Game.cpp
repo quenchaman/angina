@@ -28,7 +28,6 @@ void Game::onStart()
 
 	heroFacingLeft = loadTexture(Resources::SkeletalRainOfBlood::HERO);
 	heroFacingLeft->activateHFlip();
-	movementComponent.move(*hero, Point(200, 200));
 }
 
 void Game::onUpdate()
@@ -37,26 +36,8 @@ void Game::onUpdate()
 
 void Game::handleEvent()
 {
-	if (inputComponent.key == Keyboard::KEY_D && inputComponent.touchEvent == TouchEvent::KEYBOARD_PRESS) {
-		if (dir != DIRECTION_STATE::RIGHT) {
-			spriteAnimator.updateSprite(hero->sprite.id, heroFacingRight);
-			dir = DIRECTION_STATE::RIGHT;
-		}
-		
-		spriteAnimator.activate(hero->sprite.id);
-	}
-	else if (inputComponent.key == Keyboard::KEY_A && inputComponent.touchEvent == TouchEvent::KEYBOARD_PRESS) {
-		if (dir != DIRECTION_STATE::LEFT) {
-			spriteAnimator.updateSprite(hero->sprite.id, heroFacingLeft);
-			dir = DIRECTION_STATE::LEFT;
-		}
-		
-		spriteAnimator.activate(hero->sprite.id);
-	}
-	else if (inputComponent.key == Keyboard::KEY_D && inputComponent.touchEvent == TouchEvent::KEYBOARD_RELEASE) {
-		spriteAnimator.deactivate(hero->sprite.id);
-	}
-	else if (inputComponent.key == Keyboard::KEY_A && inputComponent.touchEvent == TouchEvent::KEYBOARD_RELEASE) {
-		spriteAnimator.deactivate(hero->sprite.id);
+	if (inputComponent.mouseButton == Mouse::RIGHT_BUTTON && inputComponent.type ==
+		EventType::MOUSE_PRESS) {
+		movementComponent.move(*hero, Point(inputComponent.posX, inputComponent.posY));
 	}
 }

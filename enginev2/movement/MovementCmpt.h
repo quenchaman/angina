@@ -12,6 +12,7 @@
 class GameObject;
 
 struct MovementCmd {
+	Point startPos;
 	Point direction;
 	uint64_t startTime;
 	float timeToDest;
