@@ -5,7 +5,7 @@ GameObject::GameObject(ID id, Sprite& sprite, float speedFactor, Point pos, Dime
 	sprite(sprite),
 	speedFactor(speedFactor),
 	renderingPos(pos),
-	placementPos(Point(pos.x + (sprite.atlas->getDimensions().w / 2), pos.y + sprite.atlas->getDimensions().h)),
+	placementPos(Point(pos.x + (sprite.frameWidth / 2), pos.y + sprite.atlas->getDimensions().h)),
 	dim(dim)
 {}
 

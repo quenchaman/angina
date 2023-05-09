@@ -32,7 +32,10 @@ void MovementCmpt::updatePosition(GameObject* gameObjPtr, const MovementCmd& cmd
 	uint64_t now = TimeUtils::timestamp();
 	float diffS = (now - cmd.startTime) / 1000.f;
 	float movementScale = diffS / cmd.timeToDest;
-	if (movementScale > 1) return;
+	if (movementScale > 1) {
+		// TODO: We could delete the entry in the map, but it's not a big deal.
+		return;
+	}
 	float newX = cmd.direction.x * movementScale;
 	float newY = cmd.direction.y * movementScale;
 	Point scaledDirVec = Point(static_cast<int32_t>(newX), static_cast<int32_t>(newY));
