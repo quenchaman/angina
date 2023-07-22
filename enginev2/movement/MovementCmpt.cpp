@@ -40,5 +40,6 @@ void MovementCmpt::updatePosition(GameObject* gameObjPtr, const MovementCmd& cmd
 	float newY = cmd.direction.y * movementScale;
 	Point scaledDirVec = Point(static_cast<int32_t>(newX), static_cast<int32_t>(newY));
 	Point newPos{ cmd.startPos.x + scaledDirVec.x, cmd.startPos.y + scaledDirVec.y };
+	gameObjPtr->updateDirection(cmd.direction);
 	gameObjPtr->updatePosition(newPos);
 }

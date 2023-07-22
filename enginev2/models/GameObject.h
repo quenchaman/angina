@@ -17,15 +17,19 @@ public:
     Dimensions dim);
    
   void updatePosition(const Point& placementPos);
+  void updateDirection(const Point& newDir);
   virtual ~GameObject() = default;
+
+  void setSprite(Sprite s);
 
   ID id;
   //std::shared_ptr<Texture> tex;
-  Sprite& sprite;
+  Sprite sprite;
   float speedFactor; // pixels per second
   Point renderingPos; // Used for rendering and is at the upper left corner of the texture.
   Point placementPos; // The middle of the bottom edge of the object/texture
   Dimensions dim;
+  Point dir; // The current direction or last direction the object was travelling towards
 };
 
 struct GameObjectFactory {

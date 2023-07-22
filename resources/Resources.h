@@ -66,6 +66,11 @@ namespace Resources {
 		const std::string HERO = GAME_RESOURCE_PREFIX + "hero.png";
 	}
 
+	namespace Breakout {
+		const std::string BreakOutPrefix = prefix + "breakout/";
+		const std::string PADDLE = BreakOutPrefix + "paddle.png";
+	}
+
 
 inline bool isResource(const std::string& str) {
 	return str.find(prefix) != std::string::npos;

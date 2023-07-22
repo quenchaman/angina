@@ -13,7 +13,7 @@ GameEngine::GameEngine(const std::string& appTitle, int32_t width, int32_t heigh
 }
 
 void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height) {
-	win.init(appTitle, Width(width), Height(height));
+	win.init(appTitle, Width(width), Height(height)); // These Width and Height classes should be enforced to the client
 	rectangleComponent.init(100);
 	//lineComponent.init(1000);
 	inputComponent.init();

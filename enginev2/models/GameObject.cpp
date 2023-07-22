@@ -15,4 +15,14 @@ void GameObject::updatePosition(const Point &placementPos)
 	this->placementPos = placementPos;
 }
 
+void GameObject::updateDirection(const Point& newDir)
+{
+	this->dir = newDir;
+}
+
+void GameObject::setSprite(Sprite s)
+{
+	this->sprite = s;
+}
+
 ForwardIdGenerator GameObjectFactory::idgen;

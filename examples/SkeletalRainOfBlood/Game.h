@@ -20,9 +20,9 @@ public:
 
 private:
 	std::shared_ptr<Texture> heroFacingLeft;
-	std::shared_ptr<Texture> heroFacingRight;
+	std::shared_ptr<Texture> paddleTexture;
 	DIRECTION_STATE dir = DIRECTION_STATE::RIGHT;
-	GameObject* hero;
+	GameObject* paddle;
 };
 
 #endif // !SKELETAL_RAIN_OF_BLOOD
