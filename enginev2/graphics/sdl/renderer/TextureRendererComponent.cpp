@@ -12,10 +12,16 @@
 #include "enginev2/graphics/animation/Sprite.h"
 #include "enginev2/graphics/sdl/primitives/Rectangle.h"
 #include "enginev2/models/GameObject.h"
+#include "enginev2/debug/Debug.h"
 
 void TextureRendererComponent::init(Window& window, const Color& clearColor) {
 	// TODO: These hard-coded values should be made easily configurable.
 	renderer = SDL_CreateRenderer( window.sdlWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
+
+	if (!renderer) {
+		DebugLog.showErrorInfo("loading renderer");
+	}
+
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	this->clearColor = clearColor;
 }

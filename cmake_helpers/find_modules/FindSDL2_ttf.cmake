@@ -104,6 +104,7 @@ FIND_PATH(SDL2_TTF_INCLUDE_DIR SDL_ttf.h
 	/opt/local # DarwinPorts
 	/opt/csw # Blastwave
 	/opt
+	"C:/libs/SDL2_ttf-2.20.2/include"
 )
 
 # Lookup the 64 bit libs on x64
@@ -122,6 +123,7 @@ IF(CMAKE_SIZEOF_VOID_P EQUAL 8)
 		/opt/local
 		/opt/csw
 		/opt
+		"C:/libs/SDL2_ttf-2.20.2/lib/x64"
 	)
 # On 32bit build find the 32bit libs
 ELSE(CMAKE_SIZEOF_VOID_P EQUAL 8)

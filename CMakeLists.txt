@@ -73,6 +73,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/graphics/animation/SpriteAnimator.h
 	${DIR}/enginev2/graphics/animation/SpriteAnimator.cpp
 
+	${DIR}/enginev2/debug/Debug.h
+	${DIR}/enginev2/debug/Debug.cpp
+
 	${DIR}/enginev2/collisions/BoundingBox.h
 	${DIR}/enginev2/collisions/BoundingBox.cpp
 
@@ -99,11 +102,13 @@ add_executable(${PROJECT_NAME}
 	${DIR}/exceptions/BaseException.cpp
 	
 	${DIR}/resources/Resources.h
+
+
 )
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy_directory
-	${CMAKE_CURRENT_SOURCE_DIR}/resources/chess
-	$<TARGET_FILE_DIR:${PROJECT_NAME}>/resources/chess)
+	${CMAKE_CURRENT_SOURCE_DIR}/resources
+	$<TARGET_FILE_DIR:${PROJECT_NAME}>/resources)
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
 

@@ -30,12 +30,6 @@ void Window::init(const std::string& title,
 		throw WindowInitException(SDL_GetError());
 	}
 
-	surface = SDL_GetWindowSurface(sdlWindow);
-
-	if (surface == nullptr) {
-		throw WindowInitException(SDL_GetError());
-	}
-
 	std::cout << "Window initialised" << std::endl;
 }
 

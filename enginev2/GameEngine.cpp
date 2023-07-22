@@ -5,6 +5,7 @@
 #include "enginev2/graphics/models/Height.h"
 
 #include "enginev2/graphics/sdl/renderer/TextureLoaderComponent.h"
+#include "enginev2/debug/Debug.h"
 
 GameEngine::GameEngine(const std::string& appTitle, int32_t width, int32_t height)
 {
@@ -74,7 +75,13 @@ void GameEngine::drawGPU() {
 
 std::shared_ptr<Texture> GameEngine::loadTexture(const std::string& resourcePath)
 {
-	return std::make_shared<Texture>(TextureLoaderComponent::loadTexture(textureRenderer, resourcePath));
+	SDL_Texture* tx = TextureLoaderComponent::loadTexture(textureRenderer, resourcePath);
+
+	if (!tx) {
+		DebugLog.showErrorInfo("loading texture");
+	}
+
+	return std::make_shared<Texture>(tx);
 }
 
 void GameEngine::setClearColor(const Color& color)

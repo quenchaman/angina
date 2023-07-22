@@ -17,7 +17,7 @@ void Game::onStart()
 	setClearColor(Color(0, 0, 0));
 	// TODO: Instead of adding a Sprite, create a SpriteRequest class.
 	// That way, the loading and handling of textures will be hidden from the user.
-	heroFacingRight = loadTexture(Resources::SkeletalRainOfBlood::HERO);
+	heroFacingRight = loadTexture("./hero.png");
 	ID id = spriteAnimator.add(Sprite(heroFacingRight, 4, 500));
 	Sprite& spr1 = spriteAnimator.get(id);
 	

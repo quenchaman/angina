@@ -88,7 +88,7 @@
 # (To distribute this file outside of CMake, substitute the full
 # License text for the above reference.)
 
-FIND_PATH(SDL2_MIXER_INCLUDE_DIR SDL_image.h
+FIND_PATH(SDL2_MIXER_INCLUDE_DIR SDL_mixer.h
 	HINTS
 	${SDL2}
 	$ENV{SDL2}
@@ -105,6 +105,7 @@ FIND_PATH(SDL2_MIXER_INCLUDE_DIR SDL_image.h
 	/opt/local # DarwinPorts
 	/opt/csw # Blastwave
 	/opt
+	"C:/libs/SDL2_mixer-2.6.3/include"
 )
 
 # Lookup the 64 bit libs on x64
@@ -123,6 +124,7 @@ IF(CMAKE_SIZEOF_VOID_P EQUAL 8)
 		/opt/local
 		/opt/csw
 		/opt
+		"C:/libs/SDL2_mixer-2.6.3/lib/x64"
 	)
 # On 32bit build find the 32bit libs
 ELSE(CMAKE_SIZEOF_VOID_P EQUAL 8)
