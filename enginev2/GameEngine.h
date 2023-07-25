@@ -20,6 +20,7 @@
 #include "enginev2/storage/Container.h"
 #include "enginev2/movement/MovementCmpt.h"
 #include "renderer/primitives/Line.h"
+#include "enginev2/collisions/CollisionDetector.h"
 
 #include "enginev2/graphics/animation/SpriteAnimator.h"
 
@@ -49,7 +50,7 @@ protected:
   //AnimationComponent animationComponent;
 	GlobalInputComponent inputComponent;
 	MovementCmpt movementComponent;
-
+	CollisionDetector collisionDetector;
 	// TODO: Extract the helper method into a class and add it here so a client can easily namespace-use methods
 	std::shared_ptr<Texture> loadTexture(const std::string& resourcePath);
 

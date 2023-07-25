@@ -9,18 +9,19 @@
 #include "enginev2/graphics/animation/Sprite.h"
 #include "enginev2/components/ID.h"
 #include "platform/ids/ForwardIdGenerator.h"
+#include "enginev2/collisions/BoundingBox.h"
 
 class GameObject {
 public:
   GameObject() = default;
-  GameObject(ID id, Sprite& sprite, float speedFactor, Point pos,
-    Dimensions dim);
+  GameObject(ID id, Sprite& sprite, float speedFactor, Point pos, Dimensions dim);
    
   void updatePosition(const Point& placementPos);
   void updateDirection(const Point& newDir);
   virtual ~GameObject() = default;
 
   void setSprite(Sprite s);
+  void calculateBB();
 
   ID id;
   //std::shared_ptr<Texture> tex;
@@ -30,6 +31,7 @@ public:
   Point placementPos; // The middle of the bottom edge of the object/texture
   Dimensions dim;
   Point dir; // The current direction or last direction the object was travelling towards
+  BoundingBox box;
 };
 
 struct GameObjectFactory {

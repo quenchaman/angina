@@ -39,6 +39,8 @@ void GameEngine::start() {
 		spriteAnimator.update();
 		movementComponent.update();
 
+		std::vector<std::pair<ID, ID>> collidedObjects = collisionDetector.resolveCollisions(objectComponent);
+
 		drawGPU();
 	}
 }

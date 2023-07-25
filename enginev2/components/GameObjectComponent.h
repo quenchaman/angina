@@ -11,7 +11,7 @@ struct Point;
 class GameObjectComponent : public PrimitivesComponent<GameObject> {
 public:
     friend class GameEngine;
-
+    friend class CollisionDetector;
     //GameObjectComponent();
     //void init(TextureLoaderComponent&);
 

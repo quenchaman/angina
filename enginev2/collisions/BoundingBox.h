@@ -6,8 +6,11 @@
 
 class BoundingBox {
 public:
+	BoundingBox() : min(Point()), max(Point()) {}
+	BoundingBox(Point min, Point max) : min(min), max(max) {}
 	void add(const Rectangle&);
-private:
+	bool intersects(const BoundingBox& other);
+
 	Point min;
 	Point max;
 };
