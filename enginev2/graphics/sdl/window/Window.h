@@ -11,7 +11,6 @@
 struct SDL_Window;
 struct SDL_Surface;
 struct Color;
-class SurfaceComponent;
 class Renderer;
 
 /**
@@ -21,7 +20,6 @@ class Renderer;
 class Window {
 public:
 	friend class Renderer;
-	friend class SurfaceComponent;
 	friend class TextureRendererComponent;
 
 	Window();

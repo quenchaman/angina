@@ -8,7 +8,7 @@ ID SpriteAnimator::add(Sprite& sprite)
 {
 	auto id = idGen.next();
 	sprite.id = id;
-	Sprite& addedSprite = PrimitivesComponent::add(sprite);
+	Sprite& addedSprite = PrimitivesStorage::add(sprite);
 	
 	animatedSprites[id] = AnimatedSprite { &addedSprite, false, 0 };
 

@@ -19,7 +19,7 @@ void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height
 	inputComponent.init();
 	textureRenderer.init(win, Color::BLACK);
 	//objectComponent.init(textureLoader);
-	textureComponent.init(std::make_shared<TextureRendererComponent>(textureRenderer));
+	textureComponent.init(100);
 }
 
 void GameEngine::start() {
@@ -39,7 +39,7 @@ void GameEngine::start() {
 		spriteAnimator.update();
 		movementComponent.update();
 
-		std::vector<std::pair<ID, ID>> collidedObjects = collisionDetector.resolveCollisions(objectComponent);
+		std::vector<std::pair<ID, ID>> collidedObjects = collisionDetector.resolveCollisions(objectComponent.elements());
 
 		drawGPU();
 	}
@@ -48,23 +48,15 @@ void GameEngine::start() {
 void GameEngine::drawGPU() {
 	textureRenderer.clear();
 
-	for(Texture& tex : textureComponent.data) {
+	for (Texture& tex : textureComponent.elements()) {
 		textureRenderer.render(tex);
 	}
 
-	for(Rectangle& rect : rectangleComponent.data) {
+	for (Rectangle& rect : rectangleComponent.elements()) {
 		textureRenderer.render(rect);
 	}
-	/*
-	for(Line& line : lineComponent.data) {
-		textureRenderer.render(line);
-	}
 
-	for(Pixel& pixel : pixelComponent.data) {
-		textureRenderer.render(pixel);
-	}*/
-
-	for(GameObject& obj : objectComponent.data) {
+	for (GameObject& obj : objectComponent.elements()) {
 	    textureRenderer.render(obj);
 	}
 

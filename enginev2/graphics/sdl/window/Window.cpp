@@ -8,7 +8,7 @@
 
 #include "platform/sdl/primitives/Surface.h"
 #include "enginev2/graphics/models/Color.h"
-#include "exceptions/WindowInitException.h"
+#include "exceptions/BaseException.h"
 
 Window::Window(): clearColor(SDL_Color{0xFF, 0xFF, 0xFF}), sdlWindow(nullptr), surface(nullptr) {}
 
@@ -27,7 +27,7 @@ void Window::init(const std::string& title,
 	);
 
 	if (sdlWindow == nullptr) {
-		throw WindowInitException(SDL_GetError());
+		throw BaseException(SDL_GetError());
 	}
 
 	std::cout << "Window initialised" << std::endl;

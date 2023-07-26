@@ -5,7 +5,7 @@
 #include "SDL_image.h"
 #include "SDL_ttf.h"
 
-#include "exceptions/GraphicsInitException.h"
+#include "exceptions/BaseException.h"
 
 void Graphics::init() {
 	boot();
@@ -15,19 +15,19 @@ void Graphics::init() {
 
 void Graphics::boot() {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != EXIT_SUCCESS) {
-		throw GraphicsInitException(SDL_GetError());
+		throw BaseException(SDL_GetError());
 	}
 }
 
 void Graphics::bootImageExtension() {
 	if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) {
-		throw GraphicsInitException(SDL_GetError());
+		throw BaseException(SDL_GetError());
 	}
 }
 
 void Graphics::bootTTFExtensions() {
 	if (TTF_Init() == -1) {
-		throw GraphicsInitException(SDL_GetError());
+		throw BaseException(SDL_GetError());
 	}
 }
 

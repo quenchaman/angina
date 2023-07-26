@@ -5,14 +5,14 @@
 #include "SDL_surface.h"
 #include "SDL_image.h"
 
-#include "exceptions/ResourceLoadException.h"
+#include "exceptions/BaseException.h"
 
 Surface::Surface(const std::string& surfaceAssetPath): surface(nullptr) {
 	surface = IMG_Load(surfaceAssetPath.c_str());
 
 	// TODO: Handle with default image
 	if (surface == nullptr) {
-		throw ResourceLoadException(SDL_GetError());
+		throw BaseException(SDL_GetError());
 	}
 }
 

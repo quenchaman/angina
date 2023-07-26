@@ -4,11 +4,11 @@
 #include <utility>
 #include <vector>
 
-#include "enginev2/components/GameObjectComponent.h"
+#include "enginev2/models/GameObject.h"
 #include "enginev2/components/ID.h"
 
 struct CollisionDetector {
-	std::vector<std::pair<ID, ID>> resolveCollisions(GameObjectComponent& gameObjects);
+	std::vector<std::pair<ID, ID>> resolveCollisions(const std::vector<GameObject>& gameObjects);
 };
 
 #endif // !COLLISION_DETECTOR_H

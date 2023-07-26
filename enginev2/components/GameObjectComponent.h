@@ -5,10 +5,10 @@
 
 struct Point;
 
-#include "enginev2/components/PrimitivesComponent.h"
+#include "enginev2/components/PrimitivesStorage.h"
 #include "enginev2/models/GameObject.h"
 
-class GameObjectComponent : public PrimitivesComponent<GameObject> {
+class GameObjectComponent : public PrimitivesStorage<GameObject> {
 public:
     friend class GameEngine;
     friend class CollisionDetector;

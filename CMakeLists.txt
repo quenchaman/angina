@@ -46,23 +46,9 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/events/EventDefines.h
 	${DIR}/enginev2/events/GlobalInputComponent.h
 	${DIR}/enginev2/events/GlobalInputComponent.cpp
-	
-	${DIR}/enginev2/components/SurfaceComponent.h
-	${DIR}/enginev2/components/SurfaceComponent.cpp
-	${DIR}/enginev2/components/TextureComponent.h
-	${DIR}/enginev2/components/TextureComponent.cpp
-	${DIR}/enginev2/components/RectangleComponent.h
-	${DIR}/enginev2/components/RectangleComponent.cpp
-	${DIR}/enginev2/components/PixelComponent.h
-	${DIR}/enginev2/components/PixelComponent.cpp
-	${DIR}/enginev2/components/LineComponent.h
-	${DIR}/enginev2/components/LineComponent.cpp
-	${DIR}/enginev2/storage/Container.h
-	${DIR}/enginev2/components/GameObjectComponent.h
-	${DIR}/enginev2/components/GameObjectComponent.cpp
 	${DIR}/enginev2/components/AnimationComponent.h
 	${DIR}/enginev2/components/AnimationComponent.cpp
-	${DIR}/enginev2/components/PrimitivesComponent.h
+	${DIR}/enginev2/components/PrimitivesStorage.h
 	${DIR}/enginev2/components/ID.h
 	
 	${DIR}/enginev2/GameEngine.h
@@ -78,6 +64,8 @@ add_executable(${PROJECT_NAME}
 
 	${DIR}/enginev2/collisions/BoundingBox.h
 	${DIR}/enginev2/collisions/BoundingBox.cpp
+	${DIR}/enginev2/collisions/CollisionDetector.h
+	${DIR}/enginev2/collisions/CollisionDetector.cpp
 
 	${DIR}/enginev2/movement/MovementCmpt.h
 	${DIR}/enginev2/movement/MovementCmpt.cpp
@@ -92,12 +80,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/examples/SkeletalRainOfBlood/Game.h
 	${DIR}/examples/SkeletalRainOfBlood/Game.cpp
 	
-	${DIR}/exceptions/ResourceLoadException.h
-	${DIR}/exceptions/ResourceLoadException.cpp
-	${DIR}/exceptions/GraphicsInitException.h
-	${DIR}/exceptions/GraphicsInitException.cpp
-	${DIR}/exceptions/WindowInitException.h
-	${DIR}/exceptions/WindowInitException.cpp
 	${DIR}/exceptions/BaseException.h
 	${DIR}/exceptions/BaseException.cpp
 	

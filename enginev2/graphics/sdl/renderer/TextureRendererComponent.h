@@ -5,7 +5,6 @@
 
 class Window;
 class Texture;
-class TextureComponent;
 class Rectangle;
 class Pixel;
 class Line;

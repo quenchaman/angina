@@ -7,24 +7,14 @@
 
 #include "enginev2/graphics/sdl/window/Window.h"
 #include "enginev2/events/GlobalInputComponent.h"
-#include "enginev2/components/SurfaceComponent.h"
-#include "enginev2/components/TextureComponent.h"
-#include "enginev2/components/RectangleComponent.h"
-#include "enginev2/components/PixelComponent.h"
-#include "enginev2/components/LineComponent.h"
-#include "enginev2/components/GameObjectComponent.h"
 #include "enginev2/components/AnimationComponent.h"
-#include "enginev2/graphics/sdl/renderer/SurfaceRendererComponent.h"
 #include "enginev2/graphics/sdl/renderer/TextureRendererComponent.h"
 #include "enginev2/graphics/sdl/renderer/TextureLoaderComponent.h"
-#include "enginev2/storage/Container.h"
 #include "enginev2/movement/MovementCmpt.h"
-#include "renderer/primitives/Line.h"
 #include "enginev2/collisions/CollisionDetector.h"
-
+#include "enginev2/components/PrimitivesStorage.h"
+#include "enginev2/graphics/sdl/primitives/Rectangle.h"
 #include "enginev2/graphics/animation/SpriteAnimator.h"
-
-class Rectangle;
 
 class GameEngine {
 public:
@@ -41,11 +31,9 @@ public:
 
 	void drawGPU();
 protected:
-	RectangleComponent rectangleComponent;
-  //PixelComponent pixelComponent;
-  //LineComponent lineComponent;
-  GameObjectComponent objectComponent;
-  TextureComponent textureComponent;
+	PrimitivesStorage<Rectangle> rectangleComponent;
+  PrimitivesStorage<GameObject> objectComponent;
+	PrimitivesStorage<Texture> textureComponent;
 	SpriteAnimator spriteAnimator;
   //AnimationComponent animationComponent;
 	GlobalInputComponent inputComponent;

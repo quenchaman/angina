@@ -8,7 +8,7 @@
 #include "enginev2/graphics/sdl/primitives/Texture.h"
 #include "enginev2/graphics/animation/Sprite.h"
 #include "platform/ids/ForwardIdGenerator.h"
-#include "enginev2/components/PrimitivesComponent.h"
+#include "enginev2/components/PrimitivesStorage.h"
 
 class GameEngine;
 
@@ -20,7 +20,7 @@ static struct AnimatedSprite {
 	bool isActive;
 };
 
-class SpriteAnimator : public PrimitivesComponent<Sprite> {
+class SpriteAnimator : public PrimitivesStorage<Sprite> {
 public:
 	friend class GameEngine;
 
