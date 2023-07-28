@@ -21,13 +21,8 @@ void Game::onStart()
 	const Point paddleStartPos{ (width / 2) - (paddleDimensions.w / 2), height - paddleDimensions.h };
 	// TODO: Instead of adding a Sprite, create a SpriteRequest class.
 	// That way, the loading and handling of textures will be hidden from the user.
-	paddleTexture = loadTexture(Resources::Breakout::PADDLE);
-	ID id = spriteAnimator.add(Sprite(paddleTexture, 4, 500));
-	Sprite& spr1 = spriteAnimator.get(id);
-	
-	paddle = &objectComponent.add(GameObjectFactory::create(
-		spr1,
-		5.0f, paddleStartPos, paddleDimensions));
+	Sprite& spr1 = spriteAnimator.addAndGet(Sprite(loadTexture(Resources::Breakout::PADDLE)));
+	paddle = &objectComponent.add(GameObjectFactory::create(spr1, 5.0f, paddleStartPos, paddleDimensions));
 }
 
 void Game::onUpdate()

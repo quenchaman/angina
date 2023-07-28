@@ -15,6 +15,11 @@ ID SpriteAnimator::add(Sprite& sprite)
 	return id;
 }
 
+Sprite& SpriteAnimator::addAndGet(Sprite& sprite)
+{
+	return get(add(sprite));
+}
+
 void SpriteAnimator::updateSprite(ID id, std::shared_ptr<Texture> tex)
 {
 	Sprite* oldSprite = animatedSprites[id].sprite;

@@ -24,6 +24,7 @@ public:
 	Sprite(SDL_Texture*, const std::vector<Rectangle>&, uint64_t animationTime);
 	Sprite(SDL_Texture*, uint32_t frameCount, uint64_t animationTime);
 	Sprite(std::shared_ptr<Texture>, uint32_t frameCount, uint64_t animationTime);
+	Sprite(std::shared_ptr<Texture>);
 
 	ID id;
 private:

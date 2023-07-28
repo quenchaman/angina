@@ -18,6 +18,11 @@ Sprite::Sprite( std::shared_ptr<Texture> texture, uint32_t frameCount, uint64_t 
 	this->frames = generateFrames(frameCount);
 }
 
+Sprite::Sprite(std::shared_ptr<Texture> tex):
+	Sprite(tex, 1, 0L)
+{
+}
+
 Sprite::Sprite( SDL_Texture* texture, uint32_t frameCount, uint64_t animationTime):
 	Sprite(std::make_shared<Texture>(texture), frameCount, animationTime) {}
 

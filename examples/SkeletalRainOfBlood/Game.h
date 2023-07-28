@@ -20,7 +20,6 @@ public:
 
 private:
 	std::shared_ptr<Texture> heroFacingLeft;
-	std::shared_ptr<Texture> paddleTexture;
 	DIRECTION_STATE dir = DIRECTION_STATE::RIGHT;
 	GameObject* paddle;
 };
