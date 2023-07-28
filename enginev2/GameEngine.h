@@ -43,10 +43,13 @@ protected:
 	std::shared_ptr<Texture> loadTexture(const std::string& resourcePath);
 
 	void setClearColor(const Color&);
+	void setTargetFrameRate(float fr);
 private:
 	Window win;
 	TextureRendererComponent textureRenderer;
 	bool gameOver = false;
+	float targetFrameRate = 60;
+	float frameDurationMs = 1000 / targetFrameRate;
 };
 
 #endif /* ENGINEV2_GAMEENGINE_H_ */

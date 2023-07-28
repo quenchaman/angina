@@ -28,10 +28,6 @@ void Game::onStart()
 	paddle = &objectComponent.add(GameObjectFactory::create(
 		spr1,
 		5.0f, paddleStartPos, paddleDimensions));
-
-	GameObject* obstacle = &objectComponent.add(GameObjectFactory::create(
-		spr1,
-		0.0f, Point(paddleStartPos.x - 100, paddleStartPos.y), paddleDimensions));
 }
 
 void Game::onUpdate()
@@ -40,10 +36,10 @@ void Game::onUpdate()
 
 void Game::handleEvent()
 {
-	if (inputComponent.key == Keyboard::KEY_LEFT && inputComponent.type == EventType::KEYBOARD_PRESS) {
+	if (inputComponent.isKeyPressed(Keyboard::KEY_LEFT)) {
 		paddle->updatePosition(Point(paddle->placementPos.x - paddle->speedFactor, paddle->placementPos.y));
 	}
-	else if (inputComponent.key == Keyboard::KEY_RIGHT && inputComponent.type == EventType::KEYBOARD_PRESS) {
+	else if (inputComponent.isKeyPressed(Keyboard::KEY_RIGHT)) {
 		paddle->updatePosition(Point(paddle->placementPos.x + paddle->speedFactor, paddle->placementPos.y));
 	}
 }

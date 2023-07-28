@@ -67,6 +67,12 @@ add_executable(${PROJECT_NAME}
 	${DIR}/enginev2/collisions/CollisionDetector.h
 	${DIR}/enginev2/collisions/CollisionDetector.cpp
 
+	${DIR}/enginev2/platform/time/Time.h
+	${DIR}/enginev2/platform/time/Time.cpp
+
+	${DIR}/enginev2/platform/thread/ThreadUtils.h
+	${DIR}/enginev2/platform/thread/ThreadUtils.cpp
+
 	${DIR}/enginev2/movement/MovementCmpt.h
 	${DIR}/enginev2/movement/MovementCmpt.cpp
 
@@ -74,8 +80,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/platform/ids/ForwardIdGenerator.cpp
 	${DIR}/platform/ids/IdGenerator.h
 	${DIR}/platform/ids/IdGenerator.cpp
-
-	${DIR}/platform/time/TimeUtils.h
 	
 	${DIR}/examples/SkeletalRainOfBlood/Game.h
 	${DIR}/examples/SkeletalRainOfBlood/Game.cpp

@@ -6,6 +6,8 @@
 
 #include "enginev2/graphics/sdl/renderer/TextureLoaderComponent.h"
 #include "enginev2/debug/Debug.h"
+#include "enginev2/platform/time/Time.h"
+#include "enginev2/platform/thread/ThreadUtils.h"
 
 GameEngine::GameEngine(const std::string& appTitle, int32_t width, int32_t height)
 {
@@ -24,24 +26,29 @@ void GameEngine::init(const std::string& appTitle, int32_t width, int32_t height
 
 void GameEngine::start() {
   onStart();
+	Time stopwatch;
 
 	while (!gameOver) {
+		stopwatch.getElapsed();
 		bool hasEvents = inputComponent.poll();
 
 		if (inputComponent.hasExitEvent()) {
 			break;
 		}
 
-		if (hasEvents) {
-		    handleEvent();
-		}
+		handleEvent();
 
 		spriteAnimator.update();
 		movementComponent.update();
 
-		std::vector<std::pair<ID, ID>> collidedObjects = collisionDetector.resolveCollisions(objectComponent.elements());
+		//std::vector<std::pair<ID, ID>> collidedObjects = collisionDetector.resolveCollisions(objectComponent.elements());
 
 		drawGPU();
+
+		// Frame rate control
+		Time& clockedTime = stopwatch.getElapsed();
+		float timeLeftInFrame = frameDurationMs - clockedTime.toMilliseconds();
+		ThreadUtils::sleepFor(timeLeftInFrame);
 	}
 }
 
@@ -81,4 +88,10 @@ std::shared_ptr<Texture> GameEngine::loadTexture(const std::string& resourcePath
 void GameEngine::setClearColor(const Color& color)
 {
 	textureRenderer.setClearColor(color);
+}
+
+void GameEngine::setTargetFrameRate(float fr)
+{
+	this->targetFrameRate = fr;
+	this->frameDurationMs = 1000 / fr;
 }
