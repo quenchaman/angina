@@ -11,6 +11,13 @@ GameObject::GameObject(ID id, Sprite& sprite, float speedFactor, Point pos, Dime
 	calculateBB();
 }
 
+GameObject::GameObject(ID id, Point pos, Dimensions dim):
+	id(id),
+	renderingPos(pos),
+	placementPos(pos),
+	dim(dim)
+{}
+
 void GameObject::updatePosition(const Point &placementPos)
 {
 	this->renderingPos = placementPos;

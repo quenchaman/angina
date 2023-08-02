@@ -15,6 +15,11 @@ class GameObject {
 public:
   GameObject() = default;
   GameObject(ID id, Sprite& sprite, float speedFactor, Point pos, Dimensions dim);
+  
+  /// <summary>
+  /// Used for utility game objects, for example, boundaries of a game.
+  /// </summary>
+  GameObject(ID, Point, Dimensions);
    
   void updatePosition(const Point& placementPos);
   void updateDirection(const Point& newDir);
@@ -40,6 +45,9 @@ struct GameObjectFactory {
     return GameObject(id, sprite, speed, pos, dim);
   }
 
+  static GameObject create(Point pos, Dimensions dim) {
+    return GameObject(idgen.next(), pos, dim);
+  }
 private:
   static ForwardIdGenerator idgen;
 };

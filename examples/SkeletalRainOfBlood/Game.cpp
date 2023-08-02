@@ -23,6 +23,19 @@ void Game::onStart()
 	// That way, the loading and handling of textures will be hidden from the user.
 	Sprite& spr1 = spriteAnimator.addAndGet(Sprite(loadTexture(Resources::Breakout::PADDLE)));
 	paddle = &objectComponent.add(GameObjectFactory::create(spr1, 5.0f, paddleStartPos, paddleDimensions));
+	uint32_t borderThickness = 50;
+	Dimensions upperAndLowerBoxDim{ width, borderThickness };
+	Point upperBoxPos{ 0, -borderThickness };
+	objectComponent.add(GameObjectFactory::create(upperBoxPos, upperAndLowerBoxDim));
+	Point lowerBoxPos{ 0, height };
+	objectComponent.add(GameObjectFactory::create(lowerBoxPos, upperAndLowerBoxDim));
+
+	Dimensions leftAndRightBoxDim{ borderThickness, height };
+	Point leftBoxPos{ -borderThickness, 0 };
+	objectComponent.add(GameObjectFactory::create(leftBoxPos, leftAndRightBoxDim));
+
+	Point rightBoxPos{ width, 0 };
+	objectComponent.add(GameObjectFactory::create(rightBoxPos, leftAndRightBoxDim));
 }
 
 void Game::onUpdate()
