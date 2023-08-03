@@ -42,6 +42,10 @@ void GameEngine::start() {
 		movementComponent.update();
 
 		std::vector<std::pair<ID, ID>> collidedObjects = collisionDetector.resolveCollisions(objectComponent.elements());
+		
+		if (collidedObjects.size() > 0) {
+			std::cout << "We have some collided objects\n";
+		}
 
 		drawGPU();
 
@@ -64,7 +68,7 @@ void GameEngine::drawGPU() {
 	}
 
 	for (GameObject& obj : objectComponent.elements()) {
-	    textureRenderer.render(obj);
+	  textureRenderer.render(obj);
 	}
 
 	/*for (Sprite& sprite : spriteAnimator.data) {

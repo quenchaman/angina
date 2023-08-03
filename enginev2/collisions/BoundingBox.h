@@ -9,7 +9,7 @@ public:
 	BoundingBox() : min(Point()), max(Point()) {}
 	BoundingBox(Point min, Point max) : min(min), max(max) {}
 	void add(const Rectangle&);
-	bool intersects(const BoundingBox& other);
+	bool intersects(const BoundingBox& other) const;
 
 	Point min;
 	Point max;
