@@ -22,7 +22,9 @@ void Game::onStart()
 	// TODO: Instead of adding a Sprite, create a SpriteRequest class.
 	// That way, the loading and handling of textures will be hidden from the user.
 	Sprite& spr1 = spriteAnimator.addAndGet(Sprite(loadTexture(Resources::Breakout::PADDLE)));
-	paddle = &objectComponent.add(GameObjectFactory::create(spr1, 5.0f, paddleStartPos, paddleDimensions));
+	GameObject o = GameObjectFactory::create(spr1, 5.0f, paddleStartPos, paddleDimensions);
+	paddleId = o.id;
+	objectComponent.add(o);
 	uint16_t borderThickness = 50;
 	Dimensions upperAndLowerBoxDim{ width, borderThickness };
 	Point upperBoxPos{ 0, -borderThickness };
@@ -45,9 +47,33 @@ void Game::onUpdate()
 void Game::handleEvent()
 {
 	if (inputComponent.isKeyPressed(Keyboard::KEY_LEFT)) {
-		paddle->updatePosition(Point(paddle->placementPos.x - paddle->speedFactor, paddle->placementPos.y));
+		GameObject& paddle = objectComponent.get(paddleId);
+		paddle.updatePosition(Point(paddle.placementPos.x - paddle.speedFactor, paddle.placementPos.y));
 	}
 	else if (inputComponent.isKeyPressed(Keyboard::KEY_RIGHT)) {
-		paddle->updatePosition(Point(paddle->placementPos.x + paddle->speedFactor, paddle->placementPos.y));
+		GameObject& paddle = objectComponent.get(paddleId);
+		paddle.updatePosition(Point(paddle.placementPos.x + paddle.speedFactor, paddle.placementPos.y));
+	}
+}
+
+void Game::handleCollisions(std::vector<std::pair<ID, ID>> collidedObjects)
+{
+	if (collidedObjects.size() > 0) {
+		for (std::pair<ID, ID> collidedObjectIdsPair : collidedObjects) {
+			ID paddleId = -1;
+
+			if (collidedObjectIdsPair.first == paddleId) {
+				paddleId = collidedObjectIdsPair.first;
+			}
+
+			if (collidedObjectIdsPair.second == paddleId) {
+				paddleId = collidedObjectIdsPair.second;
+			}
+
+			if (paddleId != -1) {
+				GameObject& paddle = objectComponent.get(paddleId);
+				paddle.speedFactor = 0.0f;
+			}
+		}
 	}
 }

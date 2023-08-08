@@ -17,11 +17,12 @@ public:
 	void onStart();
 	void onUpdate();
 	void handleEvent();
+	void handleCollisions(std::vector<std::pair<ID, ID>>) override;
 
 private:
 	std::shared_ptr<Texture> heroFacingLeft;
 	DIRECTION_STATE dir = DIRECTION_STATE::RIGHT;
-	GameObject* paddle;
+	ID paddleId;
 };
 
 #endif // !SKELETAL_RAIN_OF_BLOOD

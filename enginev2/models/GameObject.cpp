@@ -16,7 +16,9 @@ GameObject::GameObject(ID id, Point pos, Dimensions dim):
 	renderingPos(pos),
 	placementPos(pos),
 	dim(dim)
-{}
+{
+	calculateBB();
+}
 
 void GameObject::updatePosition(const Point &placementPos)
 {

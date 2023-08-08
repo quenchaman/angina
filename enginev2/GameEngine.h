@@ -29,6 +29,11 @@ public:
 	virtual void onUpdate() = 0;
 	virtual void handleEvent() = 0;
 
+	/// <summary>
+	/// Always check the vector size before accessing elements - it could be empty.
+	/// </summary>
+	virtual void handleCollisions(std::vector<std::pair<ID, ID>>) = 0;
+
 	void drawGPU();
 protected:
 	PrimitivesStorage<Rectangle> rectangleComponent;
