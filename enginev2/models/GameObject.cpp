@@ -36,18 +36,7 @@ void GameObject::updatePosition(const Point &placementPos, Direction dir)
 	this->placementPos = placementPos;
 	this->currentDirection = dir;
 	calculateBB();
-
-	switch (dir)
-	{
-	case Direction::LEFT:
-		this->rightDirectionCollision = false;
-		break;
-	case Direction::RIGHT:
-		this->leftDirectionCollision = false;
-		break;
-	default:
-		break;
-	}
+	resetCollisionState(dir, false);
 }
 
 void GameObject::updateDirection(const Point& newDir)
@@ -57,16 +46,7 @@ void GameObject::updateDirection(const Point& newDir)
 
 void GameObject::rememberCollision()
 {
-	switch (this->currentDirection) {
-	case Direction::LEFT:
-		this->leftDirectionCollision = true;
-		break;
-	case Direction::RIGHT:
-		this->rightDirectionCollision = true;
-		break;
-	default:
-		break;
-	}
+	resetCollisionState(this->currentDirection, true);
 }
 
 void GameObject::setSprite(Sprite s)
@@ -79,6 +59,20 @@ void GameObject::calculateBB()
 	Point min{ this->renderingPos.x, this->renderingPos.y + this->dim.h };
 	Point max{ this->renderingPos.x + this->dim.w, this->renderingPos.y };
 	this->box = BoundingBox(min, max);
+}
+
+void GameObject::resetCollisionState(Direction dir, bool hasCollision)
+{
+	switch (dir) {
+	case Direction::LEFT:
+		this->leftDirectionCollision = hasCollision;
+		break;
+	case Direction::RIGHT:
+		this->rightDirectionCollision = hasCollision;
+		break;
+	default:
+		break;
+	}
 }
 
 ForwardIdGenerator GameObjectFactory::idgen;
