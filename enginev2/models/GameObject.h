@@ -10,6 +10,7 @@
 #include "enginev2/components/ID.h"
 #include "platform/ids/ForwardIdGenerator.h"
 #include "enginev2/collisions/BoundingBox.h"
+#include "enginev2/models/Direction.h"
 
 class GameObject {
 public:
@@ -21,8 +22,9 @@ public:
   /// </summary>
   GameObject(ID, Point, Dimensions);
    
-  void updatePosition(const Point& placementPos);
+  void updatePosition(const Point& placementPos, Direction dir);
   void updateDirection(const Point& newDir);
+  void rememberCollision();
   virtual ~GameObject() = default;
 
   void setSprite(Sprite s);
@@ -37,6 +39,9 @@ public:
   Dimensions dim;
   Point dir; // The current direction or last direction the object was travelling towards
   BoundingBox box;
+  Direction currentDirection;
+  bool leftDirectionCollision;
+  bool rightDirectionCollision;
 };
 
 struct GameObjectFactory {

@@ -48,32 +48,41 @@ void Game::handleEvent()
 {
 	if (inputComponent.isKeyPressed(Keyboard::KEY_LEFT)) {
 		GameObject& paddle = objectComponent.get(paddleId);
-		paddle.updatePosition(Point(paddle.placementPos.x - paddle.speedFactor, paddle.placementPos.y));
+
+		if (paddle.leftDirectionCollision) {
+			return;
+		}
+
+		paddle.updatePosition(Point(paddle.placementPos.x - paddle.speedFactor, paddle.placementPos.y), Direction::LEFT);
 	}
 	else if (inputComponent.isKeyPressed(Keyboard::KEY_RIGHT)) {
 		GameObject& paddle = objectComponent.get(paddleId);
-		paddle.updatePosition(Point(paddle.placementPos.x + paddle.speedFactor, paddle.placementPos.y));
+
+		if (paddle.rightDirectionCollision) {
+			return;
+		}
+
+		paddle.updatePosition(Point(paddle.placementPos.x + paddle.speedFactor, paddle.placementPos.y), Direction::RIGHT);
 	}
 }
 
 void Game::handleCollisions(std::vector<std::pair<ID, ID>> collidedObjects)
 {
-	if (collidedObjects.size() > 0) {
-		for (std::pair<ID, ID> collidedObjectIdsPair : collidedObjects) {
-			ID paddleId = -1;
+	for (std::pair<ID, ID> collidedObjectIdsPair : collidedObjects) {
+		ID collidedPaddleId = -1;
 
-			if (collidedObjectIdsPair.first == paddleId) {
-				paddleId = collidedObjectIdsPair.first;
-			}
+		if (collidedObjectIdsPair.first == paddleId) {
+			collidedPaddleId = collidedObjectIdsPair.first;
+		}
 
-			if (collidedObjectIdsPair.second == paddleId) {
-				paddleId = collidedObjectIdsPair.second;
-			}
+		if (collidedObjectIdsPair.second == paddleId) {
+			collidedPaddleId = collidedObjectIdsPair.second;
+		}
 
-			if (paddleId != -1) {
-				GameObject& paddle = objectComponent.get(paddleId);
-				paddle.speedFactor = 0.0f;
-			}
+		// Our paddle has collided with something, restrict its movement.
+		if (collidedPaddleId != -1) {
+			GameObject& paddle = objectComponent.get(collidedPaddleId);
+			paddle.rememberCollision();
 		}
 	}
 }

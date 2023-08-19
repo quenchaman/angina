@@ -42,6 +42,7 @@ add_executable(${PROJECT_NAME}
 	
 	${DIR}/enginev2/models/GameObject.h
 	${DIR}/enginev2/models/GameObject.cpp
+	${DIR}/enginev2/models/Direction.h
 	
 	${DIR}/enginev2/events/EventDefines.h
 	${DIR}/enginev2/events/GlobalInputComponent.h
@@ -88,8 +89,6 @@ add_executable(${PROJECT_NAME}
 	${DIR}/exceptions/BaseException.cpp
 	
 	${DIR}/resources/Resources.h
-
-
 )
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy_directory
