@@ -40,6 +40,7 @@ void GameEngine::start() {
 
 		spriteAnimator.update();
 		movementComponent.update();
+		onUpdate();
 
 		handleCollisions(collisionDetector.resolveCollisions(objectComponent.elements()));
 

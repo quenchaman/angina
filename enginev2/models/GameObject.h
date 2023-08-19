@@ -28,6 +28,8 @@ public:
   virtual ~GameObject() = default;
 
   void setSprite(Sprite s);
+  void setDirection(const Point&);
+  void setNormal(const Point&);
   void calculateBB();
 
   ID id;
@@ -42,6 +44,7 @@ public:
   Direction currentDirection;
   bool leftDirectionCollision;
   bool rightDirectionCollision;
+  Point normal;
 };
 
 struct GameObjectFactory {

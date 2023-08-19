@@ -74,6 +74,16 @@ void GameObject::setSprite(Sprite s)
 	this->sprite = s;
 }
 
+void GameObject::setDirection(const Point& dir)
+{
+	this->dir = dir;
+}
+
+void GameObject::setNormal(const Point& n)
+{
+	this->normal = n;
+}
+
 void GameObject::calculateBB()
 {
 	Point min{ this->renderingPos.x, this->renderingPos.y + this->dim.h };

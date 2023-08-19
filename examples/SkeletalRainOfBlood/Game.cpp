@@ -32,7 +32,9 @@ void Game::onStart()
 	uint16_t borderThickness = 50;
 	Dimensions upperAndLowerBoxDim{ width, borderThickness };
 	Point upperBoxPos{ 0, -borderThickness };
-	objectComponent.add(GameObjectFactory::create(upperBoxPos, upperAndLowerBoxDim));
+	GameObject& upperBoxObj = GameObjectFactory::create(upperBoxPos, upperAndLowerBoxDim);
+	upperBoxObj.setNormal(Point(0, 1));
+	objectComponent.add(upperBoxObj);
 	Point lowerBoxPos{ 0, height };
 	objectComponent.add(GameObjectFactory::create(lowerBoxPos, upperAndLowerBoxDim));
 
@@ -46,13 +48,18 @@ void Game::onStart()
 	const Dimensions ballDimensions{ 32, 32 };
 	const Point ballStartingPosition{ paddleX + (paddleDimensions.w / 2), paddleY - paddleDimensions.h };
 	Sprite& ballSpr = spriteAnimator.addAndGet(Sprite(loadTexture(Resources::Breakout::BALL)));
-	GameObject ball = GameObjectFactory::create(ballSpr, 10.0f, ballStartingPosition, ballDimensions);
+	GameObject ball = GameObjectFactory::create(ballSpr, 0.0f, ballStartingPosition, ballDimensions);
 	ballId = ball.id;
+	// the initial direction of the ball will be 45 deg. to the right
+	ball.setDirection(Point{ 1, -1 });
 	objectComponent.add(ball);
 }
 
 void Game::onUpdate()
 {
+	GameObject& ball = objectComponent.get(ballId);
+	float v = ball.speedFactor;
+	ball.updatePosition(Point(ball.placementPos.x + (ball.dir.x * v), ball.placementPos.y + (ball.dir.y * v)), Direction::NONE);
 }
 
 void Game::handleEvent()
@@ -74,6 +81,10 @@ void Game::handleEvent()
 		}
 
 		paddle.updatePosition(Point(paddle.placementPos.x + paddle.speedFactor, paddle.placementPos.y), Direction::RIGHT);
+	}
+	else if (inputComponent.isKeyPressed(Keyboard::KEY_SPACE)) {
+		GameObject& ball = objectComponent.get(ballId);
+		ball.speedFactor = 10.0f; // Give it a push... :D
 	}
 }
 
