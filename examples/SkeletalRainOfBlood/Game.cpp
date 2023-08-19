@@ -17,14 +17,18 @@ Game::Game(): GameEngine("Skeletal Rain Of Blood", width, height)
 void Game::onStart()
 {
 	setClearColor(Color(0, 0, 0));
-	const Dimensions paddleDimensions{ 64, 16 };
-	const Point paddleStartPos{ (width / 2) - (paddleDimensions.w / 2), height - paddleDimensions.h };
+	const Dimensions paddleDimensions{ 128, 32 };
+	int32_t paddleX = (width / 2) - (paddleDimensions.w / 2);
+	int32_t paddleY = height - paddleDimensions.h;
+	const Point paddleStartPos{ paddleX, paddleY };
 	// TODO: Instead of adding a Sprite, create a SpriteRequest class.
 	// That way, the loading and handling of textures will be hidden from the user.
 	Sprite& spr1 = spriteAnimator.addAndGet(Sprite(loadTexture(Resources::Breakout::PADDLE)));
 	GameObject o = GameObjectFactory::create(spr1, 5.0f, paddleStartPos, paddleDimensions);
 	paddleId = o.id;
 	objectComponent.add(o);
+
+	// Adding the borders to prevent the paddle to go beyond bounds
 	uint16_t borderThickness = 50;
 	Dimensions upperAndLowerBoxDim{ width, borderThickness };
 	Point upperBoxPos{ 0, -borderThickness };
@@ -38,6 +42,13 @@ void Game::onStart()
 
 	Point rightBoxPos{ width, 0 };
 	objectComponent.add(GameObjectFactory::create(rightBoxPos, leftAndRightBoxDim));
+
+	const Dimensions ballDimensions{ 32, 32 };
+	const Point ballStartingPosition{ paddleX + (paddleDimensions.w / 2), paddleY - paddleDimensions.h };
+	Sprite& ballSpr = spriteAnimator.addAndGet(Sprite(loadTexture(Resources::Breakout::BALL)));
+	GameObject ball = GameObjectFactory::create(ballSpr, 10.0f, ballStartingPosition, ballDimensions);
+	ballId = ball.id;
+	objectComponent.add(ball);
 }
 
 void Game::onUpdate()

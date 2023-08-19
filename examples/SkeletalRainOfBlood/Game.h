@@ -23,6 +23,7 @@ private:
 	std::shared_ptr<Texture> heroFacingLeft;
 	DIRECTION_STATE dir = DIRECTION_STATE::RIGHT;
 	ID paddleId;
+	ID ballId;
 };
 
 #endif // !SKELETAL_RAIN_OF_BLOOD

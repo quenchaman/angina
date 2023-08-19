@@ -42,9 +42,6 @@ public:
   Direction currentDirection;
   bool leftDirectionCollision;
   bool rightDirectionCollision;
-
-private:
-  void resetCollisionState(Direction, bool hasCollision);
 };
 
 struct GameObjectFactory {

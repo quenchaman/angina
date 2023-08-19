@@ -69,6 +69,7 @@ namespace Resources {
 	namespace Breakout {
 		const std::string BreakOutPrefix = prefix + "breakout/";
 		const std::string PADDLE = BreakOutPrefix + "paddle.png";
+		const std::string BALL = BreakOutPrefix + "ball.png";
 	}
 
 
