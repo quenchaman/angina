@@ -27,6 +27,21 @@ Point Point::operator-(const Point &other) const {
 	return {x - other.x, y - other.y};
 }
 
+Point Point::operator*(float s) const
+{
+	return Point(x * s, y * s);
+}
+
+float Point::dot(const Point& other) const
+{
+	return this->x * other.x + this->y * other.y;
+}
+
+Point Point::reflect(const Point& other) const
+{
+	return *this - (other * this->dot(other) * 2);
+}
+
 bool Point::operator>(const Point& other) const {
 	return x > other.x && y > other.y;
 }

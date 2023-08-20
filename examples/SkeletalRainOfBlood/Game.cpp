@@ -40,10 +40,14 @@ void Game::onStart()
 
 	Dimensions leftAndRightBoxDim{ borderThickness, height };
 	Point leftBoxPos{ -borderThickness, 0 };
-	objectComponent.add(GameObjectFactory::create(leftBoxPos, leftAndRightBoxDim));
+	GameObject& leftBox = GameObjectFactory::create(leftBoxPos, leftAndRightBoxDim);
+	leftBox.setNormal(Point(1, 0));
+	objectComponent.add(leftBox);
 
 	Point rightBoxPos{ width, 0 };
-	objectComponent.add(GameObjectFactory::create(rightBoxPos, leftAndRightBoxDim));
+	GameObject& rightBox = GameObjectFactory::create(rightBoxPos, leftAndRightBoxDim);
+	rightBox.setNormal(Point(-1, 0));
+	objectComponent.add(rightBox);
 
 	const Dimensions ballDimensions{ 32, 32 };
 	const Point ballStartingPosition{ paddleX + (paddleDimensions.w / 2), paddleY - paddleDimensions.h };
@@ -91,6 +95,10 @@ void Game::handleEvent()
 void Game::handleCollisions(std::vector<std::pair<ID, ID>> collidedObjects)
 {
 	for (std::pair<ID, ID> collidedObjectIdsPair : collidedObjects) {
+		// I have to think of a better way to find the 'active' object
+		// Or another option is to have the methods for reacting to collisions on the Objects themselves and
+		// just call these methods here.
+		// If the object is static and does not react to collision, the method would be empty.
 		ID collidedPaddleId = -1;
 
 		if (collidedObjectIdsPair.first == paddleId) {
@@ -106,5 +114,8 @@ void Game::handleCollisions(std::vector<std::pair<ID, ID>> collidedObjects)
 			GameObject& paddle = objectComponent.get(collidedPaddleId);
 			paddle.rememberCollision();
 		}
+
+		// Check for collisions between the ball and other objects
+
 	}
 }

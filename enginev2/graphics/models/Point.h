@@ -16,6 +16,9 @@ struct Point {
 	bool operator>(const Point&) const;
 	Point operator+(const Point&) const;
 	Point operator-(const Point&) const;
+	Point operator*(float scalar) const;
+	float dot(const Point&) const;
+	Point reflect(const Point&) const;
 
 	static const Point ZERO;
 	static const Point UNDEFINED;
