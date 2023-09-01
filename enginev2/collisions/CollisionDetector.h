@@ -8,7 +8,7 @@
 #include "enginev2/components/ID.h"
 
 struct CollisionDetector {
-	std::vector<std::pair<ID, ID>> resolveCollisions(const std::vector<GameObject>& gameObjects);
+	std::vector<std::pair<ID, ID>> detectCollisions(const std::vector<GameObject>& gameObjects);
 };
 
 #endif // !COLLISION_DETECTOR_H

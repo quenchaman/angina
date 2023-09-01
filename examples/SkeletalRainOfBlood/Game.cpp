@@ -10,7 +10,7 @@
 
 const uint32_t width = 860, height = 640;
 
-Game::Game(): GameEngine("Skeletal Rain Of Blood", width, height)
+Game::Game(): GameEngine("Skeletal Rain Of Blood", width, height), paddleId(-1), ballId(-1), paddleSpeed(0.0f)
 {
 }
 
@@ -24,7 +24,7 @@ void Game::onStart()
 	// TODO: Instead of adding a Sprite, create a SpriteRequest class.
 	// That way, the loading and handling of textures will be hidden from the user.
 	Sprite& spr1 = spriteAnimator.addAndGet(Sprite(loadTexture(Resources::Breakout::PADDLE)));
-	GameObject o = GameObjectFactory::create(spr1, 5.0f, paddleStartPos, paddleDimensions);
+	GameObject o = GameObjectFactory::create(spr1, 0.0f, paddleStartPos, paddleDimensions);
 	paddleId = o.id;
 	objectComponent.add(o);
 
@@ -109,7 +109,7 @@ void Game::handleCollisions(std::vector<std::pair<ID, ID>> collidedObjects)
 			collidedPaddleId = collidedObjectIdsPair.second;
 		}
 
-		// Our paddle has collided with something, restrict its movement.
+		// Our paddle has collided with something, record the direction we were moving to before colliding.
 		if (collidedPaddleId != -1) {
 			GameObject& paddle = objectComponent.get(collidedPaddleId);
 			paddle.rememberCollision();

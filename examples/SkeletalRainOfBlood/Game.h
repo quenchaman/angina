@@ -24,6 +24,7 @@ private:
 	DIRECTION_STATE dir = DIRECTION_STATE::RIGHT;
 	ID paddleId;
 	ID ballId;
+	float paddleSpeed;
 };
 
 #endif // !SKELETAL_RAIN_OF_BLOOD

@@ -42,7 +42,7 @@ void GameEngine::start() {
 		movementComponent.update();
 		onUpdate();
 
-		handleCollisions(collisionDetector.resolveCollisions(objectComponent.elements()));
+		handleCollisions(collisionDetector.detectCollisions(objectComponent.elements()));
 
 		drawGPU();
 

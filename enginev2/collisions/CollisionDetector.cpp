@@ -3,7 +3,7 @@
 #include "enginev2/models/GameObject.h"
 #include "enginev2/collisions/BoundingBox.h"
 
-std::vector<std::pair<ID, ID>> CollisionDetector::resolveCollisions(const std::vector<GameObject>& gameObjects)
+std::vector<std::pair<ID, ID>> CollisionDetector::detectCollisions(const std::vector<GameObject>& gameObjects)
 {
 	std::vector<std::pair<ID, ID>> collidedObjects;
 
