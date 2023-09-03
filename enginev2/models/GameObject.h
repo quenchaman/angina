@@ -29,7 +29,6 @@ public:
 
   void setSprite(Sprite s);
   void setDirection(const Point&);
-  void setNormal(const Point&);
   void calculateBB();
 
   ID id;
@@ -41,10 +40,6 @@ public:
   Dimensions dim;
   Point dir; // The current direction or last direction the object was travelling towards
   BoundingBox box;
-  Direction currentDirection;
-  bool leftDirectionCollision;
-  bool rightDirectionCollision;
-  Point normal;
 };
 
 struct GameObjectFactory {

@@ -32,7 +32,7 @@ public:
 	/// <summary>
 	/// Always check the vector size before accessing elements - it could be empty.
 	/// </summary>
-	virtual void handleCollisions(std::vector<std::pair<ID, ID>>) = 0;
+	virtual void handleCollisions(std::vector<CollisionData>) = 0;
 
 	void drawGPU();
 protected:

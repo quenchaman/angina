@@ -2,6 +2,10 @@
 
 Line::Line(const Point& start, const Point& end, const Color& clr): a(start), b(end), color(clr) {}
 
+Line::Line(const Point& start, const Point& end, const Point& normal): a(start), b(end), color(Color::BLACK), N(normal)
+{
+}
+
 Point Line::getOrigin() const {
   return a;
 }

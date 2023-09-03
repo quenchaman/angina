@@ -12,6 +12,7 @@ public:
 
 	Line() = default;
 	Line(const Point& start, const Point& end, const Color&);
+	Line(const Point& start, const Point& end, const Point& normal);
 
 	Point getOrigin() const;
 	Point getEnd() const;
@@ -24,10 +25,13 @@ public:
 	Line connect(const Line& other) const;
 	Line midpoint(const Line& other) const;
 	friend std::ostream& operator<<(std::ostream& os, const Line&);
+
+	Point N;
 private:
 	Point a;
 	Point b;
 	Color color;
+	
 };
 
 #endif /* RENDERER_PRIMITIVES_LINE_H_ */

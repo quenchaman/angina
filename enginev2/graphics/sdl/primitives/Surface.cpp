@@ -7,6 +7,8 @@
 
 #include "exceptions/BaseException.h"
 
+// This constructor should be removed.
+// We should have factory methods.
 Surface::Surface(const std::string& surfaceAssetPath): surface(nullptr) {
 	surface = IMG_Load(surfaceAssetPath.c_str());
 

@@ -17,7 +17,7 @@ public:
 	void onStart();
 	void onUpdate();
 	void handleEvent();
-	void handleCollisions(std::vector<std::pair<ID, ID>>) override;
+	void handleCollisions(std::vector<CollisionData>) override;
 
 private:
 	std::shared_ptr<Texture> heroFacingLeft;
