@@ -125,35 +125,51 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 	$<TARGET_FILE_DIR:${PROJECT_NAME}>/resources/chess)
 
 set_target_cpp_standard(${PROJECT_NAME} 17)
-enable_target_warnings(${PROJECT_NAME})
 
-find_package(SDL2 REQUIRED)
-
-if (WIN32)
-	find_package(SDL2_IMAGE REQUIRED)
-endif (WIN32)
-
+# Add static lib headers for linux
 if (UNIX)
-	find_package(SDL2_image REQUIRED)
-endif (UNIX)
+include_directories(
+    ${DIR}/libs/linux/SDL/include/SDL2
+)
 
-if (UNIX)
-	find_package(SDL2_ttf REQUIRED)
-endif (UNIX)
+target_link_libraries(
+    ${PROJECT_NAME} PRIVATE ${DIR}/libs/linux/SDL/lib/libSDL2.a
+)
+endif(UNIX)
 
+# Add static libraries' headers for windows
 if (WIN32)
-	find_package(SDL2_TTF REQUIRED)
-endif (WIN32)
+include_directories(
+    ${DIR}/libs/win/SDL2-2.28.1/include
+    ${DIR}/libs/win/SDL2_ttf-2.20.2/include
+    ${DIR}/libs/win/SDL2_mixer-2.6.3/include
+    ${DIR}/libs/win/SDL2_image-2.6.3/include
+)
 
-if (WIN32)
-	find_package(SDL2_MIXER REQUIRED)
-endif (WIN32)
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    ${DIR}/libs/win/SDL2-2.28.1/lib/x64/SDL2.lib
+    ${DIR}/libs/win/SDL2_image-2.6.3/lib/x64/SDL2_image.lib
+    ${DIR}/libs/win/SDL2_ttf-2.20.2/lib/x64/SDL2_ttf.lib
+    ${DIR}/libs/win/SDL2_mixer-2.6.3/lib/x64/SDL2_mixer.lib
+)
 
-if (UNIX)
-	find_package(SDL2_mixer REQUIRED)
-endif (UNIX)
+# Function to add a post-build command for copying DLLs to the output directory
+function(move_to_exe_folder dllSrcPath dllName)
+    add_custom_command(
+        TARGET ${PROJECT_NAME}  # Assumes you have a target defined with the project name
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${dllSrcPath}/${dllName}  # Source path to the DLL
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>  # Destination: directory of the target executable
+    )
+endfunction()
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${INTERFACE_INCLUDE_DIRECTORIES})
+# Call the function to copy each DLL to the executable output folder
+move_to_exe_folder(${CMAKE_CURRENT_SOURCE_DIR}/libs/win/SDL2-2.28.1/lib/x64 SDL2.dll)
+move_to_exe_folder(${CMAKE_CURRENT_SOURCE_DIR}/libs/win/SDL2_image-2.6.3/lib/x64 SDL2_image.dll)
+move_to_exe_folder(${CMAKE_CURRENT_SOURCE_DIR}/libs/win/SDL2_ttf-2.20.2/lib/x64 SDL2_ttf.dll)
+move_to_exe_folder(${CMAKE_CURRENT_SOURCE_DIR}/libs/win/SDL2_mixer-2.6.3/lib/x64 SDL2_mixer.dll)
+
+endif(WIN32)
+
 target_include_directories(${PROJECT_NAME} PRIVATE ${DIR})
-
-target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${SDL2_MIXER_LIBRARY})
